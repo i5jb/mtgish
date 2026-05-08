@@ -1,0 +1,159 @@
+#!/usr/bin/python3
+
+import json
+import sys
+import re
+
+filename = sys.argv[1]
+
+with open(filename, "r") as f:
+  scryfall_cards = json.loads(f.read())
+
+# Patch silly names
+for scryfall_card in scryfall_cards:
+  if scryfall_card["name"] == "Fast // Furious" and scryfall_card["set"] == "unk":
+    scryfall_card["name"] = "Fasto // Furiouso"
+    scryfall_card["card_faces"][0]["name"] = "Fasto"
+    scryfall_card["card_faces"][1]["name"] = "Furiouso"
+  if scryfall_card["name"] == "Red Herring" and scryfall_card["set"] == "cmb2":
+    scryfall_card["name"] = "Sketchy Red Herring"
+  if scryfall_card["name"] == "Pick Your Poison" and scryfall_card["set"] == "cmb2":
+    scryfall_card["name"] = "Pick Your Sketchy Poison"
+  if scryfall_card["name"] == "Unquenchable Fury" and scryfall_card["set"] == "tbth":
+    scryfall_card["name"] = "Horde's Unquenchable Fury"
+
+# Fix annoying em-dash
+for scryfall_card in scryfall_cards:
+  if scryfall_card["name"] == "Human—Time Lord Meta-Crisis":
+    scryfall_card["name"] = scryfall_card["name"].replace("—", "-")
+    scryfall_card["oracle_text"] = scryfall_card["oracle_text"].replace("—", "-")
+
+# Patch token layouts
+flip_tokens = ["Monster // Sorcerer", "Monster // Virtuous", "Royal // Virtuous", "Royal // Young Hero", "Sorcerer // Virtuous", "Wicked // Cursed"]
+for scryfall_card in scryfall_cards:
+  if scryfall_card["name"] in flip_tokens:
+    scryfall_card["layout"] = "flip_token"
+
+def WUBRG(color):
+  order = ["W", "U", "B", "R", "G"]
+  try:
+    return order.index(color)
+  except:
+    return len(order)
+
+def cardInfo(cardside):
+  card = {
+    "name": cardside.get("name", ""),
+    "manaCost": cardside.get("mana_cost", ""),
+    "type": cardside.get("type_line", ""),
+    "text": cardside.get("oracle_text", ""),
+    "power": cardside.get("power", ""),
+    "toughness": cardside.get("toughness", ""),
+    "loyalty": cardside.get("loyalty", ""),
+    "defense": cardside.get("defense", ""),
+    "life": cardside.get("life_modifier", ""),
+    "hand": cardside.get("hand_modifier", ""),
+    "colorIndicator": "".join(sorted(cardside.get("color_indicator", []), key=lambda color: WUBRG(color))),
+  }
+
+  # Planeswalker ability
+  card["text"] = re.sub(r"(?m)^([+−-]?[0-9X]+):", r"[\1]:", card["text"])
+
+  return {k: v for (k,v) in card.items() if v != ""}
+
+normal_layouts = {
+  "normal",
+  "prototype", "case", "class", "leveler", "saga", "mutate", # Normal-ish
+  "vanguard", "scheme", "planar", # special deck cards
+  "host", "augment", # Un-set half-cards
+}
+
+cards = []
+for scryfall_card in scryfall_cards:
+  layout = scryfall_card["layout"]
+
+  # Skip over dungeons, they're handled in AdditionalCards.json5
+  if scryfall_card["type_line"] == "Dungeon":
+    continue
+
+  if layout in normal_layouts:
+    card = cardInfo(scryfall_card)
+    if card["type"] == "Card": continue
+
+    cards.append({ "name": card["name"], "layout": "single", "cards": [ card ] })
+    continue
+
+  if layout in {"meld"}:
+    card = cardInfo(scryfall_card)
+    meld_result = ""
+    for part in scryfall_card["all_parts"]:
+      if part["component"] == "meld_result":
+        meld_result = part["name"]
+    if card["name"] == meld_result:
+      cards.append({ "name": scryfall_card["name"], "layout": "melded", "cards": [ card ] })
+    else:
+      cards.append({ "name": scryfall_card["name"], "layout": "meld_piece", "melded": meld_result, "cards": [ card ] })
+    continue
+  if layout in {"modal_dfc"}:
+    sides = [cardInfo(cardside) for cardside in scryfall_card["card_faces"]]
+    assert(len(sides) == 2)
+    cards.append({ "name": scryfall_card["name"], "layout": "modal_dfc", "cards": sides })
+    continue
+  if layout in {"flip"}:
+    sides = [cardInfo(cardside) for cardside in scryfall_card["card_faces"]]
+    assert(len(sides) == 2)
+    cards.append({ "name": scryfall_card["name"], "layout": "flip", "cards": sides })
+    continue
+  if layout in {"transform"}:
+    sides = [cardInfo(cardside) for cardside in scryfall_card["card_faces"]]
+    assert(len(sides) == 2)
+    cards.append({ "name": scryfall_card["name"], "layout": "transform", "cards": sides })
+    continue
+  if layout in {"adventure"}:
+    sides = [cardInfo(cardside) for cardside in scryfall_card["card_faces"]]
+    assert(len(sides) == 2)
+    if (sides[1]["type"] in ["Instant — Adventure", "Sorcery — Adventure"]):
+      cards.append({ "name": scryfall_card["name"], "layout": "adventurer", "cards": sides })
+      continue
+    if (sides[1]["type"] in ["Instant — Omen",      "Sorcery — Omen"]):
+      cards.append({ "name": scryfall_card["name"], "layout": "ominous", "cards": sides })
+      continue
+  if layout in {"prepare"}:
+    sides = [cardInfo(cardside) for cardside in scryfall_card["card_faces"]]
+    assert(len(sides) == 2)
+    assert("Prepared" in scryfall_card["keywords"])
+    cards.append({ "name": scryfall_card["name"], "layout": "preparer", "cards": sides })
+    continue
+  if layout in {"split"}:
+    sides = [cardInfo(cardside) for cardside in scryfall_card["card_faces"]]
+    side = sides[0]
+    if side["type"] == "Enchantment — Room":
+      shared_typeline = "Enchantment — Room"
+      del sides[0]["type"]
+      del sides[1]["type"]
+      cards.append({ "name": scryfall_card["name"], "layout": "room",  "shared_typeline": shared_typeline, "cards": sides })
+    else:
+      cards.append({ "name": scryfall_card["name"], "layout": "split", "cards": sides })
+    continue
+
+  if layout in {"art_series", "emblem", "token", "double_faced_token", "flip_token"}: continue
+  print(layout, scryfall_card["name"])
+
+cards_by_name = {}
+for card in cards:
+  if card["name"] in cards_by_name:
+    cards_by_name[card["name"]].append(card)
+  else:
+    cards_by_name[card["name"]] = [card]
+
+cards_array = []
+for card_name, cards in cards_by_name.items():
+  if len(cards) == 1:
+    cards_array.append(cards[0])
+  else:
+    sides = [card["cards"][0] for card in cards]
+    sides = sorted(sides, key=lambda card: card["text"])
+    cards_array.append({ "name": card_name, "layout": "variants", "cards": sides })
+
+cards_array = sorted(cards_array, key=lambda card: card["name"])
+json.dump(cards_array, sys.stdout, indent=2, ensure_ascii=False)

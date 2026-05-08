@@ -1,0 +1,24 @@
+.item-with-progress {
+  position: relative;
+}
+.item-with-progress > div {
+  clear: none;
+  display: inline-block;
+}
+
+.horizontal-progress-bar {
+  width: 100%;
+  height: 10px;
+  margin: 5px;
+  padding: 6px;
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+.horizontal-progress {
+  position: relative;
+  height: 8px;
+  top: -4px;
+  width: 0%;
+  background: #50C89C;
+}

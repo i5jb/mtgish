@@ -1,0 +1,3 @@
+/// <reference types="./oracle_cards.d.ts" />
+{
+let test: Array<OracleCard> = new Array<OracleCard>();

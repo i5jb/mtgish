@@ -1,0 +1,124 @@
+{
+  "{{CARD_MANACOST}}": {
+    "{{MANACOSTX}}": "",
+    "{{MANACOST}}": ""
+  },
+  "{{MANACOSTX}}": {
+    "{{MANACOST_SYMBOL_X_LIST}}": ""
+  },
+  "{{MANACOST_SYMBOL[X]}}": {
+    "ManaCostX": ""
+  },
+  "{{MANACOST_SYMBOL_LIST}}": {
+    "[{{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL}}]": ""
+  },
+  "{{MANACOST_SYMBOL_X_LIST}}": {
+    "[{{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL[X]}}]": "",
+    "[{{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL[X]}}]": "",
+    "[{{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL[X]}}, {{MANACOST_SYMBOL}}]": "",
+    "[{{MANACOST_SYMBOL[X]}}]": ""
+  },
+  "{{MANACOST_SYMBOL}}": {
+    "{{MANA_COST_SYMBOL[Colored]}}": "",
+    "{{MANA_COST_SYMBOL[ColorlessHybrid]}}": "",
+    "{{MANA_COST_SYMBOL[Colorless]}}": "",
+    "{{MANA_COST_SYMBOL[Generic]}}": "",
+    "{{MANA_COST_SYMBOL[Hybrid]}}": "",
+    "{{MANA_COST_SYMBOL[PhyrexianHybrid]}}": "",
+    "{{MANA_COST_SYMBOL[Phyrexian]}}": "",
+    "{{MANA_COST_SYMBOL[Snow]}}": "",
+    "{{MANA_COST_SYMBOL[Twobrid]}}": ""
+  },
+  "{{MANACOST}}": {
+    "{{MANACOST_SYMBOL_LIST}}": ""
+  },
+  "{{MANA_COST_SYMBOL[Colored]}}": {
+    "ManaCostB": "",
+    "ManaCostG": "",
+    "ManaCostR": "",
+    "ManaCostU": "",
+    "ManaCostW": ""
+  },
+  "{{MANA_COST_SYMBOL[ColorlessHybrid]}}": {
+    "ManaCostCB": "",
+    "ManaCostCG": "",
+    "ManaCostCR": "",
+    "ManaCostCU": "",
+    "ManaCostCW": ""
+  },
+  "{{MANA_COST_SYMBOL[Colorless]}}": {
+    "ManaCostC": ""
+  },
+  "{{MANA_COST_SYMBOL[Generic]}}": {
+    "ManaCostGeneric(0)": "",
+    "ManaCostGeneric(1)": "",
+    "ManaCostGeneric(10)": "",
+    "ManaCostGeneric(11)": "",
+    "ManaCostGeneric(12)": "",
+    "ManaCostGeneric(13)": "",
+    "ManaCostGeneric(14)": "",
+    "ManaCostGeneric(15)": "",
+    "ManaCostGeneric(16)": "",
+    "ManaCostGeneric(2)": "",
+    "ManaCostGeneric(20)": "",
+    "ManaCostGeneric(3)": "",
+    "ManaCostGeneric(4)": "",
+    "ManaCostGeneric(5)": "",
+    "ManaCostGeneric(6)": "",
+    "ManaCostGeneric(7)": "",
+    "ManaCostGeneric(8)": "",
+    "ManaCostGeneric(9)": ""
+  },
+  "{{MANA_COST_SYMBOL[Hybrid]}}": {
+    "ManaCostBG": "",
+    "ManaCostBR": "",
+    "ManaCostGU": "",
+    "ManaCostGW": "",
+    "ManaCostRG": "",
+    "ManaCostRW": "",
+    "ManaCostUB": "",
+    "ManaCostUR": "",
+    "ManaCostWB": "",
+    "ManaCostWU": ""
+  },
+  "{{MANA_COST_SYMBOL[PhyrexianHybrid]}}": {
+    "ManaCostGUP": "",
+    "ManaCostGWP": "",
+    "ManaCostRGP": "",
+    "ManaCostRWP": ""
+  },
+  "{{MANA_COST_SYMBOL[Phyrexian]}}": {
+    "ManaCostBP": "",
+    "ManaCostGP": "",
+    "ManaCostRP": "",
+    "ManaCostUP": "",
+    "ManaCostWP": ""
+  },
+  "{{MANA_COST_SYMBOL[Snow]}}": {
+    "ManaCostS": ""
+  },
+  "{{MANA_COST_SYMBOL[Twobrid]}}": {
+    "ManaCost2B": "",
+    "ManaCost2G": "",
+    "ManaCost2R": "",
+    "ManaCost2U": "",
+    "ManaCost2W": ""
+  }
+}

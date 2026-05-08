@@ -1,0 +1,134 @@
+#!/usr/bin/python3
+
+import json
+import sys
+import regex
+
+typedef_filename = "typescript_types/oracle_cards.d.ts"
+json_filename = "data/mtgish.lines.json"
+
+with open(typedef_filename, "r") as f:
+  lines = f.readlines()
+
+types_array = []
+r = regex.compile(r"^\| { \"_(\w*)\": \"(\w*)\".*")
+for line in lines:
+  match = r.match(line)
+  if (match):
+    groups = match.groups()
+    type_key = "_" + groups[0]
+    type_value = groups[1]
+
+    types_array.append((type_key, type_value))
+types = set(types_array)
+type_keys = set([k for (k, v) in types])
+
+with open(json_filename, "r") as f:
+  lines = f.readlines()
+  oracle_cards = [json.loads(line) for line in lines]
+
+def get_keys(value):
+  if isinstance(value, str): return []
+  if isinstance(value, int): return []
+  if isinstance(value, dict):
+    result = []
+    for k, v in value.items():
+      if k in type_keys:
+        result.append((k, v))
+      result += get_keys(v)
+    return result
+  if isinstance(value, list):
+    result = []
+    for v in value:
+      result += get_keys(v)
+    return result
+  print("ERROR!", type(value))
+
+internal_keys = set([
+  ('_Permanent', 'ById'),
+
+  ('_StaticLayerEffect', 'AddCopiableAbility'),
+  ('_StaticLayerEffect', 'AddCopiableCardtype'),
+  ('_StaticLayerEffect', 'AddCopiableSubtype'),
+  ('_StaticLayerEffect', 'IsACopyOf'),
+  ('_StaticLayerEffect', 'MutateOnTop'),
+  ('_StaticLayerEffect', 'MutateUnder'),
+  ('_StaticLayerEffect', 'SetCopiableManaCost'),
+  ('_StaticLayerEffect', 'SetCopiablePT'),
+
+  ('_OracleCard', 'AdventurerCard'),
+  ('_OracleCard', 'ConspiracyCard'),
+  ('_OracleCard', 'DungeonCard'),
+  ('_OracleCard', 'FlipCard'),
+  ('_OracleCard', 'MeldPieceCard'),
+  ('_OracleCard', 'MeldedCard'),
+  ('_OracleCard', 'ModalDFCCard'),
+  ('_OracleCard', 'OminousCard'),
+  ('_OracleCard', 'PlanarCard'),
+  ('_OracleCard', 'RoomCard'),
+  ('_OracleCard', 'SchemeCard'),
+  ('_OracleCard', 'SplitCard'),
+  ('_OracleCard', 'StickerSheetCard'),
+  ('_OracleCard', 'TransformingCard'),
+  ('_OracleCard', 'VanguardCard'),
+
+  ('_StaticCopyEffects', 'StaticCopyEffects'),
+
+  ('_StaticCopyEffect', 'AddAbility'),
+  ('_StaticCopyEffect', 'AddAbilityIfItDoesntHaveAbility'),
+  ('_StaticCopyEffect', 'AddArtifactTypes'),
+  ('_StaticCopyEffect', 'AddCardtypes'),
+  ('_StaticCopyEffect', 'AddColor'),
+  ('_StaticCopyEffect', 'AddCreatureTypes'),
+  ('_StaticCopyEffect', 'AddLandTypes'),
+  ('_StaticCopyEffect', 'AddSupertypes'),
+  ('_StaticCopyEffect', 'HasNoManaCost'),
+  ('_StaticCopyEffect', 'KeepColor'),
+  ('_StaticCopyEffect', 'KeepName'),
+  ('_StaticCopyEffect', 'KeepPT'),
+  ('_StaticCopyEffect', 'MergeTypeline'),
+  ('_StaticCopyEffect', 'RemoveSupertypes'),
+  ('_StaticCopyEffect', 'SetArtifactTypes'),
+  ('_StaticCopyEffect', 'SetCardtypes'),
+  ('_StaticCopyEffect', 'SetColor'),
+  ('_StaticCopyEffect', 'SetName'),
+  ('_StaticCopyEffect', 'SetPT'),
+
+  ('_Name', 'FlipName'),
+  ('_Name', 'Name'),
+
+  ('_CardPT', 'CardPT'),
+  ('_CardPT', 'FlipCardPT'),
+
+  ('_EffectListItem', 'BattlefieldEffect'),
+  ('_EffectListItem', 'Effect'),
+  ('_EffectListItem', 'Testcase'),
+
+  ('_RuleSource', 'AddCopiable'),
+  ('_RuleSource', 'BattlefieldEffect'),
+  ('_RuleSource', 'Copy'),
+  ('_RuleSource', 'CopyModifier'),
+  ('_RuleSource', 'Effect'),
+  ('_RuleSource', 'Mutate'),
+  ('_RuleSource', 'Printed'),
+  ('_RuleSource', 'TestCase'),
+
+  ('_Typeline', 'FlipTypeline'),
+  ('_Typeline', 'Typeline'),
+])
+
+card_keys_array = []
+for card in oracle_cards:
+  keys = get_keys(card)
+  card_keys_array += keys
+card_keys = set(card_keys_array)
+
+new_keys = (card_keys - types)
+deleted_keys = (types - card_keys - internal_keys)
+if (len(new_keys) > 0):
+  print("New keys")
+  print(new_keys)
+if (len(deleted_keys) > 0):
+  print("Deleted keys")
+  print(deleted_keys)
+

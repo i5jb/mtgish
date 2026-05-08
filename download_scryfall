@@ -1,0 +1,24 @@
+#!/bin/sh
+
+BASE_DIR=$PWD
+BUILD_DIR=$PWD/__build
+OUTPUT_DIR=$PWD/data
+
+mkdir -p $OUTPUT_DIR
+
+# ------------------------------------
+# Download and process latest scryfall
+# ------------------------------------
+
+SCRYFALL_BULK_DATA_FILE=$BUILD_DIR/Scryfall-Bulk-Data-latest.json
+SCRYFALL_ORACLE_CARDS_FILE=$BUILD_DIR/Scryfall-OracleCards-latest.json
+
+curl -A "mtg-grammer-checker/0.1 (personal project, ran manually)" https://api.scryfall.com/bulk-data | jq . > $SCRYFALL_BULK_DATA_FILE
+
+SCRYFALL_ORACLE_CARDS_URI=`jq -r ".data | map(select(.name == \"Oracle Cards\"))[0].download_uri" $SCRYFALL_BULK_DATA_FILE`
+
+curl -A "mtg-grammer-checker/0.1 (personal project, ran manually)" $SCRYFALL_ORACLE_CARDS_URI | jq . > $SCRYFALL_ORACLE_CARDS_FILE
+
+DATE=`echo $SCRYFALL_ORACLE_CARDS_URI | sed 's/.*-\([[:digit:]]*\).json/\1/'`
+
+./preprocess_scryfall $SCRYFALL_ORACLE_CARDS_FILE > $OUTPUT_DIR/oracle.json

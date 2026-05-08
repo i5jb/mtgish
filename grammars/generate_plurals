@@ -1,0 +1,796 @@
+#!/usr/bin/python3
+
+import sys
+import json
+
+# --------------------------------------------------------------------------- #
+#                              Argument Parsing                               #
+# --------------------------------------------------------------------------- #
+
+usage = """
+Usage:
+  [--help]
+
+  --english-grammar | --mtgish-grammar | --typescript-types | --list-types | --flatten-types
+"""
+
+def show_help(exit_code):
+  print(usage)
+  sys.exit(exit_code)
+
+if len(sys.argv) != 2: show_help(-1)
+if sys.argv[1] == "--help": show_help(0)
+if sys.argv[1] not in ["--english-grammar", "--mtgish-grammar", "--typescript-types", "--list-types", "--flatten-types"]: show_help(-1)
+output_type = sys.argv[1]
+
+# --------------------------------------------------------------------------- #
+#                                Main Program                                 #
+# --------------------------------------------------------------------------- #
+
+flat_supertypes = [
+# ( Singular  ,  Variable  ),
+  ("Basic"    , "Basic"    ),
+  ("Legendary", "Legendary"),
+  ("Ongoing"  , "Ongoing"  ),
+  ("Snow"     , "Snow"     ),
+  ("World"    , "World"    ),
+]
+flat_cardtypes = [
+# ( Singular     ,  Variable     ),
+  ("Artifact"    , "Artifact"    ),
+  ("Battle"      , "Battle"      ),
+  ("Conspiracy"  , "Conspiracy"  ),
+  ("Creature"    , "Creature"    ),
+  ("Dungeon"     , "Dungeon"     ),
+  ("Enchantment" , "Enchantment" ),
+  ("Instant"     , "Instant"     ),
+  ("Kindred"     , "Kindred"     ),
+  ("Land"        , "Land"        ),
+  ("Phenomenon"  , "Phenomenon"  ),
+  ("Plane"       , "Plane"       ),
+  ("Planeswalker", "Planeswalker"),
+  ("Scheme"      , "Scheme"      ),
+  ("Sorcery"     , "Sorcery"     ),
+  ("Vanguard"    , "Vanguard"    ),
+]
+flat_dungeon_types = [
+# ( Singular  ,  Variable  ),
+  ("Undercity", "Undercity"),
+]
+flat_battle_types = [
+# ( Singular,  Variable),
+  ("Siege"  , "Siege"  ),
+]
+flat_creature_types = [
+# ( Singular        , Plural            , Variable        ),
+  ("Advisor"        , "Advisors"        , "Advisor"       ),
+  ("Aetherborn"     , "Aetherborn"      , "Aetherborn"    ),
+  ("Alien"          , "Aliens"          , "Alien"         ),
+  ("Ally"           , "Allies"          , "Ally"          ),
+  ("Angel"          , "Angels"          , "Angel"         ),
+  ("Antelope"       , "Antelope"        , "Antelope"      ),
+  ("Ape"            , "Apes"            , "Ape"           ),
+  ("Archer"         , "Archers"         , "Archer"        ),
+  ("Archon"         , "Archons"         , "Archon"        ),
+  ("Armadillo"      , "Armadillos"      , "Armadillo"     ),
+  ("Army"           , "Armies"          , "Army"          ),
+  ("Artificer"      , "Artificers"      , "Artificer"     ),
+  ("Assassin"       , "Assassins"       , "Assassin"      ),
+  ("Assembly-Worker", "Assembly-Workers", "AssemblyWorker"),
+  ("Astartes"       , "Astartes"        , "Astartes"      ),
+  ("Atog"           , "Atogs"           , "Atog"          ),
+  ("Aurochs"        , "Aurochs"         , "Aurochs"       ),
+  ("Avatar"         , "Avatars"         , "Avatar"        ),
+  ("Azra"           , "Azra"            , "Azra"          ),
+  ("Badger"         , "Badgers"         , "Badger"        ),
+  ("Balloon"        , "Balloons"        , "Balloon"       ),
+  ("Barbarian"      , "Barbarians"      , "Barbarian"     ),
+  ("Bard"           , "Bards"           , "Bard"          ),
+  ("Basilisk"       , "Basilisks"       , "Basilisk"      ),
+  ("Bat"            , "Bats"            , "Bat"           ),
+  ("Bear"           , "Bears"           , "Bear"          ),
+  ("Beast"          , "Beasts"          , "Beast"         ),
+  ("Beaver"         , "Beavers"         , "Beaver"        ),
+  ("Beeble"         , "Beebles"         , "Beeble"        ),
+  ("Beholder"       , "Beholders"       , "Beholder"      ),
+  ("Berserker"      , "Berserkers"      , "Berserker"     ),
+  ("Bird"           , "Birds"           , "Bird"          ),
+  ("Bison"          , "Bisons"          , "Bison"         ),
+  ("Blinkmoth"      , "Blinkmoths"      , "Blinkmoth"     ),
+  ("Boar"           , "Boars"           , "Boar"          ),
+  ("Bringer"        , "Bringers"        , "Bringer"       ),
+  ("Brushwagg"      , "Brushwaggs"      , "Brushwagg"     ),
+  ("C'tan"          , "C'tans"          , "Ctan"          ),
+  ("Camarid"        , "Camarids"        , "Camarid"       ),
+  ("Camel"          , "Camels"          , "Camel"         ),
+  ("Capybara"       , "Capybaras"       , "Capybara"      ),
+  ("Caribou"        , "Caribou"         , "Caribou"       ),
+  ("Carrier"        , "Carriers"        , "Carrier"       ),
+  ("Cat"            , "Cats"            , "Cat"           ),
+  ("Centaur"        , "Centaurs"        , "Centaur"       ),
+  ("Chimera"        , "Chimera"         , "Chimera"       ),
+  ("Citizen"        , "Citizens"        , "Citizen"       ),
+  ("Cleric"         , "Clerics"         , "Cleric"        ),
+  ("Clown"          , "Clowns"          , "Clown"         ),
+  ("Cockatrice"     , "Cockatrice"      , "Cockatrice"    ),
+  ("Construct"      , "Constructs"      , "Construct"     ),
+  ("Coward"         , "Cowards"         , "Coward"        ),
+  ("Coyote"         , "Coyotes"         , "Coyote"        ),
+  ("Crab"           , "Crabs"           , "Crab"          ),
+  ("Crocodile"      , "Crocodiles"      , "Crocodile"     ),
+  ("Custodes"       , "Custodes"        , "Custodes"      ),
+  ("Cyberman"       , "Cybermen"        , "Cyberman"      ),
+  ("Cyclops"        , "Cyclops"         , "Cyclops"       ),
+  ("Dalek"          , "Daleks"          , "Dalek"         ),
+  ("Dauthi"         , "Dauthi"          , "Dauthi"        ),
+  ("Demigod"        , "Demigods"        , "Demigod"       ),
+  ("Demon"          , "Demons"          , "Demon"         ),
+  ("Deserter"       , "Deserters"       , "Deserter"      ),
+  ("Detective"      , "Detectives"      , "Detective"     ),
+  ("Devil"          , "Devils"          , "Devil"         ),
+  ("Dinosaur"       , "Dinosaurs"       , "Dinosaur"      ),
+  ("Djinn"          , "Djinns"          , "Djinn"         ),
+  ("Doctor"         , "Doctors"         , "Doctor"        ),
+  ("Dog"            , "Dogs"            , "Dog"           ),
+  ("Dragon"         , "Dragons"         , "Dragon"        ),
+  ("Drake"          , "Drakes"          , "Drake"         ),
+  ("Dreadnought"    , "Dreadnoughts"    , "Dreadnought"   ),
+  ("Drix"           , "Drixes"          , "Drix"          ),
+  ("Drone"          , "Drones"          , "Drone"         ),
+  ("Druid"          , "Druids"          , "Druid"         ),
+  ("Dryad"          , "Dryads"          , "Dryad"         ),
+  ("Dwarf"          , "Dwarves"         , "Dwarf"         ),
+  ("Efreet"         , "Efreets"         , "Efreet"        ),
+  ("Egg"            , "Eggs"            , "Egg"           ),
+  ("Elder"          , "Elders"          , "Elder"         ),
+  ("Eldrazi"        , "Eldrazi"         , "Eldrazi"       ),
+  ("Elemental"      , "Elementals"      , "Elemental"     ),
+  ("Elephant"       , "Elephants"       , "Elephant"      ),
+  ("Elf"            , "Elves"           , "Elf"           ),
+  ("Elk"            , "Elk"             , "Elk"           ),
+  ("Echidna"        , "Echidnas"        , "Echidna"       ),
+  ("Employee"       , "Employees"       , "Employee"      ),
+  ("Eye"            , "Eyes"            , "Eye"           ),
+  ("Faerie"         , "Faeries"         , "Faerie"        ),
+  ("Ferret"         , "Ferrets"         , "Ferret"        ),
+  ("Fish"           , "Fish"            , "Fish"          ),
+  ("Flagbearer"     , "Flagbearers"     , "Flagbearer"    ),
+  ("Fox"            , "Foxes"           , "Fox"           ),
+  ("Fractal"        , "Fractals"        , "Fractal"       ),
+  ("Frog"           , "Frogs"           , "Frog"          ),
+  ("Fungus"         , "Fungi"           , "Fungus"        ),
+  ("Gamer"          , "Gamers"          , "Gamer"         ),
+  ("Gamma"          , "Gammas"          , "Gamma"         ),
+  ("Gargoyle"       , "Gargoyles"       , "Gargoyle"      ),
+  ("Germ"           , "Germs"           , "Germ"          ),
+  ("Giant"          , "Giants"          , "Giant"         ),
+  ("Giraffe"        , "Giraffes"        , "Giraffe"       ),
+  ("Gith"           , "Gith"            , "Gith"          ),
+  ("Glimmer"        , "Glimmers"        , "Glimmer"       ),
+  ("Gnoll"          , "Gnolls"          , "Gnoll"         ),
+  ("Gnome"          , "Gnomes"          , "Gnome"         ),
+  ("Goat"           , "Goats"           , "Goat"          ),
+  ("Goblin"         , "Goblins"         , "Goblin"        ),
+  ("God"            , "Gods"            , "God"           ),
+  ("Golem"          , "Golems"          , "Golem"         ),
+  ("Gorgon"         , "Gorgons"         , "Gorgon"        ),
+  ("Graveborn"      , "Graveborn"       , "Graveborn"     ),
+  ("Gremlin"        , "Gremlins"        , "Gremlin"       ),
+  ("Griffin"        , "Griffins"        , "Griffin"       ),
+  ("Guest"          , "Guests"          , "Guest"         ),
+  ("Hag"            , "Hags"            , "Hag"           ),
+  ("Halfling"       , "Halflings"       , "Halfling"      ),
+  ("Hamster"        , "Hamsters"        , "Hamster"       ),
+  ("Harpy"          , "Harpies"         , "Harpy"         ),
+  ("Hedgehog"       , "Hedgehogs"       , "Hedgehog"      ),
+  ("Hellion"        , "Hellions"        , "Hellion"       ),
+  ("Hero"           , "Heroes"          , "Hero"          ),
+  ("Hippo"          , "Hippos"          , "Hippo"         ),
+  ("Hippogriff"     , "Hippogriff"      , "Hippogriff"    ),
+  ("Homarid"        , "Homarids"        , "Homarid"       ),
+  ("Homunculus"     , "Homunculus"      , "Homunculus"    ),
+  ("Horror"         , "Horrors"         , "Horror"        ),
+  ("Horse"          , "Horses"          , "Horse"         ),
+  ("Human"          , "Humans"          , "Human"         ),
+  ("Hydra"          , "Hydras"          , "Hydra"         ),
+  ("Hyena"          , "Hyenas"          , "Hyena"         ),
+  ("Illusion"       , "Illusions"       , "Illusion"      ),
+  ("Imp"            , "Imps"            , "Imp"           ),
+  ("Incarnation"    , "Incarnations"    , "Incarnation"   ),
+  ("Incubator"      , "Incubators"      , "Incubator"     ),
+  ("Inkling"        , "Inklings"        , "Inkling"       ),
+  ("Inquisitor"     , "Inquisitors"     , "Inquisitor"    ),
+  ("Insect"         , "Insects"         , "Insect"        ),
+  ("Jackal"         , "Jackals"         , "Jackal"        ),
+  ("Jellyfish"      , "Jellyfish"       , "Jellyfish"     ),
+  ("Juggernaut"     , "Juggernauts"     , "Juggernaut"    ),
+  ("Kangaroo"       , "Kangaroos"       , "Kangaroo"      ),
+  ("Kavu"           , "Kavu"            , "Kavu"          ),
+  ("Kirin"          , "Kirin"           , "Kirin"         ),
+  ("Kithkin"        , "Kithkin"         , "Kithkin"       ),
+  ("Knight"         , "Knights"         , "Knight"        ),
+  ("Kobold"         , "Kobolds"         , "Kobold"        ),
+  ("Kor"            , "Kor"             , "Kor"           ),
+  ("Kraken"         , "Krakens"         , "Kraken"        ),
+  ("Lamia"          , "Lamia"           , "Lamia"         ),
+  ("Lammasu"        , "Lammasu"         , "Lammasu"       ),
+  ("Leech"          , "Leeches"         , "Leech"         ),
+  ("Lemur"          , "Lemurs"          , "Lemur"         ),
+  ("Leviathan"      , "Leviathans"      , "Leviathan"     ),
+  ("Lhurgoyf"       , "Lhurgoyf"        , "Lhurgoyf"      ),
+  ("Licid"          , "Licids"          , "Licid"         ),
+  ("Lizard"         , "Lizards"         , "Lizard"        ),
+  ("Llama"          , "Llamas"          , "Llama"         ),
+  ("Lobster"        , "Lobsters"        , "Lobster"       ),
+  ("Manticore"      , "Manticores"      , "Manticore"     ),
+  ("Masticore"      , "Masticores"      , "Masticore"     ),
+  ("Mercenary"      , "Mercenaries"     , "Mercenary"     ),
+  ("Merfolk"        , "Merfolk"         , "Merfolk"       ),
+  ("Metathran"      , "Metathran"       , "Metathran"     ),
+  ("Minion"         , "Minions"         , "Minion"        ),
+  ("Minotaur"       , "Minotaurs"       , "Minotaur"      ),
+  ("Mite"           , "Mites"           , "Mite"          ),
+  ("Mole"           , "Moles"           , "Mole"          ),
+  ("Monger"         , "Mongers"         , "Monger"        ),
+  ("Mongoose"       , "Mongeese"        , "Mongoose"      ),
+  ("Monk"           , "Monks"           , "Monk"          ),
+  ("Monkey"         , "Monkies"         , "Monkey"        ),
+  ("Moogle"         , "Moogles"         , "Moogle"        ),
+  ("Mount"          , "Mounts"          , "Mount"         ),
+  ("Moonfolk"       , "Moonfolk"        , "Moonfolk"      ),
+  ("Mouse"          , "Mice"            , "Mouse"         ),
+  ("Mutant"         , "Mutants"         , "Mutant"        ),
+  ("Myr"            , "Myr"             , "Myr"           ),
+  ("Mystic"         , "Mystics"         , "Mystic"        ),
+  ("Nautilus"       , "Nautilus"        , "Nautilus"      ),
+  ("Necron"         , "Necrons"         , "Necron"        ),
+  ("Nephilim"       , "Nephilim"        , "Nephilim"      ),
+  ("Nightmare"      , "Nightmares"      , "Nightmare"     ),
+  ("Nightstalker"   , "Nightstalkers"   , "Nightstalker"  ),
+  ("Ninja"          , "Ninjas"          , "Ninja"         ),
+  ("Noble"          , "Nobles"          , "Noble"         ),
+  ("Noggle"         , "Noggles"         , "Noggle"        ),
+  ("Nomad"          , "Nomads"          , "Nomad"         ),
+  ("Nymph"          , "Nymphs"          , "Nymph"         ),
+  ("Octopus"        , "Octopuses"       , "Octopus"       ),
+  ("Ogre"           , "Ogres"           , "Ogre"          ),
+  ("Ooze"           , "Oozes"           , "Ooze"          ),
+  ("Orb"            , "Orbs"            , "Orb"           ),
+  ("Orc"            , "Orcs"            , "Orc"           ),
+  ("Orgg"           , "Orggs"           , "Orgg"          ),
+  ("Otter"          , "Otters"          , "Otter"         ),
+  ("Ouphe"          , "Ouphe"           , "Ouphe"         ),
+  ("Ox"             , "Oxen"            , "Ox"            ),
+  ("Oyster"         , "Oysters"         , "Oyster"        ),
+  ("Pangolin"       , "Pangolins"       , "Pangolin"      ),
+  ("Peasant"        , "Peasants"        , "Peasant"       ),
+  ("Pegasus"        , "Pegasi"          , "Pegasus"       ),
+  ("Pentavite"      , "Pentavites"      , "Pentavite"     ),
+  ("Performer"      , "Performers"      , "Performer"     ),
+  ("Pest"           , "Pests"           , "Pest"          ),
+  ("Phelddagrif"    , "Phelddagrif"     , "Phelddagrif"   ),
+  ("Phoenix"        , "Phoenix"         , "Phoenix"       ),
+  ("Phyrexian"      , "Phyrexians"      , "Phyrexian"     ),
+  ("Pilot"          , "Pilots"          , "Pilot"         ),
+  ("Pincher"        , "Pinchers"        , "Pincher"       ),
+  ("Pirate"         , "Pirates"         , "Pirate"        ),
+  ("Plant"          , "Plants"          , "Plant"         ),
+  ("Platypus"       , "Platypuses"      , "Platypus"      ),
+  ("Porcupine"      , "Porcupines"      , "Porcupine"     ),
+  ("Possum"         , "Possums"         , "Possum"        ),
+  ("Praetor"        , "Praetors"        , "Praetor"       ),
+  ("Primarch"       , "Primarchs"       , "Primarch"      ),
+  ("Prism"          , "Prisms"          , "Prism"         ),
+  ("Processor"      , "Processors"      , "Processor"     ),
+  ("Rabbit"         , "Rabbits"         , "Rabbit"        ),
+  ("Raccoon"        , "Raccoons"        , "Raccoon"       ),
+  ("Ranger"         , "Rangers"         , "Ranger"        ),
+  ("Rat"            , "Rats"            , "Rat"           ),
+  ("Rebel"          , "Rebels"          , "Rebel"         ),
+  ("Reflection"     , "Reflections"     , "Reflection"    ),
+  ("Rhino"          , "Rhinos"          , "Rhino"         ),
+  ("Rigger"         , "Riggers"         , "Rigger"        ),
+  ("Robot"          , "Robots"          , "Robot"         ),
+  ("Rogue"          , "Rogues"          , "Rogue"         ),
+  ("Qu"             , "Qus"             , "Qu"            ),
+  ("Sable"          , "Sables"          , "Sable"         ),
+  ("Salamander"     , "Salamanders"     , "Salamander"    ),
+  ("Samurai"        , "Samurai"         , "Samurai"       ),
+  ("Sand"           , "Sands"           , "Sand"          ),
+  ("Saproling"      , "Saprolings"      , "Saproling"     ),
+  ("Satyr"          , "Satyrs"          , "Satyr"         ),
+  ("Scarecrow"      , "Scarecrows"      , "Scarecrow"     ),
+  ("Scientist"      , "Scientists"      , "Scientist"     ),
+  ("Scion"          , "Scions"          , "Scion"         ),
+  ("Scorpion"       , "Scorpions"       , "Scorpion"      ),
+  ("Scout"          , "Scouts"          , "Scout"         ),
+  ("Sculpture"      , "Sculptures"      , "Sculpture"     ),
+  ("Seal"           , "Seals"           , "Seal"          ),
+  ("Serf"           , "Serfs"           , "Serf"          ),
+  ("Serpent"        , "Serpents"        , "Serpent"       ),
+  ("Servo"          , "Servos"          , "Servo"         ),
+  ("Shade"          , "Shades"          , "Shade"         ),
+  ("Shaman"         , "Shamans"         , "Shaman"        ),
+  ("Shapeshifter"   , "Shapeshifters"   , "Shapeshifter"  ),
+  ("Shark"          , "Sharks"          , "Shark"         ),
+  ("Sheep"          , "Sheep"           , "Sheep"         ),
+  ("Siren"          , "Sirens"          , "Siren"         ),
+  ("Skeleton"       , "Skeletons"       , "Skeleton"      ),
+  ("Skrull"         , "Skrulls"         , "Skrull"        ),
+  ("Skunk"          , "Skunks"          , "Skunk"         ),
+  ("Slith"          , "Sliths"          , "Slith"         ),
+  ("Sliver"         , "Slivers"         , "Sliver"        ),
+  ("Sloth"          , "Sloths"          , "Sloth"         ),
+  ("Slug"           , "Slugs"           , "Slug"          ),
+  ("Snail"          , "Snails"          , "Snail"         ),
+  ("Snake"          , "Snakes"          , "Snake"         ),
+  ("Soldier"        , "Soldiers"        , "Soldier"       ),
+  ("Soltari"        , "Soltari"         , "Soltari"       ),
+  ("Sorcerer"       , "Sorcerers"       , "Sorcerer"      ),
+  ("Spawn"          , "Spawns"          , "Spawn"         ),
+  ("Specter"        , "Specters"        , "Specter"       ),
+  ("Spellshaper"    , "Spellshapers"    , "Spellshaper"   ),
+  ("Sphinx"         , "Sphinx"          , "Sphinx"        ),
+  ("Spider"         , "Spiders"         , "Spider"        ),
+  ("Spike"          , "Spikes"          , "Spike"         ),
+  ("Spirit"         , "Spirits"         , "Spirit"        ),
+  ("Splinter"       , "Splinters"       , "Splinter"      ),
+  ("Sponge"         , "Sponges"         , "Sponge"        ),
+  ("Squid"          , "Squids"          , "Squid"         ),
+  ("Squirrel"       , "Squirrels"       , "Squirrel"      ),
+  ("Starfish"       , "Starfish"        , "Starfish"      ),
+  ("Surrakar"       , "Surrakars"       , "Surrakar"      ),
+  ("Survivor"       , "Survivors"       , "Survivor"      ),
+  ("Symbiote"       , "Symbiotes"       , "Symbiote"      ),
+  ("Synth"          , "Synths"          , "Synth"         ),
+  ("Tentacle"       , "Tentacles"       , "Tentacle"      ),
+  ("Tetravite"      , "Tetravites"      , "Tetravite"     ),
+  ("Thalakos"       , "Thalakos"        , "Thalakos"      ),
+  ("Thopter"        , "Thopters"        , "Thopter"       ),
+  ("Thrull"         , "Thrulls"         , "Thrull"        ),
+  ("Tiefling"       , "Tieflings"       , "Tiefling"      ),
+  ("Time Lord"      , "Time Lords"      , "TimeLord"      ),
+  ("Toy"            , "Toys"            , "Toy"           ),
+  ("Treefolk"       , "Treefolk"        , "Treefolk"      ),
+  ("Trilobite"      , "Trilobites"      , "Trilobite"     ),
+  ("Triskelavite"   , "Triskelavites"   , "Triskelavite"  ),
+  ("Troll"          , "Trolls"          , "Troll"         ),
+  ("Turtle"         , "Turtles"         , "Turtle"        ),
+  ("Tyranid"        , "Tyranids"        , "Tyranid"       ),
+  ("Unicorn"        , "Unicorns"        , "Unicorn"       ),
+  ("Utrom"          , "Utroms"          , "Utrom"         ),
+  ("Vampire"        , "Vampires"        , "Vampire"       ),
+  ("Varmint"        , "Varmints"        , "Varmint"       ),
+  ("Vedalken"       , "Vedalken"        , "Vedalken"      ),
+  ("Villain"        , "Villains"        , "Villain"       ),
+  ("Volver"         , "Volver"          , "Volver"        ),
+  ("Wall"           , "Walls"           , "Wall"          ),
+  ("Walrus"         , "Walruses"        , "Walrus"        ),
+  ("Warlock"        , "Warlocks"        , "Warlock"       ),
+  ("Warrior"        , "Warriors"        , "Warrior"       ),
+  ("Weasel"         , "Weasels"         , "Weasel"        ),
+  ("Weird"          , "Weirds"          , "Weird"         ),
+  ("Werewolf"       , "Werewolves"      , "Werewolf"      ),
+  ("Whale"          , "Whales"          , "Whale"         ),
+  ("Wizard"         , "Wizards"         , "Wizard"        ),
+  ("Wolf"           , "Wolves"          , "Wolf"          ),
+  ("Wolverine"      , "Wolverines"      , "Wolverine"     ),
+  ("Wombat"         , "Wombats"         , "Wombat"        ),
+  ("Worm"           , "Worms"           , "Worm"          ),
+  ("Wraith"         , "Wraiths"         , "Wraith"        ),
+  ("Wurm"           , "Wurms"           , "Wurm"          ),
+  ("Yeti"           , "Yeti"            , "Yeti"          ),
+  ("Zombie"         , "Zombies"         , "Zombie"        ),
+  ("Zubera"         , "Zubera"          , "Zubera"        ),
+]
+flat_land_types = [
+# ( Singular    , Plural        , Variable    ),
+  ("Cave"       , "Caves"       , "Cave"      ),
+  ("Desert"     , "Deserts"     , "Desert"    ),
+  ("Forest"     , "Forests"     , "Forest"    ),
+  ("Gate"       , "Gates"       , "Gate"      ),
+  ("Island"     , "Islands"     , "Island"    ),
+  ("Lair"       , "Lairs"       , "Lair"      ),
+  ("Locus"      , "Locus"       , "Locus"     ),
+  ("Mine"       , "Mines"       , "Mine"      ),
+  ("Mountain"   , "Mountains"   , "Mountain"  ),
+  ("Planet"     , "Planets"     , "Planet"    ),
+  ("Plains"     , "Plains"      , "Plains"    ),
+  ("Power-Plant", "Power-Plants", "PowerPlant"),
+  ("Sphere"     , "Spheres"     , "Sphere"    ),
+  ("Swamp"      , "Swamps"      , "Swamp"     ),
+  ("Tower"      , "Towers"      , "Tower"     ),
+  ("Town"       , "Towns"       , "Town"      ),
+  ("Urza's"     , "Urza's"      , "Urzas"     ),
+]
+flat_spell_types = [
+# ( Singular  , Plural      , Variable   ),
+  ("Adventure", "Adventures", "Adventure"),
+  ("Omen"     , "Omens"     , "Omen"     ),
+  ("Arcane"   , "Arcane"    , "Arcane"   ),
+  ("Lesson"   , "Lessons"   , "Lesson"   ),
+  ("Chorus"   , "Choruses"  , "Chorus"   ),
+  ("Trap"     , "Traps"     , "Trap"     ),
+]
+flat_enchantment_types = [
+# ( Singular   , Plural       , Variable    ),
+  ("Aura"      , "Auras"      , "Aura"      ),
+  ("Background", "Backgrounds", "Background"),
+  ("Cartouche" , "Cartouches" , "Cartouche" ),
+  ("Case"      , "Cases"      , "Case"      ),
+  ("Class"     , "Classes"    , "Class"     ),
+  ("Curse"     , "Curses"     , "Curse"     ),
+  ("Plan"      , "Plans"      , "Plan"      ),
+  ("Room"      , "Rooms"      , "Room"      ),
+  ("Rune"      , "Runes"      , "Rune"      ),
+  ("Saga"      , "Sagas"      , "Saga"      ),
+  ("Shard"     , "Shards"     , "Shard"     ),
+  ("Shrine"    , "Shrines"    , "Shrine"    ),
+]
+flat_artifact_types = [
+# ( Singular      , Plural          , Variable       ),
+  ("Attraction"   , "Attractions"   , "Attraction"   ),
+  ("Blood"        , "Bloods"        , "Blood"        ),
+  ("Bobblehead"   , "Bobbleheads"   , "Bobblehead"   ),
+  ("Book"         , "Books"         , "Book"         ),
+  ("Clue"         , "Clues"         , "Clue"         ),
+  ("Equipment"    , "Equipment"     , "Equipment"    ),
+  ("Food"         , "Foods"         , "Food"         ),
+  ("Fortification", "Fortifications", "Fortification"),
+  ("Infinity"     , "Infinities"    , "Infinity"     ),
+  ("Junk"         , "Junks"         , "Junk"         ),
+  ("Powerstone"   , "Powerstones"   , "Powerstone"   ),
+  ("Lander"       , "Landers"       , "Lander"       ),
+  ("Spacecraft"   , "Spacecrafts"   , "Spacecraft"   ),
+  ("Stone"        , "Stones"        , "Stone"        ),
+  ("Treasure"     , "Treasures"     , "Treasure"     ),
+  ("Vehicle"      , "Vehicles"      , "Vehicle"      ),
+]
+flat_planeswalker_types = [
+# ( Singular     ,  Variable     ),
+  ("Ajani"       , "Ajani"       ),
+  ("Aminatou"    , "Aminatou"    ),
+  ("Angrath"     , "Angrath"     ),
+  ("Arlinn"      , "Arlinn"      ),
+  ("Ashiok"      , "Ashiok"      ),
+  ("Bahamut"     , "Bahamut"     ),
+  ("Basri"       , "Basri"       ),
+  ("Bolas"       , "Bolas"       ),
+  ("Calix"       , "Calix"       ),
+  ("Chandra"     , "Chandra"     ),
+  ("Comet"       , "Comet"       ),
+  ("Dack"        , "Dack"        ),
+  ("Dakkon"      , "Dakkon"      ),
+  ("Daretti"     , "Daretti"     ),
+  ("Davriel"     , "Davriel"     ),
+  ("Deb"         , "Deb"         ),
+  ("Dellian"     , "Dellian"     ),
+  ("Dihada"      , "Dihada"      ),
+  ("Domri"       , "Domri"       ),
+  ("Dovin"       , "Dovin"       ),
+  ("Ellywick"    , "Ellywick"    ),
+  ("Elminster"   , "Elminster"   ),
+  ("Elspeth"     , "Elspeth"     ),
+  ("Estrid"      , "Estrid"      ),
+  ("Freyalise"   , "Freyalise"   ),
+  ("Garruk"      , "Garruk"      ),
+  ("Gideon"      , "Gideon"      ),
+  ("Grist"       , "Grist"       ),
+  ("Guff"        , "Guff"        ),
+  ("Huatli"      , "Huatli"      ),
+  ("Jace"        , "Jace"        ),
+  ("Jared"       , "Jared"       ),
+  ("Jaya"        , "Jaya"        ),
+  ("Jeska"       , "Jeska"       ),
+  ("Kaito"       , "Kaito"       ),
+  ("Karn"        , "Karn"        ),
+  ("Kasmina"     , "Kasmina"     ),
+  ("Kaya"        , "Kaya"        ),
+  ("Kiora"       , "Kiora"       ),
+  ("Koth"        , "Koth"        ),
+  ("Liliana"     , "Liliana"     ),
+  ("Lolth"       , "Lolth"       ),
+  ("Lukka"       , "Lukka"       ),
+  ("Minsc"       , "Minsc"       ),
+  ("Mordenkainen", "Mordenkainen"),
+  ("Nahiri"      , "Nahiri"      ),
+  ("Narset"      , "Narset"      ),
+  ("Niko"        , "Niko"        ),
+  ("Nissa"       , "Nissa"       ),
+  ("Nixilis"     , "Nixilis"     ),
+  ("Oko"         , "Oko"         ),
+  ("Quintorius"  , "Quintorius"  ),
+  ("Ral"         , "Ral"         ),
+  ("Rowan"       , "Rowan"       ),
+  ("Saheeli"     , "Saheeli"     ),
+  ("Samut"       , "Samut"       ),
+  ("Sarkhan"     , "Sarkhan"     ),
+  ("Serra"       , "Serra"       ),
+  ("Sivitri"     , "Sivitri"     ),
+  ("Sorin"       , "Sorin"       ),
+  ("Szat"        , "Szat"        ),
+  ("Tamiyo"      , "Tamiyo"      ),
+  ("Tasha"       , "Tasha"       ),
+  ("Teferi"      , "Teferi"      ),
+  ("Teyo"        , "Teyo"        ),
+  ("Tezzeret"    , "Tezzeret"    ),
+  ("Tibalt"      , "Tibalt"      ),
+  ("Tyvar"       , "Tyvar"       ),
+  ("Ugin"        , "Ugin"        ),
+  ("Urza"        , "Urza"        ),
+  ("Venser"      , "Venser"      ),
+  ("Vivien"      , "Vivien"      ),
+  ("Vraska"      , "Vraska"      ),
+  ("Vronos"      , "Vronos"      ),
+  ("Will"        , "Will"        ),
+  ("Windgrace"   , "Windgrace"   ),
+  ("Wrenn"       , "Wrenn"       ),
+  ("Xenagos"     , "Xenagos"     ),
+  ("Yanggu"      , "Yanggu"      ),
+  ("Yanling"     , "Yanling"     ),
+  ("Zariel"      , "Zariel"      ),
+]
+flat_plane_types = [
+# ( Singular                  ,  Variable               ),
+  ("Alara"                    , "Alara"                 ),
+  ("Alfava Metraxis"          , "AlfavaMetraxis"        ),
+  ("Amonkhet"                 , "Amonkhet"              ),
+  ("Androzani Minor"          , "AndrozaniMinor"        ),
+  ("Antausia"                 , "Antausia"              ),
+  ("Apalapucia"               , "Apalapucia"            ),
+  ("Arcavios"                 , "Arcavios"              ),
+  ("Arkhos"                   , "Arkhos"                ),
+  ("Avishkar"                 , "Avishkar"              ),
+  ("Azgol"                    , "Azgol"                 ),
+  ("Belenon"                  , "Belenon"               ),
+  ("Bolas's Meditation Realm" , "BolassMeditationRealm" ),
+  ("Capenna"                  , "Capenna"               ),
+  ("Cridhe"                   , "Cridhe"                ),
+  ("Darillium"                , "Darillium"             ),
+  ("Dominaria"                , "Dominaria"             ),
+  ("Earth"                    , "Earth"                 ),
+  ("Echoir"                   , "Echoir"                ),
+  ("Eldraine"                 , "Eldraine"              ),
+  ("Equilor"                  , "Equilor"               ),
+  ("Ergamon"                  , "Ergamon"               ),
+  ("Fabacin"                  , "Fabacin"               ),
+  ("Fiora"                    , "Fiora"                 ),
+  ("Gallifrey"                , "Gallifrey"             ),
+  ("Gargantikar"              , "Gargantikar"           ),
+  ("Gobakhan"                 , "Gobakhan"              ),
+  ("Horsehead Nebula"         , "HorseheadNebula"       ),
+  ("Ikoria"                   , "Ikoria"                ),
+  ("Innistrad"                , "Innistrad"             ),
+  ("Iquatana"                 , "Iquatana"              ),
+  ("Ir"                       , "Ir"                    ),
+  ("Ixalan"                   , "Ixalan"                ),
+  ("Kaldheim"                 , "Kaldheim"              ),
+  ("Kamigawa"                 , "Kamigawa"              ),
+  ("Kandoka"                  , "Kandoka"               ),
+  ("Karsus"                   , "Karsus"                ),
+  ("Kephalai"                 , "Kephalai"              ),
+  ("Kinshala"                 , "Kinshala"              ),
+  ("Kolbahan"                 , "Kolbahan"              ),
+  ("Kylem"                    , "Kylem"                 ),
+  ("Kyneth"                   , "Kyneth"                ),
+  ("Lorwyn"                   , "Lorwyn"                ),
+  ("Luvion"                   , "Luvion"                ),
+  ("Mars"                     , "Mars"                  ),
+  ("Mercadia"                 , "Mercadia"              ),
+  ("Mirrodin"                 , "Mirrodin"              ),
+  ("Moag"                     , "Moag"                  ),
+  ("Mongseng"                 , "Mongseng"              ),
+  ("Moon"                     , "Moon"                  ),
+  ("Muraganda"                , "Muraganda"             ),
+  ("Necros"                   , "Necros"                ),
+  ("New Earth"                , "NewEarth"              ),
+  ("New Phyrexia"             , "NewPhyrexia"           ),
+  ("Outside Mutter's Spiral"  , "OutsideMuttersSpiral"  ),
+  ("Phyrexia"                 , "Phyrexia"              ),
+  ("Pyrulea"                  , "Pyrulea"               ),
+  ("Rabiah"                   , "Rabiah"                ),
+  ("Rath"                     , "Rath"                  ),
+  ("Ravnica"                  , "Ravnica"               ),
+  ("Regatha"                  , "Regatha"               ),
+  ("Segovia"                  , "Segovia"               ),
+  ("Serra's Realm"            , "SerrasRealm"           ),
+  ("Shadowmoor"               , "Shadowmoor"            ),
+  ("Shandalar"                , "Shandalar"             ),
+  ("Shenmeng"                 , "Shenmeng"              ),
+  ("Skaro"                    , "Skaro"                 ),
+  ("Spaceship"                , "Spaceship"             ),
+  ("Tarkir"                   , "Tarkir"                ),
+  ("The Abyss"                , "TheAbyss"              ),
+  ("The Dalek Asylum"         , "TheDalekAsylum"        ),
+  ("The Library"              , "TheLibrary"            ),
+  ("Theros"                   , "Theros"                ),
+  ("Time"                     , "Time"                  ),
+  ("Trenzalore"               , "Trenzalore"            ),
+  ("Unknown Planet"           , "UnknownPlanet"         ),
+  ("Ulgrotha"                 , "Ulgrotha"              ),
+  ("Valla"                    , "Valla"                 ),
+  ("Vryn"                     , "Vryn"                  ),
+  ("Wildfire"                 , "Wildfire"              ),
+  ("Xerex"                    , "Xerex"                 ),
+  ("Zendikar"                 , "Zendikar"              ),
+  ("Zhalfir"                  , "Zhalfir"               ),
+]
+
+supertypes = {
+  "singular": [singular for (singular, variable) in flat_supertypes] ,
+  "variable": [variable for (singular, variable) in flat_supertypes] , }
+cardtypes = {
+  "singular": [singular for (singular, variable) in flat_cardtypes] ,
+  "variable": [variable for (singular, variable) in flat_cardtypes] , }
+
+creature_types = {
+  "singular": [singular for (singular, plural, variable) in flat_creature_types] ,
+  "plural":   [plural   for (singular, plural, variable) in flat_creature_types] ,
+  "variable": [variable for (singular, plural, variable) in flat_creature_types] , }
+land_types = {
+  "singular": [singular for (singular, plural, variable) in flat_land_types] ,
+  "plural":   [plural   for (singular, plural, variable) in flat_land_types] ,
+  "variable": [variable for (singular, plural, variable) in flat_land_types] , }
+spell_types = {
+  "singular": [singular for (singular, plural, variable) in flat_spell_types] ,
+  "plural":   [plural   for (singular, plural, variable) in flat_spell_types] ,
+  "variable": [variable for (singular, plural, variable) in flat_spell_types] , }
+enchantment_types = {
+  "singular": [singular for (singular, plural, variable) in flat_enchantment_types] ,
+  "plural":   [plural   for (singular, plural, variable) in flat_enchantment_types] ,
+  "variable": [variable for (singular, plural, variable) in flat_enchantment_types] , }
+artifact_types = {
+  "singular": [singular for (singular, plural, variable) in flat_artifact_types] ,
+  "plural":   [plural   for (singular, plural, variable) in flat_artifact_types] ,
+  "variable": [variable for (singular, plural, variable) in flat_artifact_types] , }
+planeswalker_types = {
+  "singular": [singular for (singular, variable) in flat_planeswalker_types] ,
+  "variable": [variable for (singular, variable) in flat_planeswalker_types] , }
+plane_types = {
+  "singular": [singular for (singular, variable) in flat_plane_types] ,
+  "variable": [variable for (singular, variable) in flat_plane_types] , }
+dungeon_types = {
+  "singular": [singular for (singular, variable) in flat_dungeon_types] ,
+  "variable": [variable for (singular, variable) in flat_dungeon_types] , }
+battle_types = {
+  "singular": [singular for (singular, variable) in flat_battle_types] ,
+  "variable": [variable for (singular, variable) in flat_battle_types] , }
+
+english_grammar = {
+  "{{Zombies}}"  : { plural  : variable for (plural  , variable) in zip(creature_types    ["plural"  ], creature_types    ["variable"]) },
+  "{{Zombie}}"   : { singular: variable for (singular, variable) in zip(creature_types    ["singular"], creature_types    ["variable"]) },
+  "{{Swamps}}"   : { plural  : variable for (plural  , variable) in zip(land_types        ["plural"  ], land_types        ["variable"]) },
+  "{{Swamp}}"    : { singular: variable for (singular, variable) in zip(land_types        ["singular"], land_types        ["variable"]) },
+#  "{{Traps}}"    : { plural  : variable for (plural  , variable) in zip(spell_types       ["plural"  ], spell_types       ["variable"]) },
+#  "{{Trap}}"     : { singular: variable for (singular, variable) in zip(spell_types       ["singular"], spell_types       ["variable"]) },
+#  "{{Curses}}"   : { plural  : variable for (plural  , variable) in zip(enchantment_types ["plural"  ], enchantment_types ["variable"]) },
+#  "{{Curse}}"    : { singular: variable for (singular, variable) in zip(enchantment_types ["singular"], enchantment_types ["variable"]) },
+#  "{{Clues}}"    : { plural  : variable for (plural  , variable) in zip(artifact_types    ["plural"  ], artifact_types    ["variable"]) },
+#  "{{Clue}}"     : { singular: variable for (singular, variable) in zip(artifact_types    ["singular"], artifact_types    ["variable"]) },
+  "{{Liliana}}"  : { singular: variable for (singular, variable) in zip(planeswalker_types["singular"], planeswalker_types["variable"]) },
+  "{{Dominaria}}": { singular: variable for (singular, variable) in zip(plane_types       ["singular"], plane_types       ["variable"]) },
+#  "{{Undercity}}": { singular: variable for (singular, variable) in zip(dungeon_types     ["singular"], dungeon_types     ["variable"]) },
+#  "{{Siege}}"    : { singular: variable for (singular, variable) in zip(battle_types      ["singular"], battle_types      ["variable"]) },
+}
+
+mtgish_grammar = {
+  "{{SUPERTYPE}}": { variable: "" for (singular, variable) in zip(supertypes        ["singular"], supertypes        ["variable"]) },
+  "{{CARDTYPE}}" : { variable: "" for (singular, variable) in zip(cardtypes         ["singular"], cardtypes         ["variable"]) },
+  "{{ZOMBIE}}"   : { variable: "" for (singular, variable) in zip(creature_types    ["singular"], creature_types    ["variable"]) },
+  "{{SWAMP}}"    : { variable: "" for (singular, variable) in zip(land_types        ["singular"], land_types        ["variable"]) },
+  "{{TRAP}}"     : { variable: "" for (singular, variable) in zip(spell_types       ["singular"], spell_types       ["variable"]) },
+  "{{CURSE}}"    : { variable: "" for (singular, variable) in zip(enchantment_types ["singular"], enchantment_types ["variable"]) },
+  "{{CLUE}}"     : { variable: "" for (singular, variable) in zip(artifact_types    ["singular"], artifact_types    ["variable"]) },
+  "{{LILIANA}}"  : { variable: "" for (singular, variable) in zip(planeswalker_types["singular"], planeswalker_types["variable"]) },
+  "{{DOMINARIA}}": { variable: "" for (singular, variable) in zip(plane_types       ["singular"], plane_types       ["variable"]) },
+  "{{UNDERCITY}}": { variable: "" for (singular, variable) in zip(dungeon_types     ["singular"], dungeon_types     ["variable"]) },
+  "{{SIEGE}}"    : { variable: "" for (singular, variable) in zip(battle_types      ["singular"], battle_types      ["variable"]) },
+}
+
+typescript_supertypes         = "\n| ".join([json.dumps(s) for s in supertypes["singular"]        ])
+typescript_cardtypes          = "\n| ".join([json.dumps(s) for s in cardtypes["singular"]         ])
+typescript_dungeon_types      = "\n| ".join([json.dumps(s) for s in dungeon_types["singular"]     ])
+typescript_battle_types       = "\n| ".join([json.dumps(s) for s in battle_types["singular"]      ])
+typescript_creature_types     = "\n| ".join([json.dumps(s) for s in creature_types["singular"]    ])
+typescript_land_types         = "\n| ".join([json.dumps(s) for s in land_types["singular"]        ])
+typescript_spell_types        = "\n| ".join([json.dumps(s) for s in spell_types["singular"]       ])
+typescript_enchantment_types  = "\n| ".join([json.dumps(s) for s in enchantment_types["singular"] ])
+typescript_artifact_types     = "\n| ".join([json.dumps(s) for s in artifact_types["singular"]    ])
+typescript_planeswalker_types = "\n| ".join([json.dumps(s) for s in planeswalker_types["singular"]])
+typescript_plane_types        = "\n| ".join([json.dumps(s) for s in plane_types["singular"]       ])
+
+typescript_types = f"""
+type superType =
+| {typescript_supertypes}
+type cardType =
+| {typescript_cardtypes}
+type dungeonType =
+| {typescript_dungeon_types}
+type battleType =
+| {typescript_battle_types}
+type creatureType =
+| {typescript_creature_types}
+type landType =
+| {typescript_land_types}
+type spellType =
+| {typescript_spell_types}
+type enchantmentType =
+| {typescript_enchantment_types}
+type artifactType =
+| {typescript_artifact_types}
+type planeswalkerType =
+| {typescript_planeswalker_types}
+type planeType =
+| {typescript_plane_types}
+"""
+
+list_supertypes         = ", ".join([json.dumps(s) for s in supertypes["variable"]        ])
+list_cardtypes          = ", ".join([json.dumps(s) for s in cardtypes["variable"]         ])
+list_dungeon_types      = ", ".join([json.dumps(s) for s in dungeon_types["variable"]     ])
+list_battle_types       = ", ".join([json.dumps(s) for s in battle_types["variable"]      ])
+list_creature_types     = ", ".join([json.dumps(s) for s in creature_types["variable"]    ])
+list_land_types         = ", ".join([json.dumps(s) for s in land_types["variable"]        ])
+list_spell_types        = ", ".join([json.dumps(s) for s in spell_types["variable"]       ])
+list_enchantment_types  = ", ".join([json.dumps(s) for s in enchantment_types["variable"] ])
+list_artifact_types     = ", ".join([json.dumps(s) for s in artifact_types["variable"]    ])
+list_planeswalker_types = ", ".join([json.dumps(s) for s in planeswalker_types["variable"]])
+list_plane_types        = ", ".join([json.dumps(s) for s in plane_types["variable"]       ])
+
+list_types = f"""
+/// <reference types="./oracle_cards.types.d.ts" />
+
+export const superTypeList: SuperType[] = [{list_supertypes}]
+export const cardTypeList: CardType[] = [{list_cardtypes}]
+export const dungeonTypeList: DungeonType[] = [{list_dungeon_types}]
+export const battleTypeList: BattleType[] = [{list_battle_types}]
+export const creatureTypeList: CreatureType[] = [{list_creature_types}]
+export const landTypeList: LandType[] = [{list_land_types}]
+export const spellTypeList: SpellType[] = [{list_spell_types}]
+export const enchantmentTypeList: EnchantmentType[] = [{list_enchantment_types}]
+export const artifactTypeList: ArtifactType[] = [{list_artifact_types}]
+export const planeswalkerTypeList: PlaneswalkerType[] = [{list_planeswalker_types}]
+export const planeTypeList: PlaneType[] = [{list_plane_types}]
+"""
+
+flatten_supertypes = [(singular, variable) for singular, variable in zip(supertypes["singular"], supertypes["variable"])]
+flatten_cardtypes  = [(singular, variable) for singular, variable in zip(cardtypes["singular"], cardtypes["variable"])]
+
+flatten_creature_types = [(singular, plural, variable) for singular, plural, variable in zip(creature_types["singular"], creature_types["plural"], creature_types["variable"])]
+flatten_land_types = [(singular, plural, variable) for singular, plural, variable in zip(land_types["singular"], land_types["plural"], land_types["variable"])]
+flatten_spell_types = [(singular, plural, variable) for singular, plural, variable in zip(spell_types["singular"], spell_types["plural"], spell_types["variable"])]
+flatten_enchantment_types = [(singular, plural, variable) for singular, plural, variable in zip(enchantment_types["singular"], enchantment_types["plural"], enchantment_types["variable"])]
+flatten_artifact_types = [(singular, plural, variable) for singular, plural, variable in zip(artifact_types["singular"], artifact_types["plural"], artifact_types["variable"])]
+
+flatten_planeswalker_types = [(singular, variable) for singular, variable in zip(planeswalker_types["singular"], planeswalker_types["variable"])]
+flatten_plane_types = [(singular, variable) for singular, variable in zip(plane_types["singular"], plane_types["variable"])]
+flatten_dungeon_types = [(singular, variable) for singular, variable in zip(dungeon_types["singular"], dungeon_types["variable"])]
+flatten_battle_types = [(singular, variable) for singular, variable in zip(battle_types["singular"], battle_types["variable"])]
+
+flatten_types = f"""
+supertypes = [{flatten_supertypes}]
+cardtypes = [{flatten_cardtypes}]
+dungeon_types = [{flatten_dungeon_types}]
+battle_types = [{flatten_battle_types}]
+creature_types = [{flatten_creature_types}]
+land_types = [{flatten_land_types}]
+spell_types = [{flatten_spell_types}]
+enchantment_types = [{flatten_enchantment_types}]
+artifact_types = [{flatten_artifact_types}]
+planeswalker_types = [{flatten_planeswalker_types}]
+plane_types = [{flatten_plane_types}]
+"""
+
+if output_type == "--english-grammar":
+  print(json.dumps(english_grammar, sort_keys=True))
+
+if output_type == "--mtgish-grammar":
+  print(json.dumps(mtgish_grammar, sort_keys=True))
+
+if output_type == "--typescript-types":
+  print(typescript_types)
+
+if output_type == "--list-types":
+  print(list_types)
+
+if output_type == "--flatten-types":
+  print(flatten_types)

@@ -1,0 +1,217 @@
+{
+  "{{TOKEN_COPY_EFFECT}}": {
+    "AddSupertypes([{{SUPERTYPE}}])": "",
+    "RemoveSupertypes([{{SUPERTYPE}}])": "",
+
+    "AddCardtypes([Artifact, Creature])": "",
+    "AddCardtypes([Artifact])": "",
+    "AddCardtypes([Creature])": "",
+    "AddCardtypes([Enchantment])": "",
+    "SetCardtypes([Creature])": "",
+    "SetCardtypes([Artifact])": "",
+    "SetCardtypes([Enchantment])": "",
+    "SetCardtypes([Enchantment, Creature])": "",
+
+    "AddArtifactTypes([Food])": "",
+    "SetArtifactTypes([Food])": "",
+    "AddCreatureTypes([{{ZOMBIE}}])": "",
+    "SetCreatureTypes([{{ZOMBIE}}])": "",
+
+    "AddAbility([{{RULE}}])": "",
+    "LosesAbility({{CHECK_HASABLE}})": "",
+    "RemoveThisAbility": "",
+    "AddAbilityFromEachExiledHasable({{CARDS_IN_EXILE}}, {{CHECK_HASABLE_LIST}})": "",
+
+    "AddColor(SimpleColorList([{{SIMPLE_COLOR}}]))": "",
+    "SetColor(SimpleColorList([{{SIMPLE_COLOR}}]))": "",
+    "SetColor(SimpleColorList([{{SIMPLE_COLOR}}, {{SIMPLE_COLOR}}]))": "",
+    "SetColor(Colorless)": "",
+
+    "SetName({{QUOTED_NAMED_CARD}})": "",
+
+    "SetPT({{PT}})": "",
+
+    "SetLoyalty({{NUMBER}})": "",
+  },
+
+  "{{TOKEN_COPY_EFFECT_LIST}}": {
+    "TokenCopyEffects([{{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}])": "",
+    "TokenCopyEffects([{{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}])": "",
+    "TokenCopyEffects([{{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}])": "",
+    "TokenCopyEffects([{{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}])": "",
+    "TokenCopyEffects([{{TOKEN_COPY_EFFECT}}, {{TOKEN_COPY_EFFECT}}])": "",
+    "TokenCopyEffects([{{TOKEN_COPY_EFFECT}}])": "",
+    "NoTokenCopyEffects": "",
+  },
+
+  "{{TOKEN_FLAGS}}": {
+    "[EntersAttachedToAPermanent({{PERMANENTS}})]": "",
+    "[EntersAttachedToPermanent({{PERMANENT}})]": "",
+    "[EntersAttacking]": "",
+    "[EntersBlockingAttacker({{PERMANENT}})]": "",
+    "[EntersAttackingPlayer({{PLAYER}})]": "",
+    "[EntersTapped, EntersAttackingPlayer({{PLAYER}})]": "",
+    "[EntersTapped, EntersAttackingPlayerOrPlaneswalkerControlledBy({{PLAYER}})]": "",
+    "[EntersTapped, EntersAttacking]": "",
+    "[EntersTapped]": "",
+    "[EntersWithACounter({{COUNTER_TYPE}})]": "",
+    "[EntersWithNumberCounters({{NUMBER}}, {{COUNTER_TYPE}})]": "",
+    "[EntersWithRuleEffectUntil({{PERMANENT_RULE_LIST}}, {{EXPIRATION}})]": "",
+  },
+
+  "{{CREATABLE_TOKEN}}": {
+    "NumberTokens({{NUMBER}}, {{CREATABLE_TOKEN}})": "",
+    "NumberTokensForEach({{NUMBER}}, {{NUMBER}}, {{CREATABLE_TOKEN}})": "",
+
+    "TokenFromCopy": "",
+
+    "TokenCopyOfDiscardedCard(Trigger_ThatDiscardedCard, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    "TokenCopyOfAPermanent({{PERMANENTS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfAnExiledCard({{CARDS_IN_EXILE}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    "TokenCopyOfAnEnteringPermanent({{PERMANENTS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfSpell({{SPELL}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfEachCardOfTypeRevealedThisWay({{CARDS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfCommander({{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfPermanent({{PERMANENT}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfEachPermanent({{PERMANENTS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfEachGraveyardCard({{CARDS_IN_GRAVEYARD}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfEachExiledCard({{CARDS_IN_EXILE}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfGraveyardCard({{GRAVEYARD_CARD}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfExiledCard({{CARD_IN_EXILE}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfNamedCard({{QUOTED_NAMED_CARD}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfEachPermanentDestroyedThisWay({{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    "TokenCopyOfACardAtRandom({{CARDS}})": "",
+
+    // Defined Tokens (111.10)
+    "TreasureToken": "",
+    "FoodToken": "",
+    "GoldToken": "",
+    "WalkerToken": "",
+    "ShardToken": "",
+    "ClueToken": "",
+    "BloodToken": "",
+    "PowerstoneToken": "",
+    // "IncubatorToken": "",
+    "CursedRoleToken": "",
+    "MonsterRoleToken": "",
+    "RoyalRoleToken": "",
+    "SorcererRoleToken": "",
+    "VirtuousRoleToken": "",
+    "WickedRoleToken": "",
+    "YoungHeroRoleToken": "",
+    "MapToken": "",
+    "JunkToken": "",
+    "LanderToken": "",
+    "MutagenToken": "",
+
+    // Oracle tokens (111.11)
+    "SpellgorgerWeirdToken": "",
+    "TarmogoyfToken": "",
+    "MutavaultToken": "",
+
+    // Gift tokens (207.174)
+    "FishToken": "",
+    "OctopusToken": "",
+
+    // Spoiler tokens
+    "VibraniumToken": "",
+
+    "CreatureToken({{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}})": "",
+    "CreatureTokenWithAbilities({{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}}, {{RULES}})": "",
+    "LegendaryNamedCreatureToken({{QUOTED_NAMED_CARD}}, {{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}})": "",
+    "LegendaryNamedCreatureTokenWithAbilities({{QUOTED_NAMED_CARD}}, {{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}}, {{RULES}})": "",
+    "LegendaryNamedCreatureTokenWithCopyEffects({{QUOTED_NAMED_CARD}}, {{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "NamedCreatureToken({{QUOTED_NAMED_CARD}}, {{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}})": "",
+    "NamedCreatureTokenWithAbilities({{QUOTED_NAMED_CARD}}, {{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}}, {{RULES}})": "",
+
+    "NamedLandTokenWithNoAbilities({{QUOTED_NAMED_CARD}}, {{LAND_TOKEN_TYPE}}, {{COLOR_LIST}}, {{LAND_TOKEN_SUBTYPES}})": "",
+
+    "ArtifactToken({{QUOTED_NAMED_CARD}}, {{SUPERTYPE_LIST}}, {{SUBTYPE_LIST}}, {{COLOR_LIST}}, {{RULES}})": "",
+    "ArtifactTokenWithNoRules({{QUOTED_NAMED_CARD}}, {{SUPERTYPE_LIST}}, {{SUBTYPE_LIST}}, {{COLOR_LIST}})": "",
+    "NamedArtifactVehicleToken({{QUOTED_NAMED_CARD}}, {{SUPERTYPE_LIST}}, {{SUBTYPE_LIST}}, {{COLOR_LIST}}, {{RULES}}, {{PT}})": "",
+    "ArtifactVehicleToken({{SUPERTYPE_LIST}}, {{SUBTYPE_LIST}}, {{COLOR_LIST}}, {{RULES}}, {{PT}})": "",
+
+    "EnchantmentToken({{QUOTED_NAMED_CARD}}, {{SUPERTYPE_LIST}}, {{SUBTYPE_LIST}}, {{COLOR_LIST}}, {{RULES}})": "",
+  },
+
+  "{{CREATABLE_TOKEN_LIST}}": {
+    "[{{CREATABLE_TOKEN}}, {{CREATABLE_TOKEN}}, {{CREATABLE_TOKEN}}]": "",
+    "[{{CREATABLE_TOKEN}}, {{CREATABLE_TOKEN}}]": "",
+    "[{{CREATABLE_TOKEN}}]": "",
+  },
+
+  "{{_PLAYER_ACTION[CreateTokens]}}": {
+    "CreateTokens({{CREATABLE_TOKEN_LIST}})": "",
+    "CreateTokensWithFlags({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+    "ForEachPlayerCreateTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}})": "",
+    "ForEachPlayerCreateTokensWithFlags({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+    "ForEachPermanentCreateTokensWithFlags({{PERMANENTS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+    "ForEachPermanentCreateTokens({{PERMANENTS}}, {{CREATABLE_TOKEN_LIST}})": "",
+  },
+
+  // Each token that would be created under an opponent's control this turn is created under your control instead
+  "{{REPLACABLE_EVENT[TokensWouldBeCreatedUnderAPlayersControl]}}": {
+    "TokensWouldBeCreatedUnderAPlayersControl({{PLAYERS}})": "",
+  },
+  "{{REPLACEMENT_ACTIONS[TokensWouldBeCreatedUnderAPlayersControl]}}": {
+    "[CreateTokensUnderPlayersControlInstead([ThoseTokens], {{PLAYER}})]": "",
+  },
+
+  // If you would create a Fish token, create {{a}} {{PT}} {{CreatureToken}} instead
+  // If you would create a Shark token, create {{a}} {{PT}} {{CreatureToken}} instead
+  // If you would create a Clue, Food, or Treasure token, instead create one of each
+  "{{REPLACABLE_EVENT[APlayerWouldCreateAToken]}}": {
+    "APlayerWouldCreateAToken({{PLAYERS}}, {{PERMANENTS}})": "",
+  },
+  "{{REPLACEMENT_ACTIONS[APlayerWouldCreateAToken]}}": {
+    "[CreateTokensInstead({{CREATABLE_TOKEN_LIST}})]": "",
+  },
+
+  // If you would create one or more Treasure tokens, instead create those tokens plus an additional Treasure token
+  // If you would create one or more artifact tokens, instead create those tokens plus an additional Map token
+  // If you would create one or more tokens, you may instead create that many {{PT}} {{CreatureTokens}} with {{Hasable}} or that many {{PT}} {{CreatureTokens}} with {{Hasable}}
+  // The first time you would create one or more tokens during each of your turns, you may instead choose a creature other than {{~Permanent}} and create that many tokens that are copies of that creature
+  "{{REPLACABLE_EVENT[APlayerWouldCreateTokens]}}": {
+    "APlayerWouldCreateTokens({{PLAYERS}}, {{PERMANENTS}})": "",
+    "APlayerWouldCreateTokensForTheFirstTimeEachTurn({{PLAYERS}}, {{PERMANENTS}})": "",
+  },
+  "{{REPLACEMENT_ACTIONS[APlayerWouldCreateTokens]}}": {
+    "[CreateTokensInstead([ThoseTokens, {{CREATABLE_TOKEN}}])]": "",
+    "[ChooseAnAction([[CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([ThoseTokens])]])]": "",
+    "[ChooseAnAction([[CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([ThoseTokens])]])]": "",
+    "[MayCost(ChooseAPermanent({{PERMANENTS}})), IfElse(CostWasPaid, [CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([ThoseTokens])])]": "",
+  },
+
+  //                    If one or more          tokens would be created                   , twice that many of those tokens are created instead
+  // Until end of turn, if one or more          tokens would be created under your control, twice that many of those tokens are created instead
+  //                    If one or more          tokens would be created under your control, twice that many of those tokens are created instead
+  //                    If one or more creature tokens would be created under your control, three times that many of those tokens are created instead
+  //                    If one or more creature tokens would be created under your control, those tokens plus {{a}} {{PT}} {{CreatureToken}} are created instead
+  //                    If one or more          tokens would be created under your control, those tokens plus an additional Food token are created instead
+  //                    If one or more          tokens would be created under your control, those tokens plus that many {{PT}} {{CreatureTokens}} are created instead
+  //                    If one or more          tokens would be created under your control, those tokens plus a Clue token are created instead
+  //                    If one or more creature tokens would be created under your control, that many {{PT}} {{CreatureTokens}} with {{Hasable}} and {{Hasable}} are created instead
+  "{{REPLACABLE_EVENT[AnyNumberOfTokensWouldBeCreated]}}": {
+    "AnyNumberOfTokensWouldBeCreatedUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}})": "",
+    "AnyNumberOfTokensWouldBeCreated({{PERMANENTS}})": "",
+  },
+  "{{REPLACEMENT_ACTIONS[AnyNumberOfTokensWouldBeCreated]}}": {
+    "[CreateTokensInstead([ThoseTokens, ThoseTokens])]": "",
+    "[CreateTokensInstead([ThoseTokens, ThoseTokens, ThoseTokens])]": "",
+    "[CreateTokensInstead([ThoseTokens, {{CREATABLE_TOKEN}}])]": "",
+    "[CreateTokensInstead({{CREATABLE_TOKEN_LIST}})]": "",
+  },
+
+  // If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead
+  // If an effect would create one or more tokens                   , it creates twice that many of those tokens instead
+  "{{REPLACABLE_EVENT[AnEffectWouldCreateAnyNumberOfTokens]}}": {
+    "AnEffectWouldCreateAnyNumberOfTokensUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}})": "",
+    "AnEffectWouldCreateAnyNumberOfTokens({{PERMANENTS}})": "",
+  },
+  "{{REPLACEMENT_ACTIONS[AnEffectWouldCreateAnyNumberOfTokens]}}": {
+    "[CreateTokensInstead([ThoseTokens, ThoseTokens])]": "",
+  },
+}

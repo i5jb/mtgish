@@ -1,0 +1,16 @@
+{
+  "{{FullName}}"        : { "|FullName|": "" },
+  "{{CardAFullName}}"   : { "|CardAFullName|": "" },
+  "{{CardBFullName}}"   : { "|CardBFullName|": "" },
+
+  "{{LongName}}"        : { "|LongName|": "" },
+  "{{ShortName}}"       : { "|ShortName|": "" },
+  "{{CommaName}}"       : { "|CommaName|": "" },
+  "{{CardALongName}}"   : { "|CardALongName|": "" },
+  "{{CardBLongName}}"   : { "|CardBLongName|": "" },
+  "{{CardAShortName}}"  : { "|CardAShortName|": "" },
+  "{{CardBShortName}}"  : { "|CardBShortName|": "" },
+  "{{CardACommaName}}"  : { "|CardACommaName|": "" },
+  "{{CardBCommaName}}"  : { "|CardBCommaName|": "" },
+  "{{CardABCommaName}}" : { "|CardABCommaName|": "" },
+}

@@ -1,0 +1,742 @@
+{
+  "{{TRIGGER[ActivateAnAbility]}}": {
+    "WhenAPlayerActivatesAnAbility({{PLAYERS}}, {{ACTIVATED_ABILITIES}})": "",
+    "WhenAnAbilityIsActivated({{ACTIVATED_ABILITIES}})": ""
+  },
+  "{{TRIGGER[AddMana]}}": {
+    "WhenAManaAbilityOfAPermanentResolves({{PERMANENTS}})": "",
+    "WhenAPermanentIsTappedForMana({{PERMANENTS}})": "",
+    "WhenAPermanentIsTappedForManaOfColor({{PERMANENTS}}, ManaOfTheChosenColor)": "",
+    "WhenAPlayerTapsAPermanentForMana({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerTapsAPermanentForManaOfColor({{PLAYERS}}, {{PERMANENTS}}, {{MANA_PRODUCE_SYMBOL}})": "",
+    "WhenAnAbilityCausesAPlayerToAddMana({{ABILITIES}}, {{PLAYERS}}, ManaOfTheChosenColor)": ""
+  },
+  "{{TRIGGER[Archenemy]}}": {
+    "WhenAPlayerSetsASchemeInMotion({{PLAYERS}}, {{SCHEMES}})": ""
+  },
+  "{{TRIGGER[Attach]}}": {
+    "WhenAPermanentBecomesAttachedToAPermanent({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenAPermanentBecomesUnattachedFromAPermanent({{PERMANENTS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Attractions]}}": {
+    "WhenAPlayerClaimsThePrizeOfAnAttraction({{PLAYERS}})": "",
+    "WhenAPlayerOpensAnAttraction({{PLAYERS}})": "",
+    "WhenAPlayerRollsToVisitTheirAttractions({{PLAYERS}})": "",
+    "WhenAPlayerVisitsAnAttraction({{PLAYERS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Bending]}}": {
+    "WhenAPlayerWaterEarthFireOrAirBends({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[CastASpellOrActivateAnAbility]}}": {
+    "WhenAPlayerCastsASpellOrActivatesAnAbility({{PLAYERS}}, {{SPELLS}}, {{ACTIVATED_ABILITIES}})": ""
+  },
+  "{{TRIGGER[CastASpell]}}": {
+    "WhenAPlayerCastsASpell({{PLAYERS}}, {{SPELLS}})": "",
+    "WhenAPlayerCastsASpellFromAnywhereOtherThanTheirHand({{PLAYERS}}, {{SPELLS}})": "",
+    "WhenAPlayerCastsASpellThatTargetsAnyNumberOfPermanents({{PLAYERS}}, {{SPELLS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerCastsASpellWithANumberOfTargets({{PLAYERS}}, {{SPELLS}}, {{COMPARISON}})": "",
+    "WhenAPlayerCastsTheirNthSpellInATurn({{PLAYERS}}, {{COMPARISON}}, {{SPELLS}})": "",
+    "WhenASpellIsCast({{SPELLS}})": "",
+    "WhenTheNthSpellIsCastInATurn({{SPELLS}}, {{COMPARISON}})": ""
+  },
+  "{{TRIGGER[CauseAbilityToTrigger]}}": {
+    "WhenAPermanentAttackingCausesItsAbilityToTrigger({{PERMANENTS}})": "",
+    "WhenAPermanentEnteringTheBattlefieldCausesAnAbilityToTrigger({{PERMANENTS}})": "",
+    "WhenAPermanentEnteringTheBattlefieldUnderAPlayersControlCausesItsAbilityToTrigger({{PERMANENTS}}, {{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Champion]}}": {
+    "WhenAPermanentIsChampionedWithAPermanent({{PERMANENTS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Clash]}}": {
+    "WhenAPlayerClashes({{PLAYERS}})": "",
+    "WhenAPlayerClashesAndWins({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Class]}}": {
+    "WhenAClassBecomesLevel({{PERMANENTS}}, {{NUMBER}})": ""
+  },
+  "{{TRIGGER[CollectEvidence]}}": {
+    "WhenAPlayerCollectsEvidence({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[CommitACrime]}}": {
+    "WhenAPlayerCommitsACrime({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Conjure]}}": {
+    "WhenAPlayerConjuresAnyNumberOfCards({{PLAYERS}})": "",
+    "WhenAPlayerConjuresAnyNumberOfOtherCards({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[CopyASpell]}}": {
+    "WhenAPlayerCopiesASpell({{PLAYERS}}, {{SPELLS}})": ""
+  },
+  "{{TRIGGER[CounterASpell]}}": {
+    "WhenASpellIsCountered({{SPELLS}})": "",
+    "WhenASpellOrAbilityCountersASpell({{SPELLS_OR_ABILITIES}}, {{SPELLS}})": ""
+  },
+  "{{TRIGGER[Craft]}}": {
+    "WhenAPermanentIsExiledFromTheBattlefieldWhileAPlayerIsActivatingACraftAbility({{PERMANENTS}}, {{PLAYERS}})": ""
+  },
+  "{{TRIGGER[CreateTokens]}}": {
+    "WhenAPlayerCreatesAToken({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerCreatesAnyNumberOfTokens({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerCreatesAnyNumberOfTokensForTheFirstTimeEachTurn({{PLAYERS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Crew]}}": {
+    "WhenACreatureCrewsAVehicle({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenAVehicleBecoemsCrewed({{PERMANENTS}})": "",
+    "WhenAVehicleBecoemsCrewedForTheFirstTimeEachTurn({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[CumulativeUpkeep]}}": {
+    "WhenAPermanentsCumulativeUpkeepCostIsPaid({{PERMANENTS}})": "",
+    "WhenAPlayerDoesntPayAPermanentsCumulativeUpkeepCost({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerPaysAPermanentsCumulativeUpkeepCost({{PLAYERS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[CycleOrDiscard]}}": {
+    "WhenAPlayerCyclesACard({{PLAYERS}}, {{CARDS_IN_HAND}})": "",
+    "WhenAPlayerCyclesACardForTheFirstTimeEachTurn({{PLAYERS}}, {{CARDS_IN_HAND}})": "",
+    "WhenAPlayerCyclesOrDiscardsACard({{PLAYERS}}, {{CARDS_IN_HAND}})": "",
+    "WhenAPlayerDiscardsACard({{PLAYERS}}, {{CARDS_IN_HAND}})": "",
+    "WhenAPlayerDiscardsAnyNumberOfCards({{PLAYERS}}, {{CARDS_IN_HAND}})": "",
+    "WhenAPlayerDiscardsAnyNumberOfCardsForTheFirstTimeEachTurn({{PLAYERS}}, {{CARDS_IN_HAND}}, {{PLAYERS}})": "",
+    "WhenASpellOrAbilityCausesAPlayerToDiscardACard({{SPELLS_OR_ABILITIES}}, {{PLAYERS}}, {{CARDS_IN_HAND}})": "",
+    "WhenASpellOrAbilityCausesAPlayerToDiscardAnyNumberOfCards({{SPELLS_OR_ABILITIES}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfPlayersDiscardAnyNumberOfCards({{PLAYERS}}, {{CARDS_IN_HAND}})": ""
+  },
+  "{{TRIGGER[DayNight]}}": {
+    "WhenDayBecomesNightOrNightBecomesDay": ""
+  },
+  "{{TRIGGER[DealDamage]}}": {
+    "WhenACreatureDealsCombatDamage({{PERMANENTS}})": "",
+    "WhenACreatureDealsCombatDamageToAPermanent({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenACreatureDealsCombatDamageToAPlayer({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenACreatureDealsCombatDamageToAPlayerForTheFirstTimeEachTurn({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenACreatureDealsCombatDamageToAnyNumberOfPermanents({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenAPermanentDealsAnAmountDamage({{PERMANENTS}}, {{COMPARISON}})": "",
+    "WhenAPermanentDealsAnAmountDamageToAPlayer({{PERMANENTS}}, {{COMPARISON}}, {{PLAYERS}})": "",
+    "WhenAPermanentDealsDamage({{PERMANENTS}})": "",
+    "WhenAPermanentDealsDamageToAPermanent({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenAPermanentDealsDamageToAPlayer({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAPermanentDealsDamageToAnyNumberOfPermanents({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenAPermanentDealsDamageToAnyNumberOfPlayersForTheFirstTimeEachTurn({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAPermanentIsDealtAnAmountOfDamage({{PERMANENTS}}, {{COMPARISON}})": "",
+    "WhenAPermanentIsDealtCombatDamage({{PERMANENTS}})": "",
+    "WhenAPermanentIsDealtDamage({{PERMANENTS}})": "",
+    "WhenAPermanentIsDealtExcessDamage({{PERMANENTS}})": "",
+    "WhenAPermanentIsDealtExcessNoncombatDamage({{PERMANENTS}})": "",
+    "WhenAPlayerIsDealtCombatDamage({{PLAYERS}})": "",
+    "WhenAPlayerIsDealtDamage({{PLAYERS}})": "",
+    "WhenAPlayerIsDealtNoncombatDamage({{PLAYERS}})": "",
+    "WhenASourceDealsAnAmountOfDamageToAPermanent({{DAMAGE_SOURCES}}, {{COMPARISON}}, {{PERMANENTS}})": "",
+    "WhenASourceDealsAnAmountOfDamageToAPlayer({{DAMAGE_SOURCES}}, {{COMPARISON}}, {{PLAYERS}})": "",
+    "WhenASourceDealsDamage({{DAMAGE_SOURCES}})": "",
+    "WhenASourceDealsDamageToAPermanent({{DAMAGE_SOURCES}}, {{PERMANENTS}})": "",
+    "WhenASourceDealsDamageToAPlayer({{DAMAGE_SOURCES}}, {{PLAYERS}})": "",
+    "WhenASourceDealsDamageToAnyNumberOfPlayersAndOrPermanents({{DAMAGE_SOURCES}}, {{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenASourceDealsNoncombatDamageToAPermanent({{DAMAGE_SOURCES}}, {{PERMANENTS}})": "",
+    "WhenASourceDealsNoncombatDamageToAPlayer({{DAMAGE_SOURCES}}, {{PLAYERS}})": "",
+    "WhenASpellDealsDamage({{SPELLS}})": "",
+    "WhenASpellDealsDamageToAPermanent({{SPELLS}}, {{PERMANENTS}})": "",
+    "WhenASpellDealsDamageToAPlayer({{SPELLS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfCreaturesAPlayerControlsDealCombatDamageToAnyNumberOfPlayers({{PERMANENTS}}, {{PLAYERS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfCreaturesDealCombatDamageToAPermanent({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenAnyNumberOfCreaturesDealCombatDamageToAPlayer({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfCreaturesDealCombatDamageToAnyNumberOfPlayers({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfCreaturesDealDamageToAPlayer({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfPermanentsAreDealtExcessNoncombatDamage({{PERMANENTS}})": "",
+    "WhenAnyNumberOfPermanentsDealDamageToAnyNumberOfPlayers({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenPlayersAreDealtCombatDamage({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Destroy]}}": {
+    "WhenAPermanentIsDestroyed({{PERMANENTS}})": "",
+    "WhenASpellOrAbilityDestroysAPermanent({{SPELLS_OR_ABILITIES}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Devour]}}": {
+    "WhenACreatureIsDevoured({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Discover]}}": {
+    "WhenAPlayerDiscovers({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[DrawACard-Digital]}}": {
+    "WhenAPlayerDrawsASpecificCard({{PLAYERS}}, {{CARDS}})": ""
+  },
+  "{{TRIGGER[DrawACard-RevealThisWay]}}": {
+    "WhenAPlayerDrawsARevealedCard({{PLAYERS}}, {{CARDS}})": "",
+    "WhenAPlayerRevealsFirstCardDrawn({{PLAYERS}}, {{CARDS}})": ""
+  },
+  "{{TRIGGER[DrawACard]}}": {
+    "WhenAPlayerDrawsACard({{PLAYERS}})": "",
+    "WhenAPlayerDrawsACardDuringTheirTurn({{PLAYERS}})": "",
+    "WhenAPlayerDrawsACardExceptTheFirstCardDuringTheirDrawStep({{PLAYERS}})": "",
+    "WhenAPlayerDrawsTheirNthCardDuringTheirDrawStep({{PLAYERS}}, {{COMPARISON}})": "",
+    "WhenAPlayerDrawsTheirNthCardDuringTheirTurn({{PLAYERS}}, {{COMPARISON}})": "",
+    "WhenAPlayerDrawsTheirNthCardEachTurn({{PLAYERS}}, {{COMPARISON}})": ""
+  },
+  "{{TRIGGER[Dungeon]}}": {
+    "WhenAPlayerCompletesADungeon({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Echo]}}": {
+    "WhenAnEchoCostOfAPermanentIsPaid({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Energy]}}": {
+    "WhenAPlayerGetsEnergy({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[EnterBattlefield]}}": {
+    "WhenAPermanentEntersTheBattlefield({{PERMANENTS}})": "",
+    "WhenAPermanentEntersTheBattlefieldAttachedToAPermanent({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenAPermanentEntersTheBattlefieldAttacking({{PERMANENTS}})": "",
+    "WhenAPermanentEntersTheBattlefieldDuringTheDeclareAttacksStep({{PERMANENTS}})": "",
+    "WhenAPermanentEntersTheBattlefieldFromAPlayersGraveyard({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAPermanentEntersTheBattlefieldFromAPlayersHand({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAPermanentEntersTheBattlefieldFromAnywhereOtherThanAGraveyardOrExile({{PERMANENTS}})": "",
+    "WhenAPermanentEntersTheBattlefieldFromAnywhereOtherThanTheirHand({{PERMANENTS}})": "",
+    "WhenAPermanentEntersTheBattlefieldFromExile({{PERMANENTS}})": "",
+    "WhenAPermanentEntersTheBattlefieldFromExileOrWasCastFromExile({{PERMANENTS}})": "",
+    "WhenAPermanentEntersTheBattlefieldOrTheCreatureItHauntsDies({{PERMANENTS}})": "",
+    "WhenAPermanentEntersTheBattlefieldTapped({{PERMANENTS}})": "",
+    "WhenAPermanentEntersTheBattlefieldTransformed({{PERMANENTS}})": "",
+    "WhenAPermanentEntersTheBattlefieldUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAPermanentEntersTheBattlefieldUnderAPlayersControlWithoutBeingPlayed({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAPermanentEntersTheBattlefieldUntapped({{PERMANENTS}})": "",
+    "WhenAPermanentEntersTheBattlefieldWithAnyCounters({{PERMANENTS}})": "",
+    "WhenAnyNumberOfPermanentsEnterTheBattlefield({{PERMANENTS}})": "",
+    "WhenAnyNumberOfPermanentsEnterTheBattlefieldUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}})": ""
+  },
+  "{{TRIGGER[EnterCommandZone-FromAnywhere]}}": {
+    "WhenACardIsPutIntoTheCommandZoneFromAnywhere({{CARDS}})": ""
+  },
+  "{{TRIGGER[EnterCommandZone-FromBattlefield]}}": {
+    "WhenAPermanentIsPutIntoTheCommandZone({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[EnterGraveyard-FromAnywhereOtherThanTheBattlefield]}}": {
+    "WhenACardIsPutIntoAGraveyardFromAnywhereOtherThanTheBattlefield({{CARDS}}, {{PLAYERS}})": ""
+  },
+  "{{TRIGGER[EnterGraveyard-FromAnywhere]}}": {
+    "WhenACardIsPutIntoAPlayersGraveyardFromAnywhere({{CARDS}}, {{PLAYERS}})": "",
+    "WhenASpellOrAbilityCausesAPermanentToBePutIntoAPlayersGraveyard({{SPELLS_OR_ABILITIES}}, {{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfCardsArePutIntoAPlayersGraveyardFromAnywhere({{CARDS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfCardsArePutIntoAPlayersGraveyardFromAnywhereForTheFirstTimeEachTurn({{CARDS}}, {{PLAYERS}})": ""
+  },
+  "{{TRIGGER[EnterGraveyard-FromBattlefield]}}": {
+    "WhenACreatureOrPlaneswalkerDies({{PERMANENTS}})": "",
+    "WhenAPermanentIsPutIntoAPlayersGraveyard({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfCreaturesOrPlaneswalkersDie({{PERMANENTS}})": "",
+    "WhenAnyNumberOfPermanentsArePutIntoAPlayersGraveyards({{PERMANENTS}}, {{PLAYERS}})": ""
+  },
+  "{{TRIGGER[EnterGraveyard-FromHand]}}": {
+    "WhenACardIsPutIntoAPlayersGraveyardFromTheirHand({{CARDS}}, {{PLAYERS}})": ""
+  },
+  "{{TRIGGER[EnterGraveyard-FromLibrary]}}": {
+    "WhenACardIsPutIntoAPlayersGraveyardFromTheirLibrary({{CARDS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfCardsArePutIntoAPlayersGraveyardFromTheirLibrary({{CARDS}}, {{PLAYERS}})": ""
+  },
+  "{{TRIGGER[EnterHand-FromBattlefield]}}": {
+    "WhenAPermanentIsReturnedToAPlayersHand({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfPermanentsAreReturnedToHand({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[EnterHand-FromGraveyard]}}": {
+    "WhenAGraveyardCardIsPutIntoHand({{CARDS_IN_GRAVEYARD}})": ""
+  },
+  "{{TRIGGER[EnterHand-FromLibrary]}}": {
+    "WhenASpecificCardIsPutIntoAPlayersHandFromTheirLibrary({{CARDS_IN_HAND}}, {{PLAYERS}})": ""
+  },
+  "{{TRIGGER[EnterLibrary-FromAnywhere]}}": {
+    "WhenAnyNumberOfCardsArePutIntoAPlayersLibraryFromAnywhere({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Evolve]}}": {
+    "WhenAPermanentEvolves({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Exile]}}": {
+    "WhenACardIsPutIntoExile({{CARDS}})": "",
+    "WhenAPermanentIsExiled({{PERMANENTS}})": "",
+    "WhenASpellOrAbilityExilesAnyNumberOfPermanents({{SPELLS_OR_ABILITIES}}, {{PERMANENTS}})": "",
+    "WhenAnyNumberOfCardsArePutIntoExile({{CARDS}})": "",
+    "WhenAnyNumberOfCardsArePutIntoExileFromAPlayersGraveyard({{CARDS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfCardsArePutIntoExileFromAPlayersGraveyardAndOrLibrary({{CARDS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfGenericCardsArePutIntoExileFromAPlayersHand({{PLAYERS}})": "",
+    "WhenAnyNumberOfPermanentsAndOrGraveyardCardsArePutIntoExile({{PERMANENTS}}, {{CARDS_IN_GRAVEYARD}})": ""
+  },
+  "{{TRIGGER[Expend]}}": {
+    "WhenAPlayerExpendsAnAmount({{PLAYERS}}, {{COMPARISON}})": ""
+  },
+  "{{TRIGGER[Exploit]}}": {
+    "WhenAPermanentExploitsAPermanent({{PERMANENTS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Explore]}}": {
+    "WhenAPermanentExplores({{PERMANENTS}})": "",
+    "WhenAPermanentExploresACardOfType({{PERMANENTS}}, {{CARDS}})": ""
+  },
+  "{{TRIGGER[Fight]}}": {
+    "WhenACreatureFights({{PERMANENTS}})": "",
+    "WhenAnyNumberOfCreaturesFight({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[FlipCoins]}}": {
+    "WhenAPlayerLosesACoinFlip({{PLAYERS}})": "",
+    "WhenAPlayerWinsACoinFlip({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Forage]}}": {
+    "WhenAPlayerForages({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Foretell]}}": {
+    "WhenAPlayerForetellsACard({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[GainControl]}}": {
+    "WhenAPlayerGainsControlOfAPermanentFromAPlayer({{PLAYERS}}, {{PERMANENTS}}, {{PLAYERS}})": ""
+  },
+  "{{TRIGGER[GainLife]}}": {
+    "WhenAPlayerGainsLife({{PLAYERS}})": "",
+    "WhenAPlayerGainsLifeDuringTheirTurn({{PLAYERS}})": "",
+    "WhenAPlayerGainsLifeForTheFirstTimeEachTurn({{PLAYERS}})": "",
+    "WhenASpellCausesAPlayerToGainLife({{SPELLS}}, {{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Gift]}}": {
+    "WhenAPlayerGivesAGift({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[GiveAPlayerCounters]}}": {
+    "WhenAPlayerPutsAnyCountersOnAPlayer({{PLAYERS}}, {{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Investigate]}}": {
+    "WhenAPlayerInvestigates({{PLAYERS}})": "",
+    "WhenAPlayerInvestigatesForTheFirstTimeEachTurn({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Kicker]}}": {
+    "WhenAPlayerKicksASpell({{PLAYERS}}, {{SPELLS}})": ""
+  },
+  "{{TRIGGER[LeaveBattlefield]}}": {
+    "WhenAPermanentLeavesTheBattlefield({{PERMANENTS}})": "",
+    "WhenAPermanentLeavesTheBattlefieldWithoutDying({{PERMANENTS}})": "",
+    "WhenAnyNumberOfPermanentsLeaveTheBattlefield({{PERMANENTS}})": "",
+    "WhenAnyNumberOfPermanentsLeaveTheBattlefieldWithoutDying({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[LeaveGraveyard]}}": {
+    "WhenAGraveyardCardLeaves({{CARDS_IN_GRAVEYARD}})": "",
+    "WhenAnyNumberOfGraveyardCardsLeave({{CARDS_IN_GRAVEYARD}})": ""
+  },
+  "{{TRIGGER[LoseControl]}}": {
+    "WhenAPlayerLosesControlOfAPermanent({{PLAYERS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[LoseLife]}}": {
+    "WhenAPlayerLosesLife({{PLAYERS}})": "",
+    "WhenAPlayerLosesLifeDuringTheirTurn({{PLAYERS}})": "",
+    "WhenAPlayerLosesLifeForTheFirstTimeEachTurn({{PLAYERS}})": "",
+    "WhenAnyNumberOfPlayersEachLoseAnAmountOfLife({{PLAYERS}}, {{COMPARISON}})": "",
+    "WhenAnyNumberOfPlayersLoseLife({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[LoseTheGame]}}": {
+    "WhenAPlayerLosesTheGame({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[ManifestDread]}}": {
+    "WhenAPlayerManifestsDread({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Mentor]}}": {
+    "WhenACreatureMentorsACreature({{PERMANENTS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Mill]}}": {
+    "WhenAPlayerMillsASpecificCard({{PLAYERS}}, {{CARDS}})": "",
+    "WhenAPlayerMillsAnyNumberOfCards({{PLAYERS}})": "",
+    "WhenAPlayerMillsAnyNumberOfSpecificCards({{PLAYERS}}, {{CARDS}})": "",
+    "WhenAnyNumberOfSpecificCardsAreMilled({{CARDS}})": ""
+  },
+  "{{TRIGGER[Monstrosity]}}": {
+    "WhenAPermanentBecomesMonstrous({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Mutate]}}": {
+    "WhenACreatureMutates({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[PayLife]}}": {
+    "WhenAPlayerPaysLife({{PLAYERS}})": "",
+    "WhenAPlayerPaysLifeToActivateAnAbility({{PLAYERS}}, {{ACTIVATED_ABILITIES}})": ""
+  },
+  "{{TRIGGER[Phasing]}}": {
+    "WhenAPermanentPhasesIn({{PERMANENTS}})": "",
+    "WhenAPermanentPhasesOut({{PERMANENTS}})": "",
+    "WhenAnyNumberOfPermanentsPhaseOut({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Planechase]}}": {
+    "WhenAPlaneHasNumberCountersOfType({{PLANES}}, {{COMPARISON}}, {{COUNTER_TYPE}})": "",
+    "WhenAPlayerEncountersAPhenomenon({{PLAYERS}}, {{PHENOMENA}})": "",
+    "WhenAPlayerPlaneswalksAwayFromAPlane({{PLAYERS}}, {{PLANES}})": "",
+    "WhenAPlayerPlaneswalksToAPlane({{PLAYERS}}, {{PLANES}})": "",
+    "WhenAPlayerRollsABlankOnThePlanarDie({{PLAYERS}})": "",
+    "WhenAPlayerRollsThePlanarDie({{PLAYERS}})": "",
+    "WhenChaosEnsues": ""
+  },
+  "{{TRIGGER[PlayACard]}}": {
+    "WhenAPlayerPlaysACard({{PLAYERS}}, {{CARDS}})": "",
+    "WhenAPlayerPlaysACardFromExile({{PLAYERS}}, {{CARDS_IN_EXILE}})": ""
+  },
+  "{{TRIGGER[PlayALand]}}": {
+    "WhenAPlayerPlaysALand({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerPlaysALandFromAmongCardsInExile({{PLAYERS}}, {{PERMANENTS}}, {{CARDS_IN_EXILE}})": "",
+    "WhenAPlayerPlaysALandFromAnywhereOtherThanTheirHand({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerPlaysALandFromExile({{PLAYERS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Plot]}}": {
+    "WhenACardBecomesPlotted({{CARDS_IN_HAND}})": ""
+  },
+  "{{TRIGGER[PreventDamage]}}": {
+    "WhenDamageThatWouldBeDealtToAPlayerIsPrevented({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Proliferate]}}": {
+    "WhenAPlayerProliferates({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[PutASpellOrAbilityOntoTheStack]}}": {
+    "WhenASpellOrAbilityIsPutOntoTheStack({{SPELLS_OR_ABILITIES}})": ""
+  },
+  "{{TRIGGER[PutCounters]}}": {
+    "WhenACounterIsPutOnAPermanent({{PERMANENTS}})": "",
+    "WhenACounterOfTypeIsPutOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+    "WhenAPlayerPutsACounterOfTypeOnAPermanent({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+    "WhenAPlayerPutsACounterOnAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAPermanent({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+    "WhenAPlayerPutsAnyNumberOfGenericCountersOnAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAnyNumberOfCountersArePutOnAPermanent({{PERMANENTS}})": "",
+    "WhenAnyNumberOfCountersArePutOnAPermanentForTheFirstTimeEachTurn({{PERMANENTS}})": "",
+    "WhenAnyNumberOfCountersOfTypeArePutOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+    "WhenAnyNumberOfCountersOfTypeArePutOnAPermanentForTheFirstTimeEachTurn({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+    "WhenAnyNumberOfCountersOfTypeArePutOnAnyNumberOfPermanents({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+    "WhenTheNthCounterOfTypeIsPutOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}}, {{NUMBER}})": ""
+  },
+  "{{TRIGGER[PutPermanentOnBattlefield]}}": {
+    "WhenAPlayerPutsAPermanentOnTheBattlefield({{PLAYERS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[RemoveCounters-Exile]}}": {
+    "WhenACounterOfTypeIsRemovedFromAnExiledCard({{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
+    "WhenAPlayerRemovesACounterOfTypeFromAnExiledCard({{PLAYERS}}, {{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
+    "WhenTheLastCounterOfTypeIsRemovedFromAnExiledCard({{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": ""
+  },
+  "{{TRIGGER[RemoveCounters]}}": {
+    "WhenACounterOfTypeIsRemovedFromAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+    "WhenAPlayerRemovesTheLastCounterOfTypeFromAPermanent({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+    "WhenAnyNumberOfCountersAreRemovedFromAPermanent({{PERMANENTS}})": "",
+    "WhenAnyNumberOfCountersOfTypeAreRemovedFromAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+    "WhenTheLastCounterOfTypeIsRemovedFromAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Renown]}}": {
+    "WhenACreatureBecomesRenowned({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Ring]}}": {
+    "WhenAPlayerChoosesARingBearer({{PLAYERS}})": "",
+    "WhenTheRingTemptsAPlayer({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[RollDice]}}": {
+    "WhenAPlayerRollsADie({{PLAYERS}})": "",
+    "WhenAPlayerRollsADiesHighestNaturalResult({{PLAYERS}})": "",
+    "WhenAPlayerRollsANatural20({{PLAYERS}})": "",
+    "WhenAPlayerRollsAValueOnADie({{PLAYERS}}, {{COMPARISON}})": "",
+    "WhenAPlayerRollsAnyNumberOfDice({{PLAYERS}})": "",
+    "WhenAPlayerRollsTheirNthDieEachTurn({{PLAYERS}}, {{NUMBER}})": ""
+  },
+  "{{TRIGGER[Room]}}": {
+    "WhenAPlayerFullyUnlocksARoom({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerUnlocksADoor({{PLAYERS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Sacrifice]}}": {
+    "WhenAPermanentIsSacrificed({{PERMANENTS}})": "",
+    "WhenAPlayerSacrificesAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerSacrificesAPermanentForEmerge({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerSacrificesAnyNumberOfPermanents({{PLAYERS}})": "",
+    "WhenAPlayerSacrificesAnyNumberOfPermanentsToActivateAnAbility({{PLAYERS}}, {{ACTIVATED_ABILITIES}})": ""
+  },
+  "{{TRIGGER[Saddle]}}": {
+    "WhenACreatureSaddlesAMount({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenAPermanentBecomesSaddledForTheFirstTimeInATurn({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Saga]}}": {
+    "WhenTheFinalChapterOfASagaResolves({{PERMANENTS}})": "",
+    "WhenTheFinalChapterOfASagaTriggers({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Scry]}}": {
+    "WhenAPlayerChoosesToPutAnyCardsOnTheBottomOfTheirLibraryWhileScrying({{PLAYERS}})": "",
+    "WhenAPlayerScrys({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[SearchLibrary]}}": {
+    "WhenAPlayerSearchesTheirLibrary({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Seek]}}": {
+    "WhenAPlayerSeeksAnyNumberOfCards({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Shuffle]}}": {
+    "WhenAPlayerShufflesTheirLibrary({{PLAYERS}})": "",
+    "WhenASpellOrAbilityCausesAPlayerToShuffleTheirLibrary({{SPELLS_OR_ABILITIES}}, {{PLAYERS}})": "",
+    "WhenASpellOrAbilityCausesItsControllerToShuffleTheirLibrary({{SPELLS_OR_ABILITIES}})": ""
+  },
+  "{{TRIGGER[SolvesACase]}}": {
+    "WhenAPlayerSolvesACase({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Specialize]}}": {
+    "WhenACreatureSpecializes({{PERMANENTS}})": "",
+    "WhenAGraveyardCardSpecializes({{GRAVEYARD_CARDS}})": "",
+    "WhenCardSpecializes(ThisCard)": ""
+  },
+  "{{TRIGGER[Static]}}": {
+    "WhenAColorIsntTheMostCommonOrTiedForMostCommonColorAmongPermanents(TheChosenColor, {{PERMANENTS}})": "",
+    "WhenAPermanentHasAbility({{PERMANENTS}}, {{CHECK_HASABLE}})": "",
+    "WhenAPermanentHasNumberCountersOfType({{PERMANENTS}}, {{COMPARISON}}, {{COUNTER_TYPE}})": "",
+    "WhenAPermanentHasPower({{PERMANENTS}}, {{COMPARISON}})": "",
+    "WhenAPlayerControlsAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerControlsNoPermanents({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerControlsNumberPermanents({{PLAYERS}}, {{PERMANENTS}}, {{COMPARISON}})": "",
+    "WhenAPlayerHasAnAmountOfLife({{PLAYERS}}, {{COMPARISON}})": "",
+    "WhenAPlayerHasNoCardsInTheirGraveyard({{PLAYERS}})": "",
+    "WhenAPlayerHasNumberCardsInHand({{PLAYERS}}, {{COMPARISON}})": "",
+    "WhenAnyNumberOfPermanentsAreOnTheBattlefield({{PERMANENTS}})": "",
+    "WhenNoPermanentsAreOnTheBattlefield({{PERMANENTS}})": "",
+    "WhenPlayersControlsNoPermanents({{PLAYERS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Station]}}": {
+    "WhenAPermanentStationsAPermanent({{PERMANENTS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Stickers]}}": {
+    "WhenAPlayerPlacesASticker({{PLAYERS}})": "",
+    "WhenAPlayerPutsANameStickerOnAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerPutsAStickerOnAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerPutsAnAbilityStickerOnAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerPutsAnArtStickerOnAPermanent({{PLAYERS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Surveil]}}": {
+    "WhenAPlayerSurveils({{PLAYERS}})": "",
+    "WhenAPlayerSurveilsForTheFirstTimeEachTurn({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Tap]}}": {
+    "WhenAPermanentBecomesTapped({{PERMANENTS}})": "",
+    "WhenAPermanentBecomesTappedForTheFirstTimeEachTurn({{PERMANENTS}})": "",
+    "WhenAPlayerTapsAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAnyNumberOfPermanentsBecomeTapped({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Targets]}}": {
+    "WhenAPermanentBecomesTheTargetOfASpell({{PERMANENTS}}, {{SPELLS}})": "",
+    "WhenAPermanentBecomesTheTargetOfASpellOrAbility({{PERMANENTS}}, {{SPELLS_OR_ABILITIES}})": "",
+    "WhenAPermanentBecomesTheTargetOfASpellOrAbilityForTheFirstTimeEachTurn({{PERMANENTS}}, {{SPELLS_OR_ABILITIES}})": "",
+    "WhenAPermanentBecomesTheTargetOfAnAbility({{PERMANENTS}}, {{ABILITIES}})": "",
+    "WhenAPlayerBecomesTheTargetOfASpell({{PLAYERS}}, {{SPELLS}})": "",
+    "WhenAPlayerBecomesTheTargetOfASpellOrAbility({{PLAYERS}}, {{SPELLS_OR_ABILITIES}})": "",
+    "WhenAPlayerChoosesTargetsForASpellOrAbility({{PLAYERS}}, {{SPELLS_OR_ABILITIES}})": "",
+    "WhenASpellBecomesTheTargetOfASpellOrAbility({{SPELLS}}, {{SPELLS_OR_ABILITIES}})": "",
+    "WhenAnyNumberOfPlayersAndOrPermanentsBecomeTheTargetOfASpellOrAbility({{PLAYERS}}, {{PERMANENTS}}, {{SPELLS_OR_ABILITIES}})": ""
+  },
+  "{{TRIGGER[TheMonarch]}}": {
+    "WhenAPlayerBecomesTheMonarch({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Training]}}": {
+    "WhenAPermanentTrains({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Transform]}}": {
+    "WhenAPermanentTransforms({{PERMANENTS}})": "",
+    "WhenAPermanentTransformsFromIntoAPermanent({{PERMANENTS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Turn-BeginningOfCombat]}}": {
+    "AtTheBeginningOfCombat": "",
+    "AtTheBeginningOfCombatDuringAPlayersTurn({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Turn-BeginningOfTheGame]}}": {
+    "AtTheBeginningOfTheGame": ""
+  },
+  "{{TRIGGER[Turn-DeclareAttackers-Enlist]}}": {
+    "WhenACreatureEnlistsACreature({{PERMANENTS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Turn-DeclareAttackers-Exert]}}": {
+    "WhenAPlayerExertsACreature({{PLAYERS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Turn-DeclareAttackers]}}": {
+    "WhenACreatureAttacks({{PERMANENTS}})": "",
+    "WhenACreatureAttacksABattle({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenACreatureAttacksAPlaneswalker({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenACreatureAttacksAPlayer({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenACreatureAttacksAPlayerOrPlaneswalkerTheyControl({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenACreatureAttacksAlone({{PERMANENTS}})": "",
+    "WhenACreatureAttacksForTheFirstTimeEachTurn({{PERMANENTS}})": "",
+    "WhenANumberOfCreaturesAttack({{COMPARISON}}, {{PERMANENTS}})": "",
+    "WhenANumberOfCreaturesAttackAPlayer({{COMPARISON}}, {{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAPlayerAttacks({{PLAYERS}})": "",
+    "WhenAPlayerAttacksAPlaneswalkerWithAnyNumberOfCreatures({{PLAYERS}}, {{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerAttacksAPlayer({{PLAYERS}}, {{PLAYERS}})": "",
+    "WhenAPlayerAttacksAPlayerAndOrPlaneswalkerTheyControl({{PLAYERS}}, {{PLAYERS}})": "",
+    "WhenAPlayerAttacksAPlayerWithANumberOfCreatures({{PLAYERS}}, {{PLAYERS}}, {{COMPARISON}}, {{PERMANENTS}})": "",
+    "WhenAPlayerAttacksAPlayerWithAnyNumberOfCreatures({{PLAYERS}}, {{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerAttacksAnyNumberOfPlaneswalkers({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerAttacksAnyNumberOfPlayers({{PLAYERS}}, {{PLAYERS}})": "",
+    "WhenAPlayerAttacksWithACreature({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerAttacksWithANumberOfCreatures({{PLAYERS}}, {{COMPARISON}}, {{PERMANENTS}})": "",
+    "WhenAPlayerAttacksWithASingleCreatureAndANumberOfOtherCreatures({{PLAYERS}}, {{PERMANENTS}}, {{COMPARISON}}, {{PERMANENTS}})": "",
+    "WhenAPlayerAttacksWithAnyNumberOfCreatures({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerAttacksWithAnyNumberOfGroupCreatures({{PLAYERS}}, {{PERMANENTS}}, {{GROUP_FILTER}})": "",
+    "WhenAPlayerIsAttacked({{PLAYERS}})": "",
+    "WhenASingleCreatureAndANumberOfOtherCreaturesAttack({{PERMANENT}}, {{COMPARISON}}, {{PERMANENTS}})": "",
+    "WhenASingleCreatureAndANumberOfOtherCreaturesAttackDifferentPlayers({{PERMANENT}}, {{COMPARISON}}, {{PERMANENTS}})": "",
+    "WhenASingleCreatureAttacksWithExactlyOneOtherCreature({{PERMANENT}})": "",
+    "WhenAllCreaturesAttack({{PERMANENTS}})": "",
+    "WhenAnyNumberOfCreaturesAttack({{PERMANENTS}})": "",
+    "WhenAnyNumberOfCreaturesAttackAPlayer({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfCreaturesAttackAPlayerOrPlaneswalkerTheyControl({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfCreaturesAttackAnyNumberOfPlayers({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfPlayersAreAttacked({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Turn-DeclareBlockers]}}": {
+    "WhenACreatureAttacksAPlayerAndIsntBlocked({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenACreatureAttacksAndIsntBlocked({{PERMANENTS}})": "",
+    "WhenACreatureBecomesBlocked({{PERMANENTS}})": "",
+    "WhenACreatureBecomesBlockedByACreature({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenACreatureBecomesBlockedByANumberOfCreatures({{PERMANENTS}}, {{COMPARISON}}, {{PERMANENTS}})": "",
+    "WhenACreatureBecomesBlockedByAnyNumberOfCreatures({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenACreatureBlocks({{PERMANENTS}})": "",
+    "WhenACreatureBlocksACreature({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenACreatureBlocksANumberOfCreatures({{PERMANENTS}}, {{COMPARISON}}, {{PERMANENTS}})": "",
+    "WhenACreatureBlocksAnyNumberOfCreatures({{PERMANENTS}}, {{PERMANENTS}})": "",
+    "WhenANumberOfCreaturesAttacksAPlayerAndArentBlocked({{COMPARISON}}, {{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenAnyNumberOfCreaturesBecomeBlocked({{PERMANENTS}})": "",
+    "WhenAnyNumberOfCreaturesBlock({{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Turn-DrawStep]}}": {
+    "AtTheBeginningOfAPlayersDrawStep({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Turn-EndOfCombat]}}": {
+    "AtTheEndOfCombat": "",
+    "AtTheEndOfTheFirstCombat": ""
+  },
+  "{{TRIGGER[Turn-EndStep]}}": {
+    "AtTheBeginningOfAPlayersEndStep({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Turn-MainPhase]}}": {
+    "AtTheBeginningOfAPlayersFirstMainPhase({{PLAYERS}})": "",
+    "AtTheBeginningOfAPlayersMainPhases({{PLAYERS}})": "",
+    "AtTheBeginningOfAPlayersPostcombatMainPhase({{PLAYERS}})": "",
+    "AtTheBeginningOfAPlayersSecondMainPhase({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Turn-Upkeep]}}": {
+    "AtTheBeginningOfAPlayersFirstUpkeepEachTurn({{PLAYERS}})": "",
+    "AtTheBeginningOfAPlayersFirstUpkeepOfTheGame({{PLAYERS}})": "",
+    "AtTheBeginningOfAPlayersUpkeep({{PLAYERS}})": "",
+    "AtTheBeginningOfTheFirstUpkeepOfTheGame": ""
+  },
+  "{{TRIGGER[TurnFaceUp]}}": {
+    "WhenAPermanentIsTurnedFaceUp({{PERMANENTS}})": "",
+    "WhenAPlayerTurnsAPermanentFaceUp({{PLAYERS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Untap]}}": {
+    "WhenAPermanentBecomesUntapped({{PERMANENTS}})": "",
+    "WhenAPlayerUntapsAnyNumberOfPermanentDuringTheirUntapStep({{PLAYERS}}, {{PERMANENTS}})": ""
+  },
+  "{{TRIGGER[Voting]}}": {
+    "WhenPlayersFinishVoting": ""
+  },
+  "{{TRIGGER}}": {
+    "Or({{TRIGGER_LIST}})": "",
+    "{{TRIGGER[ActivateAnAbility]}}": "",
+    "{{TRIGGER[AddMana]}}": "",
+    "{{TRIGGER[Archenemy]}}": "",
+    "{{TRIGGER[Attach]}}": "",
+    "{{TRIGGER[Attractions]}}": "",
+    "{{TRIGGER[Bending]}}": "",
+    "{{TRIGGER[CastASpellOrActivateAnAbility]}}": "",
+    "{{TRIGGER[CastASpell]}}": "",
+    "{{TRIGGER[CauseAbilityToTrigger]}}": "",
+    "{{TRIGGER[Champion]}}": "",
+    "{{TRIGGER[Clash]}}": "",
+    "{{TRIGGER[Class]}}": "",
+    "{{TRIGGER[CollectEvidence]}}": "",
+    "{{TRIGGER[CommitACrime]}}": "",
+    "{{TRIGGER[Conjure]}}": "",
+    "{{TRIGGER[CopyASpell]}}": "",
+    "{{TRIGGER[CounterASpell]}}": "",
+    "{{TRIGGER[Craft]}}": "",
+    "{{TRIGGER[CreateTokens]}}": "",
+    "{{TRIGGER[Crew]}}": "",
+    "{{TRIGGER[CumulativeUpkeep]}}": "",
+    "{{TRIGGER[CycleOrDiscard]}}": "",
+    "{{TRIGGER[DayNight]}}": "",
+    "{{TRIGGER[DealDamage]}}": "",
+    "{{TRIGGER[Destroy]}}": "",
+    "{{TRIGGER[Devour]}}": "",
+    "{{TRIGGER[Discover]}}": "",
+    "{{TRIGGER[DrawACard-Digital]}}": "",
+    "{{TRIGGER[DrawACard-RevealThisWay]}}": "",
+    "{{TRIGGER[DrawACard]}}": "",
+    "{{TRIGGER[Dungeon]}}": "",
+    "{{TRIGGER[Echo]}}": "",
+    "{{TRIGGER[Energy]}}": "",
+    "{{TRIGGER[EnterBattlefield]}}": "",
+    "{{TRIGGER[EnterCommandZone-FromAnywhere]}}": "",
+    "{{TRIGGER[EnterCommandZone-FromBattlefield]}}": "",
+    "{{TRIGGER[EnterGraveyard-FromAnywhereOtherThanTheBattlefield]}}": "",
+    "{{TRIGGER[EnterGraveyard-FromAnywhere]}}": "",
+    "{{TRIGGER[EnterGraveyard-FromBattlefield]}}": "",
+    "{{TRIGGER[EnterGraveyard-FromHand]}}": "",
+    "{{TRIGGER[EnterGraveyard-FromLibrary]}}": "",
+    "{{TRIGGER[EnterHand-FromBattlefield]}}": "",
+    "{{TRIGGER[EnterHand-FromGraveyard]}}": "",
+    "{{TRIGGER[EnterHand-FromLibrary]}}": "",
+    "{{TRIGGER[EnterLibrary-FromAnywhere]}}": "",
+    "{{TRIGGER[Evolve]}}": "",
+    "{{TRIGGER[Exile]}}": "",
+    "{{TRIGGER[Expend]}}": "",
+    "{{TRIGGER[Exploit]}}": "",
+    "{{TRIGGER[Explore]}}": "",
+    "{{TRIGGER[Fight]}}": "",
+    "{{TRIGGER[FlipCoins]}}": "",
+    "{{TRIGGER[Forage]}}": "",
+    "{{TRIGGER[Foretell]}}": "",
+    "{{TRIGGER[GainControl]}}": "",
+    "{{TRIGGER[GainLife]}}": "",
+    "{{TRIGGER[Gift]}}": "",
+    "{{TRIGGER[GiveAPlayerCounters]}}": "",
+    "{{TRIGGER[Investigate]}}": "",
+    "{{TRIGGER[Kicker]}}": "",
+    "{{TRIGGER[LeaveBattlefield]}}": "",
+    "{{TRIGGER[LeaveGraveyard]}}": "",
+    "{{TRIGGER[LoseControl]}}": "",
+    "{{TRIGGER[LoseLife]}}": "",
+    "{{TRIGGER[LoseTheGame]}}": "",
+    "{{TRIGGER[ManifestDread]}}": "",
+    "{{TRIGGER[Mentor]}}": "",
+    "{{TRIGGER[Mill]}}": "",
+    "{{TRIGGER[Monstrosity]}}": "",
+    "{{TRIGGER[Mutate]}}": "",
+    "{{TRIGGER[PayLife]}}": "",
+    "{{TRIGGER[Phasing]}}": "",
+    "{{TRIGGER[Planechase]}}": "",
+    "{{TRIGGER[PlayACard]}}": "",
+    "{{TRIGGER[PlayALand]}}": "",
+    "{{TRIGGER[Plot]}}": "",
+    "{{TRIGGER[PreventDamage]}}": "",
+    "{{TRIGGER[Proliferate]}}": "",
+    "{{TRIGGER[PutASpellOrAbilityOntoTheStack]}}": "",
+    "{{TRIGGER[PutCounters]}}": "",
+    "{{TRIGGER[PutPermanentOnBattlefield]}}": "",
+    "{{TRIGGER[RemoveCounters-Exile]}}": "",
+    "{{TRIGGER[RemoveCounters]}}": "",
+    "{{TRIGGER[Renown]}}": "",
+    "{{TRIGGER[Ring]}}": "",
+    "{{TRIGGER[RollDice]}}": "",
+    "{{TRIGGER[Room]}}": "",
+    "{{TRIGGER[Sacrifice]}}": "",
+    "{{TRIGGER[Saddle]}}": "",
+    "{{TRIGGER[Saga]}}": "",
+    "{{TRIGGER[Scry]}}": "",
+    "{{TRIGGER[SearchLibrary]}}": "",
+    "{{TRIGGER[Seek]}}": "",
+    "{{TRIGGER[Shuffle]}}": "",
+    "{{TRIGGER[SolvesACase]}}": "",
+    "{{TRIGGER[Specialize]}}": "",
+    "{{TRIGGER[Static]}}": "",
+    "{{TRIGGER[Station]}}": "",
+    "{{TRIGGER[Stickers]}}": "",
+    "{{TRIGGER[Surveil]}}": "",
+    "{{TRIGGER[Tap]}}": "",
+    "{{TRIGGER[Targets]}}": "",
+    "{{TRIGGER[TheMonarch]}}": "",
+    "{{TRIGGER[Training]}}": "",
+    "{{TRIGGER[Transform]}}": "",
+    "{{TRIGGER[Turn-BeginningOfCombat]}}": "",
+    "{{TRIGGER[Turn-BeginningOfTheGame]}}": "",
+    "{{TRIGGER[Turn-DeclareAttackers-Enlist]}}": "",
+    "{{TRIGGER[Turn-DeclareAttackers-Exert]}}": "",
+    "{{TRIGGER[Turn-DeclareAttackers]}}": "",
+    "{{TRIGGER[Turn-DeclareBlockers]}}": "",
+    "{{TRIGGER[Turn-DrawStep]}}": "",
+    "{{TRIGGER[Turn-EndOfCombat]}}": "",
+    "{{TRIGGER[Turn-EndStep]}}": "",
+    "{{TRIGGER[Turn-MainPhase]}}": "",
+    "{{TRIGGER[Turn-Upkeep]}}": "",
+    "{{TRIGGER[TurnFaceUp]}}": "",
+    "{{TRIGGER[Untap]}}": "",
+    "{{TRIGGER[Voting]}}": ""
+  }
+}

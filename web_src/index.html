@@ -1,0 +1,877 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="data:,">
+  </head>
+<body>
+
+  <div id="loading-overlay">
+
+    <div id="loading-progress" class="progress-outer">
+      <div class="progress">
+        <div class="left"></div>          <div class="right" id="progress-loading" class="start current">Loading</div>
+
+        <div class="left">Download</div>  <div class="right" id="progress-download-ignore_list">Ignore List</div>
+        <div class="left"></div>          <div class="right" id="progress-download-short_names">Short Names</div>
+        <div class="left"></div>          <div class="right" id="progress-download-find_replace">Find/Replace</div>
+        <div class="left"></div>          <div class="right" id="progress-download-atomic_cards">Atomic Cards</div>
+        <div class="left"></div>          <div class="right" id="progress-download-english_grammar">English Grammar</div>
+        <div class="left"></div>          <div class="right" id="progress-download-mtgish_grammar">MTGish Grammar</div>
+        <div class="left">Parsing</div>   <div class="right" id="progress-parsing-building_grammar_tree">Building Tree</div>
+        <div class="left"></div>          <div class="right" id="progress-parsing-english" class="item-with-progress">
+                                            <div>
+                                              <div>English</div>
+                                            </div>
+                                            <div id="progress-parsing-english-bar" class="horizontal-progress-bar">
+                                              <div id="progress-parsing-english-percentage" class="horizontal-progress"></div>
+                                            </div>
+                                            <div id="progress-parsing-english-string" class="progress-counter"></div>
+                                          </div>
+        <div class="left"></div>          <div class="right" id="progress-parsing-generate" class="item-with-progress">
+                                            <div>
+                                              <div>Generate MTGish</div>
+                                            </div>
+                                            <div id="progress-parsing-generate-bar" class="horizontal-progress-bar">
+                                              <div id="progress-parsing-generate-percentage" class="horizontal-progress"></div>
+                                            </div>
+                                            <div id="progress-parsing-generate-string" class="progress-counter"></div>
+                                          </div>
+        <div class="left"></div>          <div class="right" id="progress-parsing-mtgish" class="item-with-progress">
+                                            <div>
+                                              <div>MTGish</div>
+                                            </div>
+                                            <div id="progress-parsing-mtgish-bar" class="horizontal-progress-bar">
+                                              <div id="progress-parsing-mtgish-percentage" class="horizontal-progress"></div>
+                                            </div>
+                                            <div id="progress-parsing-mtgish-string" class="progress-counter"></div>
+                                          </div>
+        <div class="left done"></div>     <div class="right done" id="progress-done">Done</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="app">
+    <div class="autocomplete input-outer" style="width:300px;">
+      <input id="input" type="text" name="cardLookup" autocomplete="off" placeholder="Black Lotus">
+    </div>
+    <div id="parse-tree-area"></div>
+    <div id="output-tree-area"></div>
+    <div id="parse-table-area"></div>
+  </div>
+
+
+</body>
+
+<script src="./third_party/fuzzysort.js"></script>
+
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="autocomplete.css">
+<link rel="stylesheet" type="text/css" href="vertical_progress.css">
+<link rel="stylesheet" type="text/css" href="horizontal_progress.css">
+<script>
+  // Autocomplete dialog inspired by:     https://www.w3schools.com/howto/howto_js_autocomplete.asp
+  // Vertical Progress Bar inspired by:   https://codepen.io/drygiel/pen/LXmPZz
+  // Horizontal Progress Bar inspired by: https://codepen.io/metring/pen/mgOzyE
+
+  const card_parser = new Worker("card_parser.js");
+  card_parser.postMessage(["setup"])
+
+  let ignore_list      = undefined
+  let short_names      = undefined
+  let find_replace     = undefined
+  let english_grammar  = undefined
+  let atomic_cards     = undefined
+  let card_names_set   = undefined
+  let card_names_array = undefined
+  let number_of_cards = undefined
+  let number_of_cards_string = undefined
+
+  function autocomplete(inputField) {
+    let currentFocus = -1;
+    let lastValue = "";
+
+    function getCard(cardName) {
+      let value = inputField.value
+      if (value != lastValue && card_names_set.has(value)) {
+        card_parser.postMessage(["get card", value])
+        lastValue = value        
+      }
+    }
+
+    function closeSuggestionBox(elementToKeep) {
+      if (elementToKeep == inputField) return;
+
+      var autocompleteItems = document.getElementsByClassName("autocomplete-items");
+      for (let autocompleteItem of autocompleteItems) {
+        if (autocompleteItem == elementToKeep) continue;
+        autocompleteItem.parentNode.removeChild(autocompleteItem);
+      }
+    }
+    function updateSelection(listItems) {
+      if (!listItems) return;
+
+      // Loop top/bottom around
+      if (currentFocus >= listItems.length) currentFocus = 0;
+      if (currentFocus <  0)                currentFocus = (listItems.length - 1);
+
+      for (let listItem of listItems) {
+        listItem.classList.remove("autocomplete-active") }
+      listItems[currentFocus].classList.add("autocomplete-active");
+    }
+
+    inputField.addEventListener("input", function(event) {
+      closeSuggestionBox();
+      currentFocus = -1;
+
+      let value = this.value
+      if (!value) { return false }
+
+      getCard(value);
+
+      const results = fuzzysort.go(value, card_names_array, { limit: 10, threshold: -50000 })
+      if (results.length == 1 && results[0].target == value) { return false }
+
+      let autocomplete_list = document.createElement("div");
+      autocomplete_list.setAttribute("id", this.id + "autocomplete-list");
+      autocomplete_list.setAttribute("class", "autocomplete-items");
+      this.parentNode.appendChild(autocomplete_list);
+
+      for(let result of results) {
+        let inputOption = result.target
+
+        let suggestion = document.createElement("div");
+        let inputText = document.createTextNode(inputOption)
+        let inputValue = document.createElement("input")
+        inputValue.setAttribute("type", "hidden")
+        inputValue.setAttribute("value", inputOption)
+        suggestion.appendChild(inputText)
+        suggestion.append(inputValue)
+    
+        suggestion.addEventListener("click", function(e) {
+          inputField.value = e.target.getElementsByTagName("input")[0].value;
+          closeSuggestionBox();
+        });
+        autocomplete_list.appendChild(suggestion);
+      }
+    });
+
+    inputField.addEventListener("keydown", function(keyEvent) {
+      let autocompleteList = document.getElementById(this.id + "autocomplete-list");
+      if (!autocompleteList) return;
+
+      const KEY_DOWN_ARROW = 40
+      const KEY_UP_ARROW   = 38
+      const KEY_ENTER      = 13
+
+      listItems = autocompleteList.getElementsByTagName("div");
+      if (keyEvent.keyCode == KEY_DOWN_ARROW) { currentFocus++; updateSelection(listItems); }
+      if (keyEvent.keyCode == KEY_UP_ARROW)   { currentFocus--; updateSelection(listItems); }
+      if (keyEvent.keyCode == KEY_ENTER) {
+        keyEvent.preventDefault();
+        if (currentFocus > -1 && listItems) {
+          listItems[currentFocus].click();
+        }
+      }
+    });
+    document.addEventListener("click", function (e) {
+      closeSuggestionBox(e.target);
+      getCard();
+    });
+  }
+
+  autocomplete(document.getElementById("input"));
+
+
+
+  function setProgress(current) {
+    function prevAll(element) {
+      let result = new Array()
+      while (element = element.previousElementSibling)
+        result.push(element);
+      return result;
+    }
+
+    // Get progress bar
+    const progress = document.getElementById("loading-progress").children[0]
+
+    // Clear all previous styles
+    const steps = progress.querySelectorAll(':scope > div.right')
+    for (let step of steps) {
+      step.classList.remove('current')
+      step.classList.remove('prev')
+    }
+
+    current.classList.add('current');
+    let previousSteps = prevAll(current)
+    for (let step of previousSteps) {
+      step.classList.add('prev')
+    }
+  }
+
+  setProgress(document.getElementById('progress-loading'))
+//  setProgress(document.getElementById('progress-download-find_replace'))
+//  setProgress(document.getElementById('progress-parsing-building_grammar_tree'))
+//  setProgress(document.getElementById('progress-done'))
+
+function appendSubtextWithLinebreaks(element, text) {
+  const lines = text.split("\n");
+  for (let i = 0; i < lines.length; i++) {
+    let textElement = document.createTextNode(lines[i]);
+    element.appendChild(textElement);
+    if (i != lines.length - 1) {
+      let lineBreak = document.createElement("br");
+      element.appendChild(lineBreak);
+    }
+  }
+}
+
+function appendSubtextWithExtraLinebreaks(element, text) {
+  let newText = text.replaceAll("(", "(\n").replaceAll(", ", ",\n").replaceAll(" ; ", " ;\n")
+  appendSubtextWithLinebreaks(element, newText)
+}
+
+function getColorForTemplateVariable(depth) {
+  let colors = ['#7c7', '#7b7', '#7a7', '#696', '#686', '#575', '#464', '#252'];
+  if (depth == 0) {
+    return '#9e9';
+  } else if (depth == 1) {
+    return '#9d9';
+  } else {
+    return colors[(depth - 2) % 8];
+  }
+}
+
+function getColorForVariable(depth) {
+  let colors = ['#77c', '#77b', '#77a', '#669', '#668', '#557', '#446', '#225'];
+  if (depth == 0) {
+    return '#99e';
+  } else if (depth == 1) {
+    return '#99d';
+  } else {
+    return colors[(depth - 2) % 8];
+  }
+}
+
+function getColorForValue(depth) {
+  let colors = ['#c77', '#b77', '#a77', '#966', '#866', '#755', '#644', '#522'];
+  if (depth == 0) {
+    return '#e99';
+  } else if (depth == 1) {
+    return '#d99';
+  } else {
+    return colors[(depth - 2) % 8];
+  }
+}
+
+function getColorForDepth(depth) {
+  let colors = ['#ccc', '#bbb', '#aaa', '#999', '#888', '#777', '#666', '#555'];
+  if (depth == 0) {
+    return '#eee';
+  } else if (depth == 1) {
+    return '#ddd';
+  } else {
+    return colors[(depth - 2) % 8];
+  }
+}
+
+const specialReferences1 = [ "FullName" , "CardAFullName" , "CardBFullName" ]
+const specialReferences2 = [ "LongName" , "ShortName" , "CommaName" , "CardALongName" , "CardBLongName" , "CardACommaName" , "CardBCommaName" , "CardABCommaName" ]
+
+function PrepareEnglishGrammarForCard(card_of_interest) {
+  if (card_of_interest.cards.length == 1) {
+    const cardName  = card_of_interest.cards[0].name
+    english_grammar.get("FullName").set(cardName, JSON.stringify(cardName))
+  }
+
+  if (card_of_interest.cards.length == 2) {
+    const cardNameA  = card_of_interest.cards[0].name
+    const cardNameB  = card_of_interest.cards[1].name
+    english_grammar.get("CardAFullName").set(cardNameA, JSON.stringify(cardNameA))
+    english_grammar.get("CardBFullName").set(cardNameB, JSON.stringify(cardNameB))
+  }
+}
+
+
+function flattenParseTable(card_of_interest, text, breadcrumb) {
+  let breadcrumb_counter = 0;
+  let rows = new Array()
+
+  function flattenParseTableInner(text, breadcrumb, depth) {
+    let childIndex = breadcrumb_counter;
+
+    let matchReference = breadcrumb.MatchReference
+    let matchIndex     = breadcrumb.MatchIndex
+
+    let templateString = matchIndex
+    let outputString = undefined
+    if (specialReferences2.indexOf(matchReference) != -1) {
+      outputString = ""
+    } else {
+      outputString   = english_grammar.get(matchReference).get(matchIndex)
+    }
+
+    let row = new Map()
+
+    breadcrumb_counter++;
+
+    let children = new Array()
+    for (let i = 0; i < breadcrumb.Breadcrumbs.length; i++) {
+      let subcrumb = breadcrumb.Breadcrumbs[i]
+      children.push(breadcrumb_counter)
+      flattenParseTableInner(text, subcrumb, depth + 1);
+    }
+
+    let subTemplates = new Map()
+    let inputVariables = new Map()
+
+    const splitTemplate = templateString.split(/({{[^}]*?}})/);
+    for (let j = 0; j < splitTemplate.length; j++) {
+      const substring = splitTemplate[j]
+      if (j % 2 == 0) {
+      } else {
+        const subChildIndex = children[Math.floor(j / 2)];
+        const subChildName = substring.substring(2,substring.length - 2);
+
+        if (!inputVariables.has(subChildName)) {
+          inputVariables.set(subChildName, new Array()) }
+        inputVariables.get(subChildName).push(subChildIndex)
+
+        if (!subTemplates.has(subChildName)) {
+          subTemplates.set(subChildName, new Array()) }
+        subTemplates.get(subChildName).push(subChildIndex)
+      }
+    }
+
+    row["matchName"]      = matchReference
+    row["childIndex"]     = childIndex
+    row["templateString"] = templateString
+    row["inputVariables"] = inputVariables
+    row["outputString"]   = outputString
+    row["children"]       = children
+    row["subTemplates"]   = subTemplates
+
+    rows[childIndex] = row
+  }
+
+  flattenParseTableInner(text, breadcrumb, 0);
+  return rows;
+}
+
+const templateStringFinder      = new RegExp(/({{[^}]*?}})/)
+const outputTemplateFinder      = new RegExp(/{{(.+?)}}/g)
+const templateWithIndexSplitter = new RegExp(/(.+?)\[(\d+)]$/)
+const functionWithArgsSplitter  = new RegExp(/(.+?)\((.*?)\)$/)
+
+// There are two types of input templates:
+//  {{Hello}}        -> Root     / Template ("Hello")
+//  {{Hello(World)}} -> Function / Template ("Hello") / Args (["World"])
+function InputTemplateVariableInformation(templateString) {
+  const functionWithArgs = templateString.match(functionWithArgsSplitter)
+  if (!functionWithArgs) {
+    return {TemplateType: "Root", TemplateString: templateString} }
+  
+  const functionName = functionWithArgs[1]
+  const fullArgsList = functionWithArgs[2]
+  const variables = fullArgsList.split(",")
+ 
+  return {TemplateType: "Function", TemplateString: templateString, Function: functionName, Args: variables}
+}
+
+// There are three types of template variables:
+//  {{Hello}}                 -> Root     / Template ("Hello")
+//  {{Hello[0]}}              -> Match    / Template ("Hello")        / Index (0)
+//  {{Hello(World=Earth)[0]}} -> Function / Template ("Hello(World)") / Index (0) / Args ({"World": "Earth"})
+function OutputTemplateVariableInformation(templateString) {
+  const templateWithIndex = templateString.match(templateWithIndexSplitter)
+  if (!templateWithIndex) {
+    return {TemplateType: "Root", TemplateString: templateString}
+  }
+
+  const matchTemplate    = templateWithIndex[1]
+  const matchIndexString = templateWithIndex[2]
+  const matchIndex       = parseInt(matchIndexString)
+
+  const functionWithArgs = matchTemplate.match(functionWithArgsSplitter)
+  if (!functionWithArgs) {
+    return {TemplateType: "Match", TemplateString: templateString, MatchTemplate: matchTemplate, MatchIndex: matchIndex}
+  }
+
+  const functionName = functionWithArgs[1]
+  const fullArgsList = functionWithArgs[2]
+  const individualArgs = fullArgsList.split(",")
+ 
+  let variables = new Map()
+  for (const individualArg of individualArgs) {
+    const splitArg = individualArg.split("=")
+    const argName  = splitArg[0]
+    const argValue = splitArg[1]
+
+    variables.set(argName, argValue)
+  }
+
+  const simplifiedMatchTemplate = functionName + "(" + Array.from(variables.keys()).join(",") + ")"
+  return {TemplateType: "Function", TemplateString: templateString, MatchTemplate: simplifiedMatchTemplate, MatchIndex: matchIndex, Function: functionName, Args: variables}
+}
+
+
+function ExtractTemplateVariables(outputTemplate) {
+  let extractedTemplates = new Array()
+
+  const templateStringMatches = outputTemplate.matchAll(outputTemplateFinder)
+  for(const templateStringMatch of templateStringMatches) {
+    const templateString = templateStringMatch[1]
+    extractedTemplates.push(OutputTemplateVariableInformation(templateString))
+  }
+
+  return extractedTemplates
+}
+
+function EvalMatch(element, card_of_interest, text, breadcrumb) {
+  PrepareEnglishGrammarForCard(card_of_interest)
+  const parseTable = flattenParseTable(card_of_interest, text, breadcrumb)
+
+  function EvalMatchInner(outerElement, i, outsideVariables, globalVariables) {
+    const matchName      = parseTable[i]["matchName"];
+    const childIndex     = parseTable[i]["childIndex"]
+    const templateString = parseTable[i]["templateString"]
+    const inputVariables = parseTable[i]["inputVariables"]
+    const outputString   = parseTable[i]["outputString"]
+    const children       = parseTable[i]["children"]
+    const subTemplates   = parseTable[i]["subTemplates"]
+
+    let element = document.createElement("mark")
+    element.setAttribute("counter", i);             // This is the footnote number
+    element.style.background = getColorForDepth(i); // This is the block background color
+
+    outerElement.appendChild(element)
+
+    // --------------------------------------------------------------------
+    // Parse Output
+    // --------------------------------------------------------------------
+    let splitOutput = outputString.split(outputTemplateFinder)
+
+    if (outputString.length == 0) {
+      let blankEntry = document.createElement("blank")
+      blankEntry.append(document.createTextNode("-blank-"))
+      element.appendChild(blankEntry)
+    }
+
+    for (let j = 0; j < splitOutput.length; j++) {
+      let substring = splitOutput[j]
+      if (j % 2 == 0) {
+        appendSubtextWithLinebreaks(element, substring)
+      } else {
+        let variableInfo = OutputTemplateVariableInformation(substring)
+        if (variableInfo.TemplateType == "Root") {
+          let variableName = variableInfo.TemplateString
+          let variableValue = undefined
+          if (globalVariables.has(variableName)) {
+            variableValue = globalVariables.get(variableName)
+          } else if (outsideVariables.has(variableName)) {
+            variableValue = outsideVariables.get(variableName)
+          }
+          appendSubtextWithLinebreaks(element, variableValue)
+        }
+        if (variableInfo.TemplateType == "Match") {
+          let matchIndex = inputVariables.get(variableInfo.MatchTemplate)[variableInfo.MatchIndex]
+          EvalMatchInner(element, matchIndex, new Map(), globalVariables)
+        }
+        if (variableInfo.TemplateType == "Function") {
+          const matchIndex = inputVariables.get(variableInfo.MatchTemplate)[variableInfo.MatchIndex]
+          let args = new Map()
+          for (const [variableName, variableValue] of variableInfo.Args.entries()) {
+            if (variableValue[0] == "^") {
+              args.set(variableName, outsideVariables.get(variableValue.slice(1)))
+            } else {
+              args.set(variableName, variableValue)
+            }
+          }
+          EvalMatchInner(element, matchIndex, args, globalVariables)
+        }
+      }
+    }
+  }
+
+  EvalMatchInner(element, 0, new Map(), new Map([["~", JSON.stringify(card_of_interest.name)]]))
+}
+
+function createOutputRoot(inputVariables, variableInfo) {
+  let subChildName = variableInfo.TemplateString
+
+  let mark = document.createElement("nomark")
+  mark.appendChild(document.createTextNode(subChildName))
+  mark.style.background = getColorForTemplateVariable(0);
+
+  return mark
+}
+
+function createOutputMatch(inputVariables, variableInfo) {
+  let subChildName = variableInfo.MatchTemplate
+  let subChildIndex = inputVariables.get(subChildName)[variableInfo.MatchIndex]
+
+  let mark = document.createElement("tablemark")
+  mark.appendChild(document.createTextNode(subChildName))
+  mark.style.background = getColorForDepth(subChildIndex);
+  mark.setAttribute("counter", subChildIndex)
+
+  return mark
+}
+
+function createOutputFunction(inputVariables, variableInfo) {
+  const subChildIndex = inputVariables.get(variableInfo.MatchTemplate)[variableInfo.MatchIndex]
+  const functionName = variableInfo.Function
+
+  const tablemark    = document.createElement("tablemark")
+  const functionText = document.createTextNode(functionName)
+  const openParen    = document.createTextNode("(")
+  const closeParen   = document.createTextNode(")")
+
+  let variableMarks = new Array()
+  let valueMarks = new Array()
+  let i = 0;
+  for (const [variableName, variableValue] of variableInfo.Args.entries()) {
+    let variableMark = document.createElement("nomark")
+    variableMark.appendChild(document.createTextNode(variableName))
+    variableMark.style.background = getColorForVariable(i);
+    variableMarks.push(variableMark)
+
+    let valueMark = document.createElement("nomark")
+    if (variableValue[0] == "^") {
+      valueMark.appendChild(document.createTextNode(variableValue.substring(1)))
+      valueMark.style.background = getColorForTemplateVariable(i);
+    } else {
+      valueMark.appendChild(document.createTextNode(variableValue))
+      valueMark.style.background = getColorForValue(i);
+    }
+    valueMarks.push(valueMark)
+    i++;
+  }
+
+  tablemark.style.background = getColorForDepth(subChildIndex);
+  tablemark.setAttribute("counter", subChildIndex)
+
+  tablemark.appendChild(functionText);
+  tablemark.appendChild(openParen);
+  for (let i = 0; i < variableMarks.length; i++) {
+    tablemark.appendChild(variableMarks[i])
+    tablemark.appendChild(document.createTextNode("="))
+    tablemark.appendChild(valueMarks[i])
+    if (i != variableMarks.length - 1) {
+      tablemark.appendChild(document.createTextNode(", "))
+    }
+  }
+  tablemark.appendChild(closeParen);
+
+  return tablemark;
+}
+
+
+
+
+function displayParseTable(table, card, text, breadcrumb) {
+  const parseTable = flattenParseTable(card, text, breadcrumb)
+
+  for (let i = 0; i < parseTable.length; i++) {
+    const matchName      = parseTable[i]["matchName"];
+    const childIndex     = parseTable[i]["childIndex"]
+    const templateString = parseTable[i]["templateString"]
+    const inputVariables = parseTable[i]["inputVariables"]
+    const outputString   = parseTable[i]["outputString"]
+    const children       = parseTable[i]["children"]
+    const subTemplates   = parseTable[i]["subTemplates"]
+
+    // --------------------------------------------------------------------
+    // Parse Input
+    // --------------------------------------------------------------------
+    const name = document.createElement("parse-input")
+    const inputVariableInfo = InputTemplateVariableInformation(matchName)
+
+    const tablemark = document.createElement("tablemark");
+    tablemark.style.background = getColorForDepth(childIndex);
+    tablemark.setAttribute("counter", childIndex);
+    if (inputVariableInfo.TemplateType == "Root") {
+      const templateName = inputVariableInfo.TemplateString
+      const nameText = document.createTextNode(templateName)
+      tablemark.appendChild(nameText);
+      name.appendChild(tablemark);
+    }
+    if (inputVariableInfo.TemplateType == "Function") {
+      const functionName = inputVariableInfo.Function
+
+      const functionText = document.createTextNode(functionName)
+      const openParen  = document.createTextNode("(")
+      const closeParen = document.createTextNode(")")
+
+      let variableMarks = new Array()
+      for (const [i, variableName] of inputVariableInfo.Args.entries()) {
+        let mark = document.createElement("nomark")
+        mark.appendChild(document.createTextNode(variableName))
+        mark.style.background = getColorForTemplateVariable(i);
+        variableMarks.push(mark)
+      }
+
+      tablemark.appendChild(functionText);
+      tablemark.appendChild(openParen);
+      for (let i = 0; i < variableMarks.length; i++) {
+        tablemark.appendChild(variableMarks[i])
+        if (i != variableMarks.length - 1) {
+          tablemark.appendChild(document.createTextNode(", "))
+        }
+      }
+      tablemark.appendChild(closeParen);
+
+      name.appendChild(tablemark);
+    }
+
+    // --------------------------------------------------------------------
+    // Parse Match
+    // --------------------------------------------------------------------
+    let template = document.createElement("parse-output")
+
+    let splitTemplate = templateString.split(templateStringFinder);
+    for (let j = 0; j < splitTemplate.length; j++) {
+      let substring = splitTemplate[j]
+      if (j % 2 == 0) {
+        appendSubtextWithLinebreaks(template, substring)
+      } else {
+        let subChildIndex = children[Math.floor(j / 2)];
+        let subChildName = substring.substring(2,substring.length - 2);
+
+        let mark = document.createElement("tablemark")
+        mark.appendChild(document.createTextNode(subChildName))
+        mark.style.background = getColorForDepth(subChildIndex)
+        mark.setAttribute("counter", subChildIndex)
+        template.appendChild(mark)
+      }
+    }
+
+    template.appendChild(document.createElement("hr"))
+
+    // --------------------------------------------------------------------
+    // Parse Output
+    // --------------------------------------------------------------------
+    let splitOutput = outputString.split(outputTemplateFinder)
+
+    if (outputString.length == 0) {
+      let blankEntry = document.createElement("blank")
+      blankEntry.append(document.createTextNode("-blank-"))
+      template.appendChild(blankEntry)
+    }
+
+    for (let j = 0; j < splitOutput.length; j++) {
+      let substring = splitOutput[j]
+      if (j % 2 == 0) {
+        appendSubtextWithLinebreaks(template, substring)
+      } else {
+        let variableInfo = OutputTemplateVariableInformation(substring)
+
+        if (variableInfo.TemplateType == "Root") {
+          template.appendChild(createOutputRoot(inputVariables, variableInfo))
+        }
+        if (variableInfo.TemplateType == "Match") {
+          template.appendChild(createOutputMatch(inputVariables, variableInfo))
+        }
+        if (variableInfo.TemplateType == "Function") {
+          template.appendChild(createOutputFunction(inputVariables, variableInfo))
+        }
+      }
+    }
+
+    table.appendChild(name)
+    table.appendChild(template)
+  }
+  return table;
+}
+
+function displayParseTree(parse_tree, text, breadcrumb) {
+  let breadcrumb_counter = 0;
+
+  function displayParseTreeInner(text, breadcrumb, depth) {
+    let element = document.createElement("mark");
+    element.setAttribute("counter", breadcrumb_counter);             // This is the footnote number
+    element.style.background = getColorForDepth(breadcrumb_counter); // This is the block background color
+
+    breadcrumb_counter++;
+
+    let cursor = breadcrumb.StringStart;
+    for (let i = 0; i < breadcrumb.Breadcrumbs.length; i++) {
+      let subcrumb = breadcrumb.Breadcrumbs[i]
+      if (cursor != subcrumb.StringStart) {
+        let subtext = text.substring(cursor, subcrumb.StringStart);
+        appendSubtextWithLinebreaks(element, subtext);
+      }
+      cursor = subcrumb.StringStart;
+      let subelement = displayParseTreeInner(text, subcrumb, depth + 1);
+      element.appendChild(subelement);
+      cursor = subcrumb.StringEnd;
+    }
+
+    if (cursor != breadcrumb.StringEnd) {
+      let subtext = text.substring(cursor, breadcrumb.StringEnd);
+      appendSubtextWithLinebreaks(element, subtext);
+    }
+    cursor = breadcrumb.StringEnd;
+
+    return element;
+  }
+
+  parse_tree.appendChild(displayParseTreeInner(text, breadcrumb, 0))
+}
+
+
+
+
+
+
+card_parser.onmessage = (e) => {
+  if (e.data[0] == "starting download") {
+    if (e.data[1] == "ignore_list")     { setProgress(document.getElementById('progress-download-ignore_list')); }
+    if (e.data[1] == "short_names")     { setProgress(document.getElementById('progress-download-short_names')); }
+    if (e.data[1] == "find_replace")    { setProgress(document.getElementById('progress-download-find_replace')); }
+    if (e.data[1] == "english_grammar") { setProgress(document.getElementById('progress-download-english_grammar')); }
+    if (e.data[1] == "atomic_cards")    { setProgress(document.getElementById('progress-download-atomic_cards')); }
+
+    return
+  }
+  if (e.data[0] == "downloads") {
+    if (e.data[1] == "ignore_list")     { ignore_list     = e.data[2]; }
+    if (e.data[1] == "short_names")     { short_names     = e.data[2]; }
+    if (e.data[1] == "find_replace")    { find_replace    = e.data[2]; }
+    if (e.data[1] == "english_grammar") { english_grammar = e.data[2]; }
+    if (e.data[1] == "atomic_cards")    {
+      atomic_cards    = e.data[2];
+      number_of_cards = atomic_cards.length;
+      number_of_cards_string = number_of_cards.toString(); }
+    return
+  }
+  if (e.data[0] == "building grammar tree") {
+    setProgress(document.getElementById('progress-parsing-building_grammar_tree'));
+    return
+  }
+  if (e.data[0] == "starting english parse") {
+    setProgress(document.getElementById('progress-parsing-english'));
+    document.getElementById('progress-parsing-english-bar').style.display = "block"
+    document.getElementById('progress-parsing-english-percentage').style.display = "block"
+    document.getElementById('progress-parsing-english-string').style.display = "block"
+    document.getElementById('progress-parsing-english-string').innerHTML = "0/" + number_of_cards_string
+    return
+  }
+  if (e.data[0] == "done english parse") {
+    setProgress(document.getElementById('progress-parsing-english'));
+    document.getElementById('progress-parsing-english-bar').style.display = "none"
+    document.getElementById('progress-parsing-english-percentage').style.display = "none"
+    document.getElementById('progress-parsing-english-string').style.display = "none"
+    return
+  }
+  if (e.data[0] == "starting output mtgish") {
+    setProgress(document.getElementById('progress-parsing-generate'));
+    document.getElementById('progress-parsing-generate-bar').style.display = "block"
+    document.getElementById('progress-parsing-generate-percentage').style.display = "block"
+    document.getElementById('progress-parsing-generate-string').style.display = "block"
+    document.getElementById('progress-parsing-generate-string').innerHTML = "0/" + number_of_cards_string
+    return
+  }
+  if (e.data[0] == "done output mtgish") {
+    setProgress(document.getElementById('progress-parsing-generate'));
+    document.getElementById('progress-parsing-generate-bar').style.display = "none"
+    document.getElementById('progress-parsing-generate-percentage').style.display = "none"
+    document.getElementById('progress-parsing-generate-string').style.display = "none"
+    return
+  }
+  if (e.data[0] == "starting mtgish parse") {
+    setProgress(document.getElementById('progress-parsing-mtgish'));
+    document.getElementById('progress-parsing-mtgish-bar').style.display = "block"
+    document.getElementById('progress-parsing-mtgish-percentage').style.display = "block"
+    document.getElementById('progress-parsing-mtgish-string').style.display = "block"
+    document.getElementById('progress-parsing-mtgish-string').innerHTML = "0/" + number_of_cards_string
+    return
+  }
+  if (e.data[0] == "done mtgish parse") {
+    setProgress(document.getElementById('progress-parsing-mtgish'));
+    document.getElementById('progress-parsing-mtgish-bar').style.display = "none"
+    document.getElementById('progress-parsing-mtgish-percentage').style.display = "none"
+    document.getElementById('progress-parsing-mtgish-string').style.display = "none"
+    return
+  }
+
+  if (e.data[0] == "number of cards parsed") {
+    let counter = document.getElementById('progress-parsing-english-string')
+    let progress_bar = document.getElementById('progress-parsing-english-percentage')
+
+    let percentage = (e.data[1]/number_of_cards)
+    progress_bar.style.width = (percentage * 100).toString() + "%"
+    counter.innerHTML = e.data[1].toString() + "/" + number_of_cards_string
+    return
+  }
+  if (e.data[0] == "number of outputs produced") {
+    let counter = document.getElementById('progress-parsing-generate-string')
+    let progress_bar = document.getElementById('progress-parsing-generate-percentage')
+
+    let percentage = (e.data[1]/number_of_cards)
+    progress_bar.style.width = (percentage * 100).toString() + "%"
+    counter.innerHTML = e.data[1].toString() + "/" + number_of_cards_string
+    return
+  }
+  if (e.data[0] == "number of mtgish parsed") {
+    let counter = document.getElementById('progress-parsing-mtgish-string')
+    let progress_bar = document.getElementById('progress-parsing-mtgish-percentage')
+
+    let percentage = (e.data[1]/number_of_cards)
+    progress_bar.style.width = (percentage * 100).toString() + "%"
+    counter.innerHTML = e.data[1].toString() + "/" + number_of_cards_string
+    return
+  }
+
+  
+  if (e.data[0] == "done") {
+    setProgress(document.getElementById('progress-done'));
+
+    let overlay = document.getElementById('loading-overlay')
+    overlay.classList.add("hidden")
+
+    setTimeout(function() {
+      let overlay = document.getElementById('loading-overlay')
+      let app = document.getElementById("app")
+      overlay.style.display = "none"
+      app.style.display = "block"
+    }, 10);
+    
+    card_parser.postMessage(["get card names"])
+    //card_parser.postMessage(["get card", "Abattoir Ghoul"])
+    return
+  }
+  if (e.data[0] == "get card names result") {
+    card_names_array = e.data[1]
+    card_names_set = new Set(card_names_array)
+    return
+  }
+
+  if (e.data[0] == "get card result") {
+    let card_of_interest = e.data[1]
+
+    let parse_tree   = document.getElementById("parse-tree-area")
+    let output_tree  = document.getElementById("output-tree-area")
+    let parse_table  = document.getElementById("parse-table-area")
+    parse_tree.innerHTML  = "";
+    output_tree.innerHTML = "";
+    parse_table.innerHTML = "";
+
+    displayParseTree(parse_tree, card_of_interest.Text, card_of_interest.Match)
+    EvalMatch(output_tree, card_of_interest.Card, card_of_interest.Text, card_of_interest.Match)
+    displayParseTable(parse_table, card_of_interest.Card, card_of_interest.Text, card_of_interest.Match)
+
+    return
+  }
+}
+
+
+
+
+
+
+</script>
+
+
+</html>

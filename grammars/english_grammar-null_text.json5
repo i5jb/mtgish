@@ -1,0 +1,55 @@
+{
+  "{{EnchantedArtifact}}": {
+    "Enchanted artifact": "",
+    "enchanted Equipment": "",
+    "enchanted artifact": ""
+  },
+  "{{EnchantedCreature}}": {
+    "Enchanted creature": "",
+    "enchanted artifact creature": "",
+    "enchanted creature": ""
+  },
+  "{{EnchantedLand}}": {
+    "Enchanted land": "",
+    "Enchanted {{Swamp}}": "",
+    "enchanted land": "",
+    "enchanted {{Swamp}}": ""
+  },
+  "{{EnchantedPermanent}}": {
+    "Enchanted permanent": "",
+    "enchanted enchantment": "",
+    "enchanted permanent": "",
+    "{{EnchantedArtifact}}": "",
+    "{{EnchantedCreature}}": "",
+    "{{EnchantedLand}}": "",
+    "{{EnchantedPlaneswalker}}": ""
+  },
+  "{{EnchantedPlaneswalker}}": {
+    "Enchanted planeswalker": "",
+    "enchanted planeswalker": ""
+  },
+  "{{EnchantedPlayer}}": {
+    "Enchanted player": "",
+    "enchanted opponent": "",
+    "enchanted player": ""
+  },
+  "{{EquippedCreature}}": {
+    "Equipped creature": "",
+    "equipped creature": ""
+  },
+  "{{EquippedPermanent}}": {
+    "Equipped permanent": ""
+  },
+  "{{FortifiedLand}}": {
+    "Fortified land": "",
+    "fortified land": ""
+  },
+  "{{an}}": {
+    "a": "",
+    "an": ""
+  },
+  "{{a}}": {
+    "a": "",
+    "an": ""
+  }
+}

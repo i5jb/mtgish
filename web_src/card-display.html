@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:,">
+</head>
+
+<body>
+<article>
+  <h2>Mana Cost Symbols</h2>
+
+  Regular Mana: <mana class="white"></mana><mana class="blue"></mana><mana class="black"></mana><mana class="red"></mana><mana class="green"></mana> <br />
+  Generic Mana: <mana class="generic">X</mana><mana class="generic">1</mana><mana class="generic">2</mana><mana class="generic long">15</mana><mana class="generic long">20</mana> <br />
+  Colorless Mana: <mana class="colorless"></mana> <br />
+  Snow Mana: <mana class="snow"></mana> <br />
+  <br />
+  Hybrid: <mana class="white blue"></mana><mana class="blue  black"></mana><mana class="black red"></mana><mana class="red   green"></mana><mana class="green white"></mana><mana class="white black"></mana><mana class="black green"></mana><mana class="green blue"></mana><mana class="blue  red"></mana><mana class="red   white"></mana> <br />
+  <br />
+  Two-brid: <mana class="white hybrid">&nbsp;2</mana><mana class="blue  hybrid">&nbsp;2</mana><mana class="black hybrid">&nbsp;2</mana><mana class="red   hybrid">&nbsp;2</mana><mana class="green hybrid">&nbsp;2</mana> <br />
+  <br />
+  Phyrexian: <mana class="white phyrexian">ϕ</mana><mana class="blue  phyrexian">ϕ</mana><mana class="black phyrexian">ϕ</mana><mana class="red   phyrexian">ϕ</mana><mana class="green phyrexian">ϕ</mana> <br />
+  Phyrexian Hybrid 1: <mana class="white blue  phyrexian">ϕ</mana><mana class="blue  black phyrexian">ϕ</mana><mana class="black red   phyrexian">ϕ</mana><mana class="red   green phyrexian">ϕ</mana><mana class="green white phyrexian">ϕ</mana><mana class="white black phyrexian">ϕ</mana><mana class="blue  red   phyrexian">ϕ</mana><mana class="black green phyrexian">ϕ</mana><mana class="red   white phyrexian">ϕ</mana><mana class="green blue  phyrexian">ϕ</mana> <br />
+
+  <h2>Color Indicators</h2>
+
+  <indicator><unknown></unknown></indicator>
+
+  <indicator></indicator>
+  <indicator><wedge class="white"></wedge></indicator>
+  <indicator><wedge class="blue"></wedge></indicator>
+  <indicator><wedge class="black"></wedge></indicator>
+  <indicator><wedge class="red"></wedge></indicator>
+  <indicator><wedge class="green"></wedge></indicator>
+  <indicator><wedge class="white"></wedge><wedge class="blue"></wedge><wedge class="black"></wedge><wedge class="red"></wedge><wedge class="green"></wedge></indicator>
+
+  <h2>Unicode Symbols</h2>
+  Tap {T}: <span font-size="300%">⭮</span> <br />
+  Untap {Q}: <span font-size="300%">⭯</span> <br />
+  Energy {E}: <span font-size="300%">⚡</span> <br />
+  Phyrexian {P}: <span font-size="300%">ϕ</span> <br />
+
+  Chaos {CHAOS}: <span font-size="300%">☯️</span> <br />
+  Ticket {TK}: <span font-size="300%">🎟️</span> <br />
+
+  Unused Acorn {A}: <span font-size="300%">🌰</span> <br />
+  Unused Mana Symbols {W}{U}{B}{R}{G} {C} {S}: <span font-size="300%">☀️💧💀🔥🌳 🔶 ❄️</span> <br />
+
+  <h2>Cards</h2>
+
+  <cards>
+    <card>
+      <cardname>Mountain</cardname>
+      <typeline>Basic Land - Mountain</typeline>
+      <rules_text>
+        <rule><i>(⭮: Add <mana class="red"></mana>.)</i></rule>
+      </rules_text>
+      <indicator></indicator>
+    </card>
+    <card>
+      <cardname>Wastes</cardname>
+      <typeline>Basic Land</typeline>
+      <rules_text>
+        <rule>⭮: Add <mana class="colorless"></mana>.</rule>
+      </rules_text>
+      <indicator></indicator>
+    </card>
+    <card>
+      <cardname>Aether Hub</cardname>
+      <typeline>Land</typeline>
+      <rules_text>
+        <rule>When Aether Hub enters the battlefield, you get <energy>⚡</energy> <i>(an energy counter)</i>.</rule>
+        <rule>⭮: Add <mana class="colorless"></mana>.</rule>
+        <rule>⭮, Pay <energy>⚡</energy>: Add one mana of any color.</rule>
+      </rules_text>
+      <indicator></indicator>
+    </card>
+    <card class="green has-pt">
+      <cardname>Dryad Arbor</cardname>
+      <typeline>Land Creature — Forest Dryad</typeline>
+      <pt>1/1</pt>
+      <rules_text>
+        <rule><i>(Dryad Arbor isn't a spell, it's affected by summoning sickness, and it has "⭮: Add <mana class="green"></mana>.")</i></rule>
+      </rules_text>
+      <indicator>
+        <wedge class="green"></wedge>
+      </indicator>
+    </card>
+    <card class="white has-pt has-manacost">
+      <cardname>War Screecher</cardname>
+      <typeline>Creature — Bird</typeline>
+      <pt>1/3</pt>
+      <manacost><mana class="generic">1</mana><mana class="white"></mana></manacost>
+      <rules_text>
+        <rule>Flying</rule>
+        <rule><mana class="generic">5</mana><mana class="white"></mana>, ⭮: Other creatures you control get +1/+1 until end of turn.</rule>
+      </rules_text>
+      <indicator>
+        <wedge class="white"></wedge>
+      </indicator>
+    </card>
+    <card class="red has-pt has-manacost">
+      <cardname>Hateflayer</cardname>
+      <typeline>Creature — Elemental</typeline>
+      <pt>5/5</pt>
+      <manacost><mana class="generic">5</mana><mana class="red"></mana><mana class="red"></mana></manacost>
+      <rules_text>
+        <rule>Wither <i>(This deals damage to creatures in the form of -1/-1 counters.)</i></rule>
+        <rule><mana class="generic">2</mana><mana class="red"></mana>, ⭯: Hateflayer deals damage equal to its power to any target. <i>(⭯ is the untap symbol.)</i></rule>
+      </rules_text>
+      <indicator>
+        <wedge class="red"></wedge>
+      </indicator>
+    </card>
+    <card class="multicolor has-pt">
+      <cardname class="long">Asmoranomardicadaistinaculdacar</cardname>
+      <typeline>Legendary Creature — Human Wizard</typeline>
+      <pt>3/3</pt>
+      <rules_text>
+        <rule>As long as you've discarded a card this turn, you may pay <mana class="black red"></mana> to cast this spell.</i></rule>
+        <rule>When Asmoranomardicadaistinaculdacar enters the battlefield, you may search your library for a card named The Underworld Cookbook, reveal it, put it into your hand, then shuffle.</rule>
+        <rule>Sacrifice two Foods: Target creature deals 6 damage to itself.</rule>
+      </rules_text>
+      <indicator>
+        <wedge class="black"></wedge>
+        <wedge class="red"></wedge>
+      </indicator>
+    </card>
+    <card class="multicolor has-pt has-manacost">
+      <cardname>Progenitus</cardname>
+      <typeline>Legendary Creature — Hydra Avatar</typeline>
+      <pt>10/10</pt>
+      <manacost><mana class="white"></mana><mana class="white"></mana><mana class="blue"></mana><mana class="blue"></mana><mana class="black"></mana><mana class="black"></mana><mana class="red"></mana><mana class="red"></mana><mana class="green"></mana><mana class="green"></mana></manacost>
+      <rules_text>
+        <rule>Protection from everything</rule>
+        <rule>If Progenitus would be put into a graveyard from anywhere, reveal Progenitus and shuffle it into its owner's library instead.</rule>
+      </rules_text>
+      <indicator>
+        <wedge class="white"></wedge>
+        <wedge class="blue"></wedge>
+        <wedge class="black"></wedge>
+        <wedge class="red"></wedge>
+        <wedge class="green"></wedge>
+      </indicator>
+    </card>
+    <card class="red has-manacost">
+      <cardname>Rage Extractor</cardname>
+      <typeline>Artifact</typeline>
+      <manacost><mana class="generic">4</mana><mana class="red phyrexian">ϕ</mana></manacost>
+      <rules_text>
+        <rule><i>(<mana class="red phyrexian">ϕ</mana> can be paid with either <mana class="red"></mana> or 2 life.)</i></rule>
+        <rule>Whenever you cast a spell with ϕ in its mana cost, Rage Extractor deals damage equal to that spell's mana value to any target.</rule>
+      </rules_text>
+      <indicator>
+        <wedge class="red"></wedge>
+      </indicator>
+    </card>
+    <card class="has-manacost">
+      <cardname>Ice Cauldron</cardname>
+      <typeline>Artifact</typeline>
+      <manacost><mana class="generic">4</mana></manacost>
+      <rules_text>
+        <rule><mana class="generic">4</mana>, ⭮: You may exile a nonland card from your hand. You may cast that card for as long as it remains exiled. Put a charge counter on Ice Cauldron and note the type and amount of mana spent to pay this activation cost. Activate only if there are no charge counters on Ice Cauldron.</rule>
+        <rule>⭮, Remove a charge counter from Ice Cauldron: Add Ice Cauldron's last noted type and amount of mana. Spend this mana only to cast the last card exiled with Ice Cauldron.</rule>
+      </rules_text>
+      <indicator>
+      </indicator>
+    </card>
+    <card class="blue has-manacost has-pt">
+      <cardname>The Reality Chip</cardname>
+      <typeline class="long">Legendary Artifact Creature — Equipment Jellyfish</typeline>
+      <pt>0/4</pt>
+      <manacost><mana class="generic">1</mana><mana class="blue"></mana></manacost>
+      <rules_text>
+        <rule>You may look at the top card of your library any time.</rule>
+        <rule>As long as The Reality Chip is attached to a creature, you may play lands and cast spells from the top of your library.</rule>
+        <rule>Reconfigure <mana class="generic">2</mana><mana class="blue"></mana> <i>(<mana class="generic">2</mana><mana class="blue"></mana>: Attach to target creature you control; or unattach from a creature. Reconfigure only as a sorcery. While attached, this isn't a creature.)</i></rule>
+      </rules_text>
+      <indicator>
+        <wedge class="blue"></wedge>
+      </indicator>
+    </card>
+    <card class="multicolor has-pt">
+      <cardname class="long">Aetherwing, Golden-Scale Flagship</cardname>
+      <typeline>Legendary Artifact — Vehicle</typeline>
+      <pt>*/4</pt>
+      <rules_text>
+        <rule>Flying</rule>
+        <rule>Aetherwing, Golden-Scale Flagship's power is equal to the number of artifacts you control.</rule>
+        <rule>Crew 1 <i>(Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)</i></rule>
+      </rules_text>
+      <indicator>
+        <wedge class="blue"></wedge>
+        <wedge class="red"></wedge>
+      </indicator>
+    </card>
+
+    <card>
+      <cardname class="long">Okina, Temple to the Grandfathers</cardname>
+      <typeline>Legendary Land</typeline>
+      <rules_text>
+        <rule>⭮: Add <mana class="green"></mana>.</rule>
+        <rule><mana class="green"></mana>, ⭮: Target legendary creature gets +1/+1 until end of turn.</rule>
+      </rules_text>
+      <indicator></indicator>
+    </card>
+
+    <card class="blue has-manacost">
+      <cardname>Dance of the Dead</cardname>
+      <typeline>Enchantment — Aura</typeline>
+      <manacost><mana class="generic">1</mana><mana class="blue"></mana></manacost>
+      <rules_text>
+        <rule class="long">Enchant creature card in a graveyard</rule>
+        <rule class="long">When Dance of the Dead enters the battlefield, if it's on the battlefield, it loses "enchant creature card in a graveyard" and gains "enchant creature put onto the battlefield with Dance of the Dead." Put enchanted creature card onto the battlefield tapped under your control and attach Dance of the Dead to it. When Dance of the Dead leaves the battlefield, that creature's controller sacrifices it.</rule>
+        <rule class="long">Enchanted creature gets +1/+1 and doesn't untap during its controller's untap step.</rule>
+        <rule class="long">At the beginning of the upkeep of enchanted creature's controller, that player may pay <mana class="generic">1</mana><mana class="blue"></mana>. If the player does, untap that creature.</rule>
+      </rules_text>
+      <indicator>
+        <wedge class="blue"></wedge>
+      </indicator>
+    </card>
+    <card class="green has-manacost">
+      <cardname>Camouflage</cardname>
+      <typeline>Instant</typeline>
+      <manacost><mana class="green"></mana></manacost>
+      <rules_text>
+        <rule class="long">Cast this spell only during your declare attackers step.</rule>
+        <rule class="long">This turn, instead of declaring blockers, each defending player chooses any number of creatures they control and divides them into a number of piles equal to the number of attacking creatures for whom that player is the defending player. Creatures those players control that can block additional creatures may likewise be put into additional piles. Assign each pile to a different one of those attacking creatures at random. Each creature in a pile that can block the creature that pile is assigned to does so. <i>(Piles can be empty.)</i></rule>
+      </rules_text>
+      <indicator>
+        <wedge class="green"></wedge>
+      </indicator>
+    </card>
+    <card class="white has-manacost has-loyalty">
+      <cardname>Gideon, Champion of Justice</cardname>
+      <typeline>Legendary Planeswalker — Gideon</typeline>
+      <loyalty>4</loyalty>
+      <manacost><mana class="generic">2</mana><mana class="white"></mana><mana class="white"></mana></manacost>
+      <rules_text>
+        <rule class="planeswalker">
+          <loyalty_cost class="up">+1</loyalty_cost>
+          <loyalty_text>Put a loyalty counter on Gideon, Champion of Justice for each creature target opponent controls.</loyalty_text>
+        </rule>
+        <rule class="planeswalker">
+          <loyalty_cost>0</loyalty_cost>
+          <loyalty_text>Until end of turn, Gideon, Champion of Justice becomes a Human Soldier creature with power and toughness each equal to the number of loyalty counters on him and gains indestructible. He's still a planeswalker. Prevent all damage that would be dealt to him this turn.</loyalty_text>
+        </rule>
+        <rule class="planeswalker">
+          <loyalty_cost class="down">-15</loyalty_cost>
+          <loyalty_text>Exile all other permanents.</loyalty_text>
+        </rule>
+      </rules_text>
+      <indicator>
+        <wedge class="white"></wedge>
+      </indicator>
+    </card>
+    <card class="has-manacost">
+      <cardname>Eater of Virtue</cardname>
+      <typeline>Legendary Artifact — Equipment</typeline>
+      <manacost><mana class="generic">1</mana></manacost>
+      <rules_text>
+        <rule>Whenever equipped creature dies, exile it.</rule>
+        <rule>Equipped creature gets +2/+0.</rule>
+        <rule>As long as a card exiled with Eater of Virtue has flying, equipped creature has flying. The same is true for first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, protection, reach, trample, and vigilance.</rule>
+        <rule>Equip <mana class="generic">1</mana></rule>
+      </rules_text>
+      <indicator></indicator>
+    </card>
+
+
+
+
+
+
+
+    <card class="blue has-manacost">
+      <cardname>Commence the Endgame</cardname>
+      <typeline>Instant</typeline>
+      <manacost><mana class="generic">4</mana><mana class="blue"></mana><mana class="blue"></mana></manacost>
+      <rules_text>
+        <rule>This spell can't be countered.</rule>
+        <rule>Draw two cards, then amass X, where X is the number of cards in your hand. <i>(Put X +1/+1 counters on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.)</i></rule>
+      </rules_text>
+      <indicator>
+        <wedge class="blue"></wedge>
+      </indicator>
+    </card>
+    <card class="black has-manacost">
+      <cardname>Bolas's Citadel</cardname>
+       <typeline>Legendary Artifact</typeline>
+       <manacost><mana class="generic">3</mana><mana class="black"></mana><mana class="black"></mana></manacost>
+      <rules_text>
+        <rule>You may look at the top card of your library any time.</rule>
+        <rule>You may play the top card of your library. If you cast a spell this way, pay life equal to its converted mana cost rather than pay its mana cost.</rule>
+        <rule>⭮, Sacrifice ten nonland permanents: Each opponent loses 10 life.</rule>
+      </rules_text>
+      <indicator>
+        <wedge class="black"></wedge>
+      </indicator>
+    </card>
+    <card class="green has-manacost has-loyalty">
+      <cardname>Nissa, Who Shakes the World</cardname>
+       <typeline>Legendary Planeswalker — Nissa</typeline>
+      <loyalty>5</loyalty>
+       <manacost><mana class="generic">3</mana><mana class=green></mana><mana class="green"></mana></manacost>
+      <rules_text>
+        <rule class="long">Whenever you tap a Forest for mana, add an additional <mana class="green"></mana>.</rule>
+        <rule class="planeswalker long">
+          <loyalty_cost class="up">+1</loyalty_cost>
+          <loyalty_text>Put three +1/+1 counters on up to one target noncreature land you control. Untap it. It becomes a 0/0 Elemental creature with vigilance and haste that's still a land.</loyalty_text>
+        </rule>
+        <rule class="planeswalker long">
+          <loyalty_cost class="down">-8</loyalty_cost>
+          <loyalty_text>You get an emblem with "Lands you control have indestructible." Search your library for any number of Forest cards, put them onto the battlefield tapped, then shuffle your library.</loyalty_text>
+        </rule>
+      </rules_text>
+      <indicator>
+        <wedge class="green"></wedge>
+      </indicator>
+    </card>
+    <card class="red has-manacost has-pt">
+      <cardname>Ilharg, the Raze-Boar</cardname>
+      <typeline>Legendary Creature — Boar God</typeline>
+      <pt>6/6</pt>
+      <manacost><mana class="generic">3</mana><mana class="red"></mana><mana class="red"></mana></manacost>
+      <rules_text>
+        <rule>Trample</rule>
+        <rule>Whenever Ilharg, the Raze-Boar attacks, you may put a creature card from your hand onto the battlefield tapped and attacking. Return that creature to your hand at the beginning of the next end step.</rule>
+        <rule>When Ilharg, the Raze-Boar dies or is put into exile from the battlefield, you may put it into its owner's library third from the top.</rule>
+      </rules_text>
+      <indicator>
+        <wedge class="red"></wedge>
+      </indicator>
+    </card>
+
+    <card class="blue has-manacost">
+      <cardname>Hada Spy Patrol</cardname>
+      <typeline>Creature — Human Rogue</typeline>
+      <manacost><mana class="generic">1</mana><mana class="blue"></mana></manacost>
+      <rules_text>
+        <rule class="level-up">
+          <pt>1/1</pt>
+          <rule>Level up <mana class="generic">2</mana><mana class="blue"></mana> <i>(<mana class="generic">2</mana><mana class="blue"></mana>: Put a level counter on this. Level up only as a sorcery.)</i></rule>
+        </rule>
+        <rule class="levels">
+          <level>1-2</level>
+          <pt>2/2</pt>
+          <rules>
+            <rule>Hada Spy Patrol can't be blocked.</rule>
+          </rules>
+        </rule>
+        <rule class="levels">
+          <level>3+</level>
+          <pt>3/3</pt>
+          <rules>
+            <rule>Shroud <i>(This creature can't be the target of spells or abilities.)</i></rule>
+            <rule>Hada Spy Patrol can't be blocked.</rule>
+          </rules>
+        </rule>
+      </rules_text>
+      <indicator>
+        <wedge class="blue"></wedge>
+      </indicator>
+    </card>
+
+<card class="stickers">
+  <name_stickers>
+    <name>Mystic</name>
+    <name>Doom</name>
+    <name>Sandwich</name>  
+  </name_stickers>
+
+  <ability_stickers>
+    <ticket_cost>🎟️×2</ticket_cost>
+    <abilities>
+      <rule>Lifelink</rule>
+    </abilities>
+    <ticket_cost>🎟️×3</ticket_cost>
+    <abilities>
+      <rule>This creature must be blocked if able.</rule>
+      <rule>Whenever this creature becomes blocked, it gets +1/+1 until end of turn for each creature blocking it.</rule>
+    </abilities>
+  </ability_stickers>
+
+  <pt_stickers>
+    <pt_sticker> <ticket_cost>🎟️×2</ticket_cost> <pt>1/4</pt> </pt_sticker>
+    <pt_sticker> <ticket_cost>🎟️×5</ticket_cost> <pt>6/8</pt> </pt_sticker>  
+  </pt_stickers>
+</card>
+
+  </cards>
+
+  <p>Longest names: Momir Vig, Simic Visionary Avatar</p>
+  <p>Longest text: Dungeon of the Mad Mage</p>
+
+  <h2>Inspiration</h2>
+  <p>Card design inspired by <a href="https://dribbble.com/dakaran">Derek Weller</a>.</p>
+  <img height="300" src="third_party/ae1abbbe71896f4281e8fa350a3023b1.png" />
+  <img height="300" src="third_party/b9f7d405fba1005e1be0b69f42ddcb59.png" />
+
+  <p>Color indicator design inspired by a post on the <a href="https://magicjudge.tumblr.com/post/159528326759/lets-talk-about-color-identity">Ask a Magic Judge tumblr</a>.</p>
+  <img height="300" src="third_party/tumblr_inline_o3vzobiTyM1rc6az2_500.png" />
+
+</article>
+
+
+
+
+
+  <!--
+// ---------------------
+"{{FullCard[Attraction]}}"
+"{{FullCard[Scheme]}}"
+"{{FullCard[Plane]}}"
+"{{FullCard[Dungeon]}}"
+"{{FullCard[Phenomenon]}}"
+"{{FullCard[Conspiracy]}}"
+"{{FullCard[Vanguard]}}"
+// ---------------------
+"{{FullCard[Siege]}}"
+"{{FullCard[Fortification]}}"
+"{{FullCard[Class]}}"
+"{{FullCard[Saga]}}"
+// ---------------------
+"{{FullCard[Special]}}"
+// ---------------------
+
+  -->
+</body>
+
+<link rel="stylesheet" type="text/css" href="card-display.css">
+<link rel="stylesheet" type="text/css" href="third_party/quicksand.css">
+<style>
+  body { background-color: white;}
+  article {
+    max-width: 90ch;
+    margin: auto;
+  }
+  cards {
+    margin:auto;
+    width: min-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; }
+
+indicator {
+  width: 64px;
+  height: 64px;
+  display: inline-block;
+}
+</style>
+
+
+
+</html>

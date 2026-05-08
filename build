@@ -1,0 +1,274 @@
+#!/bin/sh
+
+mkdir -p ./__build
+
+# --------------------------------
+# Download and process latest data
+# --------------------------------
+
+# Pick one... Will need to run periodically (no more than once every 24 hours)
+##./download_mtgjson
+##./download_scryfall
+
+# ------------------------
+# Generate plural grammars
+# ------------------------
+
+##./grammars/generate_plurals --english-grammar | jq -S . > ./grammars/english_grammar-type_line.json5
+##./grammars/generate_plurals --mtgish-grammar  | jq -S . > ./grammars/mtgish_grammar-type_line.json5
+##./grammars/generate_plurals --list-types                > ./typescript_types/subtypes.ts
+
+# ---------------
+# Generate mtgish
+# ---------------
+
+##cd ./go_mtg_parser/
+##  go build -o ../__build/go_mtg_parser
+##cd ../
+
+##./__build/go_mtg_parser \
+##  --ignore-list-file ./grammars/ignore.json5 \
+##  --short-names-file ./grammars/short_names.json5 \
+##  --find-replace-file ./grammars/find_replace.json5 \
+##  --english-grammar-files ./grammars/english_grammar*.json5 \
+##  --mtgish-grammar-files ./grammars/mtgish_grammar*.json5 \
+##  --mtgjson-files ./data/oracle.json \
+##                  ./data/dungeons.json \
+##  --print-preprocess \
+##  --stop-after-preprocess \
+##> ./__build/preprocess.txt
+
+##./__build/go_mtg_parser \
+##  --ignore-list-file ./grammars/ignore.json5 \
+##  --short-names-file ./grammars/short_names.json5 \
+##  --find-replace-file ./grammars/find_replace.json5 \
+##  --english-grammar-files ./grammars/english_grammar*.json5 \
+##  --mtgish-grammar-files ./grammars/mtgish_grammar*.json5 \
+##  --mtgjson-files ./data/oracle.json \
+##                  ./data/dungeons.json \
+##  --report-unused-grammar-rules \
+##> ./__build/grammar.failing.txt
+
+##./__build/go_mtg_parser \
+##  --ignore-list-file ./grammars/ignore.json5 \
+##  --short-names-file ./grammars/short_names.json5 \
+##  --find-replace-file ./grammars/find_replace.json5 \
+##  --english-grammar-files ./grammars/english_grammar*.json5 \
+##  --mtgish-grammar-files ./grammars/mtgish_grammar*.json5 \
+##  --mtgjson-files ./data/oracle.json \
+##                  ./data/dungeons.json \
+##  --print-mtgish \
+##> ./data/mtgish.lines.ron
+
+# ---------------------------------
+# Convert mtgish.ron to mtgish.json
+# ---------------------------------
+
+##cd ./rust_syntax/
+##  cargo build --target-dir=../__build --features "ronl_to_bincode" --bin rust_syntax
+##  cp ../__build/debug/rust_syntax ../__build/ronl_to_bincode
+##
+##  cargo build --target-dir=../__build --features "ronl_to_pretty_ron" --bin rust_syntax
+##  cp ../__build/debug/rust_syntax ../__build/ronl_to_pretty_ron
+##
+##  cargo build --target-dir=../__build --features "write_out_json"  --bin rust_syntax
+##  cp ../__build/debug/rust_syntax ../__build/bincode_to_jsonl
+##
+##  cargo build --target-dir=../__build --message-format=json --tests --features "write_out_json" | jq -r 'select(.reason == "compiler-artifact") | select(.target.name == "rust_syntax") | .filenames[0]' > ../__build/ts_rs_filename
+##  cp `cat ../__build/ts_rs_filename` ../__build/generate_typescript_bindings
+##cd ../
+##
+##./__build/ronl_to_pretty_ron data/mtgish.lines.ron > data/mtgish.pretty.ron
+##./__build/ronl_to_bincode    data/mtgish.lines.ron __build/mtgish.bincode
+##./__build/bincode_to_jsonl   __build/mtgish.bincode > data/mtgish.lines.json
+##
+##cd ./__build
+##  rm -rf bindings
+##  ./generate_typescript_bindings
+##cd ../
+##cat ./__build/bindings/*.ts > typescript_types/oracle_cards.d.ts
+##vim -S typescript_types/fix_generated_typescript.vim typescript_types/oracle_cards.d.ts
+
+# -----------------------
+# Check typescript output
+# -----------------------
+
+# This uses mtgish.lines.json and oracle_cards.d.ts to find unused and
+#  unfound rules
+# It's way faster (< 2 seconds) than running tsc (4 - 30 minutes), but you
+#  should still run tsc after all the errors have been cleaned up.
+##./check_unused_ts_types
+
+# One giant mega-file is too large for the typescript compiler to handle,
+#  split it into appropriate chunks
+##./custom_split \
+##  --header-file ./typescript_types/header.txt \
+##  --footer-file ./typescript_types/footer.txt \
+##  --line-prefix 'test.push(' \
+##  --line-suffix ');' \
+##  --lines 1000 \
+##  data/mtgish.lines.json ./__build/cards- .ts
+
+# Speed things up by running it over multiple processors,
+#  and then wait.
+# This takes ~3 minutes/file on my machine, but some files
+#  are slow(?), at 12+ minutes/file. And there's almost
+#  always one slow file per batch...
+# This eats up RAM like crazy (~400 megs / thread over 26
+#  files = 10 gigs), but CPU usage is a bigger bottleneck.
+# Total time (deno check): 36 minutes (wall) / 126 minutes (cpu).
+# Total time (bun + tsgo): 16 minutes (wall) /  57 minutes (cpu).
+# Total time (node + tsc): 45 minutes (wall) / 162 minutes (cpu).
+#  tsc      --noEmit <filename>
+#  bun tsgo --noEmit <filename>
+#  deno check        <filename>
+# Note: deno check caches the results, so second runs are near
+#  instant.
+##cd __build
+##  rm -f tsc_errors.txt
+##
+##  bun tsgo --noEmit cards-00.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-01.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-02.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-03.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-04.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-05.ts >> tsc_errors.txt 2>&1 &
+##  wait
+##
+##  bun tsgo --noEmit cards-06.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-07.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-08.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-09.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-10.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-11.ts >> tsc_errors.txt 2>&1 &
+##  wait
+##
+##  bun tsgo --noEmit cards-12.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-13.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-14.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-15.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-16.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-17.ts >> tsc_errors.txt 2>&1 &
+##  wait
+##
+##  bun tsgo --noEmit cards-18.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-19.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-20.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-21.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-22.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-23.ts >> tsc_errors.txt 2>&1 &
+##  wait
+##
+##  bun tsgo --noEmit cards-24.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-25.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-26.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-27.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-28.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-29.ts >> tsc_errors.txt 2>&1 &
+##  wait
+##
+##  bun tsgo --noEmit cards-30.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-31.ts >> tsc_errors.txt 2>&1 &
+##  bun tsgo --noEmit cards-32.ts >> tsc_errors.txt 2>&1 &
+##  wait
+##cd ../
+
+# You can take the tsc_errors.txt file and do some formatting of it to
+#  output a smaller errors.tsc file to help update oracle_cards.d.ts.
+# The formatting process is:
+#  :% ! sort
+#  trim out the lines that don't begin with "card-##.ts(##,####): error"
+#  :%s/^\(cards-\d*.ts\)(\(\d*\),.*/sed -n "\2p" \1 >> errors.ts/
+# The script you generate will look like:
+#    sed -n "283p" cards-11.ts >> errors.ts
+#  where 283 is the line number from tsc_errors.txt
+#
+# $ cat ../typescript_types/header.txt > errors.ts
+# $ sh tsc_errors.txt
+# $ cat ../typescript_types/footer.txt >> errors.ts
+
+# -------------
+# Build website
+# -------------
+
+## mkdir -p ./__build/web
+## mkdir -p ./__build/web/data
+## mkdir -p ./__build/web/typescript
+## 
+## ln --force --symbolic $PWD/CNAME                                           ./__build/web
+## 
+## ln --force --symbolic $PWD/data/dungeons.json                              ./__build/web/data/dungeons.json
+## ln --force --symbolic $PWD/data/oracle.json                                ./__build/web/data/oracle.json
+## ln --force --symbolic $PWD/data/version.json                               ./__build/web/data/version.json
+## 
+## ln --force --symbolic $PWD/grammars/find_replace.json5                     ./__build/web/data/find_replace.json5
+## ln --force --symbolic $PWD/grammars/ignore.json5                           ./__build/web/data/ignore.json5
+## ln --force --symbolic $PWD/grammars/short_names.json5                      ./__build/web/data/short_names.json5
+## 
+## ln --force --symbolic $PWD/grammars/english_grammar.json5                  ./__build/web/data/english_grammar.json5
+## ln --force --symbolic $PWD/grammars/english_grammar-INPUT.json5            ./__build/web/data/english_grammar-INPUT.json5
+## ln --force --symbolic $PWD/grammars/english_grammar-ability_word.json5     ./__build/web/data/english_grammar-ability_word.json5
+## ln --force --symbolic $PWD/grammars/english_grammar-counters.json5         ./__build/web/data/english_grammar-counters.json5
+## ln --force --symbolic $PWD/grammars/english_grammar-flavor_word.json5      ./__build/web/data/english_grammar-flavor_word.json5
+## ln --force --symbolic $PWD/grammars/english_grammar-named_cards.json5      ./__build/web/data/english_grammar-named_cards.json5
+## ln --force --symbolic $PWD/grammars/english_grammar-null_text.json5        ./__build/web/data/english_grammar-null_text.json5
+## ln --force --symbolic $PWD/grammars/english_grammar-reminder_text.json5    ./__build/web/data/english_grammar-reminder_text.json5
+## ln --force --symbolic $PWD/grammars/english_grammar-type_line.json5        ./__build/web/data/english_grammar-type_line.json5
+## 
+## ln --force --symbolic $PWD/grammars/mtgish_grammar.json5                   ./__build/web/data/mtgish_grammar.json5
+## ln --force --symbolic $PWD/grammars/mtgish_grammar-create_tokens.json5     ./__build/web/data/mtgish_grammar-create_tokens.json5
+## ln --force --symbolic $PWD/grammars/mtgish_grammar-mana.json5              ./__build/web/data/mtgish_grammar-mana.json5
+## ln --force --symbolic $PWD/grammars/mtgish_grammar-named_cards.json5       ./__build/web/data/mtgish_grammar-named_cards.json5
+## ln --force --symbolic $PWD/grammars/mtgish_grammar-triggers.json5          ./__build/web/data/mtgish_grammar-triggers.json5
+## ln --force --symbolic $PWD/grammars/mtgish_grammar-type_line.json5         ./__build/web/data/mtgish_grammar-type_line.json5
+## ln --force --symbolic $PWD/grammars/mtgish_grammar-vote_option.json5       ./__build/web/data/mtgish_grammar-vote_option.json5
+## 
+## ln --force --symbolic $PWD/typescript_types/oracle_cards.d.ts              ./__build/web/typescript/oracle_cards.d.ts
+## ln --force --symbolic $PWD/typescript_types/subtypes.ts                    ./__build/web/typescript/subtypes.ts
+## 
+## ln --force --symbolic $PWD/web_src/autocomplete.css                        ./__build/web
+## ln --force --symbolic $PWD/web_src/card-display.css                        ./__build/web
+## ln --force --symbolic $PWD/web_src/horizontal_progress.css                 ./__build/web
+## ln --force --symbolic $PWD/web_src/vertical_progress.css                   ./__build/web
+## ln --force --symbolic $PWD/web_src/index.css                               ./__build/web
+## 
+## ln --force --symbolic $PWD/web_src/about.html                              ./__build/web
+## ln --force --symbolic $PWD/web_src/index.html                              ./__build/web
+## ln --force --symbolic $PWD/web_src/card-display.html                       ./__build/web
+## 
+## ln --force --symbolic $PWD/web_src/card_parser.js                          ./__build/web
+## 
+## ln --force --symbolic $PWD/web_src/third_party                             ./__build/web
+
+# -------------
+# Build website
+# -------------
+
+# The website built above is full of sym-links, which don't cooperate with surge, make a non-symlink version
+##rsync --archive --copy-links ./__build/web/ ./__build/web_deploy
+
+# ----------------
+# Tidy up grammars
+# ----------------
+
+##cd ./grammars/
+###Purposely don't tidy certain files:
+### bun json5 english_grammar-INPUT.json5         | LC_ALL=C jq -S . | sponge english_grammar-INPUT.json5
+### bun json5 mtgish_grammar-create_tokens.json5  | LC_ALL=C jq -S . | sponge mtgish_grammar-create_tokens.json5
+### bun json5 mtgish_grammar-vote_option.json5    | LC_ALL=C jq -S . | sponge mtgish_grammar-vote_option.json5
+##
+##  bun json5 english_grammar.json5               | LC_ALL=C jq -S . | sponge english_grammar.json5
+##  bun json5 english_grammar-ability_word.json5  | LC_ALL=C jq -S . | sponge english_grammar-ability_word.json5
+##  bun json5 english_grammar-counters.json5      | LC_ALL=C jq -S . | sponge english_grammar-counters.json5
+##  bun json5 english_grammar-flavor_word.json5   | LC_ALL=C jq -S . | sponge english_grammar-flavor_word.json5
+##  bun json5 english_grammar-named_cards.json5   | LC_ALL=C jq -S . | sponge english_grammar-named_cards.json5
+##  bun json5 english_grammar-null_text.json5     | LC_ALL=C jq -S . | sponge english_grammar-null_text.json5
+##  bun json5 english_grammar-reminder_text.json5 | LC_ALL=C jq -S . | sponge english_grammar-reminder_text.json5
+##  bun json5 english_grammar-type_line.json5     | LC_ALL=C jq -S . | sponge english_grammar-type_line.json5
+##
+##  bun json5 mtgish_grammar.json5                | LC_ALL=C jq -S . | sponge mtgish_grammar.json5
+##  bun json5 mtgish_grammar-mana.json5           | LC_ALL=C jq -S . | sponge mtgish_grammar-mana.json5
+##  bun json5 mtgish_grammar-named_cards.json5    | LC_ALL=C jq -S . | sponge mtgish_grammar-named_cards.json5
+##  bun json5 mtgish_grammar-triggers.json5       | LC_ALL=C jq -S . | sponge mtgish_grammar-triggers.json5
+##  bun json5 mtgish_grammar-type_line.json5      | LC_ALL=C jq -S . | sponge mtgish_grammar-type_line.json5
+##cd ../

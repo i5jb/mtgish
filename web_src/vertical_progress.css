@@ -1,0 +1,119 @@
+.progress-outer {
+  margin: auto auto ;
+  width: 540px;
+  max-height: fit-content;
+
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.progress {
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  border-radius: 15px;
+  background: #333;
+  padding: 5vh 5vh;
+}
+
+.progress > div {
+  position: relative;
+  line-height: 20px;
+  min-height: 30px;
+  color: #ccc;  
+}
+
+.progress > div.left {
+  padding-right: 20px;
+  text-align: right;
+}
+.progress > div.right {
+  padding-left: 20px;
+}
+
+/* Highlight (#fff) and bold the current item */
+.progress > div.right.current             { color: #fff; font-weight: bold; }
+/* Don't have highlighted text (#fff), instead use muted text (#666) after the current item */
+.progress > div.right.current ~ div.right { color: #666; }
+
+
+/* This is the highlighted progress bar, setting height to 0% hides it. */
+.progress > div.right:after {
+  content: "";
+  background: lightgray;
+  border-radius: 2px;
+  position: absolute;
+  left: 0px;
+  top: 10px;
+  height: 101%;
+  width: 2px;
+  transform: translateX(-50%);
+  transition: height 0.2s ease;
+}
+.progress > div.right.current ~ div.right:after { height: 0%; transition: none; }
+.progress > div.right.current:after             { height: 0%; transition: height 0.2s ease-out; }
+.progress > div.right.prev:after { transition: none; }
+
+/* This is the un-highlted progress bar */
+.progress > div.left:after {
+  content: "";
+  background: rgba(211, 211, 211, 0.05);
+  border-radius: 2px;
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  height: 101%;
+  width: 1px;
+  transform: translateX(50%);
+}
+.progress > div.left.done:after                 { display: none; }
+
+
+
+.progress > div.right:before {
+  content: "";
+  background: lightgray;
+  padding: 5px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0px;
+  top: 10px;
+  transform: translateX(-50%) translateY(-50%);
+  transition: padding 0.2s ease;
+}
+.progress > div.right.current:before {
+  background: white;
+  padding: 10px;
+  transition: all 0.2s 0.15s cubic-bezier(0.175, 0.885, 0.32, 2);
+  animation: pulse 1s infinite linear;
+}
+@keyframes pulse {
+  0%   { padding:  9px; }
+  50%  { padding: 11px; }
+  100% { padding:  9px; }
+}
+
+
+
+.progress > div.right.current ~ div.right:before {
+  background: #666;
+  padding: 2.5px;
+}
+
+
+
+.start.current {
+  color: #94bbe7 !important;
+}
+.start.current:before {
+  color: #94bbe7 !important;
+}
+
+.done.current {
+  color: lightgreen !important;
+}
+.done.current:before {
+  background: lightgreen !important;
+  animation: none !important;
+}

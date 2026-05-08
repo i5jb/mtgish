@@ -1,0 +1,142 @@
+#!/usr/bin/python3
+
+import json
+import sys
+
+filename = sys.argv[1]
+
+with open(filename, "r") as f:
+  atomic_cards = json.loads(f.read())
+
+# Patch silly names
+card = atomic_cards["data"].pop("Red Herring")
+norm_card = list(filter(lambda x: x["text"].startswith("Haste"),  card))[0]
+alt__card = list(filter(lambda x: x["text"].startswith("{1}{U}"), card))[0]
+alt__card["name"] = "Sketchy Red Herring"
+atomic_cards["data"]["Red Herring"]         = [norm_card]
+atomic_cards["data"]["Sketchy Red Herring"] = [alt__card]
+
+card = atomic_cards["data"].pop("Pick Your Poison")
+norm_card = list(filter(lambda x: x["text"].startswith("Choose one"), card))[0]
+alt__card = list(filter(lambda x: x["text"].startswith("Choose any"), card))[0]
+alt__card["name"] = "Pick Your Sketchy Poison"
+atomic_cards["data"]["Pick Your Poison"]         = [norm_card]
+atomic_cards["data"]["Pick Your Sketchy Poison"] = [alt__card]
+
+card = atomic_cards["data"].pop("Unquenchable Fury")
+norm_card = list(filter(lambda x: x["text"].startswith("Enchant creature"), card))[0]
+alt__card = list(filter(lambda x: x["text"].startswith("Each Minotaur"),    card))[0]
+alt__card["name"] = "Horde's Unquenchable Fury"
+atomic_cards["data"]["Unquenchable Fury"]         = [norm_card]
+atomic_cards["data"]["Horde's Unquenchable Fury"] = [alt__card]
+
+card = atomic_cards["data"].pop("Fast // Furious")
+norm_card_a = list(filter(lambda x: (x["faceName"] == "Fast")    and x["text"].startswith("Discard a card"),  card))[0]
+norm_card_b = list(filter(lambda x: (x["faceName"] == "Furious") and x["text"].startswith("Furious deals"),   card))[0]
+alt__card_a = list(filter(lambda x: (x["faceName"] == "Fast")    and x["text"].startswith("Target creature"), card))[0]
+alt__card_b = list(filter(lambda x: (x["faceName"] == "Furious") and x["text"].startswith("Target creature"), card))[0]
+alt__card_a["name"],     alt__card_b["name"]     = "Fasto // Furiouso", "Fasto // Furiouso"
+alt__card_a["faceName"], alt__card_b["faceName"] = "Fasto", "Furiouso"
+atomic_cards["data"]["Fast // Furious"]   = [norm_card_a, norm_card_b]
+atomic_cards["data"]["Fasto // Furiouso"] = [alt__card_a, alt__card_b]
+
+# Fix annoying em-dash
+card = atomic_cards["data"].pop("Human—Time Lord Meta-Crisis")
+card[0]["name"] = card[0]["name"].replace("—", "-")
+card[0]["text"] = card[0]["text"].replace("—", "-")
+atomic_cards["data"]["Human-Time Lord Meta-Crisis"] = card
+
+# Fix incorrect color-indicator
+card = atomic_cards["data"].pop("Keeper of the Crown // Coronation of the Wilds")
+card[1].pop("colorIndicator")
+atomic_cards["data"]["Keeper of the Crown // Coronation of the Wilds"] = card
+
+# Fix one bad planeswalker cost symbol on a Heroes of the Realm card
+card = atomic_cards["data"].pop("Byode, Inverse Sun")
+card[0]["text"] = card[0]["text"].replace("\n-X", "\n[-X]")
+atomic_cards["data"]["Byode, Inverse Sun"] = card
+
+def WUBRG(color):
+  order = ["W", "U", "B", "R", "G"]
+  try:
+    return order.index(color)
+  except:
+    return len(order)
+
+def cleanup(m):
+  return {k: v for (k,v) in m.items() if v != ""}
+
+def cardInfo(cardside):
+  card = {
+    "name": cardside.get("faceName", cardside.get("name", "")),
+    "manaCost": cardside.get("manaCost", ""),
+    "type": cardside.get("type", ""),
+    "text": cardside.get("text", ""),
+    "power": cardside.get("power", ""),
+    "toughness": cardside.get("toughness", ""),
+    "loyalty": cardside.get("loyalty", ""),
+    "defense": cardside.get("defense", ""),
+    "life": cardside.get("life", ""),
+    "hand": cardside.get("hand", ""),
+    "colorIndicator": "".join(sorted(cardside.get("colorIndicator", []), key=lambda color: WUBRG(color))),
+  }
+
+  return cleanup(card)
+
+cards = []
+for cardname, cardsides in atomic_cards["data"].items():
+  layout = cardsides[0]["layout"]
+
+  if layout == "reversible_card":
+    continue
+
+  if len(cardsides) == 1 and layout == "meld":
+    card = cardInfo(cardsides[0])
+    if card["name"] == cardname:
+      cards.append({ "name": card["name"], "layout": "melded", "cards": [ card ] })
+      continue
+    cards.append({ "name": card["name"], "layout": "meld_piece", "melded": cardname.split(" // ")[1], "cards": [ card ] })
+    continue
+
+  if len(cardsides) == 1:
+    card = cardInfo(cardsides[0])
+    cards.append({ "name": cardname, "layout": "single", "cards": [ card ] })
+    continue
+
+  # More than one "side"
+  sides = [cardInfo(cardside) for cardside in cardsides]
+  if False: pass
+
+  # Purpose-ful multi-sided
+  elif (layout == "adventure"):
+    assert(len(sides) == 2)
+    if (sides[1]["type"] in ["Instant — Adventure", "Sorcery — Adventure"]):
+      cards.append({ "name": cardname, "layout": "adventurer", "cards": sides })
+    if (sides[1]["type"] in ["Instant — Omen",      "Sorcery — Omen"]):
+      cards.append({ "name": cardname, "layout": "ominous",    "cards": sides })
+  elif (layout == "prepare"):   assert(len(sides) == 2) ; cards.append({ "name": cardname, "layout": "preparer",   "cards": sides })
+  elif (layout == "aftermath"): assert(len(sides) == 2) ; cards.append({ "name": cardname, "layout": "split",      "cards": sides })
+  elif (layout == "modal_dfc"): assert(len(sides) == 2) ; cards.append({ "name": cardname, "layout": "modal_dfc",  "cards": sides })
+  elif (layout == "flip"):      assert(len(sides) == 2) ; cards.append({ "name": cardname, "layout": "flip",       "cards": sides })
+  elif (layout == "transform"): assert(len(sides) == 2) ; cards.append({ "name": cardname, "layout": "transform",  "cards": sides })
+
+  elif (layout == "split"):
+    card = cardInfo(cardsides[0])
+    if card["type"] == "Enchantment — Room":
+      shared_typeline = "Enchantment — Room"
+      del sides[0]["type"]
+      del sides[1]["type"]
+      cards.append({ "name": cardname, "layout": "room",      "shared_typeline": shared_typeline, "cards": sides })
+    else:
+      cards.append({ "name": cardname, "layout": "split",     "cards": sides })
+
+  # Variant multi-sided
+  elif (layout == "normal"):
+    # print("Variants?", cardname, file=sys.stderr)
+    sides = sorted(sides, key=lambda card: card["text"])
+    cards.append({ "name": cardname, "layout": "variants",  "cards": sides })
+
+  else: print("Uknown layout?", layout, cardname, file=sys.stderr)
+
+cards = sorted(cards, key=lambda card: card["name"])
+json.dump(cards, sys.stdout, indent=2, ensure_ascii=False)

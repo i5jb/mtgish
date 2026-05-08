@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Baldur's Gate Wilderness",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Baldur's Gate Wilderness",
+        "type": "Dungeon",
+        "text": "Crash Landing — Search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nGoblin Camp — Create a Treasure token.\nEmerald Grove — Create a 2/2 white Knight creature token.\nAuntie's Teahouse — Scry 3.\nDefiled Temple — You may sacrifice a permanent. If you do, draw a card.\nMountain Pass — You may put a land card from your hand onto the battlefield.\nEbonlake Grotto — Create two 1/1 blue Faerie Dragon creature tokens with flying.\nGrymforge — For each opponent, goad up to one target creature that player controls.\nGithyanki Crèche — Distribute three +1/+1 counters among up to three target creatures you control.\nLast Light Inn — Draw two cards.\nReithwin Tollhouse — Roll 2d4 and create that many Treasure tokens.\nMoonrise Towers — Instant and sorcery spells you cast this turn cost 3 less to cast.\nGauntlet of Shar — Each opponent loses 5 life.\nBalthazar's Lab — Return up to two target creature cards from your graveyard to your hand.\nCircus of the Last Days — Create a token that's a copy of one of your commanders, except it's not legendary.\nUndercity Ruins — Create three 4/1 black Skeleton creature tokens with menace.\nSteel Watch Foundry — You get an emblem with \"Creatures you control get +2/+2 and have trample.\"\nAnsur's Sanctum — Reveal the top four cards of your library and put them into your hand. Each opponent loses life equal to those cards' total mana value.\nTemple of Bhaal — Creatures your opponents control get -5/-5 until end of turn."
+      }
+    ]
+  },
+    {
+    "name": "Dungeon of the Mad Mage",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dungeon of the Mad Mage",
+        "type": "Dungeon",
+        "text": "Yawning Portal — You gain 1 life. (Leads to: Dungeon Level)\nDungeon Level — Scry 1. (Leads to: Goblin Bazaar, Twisted Caverns)\nGoblin Bazaar — Create a Treasure token. (Leads to: Lost Level)\nTwisted Caverns — Target creature can't attack until your next turn. (Leads to: Lost Level)\nLost Level — Scry 2. (Leads to: Runestone Caverns, Muiral's Graveyard)\nRunestone Caverns — Exile the top two cards of your library. You may play them. (Leads to: Deep Mines)\nMuiral's Graveyard — Create two 1/1 black Skeleton creature tokens. (Leads to: Deep Mines)\nDeep Mines — Scry 3. (Leads to: Mad Wizard's Lair)\nMad Wizard's Lair — Draw three cards and reveal them. You may cast one of them without paying its mana cost."
+      }
+    ]
+  },
+  {
+    "name": "Lost Mine of Phandelver",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Lost Mine of Phandelver",
+        "type": "Dungeon",
+        "text": "Cave Entrance — Scry 1. (Leads to: Goblin Lair, Mine Tunnels)\nGoblin Lair — Create a 1/1 red Goblin creature token. (Leads to: Storeroom, Dark Pool)\nMine Tunnels — Create a Treasure token. (Leads to: Dark Pool, Fungi Cavern)\nStoreroom — Put a +1/+1 counter on target creature. (Leads to: Temple of Dumathoin)\nDark Pool — Each opponent loses 1 life and you gain 1 life. (Leads to: Temple of Dumathoin)\nFungi Cavern — Target creature gets -4/-0 until your next turn. (Leads to: Temple of Dumathoin)\nTemple of Dumathoin — Draw a card."
+      }
+    ]
+  },
+  {
+    "name": "Tomb of Annihilation",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Tomb of Annihilation",
+        "type": "Dungeon",
+        "text": "Trapped Entry — Each player loses 1 life. (Leads to: Veils of Fear, Oubliette)\nVeils of Fear — Each player loses 2 life unless they discard a card. (Leads to: Sandfall Cell)\nSandfall Cell — Each player loses 2 life unless they sacrifice a creature, artifact, or land of their choice. (Leads to: Cradle of the Death God)\nOubliette — Discard a card and sacrifice a creature, an artifact, and a land. (Leads to: Cradle of the Death God)\nCradle of the Death God — Create The Atropal, a legendary 4/4 black God Horror creature token with deathtouch."
+      }
+    ]
+  },
+  {
+    "name": "Undercity",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Undercity",
+        "type": "Dungeon — Undercity",
+        "text": "You can't enter this dungeon unless you \"venture into Undercity.\"\nSecret Entrance — Search your library for a basic land card, reveal it, put it into your hand, then shuffle. (Leads to: Forge, Lost Well)\nForge — Put two +1/+1 counters on target creature. (Leads to: Trap!, Arena)\nLost Well — Scry 2. (Leads to: Arena, Stash)\nTrap! — Target player loses 5 life. (Leads to: Archives)\nArena — Goad target creature. (Leads to: Archives, Catacombs)\nStash — Create a Treasure token. (Leads to: Catacombs)\nArchives — Draw a card. (Leads to: Throne of the Dead Three)\nCatacombs — Create a 4/1 black Skeleton creature token with menace. (Leads to: Throne of the Dead Three)\nThrone of the Dead Three — Reveal the top ten cards of your library. Put a creature card from among them onto the battlefield with three +1/+1 counters on it. It gains hexproof until your next turn. Then shuffle."
+      }
+    ]
+  }
+]

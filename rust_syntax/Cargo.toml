@@ -1,0 +1,26 @@
+[package]
+name = "rust_syntax"
+version = "0.0.1"
+edition = "2021"
+
+[dependencies]
+# Serialize/Deserialize, needed for RON
+serde = { version = "1.0.217", features = ["derive"] }
+
+# Adds skip_serializing_if, and unwrap_or_skip
+serde_with = "3.12.0"
+
+# Serde input/output formats
+serde_json = "1.0.134"
+ron = "0.8.1"
+
+# Typescript types from Rust types
+ts-rs = { version = "10.1", features = ["no-serde-warnings"] }
+
+# Non-Serde binary Serialize/Deserialize
+bincode = "2.0.1"
+
+[features]
+ronl_to_bincode = []
+ronl_to_pretty_ron = []
+write_out_json = []

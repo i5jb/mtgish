@@ -1,0 +1,194 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', Arial, sans-serif;
+  background: #222;
+}
+
+#loading-overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+
+  background: #222;
+  z-index: 2;
+}
+
+#loading-overlay.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+#app {
+  margin: 30px;
+  width: max-content;
+}
+
+#parse-tree-area {
+  background: #fff;
+  margin-bottom: 30px;
+  max-width: max-content;
+  width: fit-content;
+}
+
+#output-tree-area {
+  background: #fff;
+  margin-bottom: 30px;
+  max-width: max-content;
+}
+
+#parse-table-area {
+  background: #fff;
+  width: fit-content;
+  max-width: fit-content;
+  overflow: scroll;
+
+  display: grid;
+  gap: 5px 5px;
+  padding: 5px;
+  margin-right: 45px;
+
+  grid-template-columns: max-content max-content;
+}
+
+#progress-parsing-english-bar         { display: none; }
+#progress-parsing-english-percentage  { display: none; }
+#progress-parsing-english-string      { display: none; }
+
+#progress-parsing-generate-bar        { display: none; }
+#progress-parsing-generate-percentage { display: none; }
+#progress-parsing-generate-string     { display: none; }
+
+#progress-parsing-mtgish-bar          { display: none; }
+#progress-parsing-mtgish-percentage   { display: none; }
+#progress-parsing-mtgish-string       { display: none; }
+
+
+parse-input {
+  padding: 5px;
+  border: 1px black solid;
+}
+parse-output {
+  padding: 5px;
+  border: 1px black solid;
+  max-width: 50em;
+}
+
+hr {
+  border: 1px solid;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.input-outer {
+  margin-bottom: 20px;
+}
+
+.input-outer > input {
+  border: 1px black solid;
+}
+
+blank {
+  color: #999;
+}
+
+tablemark::before {
+  /* Create a number based foot-note marker */
+  content: attr(counter);
+  font-size: 0.55em;
+  line-height: 1;    /* Limit line height so it frames the foot-note better (otherwise, it's tall-ish) */
+  font-weight: bold;
+
+  /* It's positioned to the upper-right.  */
+  position: relative;
+  top: -8px;
+  left: -5px;
+
+  /* */
+  display: inline-block;
+  padding: 0.35em 0.35em; /* Padding here gives it a nice frame (otherwise, the surrounding box is cramped) */
+  margin: 0 0 0.15rem 0.5rem;
+  border-radius: 0.35em;
+
+  background: #fff;
+}
+tablemark {
+  white-space: nowrap;
+  display: inline-table;
+  position: relative;
+  padding: 0.0em 0em 0.0em 0em;
+  line-height: 1.5em;
+  border-radius: 0.25em;
+}
+
+mark::before {
+  /* Create a number based foot-note marker */
+  content: attr(counter);
+  font-size: 0.55em;
+  line-height: 1;    /* Limit line height so it frames the foot-note better (otherwise, it's tall-ish) */
+  font-weight: bold;
+
+  /* It's positioned to the upper-right.  */
+  position: absolute;
+  top: 2px;
+  left: -5px;
+
+  /* */
+  display: inline-block;
+  padding: 0.35em 0.35em; /* Padding here gives it a nice frame (otherwise, the surrounding box is cramped) */
+  margin: 0 0 0.15rem 0.5rem;
+  border-radius: 0.35em;
+
+  background: #fff;
+}
+mark {
+  display: inline-table;
+  position: relative;
+  padding: 0.0em 0.0em 0.0em 1.5em;
+  line-height: 1.5em;
+  border-radius: 0.25em;
+  max-width: 45em;
+}
+
+nomark {
+  display: inline-table;
+  position: relative;
+  padding: 0.0em 0.0em 0.0em 0.0em;
+  line-height: 1.5em;
+  border-radius: 0.25em;
+}
+
+
+
+
+
+
+/*
+tablemark::after {
+  // Create a number based foot-note marker
+  content: attr(matchNumber);
+  font-size: 0.55em;
+  line-height: 1;    // Limit line height so it frames the foot-note better (otherwise, it's tall-ish)
+  font-weight: bold;
+
+  // It's positioned to the bottom-right.
+  position: relative;
+  bottom: -2px;
+  right: 2px;
+
+  //
+  display: inline-block;
+  padding: 0.35em 0.35em; // Padding here gives it a nice frame (otherwise, the surrounding box is cramped)
+  margin: 0 0 0.15rem 0.5rem;
+  border-radius: 0.35em;
+
+  background: #99e;
+}
+*/

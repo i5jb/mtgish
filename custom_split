@@ -1,0 +1,102 @@
+#!/usr/bin/python3
+
+import sys
+import math
+
+# --------------------------------------------------------------------------- #
+#                              Argument Parsing                               #
+# --------------------------------------------------------------------------- #
+
+usage = """
+Usage:
+  [--help]
+
+  [--header-file FILENAME]   # default: Undefined
+  [--footer-file FILENAME]   # default: Undefined
+  [--lines NUMBER]           # default: 1000
+  [--digits NUMBER]          # default: automatic
+  [--line-prefix STRING]     # default: ""
+  [--line-suffix STRING]     # default: ""
+
+  FILE_TO_PARSE
+  OUTPUT_FILENAME_BEGIN
+  OUTPUT_FILENAME_END
+"""
+
+config_header_file = None
+config_footer_file = None
+config_lines = 1000
+config_digits = None
+config_line_prefix = ""
+config_line_suffix = ""
+
+config_file_to_parse = None
+config_output_filename_start = None
+config_output_filename_end = None
+
+def show_help(exit_code):
+  print(usage)
+  sys.exit(exit_code)
+
+current_state = None
+normal_args = 0
+for arg in sys.argv[1:]:
+  if arg == "--help":
+    show_help(0)
+
+  if arg == "--header-file" : current_state = arg ; continue
+  if arg == "--footer-file" : current_state = arg ; continue
+  if arg == "--lines"       : current_state = arg ; continue
+  if arg == "--digits"      : current_state = arg ; continue
+  if arg == "--line-prefix" : current_state = arg ; continue
+  if arg == "--line-suffix" : current_state = arg ; continue
+
+  if current_state == "--header-file" : config_header_file =     arg  ; current_state = None ; continue
+  if current_state == "--footer-file" : config_footer_file =     arg  ; current_state = None ; continue
+  if current_state == "--lines"       : config_lines       = int(arg) ; current_state = None ; continue
+  if current_state == "--digits"      : config_digits      = int(arg) ; current_state = None ; continue
+  if current_state == "--line-prefix" : config_line_prefix =     arg  ; current_state = None ; continue
+  if current_state == "--line-suffix" : config_line_suffix =     arg  ; current_state = None ; continue
+
+  if normal_args == 0: config_file_to_parse         = arg ; normal_args += 1 ; continue
+  if normal_args == 1: config_output_filename_start = arg ; normal_args += 1 ; continue
+  if normal_args == 2: config_output_filename_end   = arg ; normal_args += 1 ; continue
+
+  print(f"Unexpected arg: { arg }")
+  show_help(-1)
+
+if normal_args != 3:
+  print("Not enough arguments")
+  show_help(-1)
+
+# --------------------------------------------------------------------------- #
+#                                Main Program                                 #
+# --------------------------------------------------------------------------- #
+
+header = []
+footer = []
+digits = config_digits
+lines = config_lines
+
+file_contents = open(config_file_to_parse, "r").readlines()
+if config_header_file != None:
+  header = open(config_header_file, "r").readlines()
+if config_footer_file != None:
+  footer = open(config_footer_file, "r").readlines()
+if config_digits == None:
+  number_of_output_files = len(file_contents) / lines
+  digits = math.floor(math.log10(number_of_output_files)) + 1
+
+filename_start = config_output_filename_start
+filename_end   = config_output_filename_end
+
+chunks = [file_contents[i:i+lines] for i in range(0,len(file_contents),lines)]
+
+for i, chunk in enumerate(chunks):
+  with open(f"{filename_start}{i:0{digits}}{filename_end}", "w") as outfile:
+    outfile.writelines(header)
+    for line in chunk:
+      outfile.writelines(config_line_prefix + line.strip() + config_line_suffix + "\n")
+    outfile.writelines(footer)
+
+# --------------------------------------------------------------------------- #

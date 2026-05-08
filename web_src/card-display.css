@@ -1,0 +1,483 @@
+:root {
+  --white-main:           rgb(216, 209, 182);
+  --blue-main:            rgb(132, 180, 228);
+  --black-main:           rgb(122, 109, 118);
+  --red-main:             rgb(136,  26,  54);
+  --green-main:           rgb(147, 180, 131);
+  --colorless-main:       rgb(202, 202, 202);
+  --multicolor-main:      rgb(232, 210, 110);
+
+  --white-mana-outer:     rgb(248, 231, 185);
+  --blue-mana-outer:      rgb( 14, 104, 171);
+  --black-mana-outer:     rgb( 21,  11,   0);
+  --red-mana-outer:       rgb(211,  32,  42);
+  --green-mana-outer:     rgb(  0, 115,  62);
+  --colorless-mana-outer: rgb( 53,  53,  53);
+  --generic-mana-outer:   rgb(149, 134, 122);
+  --snow-mana-outer:      rgb(185, 124, 221);
+
+  --white-mana-inner:     rgb(249, 250, 244);
+  --blue-mana-inner:      rgb(109, 169, 233);
+  --black-mana-inner:     rgb( 76,  76,  76);
+  --red-mana-inner:       rgb(235, 159, 130);
+  --green-mana-inner:     rgb(161, 212, 182);
+  --colorless-mana-inner: rgb(149, 134, 122);
+  --generic-mana-inner:   rgb(191, 184, 178);
+  --snow-mana-inner:      rgb(179, 229, 252);
+
+  --snow-mana-outer-orig:  rgb( 97, 104, 163);
+  --white-mana-inner-orig: rgb(249, 250, 244);
+  --blue-mana-inner-orig:  rgb(179, 206, 234);
+  --black-mana-inner-orig: rgb(166, 159, 157);
+  --red-mana-inner-orig:   rgb(235, 159, 130);
+  --green-mana-inner-orig: rgb(196, 211, 202);
+}
+
+card            { --color-main: var(--colorless-main);  }
+card.green      { --color-main: var(--green-main);      }
+card.red        { --color-main: var(--red-main);        }
+card.white      { --color-main: var(--white-main);      }
+card.black      { --color-main: var(--black-main);      }
+card.blue       { --color-main: var(--blue-main);       }
+card.multicolor { --color-main: var(--multicolor-main); }
+
+mana.white.blue  { background: linear-gradient(135deg, var(--white-mana-inner) 50%, var(--blue-mana-inner)  50%); border-color: var(--white-mana-outer) var(--blue-mana-outer)  var(--blue-mana-outer)  var(--white-mana-outer); }
+mana.blue.black  { background: linear-gradient(135deg, var(--blue-mana-inner)  50%, var(--black-mana-inner) 50%); border-color: var(--blue-mana-outer)  var(--black-mana-outer) var(--black-mana-outer) var(--blue-mana-outer);  }
+mana.black.red   { background: linear-gradient(135deg, var(--black-mana-inner) 50%, var(--red-mana-inner)   50%); border-color: var(--black-mana-outer) var(--red-mana-outer)   var(--red-mana-outer)   var(--black-mana-outer); }
+mana.red.green   { background: linear-gradient(135deg, var(--red-mana-inner)   50%, var(--green-mana-inner) 50%); border-color: var(--red-mana-outer)   var(--green-mana-outer) var(--green-mana-outer) var(--red-mana-outer);   }
+mana.green.white { background: linear-gradient(135deg, var(--green-mana-inner) 50%, var(--white-mana-inner) 50%); border-color: var(--green-mana-outer) var(--white-mana-outer) var(--white-mana-outer) var(--green-mana-outer); }
+
+mana.white.black { background: linear-gradient(135deg, var(--white-mana-inner) 50%, var(--black-mana-inner) 50%); border-color: var(--white-mana-outer) var(--black-mana-outer) var(--black-mana-outer) var(--white-mana-outer); }
+mana.blue.red    { background: linear-gradient(135deg, var(--blue-mana-inner)  50%, var(--red-mana-inner)   50%); border-color: var(--blue-mana-outer)  var(--red-mana-outer)   var(--red-mana-outer)   var(--blue-mana-outer);  }
+mana.black.green { background: linear-gradient(135deg, var(--black-mana-inner) 50%, var(--green-mana-inner) 50%); border-color: var(--black-mana-outer) var(--green-mana-outer) var(--green-mana-outer) var(--black-mana-outer); }
+mana.red.white   { background: linear-gradient(135deg, var(--red-mana-inner)   50%, var(--white-mana-inner) 50%); border-color: var(--red-mana-outer)   var(--white-mana-outer) var(--white-mana-outer) var(--red-mana-outer);   }
+mana.green.blue  { background: linear-gradient(135deg, var(--green-mana-inner) 50%, var(--blue-mana-inner)  50%); border-color: var(--green-mana-outer) var(--blue-mana-outer)  var(--blue-mana-outer)  var(--green-mana-outer); }
+
+mana.hybrid.white  { background: linear-gradient(135deg, var(--generic-mana-inner) 50%, var(--white-mana-inner) 50%); border-color: var(--generic-mana-outer) var(--white-mana-outer) var(--white-mana-outer) var(--generic-mana-outer); }
+mana.hybrid.blue   { background: linear-gradient(135deg, var(--generic-mana-inner) 50%, var(--blue-mana-inner)  50%); border-color: var(--generic-mana-outer) var(--blue-mana-outer)  var(--blue-mana-outer)  var(--generic-mana-outer); }
+mana.hybrid.black  { background: linear-gradient(135deg, var(--generic-mana-inner) 50%, var(--black-mana-inner) 50%); border-color: var(--generic-mana-outer) var(--black-mana-outer) var(--black-mana-outer) var(--generic-mana-outer); }
+mana.hybrid.red    { background: linear-gradient(135deg, var(--generic-mana-inner) 50%, var(--red-mana-inner)   50%); border-color: var(--generic-mana-outer) var(--red-mana-outer)   var(--red-mana-outer)   var(--generic-mana-outer); }
+mana.hybrid.green  { background: linear-gradient(135deg, var(--generic-mana-inner) 50%, var(--green-mana-inner) 50%); border-color: var(--generic-mana-outer) var(--green-mana-outer) var(--green-mana-outer) var(--generic-mana-outer); }
+
+mana.white   { background-color: var(--white-mana-inner); border-color: var(--white-mana-outer); }
+mana.blue    { background-color: var(--blue-mana-inner);  border-color: var(--blue-mana-outer);  }
+mana.black   { background-color: var(--black-mana-inner); border-color: var(--black-mana-outer); }
+mana.red     { background-color: var(--red-mana-inner);   border-color: var(--red-mana-outer);   }
+mana.green   { background-color: var(--green-mana-inner); border-color: var(--green-mana-outer); }
+
+mana.colorless { background-color: var(--colorless-mana-inner);  border-color: var(--colorless-mana-outer); }
+mana.snow      { background-color: var(--snow-mana-inner);      border-color: var(--snow-mana-outer); }
+
+mana.generic { background-color: var(--generic-mana-inner); border-color: var(--generic-mana-outer); }
+
+loyalty_cost.white { color: black; }
+
+indicator { background: var(--colorless-main); }
+
+indicator > unknown { background: white; }
+
+indicator > wedge.white { background-color: var(--white-mana-outer); }
+indicator > wedge.blue  { background-color: var(--blue-mana-outer);  }
+indicator > wedge.black { background-color: var(--black-mana-outer); }
+indicator > wedge.red   { background-color: var(--red-mana-outer);   }
+indicator > wedge.green { background-color: var(--green-mana-outer); }
+
+
+
+
+
+card {
+  display: grid;
+  grid-template-rows: min-content min-content auto min-content;
+  grid-template-columns: min-auto;
+  grid-template-areas:
+    "cardname"
+    "typeline"
+    "rules_text"
+    "indicator" ;
+  align-items: start;
+}
+
+card.stickers {
+  display: grid;
+  grid-template-rows: min-content auto min-content;
+  grid-template-columns: min-auto;
+  grid-template-areas:
+    "name_stickers"
+    "ability_stickers"
+    "pt_stickers" ;
+  align-items: start;
+}
+
+name_stickers {
+  margin-top: 20px;
+  grid-area: name_stickers;
+  justify-self: center;
+}
+
+name_stickers > name {
+  border-style: dashed;
+  padding: 3px;
+  border-width: 3px;
+  border-color: var(--color-main);
+  margin-top: 10px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+ability_stickers {
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  grid-area: ability_stickers;
+
+  row-gap: 20px;
+  column-gap: 10px;
+  display: grid;
+  grid-template-columns: min-content auto;
+}
+
+ability_stickers > ticketcost {  justify-self: left; align-self: center; }
+ability_stickers > abilities  {  justify-self: left; align-self: center; }
+ability_stickers > abilities  { border-style: dashed; border-color: var(--color-main); border-width: 3px; padding: 3px; }
+ability_stickers > abilities > rule { padding: 0px; }
+ability_stickers > abilities > rule:not(:last-child) { margin-bottom: 8px; }
+
+pt_stickers {
+  grid-area: pt_stickers;
+  justify-self: center;
+  margin-bottom: 20px;
+}
+
+pt_stickers > pt_sticker:first-child {
+  margin-right: 15px;
+}
+
+pt_stickers > pt_sticker > pt {
+  top: 0px;
+  right: 0px;
+  border-style: dashed;
+  border-color: var(--color-main);
+}
+
+card.has-pt {
+  display: grid;
+  grid-template-rows: min-content min-content min-content auto min-content;
+  grid-template-columns: min-content auto;
+  grid-template-areas:
+    "pt         ."
+    "cardname   cardname"
+    "typeline   typeline"
+    "rules_text rules_text"
+    "indicator  indicator ";
+  align-items: start;
+}
+
+card.has-manacost {
+  display: grid;
+  grid-template-rows: min-content min-content min-content auto min-content;
+  grid-template-columns: min-content auto;
+  grid-template-areas:
+    ".          manacost"
+    "cardname   cardname"
+    "typeline   typeline"
+    "rules_text rules_text"
+    "indicator  indicator ";
+  align-items: start;
+}
+
+card.has-loyalty.has-manacost {
+  display: grid;
+  grid-template-rows: min-content min-content min-content auto min-content;
+  grid-template-columns: min-content auto;
+  grid-template-areas:
+    "loyalty    manacost"
+    "cardname   cardname"
+    "typeline   typeline"
+    "rules_text rules_text"
+    "indicator  indicator ";
+  align-items: start;
+}
+
+card.has-pt.has-manacost {
+  display: grid;
+  grid-template-rows: min-content min-content min-content auto min-content;
+  grid-template-columns: min-content auto;
+  grid-template-areas:
+    "pt         manacost"
+    "cardname   cardname"
+    "typeline   typeline"
+    "rules_text rules_text"
+    "indicator  indicator ";
+  align-items: start;
+}
+
+rule.planeswalker {
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-template-areas: "loyalty_cost loyalty_text"
+}
+
+rule.level-up {
+  display: grid;
+  grid-template-columns: auto min-content;
+  grid-template-areas:
+    "rule pt"
+}
+
+rule.levels {
+  display: grid;
+  grid-template-columns: min-content auto min-content;
+  grid-template-areas:
+    "level rules pt"
+}
+
+rule.level-up > rule { grid-area: rule; justify-self: left;  }
+rule.level-up > pt   { grid-area: pt;   justify-self: right; align-self: center; }
+
+rule.level-up { padding-bottom: 8px; }
+rule.levels   { padding-bottom: 4px; }
+rule.level-up > rule { padding-bottom: 0px; }
+rule.levels > rules > rule { padding-bottom: 4px; }
+rule.levels > rules { margin-bottom: 0px; }
+
+rule.levels { padding-top: 10px; border-width: 1px 0px 0px 0px; border-style: solid; border-color: var(--color-main); }
+
+rule.level-up > pt { top: 0px; right: 0px; }
+rule.levels   > pt { top: 0px; right: 0px; }
+rule > pt   { border-color: var(--color-main); }
+
+rule.levels > level { grid-area: level; justify-self: left;  }
+rule.levels > rules { grid-area: rules; justify-self: left;  }
+rule.levels > pt    { grid-area: pt;    justify-self: right; align-self: center; }
+
+level {
+  padding-right: 16px;
+  color: #111;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  position: relative;
+}
+level:before { color: var(--color-main); }
+level:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 6px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left-width: 8px;
+    border-left-style: solid;
+}
+
+
+
+loyalty    { grid-area: loyalty;    justify-self: start;  }
+pt         { grid-area: pt;         justify-self: start;  }
+manacost   { grid-area: manacost;   justify-self: end;    }
+cardname   { grid-area: cardname;   justify-self: center; }
+typeline   { grid-area: typeline;   justify-self: center; }
+rules_text { grid-area: rules_text; justify-self: left;   }
+indicator  { grid-area: indicator;  justify-self: center; }
+
+loyalty_cost { justify-self: start; }
+loyalty_text { justify-self: left;  }
+
+cardname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+card        { min-height: min-content; width: 300px; max-height: fit-content; }
+card > indicator   { height:  32px; width:  32px; }
+pt, loyalty {     height:  12px; padding-top: 2px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px; }
+manacost    {     height:  13px; padding-top: 2px; padding-bottom: 2px; padding-left: 6px; padding-right: 6px; }
+pt, loyalty { position: relative; top: -10px; right: -10px; }
+manacost    { position: relative; top: -10px; right:  10px; }
+indicator   { position: relative; bottom: 5px; }
+
+card          { border-style: solid; border-radius: 16px; border-width: 3px; background-color: #fff;    }
+pt            { border-style: solid; border-radius: 20px; border-width: 3px; background-color: #fff;    }
+manacost      { border-style: solid; border-radius: 20px; border-width: 3px; }
+loyalty       { border-style: solid;                      border-width: 3px; background-color: #fff;    }
+
+card { margin: 8px; }
+
+cardname   { padding:  0px  0px 10px  0px; }
+rules_text { padding: 10px 20px 10px 20px; }
+rule       { padding:  0px  0px 10px  0px; display: block; }
+
+cardname, typeline, rules_text, pt, loyalty, loyalty_cost, loyalty_text, mana, manacost, name, rule, ticket_cost {
+  color: #000;
+  font-family: 'Quicksand', sans-serif;
+}
+
+cardname      { text-align: center; font-size: 18px; }
+/* cardname.long { text-align: center; font-size: 14px; } */
+typeline      { text-align: center; font-size: 12px; }
+/* typeline.long { text-align: center; font-size: 10px; } */
+rule          { text-align: left;   font-size: 12px; }
+/* rule.long     { text-align: left;   font-size: 10px; } */
+pt            { text-align: center; font-size: 12px; }
+loyalty       { text-align: center; font-size: 12px; }
+loyalty_cost  { text-align: center; font-size: 12px; }
+
+mana {
+  height: 20px;
+  width: 20px;
+  border-style: solid;
+  border-radius: 50%;
+  border-width: 2px;
+  display: inline-block;
+
+  font-size: 18px;
+  text-align: center;
+  vertical-align: text-top;
+  line-height: 0.9;
+}
+
+mana::after {
+  content: '\00a0';
+  line-height: 0;
+}
+
+mana.hybrid {
+  text-align: left;
+  font-size: 60%;
+  line-height: 1.4;
+}
+
+mana.long {
+  font-size: 80%;
+  line-height: 1.4;
+}
+
+
+
+
+manacost mana {
+  height: 10px;
+  width: 10px;
+  font-size: 9px;
+  line-height: 1.2;
+}
+
+manacost > mana.hybrid {
+  line-height: 1.3;
+}
+
+rule mana {
+  height: 8px;
+  width: 8px;
+  border-width: 1px;
+
+  margin-top: 3px;
+  font-size: 8px;
+  line-height: 0.9;
+}
+
+
+rule { padding-bottom: 12px;}
+rule.long { padding-bottom: 10px;}
+rule.planeswalker { margin-left: 0px;}
+loyalty_text { padding-left: 16px; }
+
+loyalty_cost {
+  color: #111;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  position: relative;
+}
+loyalty_cost.up:before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom-width: 8px;
+    border-bottom-style: solid;
+}
+loyalty_cost.down:after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top-width: 8px;
+  border-top-style: solid;
+}
+
+loyalty { width: 24px; }
+loyalty:before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 0px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom-width: 6px;
+  border-bottom-style: solid;
+}
+loyalty:after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 0px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top-style: solid;
+  border-top-width: 6px;
+}
+
+card,
+card > pt,
+card > manacost,
+card > loyalty                                 { border-color:        var(--color-main); }
+card > manacost                                { background-color:    var(--color-main); }
+card > rules_text > rule > loyalty_cost        { border-color:        var(--color-main); border-style: solid; border-width: 1px; }
+card > loyalty:before,
+card > rules_text > rule > loyalty_cost:before { border-bottom-color: var(--color-main); }
+card > loyalty:after,
+card > rules_text > rule > loyalty_cost:after  { border-top-color:    var(--color-main); }
+
+card                          > cardname { margin-top: 20px; }
+card.has-loyalty.has-manacost > cardname { margin-top: 0px;}
+card.has-pt.has-manacost      > cardname { margin-top: 0px;}
+card.has-pt                   > cardname { margin-top: 0px;}
+card.has-manacost             > cardname { margin-top: 0px;}
+
+indicator           { clip-path: polygon(50% 100%, 97% 64.7%, 82%  7%, 18%  7%, 3% 64%  ); }
+indicator > unknown { clip-path: polygon(50% 100%, 97% 64.7%, 82%  7%, 18%  7%, 3% 64%  ); }
+
+indicator > unknown {
+  position: absolute;
+  width: 85.5%;
+  height: 85.5%;
+  top: 7.25%;
+  left: 7.25%;
+}
+
+indicator > wedge {
+  position: absolute;
+  width: 87.5%;
+  height: 87.5%;
+  top: 6.25%;
+  left: 6.25%;
+}
+
+indicator > wedge.white { clip-path: polygon(81%  8%,   19%  8%, 50% 47%); }
+indicator > wedge.blue  { clip-path: polygon(95% 62%,   82% 12%, 52% 51%); }
+indicator > wedge.black { clip-path: polygon(94% 64.7%, 52% 54%, 52% 97%); }
+indicator > wedge.red   { clip-path: polygon( 6% 64.7%, 48% 54%, 48% 97%); }
+indicator > wedge.green { clip-path: polygon( 5% 62%,   18% 12%, 48% 51%); }
