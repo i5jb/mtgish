@@ -32,12 +32,14 @@ pub enum CardType {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[allow(dead_code)]
 pub enum DungeonType {
   Undercity,
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[allow(dead_code)]
 pub enum BattleType {
   Siege,
 }
@@ -409,6 +411,7 @@ pub enum EnchantmentType {
   Class,
   Curse,
   Plan,
+  Role,
   Room,
   Rune,
   Saga,
@@ -427,14 +430,18 @@ pub enum ArtifactType {
   Equipment,
   Food,
   Fortification,
+  Gold,
   Infinity,
   Junk,
   Lander,
+  Map,
+  Mutagen,
   Powerstone,
   Spacecraft,
   Stone,
   Treasure,
   Vehicle,
+  Vibranium,
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -525,6 +532,7 @@ pub enum PlaneswalkerType {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[allow(dead_code)]
 pub enum PlaneType {
   Alara,
   AlfavaMetraxis,
@@ -975,6 +983,7 @@ pub enum SubType {
   Class,
   Curse,
   Plan,
+  Role,
   Room,
   Rune,
   Saga,
@@ -990,14 +999,18 @@ pub enum SubType {
   Equipment,
   Food,
   Fortification,
+  Gold,
   Infinity,
   Junk,
   Lander,
+  Map,
+  Mutagen,
   Powerstone,
   Spacecraft,
   Stone,
   Treasure,
   Vehicle,
+  Vibranium,
 
   // PlaneswalkerType
   Ajani,
@@ -1473,7 +1486,9 @@ pub enum CounterType {
   Or(Vec<CounterType>),
 }
 
+#[allow(dead_code)]
 type PlayerId = i32;
+
 type PermanentId = i32;
 type EffectId = i32;
 type MutateIndex = i32;
@@ -2312,7 +2327,7 @@ pub enum CastEffect {
   ReduceCastingCostIfItsBargained(CostReduction),
   ReduceCastingCostX(CostReductionX, Box<GameNumber>),
   SpendOnlyColorManaOnX(Color),
-  SpendOnlyColorsOfManaOnX(ColorList),
+  SpendOnlyColorsOfManaOnX(Vec<Color>),
   SpendOnlyManaFromPermanentsToCast(Box<Permanents>),
   XCantBeZero,
   XIs(Box<Comparison>)
@@ -2509,6 +2524,7 @@ pub struct MadnessXWasntPaid(Box<Actions>);
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[allow(dead_code)]
 pub struct Gift(Box<Actions>);
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -6285,7 +6301,7 @@ pub enum Players {
   ControlsPermanent(Box<Permanent>),
   SacrificedAPermanentThisTurn(Box<Permanents>),
   SurveilledThisTurn,
-  DevotionToColorsIs(ColorList, Box<Comparison>),
+  DevotionToColorsIs(Vec<SimpleColor>, Box<Comparison>),
   HasPutANumberOfCountersOfTypeOnAPermanentThisTurn(Box<Comparison>, CounterType, Box<Permanents>),
   DidntAttackPlayerThisTurn(Box<Player>),
   AControllerOfTheLeastPermanentsAmongPlayers(Box<Players>, Box<Permanents>),
@@ -7418,45 +7434,22 @@ pub enum CardsInGraveyard {
 
 
 
-
-
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
-#[cfg_attr(feature = "write_out_json", serde(tag = "_ColorList", content = "args"))]
-pub enum ColorList {
+#[cfg_attr(feature = "write_out_json", serde(tag = "_TokenColorList", content = "args"))]
+pub enum TokenColorList {
   AllColors,
   TheChosenColor,
-  Colors(Vec<Color>),
+  Colors(Vec<SimpleColor>),
   Colorless,
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
-#[cfg_attr(feature = "write_out_json", serde(tag = "_CreatureTokenType", content = "args"))]
-pub enum CreatureTokenType {
-  ArtifactCreatureToken,
-  CreatureToken,
-  EnchantmentArtifactCreatureToken,
-  EnchantmentCreatureToken,
-  LandCreatureToken,
-}
-
-type CreatureTokenSubtype = SubType;
-
-// type CreatureTokenSubtypes = Vec<CreatureTokenSubtype>;
-#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
-#[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_CreatureTokenSubtypes", content = "args"))]
 pub enum CreatureTokenSubtypes {
-  CreatureTokenSubtypesList(Vec<CreatureTokenSubtype>),
+  CreatureTokenSubtypesList(Vec<SubType>),
   TheChosenCreatureType,
-}
-
-#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
-#[ts(export)]
-#[cfg_attr(feature = "write_out_json", serde(tag = "_LandTokenType", content = "args"))]
-pub enum LandTokenType {
-  LandToken
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -8052,20 +8045,20 @@ pub enum CreatableToken {
   NumberTokensForEach(Box<GameNumber>, Box<GameNumber>, Box<CreatableToken>),
 
   // Manually Defined Tokens
-  ArtifactToken(NameString, Vec<SuperType>, Vec<SubType>, ColorList, Vec<Rule>),
-  ArtifactTokenWithNoRules(NameString, Vec<SuperType>, Vec<SubType>, ColorList),
-  NamedArtifactVehicleToken(NameString, Vec<SuperType>, Vec<SubType>, ColorList, Vec<Rule>, PT),
-  ArtifactVehicleToken(Vec<SuperType>, Vec<SubType>, ColorList, Vec<Rule>, PT),
+  ArtifactToken(NameString, Vec<SuperType>, Vec<SubType>, TokenColorList, Vec<Rule>),
+  ArtifactTokenWithNoRules(NameString, Vec<SuperType>, Vec<SubType>, TokenColorList),
+  NamedArtifactVehicleToken(NameString, Vec<SuperType>, Vec<SubType>, TokenColorList, Vec<Rule>, PT),
+  ArtifactVehicleToken(Vec<SuperType>, Vec<SubType>, TokenColorList, Vec<Rule>, PT),
 
-  EnchantmentToken(NameString, Vec<SuperType>, Vec<SubType>, ColorList, Vec<Rule>),
-  CreatureToken(PT, CreatureTokenType, ColorList, CreatureTokenSubtypes),
-  CreatureTokenWithAbilities(PT, CreatureTokenType, ColorList, CreatureTokenSubtypes, Vec<Rule>),
-  LegendaryNamedCreatureTokenWithCopyEffects(NameString, PT, CreatureTokenType, ColorList, CreatureTokenSubtypes, TokenCopyEffects),
-  LegendaryNamedCreatureToken(NameString, PT, CreatureTokenType, ColorList, CreatureTokenSubtypes),
-  LegendaryNamedCreatureTokenWithAbilities(NameString, PT, CreatureTokenType, ColorList, CreatureTokenSubtypes, Vec<Rule>),
-  NamedCreatureToken(NameString, PT, CreatureTokenType, ColorList, CreatureTokenSubtypes),
-  NamedCreatureTokenWithAbilities(NameString, PT, CreatureTokenType, ColorList, CreatureTokenSubtypes, Vec<Rule>),
-  NamedLandTokenWithNoAbilities(NameString, LandTokenType, ColorList, LandTokenSubtypes),
+  EnchantmentToken(NameString, Vec<SuperType>, Vec<SubType>, TokenColorList, Vec<Rule>),
+  CreatureToken(PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes),
+  CreatureTokenWithAbilities(PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes, Vec<Rule>),
+  LegendaryNamedCreatureTokenWithCopyEffects(NameString, PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes, TokenCopyEffects),
+  LegendaryNamedCreatureToken(NameString, PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes),
+  LegendaryNamedCreatureTokenWithAbilities(NameString, PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes, Vec<Rule>),
+  NamedCreatureToken(NameString, PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes),
+  NamedCreatureTokenWithAbilities(NameString, PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes, Vec<Rule>),
+  NamedLandTokenWithNoAbilities(NameString, Vec<CardType>, TokenColorList, LandTokenSubtypes),
 
 
   // Token Copies of Things
@@ -8091,9 +8084,7 @@ pub enum CreatableToken {
   ThoseTokens,
 
   // Oracle Tokens
-  MutavaultToken,
-  SpellgorgerWeirdToken,
-  TarmogoyfToken,
+  OracleToken(NameString),
 
   // Pre-defined
   VirtuousRoleToken,
@@ -8115,6 +8106,7 @@ pub enum CreatableToken {
   MutagenToken,
   OctopusToken,
   PowerstoneToken,
+  IncubatorToken,
   ShardToken,
   TreasureToken,
   VibraniumToken,
@@ -10036,6 +10028,7 @@ pub enum GraveyardCardEffect {
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_StaticLayerEffect", content = "args"))]
+#[allow(dead_code)]
 pub enum StaticLayer1Effect {
   IsACopyOf_TheObjectChosenToCopy(StaticCopyEffects),
 
@@ -10057,6 +10050,7 @@ pub enum StaticLayer1Effect {
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_StaticLayerEffect", content = "args"))]
+#[allow(dead_code)]
 pub enum StaticLayer2Effect {
   // Layer 2 Effect
   SetController(Box<Player>),
@@ -10065,6 +10059,7 @@ pub enum StaticLayer2Effect {
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_StaticLayerEffect", content = "args"))]
+#[allow(dead_code)]
 pub enum StaticLayer3Effect {
   // Layer 3 Effect
   HasAllNamesOfNonlegendaryCreatures,
@@ -10076,6 +10071,7 @@ pub enum StaticLayer3Effect {
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_StaticLayerEffect", content = "args"))]
+#[allow(dead_code)]
 pub enum StaticLayer4Effect {
   // Layer 4 Effect
   AddCardtype(CardType),
@@ -10106,6 +10102,7 @@ pub enum StaticLayer4Effect {
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_StaticLayerEffect", content = "args"))]
+#[allow(dead_code)]
 pub enum StaticLayer5Effect {
   // Layer 5 Effect
   AddColor(SettableColor),
@@ -10115,6 +10112,7 @@ pub enum StaticLayer5Effect {
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_StaticLayerEffect", content = "args"))]
+#[allow(dead_code)]
 pub enum StaticLayer6Effect {
   // Layer 6 Effect
   AddAbilityVariable(AbilityVariable),
@@ -10137,6 +10135,7 @@ pub enum StaticLayer6Effect {
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_StaticLayerEffect", content = "args"))]
+#[allow(dead_code)]
 pub enum StaticLayer7Effect {
   // Layer 7 Effect
   SetPower(Box<GameNumber>),
@@ -10932,6 +10931,7 @@ pub struct Card {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct MeldPiece {
   name:     NameString,
 
@@ -10965,6 +10965,7 @@ pub struct MeldPiece {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Melded {
   name:     NameString,
 
@@ -10996,6 +10997,7 @@ pub struct Melded {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Adventurer {
   name:     NameString,
 
@@ -11033,6 +11035,7 @@ pub struct Adventurer {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Preparer {
   name:     NameString,
 
@@ -11070,6 +11073,7 @@ pub struct Preparer {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Ominous {
   name:     NameString,
 
@@ -11103,6 +11107,7 @@ pub struct Ominous {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct ModalDFC {
   front_face: Card,
   back_face: Card,
@@ -11112,6 +11117,7 @@ pub struct ModalDFC {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Transforming {
   front_face: Card,
   back_face: Card,
@@ -11121,6 +11127,7 @@ pub struct Transforming {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Flip {
   mana_cost: CardManaCost,
   unflipped: FlipInfo,
@@ -11131,6 +11138,7 @@ pub struct Flip {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Room {
   typeline: OracleTypeline,
   left_door: DoorInfo,
@@ -11141,6 +11149,7 @@ pub struct Room {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Split {
   cards: Vec<Card>,
 }
@@ -11149,6 +11158,7 @@ pub struct Split {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Planar {
   name:     NameString,
   typeline: OracleTypeline,
@@ -11159,6 +11169,7 @@ pub struct Planar {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Conspiracy {
   name:     NameString,
   typeline: OracleTypeline,
@@ -11169,6 +11180,7 @@ pub struct Conspiracy {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Scheme {
   name:     NameString,
   typeline: OracleTypeline,
@@ -11179,6 +11191,7 @@ pub struct Scheme {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Dungeon {
   name:     NameString,
   typeline: OracleTypeline,
@@ -11189,6 +11202,7 @@ pub struct Dungeon {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Vanguard {
   name:     NameString,
   typeline: OracleTypeline,
@@ -11201,6 +11215,7 @@ pub struct Vanguard {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct StickerSheet {
   stickers: Vec<Sticker>,
 }
@@ -11513,6 +11528,7 @@ pub enum OracleCard {
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub enum RegularCard {
   #[serde(rename_all="PascalCase")]
   Card {
@@ -11757,18 +11773,23 @@ pub type CostReductionX = Vec<CostReductionSymbolX>;
 
 #[derive(ts_rs::TS)]
 #[ts(rename="ManaCost", export)]
+#[allow(dead_code)]
 pub struct ExportManaCost(ManaCost);
 #[derive(ts_rs::TS)]
 #[ts(rename="ManaCostX", export)]
+#[allow(dead_code)]
 pub struct ExportManaCostX(ManaCostX);
 #[derive(ts_rs::TS)]
 #[ts(rename="CardManaCost", export)]
+#[allow(dead_code)]
 pub struct ExportCardManaCost(CardManaCost);
 #[derive(ts_rs::TS)]
 #[ts(rename="CostReduction", export)]
+#[allow(dead_code)]
 pub struct ExportCostReduction(CostReduction);
 #[derive(ts_rs::TS)]
 #[ts(rename="CostReductionX", export)]
+#[allow(dead_code)]
 pub struct ExportCostReductionX(CostReductionX);
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -11890,8 +11911,8 @@ pub struct ObjectDoor {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 pub struct ObjectDoors {
-  Left: ObjectDoor,
-  Right: ObjectDoor,
+  left: ObjectDoor,
+  right: ObjectDoor,
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -11948,38 +11969,44 @@ pub struct NormalObject {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct ModalDFCObject {
-  FrontFace: NormalObject,
-  BackFace:  NormalObject }
+  front_face: NormalObject,
+  back_face:  NormalObject }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct TransformingObject {
-  FrontFace: NormalObject,
-  BackFace:  NormalObject }
+  front_face: NormalObject,
+  back_face:  NormalObject }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct SplitObject {
-  Cards: Vec<NormalObject>
+  cards: Vec<NormalObject>
 }
 
 #[derive(ts_rs::TS)]
 #[ts(rename="PlayerId", export)]
+#[allow(dead_code)]
 pub struct ExportPlayerId(PlayerId);
 
 #[derive(ts_rs::TS)]
 #[ts(rename="PermanentId", export)]
+#[allow(dead_code)]
 pub struct ExportPermanentId(PermanentId);
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_EffectListItem"))]
+#[allow(dead_code)]
 pub enum EffectListItem {
   BattlefieldEffect(SourcedRule),
   Effect(SourcedRule),
@@ -11990,6 +12017,7 @@ pub enum EffectListItem {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[serde(untagged)]
+#[allow(dead_code)]
 pub enum RegularObject {
   NormalObject(NormalObject),
   ModalDFCObject(ModalDFCObject),
@@ -12001,6 +12029,7 @@ pub enum RegularObject {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[serde(untagged)]
+#[allow(dead_code)]
 pub enum RegularBattlefieldObject {
   NormalObject(NormalObject),
   TransformingObject(TransformingObject),
@@ -12011,6 +12040,7 @@ pub enum RegularBattlefieldObject {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct FacedownProperties {
   #[ts(optional, type="ObjectName")]
   name:            Option<ObjectName>,
@@ -12027,6 +12057,7 @@ pub struct FacedownProperties {
 #[ts(export)]
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct MutateStackObject {
   #[ts(optional, type="ObjectName")]
   name:      Option<ObjectName>,

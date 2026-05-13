@@ -47,6 +47,8 @@ def get_keys(value):
 internal_keys = set([
   ('_Permanent', 'ById'),
 
+  ('_CreatableToken', 'IncubatorToken'),
+
   ('_StaticLayerEffect', 'AddCopiableAbility'),
   ('_StaticLayerEffect', 'AddCopiableCardtype'),
   ('_StaticLayerEffect', 'AddCopiableSubtype'),

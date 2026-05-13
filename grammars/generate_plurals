@@ -724,32 +724,81 @@ type planeType =
 | {typescript_plane_types}
 """
 
-list_supertypes         = ", ".join([json.dumps(s) for s in supertypes["variable"]        ])
-list_cardtypes          = ", ".join([json.dumps(s) for s in cardtypes["variable"]         ])
-list_dungeon_types      = ", ".join([json.dumps(s) for s in dungeon_types["variable"]     ])
-list_battle_types       = ", ".join([json.dumps(s) for s in battle_types["variable"]      ])
-list_creature_types     = ", ".join([json.dumps(s) for s in creature_types["variable"]    ])
-list_land_types         = ", ".join([json.dumps(s) for s in land_types["variable"]        ])
-list_spell_types        = ", ".join([json.dumps(s) for s in spell_types["variable"]       ])
-list_enchantment_types  = ", ".join([json.dumps(s) for s in enchantment_types["variable"] ])
-list_artifact_types     = ", ".join([json.dumps(s) for s in artifact_types["variable"]    ])
-list_planeswalker_types = ", ".join([json.dumps(s) for s in planeswalker_types["variable"]])
-list_plane_types        = ", ".join([json.dumps(s) for s in plane_types["variable"]       ])
+list_supertypes         = ",\n  ".join([json.dumps(s) for s in supertypes["variable"]        ])
+list_cardtypes          = ",\n  ".join([json.dumps(s) for s in cardtypes["variable"]         ])
+list_dungeon_types      = ",\n  ".join([json.dumps(s) for s in dungeon_types["variable"]     ])
+list_battle_types       = ",\n  ".join([json.dumps(s) for s in battle_types["variable"]      ])
+list_creature_types     = ",\n  ".join([json.dumps(s) for s in creature_types["variable"]    ])
+list_land_types         = ",\n  ".join([json.dumps(s) for s in land_types["variable"]        ])
+list_spell_types        = ",\n  ".join([json.dumps(s) for s in spell_types["variable"]       ])
+list_enchantment_types  = ",\n  ".join([json.dumps(s) for s in enchantment_types["variable"] ])
+list_artifact_types     = ",\n  ".join([json.dumps(s) for s in artifact_types["variable"]    ])
+list_planeswalker_types = ",\n  ".join([json.dumps(s) for s in planeswalker_types["variable"]])
+list_plane_types        = ",\n  ".join([json.dumps(s) for s in plane_types["variable"]       ])
+
+subtype_variables = (
+  dungeon_types["variable"] +
+  battle_types["variable"] +
+  creature_types["variable"] +
+  land_types["variable"] +
+  spell_types["variable"] +
+  enchantment_types["variable"] +
+  artifact_types["variable"] +
+  planeswalker_types["variable"] +
+  plane_types["variable"])
+subtype_singular  = (
+  dungeon_types["singular"] +
+  battle_types["singular"] +
+  creature_types["singular"] +
+  land_types["singular"] +
+  spell_types["singular"] +
+  enchantment_types["singular"] +
+  artifact_types["singular"] +
+  planeswalker_types["singular"] +
+  plane_types["singular"])
+
+subtype_strings = ",\n  ".join(f"[{json.dumps(k)}, {json.dumps(v)}]" for (k, v) in zip(subtype_variables, subtype_singular))
 
 list_types = f"""
-/// <reference types="./oracle_cards.types.d.ts" />
+/// <reference types="./oracle_cards.d.ts" />
 
-export const superTypeList: SuperType[] = [{list_supertypes}]
-export const cardTypeList: CardType[] = [{list_cardtypes}]
-export const dungeonTypeList: DungeonType[] = [{list_dungeon_types}]
-export const battleTypeList: BattleType[] = [{list_battle_types}]
-export const creatureTypeList: CreatureType[] = [{list_creature_types}]
-export const landTypeList: LandType[] = [{list_land_types}]
-export const spellTypeList: SpellType[] = [{list_spell_types}]
-export const enchantmentTypeList: EnchantmentType[] = [{list_enchantment_types}]
-export const artifactTypeList: ArtifactType[] = [{list_artifact_types}]
-export const planeswalkerTypeList: PlaneswalkerType[] = [{list_planeswalker_types}]
-export const planeTypeList: PlaneType[] = [{list_plane_types}]
+export const superTypeList: SuperType[] = [
+  {list_supertypes}
+]
+export const cardTypeList: CardType[] = [
+  {list_cardtypes}
+]
+export const dungeonTypeList: DungeonType[] = [
+  {list_dungeon_types}
+]
+export const battleTypeList: BattleType[] = [
+  {list_battle_types}
+]
+export const creatureTypeList: CreatureType[] = [
+  {list_creature_types}
+]
+export const landTypeList: LandType[] = [
+  {list_land_types}
+]
+export const spellTypeList: SpellType[] = [
+  {list_spell_types}
+]
+export const enchantmentTypeList: EnchantmentType[] = [
+  {list_enchantment_types}
+]
+export const artifactTypeList: ArtifactType[] = [
+  {list_artifact_types}
+]
+export const planeswalkerTypeList: PlaneswalkerType[] = [
+  {list_planeswalker_types}
+]
+export const planeTypeList: PlaneType[] = [
+  {list_plane_types}
+]
+
+export const subtype_strings: Map<SubType, string> = new Map([
+  {subtype_strings}
+])
 """
 
 flatten_supertypes = [(singular, variable) for singular, variable in zip(supertypes["singular"], supertypes["variable"])]

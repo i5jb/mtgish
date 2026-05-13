@@ -1578,14 +1578,18 @@ type ArtifactType =
 | "Equipment"
 | "Food"
 | "Fortification"
+| "Gold"
 | "Infinity"
 | "Junk"
 | "Lander"
+| "Map"
+| "Mutagen"
 | "Powerstone"
 | "Spacecraft"
 | "Stone"
 | "Treasure"
-| "Vehicle";
+| "Vehicle"
+| "Vibranium";
 type AttachAction =
 | { "_AttachAction": "ChooseAColor", "args": ChoosableColor }
 | { "_AttachAction": "ChooseAnExiledCardToCopy", "args": CardsInExile }
@@ -2027,7 +2031,7 @@ type CastEffect =
 | { "_CastEffect": "ReduceCastingCostIfItsBargained", "args": Array<CostReductionSymbol> }
 | { "_CastEffect": "ReduceCastingCostX", "args": [Array<CostReductionSymbolX>, GameNumber] }
 | { "_CastEffect": "SpendOnlyColorManaOnX", "args": Color }
-| { "_CastEffect": "SpendOnlyColorsOfManaOnX", "args": ColorList }
+| { "_CastEffect": "SpendOnlyColorsOfManaOnX", "args": Array<Color> }
 | { "_CastEffect": "SpendOnlyManaFromPermanentsToCast", "args": Permanents }
 | { "_CastEffect": "XCantBeZero" }
 | { "_CastEffect": "XIs", "args": Comparison };
@@ -2155,11 +2159,6 @@ type ColorIndicatorColor =
 | "Black"
 | "Red"
 | "Green";
-type ColorList =
-| { "_ColorList": "AllColors" }
-| { "_ColorList": "TheChosenColor" }
-| { "_ColorList": "Colors", "args": Array<Color> }
-| { "_ColorList": "Colorless" };
 type ColorWord =
 | { "_ColorWord": "TheFirstChosenColorWord" }
 | { "_ColorWord": "TheSecondChosenColorWord" };
@@ -3009,19 +3008,19 @@ type Craftable =
 type CreatableToken =
 | { "_CreatableToken": "NumberTokens", "args": [GameNumber, CreatableToken] }
 | { "_CreatableToken": "NumberTokensForEach", "args": [GameNumber, GameNumber, CreatableToken] }
-| { "_CreatableToken": "ArtifactToken", "args": [string, Array<SuperType>, Array<SubType>, ColorList, Array<Rule>] }
-| { "_CreatableToken": "ArtifactTokenWithNoRules", "args": [string, Array<SuperType>, Array<SubType>, ColorList] }
-| { "_CreatableToken": "NamedArtifactVehicleToken", "args": [string, Array<SuperType>, Array<SubType>, ColorList, Array<Rule>, PT] }
-| { "_CreatableToken": "ArtifactVehicleToken", "args": [Array<SuperType>, Array<SubType>, ColorList, Array<Rule>, PT] }
-| { "_CreatableToken": "EnchantmentToken", "args": [string, Array<SuperType>, Array<SubType>, ColorList, Array<Rule>] }
-| { "_CreatableToken": "CreatureToken", "args": [PT, CreatureTokenType, ColorList, CreatureTokenSubtypes] }
-| { "_CreatableToken": "CreatureTokenWithAbilities", "args": [PT, CreatureTokenType, ColorList, CreatureTokenSubtypes, Array<Rule>] }
-| { "_CreatableToken": "LegendaryNamedCreatureTokenWithCopyEffects", "args": [string, PT, CreatureTokenType, ColorList, CreatureTokenSubtypes, TokenCopyEffects] }
-| { "_CreatableToken": "LegendaryNamedCreatureToken", "args": [string, PT, CreatureTokenType, ColorList, CreatureTokenSubtypes] }
-| { "_CreatableToken": "LegendaryNamedCreatureTokenWithAbilities", "args": [string, PT, CreatureTokenType, ColorList, CreatureTokenSubtypes, Array<Rule>] }
-| { "_CreatableToken": "NamedCreatureToken", "args": [string, PT, CreatureTokenType, ColorList, CreatureTokenSubtypes] }
-| { "_CreatableToken": "NamedCreatureTokenWithAbilities", "args": [string, PT, CreatureTokenType, ColorList, CreatureTokenSubtypes, Array<Rule>] }
-| { "_CreatableToken": "NamedLandTokenWithNoAbilities", "args": [string, LandTokenType, ColorList, LandTokenSubtypes] }
+| { "_CreatableToken": "ArtifactToken", "args": [string, Array<SuperType>, Array<SubType>, TokenColorList, Array<Rule>] }
+| { "_CreatableToken": "ArtifactTokenWithNoRules", "args": [string, Array<SuperType>, Array<SubType>, TokenColorList] }
+| { "_CreatableToken": "NamedArtifactVehicleToken", "args": [string, Array<SuperType>, Array<SubType>, TokenColorList, Array<Rule>, PT] }
+| { "_CreatableToken": "ArtifactVehicleToken", "args": [Array<SuperType>, Array<SubType>, TokenColorList, Array<Rule>, PT] }
+| { "_CreatableToken": "EnchantmentToken", "args": [string, Array<SuperType>, Array<SubType>, TokenColorList, Array<Rule>] }
+| { "_CreatableToken": "CreatureToken", "args": [PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes] }
+| { "_CreatableToken": "CreatureTokenWithAbilities", "args": [PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes, Array<Rule>] }
+| { "_CreatableToken": "LegendaryNamedCreatureTokenWithCopyEffects", "args": [string, PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes, TokenCopyEffects] }
+| { "_CreatableToken": "LegendaryNamedCreatureToken", "args": [string, PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes] }
+| { "_CreatableToken": "LegendaryNamedCreatureTokenWithAbilities", "args": [string, PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes, Array<Rule>] }
+| { "_CreatableToken": "NamedCreatureToken", "args": [string, PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes] }
+| { "_CreatableToken": "NamedCreatureTokenWithAbilities", "args": [string, PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes, Array<Rule>] }
+| { "_CreatableToken": "NamedLandTokenWithNoAbilities", "args": [string, Array<CardType>, TokenColorList, LandTokenSubtypes] }
 | { "_CreatableToken": "TokenCopyOfDiscardedCard", "args": [CardInHand, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfEachCardOfTypeRevealedThisWay", "args": [Cards, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfAPermanent", "args": [Permanents, TokenCopyEffects] }
@@ -3040,9 +3039,7 @@ type CreatableToken =
 | { "_CreatableToken": "TokenCopyOfPermanent", "args": [Permanent, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfAnEnteringPermanent", "args": [Permanents, TokenCopyEffects] }
 | { "_CreatableToken": "ThoseTokens" }
-| { "_CreatableToken": "MutavaultToken" }
-| { "_CreatableToken": "SpellgorgerWeirdToken" }
-| { "_CreatableToken": "TarmogoyfToken" }
+| { "_CreatableToken": "OracleToken", "args": string }
 | { "_CreatableToken": "VirtuousRoleToken" }
 | { "_CreatableToken": "WickedRoleToken" }
 | { "_CreatableToken": "YoungHeroRoleToken" }
@@ -3061,6 +3058,7 @@ type CreatableToken =
 | { "_CreatableToken": "MutagenToken" }
 | { "_CreatableToken": "OctopusToken" }
 | { "_CreatableToken": "PowerstoneToken" }
+| { "_CreatableToken": "IncubatorToken" }
 | { "_CreatableToken": "ShardToken" }
 | { "_CreatableToken": "TreasureToken" }
 | { "_CreatableToken": "VibraniumToken" }
@@ -3068,12 +3066,6 @@ type CreatableToken =
 type CreatureTokenSubtypes =
 | { "_CreatureTokenSubtypes": "CreatureTokenSubtypesList", "args": Array<SubType> }
 | { "_CreatureTokenSubtypes": "TheChosenCreatureType" };
-type CreatureTokenType =
-| { "_CreatureTokenType": "ArtifactCreatureToken" }
-| { "_CreatureTokenType": "CreatureToken" }
-| { "_CreatureTokenType": "EnchantmentArtifactCreatureToken" }
-| { "_CreatureTokenType": "EnchantmentCreatureToken" }
-| { "_CreatureTokenType": "LandCreatureToken" };
 type CreatureType =
 | "Advisor"
 | "Aetherborn"
@@ -3511,6 +3503,7 @@ type EnchantmentType =
 | "Class"
 | "Curse"
 | "Plan"
+| "Role"
 | "Room"
 | "Rune"
 | "Saga"
@@ -4212,8 +4205,6 @@ type HandEffect =
 | { "_HandEffect": "AddAbility", "args": Array<Rule> };
 type LandTokenSubtypes =
 | { "_LandTokenSubtypes": "AllBasicLandTypes" };
-type LandTokenType =
-| { "_LandTokenType": "LandToken" };
 type LandType =
 | "Cave"
 | "Desert"
@@ -5935,7 +5926,7 @@ type Players =
 | { "_Players": "ControlsPermanent", "args": Permanent }
 | { "_Players": "SacrificedAPermanentThisTurn", "args": Permanents }
 | { "_Players": "SurveilledThisTurn" }
-| { "_Players": "DevotionToColorsIs", "args": [ColorList, Comparison] }
+| { "_Players": "DevotionToColorsIs", "args": [Array<SimpleColor>, Comparison] }
 | { "_Players": "HasPutANumberOfCountersOfTypeOnAPermanentThisTurn", "args": [Comparison, CounterType, Permanents] }
 | { "_Players": "DidntAttackPlayerThisTurn", "args": Player }
 | { "_Players": "AControllerOfTheLeastPermanentsAmongPlayers", "args": [Players, Permanents] }
@@ -8130,6 +8121,7 @@ type SubType =
 | "Class"
 | "Curse"
 | "Plan"
+| "Role"
 | "Room"
 | "Rune"
 | "Saga"
@@ -8143,14 +8135,18 @@ type SubType =
 | "Equipment"
 | "Food"
 | "Fortification"
+| "Gold"
 | "Infinity"
 | "Junk"
 | "Lander"
+| "Map"
+| "Mutagen"
 | "Powerstone"
 | "Spacecraft"
 | "Stone"
 | "Treasure"
 | "Vehicle"
+| "Vibranium"
 | "Ajani"
 | "Aminatou"
 | "Angrath"
@@ -8396,6 +8392,11 @@ type Target =
 | { "_Target": "UptoOneTargetSpell", "args": Spells };
 type TieredAction =
 | { "_TieredAction": "TieredAction", "args": [Cost, Actions] };
+type TokenColorList =
+| { "_TokenColorList": "AllColors" }
+| { "_TokenColorList": "TheChosenColor" }
+| { "_TokenColorList": "Colors", "args": Array<SimpleColor> }
+| { "_TokenColorList": "Colorless" };
 type TokenCopyEffects =
 | { "_TokenCopyEffects": "TokenCopyEffects", "args": Array<TokenCopyEffect> }
 | { "_TokenCopyEffects": "NoTokenCopyEffects" };

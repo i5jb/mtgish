@@ -108,9 +108,7 @@
     "MutagenToken": "",
 
     // Oracle tokens (111.11)
-    "SpellgorgerWeirdToken": "",
-    "TarmogoyfToken": "",
-    "MutavaultToken": "",
+    "OracleToken({{QUOTED_ORACLE_TOKEN}})": "",
 
     // Gift tokens (207.174)
     "FishToken": "",

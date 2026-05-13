@@ -53,6 +53,11 @@
   "{{OFFERER}}": {
     "\"Davriel, Soul Broker\"": ""
   },
+  "{{QUOTED_ORACLE_TOKEN}}": {
+    "\"Spellgorger Weird\"": "",
+    "\"Tarmogoyf\"": "",
+    "\"Mutavault\"": "",
+  },
   "{{QUOTED_NAMED_CARD}}": {
     "\"A-Earthquake Dragon\"": "",
     "\"Accumulated Knowledge\"": "",

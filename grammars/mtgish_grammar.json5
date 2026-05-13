@@ -1994,7 +1994,7 @@
     "CastEffect(ReduceCastingCostIfItsBargained({{COST_REDUCTION}}))": "",
     "CastEffect(ReduceCastingCostX({{COST_REDUCTION_X}}, {{NUMBER}}))": "",
     "CastEffect(SpendOnlyColorManaOnX({{COLOR}}))": "",
-    "CastEffect(SpendOnlyColorsOfManaOnX(Colors([{{COLOR}}, {{COLOR}}])))": "",
+    "CastEffect(SpendOnlyColorsOfManaOnX([{{COLOR}}, {{COLOR}}]))": "",
     "CastEffect(SpendOnlyManaFromPermanentsToCast({{PERMANENTS}}))": "",
     "CastEffect(XCantBeZero)": "",
     "CastEffect(XIs(ANumberOfCardsInAPlayersGraveyard({{CARDS}}, {{PLAYERS}})))": "",
@@ -2746,11 +2746,11 @@
     "TheChosenCreatureType": ""
   },
   "{{CREATURE_TOKEN_TYPE}}": {
-    "ArtifactCreatureToken": "",
-    "CreatureToken": "",
-    "EnchantmentArtifactCreatureToken": "",
-    "EnchantmentCreatureToken": "",
-    "LandCreatureToken": ""
+    "[Artifact, Creature]": "",
+    "[Creature]": "",
+    "[Enchantment, Artifact, Creature]": "",
+    "[Enchantment, Creature]": "",
+    "[Land, Creature]": "",
   },
   "{{DAMAGE_RECIPIENTS_LIST}}": {
     "APermanent({{PERMANENTS}})": "",
@@ -3536,7 +3536,7 @@
     "AllBasicLandTypes": ""
   },
   "{{LAND_TOKEN_TYPE}}": {
-    "LandToken": ""
+    "[Land]": ""
   },
   "{{LAYER_1_PERMANENT_EFFECT}}": {
     "AddCopiableAbility({{RULES}})": "",
@@ -4922,7 +4922,8 @@
     "CycledANumberOfCardsThisTurn({{COMPARISON}}, {{CARDS}})": "",
     "DefendingPlayerThisCombat": "",
     "Descended": "",
-    "DevotionToColorsIs({{COLOR_LIST}}, {{COMPARISON}})": "",
+    "DevotionToColorsIs([{{COLOR}}], {{COMPARISON}})": "",
+    "DevotionToColorsIs([{{COLOR}}, {{COLOR}}], {{COMPARISON}})": "",
     "DidntActivateAnAbilityThisTurn({{ACTIVATED_ABILITIES}})": "",
     "DidntAttackPlayerThisTurn({{PLAYER}})": "",
     "DidntAttackWithCreaturesThisTurn": "",
