@@ -7269,13 +7269,10 @@ pub enum PTXValue {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_PT", content = "args"))]
 pub enum PT {
-  PTX(PTXValue, PTXValue, Box<GameNumber>),
-  PTOfGraveyardCard(CardInGraveyard),
-  PTOfExiledCard(Box<CardInExile>),
-  ManualPT(Box<GameNumber>, Box<GameNumber>),
   ZeroPT,
   PT(i32, i32),
-  PTOfPermanent(Box<Permanent>),
+  PTX(PTXValue, PTXValue, Box<GameNumber>),
+  ManualPT(Box<GameNumber>, Box<GameNumber>),
 }
 
 

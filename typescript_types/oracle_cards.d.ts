@@ -6095,13 +6095,10 @@ type Protectable =
 type PTMod =
 | { "_PTMod": "PTMod", "args": [number, number] };
 type PT =
-| { "_PT": "PTX", "args": [PTXValue, PTXValue, GameNumber] }
-| { "_PT": "PTOfGraveyardCard", "args": CardInGraveyard }
-| { "_PT": "PTOfExiledCard", "args": CardInExile }
-| { "_PT": "ManualPT", "args": [GameNumber, GameNumber] }
 | { "_PT": "ZeroPT" }
 | { "_PT": "PT", "args": [number, number] }
-| { "_PT": "PTOfPermanent", "args": Permanent };
+| { "_PT": "PTX", "args": [PTXValue, PTXValue, GameNumber] }
+| { "_PT": "ManualPT", "args": [GameNumber, GameNumber] };
 type PTXValue =
 | { "_PTXValue": "Integer", "args": number }
 | { "_PTXValue": "X" };

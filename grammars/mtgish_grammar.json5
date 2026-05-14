@@ -5253,9 +5253,6 @@
   "{{PT}}": {
     "ManualPT({{NUMBER}}, {{NUMBER}})": "",
     "PT({{DIGITS}}, {{DIGITS}})": "",
-    "PTOfExiledCard({{CARD_IN_EXILE}})": "",
-    "PTOfGraveyardCard({{GRAVEYARD_CARD}})": "",
-    "PTOfPermanent({{PERMANENT}})": "",
     "PTX(X, Integer({{DIGITS}}), {{NUMBER}})": "",
     "PTX(X, X, {{NUMBER}})": "",
     "ZeroPT": ""
