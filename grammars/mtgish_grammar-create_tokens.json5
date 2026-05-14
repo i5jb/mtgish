@@ -117,22 +117,17 @@
     // Spoiler tokens
     "VibraniumToken": "",
 
-    "CreatureToken({{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}})": "",
-    "CreatureTokenWithAbilities({{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}}, {{RULES}})": "",
-    "LegendaryNamedCreatureToken({{QUOTED_NAMED_CARD}}, {{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}})": "",
-    "LegendaryNamedCreatureTokenWithAbilities({{QUOTED_NAMED_CARD}}, {{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}}, {{RULES}})": "",
-    "LegendaryNamedCreatureTokenWithCopyEffects({{QUOTED_NAMED_CARD}}, {{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
-    "NamedCreatureToken({{QUOTED_NAMED_CARD}}, {{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}})": "",
-    "NamedCreatureTokenWithAbilities({{QUOTED_NAMED_CARD}}, {{PT}}, {{CREATURE_TOKEN_TYPE}}, {{COLOR_LIST}}, {{CREATURE_TOKEN_SUBTYPES}}, {{RULES}})": "",
+    // Normal Tokens
+    "TokenWithPT({{PT}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})": "",
+    "NamedToken({{QUOTED_NAMED_CARD}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})": "",
+    "NamedTokenWithPT({{QUOTED_NAMED_CARD}}, {{PT}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})": "",
+    "NamedTokenWithPTAndWithCopyEffects({{QUOTED_NAMED_CARD}}, {{PT}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+  },
 
-    "NamedLandTokenWithNoAbilities({{QUOTED_NAMED_CARD}}, {{LAND_TOKEN_TYPE}}, {{COLOR_LIST}}, {{LAND_TOKEN_SUBTYPES}})": "",
-
-    "ArtifactToken({{QUOTED_NAMED_CARD}}, {{SUPERTYPE_LIST}}, {{SUBTYPE_LIST}}, {{COLOR_LIST}}, {{RULES}})": "",
-    "ArtifactTokenWithNoRules({{QUOTED_NAMED_CARD}}, {{SUPERTYPE_LIST}}, {{SUBTYPE_LIST}}, {{COLOR_LIST}})": "",
-    "NamedArtifactVehicleToken({{QUOTED_NAMED_CARD}}, {{SUPERTYPE_LIST}}, {{SUBTYPE_LIST}}, {{COLOR_LIST}}, {{RULES}}, {{PT}})": "",
-    "ArtifactVehicleToken({{SUPERTYPE_LIST}}, {{SUBTYPE_LIST}}, {{COLOR_LIST}}, {{RULES}}, {{PT}})": "",
-
-    "EnchantmentToken({{QUOTED_NAMED_CARD}}, {{SUPERTYPE_LIST}}, {{SUBTYPE_LIST}}, {{COLOR_LIST}}, {{RULES}})": "",
+  "{{TOKEN_SUBTYPES}}": {
+    "SubtypesList({{SUBTYPE_LIST}})": "",
+    "TheChosenCreatureType": "",
+    "AllBasicLandTypes": ""
   },
 
   "{{CREATABLE_TOKEN_LIST}}": {

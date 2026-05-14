@@ -4108,6 +4108,9 @@ pub enum Condition {
   Or(Vec<Condition>),
   And(Vec<Condition>),
 
+  AColorWasChosen,
+  ACreatureTypeWasChosen,
+
   ANumberOfCardsWerePutIntoExileThisTurn(Box<Comparison>, Box<Cards>),
   TriggerXIs(Box<Comparison>),
 
@@ -7443,16 +7446,10 @@ pub enum TokenColorList {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
-#[cfg_attr(feature = "write_out_json", serde(tag = "_CreatureTokenSubtypes", content = "args"))]
-pub enum CreatureTokenSubtypes {
-  CreatureTokenSubtypesList(Vec<SubType>),
+#[cfg_attr(feature = "write_out_json", serde(tag = "_TokenSubtypes", content = "args"))]
+pub enum TokenSubtypes {
+  SubtypesList(Vec<SubType>),
   TheChosenCreatureType,
-}
-
-#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
-#[ts(export)]
-#[cfg_attr(feature = "write_out_json", serde(tag = "_LandTokenSubtypes", content = "args"))]
-pub enum LandTokenSubtypes {
   AllBasicLandTypes,
 }
 
@@ -8042,21 +8039,10 @@ pub enum CreatableToken {
   NumberTokensForEach(Box<GameNumber>, Box<GameNumber>, Box<CreatableToken>),
 
   // Manually Defined Tokens
-  ArtifactToken(NameString, Vec<SuperType>, Vec<SubType>, TokenColorList, Vec<Rule>),
-  ArtifactTokenWithNoRules(NameString, Vec<SuperType>, Vec<SubType>, TokenColorList),
-  NamedArtifactVehicleToken(NameString, Vec<SuperType>, Vec<SubType>, TokenColorList, Vec<Rule>, PT),
-  ArtifactVehicleToken(Vec<SuperType>, Vec<SubType>, TokenColorList, Vec<Rule>, PT),
-
-  EnchantmentToken(NameString, Vec<SuperType>, Vec<SubType>, TokenColorList, Vec<Rule>),
-  CreatureToken(PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes),
-  CreatureTokenWithAbilities(PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes, Vec<Rule>),
-  LegendaryNamedCreatureTokenWithCopyEffects(NameString, PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes, TokenCopyEffects),
-  LegendaryNamedCreatureToken(NameString, PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes),
-  LegendaryNamedCreatureTokenWithAbilities(NameString, PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes, Vec<Rule>),
-  NamedCreatureToken(NameString, PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes),
-  NamedCreatureTokenWithAbilities(NameString, PT, Vec<CardType>, TokenColorList, CreatureTokenSubtypes, Vec<Rule>),
-  NamedLandTokenWithNoAbilities(NameString, Vec<CardType>, TokenColorList, LandTokenSubtypes),
-
+  TokenWithPT(PT, TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>),
+  NamedToken(NameString, TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>),
+  NamedTokenWithPT(NameString, PT, TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>),
+  NamedTokenWithPTAndWithCopyEffects(NameString, PT, TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>, TokenCopyEffects),
 
   // Token Copies of Things
   TokenCopyOfDiscardedCard(Box<CardInHand>, TokenCopyEffects),

@@ -119,7 +119,8 @@ parser_debug_remaining: plurals_generate parser_compile
     --limit-to-subset {{BASE_DIR}}/data/debug.json5
 
 [group('parsing')]
-parser_list_failing_subset: plurals_generate parser_compile
+[doc("Lists cards that pass/fail english parsing in data/debug.json5")]
+parser_list_passing_english: plurals_generate parser_compile
   #!/usr/bin/env bash
   {{TEMP_DIR}}/go_mtg_parser \
     --ignore-list-file {{BASE_DIR}}/grammars/ignore.json5 \

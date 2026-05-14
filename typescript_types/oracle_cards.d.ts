@@ -2218,6 +2218,8 @@ type Condition =
 | { "_Condition": "IsDuringEndStep" }
 | { "_Condition": "Or", "args": Array<Condition> }
 | { "_Condition": "And", "args": Array<Condition> }
+| { "_Condition": "AColorWasChosen" }
+| { "_Condition": "ACreatureTypeWasChosen" }
 | { "_Condition": "ANumberOfCardsWerePutIntoExileThisTurn", "args": [Comparison, Cards] }
 | { "_Condition": "TriggerXIs", "args": Comparison }
 | { "_Condition": "ACardWasSurveiledIntoGraveyardThisWay", "args": Cards }
@@ -3008,19 +3010,10 @@ type Craftable =
 type CreatableToken =
 | { "_CreatableToken": "NumberTokens", "args": [GameNumber, CreatableToken] }
 | { "_CreatableToken": "NumberTokensForEach", "args": [GameNumber, GameNumber, CreatableToken] }
-| { "_CreatableToken": "ArtifactToken", "args": [string, Array<SuperType>, Array<SubType>, TokenColorList, Array<Rule>] }
-| { "_CreatableToken": "ArtifactTokenWithNoRules", "args": [string, Array<SuperType>, Array<SubType>, TokenColorList] }
-| { "_CreatableToken": "NamedArtifactVehicleToken", "args": [string, Array<SuperType>, Array<SubType>, TokenColorList, Array<Rule>, PT] }
-| { "_CreatableToken": "ArtifactVehicleToken", "args": [Array<SuperType>, Array<SubType>, TokenColorList, Array<Rule>, PT] }
-| { "_CreatableToken": "EnchantmentToken", "args": [string, Array<SuperType>, Array<SubType>, TokenColorList, Array<Rule>] }
-| { "_CreatableToken": "CreatureToken", "args": [PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes] }
-| { "_CreatableToken": "CreatureTokenWithAbilities", "args": [PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes, Array<Rule>] }
-| { "_CreatableToken": "LegendaryNamedCreatureTokenWithCopyEffects", "args": [string, PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes, TokenCopyEffects] }
-| { "_CreatableToken": "LegendaryNamedCreatureToken", "args": [string, PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes] }
-| { "_CreatableToken": "LegendaryNamedCreatureTokenWithAbilities", "args": [string, PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes, Array<Rule>] }
-| { "_CreatableToken": "NamedCreatureToken", "args": [string, PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes] }
-| { "_CreatableToken": "NamedCreatureTokenWithAbilities", "args": [string, PT, Array<CardType>, TokenColorList, CreatureTokenSubtypes, Array<Rule>] }
-| { "_CreatableToken": "NamedLandTokenWithNoAbilities", "args": [string, Array<CardType>, TokenColorList, LandTokenSubtypes] }
+| { "_CreatableToken": "TokenWithPT", "args": [PT, TokenColorList, Array<SuperType>, Array<CardType>, TokenSubtypes, Array<Rule>] }
+| { "_CreatableToken": "NamedToken", "args": [string, TokenColorList, Array<SuperType>, Array<CardType>, TokenSubtypes, Array<Rule>] }
+| { "_CreatableToken": "NamedTokenWithPT", "args": [string, PT, TokenColorList, Array<SuperType>, Array<CardType>, TokenSubtypes, Array<Rule>] }
+| { "_CreatableToken": "NamedTokenWithPTAndWithCopyEffects", "args": [string, PT, TokenColorList, Array<SuperType>, Array<CardType>, TokenSubtypes, Array<Rule>, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfDiscardedCard", "args": [CardInHand, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfEachCardOfTypeRevealedThisWay", "args": [Cards, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfAPermanent", "args": [Permanents, TokenCopyEffects] }
@@ -3063,9 +3056,6 @@ type CreatableToken =
 | { "_CreatableToken": "TreasureToken" }
 | { "_CreatableToken": "VibraniumToken" }
 | { "_CreatableToken": "WalkerToken" };
-type CreatureTokenSubtypes =
-| { "_CreatureTokenSubtypes": "CreatureTokenSubtypesList", "args": Array<SubType> }
-| { "_CreatureTokenSubtypes": "TheChosenCreatureType" };
 type CreatureType =
 | "Advisor"
 | "Aetherborn"
@@ -4203,8 +4193,6 @@ type GroupFilter =
 | { "_GroupFilter": "TotalPowerIs", "args": Comparison };
 type HandEffect =
 | { "_HandEffect": "AddAbility", "args": Array<Rule> };
-type LandTokenSubtypes =
-| { "_LandTokenSubtypes": "AllBasicLandTypes" };
 type LandType =
 | "Cave"
 | "Desert"
@@ -8426,6 +8414,10 @@ type TokenFlag =
 | { "_TokenFlag": "EntersTapped" }
 | { "_TokenFlag": "EntersAttackingPlayer", "args": Player }
 | { "_TokenFlag": "EntersAttacking" };
+type TokenSubtypes =
+| { "_TokenSubtypes": "SubtypesList", "args": Array<SubType> }
+| { "_TokenSubtypes": "TheChosenCreatureType" }
+| { "_TokenSubtypes": "AllBasicLandTypes" };
 type TransformAction =
 | { "_TransformAction": "ChooseAPlayer", "args": Players }
 | { "_TransformAction": "GetAnEmblem", "args": Array<Rule> }

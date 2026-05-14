@@ -1895,6 +1895,7 @@
     "{{BASIC_CARD}}": ""
   },
   "{{CARDTYPE_LIST}}": {
+    "[{{CARDTYPE}}, {{CARDTYPE}}, {{CARDTYPE}}]": "",
     "[{{CARDTYPE}}, {{CARDTYPE}}]": "",
     "[{{CARDTYPE}}]": ""
   },
@@ -2160,6 +2161,9 @@
     "[{{CONDITION}}, {{CONDITION}}]": ""
   },
   "{{CONDITION}}": {
+    "AColorWasChosen": "",
+    "ACreatureTypeWasChosen": "",
+
     "ACardLeftPlayersGraveyardThisTurn({{CARDS}}, {{PLAYER}})": "",
     "ACardOfTypeWasExiledThisTurn({{CARDS_IN_EXILE}})": "",
     "ACardWasChosenThisWay": "",
@@ -2736,21 +2740,6 @@
     "IsLandType({{SWAMP}})": "",
     "IsNonCardtype({{CARDTYPE}})": "",
     "Or({{CRAFTABLE_LIST}})": ""
-  },
-  "{{CREATURE_TOKEN_SUBTYPES}}": {
-    "CreatureTokenSubtypesList([{{CURSE}}])": "",
-    "CreatureTokenSubtypesList([{{SWAMP}}, {{ZOMBIE}}])": "",
-    "CreatureTokenSubtypesList([{{ZOMBIE}}, {{ZOMBIE}}, {{ZOMBIE}}])": "",
-    "CreatureTokenSubtypesList([{{ZOMBIE}}, {{ZOMBIE}}])": "",
-    "CreatureTokenSubtypesList([{{ZOMBIE}}])": "",
-    "TheChosenCreatureType": ""
-  },
-  "{{CREATURE_TOKEN_TYPE}}": {
-    "[Artifact, Creature]": "",
-    "[Creature]": "",
-    "[Enchantment, Artifact, Creature]": "",
-    "[Enchantment, Creature]": "",
-    "[Land, Creature]": "",
   },
   "{{DAMAGE_RECIPIENTS_LIST}}": {
     "APermanent({{PERMANENTS}})": "",
@@ -3531,12 +3520,6 @@
     "Wither": "",
     "{{KEYWORD_RULE[CraftWith]}}": "",
     "{{KEYWORD_RULE[SpaceSculptor]}}": ""
-  },
-  "{{LAND_TOKEN_SUBTYPES}}": {
-    "AllBasicLandTypes": ""
-  },
-  "{{LAND_TOKEN_TYPE}}": {
-    "[Land]": ""
   },
   "{{LAYER_1_PERMANENT_EFFECT}}": {
     "AddCopiableAbility({{RULES}})": "",
@@ -5899,7 +5882,8 @@
     "[{{RULE}}, {{RULE}}, {{RULE}}, {{RULE}}]": "",
     "[{{RULE}}, {{RULE}}, {{RULE}}]": "",
     "[{{RULE}}, {{RULE}}]": "",
-    "[{{RULE}}]": ""
+    "[{{RULE}}]": "",
+    "[]": ""
   },
   "{{RULE}}": {
     "ActivatedAbilityEffect({{ACTIVATED_ABILITIES}}, {{ACTIVATED_ABILITY_EFFECT}})": "",
