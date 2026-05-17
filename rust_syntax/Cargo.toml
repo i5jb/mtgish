@@ -20,6 +20,9 @@ ts-rs = { version = "10.1", features = ["no-serde-warnings"] }
 # Non-Serde binary Serialize/Deserialize
 bincode = "2.0.1"
 
+[profile.dev]
+incremental = false
+
 [features]
 ronl_to_bincode = []
 ronl_to_pretty_ron = []

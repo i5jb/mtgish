@@ -181,7 +181,6 @@ pub enum CreatureType {
   Illusion,
   Imp,
   Incarnation,
-  Incubator,
   Inkling,
   Inquisitor,
   Insect,
@@ -431,6 +430,7 @@ pub enum ArtifactType {
   Food,
   Fortification,
   Gold,
+  Incubator,
   Infinity,
   Junk,
   Lander,
@@ -762,7 +762,6 @@ pub enum SubType {
   Illusion,
   Imp,
   Incarnation,
-  Incubator,
   Inkling,
   Inquisitor,
   Insect,
@@ -1000,6 +999,7 @@ pub enum SubType {
   Food,
   Fortification,
   Gold,
+  Incubator,
   Infinity,
   Junk,
   Lander,
@@ -8039,10 +8039,12 @@ pub enum CreatableToken {
   NumberTokensForEach(Box<GameNumber>, Box<GameNumber>, Box<CreatableToken>),
 
   // Manually Defined Tokens
+  Token(TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>),
   TokenWithPT(PT, TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>),
   NamedToken(NameString, TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>),
   NamedTokenWithPT(NameString, PT, TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>),
   NamedTokenWithPTAndWithCopyEffects(NameString, PT, TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>, TokenCopyEffects),
+  TransformingToken(Box<CreatableToken>, Box<CreatableToken>),
 
   // Token Copies of Things
   TokenCopyOfDiscardedCard(Box<CardInHand>, TokenCopyEffects),
@@ -11505,6 +11507,12 @@ pub enum OracleCard {
   #[serde(rename_all="PascalCase")]
   StickerSheet {
     stickers: Vec<Sticker>,
+  },
+
+  #[serde(rename_all="PascalCase")]
+  TokenDefinition {
+    name: NameString,
+    token: CreatableToken
   },
 }
 

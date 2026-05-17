@@ -118,10 +118,12 @@
     "VibraniumToken": "",
 
     // Normal Tokens
+    "Token({{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})": "",
     "TokenWithPT({{PT}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})": "",
     "NamedToken({{QUOTED_NAMED_CARD}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})": "",
     "NamedTokenWithPT({{QUOTED_NAMED_CARD}}, {{PT}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})": "",
     "NamedTokenWithPTAndWithCopyEffects({{QUOTED_NAMED_CARD}}, {{PT}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TransformingToken({{CREATABLE_TOKEN}}, {{CREATABLE_TOKEN}})": "",
   },
 
   "{{TOKEN_SUBTYPES}}": {

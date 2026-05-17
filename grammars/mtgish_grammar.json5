@@ -3032,6 +3032,8 @@
     "[PutNumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})]": ""
   },
   "{{FULL_CARD}}": {
+    "TokenDefinition(Name: {{QUOTED_TOKEN_NAME}}, Token: {{CREATABLE_TOKEN}})": "",
+
     "Adventurer(Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, CardPT: {{CARD_PT}}, Adventure: (Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, Rules: {{RULES}}))": "",
     "Adventurer(Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, Rules: {{RULES}}, Adventure: (Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, Rules: {{RULES}}))": "",
     "Adventurer(Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, Rules: {{RULES}}, CardPT: {{CARD_PT}}, Adventure: (Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, Rules: {{RULES}}))": "",

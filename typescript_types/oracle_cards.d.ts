@@ -1579,6 +1579,7 @@ type ArtifactType =
 | "Food"
 | "Fortification"
 | "Gold"
+| "Incubator"
 | "Infinity"
 | "Junk"
 | "Lander"
@@ -3010,10 +3011,12 @@ type Craftable =
 type CreatableToken =
 | { "_CreatableToken": "NumberTokens", "args": [GameNumber, CreatableToken] }
 | { "_CreatableToken": "NumberTokensForEach", "args": [GameNumber, GameNumber, CreatableToken] }
+| { "_CreatableToken": "Token", "args": [TokenColorList, Array<SuperType>, Array<CardType>, TokenSubtypes, Array<Rule>] }
 | { "_CreatableToken": "TokenWithPT", "args": [PT, TokenColorList, Array<SuperType>, Array<CardType>, TokenSubtypes, Array<Rule>] }
 | { "_CreatableToken": "NamedToken", "args": [string, TokenColorList, Array<SuperType>, Array<CardType>, TokenSubtypes, Array<Rule>] }
 | { "_CreatableToken": "NamedTokenWithPT", "args": [string, PT, TokenColorList, Array<SuperType>, Array<CardType>, TokenSubtypes, Array<Rule>] }
 | { "_CreatableToken": "NamedTokenWithPTAndWithCopyEffects", "args": [string, PT, TokenColorList, Array<SuperType>, Array<CardType>, TokenSubtypes, Array<Rule>, TokenCopyEffects] }
+| { "_CreatableToken": "TransformingToken", "args": [CreatableToken, CreatableToken] }
 | { "_CreatableToken": "TokenCopyOfDiscardedCard", "args": [CardInHand, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfEachCardOfTypeRevealedThisWay", "args": [Cards, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfAPermanent", "args": [Permanents, TokenCopyEffects] }
@@ -3191,7 +3194,6 @@ type CreatureType =
 | "Illusion"
 | "Imp"
 | "Incarnation"
-| "Incubator"
 | "Inkling"
 | "Inquisitor"
 | "Insect"
@@ -4616,7 +4618,8 @@ type OracleCard =
 | { "_OracleCard": "Scheme", Name: string, Typeline: OracleTypeline, Rules: Array<Rule>, }
 | { "_OracleCard": "Dungeon", Name: string, Typeline: OracleTypeline, Rules: Array<Rule>, }
 | { "_OracleCard": "Vanguard", Name: string, Typeline: OracleTypeline, Rules: Array<Rule>, LifeModifier: number, HandModifier: number, }
-| { "_OracleCard": "StickerSheet", Stickers: Array<Sticker>, };
+| { "_OracleCard": "StickerSheet", Stickers: Array<Sticker>, }
+| { "_OracleCard": "TokenDefinition", Name: string, Token: CreatableToken, };
 type OracleTypeline =
 | { Supertypes: Array<SuperType>, Cardtypes: Array<CardType>, Subtypes: Array<SubType>, };
 type OtherTarget =
@@ -7891,7 +7894,6 @@ type SubType =
 | "Illusion"
 | "Imp"
 | "Incarnation"
-| "Incubator"
 | "Inkling"
 | "Inquisitor"
 | "Insect"
@@ -8121,6 +8123,7 @@ type SubType =
 | "Food"
 | "Fortification"
 | "Gold"
+| "Incubator"
 | "Infinity"
 | "Junk"
 | "Lander"

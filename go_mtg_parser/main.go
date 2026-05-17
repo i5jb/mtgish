@@ -235,6 +235,7 @@ type MtgJsonEntry struct {
   Name   string          `json:"name"`
   Layout string          `json:"layout"`
   Melded string          `json:"melded,omitempty"`
+  Token  string          `json:"token,omitempty"`
   SharedTypeline string  `json:"shared_typeline,omitempty"`
   Cards  []MtgJsonAtomic `json:"cards"`
 }
@@ -505,6 +506,16 @@ func getLine(face MtgJsonAtomic) string {
 
 func getEnglishText(card MtgJsonEntry) (string, error) {
   switch len(card.Cards) {
+    case 0: {
+      var header string
+      switch card.Layout {
+        case "token_def": header = "Token Definition" + "\n\n"
+        default:
+          return "", fmt.Errorf("Unknown Card layout: %s", card.Layout) }
+      token_text := cleanRulesText(card.Token, card.Name);
+      fullCardLine := header + card.Name + "\n\n" + token_text
+      return fullCardLine, nil
+    }
     case 1: {
       var header string
       switch card.Layout {
@@ -634,11 +645,15 @@ func ParseCard(englishGrammar TemplatesAndResults, englishGrammarTree TokenReTri
   }
 
   updateGrammar := func(card MtgJsonEntry) {
-    if len(card.Cards) == 1 {
+    if len(card.Cards) == 0 {
+      englishGrammar["FullName"]      = LoadTemplatesFor(map[string]string {"|FullName|": ""})
+      englishGrammar["CardAFullName"] = LoadTemplatesFor(map[string]string {"|CardAFullName|": ""})
+      englishGrammar["CardBFullName"] = LoadTemplatesFor(map[string]string {"|CardAFullName|": ""})
+    } else if len(card.Cards) == 1 {
       englishGrammar["FullName"]      = LoadTemplatesFor(map[string]string {card.Cards[0].Name: fmt.Sprintf("%#v", card.Cards[0].Name)})
       englishGrammar["CardAFullName"] = LoadTemplatesFor(map[string]string {"|CardAFullName|": ""})
       englishGrammar["CardBFullName"] = LoadTemplatesFor(map[string]string {"|CardAFullName|": ""})
-    } else {
+    } else if len(card.Cards) >= 2 {
       englishGrammar["FullName"]      = LoadTemplatesFor(map[string]string {"|FullName|": ""})
       englishGrammar["CardAFullName"] = LoadTemplatesFor(map[string]string {card.Cards[0].Name: fmt.Sprintf("%#v", card.Cards[0].Name)})
       englishGrammar["CardBFullName"] = LoadTemplatesFor(map[string]string {card.Cards[1].Name: fmt.Sprintf("%#v", card.Cards[1].Name)})
