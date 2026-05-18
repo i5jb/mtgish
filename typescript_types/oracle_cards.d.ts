@@ -6086,7 +6086,6 @@ type Protectable =
 type PTMod =
 | { "_PTMod": "PTMod", "args": [number, number] };
 type PT =
-| { "_PT": "ZeroPT" }
 | { "_PT": "PT", "args": [number, number] }
 | { "_PT": "PTX", "args": [PTXValue, PTXValue, GameNumber] }
 | { "_PT": "ManualPT", "args": [GameNumber, GameNumber] };

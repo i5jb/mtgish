@@ -5239,8 +5239,7 @@
     "ManualPT({{NUMBER}}, {{NUMBER}})": "",
     "PT({{DIGITS}}, {{DIGITS}})": "",
     "PTX(X, Integer({{DIGITS}}), {{NUMBER}})": "",
-    "PTX(X, X, {{NUMBER}})": "",
-    "ZeroPT": ""
+    "PTX(X, X, {{NUMBER}})": ""
   },
   "{{PUT_IN_GRAVEYARD_ACTIONS}}": {
     "[ExileItInstead]": "",
