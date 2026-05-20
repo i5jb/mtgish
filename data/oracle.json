@@ -6260,6 +6260,18 @@
     ]
   },
   {
+    "name": "Advanced Floral Invocations",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Advanced Floral Invocations",
+        "manaCost": "{B/G}",
+        "type": "Enchantment — Class",
+        "text": "Landfall — Whenever a land you control enters, mill two cards.\n{B/G}: Level 2\nWhenever a land you control enters, creature cards in your graveyard perpetually get +1/+1.\n{4}{B/G}{B/G}: Level 3\nYou may play lands and cast creature spells from your graveyard. If you cast a spell this way, that creature enters with a finality counter on it."
+      }
+    ]
+  },
+  {
     "name": "Advanced Hoverguard",
     "layout": "single",
     "cards": [
@@ -11149,6 +11161,18 @@
         "text": "Shroud (This creature can't be the target of spells or abilities.)\nWhenever another creature dies, you may put a +1/+1 counter on this creature.",
         "power": "1",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Algorithmic Ferocity",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Algorithmic Ferocity",
+        "manaCost": "{G}",
+        "type": "Sorcery",
+        "text": "Until end of turn, target creature you control gains indestructible and gets +1/+0 for each card in your hand with mana value 4 or greater. Then it fights target creature an opponent controls."
       }
     ]
   },
@@ -16145,6 +16169,20 @@
     ]
   },
   {
+    "name": "Anina, Natural Parallelist",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Anina, Natural Parallelist",
+        "manaCost": "{1}{G}{U}",
+        "type": "Legendary Creature — Human Wizard",
+        "text": "Whenever you cast a spell with {X} in its mana cost, conjure a random creature card with mana value X onto the battlefield.\n{T}: Add {G}{U}. Spend this mana only to cast spells with {X} in their mana costs.",
+        "power": "1",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Anje Falkenrath",
     "layout": "single",
     "cards": [
@@ -19257,6 +19295,18 @@
         "manaCost": "{2}{W}",
         "type": "Artifact",
         "text": "When this artifact enters, search your library for up to two basic Plains cards, reveal them, put them into your hand, then shuffle.\nWhenever a land an opponent controls enters, if that player controls more lands than you, you may put a land card from your hand onto the battlefield."
+      }
+    ]
+  },
+  {
+    "name": "Archaeomancer's Spade",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Archaeomancer's Spade",
+        "manaCost": "{1}{R}{W}",
+        "type": "Artifact",
+        "text": "When this artifact enters, seek two cards with flashback and put them into your graveyard.\n{T}: Add {R}{W}. This mana can't be spent to cast spells from your hand."
       }
     ]
   },
@@ -41150,6 +41200,18 @@
         "text": "{T}: Attacking Spirits get +1/+0 until end of turn.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Blood Age Muster",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Blood Age Muster",
+        "manaCost": "{R}{W}",
+        "type": "Enchantment",
+        "text": "Whenever one or more cards leave your graveyard, conjure a random card from Blood Age Muster's spellbook onto the battlefield. Its base power and toughness perpetually become 2/2. This ability triggers only once each turn."
       }
     ]
   },
@@ -74819,6 +74881,18 @@
     ]
   },
   {
+    "name": "Consumed by History",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Consumed by History",
+        "manaCost": "{1}{R}",
+        "type": "Sorcery",
+        "text": "Until end of turn, whenever a nontoken creature dies, it perpetually gains unearth {5}.\nConsumed by History deals 3 damage to each creature."
+      }
+    ]
+  },
+  {
     "name": "Consuming Aberration",
     "layout": "single",
     "cards": [
@@ -76650,6 +76724,20 @@
         "manaCost": "{2}{B}",
         "type": "Enchantment",
         "text": "Skeletons you control get +1/+0 and have haste.\nWhen this enchantment enters, create a 2/2 black Skeleton Pirate creature token.\nAt the beginning of your end step, if you descended this turn, you may pay 1 life. If you do, return this enchantment to its owner's hand. (You descended if a permanent card was put into your graveyard from anywhere.)"
+      }
+    ]
+  },
+  {
+    "name": "Corpseweaver Prodigy",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Corpseweaver Prodigy",
+        "manaCost": "{2}{B}",
+        "type": "Creature — Treefolk Warlock",
+        "text": "Deathtouch\nIf a creature an opponent controls would die, exile it instead.\nInfusion — At the beginning of your second main phase, if you gained life this turn, conjure a card named Bridge from Below into your graveyard.",
+        "power": "2",
+        "toughness": "4"
       }
     ]
   },
@@ -79605,6 +79693,26 @@
         "name": "Creosote Heath",
         "type": "Land — Desert",
         "text": "This land enters tapped.\nWhen this land enters, it deals 1 damage to target opponent.\n{T}: Add {G} or {W}."
+      }
+    ]
+  },
+  {
+    "name": "Crescendo Conductor // Boltwave",
+    "layout": "preparer",
+    "cards": [
+      {
+        "name": "Crescendo Conductor",
+        "manaCost": "{1}{R}",
+        "type": "Creature — Orc Sorcerer",
+        "text": "Reach\nWhenever you conjure one or more cards, this creature becomes prepared.",
+        "power": "2",
+        "toughness": "2"
+      },
+      {
+        "name": "Boltwave",
+        "manaCost": "{R}",
+        "type": "Sorcery",
+        "text": "Boltwave deals 3 damage to each opponent."
       }
     ]
   },
@@ -99190,6 +99298,20 @@
         "name": "Distract the Hydra",
         "type": "Sorcery",
         "text": "Each player may sacrifice a creature. Each player who sacrificed a creature this way chooses a Head and taps it. Each player who didn't sacrifice a creature loses 3 life."
+      }
+    ]
+  },
+  {
+    "name": "Distracted Botanist",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Distracted Botanist",
+        "manaCost": "{1}{B}{G}",
+        "type": "Creature — Frog Druid",
+        "text": "Deathtouch\nLifelink\nWhen this creature dies, permanent cards in your graveyard perpetually gain \"When this permanent enters, you draw a card and gain 1 life.\"",
+        "power": "3",
+        "toughness": "2"
       }
     ]
   },
@@ -123190,6 +123312,18 @@
     ]
   },
   {
+    "name": "Expansive Reapplication",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Expansive Reapplication",
+        "manaCost": "{X}{G}{U}",
+        "type": "Instant",
+        "text": "X can't be 0.\nCounter target spell. Conjure a random creature card with mana value X onto the battlefield."
+      }
+    ]
+  },
+  {
     "name": "Expedite",
     "layout": "single",
     "cards": [
@@ -129428,6 +129562,18 @@
         "manaCost": "{1}{B}",
         "type": "Enchantment — Aura",
         "text": "Flash\nEnchant creature\nEnchanted creature gets -2/-1."
+      }
+    ]
+  },
+  {
+    "name": "Feed the Bog",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Feed the Bog",
+        "manaCost": "{1}{B}",
+        "type": "Sorcery",
+        "text": "Replicate {1}{B}\nCreature cards in your graveyard perpetually get +1/+1. Then return target creature card with mana value 3 or less from your graveyard to the battlefield."
       }
     ]
   },
@@ -144928,6 +145074,26 @@
     ]
   },
   {
+    "name": "Galathul Galecaller // Corvid Squall",
+    "layout": "preparer",
+    "cards": [
+      {
+        "name": "Galathul Galecaller",
+        "manaCost": "{1}{U}",
+        "type": "Creature — Bird Wizard",
+        "text": "Flash\nFlying\nWhenever this creature attacks, it becomes prepared.",
+        "power": "2",
+        "toughness": "1"
+      },
+      {
+        "name": "Corvid Squall",
+        "manaCost": "{1}{U}",
+        "type": "Sorcery",
+        "text": "Conjure a card named Storm Crow onto the battlefield.\nStorm"
+      }
+    ]
+  },
+  {
     "name": "Galazeth Prismari",
     "layout": "single",
     "cards": [
@@ -154615,6 +154781,18 @@
     ]
   },
   {
+    "name": "Glorifying Verse",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Glorifying Verse",
+        "manaCost": "{W/B}",
+        "type": "Enchantment",
+        "text": "Exalted\nRepartee — Whenever you cast an instant or sorcery spell that targets a creature, conjure a card named Glorifying Verse into your hand."
+      }
+    ]
+  },
+  {
     "name": "Glorious Anthem",
     "layout": "single",
     "cards": [
@@ -161670,6 +161848,18 @@
         "manaCost": "{1}{B}",
         "type": "Sorcery",
         "text": "Choose target creature. Mill three cards, then put a +1/+1 counter on that creature for each creature card in your graveyard. (To mill three cards, put the top three cards of your library into your graveyard.)"
+      }
+    ]
+  },
+  {
+    "name": "Grave Studies",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Grave Studies",
+        "manaCost": "{B}{G}",
+        "type": "Instant",
+        "text": "Conjure a card named Teacher's Pest onto the battlefield, then each player sacrifices a creature."
       }
     ]
   },
@@ -172521,6 +172711,20 @@
     ]
   },
   {
+    "name": "Head of the Class",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Head of the Class",
+        "manaCost": "{W}{B}",
+        "type": "Creature — Kithkin Cleric",
+        "text": "The first spell you cast during each of your turns that targets a creature costs {W}{B} less to cast. This effect reduces only the amount of colored mana you pay.\nRepartee — Whenever you cast an instant or sorcery spell that targets a creature, this creature perpetually gets +1/+1.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Head of the Homestead",
     "layout": "single",
     "cards": [
@@ -179439,6 +179643,18 @@
         "manaCost": "{2}{R}",
         "type": "Sorcery",
         "text": "As an additional cost to cast this spell, discard a card.\nDraw two cards. Amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)"
+      }
+    ]
+  },
+  {
+    "name": "Honor the Past",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Honor the Past",
+        "manaCost": "{2}{W}",
+        "type": "Sorcery",
+        "text": "Return target creature card with mana value 6 or less from your graveyard to the battlefield. It's an artifact. (It's no longer a creature.)"
       }
     ]
   },
@@ -187079,6 +187295,18 @@
     ]
   },
   {
+    "name": "Impose Hierarchy",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Impose Hierarchy",
+        "manaCost": "{1}{B}",
+        "type": "Instant",
+        "text": "Destroy target creature with mana value 4 or less. You gain 1 life for each creature card in its controller's hand."
+      }
+    ]
+  },
+  {
     "name": "Imposing Grandeur",
     "layout": "single",
     "cards": [
@@ -191150,6 +191378,18 @@
     ]
   },
   {
+    "name": "Inspiring Easel",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Inspiring Easel",
+        "manaCost": "{U}{R}",
+        "type": "Artifact",
+        "text": "{T}: Add one mana of any color. Spend this mana only to cast an instant or sorcery spell.\n{T}: Choose an instant or sorcery card in your hand. It perpetually incorporates {U}{R} and gains \"When you cast this spell, copy it. You may choose new targets for the copy.\" Activate only as a sorcery."
+      }
+    ]
+  },
+  {
     "name": "Inspiring Leader",
     "layout": "single",
     "cards": [
@@ -191634,6 +191874,18 @@
         "text": "Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\nWard {3}\nWhen this creature enters, look at the top four cards of your library. Put one of them into your hand and the rest on the bottom of your library in a random order.",
         "power": "5",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Interdisciplinary Studies",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Interdisciplinary Studies",
+        "manaCost": "{2}{U}",
+        "type": "Instant",
+        "text": "Seek a multicolored card.\nLearn."
       }
     ]
   },
@@ -274141,6 +274393,20 @@
     ]
   },
   {
+    "name": "Paradigm Shifter",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Paradigm Shifter",
+        "manaCost": "{1}{U}{R}",
+        "type": "Creature — Human Wizard",
+        "text": "When this creature enters, conjure a card of your choice from the Paradigm Spellbook into your hand.\n{T}: Add two mana in any combination of colors. Spend this mana only to cast instant and sorcery spells.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Paradise Druid",
     "layout": "single",
     "cards": [
@@ -279168,6 +279434,20 @@
         "text": "Flying, haste\n{2}{R}: This creature gets +2/+0 until end of turn.\nEscape—{2}{R}{R}, Exile three other cards from your graveyard. (You may cast this card from your graveyard for its escape cost.)\nThis creature escapes with a +1/+1 counter on it.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Phoenix of Iteration",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Phoenix of Iteration",
+        "manaCost": "{U}{R}",
+        "type": "Creature — Elemental Phoenix",
+        "text": "Flying\nOpus — Whenever you cast an instant or sorcery spell, Phoenix of Iteration perpetually gets +1/+1. If five or more mana was spent to cast that spell, you may exile Phoenix of Iteration, then return it to the battlefield tapped under its owner's control. This ability also triggers if this card is in your graveyard.",
+        "power": "2",
+        "toughness": "1"
       }
     ]
   },
@@ -324608,6 +324888,20 @@
     ]
   },
   {
+    "name": "Scalar Scholar",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Scalar Scholar",
+        "manaCost": "{G}{U}",
+        "type": "Creature — Salamander Wizard",
+        "text": "Increment\nWhen this creature enters, each card you own with {X} in its mana cost perpetually gains \"This spell costs {1} less to cast.\"",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Scald",
     "layout": "single",
     "cards": [
@@ -326058,6 +326352,18 @@
         "name": "School of the Unseen",
         "type": "Land",
         "text": "{T}: Add {C}.\n{2}, {T}: Add one mana of any color."
+      }
+    ]
+  },
+  {
+    "name": "Scintillating Encore",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Scintillating Encore",
+        "manaCost": "{W/B}",
+        "type": "Instant",
+        "text": "Target creature you control perpetually gets +2/+0. When that creature dies this turn, return it to the battlefield tapped under its owner's control."
       }
     ]
   },
@@ -352956,6 +353262,20 @@
     ]
   },
   {
+    "name": "Soovril, Patient Antiquarian",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Soovril, Patient Antiquarian",
+        "manaCost": "{R}{W}",
+        "type": "Legendary Creature — Orc Cleric",
+        "text": "Vigilance\n{T}: Put two time counters on target nonland card in exile that was put there from your graveyard this turn. If it doesn't have suspend, it gains suspend.",
+        "power": "2",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Sophia, Dogged Detective",
     "layout": "single",
     "cards": [
@@ -371885,6 +372205,18 @@
     ]
   },
   {
+    "name": "Summitfest Closing Ceremony",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Summitfest Closing Ceremony",
+        "manaCost": "{3}{U}{R}",
+        "type": "Instant",
+        "text": "Starting intensity 3\nCovercast — Whenever you cast another instant or sorcery spell, if five or more mana was spent to cast it, this card intensifies.\nAdd X {U} and X {R}, where X is this spell's intensity.\nDraw a card."
+      }
+    ]
+  },
+  {
     "name": "Summon Undead",
     "layout": "single",
     "cards": [
@@ -372917,6 +373249,20 @@
         "manaCost": "{G/W}{G/W}",
         "type": "Instant",
         "text": "Destroy target artifact or enchantment, then populate. (Create a token that's a copy of a creature token you control.)"
+      }
+    ]
+  },
+  {
+    "name": "Sundering Sentinel",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Sundering Sentinel",
+        "manaCost": "{2}{R}{R}{W}{W}",
+        "type": "Artifact Creature — Construct",
+        "text": "Starting intensity 2\nWhen this creature enters, it deals X damage to any target and you gain X life, where X is this creature's intensity. Then it intensifies.\nAt the beginning of your end step, exile this creature. At the beginning of your next upkeep, return it to the battlefield under its owner's control. It gains haste.",
+        "power": "6",
+        "toughness": "7"
       }
     ]
   },
@@ -390939,6 +391285,17 @@
         "name": "The Mystery Raceway",
         "type": "Land",
         "text": "Start your engines!\n{T}: Add {C}.\nMax Speed — {W}{U}{B}{R}{G}, {T}: Mill seven cards. Choose a playtest card from among them. You may cast it without paying its mana cost. If Team Cloudspire won the race, copy it and you may choose new targets for the copy. If Team Speed Demons won the race, each opponent loses life equal to its mana value.\nThe Mystery Raceway can be your commander."
+      }
+    ]
+  },
+  {
+    "name": "The Mystical Archive",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Mystical Archive",
+        "type": "Land",
+        "text": "As this land enters, draft a card from The Mystical Archive's spellbook and exile it face down.\n{T}: Add {C}.\n{1}, {T}: Add two mana in any combination of colors. Spend this mana only to cast spells that aren't from your starting deck.\n{2}, {T}: Put a card exiled with this land into its owner's hand."
       }
     ]
   },
@@ -411398,6 +411755,20 @@
     ]
   },
   {
+    "name": "Unbreakable Remnant",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Unbreakable Remnant",
+        "manaCost": "{W}",
+        "type": "Creature — Spirit Soldier",
+        "text": "Escape—{1}{W}, Exile two other cards from your graveyard.\nWhen you cast this spell from your graveyard, all cards you own named Unbreakable Remnant perpetually get +1/+1.",
+        "power": "2",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Unbreathing Horde",
     "layout": "single",
     "cards": [
@@ -415476,6 +415847,26 @@
     ]
   },
   {
+    "name": "Ursine Guide // Ranger's Merit",
+    "layout": "preparer",
+    "cards": [
+      {
+        "name": "Ursine Guide",
+        "manaCost": "{2}{G}",
+        "type": "Creature — Bear Druid",
+        "text": "This creature enters prepared.\nWhenever you cast a spell that isn't from your starting deck, conjure a card named Bear Cub onto the battlefield. This creature becomes prepared.",
+        "power": "3",
+        "toughness": "3"
+      },
+      {
+        "name": "Ranger's Merit",
+        "manaCost": "{3}{G}{G}",
+        "type": "Sorcery",
+        "text": "Put a +1/+1 counter on each Bear you control. They gain trample until end of turn."
+      }
+    ]
+  },
+  {
     "name": "Ursine Monstrosity",
     "layout": "single",
     "cards": [
@@ -418130,6 +418521,18 @@
         "text": "Whenever Varchild deals combat damage to a player, that player creates that many 1/1 red Survivor creature tokens.\nSurvivors your opponents control can't block, and they can't attack you or planeswalkers you control.\nWhen Varchild leaves the battlefield, gain control of all Survivors.",
         "power": "3",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Variable Solutions",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Variable Solutions",
+        "manaCost": "{X}{G}",
+        "type": "Sorcery",
+        "text": "If X is 1, seek a basic land card and put it onto the battlefield tapped.\nIf X is 2, each opponent sacrifices an artifact of their choice.\nIf X is 3, conjure a random creature card with mana value X onto the battlefield.\nIf X is 4 or more, you gain 2 life. Then do all of the above."
       }
     ]
   },

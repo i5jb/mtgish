@@ -4594,8 +4594,8 @@ type ObjectName =
 | { "_Name": "Name", Name: string, }
 | { "_Name": "FlipName", Unflipped: string, Flipped: string, };
 type ObjectPT =
-| { "_CardPT": "CardPT", CardPT?: CardPT, }
-| { "_CardPT": "FlipCardPT", Unflipped?: CardPT, Flipped?: CardPT, };
+| { "_CardPT": "CardPT", CardPT: CardPT, }
+| { "_CardPT": "FlipCardPT", Unflipped: CardPT, Flipped: CardPT, };
 type ObjectTypeline =
 | { "_Typeline": "Typeline", Typeline: OracleTypeline, }
 | { "_Typeline": "FlipTypeline", Unflipped: OracleTypeline, Flipped: OracleTypeline, };

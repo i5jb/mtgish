@@ -11857,16 +11857,16 @@ pub enum ObjectPT {
   #[serde(rename_all="PascalCase")]
   CardPT {
     #[serde(rename="CardPT")]
-    #[ts(optional, type="CardPT")]
-    card_pt: Option<CardPT>,
+    #[ts(type="CardPT")]
+    card_pt: CardPT,
   },
 
   #[serde(rename_all="PascalCase")]
   FlipCardPT {
-    #[ts(optional, type="CardPT")]
-    unflipped: Option<CardPT>,
-    #[ts(optional, type="CardPT")]
-    flipped: Option<CardPT>,
+    #[ts(type="CardPT")]
+    unflipped: CardPT,
+    #[ts(type="CardPT")]
+    flipped: CardPT,
   },
 }
 
