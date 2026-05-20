@@ -1490,6 +1490,7 @@ pub enum CounterType {
 type PlayerId = i32;
 
 type PermanentId = i32;
+type CardInExileId = i32;
 type EffectId = i32;
 type MutateIndex = i32;
 type VoteOption = String;
@@ -2928,7 +2929,7 @@ pub enum Rule {
   Unless(Condition, Vec<Rule>),
   IfElse(Condition, Vec<Rule>, Vec<Rule>),
   IfCardIsInOpeningHand(Vec<Action>),
-  MaxSpeed(Vec<Rule>),
+  MaxSpeed(Box<Rule>),
 
   AsGameBegins(Vec<Action>),
   BeforeDrawingOpeningHand(Vec<Action>),
@@ -11799,6 +11800,9 @@ pub enum RuleSource {
   AddCopiable       { effect_source: SourcedRule },
 
   #[serde(rename_all="PascalCase")]
+  AddCopiableFromExiled { exiled_id: CardInExileId, exiled_source: Box<RuleSource> },
+  
+  #[serde(rename_all="PascalCase")]
   Mutate            { effect_source: SourcedRule },
 
   #[serde(rename_all="PascalCase")]
@@ -11863,10 +11867,10 @@ pub enum ObjectPT {
 
   #[serde(rename_all="PascalCase")]
   FlipCardPT {
-    #[ts(type="CardPT")]
-    unflipped: CardPT,
-    #[ts(type="CardPT")]
-    flipped: CardPT,
+    #[ts(optional,type="CardPT")]
+    unflipped: Option<CardPT>,
+    #[ts(optional,type="CardPT")]
+    flipped: Option<CardPT>,
   },
 }
 
@@ -11991,6 +11995,12 @@ pub struct ExportPlayerId(PlayerId);
 #[ts(rename="PermanentId", export)]
 #[allow(dead_code)]
 pub struct ExportPermanentId(PermanentId);
+
+#[derive(ts_rs::TS)]
+#[ts(rename="CardInExileId", export)]
+#[allow(dead_code)]
+pub struct ExportCardInExileId(CardInExileId);
+
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]

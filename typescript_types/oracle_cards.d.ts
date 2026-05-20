@@ -1644,6 +1644,8 @@ type CardInExile =
 | { "_CardInExile": "TheSpecificCardExiledThisWay" }
 | { "_CardInExile": "ThisExiledCard" }
 | { "_CardInExile": "Trigger_ThatExiledCard" };
+type CardInExileId =
+| number;
 type CardInGraveyard =
 | { "_GraveyardCard": "TheGraveyardCardChosenThisWay" }
 | { "_GraveyardCard": "TheChosenGraveyardCard" }
@@ -4595,7 +4597,7 @@ type ObjectName =
 | { "_Name": "FlipName", Unflipped: string, Flipped: string, };
 type ObjectPT =
 | { "_CardPT": "CardPT", CardPT: CardPT, }
-| { "_CardPT": "FlipCardPT", Unflipped: CardPT, Flipped: CardPT, };
+| { "_CardPT": "FlipCardPT", Unflipped?: CardPT, Flipped?: CardPT, };
 type ObjectTypeline =
 | { "_Typeline": "Typeline", Typeline: OracleTypeline, }
 | { "_Typeline": "FlipTypeline", Unflipped: OracleTypeline, Flipped: OracleTypeline, };
@@ -7101,7 +7103,7 @@ type Rule =
 | { "_Rule": "Unless", "args": [Condition, Array<Rule>] }
 | { "_Rule": "IfElse", "args": [Condition, Array<Rule>, Array<Rule>] }
 | { "_Rule": "IfCardIsInOpeningHand", "args": Array<Action> }
-| { "_Rule": "MaxSpeed", "args": Array<Rule> }
+| { "_Rule": "MaxSpeed", "args": Rule }
 | { "_Rule": "AsGameBegins", "args": Array<Action> }
 | { "_Rule": "BeforeDrawingOpeningHand", "args": Array<Action> }
 | { "_Rule": "DrawAnAdditionalHandBeforeMulligans" }
@@ -7151,6 +7153,7 @@ type RuleSource =
 | { "_RuleSource": "Copy", EffectSource: SourcedRule, CopiedSource: SourcedRule, }
 | { "_RuleSource": "CopyModifier", EffectSource: SourcedRule, }
 | { "_RuleSource": "AddCopiable", EffectSource: SourcedRule, }
+| { "_RuleSource": "AddCopiableFromExiled", ExiledId: number, ExiledSource: RuleSource, }
 | { "_RuleSource": "Mutate", EffectSource: SourcedRule, }
 | { "_RuleSource": "BattlefieldEffect", EffectSource: SourcedRule, PermanentId: number, }
 | { "_RuleSource": "Effect", EffectSource: SourcedRule, EffectId: number, }
