@@ -106,13 +106,19 @@
   // Spellbook capitalization
   {
     "reason":  "Arena typo, spellbook is lowercase. See Three Pigs spellbook and Planets spellbook",
-    "cards":   ["Brood Astronomer", "Volatile Orbit", "Vv'viza, Orbital Overseer"] ,
+    "cards":   ["Paradigm Shifter"],
+    "find":    "Paradigm Spellbook",
+    "replace": "Paradigm spellbook",
+  },
+  {
+    "reason":  "Arena typo, spellbook is lowercase. See Three Pigs spellbook and Planets spellbook",
+    "cards":   ["Brood Astronomer", "Volatile Orbit", "Vv'viza, Orbital Overseer"],
     "find":    "Planets Spellbook",
     "replace": "Planets spellbook",
   },
   {
     "reason":  "Arena typo, spellbook is lowercase. See Three Pigs spellbook and Planets spellbook",
-    "cards":   ["Sliver Weftwinder"] ,
+    "cards":   ["Sliver Weftwinder"],
     "find":    "Slivers Spellbook",
     "replace": "Slivers spellbook",
   },

@@ -252,6 +252,7 @@ flat_creature_types = [
   ("Nomad"          , "Nomads"          , "Nomad"         ),
   ("Nymph"          , "Nymphs"          , "Nymph"         ),
   ("Octopus"        , "Octopuses"       , "Octopus"       ),
+  ("Officer"        , "Officers"        , "Officer"       ),
   ("Ogre"           , "Ogres"           , "Ogre"          ),
   ("Ooze"           , "Oozes"           , "Ooze"          ),
   ("Orb"            , "Orbs"            , "Orb"           ),

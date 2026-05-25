@@ -78,12 +78,12 @@
     "TokenCopyOfEachPermanent({{PERMANENTS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
     "TokenCopyOfEachGraveyardCard({{CARDS_IN_GRAVEYARD}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
     "TokenCopyOfEachExiledCard({{CARDS_IN_EXILE}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
-    "TokenCopyOfGraveyardCard({{GRAVEYARD_CARD}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfGraveyardCard({{CARD_IN_GRAVEYARDS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
     "TokenCopyOfExiledCard({{CARD_IN_EXILE}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
-    "TokenCopyOfNamedCard({{QUOTED_NAMED_CARD}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
     "TokenCopyOfEachPermanentDestroyedThisWay({{TOKEN_COPY_EFFECT_LIST}})": "",
 
-    "TokenCopyOfACardAtRandom({{CARDS}})": "",
+    "TokenCopyOfNamedCard({{QUOTED_NAMED_CARD}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfACardAtRandom({{CARDS_IN_ORACLE}})": "",
 
     // Defined Tokens (111.10)
     "TreasureToken": "",

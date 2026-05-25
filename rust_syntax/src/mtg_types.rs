@@ -236,6 +236,7 @@ pub enum CreatureType {
   Nomad,
   Nymph,
   Octopus,
+  Office,
   Ogre,
   Ooze,
   Orb,
@@ -817,6 +818,7 @@ pub enum SubType {
   Nomad,
   Nymph,
   Octopus,
+  Officer,
   Ogre,
   Ooze,
   Orb,
@@ -2196,7 +2198,7 @@ pub enum PlayerEffect {
   MayPlayGraveyardCard(CardInGraveyard),
   MayPlayGraveyardCardWithEffect(CardInGraveyard, Vec<SpellEffect>),
   MayPlayLandsFromAmongExiled(Box<CardsInExile>),
-  MayPlayLandsFromGraveyard(Box<Cards>),
+  MayPlayLandsFromGraveyard(Box<CardsInGraveyard>),
   MayPlayLandsFromOutsideTheGame(Box<Cards>),
   MayPlayLandsFromTopOfLibrary(Box<Cards>),
   MayPlayLandsFromTopOfPlayersLibrary(Box<Players>),
@@ -2903,6 +2905,7 @@ pub enum Rule {
   TriggerI(Trigger, Condition, Box<Actions>),
   TriggerIOnce(Trigger, Condition, Box<Actions>),
   TriggerIOnceEachTurn(Trigger, Condition, Box<Actions>),
+  TriggerI_Covercast(Trigger, Condition, Box<Actions>),
 
   Activated(Box<Cost>, Box<Actions>),
   ActivatedWithModifiers(Box<Cost>, Box<Actions>, ActivateModifier),
@@ -3458,7 +3461,7 @@ pub enum ReplacementActionWouldEnter {
 
   BecomeDay,
   ChooseABasicLandType,
-  ChooseACardName(Box<Cards>),
+  ChooseACardName(Box<CardsInOracle>),
   ChooseACardtype,
   ChooseACardtypeExceptFromList(Vec<CardType>),
   ChooseACardtypeFromList(Vec<CardType>),
@@ -3532,6 +3535,7 @@ pub enum ReplacementActionWouldEnter {
   Exile(Vec<Exilable>),
   ExileAnyNumberOfCardsFromPlayersGraveyard(Box<Cards>, Box<Player>),
   ExileCardFromHand(CardInHand),
+  ExileCardFromHandFaceDown(CardInHand),
   ExileItInstead,
   ExileUptoNumberGraveyardCards(Box<GameNumber>, Box<CardsInGraveyard>),
   FlipACoin_OnHeadAndOnTails(Vec<ReplacementActionWouldEnter>, Vec<ReplacementActionWouldEnter>),
@@ -4834,6 +4838,28 @@ pub enum SingleCard {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_CardsInOracle", content = "args"))]
+pub enum CardsInOracle {
+  AnyOracleCard,
+  And(Vec<CardsInOracle>),
+  Or(Vec<CardsInOracle>),
+  Not(Box<CardsInOracle>),
+  FromTheLorwynEclipsedExpansion,
+  IsNamed(NameFilter),
+  SharesANameWithACardInHandRevealedThisWay,
+  IsSupertype(SuperType),
+  IsNonSupertype(SuperType),
+  IsCardtype(CardType),
+  IsNonCardtype(CardType),
+  IsCreatureType(CreatureType),
+  IsNonCreatureType(CreatureType),
+  IsArtifactType(ArtifactType),
+  ManaValueIs(Box<Comparison>),
+}
+
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Cards", content = "args"))]
 pub enum Cards {
   Not(Box<Cards>),
@@ -4842,7 +4868,6 @@ pub enum Cards {
   Other(SingleCard),
   SingleCard(SingleCard),
 
-  FromTheLorwynEclipsedExpansion,
   // IsNonSpellType(SpellType),
   TheCardsSeekedThisWay,
   HasNoAbilities,
@@ -4908,7 +4933,6 @@ pub enum Cards {
   SharesACreatureTypeWithPermanent(Box<Permanent>),
   SharesACreatureTypeWithPermanents(Box<Permanents>),
   SharesAManaValueWithSpell(Box<Spell>),
-  SharesANameWithACardInHandRevealedThisWay,
   SharesANameWithACardSpliceOntoSpell(Box<Spell>),
   SharesANameWithAPermanent(Box<Permanents>),
   SharesANameWithAnExiled(Box<CardsInExile>),
@@ -5568,7 +5592,7 @@ pub enum PutIntoGraveyardAction {
 pub enum AttachAction {
   ChooseAColor(ChoosableColor),
   ChooseAnExiledCardToCopy(Box<CardsInExile>),
-  ChooseACardName(Box<Cards>),
+  ChooseACardName(Box<CardsInOracle>),
   ChooseACreatureType,
 }
 
@@ -6479,6 +6503,8 @@ pub enum Spells {
   HasColorManaSymbolInManaCost(Color),
   HasHybridManaInCost,
   PowerIsLessThanToughness,
+  NotInAPlayersStartingDeck(Box<Players>),
+  WasCastFromTheirGraveyard,
 
   SneakCostWasPaid,
   WasCastForItsWarpCost,
@@ -6695,6 +6721,7 @@ pub enum CardsInExile {
   ThePilesExiledThisWay,
   TheSpecificCardsExiledThisWay,
   Trigger_ThoseExiledCards,
+  WasPutIntoExileFromAPlayersGraveyardThisTurn(Box<Players>),
   UsedToCraftPermanent(Box<Permanent>),
   WasExiledByPlayer(Box<Player>),
   WasExiledByPlayerForDraftCard(Box<Player>, NameString),
@@ -8058,7 +8085,7 @@ pub enum CreatableToken {
   TokenCopyOfSpell(Box<Spell>, TokenCopyEffects),
   TokenFromCopy,
   TokenCopyOfGraveyardCard(CardInGraveyard, TokenCopyEffects),
-  TokenCopyOfACardAtRandom(Box<Cards>),
+  TokenCopyOfACardAtRandom(Box<CardsInOracle>),
   TokenCopyOfCommander(TokenCopyEffects),
   TokenCopyOfEachGraveyardCard(CardsInGraveyard, TokenCopyEffects),
   TokenCopyOfEachPermanent(Box<Permanents>, TokenCopyEffects),
@@ -8227,7 +8254,10 @@ pub enum Action {
   Cipher(Box<Spell>),
   Paradigm(Box<Spell>),
   CastExiledCardWithoutPayingIntoExile(Box<CardInExile>),
-  ConjureARandomCardIntoExile(Box<Cards>),
+  ConjureARandomCardIntoExile(Box<CardsInOracle>),
+  ConjureARandomCardFromSpellBookOntoBattlefield(SpellBookName, Vec<ReplacementActionWouldEnter>),
+  ConjureARandomCardOntoBattlefield(Box<CardsInOracle>, Vec<ReplacementActionWouldEnter>),
+
   ConjureNumberCardsIntoLibrary(Box<GameNumber>, NameString),
   CounterEachSpellAndAbility(SpellsAndAbilities),
   CreatePerpetualCardsInPlayersHandAndCardsInPlayersLibraryEffect(CardsInHand, Box<Players>, CardsInLibrary, Box<Players>, Vec<PerpetualEffect>),
@@ -8345,7 +8375,7 @@ pub enum Action {
   ConjureACardIntoGraveyard(NameString),
   ConjureACardOfChoiceFromSpellBookIntoHand(SpellBookName),
   ConjureACardOfChoiceFromSpellBookOntoBattlefield(SpellBookName, Vec<ReplacementActionWouldEnter>),
-  ConjureACardOfTypeFromSpellBookOntoBattlefield(SpellBookName, Box<Cards>, Vec<ReplacementActionWouldEnter>),
+  ConjureACardOfTypeFromSpellBookOntoBattlefield(SpellBookName, Box<CardsInOracle>, Vec<ReplacementActionWouldEnter>),
   ConjureADuplicateOfEachPermanentOntoTheBattlefield(Box<Permanents>, Vec<ReplacementActionWouldEnter>),
   ConjureARandomCardFromSpellBookIntoExile(SpellBookName),
   ConjureARandomCardFromSpellBookIntoExileFaceDown(SpellBookName),
@@ -8617,8 +8647,8 @@ pub enum Action {
   ChooseACardInHandOfEachColor(Box<Cards>),
   ChooseACardInPlayersGraveyard(Box<Cards>, Box<Player>),
   ChooseACardInPlayersGraveyardAtRandom(Box<Cards>, Box<Player>),
-  ChooseACardName(Box<Cards>),
-  ChooseACardNameThatHasntBeenChosen(Box<Cards>),
+  ChooseACardName(Box<CardsInOracle>),
+  ChooseACardNameThatHasntBeenChosen(Box<CardsInOracle>),
   ChooseACardOfTypeInPlayersHandAtRandom(Box<Cards>, Box<Player>),
   ChooseACardtype,
   ChooseACardtypeFromList(Vec<CardType>),
@@ -9087,6 +9117,8 @@ pub enum Action {
   PermanentDoesntUntapDuringControllersNextUntap(Box<Permanent>),
   PerpetuallyIncreaseIntensityOfCardsOwnedByPlayer(Box<Cards>, Box<Player>, Box<GameNumber>),
   PerpetuallyIncreaseIntensityOfPermanent(Box<Permanent>, Box<GameNumber>),
+  IntensifyPermanent(Box<Permanent>),
+  IntensifyCard(Box<SingleCard>),
   PhaseInEachPermanentAndPhaseOutEachPermanent(Box<Permanents>, Box<Permanents>),
   PhaseOutAnyNumberOfPermanents(Box<Permanents>),
   PhaseOutEachPermanent(Box<Permanents>),
@@ -9171,6 +9203,7 @@ pub enum Action {
   PutCardFromHandOnBottomOfLibrary(CardInHand),
   PutCardFromHandOnTopOfLibrary(CardInHand),
   PutCardInHandIntoLibraryNthFromTop(CardInHand),
+  PutCardsInHandIntoGraveyard(Box<CardsInHand>),
   PutCardsFromHandOnBattlefield(Box<CardsInHand>, Vec<ReplacementActionWouldEnter>),
   PutCopyOfEachCounterOnPermanentOnPermanent(Box<Permanent>, Box<Permanent>),
   PutCountersOfDeadPermanentOnPermanent(Box<Permanent>),

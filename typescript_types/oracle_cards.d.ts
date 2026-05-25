@@ -59,7 +59,9 @@ type Action =
 | { "_Action": "Cipher", "args": Spell }
 | { "_Action": "Paradigm", "args": Spell }
 | { "_Action": "CastExiledCardWithoutPayingIntoExile", "args": CardInExile }
-| { "_Action": "ConjureARandomCardIntoExile", "args": Cards }
+| { "_Action": "ConjureARandomCardIntoExile", "args": CardsInOracle }
+| { "_Action": "ConjureARandomCardFromSpellBookOntoBattlefield", "args": [string, Array<ReplacementActionWouldEnter>] }
+| { "_Action": "ConjureARandomCardOntoBattlefield", "args": [CardsInOracle, Array<ReplacementActionWouldEnter>] }
 | { "_Action": "ConjureNumberCardsIntoLibrary", "args": [GameNumber, string] }
 | { "_Action": "CounterEachSpellAndAbility", "args": SpellsAndAbilities }
 | { "_Action": "CreatePerpetualCardsInPlayersHandAndCardsInPlayersLibraryEffect", "args": [CardsInHand, Players, CardsInLibrary, Players, Array<PerpetualEffect>] }
@@ -159,7 +161,7 @@ type Action =
 | { "_Action": "ConjureACardIntoGraveyard", "args": string }
 | { "_Action": "ConjureACardOfChoiceFromSpellBookIntoHand", "args": string }
 | { "_Action": "ConjureACardOfChoiceFromSpellBookOntoBattlefield", "args": [string, Array<ReplacementActionWouldEnter>] }
-| { "_Action": "ConjureACardOfTypeFromSpellBookOntoBattlefield", "args": [string, Cards, Array<ReplacementActionWouldEnter>] }
+| { "_Action": "ConjureACardOfTypeFromSpellBookOntoBattlefield", "args": [string, CardsInOracle, Array<ReplacementActionWouldEnter>] }
 | { "_Action": "ConjureADuplicateOfEachPermanentOntoTheBattlefield", "args": [Permanents, Array<ReplacementActionWouldEnter>] }
 | { "_Action": "ConjureARandomCardFromSpellBookIntoExile", "args": string }
 | { "_Action": "ConjureARandomCardFromSpellBookIntoExileFaceDown", "args": string }
@@ -423,8 +425,8 @@ type Action =
 | { "_Action": "ChooseACardInHandOfEachColor", "args": Cards }
 | { "_Action": "ChooseACardInPlayersGraveyard", "args": [Cards, Player] }
 | { "_Action": "ChooseACardInPlayersGraveyardAtRandom", "args": [Cards, Player] }
-| { "_Action": "ChooseACardName", "args": Cards }
-| { "_Action": "ChooseACardNameThatHasntBeenChosen", "args": Cards }
+| { "_Action": "ChooseACardName", "args": CardsInOracle }
+| { "_Action": "ChooseACardNameThatHasntBeenChosen", "args": CardsInOracle }
 | { "_Action": "ChooseACardOfTypeInPlayersHandAtRandom", "args": [Cards, Player] }
 | { "_Action": "ChooseACardtype" }
 | { "_Action": "ChooseACardtypeFromList", "args": Array<CardType> }
@@ -893,6 +895,8 @@ type Action =
 | { "_Action": "PermanentDoesntUntapDuringControllersNextUntap", "args": Permanent }
 | { "_Action": "PerpetuallyIncreaseIntensityOfCardsOwnedByPlayer", "args": [Cards, Player, GameNumber] }
 | { "_Action": "PerpetuallyIncreaseIntensityOfPermanent", "args": [Permanent, GameNumber] }
+| { "_Action": "IntensifyPermanent", "args": Permanent }
+| { "_Action": "IntensifyCard", "args": SingleCard }
 | { "_Action": "PhaseInEachPermanentAndPhaseOutEachPermanent", "args": [Permanents, Permanents] }
 | { "_Action": "PhaseOutAnyNumberOfPermanents", "args": Permanents }
 | { "_Action": "PhaseOutEachPermanent", "args": Permanents }
@@ -977,6 +981,7 @@ type Action =
 | { "_Action": "PutCardFromHandOnBottomOfLibrary", "args": CardInHand }
 | { "_Action": "PutCardFromHandOnTopOfLibrary", "args": CardInHand }
 | { "_Action": "PutCardInHandIntoLibraryNthFromTop", "args": CardInHand }
+| { "_Action": "PutCardsInHandIntoGraveyard", "args": CardsInHand }
 | { "_Action": "PutCardsFromHandOnBattlefield", "args": [CardsInHand, Array<ReplacementActionWouldEnter>] }
 | { "_Action": "PutCopyOfEachCounterOnPermanentOnPermanent", "args": [Permanent, Permanent] }
 | { "_Action": "PutCountersOfDeadPermanentOnPermanent", "args": Permanent }
@@ -1594,7 +1599,7 @@ type ArtifactType =
 type AttachAction =
 | { "_AttachAction": "ChooseAColor", "args": ChoosableColor }
 | { "_AttachAction": "ChooseAnExiledCardToCopy", "args": CardsInExile }
-| { "_AttachAction": "ChooseACardName", "args": Cards }
+| { "_AttachAction": "ChooseACardName", "args": CardsInOracle }
 | { "_AttachAction": "ChooseACreatureType" };
 type AttackAssignment =
 | { "_AttackAssignment": "ThePlayerOrPlaneswalkerChosenThisWay" }
@@ -1704,7 +1709,6 @@ type Cards =
 | { "_Cards": "Or", "args": Array<Cards> }
 | { "_Cards": "Other", "args": SingleCard }
 | { "_Cards": "SingleCard", "args": SingleCard }
-| { "_Cards": "FromTheLorwynEclipsedExpansion" }
 | { "_Cards": "TheCardsSeekedThisWay" }
 | { "_Cards": "HasNoAbilities" }
 | { "_Cards": "IsCardtypeVariable", "args": CardtypeVariable }
@@ -1768,7 +1772,6 @@ type Cards =
 | { "_Cards": "SharesACreatureTypeWithPermanent", "args": Permanent }
 | { "_Cards": "SharesACreatureTypeWithPermanents", "args": Permanents }
 | { "_Cards": "SharesAManaValueWithSpell", "args": Spell }
-| { "_Cards": "SharesANameWithACardInHandRevealedThisWay" }
 | { "_Cards": "SharesANameWithACardSpliceOntoSpell", "args": Spell }
 | { "_Cards": "SharesANameWithAPermanent", "args": Permanents }
 | { "_Cards": "SharesANameWithAnExiled", "args": CardsInExile }
@@ -1835,6 +1838,7 @@ type CardsInExile =
 | { "_CardsInExile": "ThePilesExiledThisWay" }
 | { "_CardsInExile": "TheSpecificCardsExiledThisWay" }
 | { "_CardsInExile": "Trigger_ThoseExiledCards" }
+| { "_CardsInExile": "WasPutIntoExileFromAPlayersGraveyardThisTurn", "args": Players }
 | { "_CardsInExile": "UsedToCraftPermanent", "args": Permanent }
 | { "_CardsInExile": "WasExiledByPlayer", "args": Player }
 | { "_CardsInExile": "WasExiledByPlayerForDraftCard", "args": [Player, string] }
@@ -1975,6 +1979,22 @@ type CardsInLibrary =
 | { "_CardsInLibrary": "SharesANameWithSpell", "args": Spell }
 | { "_CardsInLibrary": "IsNonCardtype", "args": CardType }
 | { "_CardsInLibrary": "TheCardsConjuredInLibraryThisWay" };
+type CardsInOracle =
+| { "_CardsInOracle": "AnyOracleCard" }
+| { "_CardsInOracle": "And", "args": Array<CardsInOracle> }
+| { "_CardsInOracle": "Or", "args": Array<CardsInOracle> }
+| { "_CardsInOracle": "Not", "args": CardsInOracle }
+| { "_CardsInOracle": "FromTheLorwynEclipsedExpansion" }
+| { "_CardsInOracle": "IsNamed", "args": NameFilter }
+| { "_CardsInOracle": "SharesANameWithACardInHandRevealedThisWay" }
+| { "_CardsInOracle": "IsSupertype", "args": SuperType }
+| { "_CardsInOracle": "IsNonSupertype", "args": SuperType }
+| { "_CardsInOracle": "IsCardtype", "args": CardType }
+| { "_CardsInOracle": "IsNonCardtype", "args": CardType }
+| { "_CardsInOracle": "IsCreatureType", "args": CreatureType }
+| { "_CardsInOracle": "IsNonCreatureType", "args": CreatureType }
+| { "_CardsInOracle": "IsArtifactType", "args": ArtifactType }
+| { "_CardsInOracle": "ManaValueIs", "args": Comparison };
 type CardType =
 | "Artifact"
 | "Battle"
@@ -3030,7 +3050,7 @@ type CreatableToken =
 | { "_CreatableToken": "TokenCopyOfSpell", "args": [Spell, TokenCopyEffects] }
 | { "_CreatableToken": "TokenFromCopy" }
 | { "_CreatableToken": "TokenCopyOfGraveyardCard", "args": [CardInGraveyard, TokenCopyEffects] }
-| { "_CreatableToken": "TokenCopyOfACardAtRandom", "args": Cards }
+| { "_CreatableToken": "TokenCopyOfACardAtRandom", "args": CardsInOracle }
 | { "_CreatableToken": "TokenCopyOfCommander", "args": TokenCopyEffects }
 | { "_CreatableToken": "TokenCopyOfEachGraveyardCard", "args": [CardsInGraveyard, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfEachPermanent", "args": [Permanents, TokenCopyEffects] }
@@ -3251,6 +3271,7 @@ type CreatureType =
 | "Nomad"
 | "Nymph"
 | "Octopus"
+| "Office"
 | "Ogre"
 | "Ooze"
 | "Orb"
@@ -5671,7 +5692,7 @@ type PlayerEffect =
 | { "_PlayerEffect": "MayPlayGraveyardCard", "args": CardInGraveyard }
 | { "_PlayerEffect": "MayPlayGraveyardCardWithEffect", "args": [CardInGraveyard, Array<SpellEffect>] }
 | { "_PlayerEffect": "MayPlayLandsFromAmongExiled", "args": CardsInExile }
-| { "_PlayerEffect": "MayPlayLandsFromGraveyard", "args": Cards }
+| { "_PlayerEffect": "MayPlayLandsFromGraveyard", "args": CardsInGraveyard }
 | { "_PlayerEffect": "MayPlayLandsFromOutsideTheGame", "args": Cards }
 | { "_PlayerEffect": "MayPlayLandsFromTopOfLibrary", "args": Cards }
 | { "_PlayerEffect": "MayPlayLandsFromTopOfPlayersLibrary", "args": Players }
@@ -6448,7 +6469,7 @@ type ReplacementActionWouldEnter =
 | { "_ReplacementActionWouldEnter": "RemoveAllCountersFromAnyNumberOfPermanents", "args": Permanents }
 | { "_ReplacementActionWouldEnter": "BecomeDay" }
 | { "_ReplacementActionWouldEnter": "ChooseABasicLandType" }
-| { "_ReplacementActionWouldEnter": "ChooseACardName", "args": Cards }
+| { "_ReplacementActionWouldEnter": "ChooseACardName", "args": CardsInOracle }
 | { "_ReplacementActionWouldEnter": "ChooseACardtype" }
 | { "_ReplacementActionWouldEnter": "ChooseACardtypeExceptFromList", "args": Array<CardType> }
 | { "_ReplacementActionWouldEnter": "ChooseACardtypeFromList", "args": Array<CardType> }
@@ -6522,6 +6543,7 @@ type ReplacementActionWouldEnter =
 | { "_ReplacementActionWouldEnter": "Exile", "args": Array<Exilable> }
 | { "_ReplacementActionWouldEnter": "ExileAnyNumberOfCardsFromPlayersGraveyard", "args": [Cards, Player] }
 | { "_ReplacementActionWouldEnter": "ExileCardFromHand", "args": CardInHand }
+| { "_ReplacementActionWouldEnter": "ExileCardFromHandFaceDown", "args": CardInHand }
 | { "_ReplacementActionWouldEnter": "ExileItInstead" }
 | { "_ReplacementActionWouldEnter": "ExileUptoNumberGraveyardCards", "args": [GameNumber, CardsInGraveyard] }
 | { "_ReplacementActionWouldEnter": "FlipACoin_OnHeadAndOnTails", "args": [Array<ReplacementActionWouldEnter>, Array<ReplacementActionWouldEnter>] }
@@ -7078,6 +7100,7 @@ type Rule =
 | { "_Rule": "TriggerI", "args": [Trigger, Condition, Actions] }
 | { "_Rule": "TriggerIOnce", "args": [Trigger, Condition, Actions] }
 | { "_Rule": "TriggerIOnceEachTurn", "args": [Trigger, Condition, Actions] }
+| { "_Rule": "TriggerI_Covercast", "args": [Trigger, Condition, Actions] }
 | { "_Rule": "Activated", "args": [Cost, Actions] }
 | { "_Rule": "ActivatedWithModifiers", "args": [Cost, Actions, ActivateModifier] }
 | { "_Rule": "FromExileOrBattlefield", "args": Rule }
@@ -7458,6 +7481,8 @@ type Spells =
 | { "_Spells": "HasColorManaSymbolInManaCost", "args": Color }
 | { "_Spells": "HasHybridManaInCost" }
 | { "_Spells": "PowerIsLessThanToughness" }
+| { "_Spells": "NotInAPlayersStartingDeck", "args": Players }
+| { "_Spells": "WasCastFromTheirGraveyard" }
 | { "_Spells": "SneakCostWasPaid" }
 | { "_Spells": "WasCastForItsWarpCost" }
 | { "_Spells": "DoesntHaveAbility", "args": CheckHasable }
@@ -7951,6 +7976,7 @@ type SubType =
 | "Nomad"
 | "Nymph"
 | "Octopus"
+| "Officer"
 | "Ogre"
 | "Ooze"
 | "Orb"

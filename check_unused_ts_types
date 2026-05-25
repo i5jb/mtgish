@@ -107,6 +107,7 @@ internal_keys = set([
   ('_EffectListItem', 'Testcase'),
 
   ('_RuleSource', 'AddCopiable'),
+  ('_RuleSource', 'AddCopiableFromExiled'),
   ('_RuleSource', 'BattlefieldEffect'),
   ('_RuleSource', 'Copy'),
   ('_RuleSource', 'CopyModifier'),
