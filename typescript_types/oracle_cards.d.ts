@@ -3271,7 +3271,7 @@ type CreatureType =
 | "Nomad"
 | "Nymph"
 | "Octopus"
-| "Office"
+| "Officer"
 | "Ogre"
 | "Ooze"
 | "Orb"
