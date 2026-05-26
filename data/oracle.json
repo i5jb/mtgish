@@ -201028,7 +201028,7 @@
         "name": "Junkyard Scrapper",
         "manaCost": "{2}{R}",
         "type": "Creature — Goblin Artificer",
-        "text": "Whenever a nontoken artifact enters the battlefield under your control, exile a random nonland artifact card with lesser mana value from your library. You may cast that card until the end of your next turn.",
+        "text": "Whenever a nontoken artifact you control enters, exile a random nonland artifact card with lesser mana value from your library. You may cast that card until the end of your next turn.",
         "power": "3",
         "toughness": "3"
       }
