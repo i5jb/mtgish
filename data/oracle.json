@@ -748,7 +748,7 @@
         "name": "A-Dawnbringer Cleric",
         "manaCost": "{1}{W}",
         "type": "Creature — Human Cleric",
-        "text": "When Dawnbringer Cleric enters, choose one —\n• Cure Wounds — You gain 2 life.\n• Dispel Magic — Destroy target enchantment.\n• Gentle Repose — Exile target card from a graveyard.",
+        "text": "When this creature enters, choose one —\n• Cure Wounds — You gain 2 life.\n• Dispel Magic — Destroy target enchantment.\n• Gentle Repose — Exile target card from a graveyard.",
         "power": "1",
         "toughness": "4"
       }
@@ -15004,7 +15004,7 @@
         "name": "Angel of Unity",
         "manaCost": "{1}{W}",
         "type": "Creature — Angel Cleric",
-        "text": "Flying, lifelink\nWhenever Angel of Unity enters the battlefield or you cast a party spell, choose a party creature card in your hand. It perpetually gets +1/+1. (A party card or spell is a Cleric, Rogue, Warrior, or Wizard.)",
+        "text": "Flying, lifelink\nWhenever this creature enters and whenever you cast a party spell, choose a party creature card in your hand. It perpetually gets +1/+1. (A party card or spell is a Cleric, Rogue, Warrior, or Wizard.)",
         "power": "1",
         "toughness": "3"
       }
@@ -18582,7 +18582,7 @@
         "name": "Arcane Archery",
         "manaCost": "{2}{G}",
         "type": "Instant",
-        "text": "Target creature gets +3/+3 and gains reach and trample until end of turn.\nYou get a one-time boon with \"When you cast your next creature spell, that creature enters the battlefield with an additional +1/+1 counter, reach counter, and trample counter on it.\""
+        "text": "Target creature gets +3/+3 and gains reach and trample until end of turn.\nYou get a one-time boon with \"When you cast a creature spell, that creature enters with an additional +1/+1 counter, reach counter, and trample counter on it.\""
       }
     ]
   },
@@ -22535,7 +22535,7 @@
         "name": "Artillery Enthusiast",
         "manaCost": "{R}",
         "type": "Creature — Goblin Artificer",
-        "text": "Modified creatures you control have menace. (Equipment, Auras you control, and counters are modifications.)\nWhen Artillery Enthusiast enters the battlefield, you may discard a card. If you do, seek a card with mana value equal to that card's mana value. (To seek a card, put one at random from your library into your hand.)",
+        "text": "Modified creatures you control have menace. (Equipment, Auras you control, and counters are modifications.)\nWhen Artillery Enthusiast enters, you may discard a card. If you do, seek a card with mana value equal to that card's mana value. (To seek a card, put one at random from your library into your hand.)",
         "power": "1",
         "toughness": "2"
       }
@@ -42700,7 +42700,7 @@
         "name": "Bloodrage Alpha",
         "manaCost": "{3}{R}",
         "type": "Creature — Wolf",
-        "text": "When this creature enters the battlefield, choose one —\n• Another target Wolf or Werewolf you control fights target creature you don't control.\n• You get a one-time boon with \"When you cast a Wolf or Werewolf spell, it gains 'When this creature enters, it fights up to one target creature you don't control.'\"",
+        "text": "When this creature enters, choose one —\n• Another target Wolf or Werewolf you control fights target creature you don't control.\n• You get a one-time boon with \"When you cast a Wolf or Werewolf spell, it gains 'When this creature enters, it fights up to one target creature you don't control.'\"",
         "power": "4",
         "toughness": "4"
       }
@@ -43895,7 +43895,7 @@
         "name": "Boareskyr Tollkeeper",
         "manaCost": "{1}{W}",
         "type": "Creature — Orc Knight",
-        "text": "When Boareskyr Tollkeeper enters the battlefield, target opponent reveals all creature and land cards in their hand. Choose one of them. That card perpetually gains \"This permanent enters the battlefield tapped.\"",
+        "text": "When this creature enters, target opponent reveals all creature and land cards in their hand. Choose one of them. That card perpetually gains \"This permanent enters tapped.\"",
         "power": "3",
         "toughness": "1"
       }
@@ -47006,7 +47006,7 @@
         "name": "Boseiju Pathlighter",
         "manaCost": "{2}{G}",
         "type": "Creature — Human Rogue",
-        "text": "When Boseiju Pathlighter enters the battlefield, draft a card from Boseiju Pathlighter's spellbook.",
+        "text": "When this creature enters, draft a card from Boseiju Pathlighter's spellbook.",
         "power": "3",
         "toughness": "2"
       }
@@ -51119,7 +51119,7 @@
         "name": "Brokers' Safeguard",
         "manaCost": "{W}{U}",
         "type": "Instant",
-        "text": "Exile target nonartifact creature you control. It perpetually gains \"This creature enters the battlefield with an additional shield counter on it.\" Then return that card to the battlefield under its owner's control. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)"
+        "text": "Exile target nonartifact creature you control. It perpetually gains \"This creature enters with an additional shield counter on it.\" Then return that card to the battlefield under its owner's control. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)"
       }
     ]
   },

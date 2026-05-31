@@ -729,12 +729,6 @@
     "replace": "you get a one-time boon with \"When you cast a creature spell",
   },
   {
-    "reason":  "Arena? -- Errata update reversion - One-time boons don't need 'next' (was previously fixed)",
-    "cards":   ["Arcane Archery"],
-    "find":    "one-time boon with \"When you cast your next creature spell,",
-    "replace": "one-time boon with \"When you cast a creature spell,",
-  },
-  {
     "reason":  "Arena? -- Errata update typo - 'the' got lost",
     "cards":   ["Forgeborn Phoenix"],
     "find":    "graveyard to battlefield tapped",
