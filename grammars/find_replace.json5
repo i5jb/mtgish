@@ -196,6 +196,18 @@
   // Plural vs. singular for CARD_NAME
   {
     "reason":  "I don't like CARD_NAME being plural, it messes with my grammar",
+    "cards":   ["The Fantastic Four"],
+    "find":    "When The Fantastic Four enter and",
+    "replace": "When The Fantastic Four enters and",
+  },
+  {
+    "reason":  "I don't like CARD_NAME being plural, it messes with my grammar",
+    "cards":   ["The Fantastic Four"],
+    "find":    "* The Fantastic Four deal 3",
+    "replace": "* The Fantastic Four deals 3",
+  },
+  {
+    "reason":  "I don't like CARD_NAME being plural, it messes with my grammar",
     "cards":   ["Moon Girl and Devil Dinosaur"],
     "find":    "Moon Girl and Devil Dinosaur's base power and toughness become 6/6 and they gain trample",
     "replace": "Moon Girl and Devil Dinosaur's base power and toughness becomes 6/6 and it gains trample",
@@ -336,6 +348,24 @@
   },
 
   // Use "this token" on named token quoted abilities
+  {
+    "reason":  "Use \"this token\" rather than the token name",
+    "cards":   ["White Tiger, Ava Ayala"],
+    "find":    "\"The Tiger God can't be blocked",
+    "replace": "\"This token can't be blocked",
+  },
+  {
+    "reason":  "Use \"this token\" rather than the token name",
+    "cards":   ["Ka-Zar of the Savage Land"],
+    "find":    "a +1/+1 counter on Zabu",
+    "replace": "a +1/+1 counter on this token",
+  },
+  {
+    "reason":  "Use \"this token\" rather than the token name",
+    "cards":   ["Falcon, Winged Wonder"],
+    "find":    "Whenever Redwing attacks",
+    "replace": "Whenever this token attacks",
+  },
   {
     "reason":  "Use \"this token\" rather than the token name",
     "cards":   ["The Sentry, Golden Guardian"],

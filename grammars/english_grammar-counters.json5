@@ -135,6 +135,7 @@
     "ingredient": "IngredientCounter",
     "intel": "IntelCounter",
     "intervention": "InterventionCounter",
+    "invasion": "InvasionCounter",
     "invitation": "InvitationCounter",
     "isolation": "IsolationCounter",
     "javelin": "JavelinCounter",

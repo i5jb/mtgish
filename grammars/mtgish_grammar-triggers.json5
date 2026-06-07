@@ -385,6 +385,7 @@
     "WhenACounterOfTypeIsPutOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
     "WhenAPlayerPutsACounterOfTypeOnAPermanent({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
     "WhenAPlayerPutsACounterOnAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
+    "WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAnyNumberOfPermanents({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
     "WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAPermanent({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
     "WhenAPlayerPutsAnyNumberOfGenericCountersOnAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
     "WhenAnyNumberOfCountersArePutOnAPermanent({{PERMANENTS}})": "",
@@ -506,6 +507,7 @@
     "WhenAPermanentBecomesTheTargetOfASpellOrAbility({{PERMANENTS}}, {{SPELLS_OR_ABILITIES}})": "",
     "WhenAPermanentBecomesTheTargetOfASpellOrAbilityForTheFirstTimeEachTurn({{PERMANENTS}}, {{SPELLS_OR_ABILITIES}})": "",
     "WhenAPermanentBecomesTheTargetOfAnAbility({{PERMANENTS}}, {{ABILITIES}})": "",
+    "WhenAPlayerBecomesTheTargetOfAnAbility({{PLAYERS}}, {{ABILITIES}})": "",
     "WhenAPlayerBecomesTheTargetOfASpell({{PLAYERS}}, {{SPELLS}})": "",
     "WhenAPlayerBecomesTheTargetOfASpellOrAbility({{PLAYERS}}, {{SPELLS_OR_ABILITIES}})": "",
     "WhenAPlayerChoosesTargetsForASpellOrAbility({{PLAYERS}}, {{SPELLS_OR_ABILITIES}})": "",
@@ -514,6 +516,9 @@
   },
   "{{TRIGGER[TheMonarch]}}": {
     "WhenAPlayerBecomesTheMonarch({{PLAYERS}})": ""
+  },
+  "{{TRIGGER[Teamwork]}}": {
+    "WhenAPermanentBecomesTappedToPayATeamworkCost({{PERMANENTS}})": "",
   },
   "{{TRIGGER[Training]}}": {
     "WhenAPermanentTrains({{PERMANENTS}})": ""
@@ -618,6 +623,7 @@
     "WhenPlayersFinishVoting": ""
   },
   "{{TRIGGER}}": {
+    "If({{CONDITION}}, {{TRIGGER}})": "",
     "Or({{TRIGGER_LIST}})": "",
     "{{TRIGGER[ActivateAnAbility]}}": "",
     "{{TRIGGER[AddMana]}}": "",
@@ -722,6 +728,7 @@
     "{{TRIGGER[Tap]}}": "",
     "{{TRIGGER[Targets]}}": "",
     "{{TRIGGER[TheMonarch]}}": "",
+    "{{TRIGGER[Teamwork]}}": "",
     "{{TRIGGER[Training]}}": "",
     "{{TRIGGER[Transform]}}": "",
     "{{TRIGGER[Turn-BeginningOfCombat]}}": "",

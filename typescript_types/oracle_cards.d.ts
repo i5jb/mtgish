@@ -1524,6 +1524,7 @@ type ActivatedAbilities =
 | { "_ActivatedAbilities": "BoastAbility" }
 | { "_ActivatedAbilities": "OutlastAbility" }
 | { "_ActivatedAbilities": "ExhaustAbility" }
+| { "_ActivatedAbilities": "PowerUpAbility" }
 | { "_ActivatedAbilities": "HasXInCost" }
 | { "_ActivatedAbilities": "HasTapSelfInCost" }
 | { "_ActivatedAbilities": "NonLoyaltyAbility" }
@@ -1815,6 +1816,7 @@ type CardsInExile =
 | { "_CardsInExile": "InTheChosenPile" }
 | { "_CardsInExile": "InTheExiledPileChosenThisWay" }
 | { "_CardsInExile": "InTheExiledPileNotChosenThisWay" }
+| { "_CardsInExile": "TheExiledCardChosenThisWay" }
 | { "_CardsInExile": "TheCardsConjuredThisWay" }
 | { "_CardsInExile": "TheCardsExiledByPlayerThisWay", "args": Player }
 | { "_CardsInExile": "TheCardsExiledThisWay" }
@@ -2092,6 +2094,8 @@ type CastModifier =
 | { "_CastModifier": "SpendOnlyColoredManaOnXAndAtMostOneManaOfEachColor" }
 | { "_CastModifier": "ReduceCostX", "args": [Array<CostReductionSymbolX>, GameNumber] }
 | { "_CastModifier": "XCantBeZero" };
+type CastUsingTeamwork =
+| Actions;
 type CDA_Types =
 | { "_CDA_Types": "AddCreatureTypeVariable", "args": CreatureTypeVariable }
 | { "_CDA_Types": "Changeling" }
@@ -2540,6 +2544,7 @@ type Cost =
 | { "_Cost": "BeholdNumber", "args": [GameNumber, CardsInHand] }
 | { "_Cost": "BlightX" }
 | { "_Cost": "Blight", "args": GameNumber }
+| { "_Cost": "GetNumberPoisonCounters", "args": GameNumber }
 | { "_Cost": "PutGraveyardCardOnBottomOfLibrary", "args": CardInGraveyard }
 | { "_Cost": "AttachAPermanentToPermanent", "args": [Permanents, Permanent] }
 | { "_Cost": "AttachPermanentToPermanent", "args": [Permanent, Permanent] }
@@ -2940,6 +2945,7 @@ type CounterType =
 | { "_CounterType": "IngredientCounter" }
 | { "_CounterType": "IntelCounter" }
 | { "_CounterType": "InterventionCounter" }
+| { "_CounterType": "InvasionCounter" }
 | { "_CounterType": "InvitationCounter" }
 | { "_CounterType": "IsolationCounter" }
 | { "_CounterType": "JavelinCounter" }
@@ -3199,6 +3205,7 @@ type CreatureType =
 | "Elf"
 | "Elk"
 | "Employee"
+| "Eternal"
 | "Eye"
 | "Faerie"
 | "Ferret"
@@ -3246,6 +3253,7 @@ type CreatureType =
 | "Illusion"
 | "Imp"
 | "Incarnation"
+| "Inhuman"
 | "Inkling"
 | "Inquisitor"
 | "Insect"
@@ -3260,6 +3268,7 @@ type CreatureType =
 | "Kobold"
 | "Kor"
 | "Kraken"
+| "Kree"
 | "Lamia"
 | "Lammasu"
 | "Leech"
@@ -3385,6 +3394,7 @@ type CreatureType =
 | "Spirit"
 | "Splinter"
 | "Sponge"
+| "Spy"
 | "Squid"
 | "Squirrel"
 | "Starfish"
@@ -3596,6 +3606,7 @@ type ExchangeOwnershipCard =
 | { "_ExchangeOwnershipCard": "TheSecondCardExiledThisWay" }
 | { "_ExchangeOwnershipCard": "ThisPermanent" };
 type Exilable =
+| { "_Exilable": "Spell", "args": Spell }
 | { "_Exilable": "AGraveyardCard", "args": CardsInGraveyard }
 | { "_Exilable": "AGraveyardCardAtRandom", "args": CardsInGraveyard }
 | { "_Exilable": "AGraveyardCardAtRandomInEachPlayersGraveyard", "args": [CardsInGraveyard, Players] }
@@ -3781,6 +3792,7 @@ type FutureTrigger =
 | { "_FutureTrigger": "WhenPermanentIsPutIntoAPlayersGraveyard", "args": [Permanent, Players] }
 | { "_FutureTrigger": "WhenPlayerLosesControlOfPermanent", "args": [Player, Permanent] };
 type GameEffect =
+| { "_GameEffect": "PowerUpAbilitiesCantBeActivated" }
 | { "_GameEffect": "CardsCantEnterTheBattlefieldFromExile", "args": Cards }
 | { "_GameEffect": "CreaturesCantBlock" }
 | { "_GameEffect": "DamageCantBePrevented" }
@@ -4381,6 +4393,7 @@ type LibraryCardEffect =
 | { "_LibraryCardEffect": "AddSupertype", "args": SuperType }
 | { "_LibraryCardEffect": "AddAbility", "args": Array<Rule> };
 type LookAtTopOfLibraryAction =
+| { "_LookAtTopOfLibraryAction": "TransformPermanent", "args": Permanent }
 | { "_LookAtTopOfLibraryAction": "PutRemainingSetAsideCardsIntoHand" }
 | { "_LookAtTopOfLibraryAction": "PutSetAsideCardsOfTypeOntoBattlefield", "args": [Cards, Array<EnterFlag>] }
 | { "_LookAtTopOfLibraryAction": "MayPutUptoNumberGroupCardsOntoTheBattlefield", "args": [GameNumber, Cards, GroupFilter, Array<EnterFlag>] }
@@ -4667,6 +4680,8 @@ type NameStickerFilter =
 | { "_NameStickerFilter": "TheNameStickerPutOnPermanentThisWay" };
 type NormalObject =
 | { "_OracleCard": "Card", Name?: ObjectName, Typeline: ObjectTypeline, CardPT?: ObjectPT, ManaCost?: CardManaCost, Rules: Array<SourcedRule>, Loyalty?: LoyaltyNumber, Defense?: number, ColorIndicator?: Array<ColorIndicatorColor>, AdditionalColorIndicator?: Array<ColorIndicatorColor>, MeldsInto?: string, Flip?: ObjectFlip, Doors?: ObjectDoors, Adventure?: NormalObject, Omen?: NormalObject, Prepared?: NormalObject, };
+type NotCastUsingTeamwork =
+| Actions;
 type ObjectDoor =
 | { Name: string, ManaCost: CardManaCost, ColorIndicator?: Array<ColorIndicatorColor>, Rules: Array<SourcedRule>, };
 type ObjectDoors =
@@ -4724,6 +4739,7 @@ type PermanentOrExiledCard =
 | { "_PermanentOrExiledCard": "Ref_TargetPermanentOrExiledCard" };
 type Permanent =
 | { "_Permanent": "ById", "args": number }
+| { "_Permanent": "WouldConnive_ThatPermanent" }
 | { "_Permanent": "TheChosenPermanentForPlayer", "args": Player }
 | { "_Permanent": "ThePermanentBlightedThisWay" }
 | { "_Permanent": "ThePermanentAttachedThisWay" }
@@ -5103,6 +5119,7 @@ type Permanents =
 | { "_Permanents": "IsFaceUp" }
 | { "_Permanents": "IsFirstLandPlayedByPlayerThisTurn" }
 | { "_Permanents": "IsHistoric" }
+| { "_Permanents": "IsWorthy" }
 | { "_Permanents": "IsLandType", "args": LandType }
 | { "_Permanents": "IsLandTypeVariable", "args": LandTypeVariable }
 | { "_Permanents": "IsModified" }
@@ -6218,6 +6235,8 @@ type ReplacableEventWouldBeginATurn =
 | { "_ReplacableEventWouldBeginATurn": "APlayerWouldBeginAnExtraTurn", "args": Players };
 type ReplacableEventWouldBeginDrawStep =
 | { "_ReplacableEventWouldBeginDrawStep": "PlayerWouldBeginTheirDrawStep", "args": Player };
+type ReplacableEventWouldConnive =
+| { "_ReplacableEventWouldConnive": "APermanentWouldConnive", "args": Permanents };
 type ReplacableEventWouldCopyASpell =
 | { "_ReplacableEventWouldCopyASpell": "APlayerWouldCopyASpellAnyNumberOfTimes", "args": [Players, Spells] };
 type ReplacableEventWouldCounterASpell =
@@ -6323,9 +6342,10 @@ type ReplacableEventWouldProliferate =
 type ReplacableEventWouldPutAPermanentOnTheBattlefield =
 | { "_ReplacableEventWouldPutAPermanentOnTheBattlefield": "APlayerWouldPutAPermanentOnTheBattlefield", "args": [Players, Permanents] };
 type ReplacableEventWouldPutCounters =
-| { "_ReplacableEventWouldPutCounters": "APlayerWouldGetAnyNumberOfPoisonCounters", "args": Players }
 | { "_ReplacableEventWouldPutCounters": "APlayerWouldGetAnyNumberOfCounters", "args": Players }
+| { "_ReplacableEventWouldPutCounters": "APlayerWouldGetAnyNumberOfPoisonCounters", "args": Players }
 | { "_ReplacableEventWouldPutCounters": "APlayerWouldPutAnyNumberOfCountersOfTypeOnAPermanent", "args": [Players, CounterType, Permanents] }
+| { "_ReplacableEventWouldPutCounters": "APlayerWouldPutCountersOnAPermanent", "args": [Players, Permanents] }
 | { "_ReplacableEventWouldPutCounters": "APlayerWouldPutCountersOnAPermanentOrAPlayer", "args": [Players, Permanents, Players] }
 | { "_ReplacableEventWouldPutCounters": "AnAbilityWouldPutCountersOfTypeOnAPermanent", "args": [Abilities, CounterType, Permanents] }
 | { "_ReplacableEventWouldPutCounters": "AnEffectWouldPutCountersOnAPermanent", "args": Permanents }
@@ -6386,6 +6406,9 @@ type ReplacementActionWouldBeginDrawStep =
 | { "_ReplacementActionWouldBeginDrawStep": "MayCost", "args": ReplacementActionWouldBeginDrawStepCost }
 | { "_ReplacementActionWouldBeginDrawStep": "If", "args": [Condition, Array<ReplacementActionWouldBeginDrawStep>] }
 | { "_ReplacementActionWouldBeginDrawStep": "GainLife", "args": GameNumber };
+type ReplacementActionWouldConnive =
+| { "_ReplacementActionWouldConnive": "DrawACard" }
+| { "_ReplacementActionWouldConnive": "CreatureConnives", "args": Permanent };
 type ReplacementActionWouldCopyASpell =
 | { "_ReplacementActionWouldCopyASpell": "WouldCopyASpell_CopyAnAdditionalTimeAndMayChooseNewTargets" };
 type ReplacementActionWouldCounterASpell =
@@ -6403,6 +6426,7 @@ type ReplacementActionWouldDealDamage =
 | { "_ReplacementActionWouldDealDamage": "CancelThatDamage" }
 | { "_ReplacementActionWouldDealDamage": "ContinueDealingDamage" }
 | { "_ReplacementActionWouldDealDamage": "DealDamageAsThoughItHadInfect" }
+| { "_ReplacementActionWouldDealDamage": "DealDamageButHealPreviousDamage" }
 | { "_ReplacementActionWouldDealDamage": "DealDamageInstead", "args": GameNumber }
 | { "_ReplacementActionWouldDealDamage": "DealSomeDamageToRecipientInstead", "args": [GameNumber, DamageRecipients] }
 | { "_ReplacementActionWouldDealDamage": "DealToAnyTargetInstead", "args": SingleDamageRecipient }
@@ -6822,6 +6846,7 @@ type RevealTheTopNumberCardsOfLibraryCost =
 type Room =
 | { "_OracleCard": "Room", Typeline: OracleTypeline, LeftDoor: DoorInfo, RightDoor: DoorInfo, };
 type Rule =
+| { "_Rule": "AnchorWord", "args": [string, Rule] }
 | { "_Rule": "StationChargedAnimate", "args": [GameRange, Array<Rule>, PT] }
 | { "_Rule": "StationCharged", "args": [GameRange, Array<Rule>] }
 | { "_Rule": "Station" }
@@ -6877,6 +6902,7 @@ type Rule =
 | { "_Rule": "NoMoreThanNumberCreaturesCanAttackPlayer", "args": [GameNumber, Player] }
 | { "_Rule": "WhilePlayersAreSearchingTheirLibraryTheyExileEachCardTheyFindAndPlayerMayPlayThoseCardsWhileTheyRemainExiledAndMaySpendManaAsThoughItWereAnyColor", "args": [Players, Player] }
 | { "_Rule": "ReplaceWouldLearn", "args": [ReplacableEventWouldLearn, Array<ReplacementActionWouldLearn>] }
+| { "_Rule": "ReplaceWouldConnive", "args": [ReplacableEventWouldConnive, Array<ReplacementActionWouldConnive>] }
 | { "_Rule": "StartYourEngines" }
 | { "_Rule": "Harmonize", "args": Cost }
 | { "_Rule": "HarmonizeX", "args": Array<ManaSymbolX> }
@@ -7093,6 +7119,7 @@ type Rule =
 | { "_Rule": "ConspiracyDeck", "args": ConspiracyDeck }
 | { "_Rule": "StartingHandSizeIs", "args": GameNumber }
 | { "_Rule": "SpellActions", "args": Actions }
+| { "_Rule": "SpellActions_Teamwork", "args": [number, CastUsingTeamwork, NotCastUsingTeamwork] }
 | { "_Rule": "SpellActions_Awaken", "args": [Cost, WasAwakened, WasntAwakened] }
 | { "_Rule": "SpellActions_Tiered", "args": Array<TieredAction> }
 | { "_Rule": "SpellActions_Kicker", "args": [Cost, WasKicked, WasntKicked] }
@@ -7231,71 +7258,66 @@ type Schemes =
 | { "_Schemes": "SingleScheme", "args": SingleScheme }
 | { "_Schemes": "IsNonSupertype", "args": SuperType };
 type SearchLibraryAction =
-| { "_SearchLibraryAction": "APlayerChooseACardExiledThisWay", "args": Players }
-| { "_SearchLibraryAction": "APlayerChoosesAFoundCard", "args": Players }
-| { "_SearchLibraryAction": "APlayerChoosesNumberFoundCards", "args": [Players, GameNumber] }
-| { "_SearchLibraryAction": "CastFoundCardsWithoutPaying" }
-| { "_SearchLibraryAction": "ChooseAFoundCardAtRandom" }
-| { "_SearchLibraryAction": "ChooseAnAction", "args": Array<SearchLibraryAction> }
 | { "_SearchLibraryAction": "CreatePermanentLayerEffectUntil", "args": [Permanent, Array<LayerEffect>, Expiration] }
 | { "_SearchLibraryAction": "CreateTokens", "args": Array<CreatableToken> }
 | { "_SearchLibraryAction": "DiscardACardAtRandom" }
-| { "_SearchLibraryAction": "DontShuffle" }
-| { "_SearchLibraryAction": "DontShuffleAndPutSetAsideCardOnTopOfLibrary" }
 | { "_SearchLibraryAction": "EachPlayerLosesLife", "args": [Players, GameNumber] }
+| { "_SearchLibraryAction": "ExileLibraryAndGraveyard" }
+| { "_SearchLibraryAction": "GainLife", "args": GameNumber }
+| { "_SearchLibraryAction": "RollAD20" }
+| { "_SearchLibraryAction": "ValueActions", "args": Array<SearchLibraryActionValueAction> }
+| { "_SearchLibraryAction": "PlayerChoosesACardName", "args": [Player, CardsInOracle] }
+| { "_SearchLibraryAction": "If", "args": [Condition, Array<SearchLibraryAction>] }
+| { "_SearchLibraryAction": "IfElse", "args": [Condition, Array<SearchLibraryAction>, Array<SearchLibraryAction>] }
+| { "_SearchLibraryAction": "MayCost", "args": SearchLibraryCost }
+| { "_SearchLibraryAction": "ChooseAnAction", "args": Array<SearchLibraryAction> }
+| { "_SearchLibraryAction": "FindACardOfType", "args": CardsInLibrary }
+| { "_SearchLibraryAction": "FindACardOfTypeAtRandom", "args": CardsInLibrary }
+| { "_SearchLibraryAction": "FindAllCardsOfType", "args": CardsInLibrary }
+| { "_SearchLibraryAction": "FindAnyNumberOfCardsOfType", "args": CardsInLibrary }
+| { "_SearchLibraryAction": "FindCardsOfType", "args": Array<Cards> }
+| { "_SearchLibraryAction": "FindUptoNumberCardsOfType", "args": [GameNumber, CardsInLibrary] }
+| { "_SearchLibraryAction": "FindNumberCardsOfType", "args": [GameNumber, CardsInLibrary] }
+| { "_SearchLibraryAction": "FindAGenericCard" }
+| { "_SearchLibraryAction": "FindNumberGenericCards", "args": GameNumber }
+| { "_SearchLibraryAction": "FindUptoNumberGenericCards", "args": GameNumber }
+| { "_SearchLibraryAction": "FindAnyNumberOfGroupCards", "args": [CardsInLibrary, GroupFilter] }
+| { "_SearchLibraryAction": "FindExactlyNumberGroupCards", "args": [GameNumber, CardsInLibrary, GroupFilter] }
+| { "_SearchLibraryAction": "FindNumberGroupCards", "args": [GameNumber, CardsInLibrary, GroupFilter] }
+| { "_SearchLibraryAction": "FindUptoNumberGroupCards", "args": [GameNumber, CardsInLibrary, GroupFilter] }
+| { "_SearchLibraryAction": "RevealFoundCards" }
 | { "_SearchLibraryAction": "ExileFoundCards" }
 | { "_SearchLibraryAction": "ExileFoundCardsFaceDown" }
 | { "_SearchLibraryAction": "ExileFoundCardsInShuffledFaceDownPile" }
-| { "_SearchLibraryAction": "ExileLibraryAndGraveyard" }
-| { "_SearchLibraryAction": "FindACardOfType", "args": CardsInLibrary }
-| { "_SearchLibraryAction": "FindACardOfTypeAtRandom", "args": CardsInLibrary }
-| { "_SearchLibraryAction": "FindAGenericCard" }
-| { "_SearchLibraryAction": "FindAllCardsOfType", "args": CardsInLibrary }
-| { "_SearchLibraryAction": "FindAnyNumberOfCardsOfType", "args": CardsInLibrary }
-| { "_SearchLibraryAction": "FindAnyNumberOfGroupCards", "args": [CardsInLibrary, GroupFilter] }
-| { "_SearchLibraryAction": "FindCardsOfType", "args": Array<Cards> }
-| { "_SearchLibraryAction": "FindExactlyNumberGroupCards", "args": [GameNumber, CardsInLibrary, GroupFilter] }
-| { "_SearchLibraryAction": "FindNumberCardsOfType", "args": [GameNumber, CardsInLibrary] }
-| { "_SearchLibraryAction": "FindNumberGenericCards", "args": GameNumber }
-| { "_SearchLibraryAction": "FindNumberGroupCards", "args": [GameNumber, CardsInLibrary, GroupFilter] }
-| { "_SearchLibraryAction": "FindUptoNumberCardsOfType", "args": [GameNumber, CardsInLibrary] }
-| { "_SearchLibraryAction": "FindUptoNumberGenericCards", "args": GameNumber }
-| { "_SearchLibraryAction": "FindUptoNumberGroupCards", "args": [GameNumber, CardsInLibrary, GroupFilter] }
-| { "_SearchLibraryAction": "GainLife", "args": GameNumber }
-| { "_SearchLibraryAction": "If", "args": [Condition, Array<SearchLibraryAction>] }
-| { "_SearchLibraryAction": "IfElse", "args": [Condition, Array<SearchLibraryAction>, Array<SearchLibraryAction>] }
+| { "_SearchLibraryAction": "APlayerChooseACardExiledThisWay", "args": Players }
+| { "_SearchLibraryAction": "CastFoundCardsWithoutPaying" }
 | { "_SearchLibraryAction": "MayCastFoundCardsWithoutPaying" }
-| { "_SearchLibraryAction": "MayCost", "args": SearchLibraryCost }
 | { "_SearchLibraryAction": "MayPlayFoundCardsWithoutPaying" }
 | { "_SearchLibraryAction": "MayPutFoundCardsOntoBattlefield", "args": Array<EnterFlag> }
-| { "_SearchLibraryAction": "PlayerChoosesACardName", "args": [Player, CardsInOracle] }
-| { "_SearchLibraryAction": "PlayerChoosesAFoundCard", "args": Player }
-| { "_SearchLibraryAction": "PlayerChoosesNumberFoundCards", "args": [Player, GameNumber] }
-| { "_SearchLibraryAction": "PutACardFoundThisWayOntoTheBattlefield", "args": Array<EnterFlag> }
 | { "_SearchLibraryAction": "PutAFoundCardIntoHand" }
 | { "_SearchLibraryAction": "PutAFoundCardOntoBattlefield", "args": Array<EnterFlag> }
-| { "_SearchLibraryAction": "PutChosenFoundCardIntoHand" }
-| { "_SearchLibraryAction": "PutChosenFoundCardsIntoGraveyard" }
-| { "_SearchLibraryAction": "PutChosenFoundCardsIntoHand" }
 | { "_SearchLibraryAction": "PutFoundCardsAndExiledCardsOntoBattlefield", "args": [CardsInExile, Array<EnterFlag>] }
 | { "_SearchLibraryAction": "PutFoundCardsIntoGraveyard" }
 | { "_SearchLibraryAction": "PutFoundCardsIntoHand" }
 | { "_SearchLibraryAction": "PutFoundCardsOnBottomOfLibrary" }
 | { "_SearchLibraryAction": "PutFoundCardsOntoBattlefield", "args": Array<EnterFlag> }
 | { "_SearchLibraryAction": "PutNumberFoundCardsOntoBattlefield", "args": [GameNumber, Array<EnterFlag>] }
+| { "_SearchLibraryAction": "SetAsideFoundCards" }
+| { "_SearchLibraryAction": "ChooseAFoundCardAtRandom" }
+| { "_SearchLibraryAction": "APlayerChoosesAFoundCard", "args": Players }
+| { "_SearchLibraryAction": "APlayerChoosesNumberFoundCards", "args": [Players, GameNumber] }
+| { "_SearchLibraryAction": "PutChosenFoundCardIntoHand" }
+| { "_SearchLibraryAction": "PutChosenFoundCardsIntoGraveyard" }
+| { "_SearchLibraryAction": "PutChosenFoundCardsIntoHand" }
+| { "_SearchLibraryAction": "SetAsideNonchosenFoundCards" }
+| { "_SearchLibraryAction": "PutExiledCardsOnTopOfLibraryIgnoreOrder", "args": CardsInExile }
+| { "_SearchLibraryAction": "DontShuffle" }
+| { "_SearchLibraryAction": "Shuffle" }
+| { "_SearchLibraryAction": "ShuffleLibraryIfSearched" }
+| { "_SearchLibraryAction": "PutSetAsideCardsNthFromTheTop", "args": GameNumber }
 | { "_SearchLibraryAction": "PutSetAsideCardsIntoHand" }
 | { "_SearchLibraryAction": "PutSetAsideCardsOnTopOfLibrary" }
-| { "_SearchLibraryAction": "PutSetAsideCardsOntoBattlefield", "args": Array<EnterFlag> }
-| { "_SearchLibraryAction": "PutTheCardsFoundThisWayIntoHand" }
-| { "_SearchLibraryAction": "RevealFoundCards" }
-| { "_SearchLibraryAction": "RollAD20" }
-| { "_SearchLibraryAction": "SetAsideFoundCards" }
-| { "_SearchLibraryAction": "SetAsideNonchosenFoundCards" }
-| { "_SearchLibraryAction": "Shuffle" }
-| { "_SearchLibraryAction": "ShuffleAndPutSetAsideCardsNthFromTheTop", "args": GameNumber }
-| { "_SearchLibraryAction": "ShuffleExiledCardIntoLibrary", "args": CardInExile }
-| { "_SearchLibraryAction": "ShuffleLibraryIfSearched" }
-| { "_SearchLibraryAction": "ValueActions", "args": Array<SearchLibraryActionValueAction> };
+| { "_SearchLibraryAction": "PutSetAsideCardsOntoBattlefield", "args": Array<EnterFlag> };
 type SearchLibraryActionValueAction =
 | { "_SearchLibraryActionValueAction": "ValueAction", "args": [GameRange, Array<SearchLibraryAction>] };
 type SearchLibraryCost =
@@ -7858,6 +7880,7 @@ type SubType =
 | "Elf"
 | "Elk"
 | "Employee"
+| "Eternal"
 | "Eye"
 | "Faerie"
 | "Ferret"
@@ -7905,6 +7928,7 @@ type SubType =
 | "Illusion"
 | "Imp"
 | "Incarnation"
+| "Inhuman"
 | "Inkling"
 | "Inquisitor"
 | "Insect"
@@ -7919,6 +7943,7 @@ type SubType =
 | "Kobold"
 | "Kor"
 | "Kraken"
+| "Kree"
 | "Lamia"
 | "Lammasu"
 | "Leech"
@@ -8044,6 +8069,7 @@ type SubType =
 | "Spirit"
 | "Splinter"
 | "Sponge"
+| "Spy"
 | "Squid"
 | "Squirrel"
 | "Starfish"
@@ -8447,6 +8473,7 @@ type TriggerAndActions =
 | [Trigger, Actions];
 type Trigger =
 | { "_Trigger": "WhenAPlayerWaterEarthFireOrAirBends", "args": Players }
+| { "_Trigger": "WhenAPermanentBecomesTappedToPayATeamworkCost", "args": Permanents }
 | { "_Trigger": "WhenAPermanentStationsAPermanent", "args": [Permanents, Permanents] }
 | { "_Trigger": "WhenAPlayerActivatesAnAbility", "args": [Players, ActivatedAbilities] }
 | { "_Trigger": "WhenAnAbilityIsActivated", "args": ActivatedAbilities }
@@ -8742,6 +8769,7 @@ type Trigger =
 | { "_Trigger": "WhenAPlayerPlaysALandFromAmongCardsInExile", "args": [Players, Permanents, CardsInExile] }
 | { "_Trigger": "WhenAPlayerPlaysALandFromExile", "args": [Players, Permanents] }
 | { "_Trigger": "WhenAPlayerPlaysALandFromAnywhereOtherThanTheirHand", "args": [Players, Permanents] }
+| { "_Trigger": "WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAnyNumberOfPermanents", "args": [Players, CounterType, Permanents] }
 | { "_Trigger": "WhenACounterIsPutOnAPermanent", "args": Permanents }
 | { "_Trigger": "WhenACounterOfTypeIsPutOnAPermanent", "args": [CounterType, Permanents] }
 | { "_Trigger": "WhenAPlayerPutsACounterOfTypeOnAPermanent", "args": [Players, CounterType, Permanents] }
@@ -8799,6 +8827,7 @@ type Trigger =
 | { "_Trigger": "WhenAPermanentBecomesTheTargetOfASpellOrAbility", "args": [Permanents, SpellsAndAbilities] }
 | { "_Trigger": "WhenAPermanentBecomesTheTargetOfASpellOrAbilityForTheFirstTimeEachTurn", "args": [Permanents, SpellsAndAbilities] }
 | { "_Trigger": "WhenAPermanentBecomesTheTargetOfAnAbility", "args": [Permanents, Abilities] }
+| { "_Trigger": "WhenAPlayerBecomesTheTargetOfAnAbility", "args": [Players, Abilities] }
 | { "_Trigger": "WhenAPlayerBecomesTheTargetOfASpell", "args": [Players, Spells] }
 | { "_Trigger": "WhenAPlayerBecomesTheTargetOfASpellOrAbility", "args": [Players, SpellsAndAbilities] }
 | { "_Trigger": "WhenAPlayerChoosesTargetsForASpellOrAbility", "args": [Players, SpellsAndAbilities] }
@@ -8826,7 +8855,8 @@ type Trigger =
 | { "_Trigger": "WhenPlayersFinishVoting" }
 | { "_Trigger": "WhenAPermanentIsTurnedFaceUp", "args": Permanents }
 | { "_Trigger": "WhenAPlayerTurnsAPermanentFaceUp", "args": [Players, Permanents] }
-| { "_Trigger": "Or", "args": Array<Trigger> };
+| { "_Trigger": "Or", "args": Array<Trigger> }
+| { "_Trigger": "If", "args": [Condition, Trigger] };
 type UnspentMana =
 | { "_UnspentMana": "AnyUnspentMana" }
 | { "_UnspentMana": "UnspentGreenMana" }

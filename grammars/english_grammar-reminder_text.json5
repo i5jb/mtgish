@@ -566,6 +566,7 @@
     "({2}: Attach to target creature you control. Equip only as a sorcery.)": "",
     "({2}{G}: Attach to target creature you control. Equip only as a sorcery.)": "",
     "({2}{R}: Attach to target creature you control. Equip only as a sorcery.)": "",
+    "({2}{U}: Attach to target creature you control. Equip only as a sorcery.)": "",
     "({3}: Attach to target creature you control. Equip only as a sorcery. This card enters unattached and stays on the battlefield if the creature leaves.)": "",
     "({3}: Attach to target creature you control. Equip only as a sorcery.)": "",
     "({3}{W}: Attach to target creature you control. Equip only as a sorcery.)": "",
@@ -788,6 +789,7 @@
     "(To incubate X, create an Incubator token with X +1/+1 counters on it and \"{2}: Transform this token\". It transforms into a 0/0 Phyrexian artifact creature.)": ""
   },
   "{{Reminder[Indestructible]}}": {
+    "(Damage and effects that say \"destroy\" don't destroy him.)": "",
     "(Damage and effects that say \"destroy\" don't destroy it. If its toughness is 0 or less, it still dies.)": "",
     "(Damage and effects that say \"destroy\" don't destroy it.)": "",
     "(Damage and effects that say \"destroy\" don't destroy the creature.)": "",
@@ -1224,7 +1226,11 @@
     "(You may pay {R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)": ""
   },
   "{{Reminder[PowerUp]}}": {
-    "(Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)": ""
+    "(Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)": "",
+    "(Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)": ""
+  },
+  "{{Reminder[PowerUp][OddOrEven]}}": {
+    "(Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn. Zero is even.)": ""
   },
   "{{Reminder[Prepare]}}": {
     "(Only creatures with prepare spells can become prepared.)": "",
@@ -1417,6 +1423,7 @@
   "{{Reminder[Sneak]}}": {
     "(You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)": "",
     "(You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)": "",
+    "(You may cast this spell for {1}{B}{B} if you also return an unblocked attacker you control to hand during the declare blockers step. She enters tapped and attacking.)": "",
     "(You may cast this spell for {1}{R}{R} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)": "",
     "(You may cast this spell for {1}{U} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)": "",
     "(You may cast this spell for {1}{U} if you also return an unblocked attacker you control to hand during the declare blockers step.)": "",
@@ -1577,6 +1584,11 @@
   },
   "{{Reminder[TarmogoyfToken]}}": {
     "(It's a {1}{G} Lhurgoyf creature with \"Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1\".)": ""
+  },
+  "{{Reminder[Teamwork]}}": {
+    "(As an additional cost to cast this spell, you may tap any number of creatures you control with total power 3 or more.)": "",
+    "(As an additional cost to cast this spell, you may tap any number of creatures you control with total power 4 or more.)": "",
+    "(As an additional cost to cast this spell, you may tap any number of creatures you control with total power 5 or more.)": ""
   },
   "{{Reminder[TieBreakerClarification]}}": {
     "(If multiple creatures are tied, choose any one of them.)": ""
@@ -1778,6 +1790,7 @@
     "(Whenever it becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)": "",
     "(Whenever it becomes the target of a spell or ability an opponent controls, counter it unless that player pays {3}.)": "",
     "(Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player discards a card.)": "",
+    "(Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player discards a card or pays {2}.)": "",
     "(Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player exiles cards with total mana value 4 or greater from their graveyard.)": "",
     "(Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays 2 life.)": "",
     "(Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays 3 life.)": "",
@@ -1817,6 +1830,9 @@
   "{{Reminder[WickedRoleToken]}}": {
     "(Enchanted creature gets +1/+1. When this token is put into a graveyard, each opponent loses 1 life.)": "",
     "(If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1. When this token is put into a graveyard, each opponent loses 1 life.)": ""
+  },
+  "{{Reminder[Worthy]}}": {
+    "(A creature is worthy if it's a legendary non-Villain that's red and/or white.)": ""
   },
   "{{Reminder[WouldUntapReplacementEffect]}}": {
     "(Otherwise, it doesn't untap.)": ""
@@ -2721,6 +2737,7 @@
     "{{Reminder[PlaneswalkersBecomeCreatures]}}": "",
     "{{Reminder[Plot]}}": "",
     "{{Reminder[PowerUp]}}": "",
+    "{{Reminder[PowerUp][OddOrEven]}}": "",
     "{{Reminder[Prepare]}}": "",
     "{{Reminder[PrimeNumbers]}}": "",
     "{{Reminder[Proliferate][PhaseOut]}}": "",
@@ -2775,6 +2792,7 @@
     "{{Reminder[Suspected]}}": "",
     "{{Reminder[Suspend]}}": "",
     "{{Reminder[TarmogoyfToken]}}": "",
+    "{{Reminder[Teamwork]}}": "",
     "{{Reminder[TieBreakerClarification]}}": "",
     "{{Reminder[Tiered]}}": "",
     "{{Reminder[TimeTravel]}}": "",
@@ -2801,6 +2819,7 @@
     "{{Reminder[WebSlinging]}}": "",
     "{{Reminder[WhenAnyNumberOfCardsLeaveYourGraveyard]}}": "",
     "{{Reminder[WickedRoleToken]}}": "",
+    "{{Reminder[Worthy]}}": "",
     "{{Reminder[WouldUntapReplacementEffect]}}": "",
     "{{Reminder[YouMayCastTheCopiedCard]}}": "",
     "{{Reminder[YoungHeroRoleToken]}}": ""

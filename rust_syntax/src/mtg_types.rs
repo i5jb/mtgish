@@ -134,6 +134,7 @@ pub enum CreatureType {
   Elf,
   Elk,
   Employee,
+  Eternal,
   Eye,
   Faerie,
   Ferret,
@@ -181,6 +182,7 @@ pub enum CreatureType {
   Illusion,
   Imp,
   Incarnation,
+  Inhuman,
   Inkling,
   Inquisitor,
   Insect,
@@ -195,6 +197,7 @@ pub enum CreatureType {
   Kobold,
   Kor,
   Kraken,
+  Kree,
   Lamia,
   Lammasu,
   Leech,
@@ -320,6 +323,7 @@ pub enum CreatureType {
   Spirit,
   Splinter,
   Sponge,
+  Spy,
   Squid,
   Squirrel,
   Starfish,
@@ -716,6 +720,7 @@ pub enum SubType {
   Elf,
   Elk,
   Employee,
+  Eternal,
   Eye,
   Faerie,
   Ferret,
@@ -763,6 +768,7 @@ pub enum SubType {
   Illusion,
   Imp,
   Incarnation,
+  Inhuman,
   Inkling,
   Inquisitor,
   Insect,
@@ -777,6 +783,7 @@ pub enum SubType {
   Kobold,
   Kor,
   Kraken,
+  Kree,
   Lamia,
   Lammasu,
   Leech,
@@ -902,6 +909,7 @@ pub enum SubType {
   Spirit,
   Splinter,
   Sponge,
+  Spy,
   Squid,
   Squirrel,
   Starfish,
@@ -1375,6 +1383,7 @@ pub enum CounterType {
   IngredientCounter,
   IntelCounter,
   InterventionCounter,
+  InvasionCounter,
   InvitationCounter,
   IsolationCounter,
   JavelinCounter,
@@ -1759,6 +1768,7 @@ pub enum Craftable {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_GameEffect", content = "args"))]
 pub enum GameEffect {
+  PowerUpAbilitiesCantBeActivated,
   CardsCantEnterTheBattlefieldFromExile(Box<Cards>),
   CreaturesCantBlock,
   DamageCantBePrevented,
@@ -2487,6 +2497,14 @@ pub enum CDA_Types {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+pub struct CastUsingTeamwork(Box<Actions>);
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+pub struct NotCastUsingTeamwork(Box<Actions>);
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
 pub struct WasAwakened(Box<Actions>);
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -2547,6 +2565,8 @@ pub struct TriggerAndActions(Trigger, Box<Actions>);
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Rule", content = "args"))]
 pub enum Rule {
+  AnchorWord(VoteOption, Box<Rule>),
+
   StationChargedAnimate(GameRange, Vec<Rule>, PT),
   StationCharged(GameRange, Vec<Rule>),
   Station,
@@ -2623,6 +2643,7 @@ pub enum Rule {
   WhilePlayersAreSearchingTheirLibraryTheyExileEachCardTheyFindAndPlayerMayPlayThoseCardsWhileTheyRemainExiledAndMaySpendManaAsThoughItWereAnyColor(Box<Players>, Box<Player>),
 
   ReplaceWouldLearn(ReplacableEventWouldLearn, Vec<ReplacementActionWouldLearn>),
+  ReplaceWouldConnive(ReplacableEventWouldConnive, Vec<ReplacementActionWouldConnive>),
 
   // Rule: Keyword
   StartYourEngines,
@@ -2854,6 +2875,7 @@ pub enum Rule {
   StartingHandSizeIs(Box<GameNumber>),
   SpellActions(Box<Actions>),
 
+  SpellActions_Teamwork(i32, CastUsingTeamwork, NotCastUsingTeamwork),
   SpellActions_Awaken(Box<Cost>, WasAwakened, WasntAwakened),
   SpellActions_Tiered(Vec<TieredAction>),
   SpellActions_Kicker(Box<Cost>, WasKicked, WasntKicked),
@@ -3179,6 +3201,7 @@ pub enum ReplacementActionWouldDealDamage {
   CancelThatDamage,
   ContinueDealingDamage,
   DealDamageAsThoughItHadInfect,
+  DealDamageButHealPreviousDamage,
 
   DealDamageInstead(Box<GameNumber>),
   DealSomeDamageToRecipientInstead(Box<GameNumber>, Box<DamageRecipients>),
@@ -3418,6 +3441,14 @@ pub enum ReplacementActionWouldLearn {
   PutGraveyardCardOntoBattlefield(CardInGraveyard, Vec<EnterFlag>),
   Learn,
   ChooseAnAction(Vec<Vec<ReplacementActionWouldLearn>>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldConnive", content = "args"))]
+pub enum ReplacementActionWouldConnive {
+  DrawACard,
+  CreatureConnives(Box<Permanent>),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -3959,9 +3990,10 @@ pub enum ReplacableEventWouldRollPlanarDice {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacableEventWouldPutCounters", content = "args"))]
 pub enum ReplacableEventWouldPutCounters {
-  APlayerWouldGetAnyNumberOfPoisonCounters(Box<Players>),
   APlayerWouldGetAnyNumberOfCounters(Box<Players>),
+  APlayerWouldGetAnyNumberOfPoisonCounters(Box<Players>),
   APlayerWouldPutAnyNumberOfCountersOfTypeOnAPermanent(Box<Players>, CounterType, Box<Permanents>),
+  APlayerWouldPutCountersOnAPermanent(Box<Players>, Box<Permanents>),
   APlayerWouldPutCountersOnAPermanentOrAPlayer(Box<Players>, Box<Permanents>, Box<Players>),
   AnAbilityWouldPutCountersOfTypeOnAPermanent(Abilities, CounterType, Box<Permanents>),
   AnEffectWouldPutCountersOnAPermanent(Box<Permanents>),
@@ -4039,6 +4071,13 @@ pub enum ReplacableEventWouldProliferate {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacableEventWouldLearn", content = "args"))]
 pub enum ReplacableEventWouldLearn {
   APlayerWouldLearn(Box<Players>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacableEventWouldConnive", content = "args"))]
+pub enum ReplacableEventWouldConnive {
+  APermanentWouldConnive(Box<Permanents>),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -4423,71 +4462,81 @@ pub enum SearchLibraryActionValueAction {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_SearchLibraryAction", content = "args"))]
 pub enum SearchLibraryAction {
-  APlayerChooseACardExiledThisWay(Box<Players>),
-  APlayerChoosesAFoundCard(Box<Players>),
-  APlayerChoosesNumberFoundCards(Box<Players>, Box<GameNumber>),
-  CastFoundCardsWithoutPaying,
-  ChooseAFoundCardAtRandom,
-  ChooseAnAction(Vec<SearchLibraryAction>),
   CreatePermanentLayerEffectUntil(Box<Permanent>, Vec<LayerEffect>, Expiration),
   CreateTokens(Vec<CreatableToken>),
   DiscardACardAtRandom,
-  DontShuffle,
-  DontShuffleAndPutSetAsideCardOnTopOfLibrary,
   EachPlayerLosesLife(Box<Players>, Box<GameNumber>),
+  ExileLibraryAndGraveyard,
+  GainLife(Box<GameNumber>),
+  RollAD20,
+  ValueActions(Vec<SearchLibraryActionValueAction>),
+  PlayerChoosesACardName(Box<Player>, Box<CardsInOracle>),
+
+  If(Condition, Vec<SearchLibraryAction>),
+  IfElse(Condition, Vec<SearchLibraryAction>, Vec<SearchLibraryAction>),
+  MayCost(SearchLibraryCost),
+  ChooseAnAction(Vec<SearchLibraryAction>),
+
+  // --------------
+
+  FindACardOfType(Box<CardsInLibrary>),
+  FindACardOfTypeAtRandom(Box<CardsInLibrary>),
+  FindAllCardsOfType(Box<CardsInLibrary>),
+  FindAnyNumberOfCardsOfType(Box<CardsInLibrary>),
+  FindCardsOfType(Vec<Cards>),
+  FindUptoNumberCardsOfType(Box<GameNumber>, Box<CardsInLibrary>),
+  FindNumberCardsOfType(Box<GameNumber>, Box<CardsInLibrary>),
+
+  FindAGenericCard,
+  FindNumberGenericCards(Box<GameNumber>),
+  FindUptoNumberGenericCards(Box<GameNumber>),
+
+  FindAnyNumberOfGroupCards(Box<CardsInLibrary>, GroupFilter),
+  FindExactlyNumberGroupCards(Box<GameNumber>, Box<CardsInLibrary>, GroupFilter),
+  FindNumberGroupCards(Box<GameNumber>, Box<CardsInLibrary>, GroupFilter),
+  FindUptoNumberGroupCards(Box<GameNumber>, Box<CardsInLibrary>, GroupFilter),
+
+  RevealFoundCards,
+
   ExileFoundCards,
   ExileFoundCardsFaceDown,
   ExileFoundCardsInShuffledFaceDownPile,
-  ExileLibraryAndGraveyard,
-  FindACardOfType(Box<CardsInLibrary>),
-  FindACardOfTypeAtRandom(Box<CardsInLibrary>),
-  FindAGenericCard,
-  FindAllCardsOfType(Box<CardsInLibrary>),
-  FindAnyNumberOfCardsOfType(Box<CardsInLibrary>),
-  FindAnyNumberOfGroupCards(Box<CardsInLibrary>, GroupFilter),
-  FindCardsOfType(Vec<Cards>),
-  FindExactlyNumberGroupCards(Box<GameNumber>, Box<CardsInLibrary>, GroupFilter),
-  FindNumberCardsOfType(Box<GameNumber>, Box<CardsInLibrary>),
-  FindNumberGenericCards(Box<GameNumber>),
-  FindNumberGroupCards(Box<GameNumber>, Box<CardsInLibrary>, GroupFilter),
-  FindUptoNumberCardsOfType(Box<GameNumber>, Box<CardsInLibrary>),
-  FindUptoNumberGenericCards(Box<GameNumber>),
-  FindUptoNumberGroupCards(Box<GameNumber>, Box<CardsInLibrary>, GroupFilter),
-  GainLife(Box<GameNumber>),
-  If(Condition, Vec<SearchLibraryAction>),
-  IfElse(Condition, Vec<SearchLibraryAction>, Vec<SearchLibraryAction>),
+    APlayerChooseACardExiledThisWay(Box<Players>),
+
+  CastFoundCardsWithoutPaying,
   MayCastFoundCardsWithoutPaying,
-  MayCost(SearchLibraryCost),
   MayPlayFoundCardsWithoutPaying,
+
   MayPutFoundCardsOntoBattlefield(Vec<EnterFlag>),
-  PlayerChoosesACardName(Box<Player>, Box<CardsInOracle>),
-  PlayerChoosesAFoundCard(Box<Player>),
-  PlayerChoosesNumberFoundCards(Box<Player>, Box<GameNumber>),
-  PutACardFoundThisWayOntoTheBattlefield(Vec<EnterFlag>),
   PutAFoundCardIntoHand,
   PutAFoundCardOntoBattlefield(Vec<EnterFlag>),
-  PutChosenFoundCardIntoHand,
-  PutChosenFoundCardsIntoGraveyard,
-  PutChosenFoundCardsIntoHand,
   PutFoundCardsAndExiledCardsOntoBattlefield(Box<CardsInExile>, Vec<EnterFlag>),
   PutFoundCardsIntoGraveyard,
   PutFoundCardsIntoHand,
   PutFoundCardsOnBottomOfLibrary,
   PutFoundCardsOntoBattlefield(Vec<EnterFlag>),
   PutNumberFoundCardsOntoBattlefield(Box<GameNumber>, Vec<EnterFlag>),
+
+  SetAsideFoundCards,
+
+  ChooseAFoundCardAtRandom,
+  APlayerChoosesAFoundCard(Box<Players>),
+  APlayerChoosesNumberFoundCards(Box<Players>, Box<GameNumber>),
+    PutChosenFoundCardIntoHand,
+    PutChosenFoundCardsIntoGraveyard,
+    PutChosenFoundCardsIntoHand,
+    SetAsideNonchosenFoundCards,
+
+  PutExiledCardsOnTopOfLibraryIgnoreOrder(Box<CardsInExile>),
+
+  DontShuffle,
+  Shuffle,
+  ShuffleLibraryIfSearched,
+
+  PutSetAsideCardsNthFromTheTop(Box<GameNumber>),
   PutSetAsideCardsIntoHand,
   PutSetAsideCardsOnTopOfLibrary,
   PutSetAsideCardsOntoBattlefield(Vec<EnterFlag>),
-  PutTheCardsFoundThisWayIntoHand,
-  RevealFoundCards,
-  RollAD20,
-  SetAsideFoundCards,
-  SetAsideNonchosenFoundCards,
-  Shuffle,
-  ShuffleAndPutSetAsideCardsNthFromTheTop(Box<GameNumber>), // FIXME: Get rid of this one
-  ShuffleExiledCardIntoLibrary(Box<CardInExile>),
-  ShuffleLibraryIfSearched,
-  ValueActions(Vec<SearchLibraryActionValueAction>),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -4502,6 +4551,8 @@ pub enum Cost {
   BeholdNumber(Box<GameNumber>, Box<CardsInHand>),
   BlightX,
   Blight(Box<GameNumber>),
+
+  GetNumberPoisonCounters(Box<GameNumber>),
 
   PutGraveyardCardOnBottomOfLibrary(Box<CardInGraveyard>),
 
@@ -5077,6 +5128,7 @@ pub enum Permanents {
   IsFaceUp,
   IsFirstLandPlayedByPlayerThisTurn,
   IsHistoric,
+  IsWorthy,
   IsLandType(LandType),
   IsLandTypeVariable(LandTypeVariable),
   IsModified,
@@ -5275,6 +5327,8 @@ pub enum Permanent {
   ById(PermanentId),
 
   // Normal
+  WouldConnive_ThatPermanent,
+
   TheChosenPermanentForPlayer(Box<Player>),
   ThePermanentBlightedThisWay,
   ThePermanentAttachedThisWay,
@@ -6647,6 +6701,7 @@ pub enum CardsInExile {
   InTheChosenPile,
   InTheExiledPileChosenThisWay,
   InTheExiledPileNotChosenThisWay,
+  TheExiledCardChosenThisWay,
   TheCardsConjuredThisWay,
   TheCardsExiledByPlayerThisWay(Box<Player>),
   TheCardsExiledThisWay,
@@ -6817,6 +6872,7 @@ pub enum ActivatedAbilities {
   BoastAbility,
   OutlastAbility,
   ExhaustAbility,
+  PowerUpAbility,
 
   HasXInCost,
   HasTapSelfInCost,
@@ -7614,6 +7670,7 @@ pub enum PerpetualEffect {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_LookAtTopOfLibraryAction", content = "args"))]
 pub enum LookAtTopOfLibraryAction {
+  TransformPermanent(Box<Permanent>),
   PutRemainingSetAsideCardsIntoHand,
   PutSetAsideCardsOfTypeOntoBattlefield(Box<Cards>, Vec<EnterFlag>),
   MayPutUptoNumberGroupCardsOntoTheBattlefield(Box<GameNumber>, Box<Cards>, GroupFilter, Vec<EnterFlag>),
@@ -8111,6 +8168,9 @@ pub enum CreatableToken {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Exilable", content = "args"))]
 pub enum Exilable {
+  // Stack
+  Spell(Box<Spell>),
+
   // Cards In Graveyards
   AGraveyardCard(Box<CardsInGraveyard>),
   AGraveyardCardAtRandom(Box<CardsInGraveyard>),
@@ -10243,6 +10303,9 @@ pub enum Trigger {
   // bending
   WhenAPlayerWaterEarthFireOrAirBends(Box<Players>),
 
+  // teamwork
+  WhenAPermanentBecomesTappedToPayATeamworkCost(Box<Permanents>),
+
   // station
   WhenAPermanentStationsAPermanent(Box<Permanents>, Box<Permanents>),
 
@@ -10711,6 +10774,7 @@ pub enum Trigger {
   WhenAPlayerPlaysALandFromAnywhereOtherThanTheirHand(Box<Players>, Box<Permanents>),
 
   // put_counters
+  WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAnyNumberOfPermanents(Box<Players>, CounterType, Box<Permanents>),
   WhenACounterIsPutOnAPermanent(Box<Permanents>),
   WhenACounterOfTypeIsPutOnAPermanent(CounterType, Box<Permanents>),
   WhenAPlayerPutsACounterOfTypeOnAPermanent(Box<Players>, CounterType, Box<Permanents>),
@@ -10806,6 +10870,7 @@ pub enum Trigger {
   WhenAPermanentBecomesTheTargetOfASpellOrAbility(Box<Permanents>, SpellsAndAbilities),
   WhenAPermanentBecomesTheTargetOfASpellOrAbilityForTheFirstTimeEachTurn(Box<Permanents>, SpellsAndAbilities),
   WhenAPermanentBecomesTheTargetOfAnAbility(Box<Permanents>, Abilities),
+  WhenAPlayerBecomesTheTargetOfAnAbility(Box<Players>, Abilities),
   WhenAPlayerBecomesTheTargetOfASpell(Box<Players>, Box<Spells>),
   WhenAPlayerBecomesTheTargetOfASpellOrAbility(Box<Players>, SpellsAndAbilities),
   WhenAPlayerChoosesTargetsForASpellOrAbility(Box<Players>, SpellsAndAbilities),
@@ -10862,6 +10927,7 @@ pub enum Trigger {
 
   // _operators
   Or(Vec<Trigger>),
+  If(Box<Condition>, Box<Trigger>),
 }
 
 

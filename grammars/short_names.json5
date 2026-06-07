@@ -49,7 +49,6 @@
   "Veldrane of Sengir"             : "Veldrane"      ,
 
   // NAME of the VALUE
-  "Hraesvelgr of the First Brood"  : "Hraesvelgr"    ,
   "Agatha of the Vile Cauldron"    : "Agatha"        ,
   "Ashcoat of the Shadow Swarm"    : "Ashcoat"       ,
   "Beregond of the Guard"          : "Beregond"      ,
@@ -60,7 +59,9 @@
   "Gimli of the Glittering Caves"  : "Gimli"         ,
   "Hakbal of the Surging Soul"     : "Hakbal"        ,
   "Hivis of the Scale"             : "Hivis"         ,
+  "Hraesvelgr of the First Brood"  : "Hraesvelgr"    ,
   "Iwamori of the Open Fist"       : "Iwamori"       ,
+  "Ka-Zar of the Savage Land"      : "Ka-Zar"        ,
   "Kaalia of the Vast"             : "Kaalia"        ,
   "Karlov of the Ghost Council"    : "Karlov"        ,
   "Lavinia of the Tenth"           : "Lavinia"       ,
@@ -107,6 +108,7 @@
   "Isperia the Inscrutable"        : "Isperia"       ,
   "Isu the Abominable"             : "Isu"           ,
   "Jaraku the Interloper"          : "Jaraku"        ,
+  "Kang the Conqueror"             : "Kang"          ,
   "Kaervek the Merciless"          : "Kaervek"       ,
   "Kefnet the Mindful"             : "Kefnet"        ,
   "Kresh the Bloodbraided"         : "Kresh"         ,
