@@ -2962,6 +2962,7 @@ pub enum Rule {
   YouAreTheStartingPlayer,
   BeforeShufflingDeckToStartTheGame(Vec<PregameAction>),
 
+  PreventDamage(EventPreventDamage, Vec<ActionPreventDamage>),
 
   ReplaceAPlayerWouldCreateAToken(ReplacableEventAPlayerWouldCreateAToken, Vec<ReplacementActionAPlayerWouldCreateAToken>),
   ReplaceAPlayerWouldCreateTokens(ReplacableEventAPlayerWouldCreateTokens, Vec<ReplacementActionAPlayerWouldCreateTokens>),
@@ -3183,17 +3184,63 @@ pub enum ReplacementActionWouldDraw {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_ActionPreventDamageCost", content = "args"))]
+pub enum ActionPreventDamageCost {
+  PayMana(ManaCost),
+}
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_ActionPreventDamage", content = "args"))]
+pub enum ActionPreventDamage {
+  If(Condition, Vec<ActionPreventDamage>),
+  IfElse(Condition, Vec<ActionPreventDamage>, Vec<ActionPreventDamage>),
+  Unless(Condition, Vec<ActionPreventDamage>),
+
+  PreventAllButSomeOfThatDamage(Box<GameNumber>),
+  PreventSomeOfThatDamage(Box<GameNumber>),
+  PreventThatDamage,
+
+  PermanentDealsDamage(Box<Permanent>, Box<GameNumber>, Box<DamageRecipient>),
+  SpellDealsDamage(Box<Spell>, Box<GameNumber>, Box<DamageRecipient>),
+  HaveSpellDealDamage(Box<Spell>, Box<GameNumber>, Box<DamageRecipient>),
+  VanguardDealsDamage(SingleVanguard, Box<GameNumber>, Box<DamageRecipient>),
+
+  EachPlayerAction(Box<Players>, Box<ActionPreventDamage>),
+  MayAction(Box<ActionPreventDamage>),
+  MayActions(Vec<ActionPreventDamage>),
+  PlayerMayCost(Box<Player>, ActionPreventDamageCost),
+
+  RemoveNumberCountersOfTypeFromPermanent(Box<GameNumber>, CounterType, Box<Permanent>),
+
+  ChooseAPlayer(Box<Players>),
+
+  CreateFutureTrigger(FutureTrigger, Box<Actions>),
+  ReflexiveTrigger(Box<Actions>),
+
+  CreateTokens(Vec<CreatableToken>),
+  DrawNumberCards(Box<GameNumber>),
+  ExileNumberGraveyardCards(Box<GameNumber>, Box<CardsInGraveyard>),
+  ExileTheTopNumberCardsOfLibrary(Box<GameNumber>),
+  GainLife(Box<GameNumber>),
+  GetNumberRadCounters(Box<GameNumber>),
+  MillNumberCards(Box<GameNumber>),
+  PlayerAction(Box<Player>, Box<ReplacementActionWouldDealDamage>),
+  PutACounterOfTypeOnPermanent(CounterType, Box<Permanent>),
+  PutNumberCountersOfTypeOnPermanent(Box<GameNumber>, CounterType, Box<Permanent>),
+  RemoveACounterOfTypeFromPermanent(CounterType, Box<Permanent>),
+  ShufflePermanentIntoLibrary(Box<Permanent>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldDealDamageCost", content = "args"))]
 pub enum ReplacementActionWouldDealDamageCost {
   ExileNumberGraveyardCards(Box<GameNumber>, Box<CardsInGraveyard>),
-  PayMana(ManaCost),
 }
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldDealDamage", content = "args"))]
 pub enum ReplacementActionWouldDealDamage {
-  If(Condition, Vec<ReplacementActionWouldDealDamage>),
-  IfElse(Condition, Vec<ReplacementActionWouldDealDamage>, Vec<ReplacementActionWouldDealDamage>),
   Unless(Condition, Vec<ReplacementActionWouldDealDamage>),
 
   LoseTheGame,
@@ -3209,43 +3256,22 @@ pub enum ReplacementActionWouldDealDamage {
   DealToCreatureOrPlaneswalkerInstead(Box<Permanent>),
   DealToPlayerInstead(Box<Player>),
 
-  PreventAllButSomeOfThatDamage(Box<GameNumber>),
-  PreventSomeOfThatDamage(Box<GameNumber>),
-  PreventThatDamage,
-
-  PermanentDealsDamage(Box<Permanent>, Box<GameNumber>, Box<DamageRecipient>),
   SpellDealsDamage(Box<Spell>, Box<GameNumber>, Box<DamageRecipient>),
-  HaveSpellDealDamage(Box<Spell>, Box<GameNumber>, Box<DamageRecipient>),
-  VanguardDealsDamage(SingleVanguard, Box<GameNumber>, Box<DamageRecipient>),
 
-  EachPlayerAction(Box<Players>, Box<ReplacementActionWouldDealDamage>),
-  MayAction(Box<ReplacementActionWouldDealDamage>),
   MayActions(Vec<ReplacementActionWouldDealDamage>),
   MustCost(ReplacementActionWouldDealDamageCost),
-  PlayerMayCost(Box<Player>, ReplacementActionWouldDealDamageCost),
 
   RemoveNumberCountersOfTypeFromPermanent(Box<GameNumber>, CounterType, Box<Permanent>),
 
-  ChooseAPlayer(Box<Players>),
-
-  CreateFutureTrigger(FutureTrigger, Box<Actions>),
-  ReflexiveTrigger(Box<Actions>),
-
-  CreateTokens(Vec<CreatableToken>),
   DestroyPermanent(Box<Permanent>),
   DrawNumberCards(Box<GameNumber>),
-  ExileNumberGraveyardCards(Box<GameNumber>, Box<CardsInGraveyard>),
   ExileTheTopNumberCardsOfLibrary(Box<GameNumber>),
   GainControlOfPermanent(Box<Permanent>),
-  GainLife(Box<GameNumber>),
-  GetNumberRadCounters(Box<GameNumber>),
   MillNumberCards(Box<GameNumber>),
   PlayerAction(Box<Player>, Box<ReplacementActionWouldDealDamage>),
-  PutACounterOfTypeOnPermanent(CounterType, Box<Permanent>),
   PutNumberCountersOfTypeOnPermanent(Box<GameNumber>, CounterType, Box<Permanent>),
   RemoveACounterOfTypeFromPermanent(CounterType, Box<Permanent>),
   SacrificeNumberPermanents(Box<GameNumber>, Box<Permanents>),
-  ShufflePermanentIntoLibrary(Box<Permanent>),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -3832,8 +3858,8 @@ pub enum ReplacableEventWouldDraw {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
-#[cfg_attr(feature = "write_out_json", serde(tag = "_FutureReplacableEventWouldDealDamage", content = "args"))]
-pub enum FutureReplacableEventWouldDealDamage {
+#[cfg_attr(feature = "write_out_json", serde(tag = "_FutureEventPreventDamage", content = "args"))]
+pub enum FutureEventPreventDamage {
   NextDistributedDamageThisTurn,
 
   NextAmountOfDamageThatWouldBeDealtThisTurnByPermanent(Box<GameNumber>, Box<Permanent>),
@@ -3848,39 +3874,29 @@ pub enum FutureReplacableEventWouldDealDamage {
   NextTimeCombatDamageWouldBeDealtThisTurnByCreatureToAnyNumberOfRecipients(Box<Permanent>, Box<DamageRecipientsList>),
   NextTimeCombatDamageWouldBeDealtThisTurnByCreatureToRecipient(Box<Permanent>, Box<SingleDamageRecipient>),
   NextTimeDamageWouldBeDealtThisTurnByAPermanentToRecipient(Box<Permanents>, Box<SingleDamageRecipient>),
-  NextTimeDamageWouldBeDealtThisTurnByASpellToRecipient(Box<Spells>, Box<SingleDamageRecipient>),
   NextTimeDamageWouldBeDealtThisTurnByPermanent(Box<Permanent>),
-  NextTimeDamageWouldBeDealtThisTurnByPermanentToARecipient(Box<Permanent>, Box<DamageRecipientsList>),
   NextTimeDamageWouldBeDealtThisTurnByPermanentToRecipient(Box<Permanent>, Box<SingleDamageRecipient>),
   NextTimeDamageWouldBeDealtThisTurnBySource(Box<SingleDamageSource>),
   NextTimeDamageWouldBeDealtThisTurnBySourceToARecipient(Box<SingleDamageSource>, Box<DamageRecipientsList>),
   NextTimeDamageWouldBeDealtThisTurnBySourceToRecipient(Box<SingleDamageSource>, Box<SingleDamageRecipient>),
-  NextTimeDamageWouldBeDealtThisTurnToARecipient(Box<DamageRecipientsList>),
   NextTimeDamageWouldBeDealtThisTurnToRecipient(Box<SingleDamageRecipient>),
-
-  NextTimeDamageWouldBeDealtToRecipient(Box<SingleDamageRecipient>),
 }
-
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
-#[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacableEventWouldDealDamage", content = "args"))]
-pub enum ReplacableEventWouldDealDamage {
-  Or(Vec<ReplacableEventWouldDealDamage>),
+#[cfg_attr(feature = "write_out_json", serde(tag = "_EventPreventDamage", content = "args"))]
+pub enum EventPreventDamage {
+  Or(Vec<EventPreventDamage>),
 
   // (DamageType)(WouldBeDealt)BySource
   // (DamageType)(WouldBeDealt)BySourceToRecipient
   // (DamageType)(WouldBeDealt)ToRecipient
-  LethalLoyaltyDamageWouldBeDealtToAPlaneswalker(Box<Permanents>),
 
   ASpellOrAbilityWouldCauseASourceToDealDamageToRecipient(SpellsAndAbilities, DamageSources, SingleDamageRecipient),
   EachDamageWouldBeDealtToRecipient(SingleDamageRecipient),
-  AnAmountOfNonCombatDamageWouldBeDealtByASourceToARecipient(Box<Comparison>, DamageSources, DamageRecipientsList),
-  AnAmountOfDamageWouldBeDealtByASourceToARecipient(Box<Comparison>, DamageSources, DamageRecipientsList),
   AnAmountOfDamageWouldBeDealtByASourceToRecipient(Box<Comparison>, DamageSources, SingleDamageRecipient),
 
   CombatDamageWouldBeDealt,
-  CombatDamageWouldBeDealtByCreatureToRecipient(Box<Permanent>, SingleDamageRecipient),
   CombatDamageWouldBeDealtByACreature(Box<Permanents>),
   CombatDamageWouldBeDealtByACreatureToASetOfRecipients(Box<Permanents>, DamageRecipientsList),
   CombatDamageWouldBeDealtByACreatureToARecipient(Box<Permanents>, DamageRecipientsList),
@@ -3907,10 +3923,71 @@ pub enum ReplacableEventWouldDealDamage {
   DamageWouldBeDealtToARecipient(DamageRecipientsList),
   DamageWouldBeDealtToRecipient(SingleDamageRecipient),
   DamageWouldBeDealtByAPlaneToARecipient(Planes, DamageRecipientsList),
-  NoncombatDamageWouldBeDealtByASourceToARecipient(DamageSources, DamageRecipientsList),
-  NoncombatDamageWouldBeDealtBySpellToARecipient(Box<Spell>, DamageRecipientsList),
   NoncombatDamageWouldBeDealtToARecipient(DamageRecipientsList),
   NoncombatDamageWouldBeDealtToRecipient(SingleDamageRecipient),
+}
+
+
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_FutureReplacableEventWouldDealDamage", content = "args"))]
+pub enum FutureReplacableEventWouldDealDamage {
+  NextAmountOfDamageThatWouldBeDealtThisTurnBySourceToARecipient(Box<GameNumber>, Box<SingleDamageSource>, Box<DamageRecipientsList>),
+  NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient(Box<GameNumber>, Box<SingleDamageRecipient>),
+
+  NextTimeCombatDamageWouldBeDealtThisTurnByCreature(Box<Permanent>),
+  NextTimeCombatDamageWouldBeDealtThisTurnByCreatureToRecipient(Box<Permanent>, Box<SingleDamageRecipient>),
+  NextTimeDamageWouldBeDealtThisTurnByASpellToRecipient(Box<Spells>, Box<SingleDamageRecipient>),
+  NextTimeDamageWouldBeDealtThisTurnByPermanentToARecipient(Box<Permanent>, Box<DamageRecipientsList>),
+  NextTimeDamageWouldBeDealtThisTurnBySource(Box<SingleDamageSource>),
+  NextTimeDamageWouldBeDealtThisTurnBySourceToRecipient(Box<SingleDamageSource>, Box<SingleDamageRecipient>),
+  NextTimeDamageWouldBeDealtThisTurnToARecipient(Box<DamageRecipientsList>),
+  NextTimeDamageWouldBeDealtThisTurnToRecipient(Box<SingleDamageRecipient>),
+
+  NextTimeDamageWouldBeDealtToRecipient(Box<SingleDamageRecipient>),
+}
+
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacableEventWouldDealDamage", content = "args"))]
+pub enum ReplacableEventWouldDealDamage {
+  Or(Vec<ReplacableEventWouldDealDamage>),
+
+  // (DamageType)(WouldBeDealt)BySource
+  // (DamageType)(WouldBeDealt)BySourceToRecipient
+  // (DamageType)(WouldBeDealt)ToRecipient
+  LethalLoyaltyDamageWouldBeDealtToAPlaneswalker(Box<Permanents>),
+
+  AnAmountOfNonCombatDamageWouldBeDealtByASourceToARecipient(Box<Comparison>, DamageSources, DamageRecipientsList),
+  AnAmountOfDamageWouldBeDealtByASourceToARecipient(Box<Comparison>, DamageSources, DamageRecipientsList),
+  AnAmountOfDamageWouldBeDealtByASourceToRecipient(Box<Comparison>, DamageSources, SingleDamageRecipient),
+
+  CombatDamageWouldBeDealtByCreatureToRecipient(Box<Permanent>, SingleDamageRecipient),
+  CombatDamageWouldBeDealtByACreatureToARecipient(Box<Permanents>, DamageRecipientsList),
+  CombatDamageWouldBeDealtByACreatureToRecipient(Box<Permanents>, SingleDamageRecipient),
+  CombatDamageWouldBeDealtByCreature(Box<Permanent>),
+  CombatDamageWouldBeDealtByCreatureToARecipient(Box<Permanent>, DamageRecipientsList),
+  CombatDamageWouldBeDealtToRecipient(SingleDamageRecipient),
+  DamageWouldBeDealtByAPermanent(Box<Permanents>),
+  DamageWouldBeDealtByAPermanentToARecipient(Box<Permanents>, DamageRecipientsList),
+  DamageWouldBeDealtByAPermanentToRecipient(Box<Permanents>, SingleDamageRecipient),
+  DamageWouldBeDealtByASource(DamageSources),
+  DamageWouldBeDealtByASourceToARecipient(DamageSources, DamageRecipientsList),
+  DamageWouldBeDealtByASourceToRecipient(DamageSources, SingleDamageRecipient),
+  DamageWouldBeDealtByASpell(Box<Spells>),
+  DamageWouldBeDealtByASpellToARecipient(Box<Spells>, DamageRecipientsList),
+  DamageWouldBeDealtByASpellToRecipient(Box<Spells>, SingleDamageRecipient),
+  DamageWouldBeDealtByPermanent(Box<Permanent>),
+  DamageWouldBeDealtByPermanentToRecipient(Box<Permanent>, SingleDamageRecipient),
+  DamageWouldBeDealtByPermanentToARecipient(Box<Permanent>, DamageRecipientsList),
+  DamageWouldBeDealtBySourceToRecipient(SingleDamageSource, SingleDamageRecipient),
+  DamageWouldBeDealtBySpell(Box<Spell>),
+  DamageWouldBeDealtToARecipient(DamageRecipientsList),
+  DamageWouldBeDealtToRecipient(SingleDamageRecipient),
+  NoncombatDamageWouldBeDealtByASourceToARecipient(DamageSources, DamageRecipientsList),
+  NoncombatDamageWouldBeDealtBySpellToARecipient(Box<Spell>, DamageRecipientsList),
 
   Each1DamagePlayerWouldBeDealt(Box<Player>),
 }
@@ -7010,7 +7087,7 @@ pub enum CheckHasable {
   // ReplaceEvent(ReplacableEvent, Vec<Action>),
   And(Vec<CheckHasable>),
 
-  ReplaceWouldDealDamage(ReplacableEventWouldDealDamage, Vec<ReplacementActionWouldDealDamage>),
+  PreventDamage(EventPreventDamage, Vec<ActionPreventDamage>),
 
   ThisAbility,
   OtherThanThisAbility,
@@ -8358,6 +8435,8 @@ pub enum Action {
   ExchangeOwnershipOfTwoCards(ExchangeOwnershipCard, ExchangeOwnershipCard),
   VoteForACardInGraveyard(Box<CardsInGraveyard>),
 
+  CreateFuturePreventDamage(FutureEventPreventDamage, Vec<ActionPreventDamage>),
+
   CreateFutureReplaceWouldAdapt(FutureReplacableEventWouldAdapt, Vec<ReplacementActionWouldAdapt>),
   CreateFutureReplaceWouldDealDamage(FutureReplacableEventWouldDealDamage, Vec<ReplacementActionWouldDealDamage>),
   CreateFutureReplaceWouldDestroy(FutureReplacableEventWouldDestroy, Vec<ReplacementActionWouldDestroy>),
@@ -8370,6 +8449,8 @@ pub enum Action {
 
   CreateReplaceAnyNumberOfTokensWouldBeCreatedUntil(ReplacableEventAnyNumberOfTokensWouldBeCreated, Vec<ReplacementActionAnyNumberOfTokensWouldBeCreated>, Expiration),
   CreateReplaceTokensWouldBeCreatedUnderAPlayersControlUntil(ReplacableEventTokensWouldBeCreatedUnderAPlayersControl, Vec<ReplacementActionTokensWouldBeCreatedUnderAPlayersControl>, Expiration),
+
+  CreatePreventDamageUntil(EventPreventDamage, Vec<ActionPreventDamage>, Expiration),
 
   CreateReplaceWouldGainLifeUntil(ReplacableEventWouldGainLife, Vec<ReplacementActionWouldGainLife>, Expiration),
   CreateReplaceWouldDealDamageUntil(ReplacableEventWouldDealDamage, Vec<ReplacementActionWouldDealDamage>, Expiration),

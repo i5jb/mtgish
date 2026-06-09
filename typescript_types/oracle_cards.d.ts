@@ -116,6 +116,7 @@ type Action =
 | { "_Action": "ReducePlayersSpeed", "args": [Player, GameNumber] }
 | { "_Action": "ExchangeOwnershipOfTwoCards", "args": [ExchangeOwnershipCard, ExchangeOwnershipCard] }
 | { "_Action": "VoteForACardInGraveyard", "args": CardsInGraveyard }
+| { "_Action": "CreateFuturePreventDamage", "args": [FutureEventPreventDamage, Array<ActionPreventDamage>] }
 | { "_Action": "CreateFutureReplaceWouldAdapt", "args": [FutureReplacableEventWouldAdapt, Array<ReplacementActionWouldAdapt>] }
 | { "_Action": "CreateFutureReplaceWouldDealDamage", "args": [FutureReplacableEventWouldDealDamage, Array<ReplacementActionWouldDealDamage>] }
 | { "_Action": "CreateFutureReplaceWouldDestroy", "args": [FutureReplacableEventWouldDestroy, Array<ReplacementActionWouldDestroy>] }
@@ -127,6 +128,7 @@ type Action =
 | { "_Action": "CreateFutureReplaceWouldSetASchemeInMotion", "args": [FutureReplacableEventWouldSetASchemeInMotion, Array<ReplacementActionWouldSetASchemeInMotion>] }
 | { "_Action": "CreateReplaceAnyNumberOfTokensWouldBeCreatedUntil", "args": [ReplacableEventAnyNumberOfTokensWouldBeCreated, Array<ReplacementActionAnyNumberOfTokensWouldBeCreated>, Expiration] }
 | { "_Action": "CreateReplaceTokensWouldBeCreatedUnderAPlayersControlUntil", "args": [ReplacableEventTokensWouldBeCreatedUnderAPlayersControl, Array<ReplacementActionTokensWouldBeCreatedUnderAPlayersControl>, Expiration] }
+| { "_Action": "CreatePreventDamageUntil", "args": [EventPreventDamage, Array<ActionPreventDamage>, Expiration] }
 | { "_Action": "CreateReplaceWouldGainLifeUntil", "args": [ReplacableEventWouldGainLife, Array<ReplacementActionWouldGainLife>, Expiration] }
 | { "_Action": "CreateReplaceWouldDealDamageUntil", "args": [ReplacableEventWouldDealDamage, Array<ReplacementActionWouldDealDamage>, Expiration] }
 | { "_Action": "CreateReplaceWouldDrawUntil", "args": [ReplacableEventWouldDraw, Array<ReplacementActionWouldDraw>, Expiration] }
@@ -1466,6 +1468,39 @@ type Action =
 type ActionOption =
 | { "_ActionOption": "ActionOption", "args": [Cost, Array<Action>] }
 | { "_ActionOption": "DoNothingOption", "args": Array<Action> };
+type ActionPreventDamage =
+| { "_ActionPreventDamage": "If", "args": [Condition, Array<ActionPreventDamage>] }
+| { "_ActionPreventDamage": "IfElse", "args": [Condition, Array<ActionPreventDamage>, Array<ActionPreventDamage>] }
+| { "_ActionPreventDamage": "Unless", "args": [Condition, Array<ActionPreventDamage>] }
+| { "_ActionPreventDamage": "PreventAllButSomeOfThatDamage", "args": GameNumber }
+| { "_ActionPreventDamage": "PreventSomeOfThatDamage", "args": GameNumber }
+| { "_ActionPreventDamage": "PreventThatDamage" }
+| { "_ActionPreventDamage": "PermanentDealsDamage", "args": [Permanent, GameNumber, DamageRecipient] }
+| { "_ActionPreventDamage": "SpellDealsDamage", "args": [Spell, GameNumber, DamageRecipient] }
+| { "_ActionPreventDamage": "HaveSpellDealDamage", "args": [Spell, GameNumber, DamageRecipient] }
+| { "_ActionPreventDamage": "VanguardDealsDamage", "args": [SingleVanguard, GameNumber, DamageRecipient] }
+| { "_ActionPreventDamage": "EachPlayerAction", "args": [Players, ActionPreventDamage] }
+| { "_ActionPreventDamage": "MayAction", "args": ActionPreventDamage }
+| { "_ActionPreventDamage": "MayActions", "args": Array<ActionPreventDamage> }
+| { "_ActionPreventDamage": "PlayerMayCost", "args": [Player, ActionPreventDamageCost] }
+| { "_ActionPreventDamage": "RemoveNumberCountersOfTypeFromPermanent", "args": [GameNumber, CounterType, Permanent] }
+| { "_ActionPreventDamage": "ChooseAPlayer", "args": Players }
+| { "_ActionPreventDamage": "CreateFutureTrigger", "args": [FutureTrigger, Actions] }
+| { "_ActionPreventDamage": "ReflexiveTrigger", "args": Actions }
+| { "_ActionPreventDamage": "CreateTokens", "args": Array<CreatableToken> }
+| { "_ActionPreventDamage": "DrawNumberCards", "args": GameNumber }
+| { "_ActionPreventDamage": "ExileNumberGraveyardCards", "args": [GameNumber, CardsInGraveyard] }
+| { "_ActionPreventDamage": "ExileTheTopNumberCardsOfLibrary", "args": GameNumber }
+| { "_ActionPreventDamage": "GainLife", "args": GameNumber }
+| { "_ActionPreventDamage": "GetNumberRadCounters", "args": GameNumber }
+| { "_ActionPreventDamage": "MillNumberCards", "args": GameNumber }
+| { "_ActionPreventDamage": "PlayerAction", "args": [Player, ReplacementActionWouldDealDamage] }
+| { "_ActionPreventDamage": "PutACounterOfTypeOnPermanent", "args": [CounterType, Permanent] }
+| { "_ActionPreventDamage": "PutNumberCountersOfTypeOnPermanent", "args": [GameNumber, CounterType, Permanent] }
+| { "_ActionPreventDamage": "RemoveACounterOfTypeFromPermanent", "args": [CounterType, Permanent] }
+| { "_ActionPreventDamage": "ShufflePermanentIntoLibrary", "args": Permanent };
+type ActionPreventDamageCost =
+| { "_ActionPreventDamageCost": "PayMana", "args": Array<ManaSymbol> };
 type Actions =
 | { "_Actions": "AdditionalCost_Modal", "args": Array<AdditionalCostOption> }
 | { "_Actions": "Targeted_Modal", "args": Array<Actions> }
@@ -2104,7 +2139,7 @@ type CDA_Types =
 | { "_CDA_Types": "AddCreatureTypes", "args": Array<CreatureType> };
 type CheckHasable =
 | { "_CheckHasable": "And", "args": Array<CheckHasable> }
-| { "_CheckHasable": "ReplaceWouldDealDamage", "args": [ReplacableEventWouldDealDamage, Array<ReplacementActionWouldDealDamage>] }
+| { "_CheckHasable": "PreventDamage", "args": [EventPreventDamage, Array<ActionPreventDamage>] }
 | { "_CheckHasable": "ThisAbility" }
 | { "_CheckHasable": "OtherThanThisAbility" }
 | { "_CheckHasable": "AbilityStickerAbility" }
@@ -3599,6 +3634,40 @@ type EnterOrFaceUpAction =
 | { "_EnterOrFaceUpAction": "EntersWithNumberCounters", "args": [GameNumber, CounterType] }
 | { "_EnterOrFaceUpAction": "EnterAsACopyOfAPermanentUntil", "args": [Permanents, CopyEffects, Expiration] }
 | { "_EnterOrFaceUpAction": "EntersWithPTOfChoice", "args": Array<PT> };
+type EventPreventDamage =
+| { "_EventPreventDamage": "Or", "args": Array<EventPreventDamage> }
+| { "_EventPreventDamage": "ASpellOrAbilityWouldCauseASourceToDealDamageToRecipient", "args": [SpellsAndAbilities, DamageSources, SingleDamageRecipient] }
+| { "_EventPreventDamage": "EachDamageWouldBeDealtToRecipient", "args": SingleDamageRecipient }
+| { "_EventPreventDamage": "AnAmountOfDamageWouldBeDealtByASourceToRecipient", "args": [Comparison, DamageSources, SingleDamageRecipient] }
+| { "_EventPreventDamage": "CombatDamageWouldBeDealt" }
+| { "_EventPreventDamage": "CombatDamageWouldBeDealtByACreature", "args": Permanents }
+| { "_EventPreventDamage": "CombatDamageWouldBeDealtByACreatureToASetOfRecipients", "args": [Permanents, DamageRecipientsList] }
+| { "_EventPreventDamage": "CombatDamageWouldBeDealtByACreatureToARecipient", "args": [Permanents, DamageRecipientsList] }
+| { "_EventPreventDamage": "CombatDamageWouldBeDealtByACreatureToRecipient", "args": [Permanents, SingleDamageRecipient] }
+| { "_EventPreventDamage": "CombatDamageWouldBeDealtByCreature", "args": Permanent }
+| { "_EventPreventDamage": "CombatDamageWouldBeDealtByCreatureToARecipient", "args": [Permanent, DamageRecipientsList] }
+| { "_EventPreventDamage": "CombatDamageWouldBeDealtToARecipient", "args": DamageRecipientsList }
+| { "_EventPreventDamage": "CombatDamageWouldBeDealtToRecipient", "args": SingleDamageRecipient }
+| { "_EventPreventDamage": "DamageWouldBeDealtByAPermanent", "args": Permanents }
+| { "_EventPreventDamage": "DamageWouldBeDealtByAPermanentToARecipient", "args": [Permanents, DamageRecipientsList] }
+| { "_EventPreventDamage": "DamageWouldBeDealtByAPermanentToRecipient", "args": [Permanents, SingleDamageRecipient] }
+| { "_EventPreventDamage": "DamageWouldBeDealtByASource", "args": DamageSources }
+| { "_EventPreventDamage": "DamageWouldBeDealtByASourceToARecipient", "args": [DamageSources, DamageRecipientsList] }
+| { "_EventPreventDamage": "DamageWouldBeDealtByASourceToRecipient", "args": [DamageSources, SingleDamageRecipient] }
+| { "_EventPreventDamage": "DamageWouldBeDealtByASpell", "args": Spells }
+| { "_EventPreventDamage": "DamageWouldBeDealtByASpellToARecipient", "args": [Spells, DamageRecipientsList] }
+| { "_EventPreventDamage": "DamageWouldBeDealtByASpellToRecipient", "args": [Spells, SingleDamageRecipient] }
+| { "_EventPreventDamage": "DamageWouldBeDealtByPermanent", "args": Permanent }
+| { "_EventPreventDamage": "DamageWouldBeDealtByPermanentToRecipient", "args": [Permanent, SingleDamageRecipient] }
+| { "_EventPreventDamage": "DamageWouldBeDealtByPermanentToARecipient", "args": [Permanent, DamageRecipientsList] }
+| { "_EventPreventDamage": "DamageWouldBeDealtBySource", "args": SingleDamageSource }
+| { "_EventPreventDamage": "DamageWouldBeDealtBySourceToRecipient", "args": [SingleDamageSource, SingleDamageRecipient] }
+| { "_EventPreventDamage": "DamageWouldBeDealtBySpell", "args": Spell }
+| { "_EventPreventDamage": "DamageWouldBeDealtToARecipient", "args": DamageRecipientsList }
+| { "_EventPreventDamage": "DamageWouldBeDealtToRecipient", "args": SingleDamageRecipient }
+| { "_EventPreventDamage": "DamageWouldBeDealtByAPlaneToARecipient", "args": [Planes, DamageRecipientsList] }
+| { "_EventPreventDamage": "NoncombatDamageWouldBeDealtToARecipient", "args": DamageRecipientsList }
+| { "_EventPreventDamage": "NoncombatDamageWouldBeDealtToRecipient", "args": SingleDamageRecipient };
 type ExchangeOwnershipCard =
 | { "_ExchangeOwnershipCard": "Ref_TargetPermanent" }
 | { "_ExchangeOwnershipCard": "TheCardRevealedFromHandThisWay" }
@@ -3703,6 +3772,25 @@ type FlipInfo =
 | { "_OracleCard": "FlipInfo", Name: string, Typeline: OracleTypeline, Rules: Array<Rule>, CardPT?: CardPT, };
 type Flip =
 | { "_OracleCard": "Flip", ManaCost: Array<ManaSymbolX>, Unflipped: FlipInfo, Flipped: FlipInfo, };
+type FutureEventPreventDamage =
+| { "_FutureEventPreventDamage": "NextDistributedDamageThisTurn" }
+| { "_FutureEventPreventDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnByPermanent", "args": [GameNumber, Permanent] }
+| { "_FutureEventPreventDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnBySourceToARecipient", "args": [GameNumber, SingleDamageSource, DamageRecipientsList] }
+| { "_FutureEventPreventDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnBySourceToRecipient", "args": [GameNumber, SingleDamageSource, SingleDamageRecipient] }
+| { "_FutureEventPreventDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnBySpellToRecipient", "args": [GameNumber, Spell, SingleDamageRecipient] }
+| { "_FutureEventPreventDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnToARecipient", "args": [GameNumber, DamageRecipientsList] }
+| { "_FutureEventPreventDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnToEachRecipient", "args": [GameNumber, MultipleDamageRecipients] }
+| { "_FutureEventPreventDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient", "args": [GameNumber, SingleDamageRecipient] }
+| { "_FutureEventPreventDamage": "NextTimeCombatDamageWouldBeDealtThisTurnByCreature", "args": Permanent }
+| { "_FutureEventPreventDamage": "NextTimeCombatDamageWouldBeDealtThisTurnByCreatureToAnyNumberOfRecipients", "args": [Permanent, DamageRecipientsList] }
+| { "_FutureEventPreventDamage": "NextTimeCombatDamageWouldBeDealtThisTurnByCreatureToRecipient", "args": [Permanent, SingleDamageRecipient] }
+| { "_FutureEventPreventDamage": "NextTimeDamageWouldBeDealtThisTurnByAPermanentToRecipient", "args": [Permanents, SingleDamageRecipient] }
+| { "_FutureEventPreventDamage": "NextTimeDamageWouldBeDealtThisTurnByPermanent", "args": Permanent }
+| { "_FutureEventPreventDamage": "NextTimeDamageWouldBeDealtThisTurnByPermanentToRecipient", "args": [Permanent, SingleDamageRecipient] }
+| { "_FutureEventPreventDamage": "NextTimeDamageWouldBeDealtThisTurnBySource", "args": SingleDamageSource }
+| { "_FutureEventPreventDamage": "NextTimeDamageWouldBeDealtThisTurnBySourceToARecipient", "args": [SingleDamageSource, DamageRecipientsList] }
+| { "_FutureEventPreventDamage": "NextTimeDamageWouldBeDealtThisTurnBySourceToRecipient", "args": [SingleDamageSource, SingleDamageRecipient] }
+| { "_FutureEventPreventDamage": "NextTimeDamageWouldBeDealtThisTurnToRecipient", "args": SingleDamageRecipient };
 type FuturePlayerEffect =
 | { "_FuturePlayerEffect": "CanCastOnlyOneMoreSpellThisTurn" }
 | { "_FuturePlayerEffect": "MayCastTheirNextSpellThisTurnWithoutPaying", "args": Spells }
@@ -3713,24 +3801,13 @@ type FuturePlayerEffect =
 type FutureReplacableEventWouldAdapt =
 | { "_FutureReplacableEventWouldAdapt": "NextTimeCreatureAdaptsThisTurn", "args": Permanent };
 type FutureReplacableEventWouldDealDamage =
-| { "_FutureReplacableEventWouldDealDamage": "NextDistributedDamageThisTurn" }
-| { "_FutureReplacableEventWouldDealDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnByPermanent", "args": [GameNumber, Permanent] }
 | { "_FutureReplacableEventWouldDealDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnBySourceToARecipient", "args": [GameNumber, SingleDamageSource, DamageRecipientsList] }
-| { "_FutureReplacableEventWouldDealDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnBySourceToRecipient", "args": [GameNumber, SingleDamageSource, SingleDamageRecipient] }
-| { "_FutureReplacableEventWouldDealDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnBySpellToRecipient", "args": [GameNumber, Spell, SingleDamageRecipient] }
-| { "_FutureReplacableEventWouldDealDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnToARecipient", "args": [GameNumber, DamageRecipientsList] }
-| { "_FutureReplacableEventWouldDealDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnToEachRecipient", "args": [GameNumber, MultipleDamageRecipients] }
 | { "_FutureReplacableEventWouldDealDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient", "args": [GameNumber, SingleDamageRecipient] }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeCombatDamageWouldBeDealtThisTurnByCreature", "args": Permanent }
-| { "_FutureReplacableEventWouldDealDamage": "NextTimeCombatDamageWouldBeDealtThisTurnByCreatureToAnyNumberOfRecipients", "args": [Permanent, DamageRecipientsList] }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeCombatDamageWouldBeDealtThisTurnByCreatureToRecipient", "args": [Permanent, SingleDamageRecipient] }
-| { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnByAPermanentToRecipient", "args": [Permanents, SingleDamageRecipient] }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnByASpellToRecipient", "args": [Spells, SingleDamageRecipient] }
-| { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnByPermanent", "args": Permanent }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnByPermanentToARecipient", "args": [Permanent, DamageRecipientsList] }
-| { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnByPermanentToRecipient", "args": [Permanent, SingleDamageRecipient] }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnBySource", "args": SingleDamageSource }
-| { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnBySourceToARecipient", "args": [SingleDamageSource, DamageRecipientsList] }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnBySourceToRecipient", "args": [SingleDamageSource, SingleDamageRecipient] }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnToARecipient", "args": DamageRecipientsList }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnToRecipient", "args": SingleDamageRecipient }
@@ -6244,20 +6321,14 @@ type ReplacableEventWouldCounterASpell =
 type ReplacableEventWouldDealDamage =
 | { "_ReplacableEventWouldDealDamage": "Or", "args": Array<ReplacableEventWouldDealDamage> }
 | { "_ReplacableEventWouldDealDamage": "LethalLoyaltyDamageWouldBeDealtToAPlaneswalker", "args": Permanents }
-| { "_ReplacableEventWouldDealDamage": "ASpellOrAbilityWouldCauseASourceToDealDamageToRecipient", "args": [SpellsAndAbilities, DamageSources, SingleDamageRecipient] }
-| { "_ReplacableEventWouldDealDamage": "EachDamageWouldBeDealtToRecipient", "args": SingleDamageRecipient }
 | { "_ReplacableEventWouldDealDamage": "AnAmountOfNonCombatDamageWouldBeDealtByASourceToARecipient", "args": [Comparison, DamageSources, DamageRecipientsList] }
 | { "_ReplacableEventWouldDealDamage": "AnAmountOfDamageWouldBeDealtByASourceToARecipient", "args": [Comparison, DamageSources, DamageRecipientsList] }
 | { "_ReplacableEventWouldDealDamage": "AnAmountOfDamageWouldBeDealtByASourceToRecipient", "args": [Comparison, DamageSources, SingleDamageRecipient] }
-| { "_ReplacableEventWouldDealDamage": "CombatDamageWouldBeDealt" }
 | { "_ReplacableEventWouldDealDamage": "CombatDamageWouldBeDealtByCreatureToRecipient", "args": [Permanent, SingleDamageRecipient] }
-| { "_ReplacableEventWouldDealDamage": "CombatDamageWouldBeDealtByACreature", "args": Permanents }
-| { "_ReplacableEventWouldDealDamage": "CombatDamageWouldBeDealtByACreatureToASetOfRecipients", "args": [Permanents, DamageRecipientsList] }
 | { "_ReplacableEventWouldDealDamage": "CombatDamageWouldBeDealtByACreatureToARecipient", "args": [Permanents, DamageRecipientsList] }
 | { "_ReplacableEventWouldDealDamage": "CombatDamageWouldBeDealtByACreatureToRecipient", "args": [Permanents, SingleDamageRecipient] }
 | { "_ReplacableEventWouldDealDamage": "CombatDamageWouldBeDealtByCreature", "args": Permanent }
 | { "_ReplacableEventWouldDealDamage": "CombatDamageWouldBeDealtByCreatureToARecipient", "args": [Permanent, DamageRecipientsList] }
-| { "_ReplacableEventWouldDealDamage": "CombatDamageWouldBeDealtToARecipient", "args": DamageRecipientsList }
 | { "_ReplacableEventWouldDealDamage": "CombatDamageWouldBeDealtToRecipient", "args": SingleDamageRecipient }
 | { "_ReplacableEventWouldDealDamage": "DamageWouldBeDealtByAPermanent", "args": Permanents }
 | { "_ReplacableEventWouldDealDamage": "DamageWouldBeDealtByAPermanentToARecipient", "args": [Permanents, DamageRecipientsList] }
@@ -6271,16 +6342,12 @@ type ReplacableEventWouldDealDamage =
 | { "_ReplacableEventWouldDealDamage": "DamageWouldBeDealtByPermanent", "args": Permanent }
 | { "_ReplacableEventWouldDealDamage": "DamageWouldBeDealtByPermanentToRecipient", "args": [Permanent, SingleDamageRecipient] }
 | { "_ReplacableEventWouldDealDamage": "DamageWouldBeDealtByPermanentToARecipient", "args": [Permanent, DamageRecipientsList] }
-| { "_ReplacableEventWouldDealDamage": "DamageWouldBeDealtBySource", "args": SingleDamageSource }
 | { "_ReplacableEventWouldDealDamage": "DamageWouldBeDealtBySourceToRecipient", "args": [SingleDamageSource, SingleDamageRecipient] }
 | { "_ReplacableEventWouldDealDamage": "DamageWouldBeDealtBySpell", "args": Spell }
 | { "_ReplacableEventWouldDealDamage": "DamageWouldBeDealtToARecipient", "args": DamageRecipientsList }
 | { "_ReplacableEventWouldDealDamage": "DamageWouldBeDealtToRecipient", "args": SingleDamageRecipient }
-| { "_ReplacableEventWouldDealDamage": "DamageWouldBeDealtByAPlaneToARecipient", "args": [Planes, DamageRecipientsList] }
 | { "_ReplacableEventWouldDealDamage": "NoncombatDamageWouldBeDealtByASourceToARecipient", "args": [DamageSources, DamageRecipientsList] }
 | { "_ReplacableEventWouldDealDamage": "NoncombatDamageWouldBeDealtBySpellToARecipient", "args": [Spell, DamageRecipientsList] }
-| { "_ReplacableEventWouldDealDamage": "NoncombatDamageWouldBeDealtToARecipient", "args": DamageRecipientsList }
-| { "_ReplacableEventWouldDealDamage": "NoncombatDamageWouldBeDealtToRecipient", "args": SingleDamageRecipient }
 | { "_ReplacableEventWouldDealDamage": "Each1DamagePlayerWouldBeDealt", "args": Player };
 type ReplacableEventWouldDestroy =
 | { "_ReplacableEventWouldDestroy": "PermanentWouldBeDestroyed", "args": Permanent };
@@ -6416,11 +6483,8 @@ type ReplacementActionWouldCounterASpell =
 | { "_ReplacementActionWouldCounterASpell": "MayAction", "args": ReplacementActionWouldCounterASpell }
 | { "_ReplacementActionWouldCounterASpell": "PlayExiledCardWithoutPaying", "args": CardInExile };
 type ReplacementActionWouldDealDamageCost =
-| { "_ReplacementActionWouldDealDamageCost": "ExileNumberGraveyardCards", "args": [GameNumber, CardsInGraveyard] }
-| { "_ReplacementActionWouldDealDamageCost": "PayMana", "args": Array<ManaSymbol> };
+| { "_ReplacementActionWouldDealDamageCost": "ExileNumberGraveyardCards", "args": [GameNumber, CardsInGraveyard] };
 type ReplacementActionWouldDealDamage =
-| { "_ReplacementActionWouldDealDamage": "If", "args": [Condition, Array<ReplacementActionWouldDealDamage>] }
-| { "_ReplacementActionWouldDealDamage": "IfElse", "args": [Condition, Array<ReplacementActionWouldDealDamage>, Array<ReplacementActionWouldDealDamage>] }
 | { "_ReplacementActionWouldDealDamage": "Unless", "args": [Condition, Array<ReplacementActionWouldDealDamage>] }
 | { "_ReplacementActionWouldDealDamage": "LoseTheGame" }
 | { "_ReplacementActionWouldDealDamage": "CancelThatDamage" }
@@ -6432,37 +6496,19 @@ type ReplacementActionWouldDealDamage =
 | { "_ReplacementActionWouldDealDamage": "DealToAnyTargetInstead", "args": SingleDamageRecipient }
 | { "_ReplacementActionWouldDealDamage": "DealToCreatureOrPlaneswalkerInstead", "args": Permanent }
 | { "_ReplacementActionWouldDealDamage": "DealToPlayerInstead", "args": Player }
-| { "_ReplacementActionWouldDealDamage": "PreventAllButSomeOfThatDamage", "args": GameNumber }
-| { "_ReplacementActionWouldDealDamage": "PreventSomeOfThatDamage", "args": GameNumber }
-| { "_ReplacementActionWouldDealDamage": "PreventThatDamage" }
-| { "_ReplacementActionWouldDealDamage": "PermanentDealsDamage", "args": [Permanent, GameNumber, DamageRecipient] }
 | { "_ReplacementActionWouldDealDamage": "SpellDealsDamage", "args": [Spell, GameNumber, DamageRecipient] }
-| { "_ReplacementActionWouldDealDamage": "HaveSpellDealDamage", "args": [Spell, GameNumber, DamageRecipient] }
-| { "_ReplacementActionWouldDealDamage": "VanguardDealsDamage", "args": [SingleVanguard, GameNumber, DamageRecipient] }
-| { "_ReplacementActionWouldDealDamage": "EachPlayerAction", "args": [Players, ReplacementActionWouldDealDamage] }
-| { "_ReplacementActionWouldDealDamage": "MayAction", "args": ReplacementActionWouldDealDamage }
 | { "_ReplacementActionWouldDealDamage": "MayActions", "args": Array<ReplacementActionWouldDealDamage> }
 | { "_ReplacementActionWouldDealDamage": "MustCost", "args": ReplacementActionWouldDealDamageCost }
-| { "_ReplacementActionWouldDealDamage": "PlayerMayCost", "args": [Player, ReplacementActionWouldDealDamageCost] }
 | { "_ReplacementActionWouldDealDamage": "RemoveNumberCountersOfTypeFromPermanent", "args": [GameNumber, CounterType, Permanent] }
-| { "_ReplacementActionWouldDealDamage": "ChooseAPlayer", "args": Players }
-| { "_ReplacementActionWouldDealDamage": "CreateFutureTrigger", "args": [FutureTrigger, Actions] }
-| { "_ReplacementActionWouldDealDamage": "ReflexiveTrigger", "args": Actions }
-| { "_ReplacementActionWouldDealDamage": "CreateTokens", "args": Array<CreatableToken> }
 | { "_ReplacementActionWouldDealDamage": "DestroyPermanent", "args": Permanent }
 | { "_ReplacementActionWouldDealDamage": "DrawNumberCards", "args": GameNumber }
-| { "_ReplacementActionWouldDealDamage": "ExileNumberGraveyardCards", "args": [GameNumber, CardsInGraveyard] }
 | { "_ReplacementActionWouldDealDamage": "ExileTheTopNumberCardsOfLibrary", "args": GameNumber }
 | { "_ReplacementActionWouldDealDamage": "GainControlOfPermanent", "args": Permanent }
-| { "_ReplacementActionWouldDealDamage": "GainLife", "args": GameNumber }
-| { "_ReplacementActionWouldDealDamage": "GetNumberRadCounters", "args": GameNumber }
 | { "_ReplacementActionWouldDealDamage": "MillNumberCards", "args": GameNumber }
 | { "_ReplacementActionWouldDealDamage": "PlayerAction", "args": [Player, ReplacementActionWouldDealDamage] }
-| { "_ReplacementActionWouldDealDamage": "PutACounterOfTypeOnPermanent", "args": [CounterType, Permanent] }
 | { "_ReplacementActionWouldDealDamage": "PutNumberCountersOfTypeOnPermanent", "args": [GameNumber, CounterType, Permanent] }
 | { "_ReplacementActionWouldDealDamage": "RemoveACounterOfTypeFromPermanent", "args": [CounterType, Permanent] }
-| { "_ReplacementActionWouldDealDamage": "SacrificeNumberPermanents", "args": [GameNumber, Permanents] }
-| { "_ReplacementActionWouldDealDamage": "ShufflePermanentIntoLibrary", "args": Permanent };
+| { "_ReplacementActionWouldDealDamage": "SacrificeNumberPermanents", "args": [GameNumber, Permanents] };
 type ReplacementActionWouldDestroy =
 | { "_ReplacementActionWouldDestroy": "RegeneratePermanent", "args": Permanent }
 | { "_ReplacementActionWouldDestroy": "CancelDestroy" }
@@ -7201,6 +7247,7 @@ type Rule =
 | { "_Rule": "DrawAnAdditionalHandBeforeMulligans" }
 | { "_Rule": "YouAreTheStartingPlayer" }
 | { "_Rule": "BeforeShufflingDeckToStartTheGame", "args": Array<PregameAction> }
+| { "_Rule": "PreventDamage", "args": [EventPreventDamage, Array<ActionPreventDamage>] }
 | { "_Rule": "ReplaceAPlayerWouldCreateAToken", "args": [ReplacableEventAPlayerWouldCreateAToken, Array<ReplacementActionAPlayerWouldCreateAToken>] }
 | { "_Rule": "ReplaceAPlayerWouldCreateTokens", "args": [ReplacableEventAPlayerWouldCreateTokens, Array<ReplacementActionAPlayerWouldCreateTokens>] }
 | { "_Rule": "ReplaceAnEffectWouldCreateAnyNumberOfTokens", "args": [ReplacableEventAnEffectWouldCreateAnyNumberOfTokens, Array<ReplacementActionAnEffectWouldCreateAnyNumberOfTokens>] }
