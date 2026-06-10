@@ -196,6 +196,24 @@
   // Plural vs. singular for CARD_NAME
   {
     "reason":  "I don't like CARD_NAME being plural, it messes with my grammar",
+    "cards":   ["Falcon and Redwing"],
+    "find":    "Whenever Falcon and Redwing deal combat",
+    "replace": "Whenever Falcon and Redwing deals combat",
+  },
+  {
+    "reason":  "I don't like CARD_NAME being plural, it messes with my grammar",
+    "cards":   ["Cloak and Dagger, Entwined"],
+    "find":    "When Cloak and Dagger enter,",
+    "replace": "When Cloak and Dagger enters,",
+  },
+  {
+    "reason":  "I don't like CARD_NAME being plural, it messes with my grammar",
+    "cards":   ["Cloak and Dagger, Entwined"],
+    "find":    "until Cloak and Dagger leave the",
+    "replace": "until Cloak and Dagger leaves the",
+  },
+  {
+    "reason":  "I don't like CARD_NAME being plural, it messes with my grammar",
     "cards":   ["The Fantastic Four"],
     "find":    "When The Fantastic Four enter and",
     "replace": "When The Fantastic Four enters and",

@@ -452,6 +452,7 @@
     "(Exile cards from the top of your library until you exile a nonland card with mana value 3 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)": "",
     "(Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)": "",
     "(Exile cards from the top of your library until you exile a nonland card with mana value 5 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)": "",
+    "(Exile cards from the top of your library until you exile a nonland card with mana value 6 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)": "",
     "(Exile cards from the top of your library until you exile a nonland card with that mana value or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)": "",
     "(They exile cards from the top of their library until they exile a nonland card with that mana value or less. They cast it without paying its mana cost or put it into their hand. They put the rest on the bottom in a random order.)": "",
     "(To discover 10, exile cards from the top of your library until you exile a nonland card with mana value 10 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)": ""
@@ -662,7 +663,8 @@
     "(A Food token is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life\". To earthbend X, target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)": ""
   },
   "{{Reminder[FoodToken][TreasureToken]}}": {
-    "(Food is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life\". Treasure is an artifact with \"{T}, Sacrifice this token: Add one mana of any color\".)": ""
+    "(Food is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life\". Treasure is an artifact with \"{T}, Sacrifice this token: Add one mana of any color\".)": "",
+    "(A Food token is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life\". A Treasure token is an artifact with \"{T}, Sacrifice this token: Add one mana of any color\".)": "",
   },
   "{{Reminder[FoodToken]}}": {
     "(A Food token is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life\".)": "",
@@ -1226,6 +1228,7 @@
     "(You may pay {R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)": ""
   },
   "{{Reminder[PowerUp]}}": {
+    "(Activate each power-up ability only once. Reduce the cost by its mana cost if it entered this turn.)": "",
     "(Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)": "",
     "(Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)": ""
   },
@@ -1586,6 +1589,8 @@
     "(It's a {1}{G} Lhurgoyf creature with \"Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1\".)": ""
   },
   "{{Reminder[Teamwork]}}": {
+    "(As an additional cost to cast this spell, you may tap any number of creatures you control with total power 1 or more.)": "",
+    "(As an additional cost to cast this spell, you may tap any number of creatures you control with total power 2 or more.)": "",
     "(As an additional cost to cast this spell, you may tap any number of creatures you control with total power 3 or more.)": "",
     "(As an additional cost to cast this spell, you may tap any number of creatures you control with total power 4 or more.)": "",
     "(As an additional cost to cast this spell, you may tap any number of creatures you control with total power 5 or more.)": ""
@@ -1845,6 +1850,9 @@
     "(If you control another Role on it, put that one into the graveyard. Enchanted creature has \"Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it\".)": ""
   },
   "{{Reminder}}": {
+    "(It can't be blocked except by creatures with flying or reach. It can attack and {T} as soon as it comes under your control.)": "",
+    "(He loses all other creature types. Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)": "",
+    "(You win even if you have 0 life or didn't draw a card.)": "",
     "(2⁰ = 1, 2¹ = 2, 2² = 4, 2³ = 8, 2⁴ = 16, 2⁵ = 32, and so on.)": "",
     "(A creature with double strike deals both first-strike and regular combat damage.)": "",
     "(A creature with fear can't be blocked except by artifact creatures and/or black creatures.)": "",
