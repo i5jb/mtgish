@@ -4055,6 +4055,20 @@
     ]
   },
   {
+    "name": "Abomination, World Ravager",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Abomination, World Ravager",
+        "manaCost": "{7}{R}",
+        "type": "Legendary Creature — Gamma Berserker Villain",
+        "text": "Menace, trample\nMayhem {4}{R} (You may cast this card from your graveyard for {4}{R} if you discarded it this turn. Timing rules still apply.)",
+        "power": "10",
+        "toughness": "10"
+      }
+    ]
+  },
+  {
     "name": "Aboroth",
     "layout": "single",
     "cards": [
@@ -8351,6 +8365,18 @@
         "manaCost": "{2}",
         "type": "Legendary Artifact",
         "text": "You may spend mana as though it were mana of any color to activate abilities of creatures you control.\nCreatures you control with +1/+1 counters on them have all activated abilities of all creature cards exiled with Agatha's Soul Cauldron.\n{T}: Exile target card from a graveyard. When a creature card is exiled this way, put a +1/+1 counter on target creature you control."
+      }
+    ]
+  },
+  {
+    "name": "Age of Ultron",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Age of Ultron",
+        "manaCost": "{4}{B}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\nI — For each opponent, destroy up to one target nonartifact creature that player controls.\nII — For each opponent, you create a 2/2 colorless Robot Villain artifact creature token.\nIII — Artifact creatures you control gain deathtouch until end of turn. Put a +1/+1 counter on each of them."
       }
     ]
   },
@@ -20293,6 +20319,18 @@
         "text": "Whenever this creature deals combat damage to a player, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost. That card gains flashback {0} until end of turn instead if this creature is saddled. (You may cast that card from your graveyard for its flashback cost. Then exile it.)\nSaddle 3",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Archnemesis",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Archnemesis",
+        "manaCost": "{1}{U}{B}",
+        "type": "Enchantment — Aura",
+        "text": "Enchant opponent\nWhenever you attack enchanted player, that player loses 2 life. You draw a card and gain 2 life.\nWhenever a player attacks you, you may attach this Aura to that player."
       }
     ]
   },
@@ -33557,6 +33595,20 @@
         "manaCost": "{2}",
         "type": "Artifact",
         "text": "{2}: Target creature gains banding until end of turn. (Any creatures with banding, and up to one without, can attack in a band. Bands are blocked as a group. If any creatures with banding a player controls are blocking or being blocked by a creature, that player divides that creature's combat damage, not its controller, among any of the creatures it's being blocked by or is blocking.)"
+      }
+    ]
+  },
+  {
+    "name": "Batroc the Leaper",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Batroc the Leaper",
+        "manaCost": "{1}{R}",
+        "type": "Legendary Creature — Human Villain",
+        "text": "Multikicker {2} (You may pay an additional {2} any number of times as you cast this spell.)\nBatroc enters with a +1/+1 counter on him for each time he was kicked.\nWhen Batroc enters, he deals damage equal to his power to each of up to X targets, where X is the number of times he was kicked.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -86937,6 +86989,20 @@
     ]
   },
   {
+    "name": "Damocles Base, Sword of Kang",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Damocles Base, Sword of Kang",
+        "manaCost": "{4}{B}",
+        "type": "Legendary Artifact — Vehicle",
+        "text": "Flying, deathtouch\nWhenever Damocles Base deals combat damage to a player, that player faces a villainous choice — They sacrifice a nontoken creature of their choice, or they lose 2 life and you draw two cards.\nCrew 3",
+        "power": "5",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Dampen Thought",
     "layout": "single",
     "cards": [
@@ -102964,6 +103030,18 @@
     ]
   },
   {
+    "name": "Doom's Time Platform",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Doom's Time Platform",
+        "manaCost": "{4}",
+        "type": "Artifact",
+        "text": "Whenever you attack, exile target nonland card from your graveyard with two time counters on it. If it doesn't have suspend, it gains suspend. (At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost. If it's a creature, it has haste.)"
+      }
+    ]
+  },
+  {
     "name": "Doombot Harbinger",
     "layout": "single",
     "cards": [
@@ -118935,6 +119013,18 @@
     ]
   },
   {
+    "name": "Endless Ranks of HYDRA",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Endless Ranks of HYDRA",
+        "manaCost": "{3}{B}",
+        "type": "Sorcery",
+        "text": "For each opponent, you create a 2/1 black Villain creature token with menace.\nWhenever your commander enters or attacks, you may pay {1}{B}. If you do, return this card from your graveyard to your hand."
+      }
+    ]
+  },
+  {
     "name": "Endless Ranks of the Dead",
     "layout": "single",
     "cards": [
@@ -126249,6 +126339,18 @@
         "manaCost": "{X}{U}{B}",
         "type": "Sorcery",
         "text": "Target opponent chooses X cards from their hand. Look at those cards. You may cast a spell from among them without paying its mana cost."
+      }
+    ]
+  },
+  {
+    "name": "Extract Power",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Extract Power",
+        "manaCost": "{5}{U}",
+        "type": "Sorcery",
+        "text": "Look at the top card of each player's library, then exile those cards face down. You may play them without paying their mana costs for as long as they remain exiled."
       }
     ]
   },
@@ -157266,6 +157368,18 @@
     ]
   },
   {
+    "name": "Glorious Purpose",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Glorious Purpose",
+        "manaCost": "{1}{U}",
+        "type": "Enchantment — Plan",
+        "text": "Whenever a creature you control connives, put a +1/+1 counter on that creature and a plan counter on this enchantment.\nWhen the sixth plan counter is put on this enchantment, sacrifice it. If you do, exile the top four cards of your library. You may cast any number of spells from among them without paying their mana costs. Put the rest into your hand."
+      }
+    ]
+  },
+  {
     "name": "Glorious Sunrise",
     "layout": "single",
     "cards": [
@@ -177861,6 +177975,20 @@
     ]
   },
   {
+    "name": "Helmut Zemo, Mastermind",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Helmut Zemo, Mastermind",
+        "manaCost": "{2}{U}",
+        "type": "Legendary Creature — Human Noble Villain",
+        "text": "Whenever Helmut Zemo attacks, you may cast target instant or sorcery card with mana value less than or equal to his power from your graveyard. If that spell would be put into your graveyard, exile it instead. If you cast a spell this way, put a +1/+1 counter on Helmut Zemo.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Helpful Hunter",
     "layout": "single",
     "cards": [
@@ -197881,6 +198009,20 @@
     ]
   },
   {
+    "name": "Iron Monger, Sadistic Tycoon",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Iron Monger, Sadistic Tycoon",
+        "manaCost": "{2}{B}",
+        "type": "Legendary Artifact Creature — Human Villain",
+        "text": "Flying\nWhenever a creature you control connives, put a +1/+1 counter on each Villain you control.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Iron Myr",
     "layout": "single",
     "cards": [
@@ -206136,6 +206278,18 @@
     ]
   },
   {
+    "name": "Kang Dynasty",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Kang Dynasty",
+        "manaCost": "{3}{U}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\nI, II — For each opponent, tap up to one target creature that player controls. Goad those creatures. Until your next turn, whenever any of those creatures deals combat damage to a player, draw a card.\nIII — Target creature you control gets +1/+1 until end of turn for each card in your hand and can't be blocked this turn."
+      }
+    ]
+  },
+  {
     "name": "Kang Prime",
     "layout": "single",
     "cards": [
@@ -210655,6 +210809,20 @@
     ]
   },
   {
+    "name": "Killmonger, Ruthless Usurper",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Killmonger, Ruthless Usurper",
+        "manaCost": "{2}{R}",
+        "type": "Legendary Creature — Human Villain",
+        "text": "Trample\nWhenever Killmonger attacks, he gets +1/+0 for each artifact defending player controls.\nWhenever Killmonger deals combat damage to a player, that player sacrifices an artifact of their choice and you create a Treasure token.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Killmonger, Scourge of Wakanda",
     "layout": "single",
     "cards": [
@@ -212663,6 +212831,20 @@
         "text": "Flying, haste\nWhenever Klauth attacks, add X mana in any combination of colors, where X is the total power of attacking creatures. Spend this mana only to cast spells. Until end of turn, you don't lose this mana as steps and phases end.",
         "power": "4",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Klaw, Master of Sound",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Klaw, Master of Sound",
+        "manaCost": "{2}{B}",
+        "type": "Legendary Creature — Elemental Rogue Villain",
+        "text": "Deathtouch\nWhenever you play a card from exile, Klaw gains indestructible until end of turn.\nWhenever Klaw deals combat damage to a player, look at the top card of that player's library, then exile it face down. You may play it for as long as it remains exiled. Mana of any type can be spent to cast a spell this way.",
+        "power": "3",
+        "toughness": "3"
       }
     ]
   },
@@ -225812,6 +225994,20 @@
         "manaCost": "{3}{G}",
         "type": "Enchantment",
         "text": "All Forests are 1/1 creatures that are still lands."
+      }
+    ]
+  },
+  {
+    "name": "Living Laser",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Living Laser",
+        "manaCost": "{4}{R}",
+        "type": "Legendary Creature — Elemental Villain",
+        "text": "Haste\nWhenever Living Laser attacks, for each card you've discarded this turn, create a token that's a copy of Living Laser, except the token isn't legendary. The tokens enter tapped and attacking. Exile the tokens at the beginning of the next end step.",
+        "power": "4",
+        "toughness": "4"
       }
     ]
   },
@@ -250645,6 +250841,20 @@
         "text": "At the beginning of combat on your turn, target creature you control gets +1/+0 and gains first strike until end of turn.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Molecule Man",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Molecule Man",
+        "manaCost": "{6}",
+        "type": "Legendary Creature — Human Villain",
+        "text": "Nonland cards in your hand have miracle {0}. (You may cast a card for its miracle cost when you draw it if it's the first card you drew this turn.)",
+        "power": "5",
+        "toughness": "5"
       }
     ]
   },
@@ -296520,6 +296730,20 @@
     ]
   },
   {
+    "name": "Puppet Master, String Puller",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Puppet Master, String Puller",
+        "manaCost": "{2}{R}",
+        "type": "Legendary Creature — Human Artificer Villain",
+        "text": "Whenever you attack, goad target creature an opponent controls. It can't block this turn. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\nWhenever one or more goaded creatures deal combat damage to one of your opponents, create a Treasure token.",
+        "power": "2",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Puppet Raiser",
     "layout": "single",
     "cards": [
@@ -308301,6 +308525,20 @@
         "manaCost": "{R}",
         "type": "Instant",
         "text": "Choose one —\n• Counter target blue spell.\n• Destroy target blue permanent."
+      }
+    ]
+  },
+  {
+    "name": "Red Ghost, Intangible Genius",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Red Ghost, Intangible Genius",
+        "manaCost": "{2}{U}{R}",
+        "type": "Legendary Creature — Human Scientist Villain",
+        "text": "Ward {2}\nRed Ghost can't be blocked.\nWhenever you draw your second card each turn, create a 3/3 red Ape Villain creature token with haste.",
+        "power": "2",
+        "toughness": "3"
       }
     ]
   },
@@ -372208,6 +372446,20 @@
     ]
   },
   {
+    "name": "Stilt-Man, Towering Terror",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Stilt-Man, Towering Terror",
+        "manaCost": "{2}{R}",
+        "type": "Legendary Creature — Human Rogue Villain",
+        "text": "Reach\nWhenever one or more Villains you control deal combat damage to a player, gain control of target noncreature, nonland permanent that player controls until the end of your next turn. It gains \"This permanent can't be sacrificed\" until the end of your next turn.",
+        "power": "4",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Stiltstrider",
     "layout": "single",
     "cards": [
@@ -395757,6 +396009,20 @@
     ]
   },
   {
+    "name": "The Frightful Four",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Frightful Four",
+        "manaCost": "{3}{B}",
+        "type": "Legendary Creature — Villain",
+        "text": "Menace\nWhenever an opponent casts their first noncreature spell each turn, that player loses life equal to that spell's mana value.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "The Fugitive Doctor",
     "layout": "single",
     "cards": [
@@ -398723,6 +398989,20 @@
         "text": "Whenever The Sprinkler of Stardust attacks, look at the top six cards of your library. You may put an instant or sorcery card from among them onto the battlefield tapped and attacking. It becomes a 2/2 creature with \"Whenever this deals combat damage to an opponent, cast a copy of this card.\" (The 2/2 creature stays on the battlefield.) Put the rest of the cards on the bottom of your library in a random order.",
         "power": "4",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "The Squadron Sinister",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Squadron Sinister",
+        "manaCost": "{5}{U}{R}",
+        "type": "Legendary Creature — Human Villain",
+        "text": "Flying, haste\nOther Villains you control get +2/+2 and have flying and haste.\nMayhem {3}{U}{R} (You may cast this card from your graveyard for {3}{U}{R} if you discarded it this turn. Timing rules still apply.)",
+        "power": "5",
+        "toughness": "5"
       }
     ]
   },
@@ -406882,6 +407162,20 @@
     ]
   },
   {
+    "name": "Titania, Proud Pummeler",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Titania, Proud Pummeler",
+        "manaCost": "{3}{R}",
+        "type": "Legendary Creature — Human Villain",
+        "text": "First strike\nMelee (Whenever this creature attacks, it gets +1/+1 until end of turn for each opponent you attacked this combat.)\nOther creatures you control have melee.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Titania, Rugged Rumbler",
     "layout": "single",
     "cards": [
@@ -412888,6 +413182,20 @@
     ]
   },
   {
+    "name": "Tri-Sentinel, Act of Vengeance",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Tri-Sentinel, Act of Vengeance",
+        "manaCost": "{7}",
+        "type": "Legendary Artifact Creature — Robot Villain",
+        "text": "Flying, menace, trample\nWhen Tri-Sentinel enters, for each opponent, Tri-Sentinel deals 3 damage to up to one target creature that player controls.\nUnearth {7} ({7}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)",
+        "power": "7",
+        "toughness": "7"
+      }
+    ]
+  },
+  {
     "name": "Triad of Fates",
     "layout": "single",
     "cards": [
@@ -416870,6 +417178,20 @@
     ]
   },
   {
+    "name": "Typhoid Mary, Fractured",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Typhoid Mary, Fractured",
+        "manaCost": "{1}{B}{R}",
+        "type": "Legendary Creature — Mutant Villain",
+        "text": "Whenever Typhoid Mary attacks, choose one at random. If you discarded a card this turn, you choose one instead.\n• Mary — Create a Treasure token.\n• Typhoid Mary — Draw a card.\n• Bloody Mary — Each opponent loses 2 life and you gain 2 life.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Typhoid Rats",
     "layout": "single",
     "cards": [
@@ -418035,6 +418357,20 @@
         "text": "Whenever another nontoken artifact you control enters, you may pay {2}. If you do, create a token that's a copy of it. If the token isn't a creature, it becomes a 2/2 Robot Villain creature in addition to its other types.",
         "power": "2",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Ultron, Unlimited",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ultron, Unlimited",
+        "manaCost": "{1}{U}{B}",
+        "type": "Legendary Artifact Creature — Robot Villain",
+        "text": "Flying\nWhenever Ultron attacks, he connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)\nWhenever a creature you control connives, you may pay {1}. If you do, create a 2/2 colorless Robot Villain artifact creature token.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },

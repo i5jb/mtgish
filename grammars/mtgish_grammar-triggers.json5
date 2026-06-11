@@ -64,6 +64,9 @@
     "WhenAPlayerConjuresAnyNumberOfCards({{PLAYERS}})": "",
     "WhenAPlayerConjuresAnyNumberOfOtherCards({{PLAYERS}})": ""
   },
+  "{{TRIGGER[Connive]}}": {
+    "WhenAPermanentConnives({{PERMANENTS}})": ""
+  },
   "{{TRIGGER[CopyASpell]}}": {
     "WhenAPlayerCopiesASpell({{PLAYERS}}, {{SPELLS}})": ""
   },
@@ -640,6 +643,7 @@
     "{{TRIGGER[CollectEvidence]}}": "",
     "{{TRIGGER[CommitACrime]}}": "",
     "{{TRIGGER[Conjure]}}": "",
+    "{{TRIGGER[Connive]}}": "",
     "{{TRIGGER[CopyASpell]}}": "",
     "{{TRIGGER[CounterASpell]}}": "",
     "{{TRIGGER[Craft]}}": "",
