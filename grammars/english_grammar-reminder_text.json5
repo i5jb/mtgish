@@ -137,6 +137,8 @@
     "(Exile an Elf you control or an Elf card from your hand.)": ""
   },
   "{{Reminder[Behold]}}": {
+    "(You may choose a Gamma creature you control or reveal a Gamma creature card from your hand.)": "",
+    "(You may choose a Hero you control or reveal a Hero card from your hand.)": "",
     "(To behold a Dragon, choose a Dragon you control or reveal a Dragon card from your hand.)": "",
     "(To behold a Goblin, choose a Goblin you control or reveal a Goblin card from your hand.)": "",
     "(To behold a Kithkin, choose a Kithkin you control or reveal a Kithkin card from your hand.)": "",
@@ -741,6 +743,7 @@
     "(Once harnessed, its ∞ ability is active.)": ""
   },
   "{{Reminder[Haste]}}": {
+    "(This creature can attack and {T} as soon as he comes under your control.)": "",
     "(This creature can attack and {T} as soon as it comes under your control.)": "",
     "(This creature can attack as soon as it comes under your control.)": ""
   },
@@ -950,6 +953,7 @@
     "(You may cast this card from your graveyard for {2}{R} if you discarded it this turn. Timing rules still apply.)": "",
     "(You may cast this card from your graveyard for {2}{U} if you discarded it this turn. Timing rules still apply.)": "",
     "(You may cast this card from your graveyard for {3}{B} if you discarded it this turn. Timing rules still apply.)": "",
+    "(You may cast this card from your graveyard for {3}{B}{B} if you discarded it this turn. Timing rules still apply.)": "",
     "(You may cast this card from your graveyard for {3}{U}{R} if you discarded it this turn. Timing rules still apply.)": "",
     "(You may cast this card from your graveyard for {4}{R} if you discarded it this turn. Timing rules still apply.)": "",
     "(You may cast this card from your graveyard for {B/R} if you discarded it this turn. Timing rules still apply.)": "",
@@ -1635,8 +1639,10 @@
     "(Each of those creatures can deal excess combat damage to the player or planeswalker it's attacking.)": "",
     "(It can deal excess combat damage to the player or planeswalker it's attacking.)": "",
     "(This creature can deal excess combat damage to the controller of the planeswalker it's attacking.)": "",
+    "(This creature can deal excess combat damage to the player he's attacking.)": "",
     "(This creature can deal excess combat damage to the player it's attacking.)": "",
-    "(This creature can deal excess combat damage to the player or planeswalker it's attacking.)": ""
+    "(This creature can deal excess combat damage to the player or planeswalker it's attacking.)": "",
+    "(This creature can deal excess combat damage to the player they're attacking.)": ""
   },
   "{{Reminder[TransformingDFC]}}": {
     "(Transforms from Aclazotz, Deepest Betrayal.)": "",
@@ -1854,6 +1860,7 @@
     "(If you control another Role on it, put that one into the graveyard. Enchanted creature has \"Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it\".)": ""
   },
   "{{Reminder}}": {
+    "(He must survive the damage to get the counters.)": "",
     "(It can't be blocked except by creatures with flying or reach. It can attack and {T} as soon as it comes under your control.)": "",
     "(He loses all other creature types. Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)": "",
     "(You win even if you have 0 life or didn't draw a card.)": "",

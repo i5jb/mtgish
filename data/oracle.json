@@ -4041,6 +4041,20 @@
     ]
   },
   {
+    "name": "Abomination, Irradiated Brute",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Abomination, Irradiated Brute",
+        "manaCost": "{2}{G}{G}",
+        "type": "Legendary Creature — Gamma Villain",
+        "text": "Trample\nWhenever a Gamma or Villain you control deals combat damage to a player, put that many +1/+1 counters on Abomination.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Abomination, Terrifying Titan",
     "layout": "single",
     "cards": [
@@ -4280,6 +4294,20 @@
         "text": "Vigilance\nAt the beginning of your first main phase, until your next turn, Absorbing Man becomes a copy of up to one target artifact, non-Aura enchantment, or land, except his name is Absorbing Man, he's a legendary 4/4 Human Villain creature in addition to his other types, and he has vigilance.",
         "power": "4",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Absorbing Man and Titania",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Absorbing Man and Titania",
+        "manaCost": "{3}{R}{G}",
+        "type": "Legendary Creature — Human Villain",
+        "text": "Double all damage that creature sources you control would deal.",
+        "power": "4",
+        "toughness": "5"
       }
     ]
   },
@@ -39409,6 +39437,20 @@
     ]
   },
   {
+    "name": "Black Widow, Intel Expert",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Black Widow, Intel Expert",
+        "manaCost": "{2}{W}",
+        "type": "Legendary Creature — Human Spy Hero",
+        "text": "First strike\nWhenever Black Widow deals combat damage to an opponent, you and that player each draw two cards.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Black Widow, Natasha Romanoff",
     "layout": "single",
     "cards": [
@@ -58161,6 +58203,20 @@
         "text": "Whenever another Hero you control enters, it gains vigilance and haste until end of turn. Put a +1/+1 counter on that Hero and a +1/+1 counter on Captain America.",
         "power": "3",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Captain America, Unbowed",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Captain America, Unbowed",
+        "manaCost": "{3}{W}",
+        "type": "Legendary Creature — Human Soldier Hero",
+        "text": "Flash\nWhen Captain America enters, Soldiers and Heroes you control gain indestructible until end of turn.",
+        "power": "3",
+        "toughness": "4"
       }
     ]
   },
@@ -175216,6 +175272,20 @@
     ]
   },
   {
+    "name": "Hawkeye, Trick Shot",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Hawkeye, Trick Shot",
+        "manaCost": "{3}{R}",
+        "type": "Legendary Creature — Human Archer Hero",
+        "text": "First strike, reach\nWhenever Hawkeye or another Hero you control enters, it deals damage equal to the number of Heroes you control to any target.",
+        "power": "3",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Hawkeye, Young Avenger",
     "layout": "single",
     "cards": [
@@ -185128,6 +185198,20 @@
         "manaCost": "{1}{G}",
         "type": "Sorcery",
         "text": "As an additional cost to cast this spell, you may behold a Gamma creature. (You may choose a Gamma creature you control or reveal a Gamma creature card from your hand.)\nTarget creature you control deals damage equal to its power to another target creature. If this spell's additional cost was paid, destroy target noncreature artifact or enchantment."
+      }
+    ]
+  },
+  {
+    "name": "Hulk, Always Angry",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Hulk, Always Angry",
+        "manaCost": "{5}{R}{R}",
+        "type": "Legendary Creature — Gamma Berserker Hero",
+        "text": "Trample\nWhen Hulk enters, destroy all artifacts.\nHulk attacks each combat if able.",
+        "power": "9",
+        "toughness": "9"
       }
     ]
   },
@@ -197986,6 +198070,20 @@
         "type": "Legendary Artifact Creature — Human Hero",
         "text": "Flying\nWhenever you cast an artifact spell, you may copy it, except the copy isn't legendary. Do this only once each turn. (The copy becomes a token.)",
         "power": "3",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Iron Man, Futurist Paragon",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Iron Man, Futurist Paragon",
+        "manaCost": "{4}{U}{U}",
+        "type": "Legendary Artifact Creature — Human Hero",
+        "text": "Flying\nAt the beginning of combat on your turn, target artifact or creature becomes an artifact creature with base power and toughness 5/5 and gains flying.",
+        "power": "5",
         "toughness": "5"
       }
     ]
@@ -210868,7 +210966,7 @@
         "name": "Killmonger, Ruthless Usurper",
         "manaCost": "{2}{R}",
         "type": "Legendary Creature — Human Villain",
-        "text": "Trample\nWhenever Killmonger attacks, he gets +1/+0 for each artifact defending player controls.\nWhenever Killmonger deals combat damage to a player, that player sacrifices an artifact of their choice and you create a Treasure token.",
+        "text": "Trample\nWhenever Killmonger attacks, he gets +1/+0 until end of turn for each artifact defending player controls.\nWhenever Killmonger deals combat damage to a player, that player sacrifices an artifact of their choice and you create a Treasure token.",
         "power": "3",
         "toughness": "3"
       }
@@ -227407,6 +227505,20 @@
     ]
   },
   {
+    "name": "Loki, God of Lies",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Loki, God of Lies",
+        "manaCost": "{1}{R}{R}",
+        "type": "Legendary Creature — God Sorcerer Villain",
+        "text": "Whenever you cast a spell that targets only a single creature, gain control of that creature until end of turn. If it's your turn, untap that creature and it gains haste until end of turn.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Loki, God of Mischief",
     "layout": "single",
     "cards": [
@@ -231807,6 +231919,20 @@
         "text": "Flying, lifelink\nMental Organism — Pay 3 life: M.O.D.O.K. connives. Activate only during your turn. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)\nDesigned Only for Killing — Creatures your opponents control get -1/-1.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "M.O.D.O.K., Evil Intellect",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "M.O.D.O.K., Evil Intellect",
+        "manaCost": "{3}{B}{B}",
+        "type": "Legendary Artifact Creature — Villain",
+        "text": "Flying\nWhenever you draw your second card each turn, target opponent sacrifices a nontoken creature of their choice.",
+        "power": "3",
+        "toughness": "5"
       }
     ]
   },
@@ -393425,6 +393551,20 @@
     ]
   },
   {
+    "name": "Thanos, Death's Consort",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Thanos, Death's Consort",
+        "manaCost": "{2}{B}{B}",
+        "type": "Legendary Creature — Eternal Villain",
+        "text": "Lifelink\nWhenever another creature dies, put a +1/+1 counter on Thanos.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Thanos, the Mad Titan",
     "layout": "single",
     "cards": [
@@ -401568,6 +401708,20 @@
         "manaCost": "{3}{R}{R}",
         "type": "Legendary Creature — God Warrior Hero",
         "text": "Flying\nWhen Thor enters, exile target Equipment, instant, or sorcery card from your graveyard. Until the end of your next turn, you may play that card.\nWhenever you cast a noncreature spell, Thor deals damage equal to that spell's mana value to any target.",
+        "power": "5",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Thor, Guardian of Midgard",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Thor, Guardian of Midgard",
+        "manaCost": "{3}{R}{R}",
+        "type": "Legendary Creature — God Warrior Hero",
+        "text": "Flying\nWhenever a source you control deals noncombat damage to an opponent, you may exile that many cards from the top of your library. You may play those cards this turn.",
         "power": "5",
         "toughness": "5"
       }
@@ -418589,6 +418743,20 @@
         "type": "Legendary Artifact Creature — Robot Villain",
         "text": "Whenever another nontoken artifact you control enters, you may pay {2}. If you do, create a token that's a copy of it. If the token isn't a creature, it becomes a 2/2 Robot Villain creature in addition to its other types.",
         "power": "2",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Ultron, Machine Overlord",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ultron, Machine Overlord",
+        "manaCost": "{5}",
+        "type": "Legendary Artifact Creature — Robot Villain",
+        "text": "Flying\nOther Robots and Constructs you control get +2/+2.",
+        "power": "4",
         "toughness": "4"
       }
     ]

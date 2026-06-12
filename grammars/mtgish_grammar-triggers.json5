@@ -121,6 +121,7 @@
     "WhenAPermanentDealsDamageToAnyNumberOfPlayersForTheFirstTimeEachTurn({{PERMANENTS}}, {{PLAYERS}})": "",
     "WhenAPermanentIsDealtAnAmountOfDamage({{PERMANENTS}}, {{COMPARISON}})": "",
     "WhenAPermanentIsDealtCombatDamage({{PERMANENTS}})": "",
+    "WhenAPermanentIsDealtDamageForTheFirstTimeEachTurn({{PERMANENTS}})": "",
     "WhenAPermanentIsDealtDamage({{PERMANENTS}})": "",
     "WhenAPermanentIsDealtExcessDamage({{PERMANENTS}})": "",
     "WhenAPermanentIsDealtExcessNoncombatDamage({{PERMANENTS}})": "",
