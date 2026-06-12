@@ -645,6 +645,7 @@
   "{{Reminder[FinalityCounter]}}": {
     "(If a creature with a finality counter on it would die, exile it instead.)": "",
     "(If a permanent with a finality counter on it would be put into a graveyard from the battlefield, exile it instead.)": "",
+    "(If a permanent with a finality counter on it would be put into a graveyard, exile it instead.)": "",
     "(If it would die, exile it instead.)": ""
   },
   "{{Reminder[Firebend]}}": {
@@ -1771,7 +1772,8 @@
     "(This enchantment enters with twelve time counters on it. At the beginning of your upkeep, remove a time counter from it. When the last is removed, sacrifice it.)": ""
   },
   "{{Reminder[VibraniumToken]}}": {
-    "(It's an artifact with indestructible and \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell\".)": ""
+    "(It's an artifact with indestructible and \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell\".)": "",
+    "(They're artifacts with indestructible and \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell\".)": ""
   },
   "{{Reminder[Vigilance][Trample]}}": {
     "(Attacking doesn't cause this creature to tap. He can deal excess combat damage to the player he's attacking.)": ""

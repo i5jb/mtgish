@@ -14311,6 +14311,18 @@
     ]
   },
   {
+    "name": "Ancestral Communion",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ancestral Communion",
+        "manaCost": "{1}{G}",
+        "type": "Sorcery",
+        "text": "When you cast this spell while you control your commander, copy this spell. You may choose a new target for the copy.\nReturn target permanent card from your graveyard to your hand."
+      }
+    ]
+  },
+  {
     "name": "Ancestral Hot Dog Minotaur",
     "layout": "single",
     "cards": [
@@ -33440,6 +33452,20 @@
         "text": "Hexproof, reach",
         "power": "2",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Bast, Panther Goddess",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bast, Panther Goddess",
+        "manaCost": "{2}{G}{W}",
+        "type": "Legendary Creature — Cat God",
+        "text": "Reach, trample, indestructible\nBast can't attack or block unless you control three or more creatures.\nWhenever you attack, target attacking creature gets +X/+X until end of turn, where X is the number of creatures you control.",
+        "power": "4",
+        "toughness": "4"
       }
     ]
   },
@@ -103348,6 +103374,20 @@
     ]
   },
   {
+    "name": "Dora Milaje Elite",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dora Milaje Elite",
+        "manaCost": "{1}{W}",
+        "type": "Creature — Human Warrior",
+        "text": "First strike\nWhen this creature enters, if an opponent controls more lands than you, create a tapped Vibranium token. (It's an artifact with indestructible and \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\nSacrifice this creature: Legendary permanents you control gain indestructible until end of turn.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Doran, Besieged by Time",
     "layout": "single",
     "cards": [
@@ -134285,6 +134325,18 @@
         "manaCost": "{W}",
         "type": "Instant",
         "text": "Choose one or both —\n• Target Human creature you control gets +1/+1 and gains indestructible until end of turn.\n• Target non-Human creature you control gets +1/+1 and gains indestructible until end of turn."
+      }
+    ]
+  },
+  {
+    "name": "Fight for the Throne",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Fight for the Throne",
+        "manaCost": "{1}{G}",
+        "type": "Instant",
+        "text": "Put a +1/+1 counter on target creature you control. Then it fights target creature an opponent controls. When the creature an opponent controls dies this turn, if you control your commander, you become the monarch."
       }
     ]
   },
@@ -210918,6 +210970,18 @@
     ]
   },
   {
+    "name": "Kimoyo Beads",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Kimoyo Beads",
+        "manaCost": "{4}",
+        "type": "Artifact",
+        "text": "At the beginning of your end step, choose one that hasn't been chosen —\n• AV Bead — Draw a card.\n• Communication Bead — Create two 1/1 white Soldier creature tokens.\n• Prime Bead — You gain 3 life. Exile this artifact, then return it to the battlefield under its owner's control."
+      }
+    ]
+  },
+  {
     "name": "Kin-Tree Invocation",
     "layout": "single",
     "cards": [
@@ -211327,6 +211391,18 @@
         "manaCost": "{1}{U}{B}",
         "type": "Enchantment — Saga",
         "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\nI — Each player mills four cards. Then you may exile a creature or planeswalker card from each graveyard.\nII, III — Until end of turn, you may cast spells from among cards exiled with this Saga, and you may spend mana as though it were mana of any color to cast those spells."
+      }
+    ]
+  },
+  {
+    "name": "King Solomon's Frogs",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "King Solomon's Frogs",
+        "manaCost": "{3}{W}",
+        "type": "Legendary Artifact",
+        "text": "Flash\nWhen King Solomon's Frogs enters, if you cast it, for each opponent, exile up to one target permanent that player controls with mana value 3 or greater. For each permanent exiled this way, its controller draws a card.\n{3}, {T}, Exile King Solomon's Frogs: You become the monarch."
       }
     ]
   },
@@ -231693,6 +231769,20 @@
     ]
   },
   {
+    "name": "M'Baku, Jabari Chieftain",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "M'Baku, Jabari Chieftain",
+        "manaCost": "{1}{G}{G}",
+        "type": "Legendary Creature — Human Noble Warrior",
+        "text": "At the beginning of your end step, if there is no monarch, target opponent becomes the monarch.\nWhenever a creature attacks one of your opponents, if that player is the monarch, that creature gets +1/+1 and gains trample until end of turn.",
+        "power": "4",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "M'Odo, the Gnarled Oracle",
     "layout": "single",
     "cards": [
@@ -244224,6 +244314,18 @@
         "manaCost": "{3}{W}",
         "type": "Sorcery",
         "text": "As an additional cost to cast this spell, sacrifice X Contraptions.\nAssemble X plus one Contraptions. (To assemble a Contraption, put the top card of your Contraption deck face up onto one of your sprockets.)"
+      }
+    ]
+  },
+  {
+    "name": "Midnight Angel Armor",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Midnight Angel Armor",
+        "manaCost": "{3}{W}{W}",
+        "type": "Artifact — Equipment",
+        "text": "When this Equipment enters, create a 1/1 white Soldier creature token, then attach this Equipment to it.\nEquipped creature gets +3/+3 and has flying and vigilance.\nEquip {3}"
       }
     ]
   },
@@ -258265,6 +258367,20 @@
     ]
   },
   {
+    "name": "N'Yami-Class Mother Ship",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "N'Yami-Class Mother Ship",
+        "manaCost": "{6}",
+        "type": "Artifact — Vehicle",
+        "text": "Flying, vigilance, haste\nWhenever this Vehicle deals combat damage to a player, look at the top card of your library. If it's a permanent card, you may put it onto the battlefield. If you don't put it onto the battlefield, put it into your hand.\nCrew 3",
+        "power": "5",
+        "toughness": "7"
+      }
+    ]
+  },
+  {
     "name": "Naar Isle",
     "layout": "single",
     "cards": [
@@ -258776,6 +258892,20 @@
         "manaCost": "{5}",
         "type": "Artifact",
         "text": "Cumulative upkeep {3} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\nIf tapped for mana, Plains produce {R}, Islands produce {G}, Swamps produce {W}, Mountains produce {U}, and Forests produce {B} instead of any other type."
+      }
+    ]
+  },
+  {
+    "name": "Nakia, Wakandan Operative",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Nakia, Wakandan Operative",
+        "manaCost": "{2}{G}",
+        "type": "Legendary Creature — Human Warrior Hero",
+        "text": "Reach\nWhenever your commander enters, you become the monarch.\n{2}, {T}: Put two +1/+1 counters on target creature or Vehicle. Activate only as a sorcery.",
+        "power": "3",
+        "toughness": "3"
       }
     ]
   },
@@ -279163,6 +279293,18 @@
     ]
   },
   {
+    "name": "Panther Habit",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Panther Habit",
+        "manaCost": "{4}",
+        "type": "Artifact — Equipment",
+        "text": "If equipped creature would be dealt damage, prevent that damage and put that many +1/+1 counters on it.\nEquip {2}"
+      }
+    ]
+  },
+  {
     "name": "Panther Pounce",
     "layout": "single",
     "cards": [
@@ -279171,6 +279313,20 @@
         "manaCost": "{W}",
         "type": "Instant",
         "text": "Target player investigates. Target creature gets +1/+0 and gains flying until end of turn. Untap it. (To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")"
+      }
+    ]
+  },
+  {
+    "name": "Panther Robot",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Panther Robot",
+        "manaCost": "{10}",
+        "type": "Artifact Creature — Cat Robot",
+        "text": "Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)\nReach, trample",
+        "power": "8",
+        "toughness": "8"
       }
     ]
   },
@@ -298854,6 +299010,20 @@
     ]
   },
   {
+    "name": "Queen Mother Ramonda",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Queen Mother Ramonda",
+        "manaCost": "{3}{W}{W}",
+        "type": "Legendary Creature — Human Noble",
+        "text": "When Queen Mother Ramonda enters, you become the monarch.\nAs long as you're the monarch, creatures with power 2 or less can't attack you.",
+        "power": "3",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Queen of Ice // Rage of Winter",
     "layout": "adventurer",
     "cards": [
@@ -314989,7 +315159,7 @@
         "name": "Ribald Shanty",
         "manaCost": "{R}",
         "type": "Instant — Chorus",
-        "text": "Starting intensity 2\nThis spell deals damage equal to its intensity to target creature or planeswalker.\nAll Chorus cards you own intensify by 1."
+        "text": "Starting intensity 2\nRibald Shanty deals damage equal to its intensity to target creature or planeswalker.\nAll Chorus cards you own intensify by 1."
       }
     ]
   },
@@ -321881,6 +322051,20 @@
         "manaCost": "{W}",
         "type": "Creature — Human Cleric",
         "text": "{2}, Exile the top card of your library: You gain 1 life.",
+        "power": "1",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Royal Talon Fighter Jet",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Royal Talon Fighter Jet",
+        "manaCost": "{X}{W}{W}",
+        "type": "Artifact — Vehicle",
+        "text": "Flying\nThis Vehicle enters with X +1/+1 counters on it.\nWhenever this Vehicle enters or attacks, create a number of 1/1 white Soldier creature tokens equal to the number of +1/+1 counters on it.\nCrew 2",
         "power": "1",
         "toughness": "1"
       }
@@ -346148,6 +346332,18 @@
         "manaCost": "{1}{R}{R}",
         "type": "Instant",
         "text": "Change the target of target spell with a single target."
+      }
+    ]
+  },
+  {
+    "name": "Shuri's Fabricator",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Shuri's Fabricator",
+        "manaCost": "{4}",
+        "type": "Artifact",
+        "text": "When this artifact enters, create two tapped Vibranium tokens. (They're artifacts with indestructible and \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n{6}, {T}: Return target artifact card from your graveyard to the battlefield with a finality counter on it. Activate only as a sorcery. (If a permanent with a finality counter on it would be put into a graveyard, exile it instead.)"
       }
     ]
   },
@@ -384851,6 +385047,20 @@
     ]
   },
   {
+    "name": "T'Chaka, Venerable King",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "T'Chaka, Venerable King",
+        "manaCost": "{G}{W}",
+        "type": "Legendary Creature — Human Noble Hero",
+        "text": "When T'Chaka enters, mill three cards, then you may put an artifact or land card from among the milled cards into your hand.\n{3}, Exile this card from your graveyard: You become the monarch. Activate only if you control your commander.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "T'Challa, the Black Panther",
     "layout": "single",
     "cards": [
@@ -396329,6 +396539,17 @@
     ]
   },
   {
+    "name": "The Great Mound",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Great Mound",
+        "type": "Land",
+        "text": "{T}: Add {C}.\n{3}, {T}: Create a tapped Vibranium token. (It's an artifact with indestructible and \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n{6}, {T}: Draw a card."
+      }
+    ]
+  },
+  {
     "name": "The Grey Havens",
     "layout": "single",
     "cards": [
@@ -398886,6 +399107,18 @@
         "text": "The Space Family Goblinson has trample as long as you've rolled three or more dice this turn.\nWhenever you roll a die, put a +1/+1 counter on The Space Family Goblinson.",
         "power": "1",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "The Spear of Bashenga",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Spear of Bashenga",
+        "manaCost": "{4}{W}",
+        "type": "Legendary Artifact — Equipment",
+        "text": "When The Spear of Bashenga enters, if there is no monarch, you become the monarch.\nEquipped creature gets +2/+2 and has vigilance.\nWhenever equipped creature attacks the monarch, destroy target tapped nonland permanent that player controls.\nEquip {2}"
       }
     ]
   },
@@ -429712,6 +429945,32 @@
     ]
   },
   {
+    "name": "Vibranium Mining Mech",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Vibranium Mining Mech",
+        "manaCost": "{4}",
+        "type": "Artifact — Vehicle",
+        "text": "Trample\nWhenever this Vehicle enters or attacks, create a tapped Vibranium token. (It's an artifact with indestructible and \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n{2}: This Vehicle gets +1/+0 until end of turn.\nCrew 2",
+        "power": "6",
+        "toughness": "6"
+      }
+    ]
+  },
+  {
+    "name": "Vibranium Strike Gauntlets",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Vibranium Strike Gauntlets",
+        "manaCost": "{4}",
+        "type": "Artifact — Equipment",
+        "text": "Flash\nWhen this Equipment enters, attach it to target creature you control.\nEquipped creature gets +3/+0 and has trample and \"Whenever this creature deals combat damage to a player, draw a card.\"\nEquip {3}"
+      }
+    ]
+  },
+  {
     "name": "Vibrant Cityscape",
     "layout": "single",
     "cards": [
@@ -435853,6 +436112,20 @@
     ]
   },
   {
+    "name": "W'Kabi, Shield of the Nation",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "W'Kabi, Shield of the Nation",
+        "manaCost": "{1}{G}",
+        "type": "Legendary Creature — Human Warrior Hero",
+        "text": "Vigilance\nWhenever you attack with your commander, if you control an artifact with mana value 4 or greater, create a 4/4 green Rhino creature token with trample.",
+        "power": "2",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Wagon Wrecker",
     "layout": "single",
     "cards": [
@@ -435925,6 +436198,18 @@
         "manaCost": "{1}{G}{G}",
         "type": "Sorcery",
         "text": "Each player creates a 1/1 green Cat creature token for each untapped Forest they control."
+      }
+    ]
+  },
+  {
+    "name": "Wakanda Forever!",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Wakanda Forever!",
+        "manaCost": "{4}{G}{G}",
+        "type": "Sorcery",
+        "text": "Reveal the top six cards of your library. You may put a permanent card from among them onto the battlefield with an indestructible counter on it. You may put a permanent card from among them into your hand. Put the rest into your graveyard."
       }
     ]
   },
@@ -456862,6 +457147,20 @@
         "text": "Mobilize 2 (Whenever this creature attacks, create two tapped and attacking 1/1 red Warrior creature tokens. Sacrifice them at the beginning of the next end step.)\nDuring your end step, Warrior tokens you control have \"This token can't be sacrificed.\"",
         "power": "2",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Zuri, Warrior of Wakanda",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Zuri, Warrior of Wakanda",
+        "manaCost": "{1}{G}",
+        "type": "Legendary Creature — Human Warrior Hero",
+        "text": "Trample\nWhenever you cast an artifact spell with mana value 4 or greater, put a +1/+1 counter on each creature you control.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
