@@ -948,6 +948,7 @@
   },
   "{{Reminder[Mayhem]}}": {
     "(You may cast a card from your graveyard for its mayhem cost if you discarded it this turn. Timing rules still apply.)": "",
+    "(You may cast this card from your graveyard for {1}{B} if you discarded it this turn.)": "",
     "(You may cast this card from your graveyard for {1}{R} if you discarded it this turn. Timing rules still apply.)": "",
     "(You may cast this card from your graveyard for {2}{B/R} if you discarded it this turn. Timing rules still apply.)": "",
     "(You may cast this card from your graveyard for {2}{R} if you discarded it this turn. Timing rules still apply.)": "",
@@ -1638,10 +1639,12 @@
     "(A creature with trample can deal excess combat damage to the player or planeswalker it's attacking.)": "",
     "(Each of those creatures can deal excess combat damage to the player or planeswalker it's attacking.)": "",
     "(It can deal excess combat damage to the player or planeswalker it's attacking.)": "",
+    "(It can deal excess combat damage to the player it's attacking.)": "",
     "(This creature can deal excess combat damage to the controller of the planeswalker it's attacking.)": "",
     "(This creature can deal excess combat damage to the player he's attacking.)": "",
     "(This creature can deal excess combat damage to the player it's attacking.)": "",
     "(This creature can deal excess combat damage to the player or planeswalker it's attacking.)": "",
+    "(This creature can deal excess combat damage to the player she's attacking.)": "",
     "(This creature can deal excess combat damage to the player they're attacking.)": ""
   },
   "{{Reminder[TransformingDFC]}}": {
@@ -1861,6 +1864,7 @@
   },
   "{{Reminder}}": {
     "(He must survive the damage to get the counters.)": "",
+    "(She can't be blocked except by creatures with flying or reach.)": "",
     "(It can't be blocked except by creatures with flying or reach. It can attack and {T} as soon as it comes under your control.)": "",
     "(He loses all other creature types. Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)": "",
     "(You win even if you have 0 life or didn't draw a card.)": "",
