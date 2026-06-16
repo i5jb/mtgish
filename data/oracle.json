@@ -18183,7 +18183,7 @@
         "name": "Aquatic Subtlety",
         "manaCost": "{U}{U}{U}",
         "type": "Sorcery",
-        "text": "Draw two cards, then discard two cards. Blue creature cards in your hand perpetually gain \"Evoke—Exile a blue card from your hand.\""
+        "text": "Draw two cards, then put two cards from your hand on the bottom of your library in any order. Blue creature cards in your hand perpetually gain \"Evoke—Exile a blue card from your hand.\""
       }
     ]
   },
@@ -192979,7 +192979,7 @@
         "name": "Infestation",
         "manaCost": "{3}{B}{B}",
         "type": "Creature — Elemental Incarnation",
-        "text": "Wither\nWhen this creature enters, conjure a card named Blowfly Infestation onto the battlefield. Then put a -1/-1 counter on each creature.\nEvoke—{2}{B}{B}, Pay 2 life.",
+        "text": "Wither\nWhen this creature enters, conjure a card named Blowfly Infestation onto the battlefield. Then put a -1/-1 counter on each creature.\nEvoke—{1}{B}{B}, Pay 3 life.",
         "power": "6",
         "toughness": "5"
       }
@@ -276565,7 +276565,7 @@
         "type": "Legendary Creature — Faerie Noble",
         "text": "Flash\nFlying, Lifelink\nAs long as the top card of your library is a Faerie or instant card, you may look at it any time and you may cast it.\nYou may cast Faerie spells as though they had flash.",
         "power": "2",
-        "toughness": "2"
+        "toughness": "3"
       }
     ]
   },
@@ -343681,7 +343681,7 @@
       {
         "name": "Shi'ar Soldier",
         "manaCost": "{1}{U}",
-        "type": "Creature — Shi-Ar Soldier",
+        "type": "Creature — Shi'ar Soldier",
         "text": "Flying\n{U}, {T}: Return another target permanent you control to its owner's hand. Activate only during your turn.",
         "power": "1",
         "toughness": "3"
@@ -411035,9 +411035,9 @@
         "name": "Trackhand Trainer",
         "manaCost": "{U}",
         "type": "Creature — Merfolk",
-        "text": "{4}{U}: Draw a card.\nExhaust — {U}: Conjure a card named Training Grounds onto the battlefield.",
+        "text": "{3}{U}{U}: Draw a card.\nExhaust — {U}: Conjure a card named Training Grounds onto the battlefield.",
         "power": "1",
-        "toughness": "1"
+        "toughness": "2"
       }
     ]
   },

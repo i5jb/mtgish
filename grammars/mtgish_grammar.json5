@@ -1250,6 +1250,7 @@
     "PutARandomCardOfTypeFromAmongTheTopNumberCardsOfLibraryIntoHand({{CARDS}}, {{NUMBER}})": "",
     "PutAStickerOnACardInPlayersGraveyard({{CARDS_IN_GRAVEYARD}}, {{PLAYER}})": "",
     "PutAStickerOnAPermanent({{PERMANENTS}})": "",
+    "PutAbilityCountersOnPermanentFromAbilitiesOnPermanentIfItDoesntHaveIt({{PERMANENT}}, {{CHECK_HASABLE_LIST}}, {{PERMANENT}})": "",
     "PutAbilityCountersOnAPermanentFromAbilitiesOnCardsInPlayersGraveyard({{PERMANENTS}}, {{CHECK_HASABLE_LIST}}, {{CARDS}}, {{PLAYER}})": "",
     "PutAllCardsFromHandOnBottomOfLibraryAnyOrder": "",
     "PutAllCardsFromHandOnTopOfLibraryRandomOrder": "",
@@ -2495,6 +2496,7 @@
     "CopyEffects([SetCardtypes([Artifact]), SetArtifactTypes([Vehicle]), AddAbility([{{RULE}}])])": "",
     "CopyEffects([SetName({{QUOTED_NAMED_CARD}}), AddAbility({{RULES}}), AddAbilityVariable(ThisAbility)])": "",
     "CopyEffects([SetName({{QUOTED_NAMED_CARD}}), AddAbilityVariable(ThisAbility)])": "",
+    "CopyEffects([SetName({{QUOTED_NAMED_CARD}}), AddSupertypes([{{SUPERTYPE}}]), SetCreatureTypes([{{ZOMBIE}}, {{ZOMBIE}}, {{ZOMBIE}}]), SetCardtypes([Creature])])": "",
     "CopyEffects([SetName({{QUOTED_NAMED_CARD}}), AddSupertypes([{{SUPERTYPE}}]), SetPT({{PT}}), AddCreatureTypes([{{ZOMBIE}}, {{ZOMBIE}}]), AddCardtypes([Creature]), AddAbility([{{RULE}}])])": "",
     "CopyEffects([SetName({{QUOTED_NAMED_CARD}}), AddSupertypes([{{SUPERTYPE}}]), AddAbility([{{RULE}}])])": "",
     "CopyEffects([SetName({{QUOTED_NAMED_CARD}}), AddSupertypes([{{SUPERTYPE}}]), AddAbilityVariable(ThisAbility)])": "",
@@ -6256,6 +6258,7 @@
     "TargetsPermanent({{PERMANENT}})": ""
   },
   "{{SPELLS}}": {
+    "WasCastUsingTeamwork": "",
     "AdditionalCostWasPaid": "",
     "AlternateCostWasPaid({{MANACOST}})": "",
     "AmongCardsDrawByAPlayerThisTurn({{PLAYERS}})": "",

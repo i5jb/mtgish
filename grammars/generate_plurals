@@ -317,7 +317,7 @@ flat_creature_types = [
   ("Shapeshifter"   , "Shapeshifters"   , "Shapeshifter"  ),
   ("Shark"          , "Sharks"          , "Shark"         ),
   ("Sheep"          , "Sheep"           , "Sheep"         ),
-  ("Shi-Ar"         , "Shi-Ars"         , "Shiar"         ),
+  ("Shi'ar"         , "Shi'ars"         , "Shiar"         ),
   ("Siren"          , "Sirens"          , "Siren"         ),
   ("Skeleton"       , "Skeletons"       , "Skeleton"      ),
   ("Skrull"         , "Skrulls"         , "Skrull"        ),

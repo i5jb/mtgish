@@ -847,7 +847,7 @@ export const subtype_strings: Map<SubType, string> = new Map([
   ["Shapeshifter", "Shapeshifter"],
   ["Shark", "Shark"],
   ["Sheep", "Sheep"],
-  ["Shiar", "Shi-Ar"],
+  ["Shiar", "Shi'ar"],
   ["Siren", "Siren"],
   ["Skeleton", "Skeleton"],
   ["Skrull", "Skrull"],
