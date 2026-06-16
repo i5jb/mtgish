@@ -301,6 +301,7 @@ pub enum CreatureType {
   Shapeshifter,
   Shark,
   Sheep,
+  Shiar,
   Siren,
   Skeleton,
   Skrull,
@@ -887,6 +888,7 @@ pub enum SubType {
   Shapeshifter,
   Shark,
   Sheep,
+  Shiar,
   Siren,
   Skeleton,
   Skrull,
@@ -1442,6 +1444,7 @@ pub enum CounterType {
   RopeCounter,
   RustCounter,
   SamuraiCounter,
+  SaurianCounter,
   ScreamCounter,
   ScrollCounter,
   ShellCounter,
@@ -1717,6 +1720,7 @@ pub enum ActivateModifier {
   ReduceManaCostForEachAlternateCost(Box<Cost>),
   ActivateNoMoreThanNumberTimesEachTurn(Box<GameNumber>),
   ReduceCostIfItTargetsANumberOfPermanent(Box<Comparison>, Box<Permanents>, CostReduction),
+  ReduceCostIfItTargetsAPermanent(Box<Permanents>, CostReduction),
   ActivateOnlyAsASorcery,
   ActivateOnlyAsAnInstant,
   ActivateOnlyDuringTheirTurn,
@@ -1948,6 +1952,9 @@ pub enum UnspentMana {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_PlayerEffect", content = "args"))]
 pub enum PlayerEffect {
+  MayActivatePowerUpAbilitiesOfPermanentsAnAdditionalTime(Box<Permanents>),
+  MayPayAlternateCostForFirstPowerUpCostEachTurn(ManaCost),
+
   MayCastExiledCardForAlternateCost(Box<CardInExile>, Box<Cost>),
   MayCastASpellFromAmongExileWithoutPayingOnceEachTurn(Box<Spells>, Box<CardsInExile>),
   MayCastASpellFromHandWithoutPayingOnceEachPlayersTurn(Box<Spells>),
@@ -3509,6 +3516,7 @@ pub enum ReplacementActionWouldEnterCost {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_EnterFlag", content = "args"))]
 pub enum EnterFlag {
+  EntersWithLayerEffectUntil(Vec<LayerEffect>, Expiration),
   EntersAsFaceDownArtifactCreature(PT, CreatureType),
   EntersAsFaceDownCreatureWithAbilitiesAndNotedName(PT, Vec<Rule>, NameFilter),
   EntersAsFaceDownLand(LandType),
@@ -3849,6 +3857,7 @@ pub enum ReplacableEventWouldDraw {
   APlayerWouldDrawOneOrMoreCards(Box<Players>),
   APlayerWouldDrawACard(Box<Players>),
   PlayerWouldDrawACardForTheFirstTimeEachPlayersTurn(Box<Player>, Box<Players>),
+  PlayerWouldDrawACardForTheFirstTimeEachPlayersTurnExceptFirstDrawStepDraw(Box<Player>),
   PlayerWouldDrawDuringTheirDrawStep(Box<Player>),
   APlayerWouldDrawExceptFirstDrawStepDraw(Box<Players>),
   APlayerWouldDrawTwoOrMoreCards(Box<Players>),
@@ -4243,6 +4252,8 @@ pub enum Condition {
   Or(Vec<Condition>),
   And(Vec<Condition>),
 
+  YouLostTheCoinFlip,
+
   AColorWasChosen,
   ACreatureTypeWasChosen,
 
@@ -4622,6 +4633,8 @@ pub enum SearchLibraryAction {
 pub enum Cost {
   And(Vec<Cost>),
   Or(Vec<Cost>),
+
+  Teamwork(i32),
 
   BeholdA(Box<CardsInHand>),
   BeholdAndExile(Box<CardsInHand>),
@@ -5036,6 +5049,9 @@ pub enum ExchangeOwnershipCard {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Permanents", content = "args"))]
 pub enum Permanents {
+  HadCountersOfTypePutOnItByAPlayerThisTurn(CounterType, Box<Players>),
+  WasCastByAPlayer(Box<Players>),
+
   DoesntShareACreatureTypeWithPermanent(Box<Permanent>),
   IsNotAllColors,
   WasCast,
@@ -5390,6 +5406,7 @@ pub enum Permanents {
   WasUnearthed,
   WasUntappedThisWay,
   WasntCast,
+  WasntCastFromAPlayersHand(Box<Players>),
   WasntCastFromHand,
   WasntCastFromTheirHand,
   WasntKicked,
@@ -5558,6 +5575,7 @@ pub enum CopyEffect {
   AddCreatureTypes(Vec<CreatureType>),
   AddLandTypes(Vec<LandType>),
   SetArtifactTypes(Vec<ArtifactType>),
+  SetCreatureTypes(Vec<CreatureType>),
   MergeTypeline,
 
   // Abilities
@@ -5723,6 +5741,10 @@ pub enum ManaSources {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_GameNumber", content = "args"))]
 pub enum GameNumber {
+  TheHighestManaValueAmongGraveyardCards(Box<CardsInGraveyard>),
+  TheNumberOfColorsAmongPermanentsAndSpellsCastThisTurn(Box<Permanents>, Box<Spells>),
+  TheNumberOfTimesPermanentWasKicked(Box<Permanent>),
+
   TheAmountOfManaFromSourcesSpentToCastIt(Box<ManaSources>),
   TheGreatestManaValueAmongSpellsCastThisTurn(Box<Spells>),
   TheNumberOfCardTypesAmongSpellsCastThisTurn(Box<Spells>),
@@ -6575,6 +6597,7 @@ pub enum Spells {
 
   SneakCostWasPaid,
   WasCastForItsWarpCost,
+  WasCastUsingTeamwork,
   DoesntHaveAbility(CheckHasable),
   IsNonEnchantmentType(EnchantmentType),
   DoesntShareANameWithACardInPlayersLibrary(Box<Player>),
@@ -7856,6 +7879,7 @@ pub enum ManaUseModifier {
   FlagPermanentsCastWith(Box<Permanents>, Vec<EnterFlag>),
 
   // Mana Restrictions
+  CanOnlySpendToActivatePowerUpAbilities,
   CanOnlySpendOnCumulativeUpkeepCosts,
   CanOnlySpendOnMorphCosts,
   CanOnlySpendOnSpells(Box<Spells>),
@@ -8262,6 +8286,7 @@ pub enum Exilable {
   // Cards In Hand
   ARandomCardFromPlayersHand(Box<Player>),
   CardInHand(Box<CardInHand>),
+  ACardOfTypeFromPlayersHand(Box<CardsInHand>, Box<Player>),
 
   // Cards In Library
   TheTopCardOfPlayersLibrary(Player ),
@@ -8351,12 +8376,18 @@ pub enum Targets {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_PutCounterAction", content = "args"))]
 pub enum PutCounterAction {
   ACounterOfTypeOnPermanent(CounterType, Box<Permanent>),
+  NumberCountersOfTypeOnPermanent(Box<GameNumber>, CounterType, Box<Permanent>),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Action", content = "args"))]
 pub enum Action {
+  ActionForEachPermanentExiledThisWay(Vec<Action>),
+  FlipACoinAndCallIt,
+  PutAbilityCountersOnPermanentFromAbilitiesOnPermanentIfItDoesntHaveIt(Box<Permanent>, Vec<CheckHasable>, Box<Permanent>),
+  PutSpellOnBottomOfOwnersLibrary(Box<Spell>),
+
   AwakenPermanent(Box<GameNumber>, Box<Permanent>),
   ChooseARandomColor(ChoosableColor),
   PutACardAndOrACardFromHandOnBattlefield(Box<CardsInHand>, Box<CardsInHand>, Vec<EnterFlag>),
@@ -9879,7 +9910,9 @@ pub enum Target {
   NumberTargetGraveyardCards(Box<GameNumber>, CardsInGraveyard),
   NumberTargetGroupGraveyardCards(Box<GameNumber>, CardsInGraveyard, GroupFilter),
   TargetGraveyardCard(Box<CardsInGraveyard>),
+  TargetGraveyardCardAtRandom(Box<CardsInGraveyard>),
   TargetGraveyardCardInEachPlayersGraveyard(CardsInGraveyard, Box<Players>),
+  UptoNumberTargetGraveyardCardsFromList(Box<GameNumber>, Vec<CardsInGraveyard>),
   UptoNumberTargetGraveyardCards(Box<GameNumber>, CardsInGraveyard),
   UptoNumberTargetGroupGraveyardCards(Box<GameNumber>, CardsInGraveyard, GroupFilter),
   UptoOneTargetGraveyardCard(Box<CardsInGraveyard>),
@@ -9947,6 +9980,7 @@ pub enum Target {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_DistributedTarget", content = "args"))]
 pub enum DistributedTarget {
+  TargetPermanent(Box<Permanents>),
   BetweenOneAndNumberTargetPermanents(Box<GameNumber>, Box<Permanents>),
   AnyNumberOfTargetPermanents(Box<Permanents>),
   NumberTargetPermanents(Box<GameNumber>, Box<Permanents>),
@@ -10381,6 +10415,9 @@ pub enum StaticLayerEffect {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Trigger", content = "args"))]
 pub enum Trigger {
+  // connive
+  WhenAPermanentConnives(Box<Permanents>),
+
   // bending
   WhenAPlayerWaterEarthFireOrAirBends(Box<Players>),
 
@@ -10508,6 +10545,7 @@ pub enum Trigger {
   WhenAPermanentIsDealtAnAmountOfDamage(Box<Permanents>, Box<Comparison>),
   WhenAPermanentIsDealtCombatDamage(Box<Permanents>),
   WhenAPermanentIsDealtDamage(Box<Permanents>),
+  WhenAPermanentIsDealtDamageForTheFirstTimeEachTurn(Box<Permanents>),
   WhenAPermanentIsDealtExcessDamage(Box<Permanents>),
   WhenAPermanentIsDealtExcessNoncombatDamage(Box<Permanents>),
   WhenAPlayerIsDealtCombatDamage(Box<Players>),

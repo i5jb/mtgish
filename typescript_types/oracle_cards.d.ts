@@ -46,6 +46,10 @@ type AbilityVariable =
 | { "_AbilityVariable": "TheChosenAbility" }
 | { "_AbilityVariable": "TheChosenAbilities" };
 type Action =
+| { "_Action": "ActionForEachPermanentExiledThisWay", "args": Array<Action> }
+| { "_Action": "FlipACoinAndCallIt" }
+| { "_Action": "PutAbilityCountersOnPermanentFromAbilitiesOnPermanentIfItDoesntHaveIt", "args": [Permanent, Array<CheckHasable>, Permanent] }
+| { "_Action": "PutSpellOnBottomOfOwnersLibrary", "args": Spell }
 | { "_Action": "AwakenPermanent", "args": [GameNumber, Permanent] }
 | { "_Action": "ChooseARandomColor", "args": ChoosableColor }
 | { "_Action": "PutACardAndOrACardFromHandOnBattlefield", "args": [CardsInHand, CardsInHand, Array<EnterFlag>] }
@@ -1580,6 +1584,7 @@ type ActivateModifier =
 | { "_ActivateModifier": "ReduceManaCostForEachAlternateCost", "args": Cost }
 | { "_ActivateModifier": "ActivateNoMoreThanNumberTimesEachTurn", "args": GameNumber }
 | { "_ActivateModifier": "ReduceCostIfItTargetsANumberOfPermanent", "args": [Comparison, Permanents, Array<CostReductionSymbol>] }
+| { "_ActivateModifier": "ReduceCostIfItTargetsAPermanent", "args": [Permanents, Array<CostReductionSymbol>] }
 | { "_ActivateModifier": "ActivateOnlyAsASorcery" }
 | { "_ActivateModifier": "ActivateOnlyAsAnInstant" }
 | { "_ActivateModifier": "ActivateOnlyDuringTheirTurn" }
@@ -2310,6 +2315,7 @@ type Condition =
 | { "_Condition": "IsDuringEndStep" }
 | { "_Condition": "Or", "args": Array<Condition> }
 | { "_Condition": "And", "args": Array<Condition> }
+| { "_Condition": "YouLostTheCoinFlip" }
 | { "_Condition": "AColorWasChosen" }
 | { "_Condition": "ACreatureTypeWasChosen" }
 | { "_Condition": "ANumberOfCardsWerePutIntoExileThisTurn", "args": [Comparison, Cards] }
@@ -2556,6 +2562,7 @@ type CopyEffect =
 | { "_CopyEffect": "AddCreatureTypes", "args": Array<CreatureType> }
 | { "_CopyEffect": "AddLandTypes", "args": Array<LandType> }
 | { "_CopyEffect": "SetArtifactTypes", "args": Array<ArtifactType> }
+| { "_CopyEffect": "SetCreatureTypes", "args": Array<CreatureType> }
 | { "_CopyEffect": "MergeTypeline" }
 | { "_CopyEffect": "AddAbilityVariable", "args": AbilityVariable }
 | { "_CopyEffect": "AddAbility", "args": Array<Rule> }
@@ -2574,6 +2581,7 @@ type CopyEffects =
 type Cost =
 | { "_Cost": "And", "args": Array<Cost> }
 | { "_Cost": "Or", "args": Array<Cost> }
+| { "_Cost": "Teamwork", "args": number }
 | { "_Cost": "BeholdA", "args": CardsInHand }
 | { "_Cost": "BeholdAndExile", "args": CardsInHand }
 | { "_Cost": "BeholdNumber", "args": [GameNumber, CardsInHand] }
@@ -3039,6 +3047,7 @@ type CounterType =
 | { "_CounterType": "RopeCounter" }
 | { "_CounterType": "RustCounter" }
 | { "_CounterType": "SamuraiCounter" }
+| { "_CounterType": "SaurianCounter" }
 | { "_CounterType": "ScreamCounter" }
 | { "_CounterType": "ScrollCounter" }
 | { "_CounterType": "ShellCounter" }
@@ -3407,6 +3416,7 @@ type CreatureType =
 | "Shapeshifter"
 | "Shark"
 | "Sheep"
+| "Shiar"
 | "Siren"
 | "Skeleton"
 | "Skrull"
@@ -3550,6 +3560,7 @@ type DeckConstruction =
 type Direction =
 | { "_Direction": "TheChosenDirection" };
 type DistributedTarget =
+| { "_DistributedTarget": "TargetPermanent", "args": Permanents }
 | { "_DistributedTarget": "BetweenOneAndNumberTargetPermanents", "args": [GameNumber, Permanents] }
 | { "_DistributedTarget": "AnyNumberOfTargetPermanents", "args": Permanents }
 | { "_DistributedTarget": "NumberTargetPermanents", "args": [GameNumber, Permanents] }
@@ -3600,6 +3611,7 @@ type EnchantmentType =
 | "Shard"
 | "Shrine";
 type EnterFlag =
+| { "_EnterFlag": "EntersWithLayerEffectUntil", "args": [Array<LayerEffect>, Expiration] }
 | { "_EnterFlag": "EntersAsFaceDownArtifactCreature", "args": [PT, CreatureType] }
 | { "_EnterFlag": "EntersAsFaceDownCreatureWithAbilitiesAndNotedName", "args": [PT, Array<Rule>, NameFilter] }
 | { "_EnterFlag": "EntersAsFaceDownLand", "args": LandType }
@@ -3687,6 +3699,7 @@ type Exilable =
 | { "_Exilable": "UptoOneGraveyardCard", "args": CardsInGraveyard }
 | { "_Exilable": "ARandomCardFromPlayersHand", "args": Player }
 | { "_Exilable": "CardInHand", "args": CardInHand }
+| { "_Exilable": "ACardOfTypeFromPlayersHand", "args": [CardsInHand, Player] }
 | { "_Exilable": "TheTopCardOfPlayersLibrary", "args": Player }
 | { "_Exilable": "TheTopNumberCardsOfPlayersLibrary", "args": [GameNumber, Player] }
 | { "_Exilable": "ARandomCardFromPlayersLibrary", "args": Player }
@@ -3881,6 +3894,9 @@ type GameEffect =
 | { "_GameEffect": "SchemesCantBeSetInMotion" }
 | { "_GameEffect": "SpellsAndAbilitiesCantTargetPermanents", "args": [SpellsAndAbilities, Permanents] };
 type GameNumber =
+| { "_GameNumber": "TheHighestManaValueAmongGraveyardCards", "args": CardsInGraveyard }
+| { "_GameNumber": "TheNumberOfColorsAmongPermanentsAndSpellsCastThisTurn", "args": [Permanents, Spells] }
+| { "_GameNumber": "TheNumberOfTimesPermanentWasKicked", "args": Permanent }
 | { "_GameNumber": "TheAmountOfManaFromSourcesSpentToCastIt", "args": ManaSources }
 | { "_GameNumber": "TheGreatestManaValueAmongSpellsCastThisTurn", "args": Spells }
 | { "_GameNumber": "TheNumberOfCardTypesAmongSpellsCastThisTurn", "args": Spells }
@@ -4693,6 +4709,7 @@ type ManaUseModifier =
 | { "_ManaUseModifier": "TriggerSpentOnSpell", "args": [Spells, Actions] }
 | { "_ManaUseModifier": "TriggerSpentOnSpellOrAbility", "args": [SpellsAndAbilities, Actions] }
 | { "_ManaUseModifier": "FlagPermanentsCastWith", "args": [Permanents, Array<EnterFlag>] }
+| { "_ManaUseModifier": "CanOnlySpendToActivatePowerUpAbilities" }
 | { "_ManaUseModifier": "CanOnlySpendOnCumulativeUpkeepCosts" }
 | { "_ManaUseModifier": "CanOnlySpendOnMorphCosts" }
 | { "_ManaUseModifier": "CanOnlySpendOnSpells", "args": Spells }
@@ -5030,6 +5047,8 @@ type PermanentsAndGraveyardCards =
 type PermanentsAndSpells =
 | { "_PermanentsAndSpells": "AnyPermanentOrSpell" };
 type Permanents =
+| { "_Permanents": "HadCountersOfTypePutOnItByAPlayerThisTurn", "args": [CounterType, Players] }
+| { "_Permanents": "WasCastByAPlayer", "args": Players }
 | { "_Permanents": "DoesntShareACreatureTypeWithPermanent", "args": Permanent }
 | { "_Permanents": "IsNotAllColors" }
 | { "_Permanents": "WasCast" }
@@ -5381,6 +5400,7 @@ type Permanents =
 | { "_Permanents": "WasUnearthed" }
 | { "_Permanents": "WasUntappedThisWay" }
 | { "_Permanents": "WasntCast" }
+| { "_Permanents": "WasntCastFromAPlayersHand", "args": Players }
 | { "_Permanents": "WasntCastFromHand" }
 | { "_Permanents": "WasntCastFromTheirHand" }
 | { "_Permanents": "WasntKicked" }
@@ -5590,6 +5610,8 @@ type PlaneType =
 | "Zendikar"
 | "Zhalfir";
 type PlayerEffect =
+| { "_PlayerEffect": "MayActivatePowerUpAbilitiesOfPermanentsAnAdditionalTime", "args": Permanents }
+| { "_PlayerEffect": "MayPayAlternateCostForFirstPowerUpCostEachTurn", "args": Array<ManaSymbol> }
 | { "_PlayerEffect": "MayCastExiledCardForAlternateCost", "args": [CardInExile, Cost] }
 | { "_PlayerEffect": "MayCastASpellFromAmongExileWithoutPayingOnceEachTurn", "args": [Spells, CardsInExile] }
 | { "_PlayerEffect": "MayCastASpellFromHandWithoutPayingOnceEachPlayersTurn", "args": Spells }
@@ -6270,7 +6292,8 @@ type PTXValue =
 | { "_PTXValue": "Integer", "args": number }
 | { "_PTXValue": "X" };
 type PutCounterAction =
-| { "_PutCounterAction": "ACounterOfTypeOnPermanent", "args": [CounterType, Permanent] };
+| { "_PutCounterAction": "ACounterOfTypeOnPermanent", "args": [CounterType, Permanent] }
+| { "_PutCounterAction": "NumberCountersOfTypeOnPermanent", "args": [GameNumber, CounterType, Permanent] };
 type PutIntoGraveyardAction =
 | { "_PutIntoGraveyardAction": "ExileItInstead" }
 | { "_PutIntoGraveyardAction": "RevealItAndShuffleItIntoLibraryInstead" };
@@ -6359,6 +6382,7 @@ type ReplacableEventWouldDraw =
 | { "_ReplacableEventWouldDraw": "APlayerWouldDrawOneOrMoreCards", "args": Players }
 | { "_ReplacableEventWouldDraw": "APlayerWouldDrawACard", "args": Players }
 | { "_ReplacableEventWouldDraw": "PlayerWouldDrawACardForTheFirstTimeEachPlayersTurn", "args": [Player, Players] }
+| { "_ReplacableEventWouldDraw": "PlayerWouldDrawACardForTheFirstTimeEachPlayersTurnExceptFirstDrawStepDraw", "args": Player }
 | { "_ReplacableEventWouldDraw": "PlayerWouldDrawDuringTheirDrawStep", "args": Player }
 | { "_ReplacableEventWouldDraw": "APlayerWouldDrawExceptFirstDrawStepDraw", "args": Players }
 | { "_ReplacableEventWouldDraw": "APlayerWouldDrawTwoOrMoreCards", "args": Players }
@@ -7537,6 +7561,7 @@ type Spells =
 | { "_Spells": "WasCastFromTheirGraveyard" }
 | { "_Spells": "SneakCostWasPaid" }
 | { "_Spells": "WasCastForItsWarpCost" }
+| { "_Spells": "WasCastUsingTeamwork" }
 | { "_Spells": "DoesntHaveAbility", "args": CheckHasable }
 | { "_Spells": "IsNonEnchantmentType", "args": EnchantmentType }
 | { "_Spells": "DoesntShareANameWithACardInPlayersLibrary", "args": Player }
@@ -8094,6 +8119,7 @@ type SubType =
 | "Shapeshifter"
 | "Shark"
 | "Sheep"
+| "Shiar"
 | "Siren"
 | "Skeleton"
 | "Skrull"
@@ -8401,7 +8427,9 @@ type Target =
 | { "_Target": "NumberTargetGraveyardCards", "args": [GameNumber, CardsInGraveyard] }
 | { "_Target": "NumberTargetGroupGraveyardCards", "args": [GameNumber, CardsInGraveyard, GroupFilter] }
 | { "_Target": "TargetGraveyardCard", "args": CardsInGraveyard }
+| { "_Target": "TargetGraveyardCardAtRandom", "args": CardsInGraveyard }
 | { "_Target": "TargetGraveyardCardInEachPlayersGraveyard", "args": [CardsInGraveyard, Players] }
+| { "_Target": "UptoNumberTargetGraveyardCardsFromList", "args": [GameNumber, Array<CardsInGraveyard>] }
 | { "_Target": "UptoNumberTargetGraveyardCards", "args": [GameNumber, CardsInGraveyard] }
 | { "_Target": "UptoNumberTargetGroupGraveyardCards", "args": [GameNumber, CardsInGraveyard, GroupFilter] }
 | { "_Target": "UptoOneTargetGraveyardCard", "args": CardsInGraveyard }
@@ -8519,6 +8547,7 @@ type Transforming =
 type TriggerAndActions =
 | [Trigger, Actions];
 type Trigger =
+| { "_Trigger": "WhenAPermanentConnives", "args": Permanents }
 | { "_Trigger": "WhenAPlayerWaterEarthFireOrAirBends", "args": Players }
 | { "_Trigger": "WhenAPermanentBecomesTappedToPayATeamworkCost", "args": Permanents }
 | { "_Trigger": "WhenAPermanentStationsAPermanent", "args": [Permanents, Permanents] }
@@ -8595,6 +8624,7 @@ type Trigger =
 | { "_Trigger": "WhenAPermanentIsDealtAnAmountOfDamage", "args": [Permanents, Comparison] }
 | { "_Trigger": "WhenAPermanentIsDealtCombatDamage", "args": Permanents }
 | { "_Trigger": "WhenAPermanentIsDealtDamage", "args": Permanents }
+| { "_Trigger": "WhenAPermanentIsDealtDamageForTheFirstTimeEachTurn", "args": Permanents }
 | { "_Trigger": "WhenAPermanentIsDealtExcessDamage", "args": Permanents }
 | { "_Trigger": "WhenAPermanentIsDealtExcessNoncombatDamage", "args": Permanents }
 | { "_Trigger": "WhenAPlayerIsDealtCombatDamage", "args": Players }
