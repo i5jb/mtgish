@@ -1064,15 +1064,6 @@
     "GuessIfCardInHandPassesFilter(TheCardInHandChosenThisWay, {{CARDS}})": "",
     "GuessWhichNumberWasSecretlyChosen": "",
     "HarnessPermanent({{PERMANENT}})": "",
-
-    "Fight({{PERMANENT}}, {{PERMANENT}})": "",
-    "HaveCreaturesFight({{PERMANENT}}, {{PERMANENT}})": "",
-
-    // Text: "Each of those tokens fights a different one of those creatures."
-    // Card: [[Ezuri's Predation]]
-    "HaveEachPermanentFightEachPermanent({{PERMANENTS}}, {{PERMANENTS}})": "",
-
-    "HaveCreaturesFight_OnWin({{PERMANENT}}, {{PERMANENT}}, {{ACTION_LIST}}, {{ACTION_LIST}})": "",
     "HaveDeadPermanentDealDamage({{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
     "HaveDiscardedCardDealDamage(Trigger_ThatCardInHand, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
     "HaveEachPlayerLoseLife({{PLAYERS}}, {{NUMBER}})": "",
@@ -1124,8 +1115,6 @@
     "MayPutACardFromHandOrGraveyardOnBattlefieldForEachPermanent({{CARDS}}, {{ENTER_FLAGS}}, {{PERMANENTS}})": "",
     "MayPutADuplicateCounterOnEachPermanent({{PERMANENTS}})": "",
     "MayPutTheTopCardOfPlayersLibraryOfTypeInGraveyardForCost({{PLAYER}}, {{CARDS}}, {{COST}})": "",
-    "MayReflexiveAction({{REFLEXIVE_ACTION}})": "",
-    "MayReflexiveActionTrigger({{REFLEXIVE_ACTION}}, {{TOP_LEVEL_ACTIONS}})": "",
     "MayReselectWhichPlayerOrPermanentEachCreatureIsAttacking({{PERMANENTS}})": "",
     "MillACard": "",
     "MillCardsUntilACardOfTypeIsMilledOrUntilNumberCardsHaveBeenPutIntoGraveyardThisWay({{CARDS}}, {{NUMBER}})": "",
@@ -1393,9 +1382,16 @@
     "PutUptoOneCardOfEachCardtypeAmongPermanentsFromHandOnTheBattlefield({{PERMANENTS}}, {{ENTER_FLAGS}})": "",
     "RedistributeLifeTotalsOfPlayers({{PLAYERS}})": "",
     "ReducePlayersSpeed({{PLAYER}}, {{NUMBER}})": "",
+
+    "ReflexiveTrigger({{TOP_LEVEL_ACTIONS}})": "",
+    "ReflexiveTriggerI({{CONDITION}}, {{TOP_LEVEL_ACTIONS}})": "",
+    "ReflexiveTriggerNumberTimes({{NUMBER}}, {{TOP_LEVEL_ACTIONS}})": "",
     "ReflexiveAction({{REFLEXIVE_ACTION}})": "",
     "ReflexiveActionTrigger({{REFLEXIVE_ACTION}}, {{TOP_LEVEL_ACTIONS}})": "",
     "ReflexiveActionTriggerI({{REFLEXIVE_ACTION}}, {{CONDITION}}, {{TOP_LEVEL_ACTIONS}})": "",
+    "MayReflexiveAction({{REFLEXIVE_ACTION}})": "",
+    "MayReflexiveActionTrigger({{REFLEXIVE_ACTION}}, {{TOP_LEVEL_ACTIONS}})": "",
+
     "RegenerateEachPermanent({{PERMANENTS}})": "",
     "RegeneratePermanent({{PERMANENT}})": "",
     "RememberLifeTotal": "",
@@ -1710,6 +1706,7 @@
     "{{_PLAYER_ACTION[CreateTokens]}}": "",
     "{{_PLAYER_ACTION[CreateTokens][TokensWouldBeCreatedUnderAPlayersControl]}}": "",
     "{{_PLAYER_ACTION[CreateTokens][AnyNumberOfTokensWouldBeCreated]}}": "",
+    "{{_PLAYER_ACTION[Fight]}}": "",
 
     "{{_PLAYER_ACTION[Attractions]}}": "",
     "{{_PLAYER_ACTION[Cloak]}}": "",
@@ -3278,6 +3275,7 @@
     "NextTimePlayerWouldSetASchemeInMotion({{PLAYER}})": ""
   },
   "{{FUTURE_TRIGGER}}": {
+    "{{_FUTURE_TRIGGER[Fight]}}": "",
     "AtNextEndOfCombatThisTurn": "",
     "AtTheBeginningOfPlayersDeclareAttackersStepOnTheirNextTurn({{PLAYER}})": "",
     "AtTheBeginningOfPlayersEndStepNextTurn({{PLAYER}})": "",
@@ -7021,9 +7019,6 @@
     "PlayersRevealTopCardOfLibraryAndFindHighestManaValue({{PLAYERS}})": "",
     "PutEachPermanentOnBottomOfOwnersLibraryInOrderOfOwnersChoice({{PERMANENTS}})": "",
     "PutEachPermanentOnTheTopOfOwnersLibraryInOrderOfOwnersChoice({{PERMANENTS}})": "",
-    "ReflexiveTrigger({{TOP_LEVEL_ACTIONS}})": "",
-    "ReflexiveTriggerI({{CONDITION}}, {{TOP_LEVEL_ACTIONS}})": "",
-    "ReflexiveTriggerNumberTimes({{NUMBER}}, {{TOP_LEVEL_ACTIONS}})": "",
     "RemoveEachCreatureFromCombat({{PERMANENTS}})": "",
     "RepeatableActions({{ACTION_LIST}})": "",
     "RepeatableActionsNumTimes({{NUMBER}}, {{ACTION_LIST}})": "",

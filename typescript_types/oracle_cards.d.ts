@@ -46,10 +46,8 @@ type AbilityVariable =
 | { "_AbilityVariable": "TheChosenAbility" }
 | { "_AbilityVariable": "TheChosenAbilities" };
 type Action =
-| { "_Action": "HaveEachPermanentFightEachPermanent", "args": [Permanents, Permanents] }
 | { "_Action": "Fight", "args": [Permanent, Permanent] }
-| { "_Action": "HaveCreaturesFight", "args": [Permanent, Permanent] }
-| { "_Action": "HaveCreaturesFight_OnWin", "args": [Permanent, Permanent, Array<Action>, Array<Action>] }
+| { "_Action": "MultiFight", "args": [Permanents, Permanents] }
 | { "_Action": "ActionForEachPermanentExiledThisWay", "args": Array<Action> }
 | { "_Action": "FlipACoinAndCallIt" }
 | { "_Action": "PutAbilityCountersOnPermanentFromAbilitiesOnPermanentIfItDoesntHaveIt", "args": [Permanent, Array<CheckHasable>, Permanent] }
@@ -3849,6 +3847,7 @@ type FutureTrigger =
 | { "_FutureTrigger": "WhenPlayerNextActivatesAnAbilityThisTurn", "args": [Player, ActivatedAbilities] }
 | { "_FutureTrigger": "AtTheBeginningOfTheNextUpkeep" }
 | { "_FutureTrigger": "AtTheBeginningOfPlayersNextDeclareAttackersStep", "args": Player }
+| { "_FutureTrigger": "WhenPermanentWinsAFightAgainstPermanent", "args": [Permanent, Permanent] }
 | { "_FutureTrigger": "Or", "args": Array<FutureTrigger> }
 | { "_FutureTrigger": "WhenAPlayerPlaneswalks", "args": Players }
 | { "_FutureTrigger": "WhenPlayerNextActivatesAnAbilityBySpendingAnAmountOfMana", "args": [Player, ActivatedAbilities, Comparison] }
@@ -8820,8 +8819,8 @@ type Trigger =
 | { "_Trigger": "WhenAPermanentExploitsAPermanent", "args": [Permanents, Permanents] }
 | { "_Trigger": "WhenAPermanentExplores", "args": Permanents }
 | { "_Trigger": "WhenAPermanentExploresACardOfType", "args": [Permanents, Cards] }
-| { "_Trigger": "WhenACreatureFights", "args": Permanents }
-| { "_Trigger": "WhenAnyNumberOfCreaturesFight", "args": Permanents }
+| { "_Trigger": "WhenAPermanentFights", "args": Permanents }
+| { "_Trigger": "WhenAnyNumberOfPermanentsFight", "args": Permanents }
 | { "_Trigger": "WhenAPlayerWinsACoinFlip", "args": Players }
 | { "_Trigger": "WhenAPlayerLosesACoinFlip", "args": Players }
 | { "_Trigger": "WhenAPlayerForetellsACard", "args": Players }

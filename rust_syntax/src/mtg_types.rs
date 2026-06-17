@@ -7634,6 +7634,7 @@ pub enum FutureTrigger {
   WhenPlayerNextActivatesAnAbilityThisTurn(Box<Player>, Box<ActivatedAbilities>),
   AtTheBeginningOfTheNextUpkeep,
   AtTheBeginningOfPlayersNextDeclareAttackersStep(Box<Player>),
+  WhenPermanentWinsAFightAgainstPermanent(Box<Permanent>, Box<Permanent>),
 
   Or(Vec<FutureTrigger>),
   WhenAPlayerPlaneswalks(Box<Players>),
@@ -8387,10 +8388,8 @@ pub enum PutCounterAction {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Action", content = "args"))]
 pub enum Action {
-  HaveEachPermanentFightEachPermanent(Box<Permanents>, Box<Permanents>),
   Fight(Box<Permanent>, Box<Permanent>),
-  HaveCreaturesFight(Box<Permanent>, Box<Permanent>),
-  HaveCreaturesFight_OnWin(Box<Permanent>, Box<Permanent>, Vec<Action>, Vec<Action>),
+  MultiFight(Box<Permanents>, Box<Permanents>),
 
   ActionForEachPermanentExiledThisWay(Vec<Action>),
   FlipACoinAndCallIt,
@@ -10846,8 +10845,8 @@ pub enum Trigger {
   WhenAPermanentExploresACardOfType(Box<Permanents>, Box<Cards>),
 
   // fight
-  WhenACreatureFights(Box<Permanents>),
-  WhenAnyNumberOfCreaturesFight(Box<Permanents>),
+  WhenAPermanentFights(Box<Permanents>),
+  WhenAnyNumberOfPermanentsFight(Box<Permanents>),
 
   // flip_coins
   WhenAPlayerWinsACoinFlip(Box<Players>),

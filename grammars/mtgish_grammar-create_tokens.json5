@@ -155,10 +155,27 @@
     "HavePlayerTakeAction({{PLAYER}}, CreateTokens({{CREATABLE_TOKEN_LIST}}))": "",
   },
 
+  // --------
+  // Triggers
+  // --------
 
-  // --------------------
-  // Filters / Conditions / Numbers
-  // --------------------
+  "{{_TRIGGER[CreateTokens]}}": {
+    // Text: "Whenever you create a token, [...]"
+    // Card: [[Rosie Cotton of South Lane]]
+    "WhenAPlayerCreatesAToken({{PLAYERS}}, {{PERMANENTS}})": "",
+
+    // Text: "Whenever you create one or more creature tokens, [...]"
+    // Card: [[Staff of the Storyteller]]
+    "WhenAPlayerCreatesAnyNumberOfTokens({{PLAYERS}}, {{PERMANENTS}})": "",
+
+    // Text: "Whenever you create one or more tokens for the first time each turn, [...]"
+    // Card: [[Akim, the Soaring Wind]]
+    "WhenAPlayerCreatesAnyNumberOfTokensForTheFirstTimeEachTurn({{PLAYERS}}, {{PERMANENTS}})": ""
+  },
+
+  // -------
+  // Filters
+  // -------
 
   "{{_PLAYERS[CreateTokens]}}": {
     // Text: "Activate only if you created a token this turn"
@@ -188,6 +205,10 @@
     "TheCreatedTokens": "",
   },
 
+  // ----------
+  // Conditions
+  // ----------
+
   "{{_CONDITION[CreateTokens]}}": {
     // Text: "If you created fewer than two tokens this way, ..."
     // Card: [[Your Own Face Mocks You]]
@@ -197,6 +218,10 @@
     // Card: [[Springheart Nantuko]]
     "ATokenWasCreatedThisWay": "",
   },
+
+  // -------
+  // Numbers
+  // -------
 
   "{{_NUMBER[CreateTokens]}}": {
     // Text: "the number of Treasure tokens you created this turn"

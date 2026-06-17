@@ -1,0 +1,33 @@
+{
+  "{{_PLAYER_ACTION[Fight]}}": {
+    // Text: "Target creature fights another target creature"
+    // Card: [[Blood Feud]]
+    "Fight({{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "Each of those tokens fights a different one of those creatures."
+    // Card: [[Ezuri's Predation]]
+    // This is a one-to-one mapping, if there are more permanents on one side,
+    //  some permanents won't be fighting.
+    "MultiFight({{PERMANENTS}}, {{PERMANENTS}})": "",
+  },
+
+  "{{_TRIGGER[Fight]}}": {
+    // Text: "Whenever a creature you control fights, [...]"
+    // Card: [[Foe-Razer Regent]]
+    "WhenAPermanentFights({{PERMANENTS}})": "",
+
+    // Text: "Whenever one or more creatures you control fight [...], [...]"
+    // Card: [[Neyith of the Dire Hunt]]
+    "WhenAnyNumberOfPermanentsFight({{PERMANENTS}})": ""
+  },
+
+  "{{_FUTURE_TRIGGER[Fight]}}": {
+    // Text: "Target [...] fights target [...]. When [...] wins the fight, [...]"
+    // Card: [[Skyshroud Ambush]]
+    // Unclear exactly how this works, the best guess seems to be:
+    //  "When the 2nd creature dies, if the 1st creature is still alive, [...]"
+    // Not sure if there's an expiration.
+    "WhenPermanentWinsAFightAgainstPermanent({{PERMANENT}}, {{PERMANENT}})": "",
+  },
+
+}
