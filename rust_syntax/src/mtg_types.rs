@@ -5049,6 +5049,12 @@ pub enum ExchangeOwnershipCard {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Permanents", content = "args"))]
 pub enum Permanents {
+  TheTokensCreatedByAPlayerThisWay(Box<Players>),
+  IsNonToken,
+  IsToken,
+  TheCreatedTokens,
+  TheTokensCreatedThisWay,
+
   HadCountersOfTypePutOnItByAPlayerThisTurn(CounterType, Box<Players>),
   WasCastByAPlayer(Box<Players>),
 
@@ -5239,7 +5245,6 @@ pub enum Permanents {
   IsNonOutlaw,
   IsNonPlaneswalkerType(PlaneswalkerType),
   IsNonSupertype(SuperType),
-  IsNonToken,
   IsNotACommander,
   IsNotNamed(NameFilter),
   IsNotSuspected,
@@ -5258,7 +5263,6 @@ pub enum Permanents {
   IsTheFirstChosenPermanentFilter,
   IsTheSecondChosenPermanentFilter,
   IsTheThirdChosenPermanentFilter,
-  IsToken,
   IsTransformed,
   IsUnblocked,
   IsUntapped,
@@ -5348,7 +5352,6 @@ pub enum Permanents {
   TheCardsConjuredOntoTheBattlefieldThisWay,
   TheChosenCreatures,
   TheChosenPermanents,
-  TheCreatedTokens,
   TheNthSpellCastByPlayerThisTurn(Box<GameNumber>, Box<Spells>, Box<Player>),
   ThePermanentsAffectedThisWay,
   ThePermanentsChosenThisWay,
@@ -5364,7 +5367,6 @@ pub enum Permanents {
   ThePermanentsThatHadCountersPutOnThemThisWay,
   TheSacrificedPermanents,
   TheSecretlyChosenPermanents,
-  TheTokensCreatedThisWay,
   TheUnchosenPermanents,
   TotalPowerAndToughnessIs(Box<Comparison>),
   ToughnessIs(Box<Comparison>),
@@ -5439,7 +5441,6 @@ pub enum Permanent {
   ThePermanentThatHadCountersPutOnItThisWay,
   ActionPermanent,
   WouldDealDamage_DamageRecipientPermanent,
-  TheTokenCreatedThisWay,
   ThePermanentAttachedToThisWay,
   ThisPermanentOrThisCommandCard,
   ThePermanentGainedControlOfThisWay,
@@ -5466,7 +5467,6 @@ pub enum Permanent {
   Ref_TargetPermanentOfPlayersChoice,
   TheCreatureBolsteredThisWay,
   ThisSacrificedPermanent,
-  TheTokenCreatedByPlayerThisWay(Box<Player>),
   ThePermanentThatCreatedIt,
   Ref_TargetPermanentControlledBy(Box<Player>),
   TheSecondChosenPermanent,
@@ -5492,7 +5492,6 @@ pub enum Permanent {
   Self_It,
   ThatEnteringPermanent,
   TheChosenPermanent,
-  TheCreatedToken,
   TheCreatureUnequippedThisWay,
   ThePermanentChosenByPlayerThisWay(Box<Player>),
   ThePermanentChosenThisWay,
@@ -5741,6 +5740,8 @@ pub enum ManaSources {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_GameNumber", content = "args"))]
 pub enum GameNumber {
+  TheTotalNumberOfTokensPlayersCreatedThisTurn(Box<Permanents>, Box<Players>),
+
   TheHighestManaValueAmongGraveyardCards(Box<CardsInGraveyard>),
   TheNumberOfColorsAmongPermanentsAndSpellsCastThisTurn(Box<Permanents>, Box<Spells>),
   TheNumberOfTimesPermanentWasKicked(Box<Permanent>),
@@ -5959,7 +5960,6 @@ pub enum GameNumber {
   TheGreatestPowerAmongPermanentsAndCardsInPlayersGraveyard(Box<Permanents>, Box<Cards>, Box<Player>),
   TheHighestLifeTotalAmongPlayers(Box<Players>),
   WhenAPlayerCastsASpell_ThatSpellX,
-  NumTokensCreatedByPlayerThisTurn(Box<Permanents>, Box<Player>),
   TheNumberOfPlayersThatPaidCost,
   NumColorsManaSpentToCastSpell(Box<Spell>),
   TotalPowerOfPermanents(Box<Permanents>),
@@ -6090,7 +6090,6 @@ pub enum GameNumber {
   NumPermanentsOfTypeExiledThisWay(Box<Permanents>),
   NumPermanentsPhasedOutThisWay,
   NumPlayers(Box<Players>),
-  NumPlayersWhoCreatedATokenThisWay,
   NumPointsOfBushidoPermanentHas(Box<Permanent>),
   NumSpellsCastByPlayerThisTurn(Box<Spells>, Box<Player>),
   NumTimesCreatureHasMutated(Box<Permanent>),
@@ -7664,9 +7663,11 @@ pub enum FutureTrigger {
   WhenPlayerCastsTheirNextSpellThisGame(Box<Player>, Box<Spells>),
   WhenPlayerCastsTheirNextSpellThisTurn(Box<Player>, Box<Spells>),
   WhenPlayerCastsTheirNextSpellFromTheirHandThisTurn(Box<Player>, Box<Spells>),
+  WhenACreatureOrPlaneswalkerDies(Box<Permanents>),
   WhenCreatureOrPlaneswalkerDies(Box<Permanent>),
   WhenPermanentBecomesUntapped(Box<Permanent>),
   WhenPermanentLeavesTheBattlefield(Box<Permanent>),
+  WhenAPermanentLeavesTheBattlefield(Box<Permanents>),
   WhenPermanentIsPutIntoAPlayersGraveyard(Box<Permanent>, Box<Players>),
   WhenPlayerLosesControlOfPermanent(Box<Player>, Box<Permanent>),
 }
@@ -8375,6 +8376,9 @@ pub enum Targets {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_PutCounterAction", content = "args"))]
 pub enum PutCounterAction {
+  ACounterOfTypeOfChoiceOnEachPermanent(Vec<CounterType>, Box<Permanents>),
+  ACounterOfTypeOnEachPermanent(CounterType, Box<Permanents>),
+  NumberCountersOfTypeOnEachPermanent(Box<GameNumber>, CounterType, Box<Permanents>),
   ACounterOfTypeOnPermanent(CounterType, Box<Permanent>),
   NumberCountersOfTypeOnPermanent(Box<GameNumber>, CounterType, Box<Permanent>),
 }
@@ -8383,6 +8387,11 @@ pub enum PutCounterAction {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Action", content = "args"))]
 pub enum Action {
+  HaveEachPermanentFightEachPermanent(Box<Permanents>, Box<Permanents>),
+  Fight(Box<Permanent>, Box<Permanent>),
+  HaveCreaturesFight(Box<Permanent>, Box<Permanent>),
+  HaveCreaturesFight_OnWin(Box<Permanent>, Box<Permanent>, Vec<Action>, Vec<Action>),
+
   ActionForEachPermanentExiledThisWay(Vec<Action>),
   FlipACoinAndCallIt,
   PutAbilityCountersOnPermanentFromAbilitiesOnPermanentIfItDoesntHaveIt(Box<Permanent>, Vec<CheckHasable>, Box<Permanent>),
@@ -9150,7 +9159,6 @@ pub enum Action {
   ExileUptoOneCardOfEachCardTypeFromPlayersGraveyard(Box<Player>),
   ExploreWithPermanent(Box<Permanent>),
   Fateseal(Box<GameNumber>),
-  Fight(Box<Permanent>, Box<Permanent>),
   FlipACoin,
   FlipACoinForEachPermanent(Box<Permanents>),
   FlipACoinNumberTimesOrUntilLose(Box<GameNumber>),
@@ -9191,8 +9199,6 @@ pub enum Action {
   UngoadEachCreature(Box<Permanents>),
   GuessIfACardIsInPlayersHand(Box<Cards>, Box<Player>),
   GuessIfCardInHandPassesFilter(CardInHand, Box<Cards>),
-  HaveCreaturesFight(Box<Permanent>, Box<Permanent>),
-  HaveCreaturesFight_OnWin(Box<Permanent>, Box<Permanent>, Vec<Action>, Vec<Action>),
   HaveDeadPermanentDealDamage(Box<GameNumber>, Box<DamageRecipient>),
   HaveDiscardedCardDealDamage(CardInHand, Box<GameNumber>, Box<DamageRecipient>),
   HaveEachPlayerLoseLife(Box<Players>, Box<GameNumber>),

@@ -46,6 +46,10 @@ type AbilityVariable =
 | { "_AbilityVariable": "TheChosenAbility" }
 | { "_AbilityVariable": "TheChosenAbilities" };
 type Action =
+| { "_Action": "HaveEachPermanentFightEachPermanent", "args": [Permanents, Permanents] }
+| { "_Action": "Fight", "args": [Permanent, Permanent] }
+| { "_Action": "HaveCreaturesFight", "args": [Permanent, Permanent] }
+| { "_Action": "HaveCreaturesFight_OnWin", "args": [Permanent, Permanent, Array<Action>, Array<Action>] }
 | { "_Action": "ActionForEachPermanentExiledThisWay", "args": Array<Action> }
 | { "_Action": "FlipACoinAndCallIt" }
 | { "_Action": "PutAbilityCountersOnPermanentFromAbilitiesOnPermanentIfItDoesntHaveIt", "args": [Permanent, Array<CheckHasable>, Permanent] }
@@ -782,7 +786,6 @@ type Action =
 | { "_Action": "ExileUptoOneCardOfEachCardTypeFromPlayersGraveyard", "args": Player }
 | { "_Action": "ExploreWithPermanent", "args": Permanent }
 | { "_Action": "Fateseal", "args": GameNumber }
-| { "_Action": "Fight", "args": [Permanent, Permanent] }
 | { "_Action": "FlipACoin" }
 | { "_Action": "FlipACoinForEachPermanent", "args": Permanents }
 | { "_Action": "FlipACoinNumberTimesOrUntilLose", "args": GameNumber }
@@ -823,8 +826,6 @@ type Action =
 | { "_Action": "UngoadEachCreature", "args": Permanents }
 | { "_Action": "GuessIfACardIsInPlayersHand", "args": [Cards, Player] }
 | { "_Action": "GuessIfCardInHandPassesFilter", "args": [CardInHand, Cards] }
-| { "_Action": "HaveCreaturesFight", "args": [Permanent, Permanent] }
-| { "_Action": "HaveCreaturesFight_OnWin", "args": [Permanent, Permanent, Array<Action>, Array<Action>] }
 | { "_Action": "HaveDeadPermanentDealDamage", "args": [GameNumber, DamageRecipient] }
 | { "_Action": "HaveDiscardedCardDealDamage", "args": [CardInHand, GameNumber, DamageRecipient] }
 | { "_Action": "HaveEachPlayerLoseLife", "args": [Players, GameNumber] }
@@ -3876,9 +3877,11 @@ type FutureTrigger =
 | { "_FutureTrigger": "WhenPlayerCastsTheirNextSpellThisGame", "args": [Player, Spells] }
 | { "_FutureTrigger": "WhenPlayerCastsTheirNextSpellThisTurn", "args": [Player, Spells] }
 | { "_FutureTrigger": "WhenPlayerCastsTheirNextSpellFromTheirHandThisTurn", "args": [Player, Spells] }
+| { "_FutureTrigger": "WhenACreatureOrPlaneswalkerDies", "args": Permanents }
 | { "_FutureTrigger": "WhenCreatureOrPlaneswalkerDies", "args": Permanent }
 | { "_FutureTrigger": "WhenPermanentBecomesUntapped", "args": Permanent }
 | { "_FutureTrigger": "WhenPermanentLeavesTheBattlefield", "args": Permanent }
+| { "_FutureTrigger": "WhenAPermanentLeavesTheBattlefield", "args": Permanents }
 | { "_FutureTrigger": "WhenPermanentIsPutIntoAPlayersGraveyard", "args": [Permanent, Players] }
 | { "_FutureTrigger": "WhenPlayerLosesControlOfPermanent", "args": [Player, Permanent] };
 type GameEffect =
@@ -3894,6 +3897,7 @@ type GameEffect =
 | { "_GameEffect": "SchemesCantBeSetInMotion" }
 | { "_GameEffect": "SpellsAndAbilitiesCantTargetPermanents", "args": [SpellsAndAbilities, Permanents] };
 type GameNumber =
+| { "_GameNumber": "TheTotalNumberOfTokensPlayersCreatedThisTurn", "args": [Permanents, Players] }
 | { "_GameNumber": "TheHighestManaValueAmongGraveyardCards", "args": CardsInGraveyard }
 | { "_GameNumber": "TheNumberOfColorsAmongPermanentsAndSpellsCastThisTurn", "args": [Permanents, Spells] }
 | { "_GameNumber": "TheNumberOfTimesPermanentWasKicked", "args": Permanent }
@@ -4104,7 +4108,6 @@ type GameNumber =
 | { "_GameNumber": "TheGreatestPowerAmongPermanentsAndCardsInPlayersGraveyard", "args": [Permanents, Cards, Player] }
 | { "_GameNumber": "TheHighestLifeTotalAmongPlayers", "args": Players }
 | { "_GameNumber": "WhenAPlayerCastsASpell_ThatSpellX" }
-| { "_GameNumber": "NumTokensCreatedByPlayerThisTurn", "args": [Permanents, Player] }
 | { "_GameNumber": "TheNumberOfPlayersThatPaidCost" }
 | { "_GameNumber": "NumColorsManaSpentToCastSpell", "args": Spell }
 | { "_GameNumber": "TotalPowerOfPermanents", "args": Permanents }
@@ -4233,7 +4236,6 @@ type GameNumber =
 | { "_GameNumber": "NumPermanentsOfTypeExiledThisWay", "args": Permanents }
 | { "_GameNumber": "NumPermanentsPhasedOutThisWay" }
 | { "_GameNumber": "NumPlayers", "args": Players }
-| { "_GameNumber": "NumPlayersWhoCreatedATokenThisWay" }
 | { "_GameNumber": "NumPointsOfBushidoPermanentHas", "args": Permanent }
 | { "_GameNumber": "NumSpellsCastByPlayerThisTurn", "args": [Spells, Player] }
 | { "_GameNumber": "NumTimesCreatureHasMutated", "args": Permanent }
@@ -4850,7 +4852,6 @@ type Permanent =
 | { "_Permanent": "ThePermanentThatHadCountersPutOnItThisWay" }
 | { "_Permanent": "ActionPermanent" }
 | { "_Permanent": "WouldDealDamage_DamageRecipientPermanent" }
-| { "_Permanent": "TheTokenCreatedThisWay" }
 | { "_Permanent": "ThePermanentAttachedToThisWay" }
 | { "_Permanent": "ThisPermanentOrThisCommandCard" }
 | { "_Permanent": "ThePermanentGainedControlOfThisWay" }
@@ -4877,7 +4878,6 @@ type Permanent =
 | { "_Permanent": "Ref_TargetPermanentOfPlayersChoice" }
 | { "_Permanent": "TheCreatureBolsteredThisWay" }
 | { "_Permanent": "ThisSacrificedPermanent" }
-| { "_Permanent": "TheTokenCreatedByPlayerThisWay", "args": Player }
 | { "_Permanent": "ThePermanentThatCreatedIt" }
 | { "_Permanent": "Ref_TargetPermanentControlledBy", "args": Player }
 | { "_Permanent": "TheSecondChosenPermanent" }
@@ -4903,7 +4903,6 @@ type Permanent =
 | { "_Permanent": "Self_It" }
 | { "_Permanent": "ThatEnteringPermanent" }
 | { "_Permanent": "TheChosenPermanent" }
-| { "_Permanent": "TheCreatedToken" }
 | { "_Permanent": "TheCreatureUnequippedThisWay" }
 | { "_Permanent": "ThePermanentChosenByPlayerThisWay", "args": Player }
 | { "_Permanent": "ThePermanentChosenThisWay" }
@@ -5047,6 +5046,11 @@ type PermanentsAndGraveyardCards =
 type PermanentsAndSpells =
 | { "_PermanentsAndSpells": "AnyPermanentOrSpell" };
 type Permanents =
+| { "_Permanents": "TheTokensCreatedByAPlayerThisWay", "args": Players }
+| { "_Permanents": "IsNonToken" }
+| { "_Permanents": "IsToken" }
+| { "_Permanents": "TheCreatedTokens" }
+| { "_Permanents": "TheTokensCreatedThisWay" }
 | { "_Permanents": "HadCountersOfTypePutOnItByAPlayerThisTurn", "args": [CounterType, Players] }
 | { "_Permanents": "WasCastByAPlayer", "args": Players }
 | { "_Permanents": "DoesntShareACreatureTypeWithPermanent", "args": Permanent }
@@ -5233,7 +5237,6 @@ type Permanents =
 | { "_Permanents": "IsNonOutlaw" }
 | { "_Permanents": "IsNonPlaneswalkerType", "args": PlaneswalkerType }
 | { "_Permanents": "IsNonSupertype", "args": SuperType }
-| { "_Permanents": "IsNonToken" }
 | { "_Permanents": "IsNotACommander" }
 | { "_Permanents": "IsNotNamed", "args": NameFilter }
 | { "_Permanents": "IsNotSuspected" }
@@ -5252,7 +5255,6 @@ type Permanents =
 | { "_Permanents": "IsTheFirstChosenPermanentFilter" }
 | { "_Permanents": "IsTheSecondChosenPermanentFilter" }
 | { "_Permanents": "IsTheThirdChosenPermanentFilter" }
-| { "_Permanents": "IsToken" }
 | { "_Permanents": "IsTransformed" }
 | { "_Permanents": "IsUnblocked" }
 | { "_Permanents": "IsUntapped" }
@@ -5342,7 +5344,6 @@ type Permanents =
 | { "_Permanents": "TheCardsConjuredOntoTheBattlefieldThisWay" }
 | { "_Permanents": "TheChosenCreatures" }
 | { "_Permanents": "TheChosenPermanents" }
-| { "_Permanents": "TheCreatedTokens" }
 | { "_Permanents": "TheNthSpellCastByPlayerThisTurn", "args": [GameNumber, Spells, Player] }
 | { "_Permanents": "ThePermanentsAffectedThisWay" }
 | { "_Permanents": "ThePermanentsChosenThisWay" }
@@ -5358,7 +5359,6 @@ type Permanents =
 | { "_Permanents": "ThePermanentsThatHadCountersPutOnThemThisWay" }
 | { "_Permanents": "TheSacrificedPermanents" }
 | { "_Permanents": "TheSecretlyChosenPermanents" }
-| { "_Permanents": "TheTokensCreatedThisWay" }
 | { "_Permanents": "TheUnchosenPermanents" }
 | { "_Permanents": "TotalPowerAndToughnessIs", "args": Comparison }
 | { "_Permanents": "ToughnessIs", "args": Comparison }
@@ -6292,6 +6292,9 @@ type PTXValue =
 | { "_PTXValue": "Integer", "args": number }
 | { "_PTXValue": "X" };
 type PutCounterAction =
+| { "_PutCounterAction": "ACounterOfTypeOfChoiceOnEachPermanent", "args": [Array<CounterType>, Permanents] }
+| { "_PutCounterAction": "ACounterOfTypeOnEachPermanent", "args": [CounterType, Permanents] }
+| { "_PutCounterAction": "NumberCountersOfTypeOnEachPermanent", "args": [GameNumber, CounterType, Permanents] }
 | { "_PutCounterAction": "ACounterOfTypeOnPermanent", "args": [CounterType, Permanent] }
 | { "_PutCounterAction": "NumberCountersOfTypeOnPermanent", "args": [GameNumber, CounterType, Permanent] };
 type PutIntoGraveyardAction =
