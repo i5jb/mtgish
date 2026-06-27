@@ -1,299 +1,920 @@
 {
-  "{{_GAME_EFFECT[PutCounters]}}": {
-    "CountersCantBePutOnPermanents({{PERMANENTS}})": "",
-    "CountersOfTypeCantBeRemovedFromPermanents({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+  "{{_PERMANENT_RULE[PutCounters]}}": {
+    // Text: "Counters can’t be put on {{Permanents}}"
+    // Card: [[Solemnity]]
+    "CantHaveCountersPutOnIt": "",
+
+    // Text: "{{Permanents}} can’t have {{CounterType}} counters put on them"
+    // Card: [[Melira, Sylvok Outcast]]
+    "CantHaveCountersOfTypePutOnIt({{COUNTER_TYPE}})": "",
+
+    // Text: "{{CounterType}} counters can’t be removed from {{Permanents}}"
+    // Card: [[Fear of Sleep Paralysis]]
+    "CantHaveCountersOfTypeRemovedFromIt({{COUNTER_TYPE}})": "",
+
+    // Text: "{{Permanent}} can’t have more than <Number> {{CounterType}} counters on it"
+    // Card: [[Rasputin Dreamweaver]]
+    "CantHaveMoreThanNumberCountersOfType({{NUMBER}}, {{COUNTER_TYPE}})": "",
   },
 
   "{{_PLAYER_EFFECT[PutCounters]}}": {
-    "CantGetAnyCounters": "",
-    "CantGetPoisonCounters": "",
+    // Text: "{{Players}} can't get counters"
+    // Card: [[Solemnity]]
+    "CantGetCounters": "",
+
+    // Text: "{{Players}} can't get {{CounterType}} counters"
+    // Card: [[Melira, Sylvok Outcast]]
+    "CantGetCountersOfType({{COUNTER_TYPE}})": "",
   },
 
-  "{{_PLAYER_ACTION[PutCounters]}}": {
-    "ActionForEachCounterTypeOnPermanent({{PERMANENT}}, {{ACTION_LIST}})": "",
-    "ActionForEachCounterTypeOnPermanents({{PERMANENTS}}, {{ACTION_LIST}})": "",
-    "ActionForEachCounterTypePlayerHas({{PLAYER}}, {{ACTION_LIST}})": "",
+  "{{PUT_COUNTERS}}": {
+    // -------------------------
+    // Put <Couters> on <Object>
+    // -------------------------
 
-    "CreateReplaceWouldPutCountersUntil({{REPLACABLE_EVENT[PutCounters][WouldPutCounters]}}, {{REPLACEMENT_ACTIONS[PutCounters][WouldPutCounters]}}, {{EXPIRATION}})": "",
+    // Text: "Put {{a}} {{CounterType}} counter on target {{CardInExile}}"
+    // Card: [[Jhoira's Timebug]]
+    "ACounterOfTypeOnCardInExile({{COUNTER_TYPE}}, {{CARD_IN_EXILE}})": "",
 
-    "GetAPoisonCounter": "",
-    "GetARadCounter": "",
-    "GetAnExperienceCounter": "",
-    "GetCounterOfType(EachableCounterType)": "",
-    "GetExperienceCounter": "",
-    "GetNumberExperienceCounters({{NUMBER}})": "",
-    "GetNumberPoisonCounters({{NUMBER}})": "",
-    "GetNumberRadCounters({{NUMBER}})": "",
-    "LoseAllCounters": "",
-    "LoseAllPoisonCounters": "",
-    "LoseAllRadCounters": "",
+    // Text: "Put {{a}} {{CounterType}} counter on {{Permanent}}"
+    // Card: [[Carnivorous Moss-Beast]]
+    "ACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
 
-    "ChooseCounterAtRandomPermanentDoesntHave({{PERMANENT}}, {{COUNTER_TYPE_LIST}})": "",
-    "ChooseACounterTypeOnAPermanent({{PERMANENTS}})": "",
-    "ChooseACounterTypeOnPermanent({{PERMANENT}})": "",
-    "ChooseACounterTypeOnPlayer({{PLAYER}})": "",
+    // Text: "Put {{a}} {{CounterType}} counter on {{Plane}}"
+    // Card: [[Mount Keralia]]
+    "ACounterOfTypeOnPlane({{COUNTER_TYPE}}, ThisPlane)": "",
 
-    "DistributeNumberCountersOfTypeAmongAnyNumberOfPermanents({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "DistributeNumberCountersOfTypeAmongAnyNumberOfPermanentsGreaterThanZero({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "DoubleCountersOfEachTypeOnEachPermanent({{PERMANENTS}})": "",
-    "DoubleCountersOfEachTypeOnPermanent({{PERMANENT}})": "",
-    "DoubleCountersOfEachTypePlayersHave({{PLAYERS}})": "",
-    "DoubleCountersOfTypeOnEachPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+    // Text: "Put {{a}} {{CounterType}} counter on {{Scheme}}"
+    // Card: [[Your Inescapable Doom]]
+    "ACounterOfTypeOnScheme({{COUNTER_TYPE}}, ThisScheme)": "",
+
+    // Text: "Put {{a}} {{CounterType}} counter on {{Vanguard}}"
+    // Card: [[Necropotence Avatar]]
+    "ACounterOfTypeOnVanguard({{COUNTER_TYPE}}, ThisVanguard)": "",
+
+    // Text: "{{Player}} gets an experience counter"
+    // Card: [[Meren of Clan Nel Toth]]
+    "ACounterOfTypeOnPlayer({{COUNTER_TYPE}}, {{PLAYER}})": "",
+
+    // Text: "Put {{Number}} {{CounterType}} counters on {{CardInExile}}"
+    // Card: [[Timebender]]
+    "NumberCountersOfTypeOnCardInExile({{NUMBER}}, {{COUNTER_TYPE}}, {{CARD_IN_EXILE}})": "",
+
+    // Text: "Put {{Number}} {{CounterType}} counter on {{CardInGraveyards}}"
+    // Card: [[Managorger Phoenix]] -- Digital only
+    "NumberCountersOfTypeOnCardInGraveyard({{NUMBER}}, {{COUNTER_TYPE}}, {{CARD_IN_GRAVEYARDS}})": "",
+
+    // Text: "Put {{Number}} {{CounterType}} counters on {{Permanent}}"
+    // Card: [[Argothian Sprite]]
+    "NumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // Text: "Put {{Number}} {{CounterType}} counters on {{Spell}}"
+    // Card: [[Lightning Storm]]
+    "NumberCountersOfTypeOnSpell({{NUMBER}}, {{COUNTER_TYPE}}, ThisSpell)": "",
+
+    // Text: "{{Player}} gets {{Number}} {{CounterType}} counters"
+    // Card: [[Persuasive Interrogators]]
+    "NumberCountersOfTypeOnPlayer({{NUMBER}}, {{COUNTER_TYPE}}, {{PLAYER}})": "",
+
+    // Text: "Put up to {{Number}} {{CounterType}} counters on {{Permanent}}"
+    // Card: [[Clockwork Avian]]
+    "UptoNumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // Text: "Double the number of each kind of counter on {{Permanent}}"
+    // Card: [[Aetheric Amplifier]]
+    "DoubleAllCountersOnPermanent({{PERMANENT}})": "",
+
+    // Text: "Double the number of each kind of counter {{Player}} has"
+    // Card: [[Aetheric Amplifier]]
+    "DoubleAllCountersPlayerHas({{PLAYER}})": "",
+
+    // Text: "Double the number of {{CounterType}} counters on {{Permanent}}"
+    // Card: [[Solarion]]
     "DoubleCountersOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "ForEachPermanentPutANumberOfCountersOfTypeOnIt({{PERMANENTS}}, {{NUMBER}}, {{COUNTER_TYPE}})": "",
-    "ForEachPermanentPutUptoNumberCountersOfTypeOnIt({{PERMANENTS}}, {{NUMBER}}, {{COUNTER_TYPE}})": "",
-    "MayPutADuplicateCounterOnEachPermanent({{PERMANENTS}})": "",
-    "MoveACounterFromPermanentOntoAnotherPermanent({{PERMANENT}}, {{PERMANENT}})": "",
-    "MoveACounterOfEachTypeNotOnPermanentFromPermanent({{PERMANENT}}, {{PERMANENT}})": "",
-    "MoveACounterOfTypeFromPermanentOntoAnotherPermanent({{COUNTER_TYPE}}, {{PERMANENT}}, {{PERMANENT}})": "",
-    "MoveACounterOfTypeFromPermanentOntoNewPermanent({{COUNTER_TYPE}}, {{PERMANENT}}, {{PERMANENT}})": "",
-    "MoveAllCountersFromPermanentOntoAnotherPermanent({{PERMANENT}}, {{PERMANENT}})": "",
-    "MoveAllCountersOfTypeFromEachPermanentOntoPermanent({{COUNTER_TYPE}}, {{PERMANENTS}}, {{PERMANENT}})": "",
-    "MoveAllCountersOfTypeFromPermanentOntoPermanent({{COUNTER_TYPE}}, {{PERMANENT}}, {{PERMANENT}})": "",
-    "MoveAnyNumberOfCountersFromPermanentOntoNewPermanent({{PERMANENT}}, {{PERMANENT}})": "",
-    "MoveAnyNumberOfCountersFromPermanentsOntoNewPermanent({{PERMANENTS}}, {{PERMANENT}})": "",
-    "MoveAnyNumberOfCountersOfTypeFromPermanentOntoNewPermanent({{COUNTER_TYPE}}, {{PERMANENT}}, {{PERMANENT}})": "",
-    "MoveAnyNumberOfCountersOfTypeFromPermanentOntoNewPermanents({{COUNTER_TYPE}}, {{PERMANENT}}, {{PERMANENTS}})": "",
-    "MoveAnyNumberOfCountersOfTypeFromPermanentsOntoNewPermanent({{COUNTER_TYPE}}, {{PERMANENTS}}, {{PERMANENT}})": "",
-    "MoveNumberCountersOfTypeFromPermanentOntoAnotherPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "for each <Permanent>, choose a counter on it. You may put an additional counter of that kind on that permanent"
+    // Card: [[The Caves of Androzani]]
+    "ForEachPermanentMayDuplicateACounterOfPermanentOnPermanent({{PERMANENTS}}, {{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "choose a counter on {{Permanent}}. Give that permanent another counter of that kind"
+    // Card: [[Animation Module]]
+    "DuplicateACounterOfPermanentOnPermanent({{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "for each kind of counter on {{Permanent}}, give {{Permanent}} a counter of that kind"
+    // Card: [[Maulfist Revolutionary]]
+    "ADuplicateOfEachKindOfCounterOnPermanentOnPermanent({{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "for each kind of counter on {{Permanents}}, you may put your choice of a {{CounterType}} counter or a counter of that kind on {{Permanent}}"
+    // Card: [[Bribe Taker]]
+    "ADuplicateOfEachKindOfCounterAmoungPermanentsOrACounterOfTypeOnPermanent({{PERMANENTS}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // Text: "choose a counter on a {{Permanent}}. Put a counter of that kind on {{Permanent}} if it doesn't have a counter of that kind on it"
+    // Card: [[Aven Courier]]
+    "DuplicateACounterOfAPermanentThatPermanentDoesntHaveOnPermanent({{PERMANENTS}}, {{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "choose a kind of counter at random that {{Permanent}} doesn’t have on it from among [...]. Put a counter of that kind on {{Permanent}}}."
+    // Card: [[Crystalline Giant]]
+    "ACounterOfTypeAtRandomThatPermanentDoesHaveOnPermanent({{COUNTER_TYPE_LIST}}, {{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "Whenever {{a}} {{Player}} puts one or more counters on {{Permanents}}, put one of each of those kinds of counters on {{Permanent}}"
+    // Card: [[Aragorn, Company Leader]]
+    "DuplicateACounterOfEachOfThoseKindsOnPermanent({{PERMANENT}})": "",
+
+    // Text: "Whenever {{a}} {{Player}} puts one or more counters on {{Permanents}}, put the same number and kind of counters on {{Permanent}}"
+    // Card: [[Bold Plagiarist]]
+    "DuplicateThoseCounterOnPermanent({{PERMANENT}})": "",
+
+    // Text: "Put {{Permanent}}'s counters on {{Permanent}}"
+    // Card: [[Hei Bai, Spirit of Balance]]
+    "DuplicateCountersOfPermanentOnPermanent({{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "Put {{Permanent}}'s {{CounterType}} counters on {{Permanent}}"
+    // Card: [[Selfless Police Captain]]
+    "DuplicateCountersOfTypeOfPermanentOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "Choose a counter on {{CardInExile}}. Put another of those counters on it"
+    // Card: [[Clockspinning]]
+    "DuplicateACounterOfCardInExileOnCardInExile({{CARD_IN_EXILE}}, {{CARD_IN_EXILE}})": "",
+
+    // Text: "For each kind of counter on {{Player}}, give {{Player}} a counter of that kind"
+    // Card: [[Maulfist Revolutionary]]
+    "ADuplicateOfEachKindOfCounterOnPlayerOnPlayer({{PLAYER}}, {{PLAYER}})": "",
+
+    // Text: "Choose a counter on {{Player}}. Give that player another counter of that kind"
+    // Card: [[Animation Module]]
+    "DuplicateACounterOfPlayerOnPlayer({{PLAYER}}, {{PLAYER}})": "",
+
+    // Text: "Choose a {{Permanent}}. If that {{Permanent}} has {{Ability}} and {{OtherPermanent}} doesn't, put {{an}} {{AbilityCounter}} counter on {{OtherPermanent}}. Do the same for {{MoreAbilities}}."
+    // Card: [[Super-Adaptoid]]
+    "AnAbilityCounterOnPermanentForEachAbilityOnPermanentIfItDoesntHaveIt({{PERMANENT}}, {{CHECK_HASABLE_LIST}}, {{PERMANENT}})": "",
+
+    // -------------------------------
+    // Put <Counters> on <Each Object>
+    // -------------------------------
+
+    // Text: "Exile the top X cards of your library. Put a {{CounterType}} counter on each of them
+    // Card: [[Kianne, Dean of Substance // Imbraham, Dean of Theory]]
+    "ACounterOfTypeOnEachCardInExile({{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
+
+    // Text: "Put {{a}} {{CounterType}} counter on each {{Permanent}}"
+    // Card: [[Basri's Solidarity]]
+    "ACounterOfTypeOnEachPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Each opponent gets {{a}} {{CounterType}} counter"
+    // Card: [[Phyresis Outbreak]]
+    "ACounterOfTypeOnEachPlayer({{COUNTER_TYPE}}, {{PLAYERS}})": "",
+
+    // Text: "for each {{Permanent}}, put your choice of {{a}} {{CounterType}} or {{CounterType}} counter on it"
+    // Card: [[Invoke the Ancients]]
+    "ACounterOfTypeOfMultipleChoiceOnEachPermanent({{COUNTER_TYPE_LIST}}, {{PERMANENTS}})": "",
+
+    // Text: "Put {{Number}} {{CounterType}} counters on each {{CardInExile}}"
+    // Card: [[Dust of Moments]]
+    "NumberCountersOfTypeOnEachCardInExile({{NUMBER}}, {{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
+
+    // Text: "For each {{CardInExile}}, put a number of {{CounterType}} counters on it equal to its mana value"
+    // Card: [[Ertai's Meddling]]
+    "DifferentNumberCountersOfTypeOnEachCardInExile({{NUMBER}}, {{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
+
+    // Text: "Put {{Number}} {{CounterType}} counters on each {{Permanent}}"
+    // Card: [[Strength of the Pack]]
+    "NumberCountersOfTypeOnEachPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "For each of {{Permanent}}, put a number of {{CounterType}} counters on it equal to the number of colors it is"
+    // Card: [[Jared Carthalion]]
+    "DifferentNumberCountersOfTypeOnEachPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Each {{Player}} gets {{Number}} {{CounterType}} counters"
+    // Card: [[Vault 12: The Necropolis]]
+    "NumberCountersOfTypeOnEachPlayer({{NUMBER}}, {{COUNTER_TYPE}}, {{PLAYERS}})": "",
+
+    // Text: "Put up to {{Number}} {{CounterType}} counters on each {{Permanent}}"
+    // Card: [[Terra, Magical Adept // Esper Terra]]
+    "UptoSingleNumberCountersOfTypeOnEachPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "choose a kind of counter on a {{Permanent}}. Put a counter of that kind on each other {{Permanent}}"
+    // Card: [[Contractual Safeguard]]
+    "DuplicateACounterOfAPermanentOnEachOtherPermanent({{PERMANENTS}}, {{PERMANENTS}})": "",
+
+    // Text: "Put {{Permanent}}'s counters on each {{Permanent}}"
+    // Card: [[Ambitious Augmenter]]
+    "DuplicateCountersOfPermanentOnEachPermanent({{PERMANENT}}, {{PERMANENTS}})": "",
+
+    // Text: "Double the number of each kind of counter each {{Permanent}}"
+    // Card: [[Zimone, Paradox Sculptor]]
+    "DoubleAllCountersOnEachPermanent({{PERMANENTS}})": "",
+
+    // Text: "Double the number of {{CounterType}} counters on each {{Permanent}}"
+    // Card: [[Bristly Bill, Spine Sower]]
+    "DoubleCountersOfTypeOnEachPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // ------------------------------------
+    // Put <Counters> on <Choice of Object>
+    // ------------------------------------
+
+    // Text: "Put {{a}} {{CounterType}} counter on {{a}} {{Permanent}}"
+    // Card: [[Choking Miasma]]
+    "ACounterOfTypeOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Put {{Number}} {{CounterType}} counters on {{a}} {{Permanent}}"
+    // Card: [[Settle the Score]]
+    "NumberCountersOfTypeOnAPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // -------------------------------------
+    // Put <Counters> on <Choice of Objects>
+    // -------------------------------------
+
+    // Text: "for each color, put {{a}} {{CounterType}} counter on {{a}} {{Permanent}} of that color"
+    // Card: [[Call the Spirit Dragons]]
+    "ACounterOfTypeOnAPermanentOfEachColor({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Put {{a}} {{CounterType}} counter each of up to {{Number}} {{Permanents}}"
+    // Card: [[SOLDIER Military Program]]
+    "ACounterOfTypeOnUptoNumberPermanents({{COUNTER_TYPE}}, {{NUMBER}}, {{PERMANENTS}})": "",
+
+    // Text: "Put {{an}} {{AbilityCounter}} counter on any {{Permanent}} if {{a}} {{CardInGraveyards}} has {{Ability}}. Repeat this process for {{MoreAbilities}}"
+    // Card: [[Kathril, Aspect Warper]]
+    "AnAbilityCounterOnAPermanentForEachAbilityOnCardsInGraveyards({{PERMANENTS}}, {{CHECK_HASABLE_LIST}}, {{CARDS_IN_GRAVEYARDS}})": "",
+
+    // Text: "For each kind of counter among {{Permanents}}, put a counter of that kind on <any permanent>"
+    // Card: [[Exotic Pets]]
+    "ADuplicateOfEachKindOfCounterAmongPermanentDistibutedToPermanents({{PERMANENTS}}, {{PERMANENTS}})": "",
+
+    // Text: "Distribute {{Number}} {{CounterType}} counters among any number of {{Permanents}}"
+    // Card: [[Crashing Wave]]
+    "DistributeNumberCountersOfTypeAmongAnyNumberOfPermanents({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Distribute three {{CounterType}} counters among one, two, or three {{Permanents}}"
+    // Card: [[Invasion of Alara // Awaken the Maelstrom]]
+    "DistributeNumberCountersOfTypeAmongPermanents({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // --------------------------------------------------
+    // Target & Distribute -- Put <Counters> on <Objects>
+    // --------------------------------------------------
+
+    // Text: "distribute {{Number}} {{CounterType}} counters among any number of target {{Permanents}}.
+    // Card: [[Bounty of the Hunt]]
+    "DistributedCounters({{COUNTER_TYPE}})": "",
+  },
+
+  "{{PUT_COUNTERS_COST}}": {
+    // -------------------------
+    // Put <Couters> on <Object>
+    // -------------------------
+
+    // Text: "You may put {{a}} {{CounterType}} counter on {{CardInExile}}. If you don't, ..."
+    // Card: [[Cosima, God of the Voyage // The Omenkeel]]
+    "ACounterOfTypeOnCardInExile({{COUNTER_TYPE}}, {{CARD_IN_EXILE}})": "",
+
+    // Text: "You may put {{a}} {{CounterType}} counter on {{Permanent}}. If you do, ..."
+    // Card: [[Sphinx-Bone Wand]]
+    "ACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // Text: "You may put {{Number}} {{CounterType}} counters on {{Permanent}}"
+    // Card: [[Wall of Resurgence]]
+    "NumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // Text: "Ward-Get {{Number}} {{CounterType}} counters"
+    // Card: [[The Serpent Society]]
+    "NumberCountersOfTypeOnPlayer({{NUMBER}}, {{COUNTER_TYPE}}, {{PLAYER}})": "",
+
+    // ------------------------------------
+    // Put <Counters> on <Choice of Object>
+    // ------------------------------------
+
+    // Text: "As an additional cost, put {{a}} {{CounterType}} counter on {{a}} {{Permanent}}"
+    // Card: [[Lethal Sting]]
+    "ACounterOfTypeOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Each player may put {{Number}} {{CounterType}} counters on {{a}} {{Permanent}}. If a player does, ..."
+    // Card: [[Orzhov Advokist]]
+    "NumberCountersOfTypeOnAPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+  },
+
+  "{{PUT_OR_REMOVE_COUNTERS}}": {
+    // Text: "For each kind of counter on {{Permanent}}, put another counter of that kind on it or remove one from it"
+    // Card: [[Dramatist's Puppet]]
+    "DuplicateOrRemoveACounterOfEachKindOnPermanent({{PERMANENT}})": "",
+  },
+
+  "{{PUT_RESTRICTION}}": {
+    // Text: "This ability can’t cause the total number of {{CounterType}} counters on {{Permanent}} to be greater than {{Number}}"
+    // Card: [[Clockwork Avian]]
+    "CantCauseTheNumberOfCountersOfTypeOnPermanentToBeGreaterThan({{COUNTER_TYPE}}, {{PERMANENT}}, {{NUMBER}})": "",
+  },
+
+  "{{REMOVE_COUNTERS}}": {
+    // ------------------------------
+    // Remove <Couters> from <Object>
+    // ------------------------------
+
+    // Text: "Remove a counter from {{CardInExile}}"
+    // Card: [[Clockspinning]]
+    "ACounterFromCardInExile({{CARD_IN_EXILE}})": "",
+
+    // Text: "Remove a counter from {{Permanent}}"
+    // Card: [[Spinal Parasite]]
+    "ACounterFromPermanent({{PERMANENT}})": "",
+
+    // Text: "Remove a counter from {{Player}}"
+    // Card: [[Etched Slith]]
+    "ACounterFromPlayer({{PLAYER}})": "",
+
+    // Text: "Remove {{a}} {{CounterType}} counter from {{CardInExile}}"
+    // Card: [[Greater Gargadon]]
+    "ACounterOfTypeFromCardInExile({{COUNTER_TYPE}}, {{CARD_IN_EXILE}})": "",
+
+    // Text: "Remove {{a}} {{CounterType}} counter from {{Permanent}}"
+    // Card: [[Bloodletter Quill]]
+    "ACounterOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // Text: "Remove all counters from {{Permanent}}"
+    // Card: [[Vampire Hexmage]]
+    "AllCountersFromPermanent({{PERMANENT}})": "",
+
+    // Text: "Remove all counters from {{Player}}"
+    // Card: [[Mutated Cultist]]
+    "AllCountersFromPlayer({{PLAYER}})": "",
+
+    // Text: "Remove all {{CounterType}} counter from {{Permanent}}"
+    // Card: [[Give // Take]]
+    "AllCountersOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // Text: "{{Player}} loses all {{CounterType}} counters"
+    // Card: [[Survivor's Med Kit]]
+    "AllCountersOfTypeFromPlayer({{COUNTER_TYPE}}, {{PLAYER}})": "",
+
+    // Text: "Remove any number of counters from {{Permanent}}"
+    // Card: [[Rhys, the Evermore]]
+    "AnyNumberOfCountersFromPermanent({{PERMANENT}})": "",
+
+    // Text: "Remove {{Number}} counters from {{Permanent}}"
+    // Card: [[Thornmantle Striker]]
+    "NumberCountersFromPermanent({{NUMBER}}, {{PERMANENT}})": "",
+
+    // Text: "Remove {{Number}} {{CounterType}} counters from {{CardInExile}}"
+    // Card: [[Timebender]]
+    "NumberCountersOfTypeFromCardInExile({{NUMBER}}, {{COUNTER_TYPE}}, {{CARD_IN_EXILE}})": "",
+
+    // Text: "Remove {{Number}} {{CounterType}} counters from {{Permanent}}"
+    // Card: [[Timebender]]
+    "NumberCountersOfTypeFromPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // Text: "Remove up to {{Number}} counters from {{Permanent}}"
+    // Card: [[Price of Betrayal]]
+    "UptoNumberCountersFromPermanent({{NUMBER}}, {{PERMANENT}})": "",
+
+    // Text: "Remove up to {{Number}} counters from {{Player}}"
+    // Card: [[Price of Betrayal]]
+    "UptoNumberCountersFromPlayer({{NUMBER}}, {{PLAYER}})": "",
+
+    // Text: "Remove up to {{Number}} {{CounterType}} counters from {{Player}}"
+    // Card: [[Gremlin Mine]]
+    "UptoNumberCountersOfTypeFromPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // ------------------------------------
+    // Remove <Counters> from <Each Object>
+    // ------------------------------------
+
+    // Text: "Remove {{a}} {{CounterType}} counter from each {{CardInExile}}"
+    // Card: [[Alaundo the Seer]]
+    "ACounterOfTypeFromEachCardInExile({{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
+
+    // Text: "Remove {{a}} {{CounterType}} counter from each {{Permanent}}"
+    // Card: [[Heartmender]]
+    "ACounterOfTypeFromEachPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Remove all counters from {{Permanents}}"
+    // Card: [[Aether Snap]]
+    "AllCountersFromEachPermanent({{PERMANENTS}})": "",
+
+    // Text: "Each {{Player}} loses all counters"
+    // Card: [[Final Act]]
+    "AllCountersFromEachPlayer({{PLAYERS}})": "",
+
+    // Text: "Remove all {{CounterType}} counters from all {{Permanents}}"
+    // Card: [[Mine Layer]]
+    "AllCountersOfTypeFromEachPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Remove {{Number}} {{CounterType}} counters from each {{CardInExile}}"
+    // Card: [[Dust of Moments]]
+    "NumberCountersOfTypeFromEachCardInExile({{NUMBER}}, {{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
+
+    // Text: "Remove {{Number}} {{CounterType}} counters from each {{Permanent}}"
+    // Card: [[Dust of Moments]]
+    "NumberCountersOfTypeFromEachPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // -----------------------------------------
+    // Remove <Counters> from <Choice of Object>
+    // -----------------------------------------
+
+    // Text: "Remove all {{CounterType}} counters from {{a}} {{Permanent}}"
+    // Card: [[Cyclopean Tomb]]
+    "AllCountersOfTypeFromAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Remove {{Number}} {{CounterType}} counters from {{a}} {{CardInExile}}"
+    // Card: [[Amy Pond]]
+    "NumberCountersOfTypeFromACardInExile({{NUMBER}}, {{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
+
+    // ------------------------------------------
+    // Remove <Counters> from <Choice of Objects>
+    // ------------------------------------------
+
+    // Text: "Remove {{a}} {{CounterType}} counter from each of any number of {{Permanents}}"
+    // Card: [[Chandra, Legacy of Fire]]
+    "ACounterOfTypeFromEachOfAnyNumberOfPermanents({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Remove any number of counters from among {{Permanents}}"
+    // Card: [[Eventide's Shadow]]
+    "AnyNumberOfCountersFromAmongPermanents({{PERMANENTS}})": "",
+
+    // Text: "Remove up to {{Number}} {{CounterType}} counters from among all {{Permanents}}"
+    // Card: [[Sensational Spider-Man]]
+    "UptoNumberCountersOfTypeFromAmongPermanents({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // ------------------------------------------------------------------------------
+    // Target & Distribute -- Put <Counters> on <Objects>, then remove those counters
+    // ------------------------------------------------------------------------------
+
+    // Text: "Distribute {{Number}} {{CounterType}} counters among target {{Permanents}}. For each counter you put this way, remove it at ..."
+    // Card: [[Bounty of the Hunt]]
+    "TheCountersDistributedThisWay": "",
+  },
+
+  "{{REMOVE_COUNTERS_COST}}": {
+    // ------------------------------
+    // Remove <Couters> from <Object>
+    // ------------------------------
+
+    // Text: "Remove a counter from {{Permanent}}"
+    // Card: [[Brambleback Brute]]
+    "ACounterFromPermanent({{PERMANENT}})": "",
+
+    // Text: "Remove a counter from {{Permanent}}"
+    // Card: [[Noble's Purse]]
+    "ACounterOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // Text: "Remove all {{CounterType}} counters from {{Permanent}}"
+    // Card: [[Essence Bottle]]
+    "AllCountersOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // Text: "Remove any number of {{CounterType}} counters from {{Permanent}}"
+    // Card: [[Bottomless Vault]]
+    "AnyNumberOfCountersOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // Text: "Remove {{Number}} counters from {{Permanent}}"
+    // Card: [[Loch Mare]]
+    "NumberCountersFromPermanent({{NUMBER}}, {{PERMANENT}})": "",
+
+    // Text: "Remove {{Number}} {{CounterType}} counters from {{Permanent}}"
+    // Card: [[Charforger]]
+    "NumberCountersOfTypeFromPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // Text: "Remove one or more {{CounterType}} counters from {{ThisPermanent}}"
+    // Card: [[Simic Manipulator]]
+    "NumberOrMoreCountersOfTypeFromPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
+
+    // -----------------------------------------
+    // Remove <Counters> from <Choice of Object>
+    // -----------------------------------------
+
+    // Text: "Remove a counter from {{a}} {{Permanent}}"
+    // Card: [[O'aka, Traveling Merchant]]
+    "ACounterFromAPermanent({{PERMANENTS}})": "",
+
+    // Text: "Remove {{a}} {{CounterType}} counter from {{a}} {{CardInExile}}"
+    // Card: [[Rift Elemental]]
+    "ACounterOfTypeFromACardInExile({{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
+
+    // Text: "Remove {{a}} {{CounterType}} counter from {{a}} {{Permanent}}"
+    // Card: [[Rift Elemental]]
+    "ACounterOfTypeFromAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Remove {{Number}} counters from {{a}} {{Permanent}}"
+    // Card: [[Moxite Refinery]]
+    "NumberCountersFromAPermanent({{NUMBER}}, {{PERMANENTS}})": "",
+
+    // ------------------------------------------
+    // Remove <Counters> from <Choice of Objects>
+    // ------------------------------------------
+
+    // Text: "Remove {{a}} {{CounterType}} counter from each of {{Number}} {{Permanents}}"
+    // Card: [[Dyadrine, Synthesis Amalgam]]
+    "ACounterOfTypeFromEachOfNumberPermanents({{COUNTER_TYPE}}, {{NUMBER}}, {{PERMANENTS}})": "",
+
+    // Text: "Remove any number of {{CounterType}} counters from among {{Permanents}}"
+    // Card: [[Galloping Lizrog]]
+    "AnyNumberOfCountersOfTypeFromAmongPermanents({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Remove {{Number}} counters from among {{Permanents}}"
+    // Card: [[Tayam, Luminous Enigma]]
+    "NumberCountersFromAmongPermanents({{NUMBER}}, {{PERMANENTS}})": "",
+
+    // Text: "Remove {{Number}} {{CounterType}} counters from among {{Permanents}}"
+    // Card: [[Hopeful Initiate]]
+    "NumberCountersOfTypeFromAmongPermanents({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Remove one or more {{CounterType}} counters from among {{Permanents}}"
+    // Card: [[Ooze Flux]]
+    "NumberOrMoreCountersOfTypeFromAmongPermanents({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+  },
+
+  "{{MOVE_COUNTERS}}": {
+    // ----------------------------------------------
+    // Move <Couters> from <Object(s)> on to <Object>
+    // ----------------------------------------------
+
+    // Text: "move a counter from {{Permanent}} onto {{Permanent}}"
+    // Card: [[Tidus, Yuna's Guardian]]
+    "ACounterFromPermanentOntoNewPermanent({{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "Move a counter of each kind not on {{Permanent}} from another {{Permanent}} onto {{Permanent}}"
+    // Card: [[Goldberry, River-Daughter]]
+    "ACounterOfEachTypeFromPermanentOntoNewPermanentThatNewPermanentDoesntHave({{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "Move {{a}} {{CounterType}} counter from {{Permanent}} onto {{Permanent}}"
+    // Card: [[Weapon Rack]]
+    "ACounterOfTypeFromPermanentOntoNewPermanent({{COUNTER_TYPE}}, {{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "Move all counters from {{Permanent}} onto another {{Permanent}}"
+    // Card: [[Fate Transfer]]
+    "AllCountersFromPermanentOntoNewPermanent({{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "Move all {{CounterType}} counters from {{Permanent}} onto {{Permanent}}"
+    // Card: [[Black Panther, Wakandan King]]
+    "AllCountersOfTypeFromPermanentOntoNewPermanent({{COUNTER_TYPE}}, {{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "Move any number of counters from {{Permanent}} onto a second {{Permanent}}"
+    // Card: [[Resourceful Defense]]
+    "AnyNumberOfCountersFromPermanentOntoNewPermanent({{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "move any number of {{CounterType}} counters from {{Permanent}} onto another {{Permanent}}"
+    // Card: [[Scrounging Bandar]]
+    "AnyNumberOfCountersOfTypeFromPermanentOntoNewPermanent({{COUNTER_TYPE}}, {{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "Move X {{CounterType}} counters from {{Permanent}} onto another {{Permanent}}"
+    // Card: [[Blaster, Combat DJ // Blaster, Morale Booster]]
+    "NumberCountersOfTypeFromPermanentOntoNewPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}}, {{PERMANENT}})": "",
+
+    // Text: "move all {{CounterType}} counters from all {{Permanents}} onto {{Permanent}}"
+    // Card: [[Spike Cannibal]]
+    "AllCountersOfTypeFromEachPermanentOntoNewPermanent({{COUNTER_TYPE}}, {{PERMANENTS}}, {{PERMANENT}})": "",
+
+    // --------------------------------------------------------
+    // Move <Couters> from <Choice of Object(s)> on to <Object>
+    // --------------------------------------------------------
+
+    // Text: "move any number of counters from among {{Permanents}} onto {{Permanent}}"
+    // Card: [[Slippery Bogbonder]]
+    "AnyNumberOfCountersFromAmongPermanentsOntoNewPermanent({{PERMANENTS}}, {{PERMANENT}})": "",
+
+    // Text: "move any number of {{CounterType}} counters from other {{Permanents}} onto {{Permanent}}"
+    // Card: [[Aetherborn Marauder]]
+    "AnyNumberOfCountersOfTypeFromAmongPermanentsOntoNewPermanent({{COUNTER_TYPE}}, {{PERMANENTS}}, {{PERMANENT}})": "",
+
+    // ------------------------------------------------------------
+    // Distribute <Couters> from <Object> on to <Choice of Objects>
+    // ------------------------------------------------------------
+
+    // Text: "move any number of {{CounterType}} counters from {{Permanent}} onto other {{Permanents}}"
+    // Card: [[Forgotten Ancient]]
+    "DistributeAnyNumberOfCountersOfTypeFromPermanentOntoNewPermanents({{COUNTER_TYPE}}, {{PERMANENT}}, {{PERMANENTS}})": "",
+  },
+
+  "{{MOVE_COUNTERS_COST}}": {
+    // Text: "Move one or more counters from {{Permanent}} onto another {{Permanent}}"
+    // Card: [[Goldberry, River-Daughter]]
+    "AtLeastOneCounterFromPermanentOntoNewPermanent({{PERMANENT}}, {{PERMANENT}})": "",
+  },
+
+  "{{_PLAYER_ACTION[PutCounters][NoteCounters]}}": {
+    // Text: "Exile {{Permanent}}. Note the number and kind of counters that were on {{Permanent}}. When [...], return that exiled card to the battlefield under its owner's control tapped with the noted number and kind of counters on it"
+    // Card: [[Tawnos's Coffin]]
     "NoteCountersOnPermanent({{PERMANENT}})": "",
-    "PutACounterOfChoiceOnPermanent([{{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}], {{PERMANENT}})": "",
-    "PutACounterOfChoiceOnPermanent([{{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}], {{PERMANENT}})": "",
-    "PutACounterOfChoiceOnPermanent([{{COUNTER_TYPE}}, {{COUNTER_TYPE}}], {{PERMANENT}})": "",
-    "PutACounterOfEachTypeOnPermanent(CounterTypeList([{{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}]), {{PERMANENT}})": "",
-    "PutACounterOfTypeAndACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "PutACounterOfTypeOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "PutACounterOfTypeOnAPermanentOfEachColor({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "PutACounterOfTypeOnEachOfUptoNumberPermanents({{COUNTER_TYPE}}, {{NUMBER}}, {{PERMANENTS}})": "",
-    "PutACounterOfTypeOnEachPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "PutACounterOfTypeOnOrRemoveACounterOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "PutACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "PutACounterOnEachExiledCard({{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
-    "PutACounterOnExiledCard({{COUNTER_TYPE}}, {{CARD_IN_EXILE}})": "",
-    "PutACounterOnOrRemoveACounterOfTypeFromExiledCard({{COUNTER_TYPE}}, {{CARD_IN_EXILE}})": "",
-    "PutACounterOnPlane({{COUNTER_TYPE}}, ThisPlane)": "",
-    "PutACounterOnScheme({{COUNTER_TYPE}}, ThisScheme)": "",
-    "PutACounterOnVanguard({{COUNTER_TYPE}}, ThisVanguard)": "",
-    "PutCounters([ACounterOfTypeOfChoiceOnEachPermanent([{{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}], {{PERMANENTS}})])": "",
-    "PutCounters([ACounterOfTypeOnEachPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})])": "",
-    "PutCounters([ACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})])": "",
-    "PutCounters([ACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}}), ACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})])": "",
-    "PutCounters([NumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}}), ACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})])": "",
-    "PutCounters([NumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})])": "",
-    "PutCounters([NumberCountersOfTypeOnEachPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})])": "",
-    "PutCountersOfTypeOfDeadPermanentOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "PutDistributedCounters({{COUNTER_TYPE}})": "",
+  },
 
-    "PutACounterOfEachTypeOnPermanent(Trigger_ThoseCounterTypes, {{PERMANENT}})": "",
-    "PutACounterOfTypeOnEachPermanent(EachableCounterType, {{PERMANENTS}})": "",
-    "PutACounterOfTypeOnEachPermanent(TheChosenCounterType, {{PERMANENTS}})": "",
-    "PutACounterOfTypeOnOrRemoveACounterOfTypeFromPermanent(EachableCounterType, {{PERMANENT}})": "",
-    "PutACounterOfTypeOnPermanent(EachableCounterType, {{PERMANENT}})": "",
-    "PutACounterOfTypeOnPermanent(TheChosenCounterType, {{PERMANENT}})": "",
-    "PutACounterOfTypeOnPlayer(TheChosenCounterType, {{PLAYER}})": "",
-    "PutADuplicateCounterOnPermanent({{PERMANENT}})": "",
+  "{{_PLAYER_ACTION[PutCounters][WouldPutCounters]}}": {
+    // Text: "Until end of turn, if you would put one or more +1/+1 counters on a permanent, put that many plus one +1/+1 counters on it instead"
+    // Card: [[Prairie Dog]]
+    "CreateReplaceWouldPutCountersUntil(APlayerWouldPutAnyNumberOfCountersOfTypeOnAPermanent({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}}), [PutNewAmount({{NUMBER}})], {{EXPIRATION}})": "",
+  },
 
-    "PutAbilityCountersOnPermanentFromAbilitiesOnPermanentIfItDoesntHaveIt({{PERMANENT}}, {{CHECK_HASABLE_LIST}}, {{PERMANENT}})": "",
-    "PutAbilityCountersOnAPermanentFromAbilitiesOnCardsInPlayersGraveyard({{PERMANENTS}}, {{CHECK_HASABLE_LIST}}, {{CARDS}}, {{PLAYER}})": "",
+  "{{_STATIC_EFFECT[PutCounters][WouldPutCounters]}}": {
+    // Text: "If one or more +1/+1 counters would be put on a permanent, that many plus one +1/+1 counters are put on it instead."
+    // Card: [[Conclave Mentor]]
+    // Text: "If one or more +1/+1 counters would be put on a permanent, twice that many +1/+1 counters are put on it instead."
+    // Card: [[Branching Evolution]]
+    // Text: "If one or more -1/-1 counters would be put on a permanent, that many -1/-1 counters minus one are put on it instead."
+    // Card: [[Vizier of Remedies]]    
+    "ReplaceWouldPutCounters(CountersOfTypeWouldBePointOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}}), [PutNewAmount({{NUMBER}})])": "",
 
-    "PutAnotherCounterOnExiledCard({{CARD_IN_EXILE}})": "",
-    "PutAnotherCounterOnPermanent({{PERMANENT}})": "",
+    // Text: "If one or more counters would be put on a permanent, that many plus one of each of those kinds of counters are put on it instead."
+    // Card: [[Winding Constrictor]]
+    // Text: "If one or more counters would be put on a permanent, twice that many of each of those kinds of counters are put on it instead."
+    // Card: [[Loading Zone]]
+    "ReplaceWouldPutCounters(CountersWouldBePutOnAPermanent({{PERMANENTS}}), [PutNewAmount({{NUMBER}})])": "",
 
-    "PutCopyOfEachCounterOnPermanentOnPermanent({{PERMANENT}}, {{PERMANENT}})": "",
-    "PutCountersOfDeadPermanentOnEachPermanent({{PERMANENTS}})": "",
-    "PutCountersOfDeadPermanentOnPermanent({{PERMANENT}})": "",
-    "PutDuplicateCountersOnPermanent({{PERMANENT}})": "",
+    // Text: "If you would put one or more counters on a permanent, put that many plus one of each of those kinds of counters on it instead."
+    // Card: [[Doc Samson, Super Psychiatrist]]
+    "ReplaceWouldPutCounters(APlayerWouldPutCountersOnAPermanent({{PLAYERS}}, {{PERMANENTS}}), [PutNewAmount({{NUMBER}})])": "",
 
-    "PutFormerCountersOnPermanent({{PERMANENT}})": "",
-    "PutNumberCountersOfChoiceOnAPermanent({{NUMBER}}, [{{COUNTER_TYPE}}, {{COUNTER_TYPE}}], {{PERMANENTS}})": "",
-    "PutNumberCountersOfTypeAndACounterOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "PutNumberCountersOfTypeOnAPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "PutNumberCountersOfTypeOnEachPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "PutNumberCountersOfTypeOnExiledCard({{NUMBER}}, {{COUNTER_TYPE}}, {{CARD_IN_EXILE}})": "",
-    "PutNumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "PutNumberCountersOfTypeOnPermanentForEach({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}}, {{NUMBER}})": "",
-    "PutNumberCountersOfTypeOnPermanentOrExiled({{NUMBER}}, {{COUNTER_TYPE}}, {{SINGLE_PERMANENT_OR_EXILED_FILTER}})": "",
-    "PutNumberCountersOfTypeOnSpell({{NUMBER}}, {{COUNTER_TYPE}}, ThisSpell)": "",
-    "PutNumberCountersOnEachExiledCard({{NUMBER}}, {{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
-    "PutNumberCountersOnExiledCard({{NUMBER}}, {{COUNTER_TYPE}}, {{CARD_IN_EXILE}})": "",
-    "PutNumberCountersOnGraveyardCard({{NUMBER}}, {{COUNTER_TYPE}}, {{CARD_IN_GRAVEYARDS}})": "",
+    // Text: "If an effect would put one or more counters on a permanent, it puts twice that many of those counters on it instead."
+    // Card: [[Doubling Season]]
+    "ReplaceWouldPutCounters(AnEffectWouldPutCountersOnAPermanent({{PERMANENTS}}), [PutNewAmount({{NUMBER}})])": "",
 
-    "PutUptoNumberCountersOfTypeOnPermanentWithMaxTotal({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}}, {{NUMBER}})": "",
-    "RemoveACounterFromExiledCard({{CARD_IN_EXILE}})": "",
-    "RemoveACounterFromPermanent({{PERMANENT}})": "",
-    "RemoveACounterFromPlayer({{PLAYER}})": "",
-    "RemoveACounterOfTypeFromEachExiledCard({{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
-    "RemoveACounterOfTypeFromEachOfAnyNumberOfPermanents({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "RemoveACounterOfTypeFromEachPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "RemoveACounterOfTypeFromExiledCard({{COUNTER_TYPE}}, {{CARD_IN_EXILE}})": "",
-    "RemoveACounterOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "RemoveAllCountersFromEachPermanent({{PERMANENTS}})": "",
-    "RemoveAllCountersFromPermanent({{PERMANENT}})": "",
-    "RemoveAllCountersFromPlayer({{PLAYER}})": "",
-    "RemoveAllCountersOfTypeFromAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "RemoveAllCountersOfTypeFromEachPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "RemoveAllCountersOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "RemoveAnyNumberOfCountersFromAmongPermanents({{PERMANENTS}})": "",
-    "RemoveCountersDistributedThisWay": "",
-    "RemoveNumCountersFromPermanent({{NUMBER}}, {{PERMANENT}})": "",
-    "RemoveNumCountersOfTypeFromEachExiled({{NUMBER}}, {{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
-    "RemoveNumberCountersOfTypeFromAnExiledCard({{NUMBER}}, {{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
-    "RemoveNumberCountersOfTypeFromEachPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "RemoveNumberCountersOfTypeFromPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "RemoveNumberCountersOfTypeFromPermanentOrExiled({{NUMBER}}, {{COUNTER_TYPE}}, {{SINGLE_PERMANENT_OR_EXILED_FILTER}})": "",
-    "RemoveNumberCountersOfTypeOnExiledCard({{NUMBER}}, {{COUNTER_TYPE}}, {{CARD_IN_EXILE}})": "",
-    "RemoveUptoNumberCountersFromPermanent({{NUMBER}}, {{PERMANENT}})": "",
-    "RemoveUptoNumberCountersFromPlayer({{NUMBER}}, {{PLAYER}})": "",
-    "RemoveUptoNumberCountersOfTypeFromAmongPermanents({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "RemoveUptoNumberCountersOfTypeFromPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
+    // Text: "If you would get one or more poison counters, instead you get one poison counter and you can't get additional poison counters this turn."
+    // Card: [[Melira, the Living Cure]]
+    "ReplaceWouldPutCounters(AnyNumberOfCountersOfTypeWouldBePutOnAPlayer({{COUNTER_TYPE}}, {{PLAYERS}}), [PutNewAmount({{NUMBER}}), CreatePlayerEffectUntil({{PLAYER}}, {{PLAYER_EFFECT_LIST}}, {{EXPIRATION}})])": "",
+
+    // Text: "If a player would put one or more counters on a permanent or player, they put half that many of each of those kinds of counters on that permanent or player instead, rounded down."
+    // Card: [[Vorinclex, Monstrous Raider]]
+    // Text: "If a player would put one or more counters on a permanent or player, they put twice that many of each of those kinds of counters on that permanent or player instead."
+    // Card: [[Vorinclex, Monstrous Raider]]
+    // Text: "If a player would put one or more counters on a permanent or player, they put that many plus one of each of those kinds of counters on that permanent or player instead."
+    // Card: [[Lae'zel, Vlaakith's Champion]]
+    "ReplaceWouldPutCounters(APlayerWouldPutCountersOnAPermanentOrAPlayer({{PLAYERS}}, {{PERMANENTS}}, {{PLAYERS}}), [PutNewAmount({{NUMBER}})])": "",
+
+    // Text: "If a player would get one or more counters, they get that many plus one of each of those kinds of counters instead."
+    // Card: [[Winding Constrictor]]
+    "ReplaceWouldPutCounters(AnyNumberOfCountersWouldBePutOnAPlayer({{PLAYERS}}), [PutNewAmount({{NUMBER}})])": "",
+
+    // Text: "If a modular triggered ability would put one or more +1/+1 counters on a permanent, that many plus one +1/+1 counters are put on it instead."
+    // Card: [[Zabaz, the Glimmerwasp]]
+    "ReplaceWouldPutCounters(AnAbilityWouldPutCountersOfTypeOnAPermanent({{ABILITIES}}, {{COUNTER_TYPE}}, {{PERMANENTS}}), [PutNewAmount({{NUMBER}})])": "",
+  },
+
+  "{{_NUMBER[PutCounters][WouldPutCounters]}}": {
+    // Text: "Until end of turn, if you would put one or more +1/+1 counters on a permanent, put that many plus one +1/+1 counters on it instead"
+    // Card: [[Prairie Dog]]
+    "ThatManyCounters": "",
   },
 
   "{{_CARDS_IN_EXILE[PutCounters]}}": {
-    "HadCountersPutOnItThisWay": "",
+    // Text: "Choose an exiled card an opponent owns with {{a}} {{CounterType}} counter on it"
+    // Card: [[Dauthi Voidwalker]]
     "HasACounterOfType({{COUNTER_TYPE}})": "",
+
+    // Text: "Remove {{a}} {{CounterType}} counter from it. If the card has no {{CounterType}} counters on it, ..."
+    // Card: [[Ertai's Meddling]]
     "HasNoCountersOfType({{COUNTER_TYPE}})": "",
   },
 
   "{{_CARD_EFFECT[PutCounters]}}": {
+    // Text: "Counters remain on {{ThisCard}} as it moves to any zone other than a player's hand or library"
+    // Card: [[Me, the Immortal]]
     "CountersRemainOnCardAsItMovesBetweenZonesExceptforHandAndLibrary": "",
   },
 
-  "{{_CONDITION[PutCounters]}}": {
-    "ACounterOfTypeWasPutOnAPermanentThisTurn({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "ACounterOfTypeWasRemovedFromAPermanentThisTurn({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "ACounterWasPutOnAPermanentThisTurn({{PERMANENTS}})": "",
-    "ANumberOfCountersOfTypeWereMovedThisWay({{COMPARISON}}, {{COUNTER_TYPE}})": "",
-    "GraveyardCardHasNumCounters({{CARD_IN_GRAVEYARDS}}, {{COMPARISON}}, {{COUNTER_TYPE}})": "",
-    "ItsTheFirstTimeCountersOfTypeWerePutOnThatPermanentThisTurn": "",
-    "NumberOfCountersRemovedThisWayIs({{COMPARISON}})": "",
-    "TheNumberOfCountersOfTypeAmongPermanentsIs({{COUNTER_TYPE}}, {{PERMANENTS}}, {{COMPARISON}})": "",
-    "TheNumberOfCountersOfTypePutOnPermanentsThisWayIs({{COUNTER_TYPE}}, {{PERMANENTS}}, {{COMPARISON}})": "",
-    "ThereAreANumberOfCountersAmongPermanents({{COMPARISON}}, {{PERMANENTS}})": "",
-    "ThereAreNumberKindsOfCounterTypesAmongPermanents({{COMPARISON}}, {{PERMANENTS}})": "",
-  },
-
-  "{{_COST[PutCounters]}}": {
-    "GetNumberPoisonCounters({{NUMBER}})": "",
-    "MoveAtLeastOneCounterFromPermanentOntoNewPermanent({{PERMANENT}}, {{PERMANENT}})": "",
-    "PutACounterOfTypeOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "PutACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "PutACounterOnExiledCard({{COUNTER_TYPE}}, {{CARD_IN_EXILE}})": "",
-    "PutNumberCountersOfTypeOnAPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "PutNumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "RemoveACounterFromAPermanent({{PERMANENTS}})": "",
-    "RemoveACounterFromPermanent({{PERMANENT}})": "",
-    "RemoveACounterOfTypeFromAPermanent(Or([{{COUNTER_TYPE}}, {{COUNTER_TYPE}}]), {{PERMANENTS}})": "",
-    "RemoveACounterOfTypeFromAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "RemoveACounterOfTypeFromAnExiledCard({{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
-    "RemoveACounterOfTypeFromEachOfNumberPermanents({{COUNTER_TYPE}}, {{NUMBER}}, {{PERMANENTS}})": "",
-    "RemoveACounterOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "RemoveAllCountersOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "RemoveAnyNumberOfCountersOfTypeFromAmongPermanents({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "RemoveAnyNumberOfCountersOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "RemoveNumberCountersFromAPermanent({{NUMBER}}, {{PERMANENTS}})": "",
-    "RemoveNumberCountersFromAmongPermanents({{NUMBER}}, {{PERMANENTS}})": "",
-    "RemoveNumberCountersFromPermanent({{NUMBER}}, {{PERMANENT}})": "",
-    "RemoveNumberCountersOfTypeFromAmongPermanents({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "RemoveNumberCountersOfTypeFromPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "RemoveNumberOrMoreCountersOfTypeFromAmongPermanents({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "RemoveNumberOrMoreCountersOfTypeFromPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
-  },
-
   "{{_EXPIRATION[PutCounters]}}": {
-    "UntilItDoesntHaveACounterOfType({{COUNTER_TYPE}})": "",
-    "UntilPermanentNoLongerHasACounterOfType({{PERMANENT}}, {{COUNTER_TYPE}})": "",
+    // Text: "That land is an Island in addition to its other types for as long as it has a flood counter on it"
+    // Card: [[Aquitect's Will]]
+    "ForAsLongAsPermanentHasACounterOfTypeOnIt({{PERMANENT}}, {{COUNTER_TYPE}})": "",
   },
 
   "{{_NUMBER[PutCounters]}}": {
-    "CommandPermanentPassesFilter_NumCounters": "",
-    "DeadPermanentPassesFilter_NumCounters": "",
-    "NumAbilityCountersPutOnPermanent": "",
-    "NumCountersOfTypeOnDeadGuestPermanent({{COUNTER_TYPE}})": "",
-    "NumCountersOfTypeOnDeadPermanent({{COUNTER_TYPE}})": "",
-    "NumCountersOfTypeOnExiledCard({{COUNTER_TYPE}}, {{CARD_IN_EXILE}})": "",
-    "NumCountersOfTypeOnPermanent({{COUNTER_TYPE}}, Self_It)": "",
-    "NumCountersOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "NumCountersOfTypeOnPermanents({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "NumCountersOfTypeOnScheme({{COUNTER_TYPE}}, ThisScheme)": "",
-    "NumCountersOfTypePlayerHas({{COUNTER_TYPE}}, {{PLAYER}})": "",
-    "NumCountersOfTypePlayerHasPutOnPermanentsThisTurn({{COUNTER_TYPE}}, {{PLAYER}}, {{PERMANENTS}})": "",
-    "NumCountersOfTypePlayersHave({{COUNTER_TYPE}}, {{PLAYERS}})": "",
-    "NumCountersOnDeadPermanent": "",
-    "NumCountersOnPermanent({{PERMANENT}})": "",
-    "NumberOfBlocksOfNumberCountersRemovedThisWay({{NUMBER}})": "",
-    "NumberOfCountersOfTypeOnPlane({{COUNTER_TYPE}}, ThisPlane)": "",
-    "NumberOfCountersOfTypeOnVanguard({{COUNTER_TYPE}}, ThisVanguard)": "",
-    "NumberOfCountersOfTypeRemovedThisWay({{COUNTER_TYPE}})": "",
-    "NumberOfCountersRemovedThisWay": "",
-    "TheNumberOfCounterTypesAmongPermanents({{PERMANENTS}})": "",
-    "TheNumberOfCountersOfTypeMovedThisWay({{COUNTER_TYPE}})": "",
+    // -----------------------
+    // Current State Countable
+    // -----------------------
+
+    // Text: "The number of {{CounterType}} counters on {{Scheme}}"
+    // Card: [[Your Inescapable Doom]]
+    "TheNumberOfCountersOfTypeOnScheme({{COUNTER_TYPE}}, ThisScheme)": "",
+
+    // Text: "The number of {{CounterType}} counters on {{Vanguard}}"
+    // Card: [[Necropotence Avatar]]
+    "TheNumberOfCountersOfTypeOnVanguard({{COUNTER_TYPE}}, ThisVanguard)": "",
+
+    // Text: "The number of {{CounterType}} counters on {{Plane}}"
+    // Card: [[Aplan Mortarium]]
+    "TheNumberOfCountersOfTypeOnPlane({{COUNTER_TYPE}}, {{PLANE}})": "",
+
+    // Text: "The number of {{CounterType}} counters on {{Spell}}"
+    // Card: [[Aplan Mortarium]]
     "TheNumberOfCountersOfTypeOnSpell({{COUNTER_TYPE}}, {{SPELL}})": "",
-    "TheNumberOfPoisonCountersPlayerHas({{PLAYER}})": "",
-    "TheTotalNumberOfCountersOnPermanents({{PERMANENTS}})": "",
-    "TheTotalNumberOfCountersPlayersHave({{PLAYERS}})": "",
-    "TheTotalNumberOfRadCountersAmongPlayers({{PLAYERS}})": "",
-    "Trigger_TheAmountOfCounters": "",
-    "WhenCountersArePutOnAPermanent_AmountOfCounters": "",
-    "WouldGetCounters_NumberOfCounters": "",
-    "WouldPutCounters_NumberOfCounters": "",
+
+    // Text: "The total number of {{CounterType}} counters among players"
+    // Card: [[Vault 12: The Necropolis]]
+    "TheTotalNumberOfCountersOfTypeAmongPlayers({{COUNTER_TYPE}}, {{PLAYERS}})": "",
+
+    // Text: "the number of {{CounterType}} counters among {{Permanents}}"
+    // Card: [[Kate Stewart]]
+    "TheTotalNumberOfCountersOfTypeAmongPermanents({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "the number of {{CounterType}} counters among {{CardsInExile}}"
+    // Card: [[Cosima, God of the Voyage // The Omenkeel]]
+    "TheTotalNumberOfCountersOfTypeAmongCardsInExile({{COUNTER_TYPE}}, {{CARDS_IN_EXILE}})": "",
+
+    // Text: "The total number of {{CounterType}} counters among {{CardsInGraveyards}}"
+    // Card: [[Managorger Phoenix]]
+    "TheTotalNumberOfCountersOfTypeAmongCardsInGraveyards({{COUNTER_TYPE}}, {{CARDS_IN_GRAVEYARDS}})": "",
+
+    // Text: "the number of counters among {{Permanents}}"
+    // Card: [[Dimension X Pizzasaur]]
+    "TheTotalNumberOfCountersAmongPermanents({{PERMANENTS}})": "",
+
+    // Text: "The total number of counters among players"
+    // Card: [[Lumbering Megasloth]]
+    "TheTotalNumberOfCountersAmongPlayers({{PLAYERS}})": "",
+
+    // Text: "The number of kinds of counters among {{Permanents}}"
+    // Card: [[Blitzball Stadium]]
+    "TheNumberOfCounterTypesAmongPermanents({{PERMANENTS}})": "",
+
+    // --------------------
+    // Event List Countable
+    // --------------------
+
+    // Text: "The number of {{CounterType}} counters {{Players}} have put on {{Permanents}} this turn"
+    // Card: [[Iridescent Hornbeetle]]
+    "TheNumberOfCountersOfTypePlayersHavePutOnPermanentsThisTurn({{COUNTER_TYPE}}, {{PLAYERS}}, {{PERMANENTS}})": "",
+
+    // Text: "The number of counters {{Players}} have put on {{Permanents}} this turn"
+    // Card: [[Lasting Tarfire]]
+    "TheNumberOfCountersPlayersHavePutOnPermanentsThisTurn({{PLAYERS}}, {{PERMANENTS}})": "",
+
+    // Text: "The number of {{CounterType}} counters put on {{Permanents}} this turn"
+    // Card: [[Fairgrounds Trumpeter]]
+    "TheNumberOfCountersOfTypePutOnPermanentsThisTurn({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "The number of counters put on {{Permanents}} this turn"
+    // Card: [[Fairgrounds Trumpeter]]
+    "TheNumberOfCountersPutOnPermanentsThisTurn({{PERMANENTS}})": "",
+
+    // Text: "The number of {{CounterType}} counters removed from {{Permanents}} this turn"
+    // Card: [[Churning Reservoir]]
+    "TheNumberOfCountersOfTypeRemovedFromPermanentsThisTurn({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // -------------
+    // Action Values
+    // -------------
+
+    // Text: "Put {{a}} {{CounterType}} counter on up to {{Number}} {{Permanents}}. If you put counters on {{Number}} permanents this way, ..."
+    // Card: [[Call the Spirit Dragons]]
+    "TheNumberOfPermanentsThatHadCountersPutOnItThisWay": "",
+
+    // Text: "Move counters from {{Permanent}} onto {{Permanent}}. If one or more {{CounterType}} counters are moved this way, you gain that much life and draw a card"
+    // Card: [[Black Panther, Wakandan King]]
+    "TheNumberOfCountersOfTypeMovedThisWay({{COUNTER_TYPE}})": "",
+
+    // Text: "Remove all {{CounterType}} counters from {{Permanent}}. If no counters were removed this way, ..."
+    // Card: [[Bounty of the Luxa]]
+    "TheNumberOfCountersRemovedThisWay": "",
+
+    // Text: "Put {{an}} {{AbilityCounterTYpe}} counter on any {{Permanent}} if {{Condition}}. Repeat this process for {{MoreAbilities}}. Then put {{a}} {{CounterType}} counter on {{Permanent}} for each counter put on a permanent this way
+    // Card: [[Kathril, Aspect Warper]]
+    "TheNumberOfCountersPutThisWay": "",
   },
 
   "{{_PERMANENTS[PutCounters]}}": {
-    "HadCountersOfTypePutOnItByAPlayerThisTurn({{COUNTER_TYPE}}, {{PLAYERS}})": "",
-    "ThePermanentsThatHadCountersPutOnThemThisWay": "",
-    "HadACounterOfTypePutOnItThisWay({{COUNTER_TYPE}})": "",
-    "HadCountersPutOnItThisWay": "",
-    "HasACounter": "",
-    "HasACounterOfType({{COUNTER_TYPE}})": "",
-    "HasACounterOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})": "",
-    "HasNoCounters": "",
-    "HasNoCountersOfType(TheChosenCounterType)": "",
-    "HasNoCountersOfType({{COUNTER_TYPE}})": "",
-    "HasNumCounters({{COMPARISON}})": "",
-    "HasNumCountersOfType({{COMPARISON}}, {{COUNTER_TYPE}})": "",
-    "HasntHadACounterOfTypeRemovedWithThisEffect({{COUNTER_TYPE}})": ""
-  },
+    // -----------------------
+    // Current State Checkable
+    // -----------------------
 
-  "{{_PERMANENT[PutCounters]}}": {
-    "ThePermanentThatHadCountersPutOnItThisWay": "",
+    // Text: "Destroy target creature with a counter on it."
+    // Card: [[Hunter of Eyeblights]]
+    "HasACounter": "",
+
+    // Text: "Put a +1/+1 counter on each creature you control with a +1/+1 counter on it."
+    // Card: [[Dueling Coach]]
+    "HasACounterOfType({{COUNTER_TYPE}})": "",
+
+    // Text: "Creatures you control with three or more +1/+1 counters on them have haste."
+    // Card: [[Runadi, Behemoth Caller]]
+    "HasNumberCountersOfType({{COMPARISON}}, {{COUNTER_TYPE}})": "",
+
+    // Text: "Destroy all creatures with no counters on them."
+    // Card: [[Damning Verdict]]
+    "HasNoCounters": "",
+
+    // Text: "Each other creature you control without a +1/+1 counter on it has outlast {G/W}."
+    // Card: [[Arcus Acolyte]]
+    "HasNoCountersOfType({{COUNTER_TYPE}})": "",
+
+    // Text: "As long as this creature has three or more counters on it, it has flying"
+    // Card: [[Warden of the Inner Sky]]
+    "HasNumberCounters({{COMPARISON}})": "",
+
+    // --------------------
+    // Event List Checkable
+    // --------------------
+
+    // Text: "Each creature you control that you've put one or more +1/+1 counters on this turn has hexproof"
+    // Card: [[Kid Loki]]
+    "HadCountersOfTypePutOnItByAPlayerThisTurn({{COUNTER_TYPE}}, {{PLAYERS}})": "",
+
+    // Text: "that a mire counter was put onto with this artifact"
+    // Card: [[Cyclopean Tomb]]
+    "PermanentPutACounterOfTypeOnIt({{PERMANENT}}, {{COUNTER_TYPE}})": "",
+
+    // Text: "that a mire counter has not been removed from with this artifact"
+    // Card: [[Cyclopean Tomb]]
+    "PermanentHasNotRemovedACounterOfTypeFromIt({{PERMANENT}}, {{COUNTER_TYPE}})": "",
+
+    // -------------
+    // Action Values
+    // -------------
+
+    // Text: "each player may put two +1/+1 counters on a creature they control. Goad each creature that had counters put on it this way"
+    // Card: [[Agitator Ant]]
+    "HadCountersPutOnItThisWay": "",
   },
 
   "{{_PLAYERS[PutCounters]}}": {
-    "HasANumberOfPoisonCounters({{COMPARISON}})": "",
-    "HasARadCounter": "",
-    "HasNoRadCounters": "",
-    "HasPutACounterOnAPermanentThisTurn({{PERMANENTS}})": "",
-    "HasPutANumberOfCountersOfTypeOnAPermanentThisTurn({{COMPARISON}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+    // Text: "as long as defending player has a rad counter"
+    // Card: [[Nightkin Ambusher]]
+    "HasACounterOfType({{COUNTER_TYPE}})": "",
+
+    // Text: "For each opponent who has three or more poison counters ..."
+    // Card: [[Geth's Summons]]
+    "HasANumberOfCountersOfType({{COMPARISON}}, {{COUNTER_TYPE}})": "",
+
+    // Text: "they don't have any rad counters"
+    // Card: [[Vexing Radgull]]
+    "HasNoCountersOfType({{COUNTER_TYPE}})": "",
+  },
+
+  "{{_TRIGGER[PutCounters]}}": {
+    // ----------------
+    // Counters Are Put
+    // ----------------
+
+    // Text: "Whenever a +1/+1 counter is put on this creature, ..."
+    // Card: [[Bloodcrazed Hoplite]]
+    "WhenACounterOfTypeIsPutOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Whenever one or more +1/+1 counters are put on a creature you control, ..."
+    // Card: [[Moss-Pit Skeleton]]
+    "WhenAnyNumberOfCountersOfTypeArePutOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Whenever one or more counters are put on a creature you control, if it's the first time counters have been put on that creature this turn, ..."
+    // Card: [[Stalwart Successor]]
+    "WhenAnyNumberOfCountersArePutOnASpecificPermanentForTheFirstTimeEachTurn({{PERMANENTS}})": "",
+
+    // Text: "Whenever one or more {{CounterType}} counters are put on a permanent, if it's the first time those kinds of counters have been put on that permanent this turn, ..."
+    // Card: [[Botanical Brawler]]
+    "WhenAnyNumberOfCountersOfTypeArePutOnASpecificPermanentForTheFirstTimeEachTurn({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Whenever one or more loyalty counters are put on planeswalkers you control, ..."
+    // Card: [[Bioessence Hydra]]
+    "WhenAnyNumberOfCountersOfTypeArePutOnAnyNumberOfPermanents({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Whenever one or more counters are put on this creature, ..."
+    // Card: [[Putrid Hexhag]]
+    "WhenAnyNumberOfCountersArePutOnAPermanent({{PERMANENTS}})": "",
+
+    // Text: "When the third plan counter is put on this enchantment, ..."
+    // Card: [[Robot Domination]]
+    "WhenTheNthCounterOfTypeIsPutOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}}, {{NUMBER}})": "",
+
+    // --------------------
+    // Player Puts Counters
+    // --------------------
+
+    // Text: "Whenever you put one or more counters on a permanent, ..."
+    // Card: [[All Will Be One]]
+    "WhenAPlayerPutsAnyNumberOfCountersOnAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
+
+    // Text: "Whenever you put one or more counters on a player, ..."
+    // Card: [[All Will Be One]]
+    "WhenAPlayerPutsCountersOnAPlayer({{PLAYERS}}, {{PLAYERS}})": "",
+
+    // Text: "Whenever you put a lore counter on a Saga you control, ..."
+    // Card: [[Sigurd, Jarl of Ravensthorpe]]
+    "WhenAPlayerPutsACounterOfTypeOnAPermanent({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Whenever you put one or more +1/+1 counters on a creature you control, ..."
+    // Card: [[Stocking the Pantry]]
+    "WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAPermanent({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
+
+    // Text: "Whenever you put one or more +1/+1 counters on one or more other Heroes you control, ..."
+    // Card: [[Invisible Woman, Sue Storm]]
+    "WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAnyNumberOfPermanents({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
   },
 
 
-  "{{_STATIC_EFFECT[PutCounters]}}": {
-    "ReplaceWouldPutCounters({{REPLACABLE_EVENT[PutCounters][WouldPutCounters]}}, {{REPLACEMENT_ACTIONS[PutCounters][WouldPutCounters]}})": "",
+
+
+  "{{_COST[PutCounters]}}": {
+    "PutCounters([{{PUT_COUNTERS_COST}}])": "",
+    "RemoveCounters([{{REMOVE_COUNTERS_COST}}])": "",
+    "MoveCounters([{{MOVE_COUNTERS_COST}}])": "",
   },
 
-  "{{_PERMANENT_RULE[PutCounters]}}": {
-    "CantHaveAnyCountersOfTypePutOnIt({{COUNTER_TYPE}})": "",
-    "CantHaveAnyCountersPutOnIt": "",
-    "CantHaveMoreThanNumberCountersOfType({{NUMBER}}, {{COUNTER_TYPE}})": "",
+  "{{_PLAYER_ACTION[PutCounters]}}": {
+    "PutCounters([{{PUT_COUNTERS}}])": "",
+    "PutCounters([{{PUT_COUNTERS}}, {{PUT_COUNTERS}}])": "",
+    "PutCounters([{{PUT_COUNTERS}}, {{PUT_COUNTERS}}, {{PUT_COUNTERS}}])": "",
+    "PutCounters([{{PUT_COUNTERS}}, {{PUT_COUNTERS}}, {{PUT_COUNTERS}}, {{PUT_COUNTERS}}])": "",
+    "PutCounters([{{PUT_COUNTERS}}, {{PUT_COUNTERS}}, {{PUT_COUNTERS}}, {{PUT_COUNTERS}}, {{PUT_COUNTERS}}])": "",
+    "PutCountersWithRestriction([{{PUT_COUNTERS}}], {{PUT_RESTRICTION}})": "",
+
+    "PutOrRemoveCounters([{{PUT_OR_REMOVE_COUNTERS}}])": "",
+
+    "RemoveCounters([{{REMOVE_COUNTERS}}])": "",
+    "RemoveCounters([{{REMOVE_COUNTERS}}, {{REMOVE_COUNTERS}}])": "",
+
+    "MoveCounters([{{MOVE_COUNTERS}}])": "",
   },
 
-  "{{REPLACABLE_EVENT[PutCounters][WouldPutCounters]}}": {
-    "APlayerWouldGetAnyNumberOfCounters({{PLAYERS}})": "",
-    "APlayerWouldGetAnyNumberOfPoisonCounters({{PLAYERS}})": "",
-    "APlayerWouldPutAnyNumberOfCountersOfTypeOnAPermanent({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "APlayerWouldPutCountersOnAPermanentOrAPlayer({{PLAYERS}}, {{PERMANENTS}}, {{PLAYERS}})": "",
-    "APlayerWouldPutCountersOnAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
-    "AnAbilityWouldPutCountersOfTypeOnAPermanent({{ABILITIES}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "AnEffectWouldPutCountersOnAPermanent({{PERMANENTS}})": "",
-    "CountersOfTypeWouldBePointOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "CountersWouldBePutOnAPermanent({{PERMANENTS}})": ""
-  },
-
-  "{{REPLACEMENT_ACTIONS[PutCounters][WouldPutCounters]}}": {
-    "[GetAPoisonCounter, CreatePlayerEffectUntil({{PLAYER}}, {{PLAYER_EFFECT_LIST}}, {{EXPIRATION}})]": "",
-    "[GetNewAmount({{NUMBER}})]": "",
-    "[PutNewAmount({{NUMBER}})]": "",
-    "[PutNewAmountOfType({{NUMBER}}, {{COUNTER_TYPE}})]": ""
-  },
 
 }

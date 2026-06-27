@@ -1,7 +1,9 @@
 {
   "{{COUNTER_TYPE_LIST}}": {
-    "[{{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}]": ""
+    "[{{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}]": "",
+    "[{{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}]": "",
   },
+
   "{{COUNTER_TYPE}}": {
     "{{ABILITY_COUNTER}}": "",
     "{{ACTION_COUNTER}}": "",
@@ -250,7 +252,8 @@
   },
   "{{PLAYER_COUNTER}}": {
     "ExperienceCounter": "",
-    "PoisonCounter": ""
+    "PoisonCounter": "",
+    "RadCounter": ""
   },
   "{{PT_COUNTER}}": {
     "PTCounter(+{{DIGITS}}, +{{DIGITS}})": "",

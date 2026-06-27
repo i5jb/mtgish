@@ -19,7 +19,8 @@
   "{{ActionCounter}}": {
     "finality": "FinalityCounter",
     "shield": "ShieldCounter",
-    "stun": "StunCounter"
+    "stun": "StunCounter",
+    "Stun": "StunCounter",
   },
   "{{BattleCounter}}": {
     "defense": "DefenseCounter"
@@ -31,7 +32,6 @@
     "{{NormalCounter}}": "{{NormalCounter[0]}}",
     "{{PTCounter}}": "{{PTCounter[0]}}",
     "{{PlaneswalkerCounter}}": "{{PlaneswalkerCounter[0]}}",
-    "{{PlayerCounter}}": "{{PlayerCounter[0]}}"
   },
   "{{NormalCounter}}": {
     "acorn": "AcornCounter",
@@ -248,7 +248,4 @@
   "{{PlaneswalkerCounter}}": {
     "loyalty": "LoyaltyCounter"
   },
-  "{{PlayerCounter}}": {
-    "experience": "ExperienceCounter"
-  }
 }

@@ -76,7 +76,7 @@
     "TokenCopyOfCommander({{TOKEN_COPY_EFFECT_LIST}})": "",
     "TokenCopyOfPermanent({{PERMANENT}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
     "TokenCopyOfEachPermanent({{PERMANENTS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
-    "TokenCopyOfEachGraveyardCard({{CARDS_IN_GRAVEYARD}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    "TokenCopyOfEachGraveyardCard({{CARDS_IN_GRAVEYARDS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
     "TokenCopyOfEachExiledCard({{CARDS_IN_EXILE}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
     "TokenCopyOfGraveyardCard({{CARD_IN_GRAVEYARDS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
     "TokenCopyOfExiledCard({{CARD_IN_EXILE}}, {{TOKEN_COPY_EFFECT_LIST}})": "",

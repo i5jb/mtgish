@@ -214,7 +214,7 @@
     "WhenAnyNumberOfCardsArePutIntoAPlayersGraveyardFromAnywhereForTheFirstTimeEachTurn({{CARDS}}, {{PLAYERS}})": ""
   },
   "{{_TRIGGER[EnterGraveyard-FromBattlefield]}}": {
-    "WhenACreatureOrPlaneswalkerDies({{PERMANENTS}})": "",
+    "WhenAPermanentDies({{PERMANENTS}})": "",
     "WhenAPermanentIsPutIntoAPlayersGraveyard({{PERMANENTS}}, {{PLAYERS}})": "",
     "WhenAnyNumberOfCreaturesOrPlaneswalkersDie({{PERMANENTS}})": "",
     "WhenAnyNumberOfPermanentsArePutIntoAPlayersGraveyards({{PERMANENTS}}, {{PLAYERS}})": ""
@@ -231,7 +231,7 @@
     "WhenAnyNumberOfPermanentsAreReturnedToHand({{PERMANENTS}})": ""
   },
   "{{_TRIGGER[EnterHand-FromGraveyard]}}": {
-    "WhenAGraveyardCardIsPutIntoHand({{CARDS_IN_GRAVEYARD}})": ""
+    "WhenAGraveyardCardIsPutIntoHand({{CARDS_IN_GRAVEYARDS}})": ""
   },
   "{{_TRIGGER[EnterHand-FromLibrary]}}": {
     "WhenASpecificCardIsPutIntoAPlayersHandFromTheirLibrary({{CARDS_IN_HAND}}, {{PLAYERS}})": ""
@@ -250,7 +250,7 @@
     "WhenAnyNumberOfCardsArePutIntoExileFromAPlayersGraveyard({{CARDS}}, {{PLAYERS}})": "",
     "WhenAnyNumberOfCardsArePutIntoExileFromAPlayersGraveyardAndOrLibrary({{CARDS}}, {{PLAYERS}})": "",
     "WhenAnyNumberOfGenericCardsArePutIntoExileFromAPlayersHand({{PLAYERS}})": "",
-    "WhenAnyNumberOfPermanentsAndOrGraveyardCardsArePutIntoExile({{PERMANENTS}}, {{CARDS_IN_GRAVEYARD}})": ""
+    "WhenAnyNumberOfPermanentsAndOrGraveyardCardsArePutIntoExile({{PERMANENTS}}, {{CARDS_IN_GRAVEYARDS}})": ""
   },
   "{{_TRIGGER[Expend]}}": {
     "WhenAPlayerExpendsAnAmount({{PLAYERS}}, {{COMPARISON}})": ""
@@ -284,9 +284,6 @@
   "{{_TRIGGER[Gift]}}": {
     "WhenAPlayerGivesAGift({{PLAYERS}})": ""
   },
-  "{{_TRIGGER[GiveAPlayerCounters]}}": {
-    "WhenAPlayerPutsAnyCountersOnAPlayer({{PLAYERS}}, {{PLAYERS}})": ""
-  },
   "{{_TRIGGER[Investigate]}}": {
     "WhenAPlayerInvestigates({{PLAYERS}})": "",
     "WhenAPlayerInvestigatesForTheFirstTimeEachTurn({{PLAYERS}})": ""
@@ -301,8 +298,8 @@
     "WhenAnyNumberOfPermanentsLeaveTheBattlefieldWithoutDying({{PERMANENTS}})": ""
   },
   "{{_TRIGGER[LeaveGraveyard]}}": {
-    "WhenAGraveyardCardLeaves({{CARDS_IN_GRAVEYARD}})": "",
-    "WhenAnyNumberOfGraveyardCardsLeave({{CARDS_IN_GRAVEYARD}})": ""
+    "WhenAGraveyardCardLeaves({{CARDS_IN_GRAVEYARDS}})": "",
+    "WhenAnyNumberOfGraveyardCardsLeave({{CARDS_IN_GRAVEYARDS}})": ""
   },
   "{{_TRIGGER[LoseControl]}}": {
     "WhenAPlayerLosesControlOfAPermanent({{PLAYERS}}, {{PERMANENTS}})": ""
@@ -374,21 +371,6 @@
   },
   "{{_TRIGGER[PutASpellOrAbilityOntoTheStack]}}": {
     "WhenASpellOrAbilityIsPutOntoTheStack({{SPELLS_OR_ABILITIES}})": ""
-  },
-  "{{_TRIGGER[PutCounters]}}": {
-    "WhenACounterIsPutOnAPermanent({{PERMANENTS}})": "",
-    "WhenACounterOfTypeIsPutOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "WhenAPlayerPutsACounterOfTypeOnAPermanent({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "WhenAPlayerPutsACounterOnAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
-    "WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAnyNumberOfPermanents({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAPermanent({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "WhenAPlayerPutsAnyNumberOfGenericCountersOnAPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
-    "WhenAnyNumberOfCountersArePutOnAPermanent({{PERMANENTS}})": "",
-    "WhenAnyNumberOfCountersArePutOnAPermanentForTheFirstTimeEachTurn({{PERMANENTS}})": "",
-    "WhenAnyNumberOfCountersOfTypeArePutOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "WhenAnyNumberOfCountersOfTypeArePutOnAPermanentForTheFirstTimeEachTurn({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "WhenAnyNumberOfCountersOfTypeArePutOnAnyNumberOfPermanents({{COUNTER_TYPE}}, {{PERMANENTS}})": "",
-    "WhenTheNthCounterOfTypeIsPutOnAPermanent({{COUNTER_TYPE}}, {{PERMANENTS}}, {{NUMBER}})": ""
   },
   "{{_TRIGGER[PutPermanentOnBattlefield]}}": {
     "WhenAPlayerPutsAPermanentOnTheBattlefield({{PLAYERS}}, {{PERMANENTS}})": ""
@@ -678,7 +660,6 @@
     "{{_TRIGGER[GainControl]}}": "",
     "{{_TRIGGER[GainLife]}}": "",
     "{{_TRIGGER[Gift]}}": "",
-    "{{_TRIGGER[GiveAPlayerCounters]}}": "",
     "{{_TRIGGER[Investigate]}}": "",
     "{{_TRIGGER[Kicker]}}": "",
     "{{_TRIGGER[LeaveBattlefield]}}": "",

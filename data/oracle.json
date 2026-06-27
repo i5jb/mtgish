@@ -1425,7 +1425,7 @@
         "name": "A-Heartfire Hero",
         "manaCost": "{R}",
         "type": "Creature — Mouse Soldier",
-        "text": "Valiant — Whenever Heartfire Hero becomes the target of a spell or ability you control for the first time each turn, put a +1/+1 counter on it.\nWhen Heartfire Hero dies, it deals damage equal to its power to each opponent.",
+        "text": "Valiant — Whenever this creature becomes the target of a spell or ability you control for the first time each turn, put a +1/+1 counter on it.\nWhen this creature dies, it deals damage equal to its power to each opponent.",
         "power": "0",
         "toughness": "1"
       }
@@ -58198,7 +58198,7 @@
     "cards": [
       {
         "name": "Captain America, Team Leader",
-        "manaCost": "{U}{R}{W}",
+        "manaCost": "{R}{W}{U}",
         "type": "Legendary Creature — Human Soldier Hero",
         "text": "Whenever another Hero you control enters, it gains vigilance and haste until end of turn. Put a +1/+1 counter on that Hero and a +1/+1 counter on Captain America.",
         "power": "3",
@@ -397171,7 +397171,7 @@
         "name": "The Keeper of Favorite Cards",
         "manaCost": "{2}{W}",
         "type": "Legendary Creature — Human Soldier",
-        "text": "When The Keeper of Favorite Cards enters the battlefield or attacks, name a nonland card and write it on your favorites list for this game. (You can have limitless favorites.)\nYour favorite creatures get +1/+0.\nWhenever you cast a favorite noncreature spell, create a 1/1 white Soldier creature token.",
+        "text": "Whenever The Keeper of Favorite Cards enters or attacks, choose a nonland card name and add it to your favorites list for this game. (You can have limitless favorites.)\nYour favorite creatures get +1/+0.\nWhenever you cast one of your favorite noncreature spells, create a 1/1 white Soldier creature token.",
         "power": "2",
         "toughness": "3"
       }
