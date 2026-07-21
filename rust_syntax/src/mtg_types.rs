@@ -3033,7 +3033,7 @@ pub enum ReplacementActionWouldPutIntoGraveyardCost {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldPayLife", content = "args"))]
 pub enum ReplacementActionWouldPayLife {
-  ExileTheTopNumberCardsOfLibrary(Box<GameNumber>),
+  Exile(Vec<Exilable>, Vec<ExileFlag>),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -3156,11 +3156,8 @@ pub enum ReplacementActionWouldDraw {
   DrawACard,
   DrawNumberCards(Box<GameNumber>),
   EachPlayerAction(Box<Players>, Box<ReplacementActionWouldDraw>),
+  Exile(Vec<Exilable>, Vec<ExileFlag>),
   ExileCardsFromTheTopOfLibraryUntilACardOfTypeIsExiled(Box<CardsInLibrary>),
-  ExileTheTopCardOfPlayersLibrary(Box<Player>),
-  ExileTheTopNumberCardsOfLibrary(Box<GameNumber>),
-  ExileTopCardOfLibrary,
-  ExileTopCardOfLibraryFaceDown,
   GainLife(Box<GameNumber>),
   If(Condition, Vec<ReplacementActionWouldDraw>),
   IfElse(Condition, Vec<ReplacementActionWouldDraw>, Vec<ReplacementActionWouldDraw>),
@@ -3255,8 +3252,7 @@ pub enum ActionPreventDamage {
 
   CreateTokens(Vec<CreatableToken>),
   DrawNumberCards(Box<GameNumber>),
-  ExileNumberGraveyardCards(Box<GameNumber>, Box<CardsInGraveyards>),
-  ExileTheTopNumberCardsOfLibrary(Box<GameNumber>),
+  Exile(Vec<ExilableCost>, Vec<ExileFlag>),
   GainLife(Box<GameNumber>),
   MillNumberCards(Box<GameNumber>),
   PlayerAction(Box<Player>, Box<ReplacementActionWouldDealDamage>),
@@ -3270,7 +3266,7 @@ pub enum ActionPreventDamage {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldDealDamageCost", content = "args"))]
 pub enum ReplacementActionWouldDealDamageCost {
-  ExileNumberGraveyardCards(Box<GameNumber>, Box<CardsInGraveyards>),
+  Exile(Vec<ExilableCost>, Vec<ExileFlag>),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -3316,7 +3312,7 @@ pub enum ReplacementActionWouldDealDamage {
 
   DestroyPermanent(Box<Permanent>),
   DrawNumberCards(Box<GameNumber>),
-  ExileTheTopNumberCardsOfLibrary(Box<GameNumber>),
+  Exile(Vec<Exilable>, Vec<ExileFlag>),
   GainControlOfPermanent(Box<Permanent>),
   MillNumberCards(Box<GameNumber>),
   PlayerAction(Box<Player>, Box<ReplacementActionWouldDealDamage>),
@@ -3345,8 +3341,8 @@ pub enum ReplacementActionWouldReduceLife {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldLoseTheGame", content = "args"))]
 pub enum ReplacementActionWouldLoseTheGame {
+  Exile(Vec<Exilable>, Vec<ExileFlag>),
   DrawNumberCards(Box<GameNumber>),
-  ExilePermanent(Box<Permanent>),
   ShuffleHandGraveyardAndPermanentsIntoLibrary,
   SetLifeTotal(Box<GameNumber>),
 }
@@ -3553,9 +3549,9 @@ pub enum ReplacementActionWouldMask {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldEnterCost", content = "args"))]
 pub enum ReplacementActionWouldEnterCost {
+  Exile(Vec<ExilableCost>, Vec<ExileFlag>),
   DiscardACardOfType(Box<Cards>),
   EntersTapped,
-  ExileNumberGraveyardCards(Box<GameNumber>, Box<CardsInGraveyards>),
   ExileTwoCardsFromAmongPlayersGraveyards(Box<CardsInGraveyards>, Box<Players>),
   PayLife(Box<GameNumber>),
   PutANumberOfExiledCardsIntoOwnersGraveyard(Box<GameNumber>, CardsInExile),
@@ -3620,6 +3616,21 @@ pub enum ReplacementActionWouldEnterRemoveCounters {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_ExileFlag", content = "args"))]
+pub enum ExileFlag {
+  ExilesIntoShuffledFaceDownPile,
+  ExilesIntoFaceDownPile,
+  ExilesIntoFaceUpPile,
+  ExilesFaceDown,
+  ExilesFaceUp,
+  ExilesWithACounter(Box<CounterType>),
+  ExilesWithNumberCounters(Box<GameNumber>, Box<CounterType>),
+  Limited(Box<Expiration>),
+  LimitedWithTriggerEnters(Box<Expiration>, Box<Permanents>, Box<Actions>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldEnter", content = "args"))]
 pub enum ReplacementActionWouldEnter {
   APlayerAction(Box<Players>, Box<ReplacementActionWouldEnter>),
@@ -3680,10 +3691,7 @@ pub enum ReplacementActionWouldEnter {
   EntersWithNumberCountersForEach(Box<GameNumber>, CounterType, Box<GameNumber>),
   EntersWithNumberDifferentCountersOfChoice(Box<GameNumber>, Vec<CounterType>),
   ExchangeTextBoxesOfTwoPermanents(Box<Permanent>, Box<Permanent>),
-  Exile(Vec<Exilable>),
-  ExileAnyNumberOfCardsFromPlayersGraveyard(Box<Cards>, Box<Player>),
-  ExileCardFromHand(CardInHand),
-  ExileCardFromHandFaceDown(CardInHand),
+  Exile(Vec<Exilable>, Vec<ExileFlag>),
   ExileItInstead,
   ExileUptoNumberGraveyardCards(Box<GameNumber>, Box<CardsInGraveyards>),
   FlipACoin_OnHeadAndOnTails(Vec<ReplacementActionWouldEnter>, Vec<ReplacementActionWouldEnter>),
@@ -4761,40 +4769,8 @@ pub enum Cost {
   ExchangeControl(Box<Permanent>, Box<Permanent>),
   ExchangeControlOfSpellAndPermanent(Box<Spell>, Box<Permanent>),
   ExertPermanent(Box<Permanent>),
-  Exile(Vec<Exilable>),
-  ExileACardFromHand,
-  ExileACardFromPlayersGraveyardAndPayItsManaCost(Box<CardsInGraveyards>, Box<Player>),
-  ExileACardOfTypeFromHand(Box<Cards>),
-  ExileACardOfTypeFromHandWithANumberOfCountersOfType(Box<Cards>, Box<GameNumber>, CounterType),
-  ExileAFaceDownPermanentFaceUp(Box<Permanents>),
-  ExileAGraveyardCard(Box<CardsInGraveyards>),
-  ExileAPermanent(Box<Permanents>),
-  ExileAPermanentUntil(Box<Permanents>, Expiration),
-  ExileASpell(Box<Spells>),
-  ExileAnyNumberOfCardsFromPlayersGraveyard(Box<CardsInGraveyards>, Box<Player>),
-  ExileAnyNumberOfGroupCardsFromPlayersGraveyard(Box<CardsInGraveyards>, Box<Player>, GroupFilter),
-  ExileAnyNumberOfPermanents(Box<Permanents>),
-  ExileCardFromHand(CardInHand),
-  ExileEachGraveyardCard(Box<CardsInGraveyards>),
-  ExileEachPermanent(Box<Permanents>),
-  ExileGraveyardCard(Box<CardInGraveyards>),
-  ExileGraveyardCardFaceDown(Box<CardInGraveyards>),
-  ExileGraveyardCardWithNumberCountersOfType(Box<CardInGraveyards>, Box<GameNumber>, CounterType),
-  ExileHand,
-  ExileHandFaceDown,
-  ExileNumberCardsFromASinglePlayersGraveyard(Box<GameNumber>, Box<CardsInGraveyards>, Box<Players>),
-  ExileNumberCardsOfTypeFromHand(Box<GameNumber>, Box<Cards>),
-  ExileNumberGraveyardCards(Box<GameNumber>, Box<CardsInGraveyards>),
-  ExileNumberOrMoreCardsFromPlayersGraveyard(Box<GameNumber>, Box<CardsInGraveyards>, Box<Player>),
-  ExileNumberOrMoreGroupPermanents(Box<GameNumber>, Box<Permanents>, GroupFilter),
-  ExileNumberPermanents(Box<GameNumber>, Box<Permanents>),
-  ExilePermanent(Box<Permanent>),
-  ExilePermanentUntil(Box<Permanent>, Expiration),
-  ExilePlayersGraveyard(Box<Player>),
-  ExileSpell(Box<Spell>),
-  ExileTheTopNumberCardsOfLibraryFaceDown(Box<GameNumber>),
-  ExileTheTopNumberCardsOfPlayersLibrary(Box<GameNumber>, Box<Player>),
-  ExileTopCardOfLibrary,
+  Exile(Vec<ExilableCost>, Vec<ExileFlag>),
+  ExileACardInGraveyardsAndPayItsManaCost(Box<CardsInGraveyards>),
   FlipACoinAndCallIt,
   Forage,
   GainControlOfAPermanent(Box<Permanents>),
@@ -5124,7 +5100,6 @@ pub enum Permanents {
   CouldProduce(ManaProduceSymbol),
   CouldProduceAnyManaColorPermanentCouldProduce(Box<Permanent>),
   CouldntAttackThisTurn,
-  CreatedByPermanent(Box<Permanent>),
   CrewedVehicleThisTurn(Box<Permanent>),
   DealtCombatDamageToAPlayerThisCombat(Box<Players>),
   DealtCombatDamageToAPlayerThisTurn(Box<Players>),
@@ -5350,7 +5325,6 @@ pub enum Permanents {
   SharesANameWithGraveyardCard(Box<CardInGraveyards>),
   SharesANameWithPermanent(Box<Permanent>),
   SharesANameWithSpell(Box<Spell>),
-  SharesANameWithTheLeavingPermanent,
   SharesAPermanentCardtypeWithPermanent(Box<Permanent>),
   SharesASectorWithPermanent(Box<Permanent>),
   SharesCardtypeWithPermanent(CardType, Box<Permanent>),
@@ -5484,7 +5458,6 @@ pub enum Permanent {
   TheCreatureBolsteredThisWay,
   ThisSacrificedPermanent,
   ThePermanentThatCreatedIt,
-  Ref_TargetPermanentControlledBy(Box<Player>),
   TheSecondChosenPermanent,
   TheCreaturePairedWithPermanent(Box<Permanent>),
   SingleTargetPermanentOfSpell(Box<Spell>),
@@ -6864,6 +6837,9 @@ pub enum CardsInHand {
   Other(CardInHand),
   SingleCardInHand(CardInHand),
 
+  InAPlayersHand(Box<Players>),
+  SharesANameWithPermanent(Box<Permanent>),
+
   TotalPowerAndToughnessIs(Box<Comparison>),
   DoesntHaveAbility(CheckHasable),
   IsColorless,
@@ -7434,6 +7410,8 @@ pub enum Commanders {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_CardInGraveyards", content = "args"))]
 pub enum CardInGraveyards {
+  HostGraveyardCard,
+  TheBottomCardOfPlayersGraveyard(Box<Player>),
   TheGraveyardCardChosenThisWay,
   TheChosenGraveyardCard,
   TheCardMilledThisWay,
@@ -7468,6 +7446,8 @@ pub enum CardsInGraveyards {
   And(Vec<CardsInGraveyards>),
   Not(Box<CardsInGraveyards>),
   Or(Vec<CardsInGraveyards>),
+
+  SharesANameWithPermanent(Box<Permanent>),
 
   IsNonSpellType(SpellType),
   IsNumberColors(Box<Comparison>),
@@ -7617,7 +7597,6 @@ pub enum Plane {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_PlayersAndPermanents", content = "args"))]
 pub enum PlayersAndPermanents {
   APlayerOrAPermanent(Box<Players>, Box<Permanents>),
-  Ref_AnyTargets,
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -7911,7 +7890,6 @@ pub enum ManaUseModifier {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_PermanentsAndGraveyardCards", content = "args"))]
 pub enum PermanentsAndGraveyardCards {
   IsCardtype(CardType),
-  Ref_TargetPermanentsAndGraveyardCards,
   WasntSacrificed,
 }
 
@@ -8265,38 +8243,109 @@ pub enum CreatableToken {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Exilable", content = "args"))]
 pub enum Exilable {
+  NumberPermanentsOrCardsInHand(Box<GameNumber>, Box<Permanents>, Box<CardsInHand>),
+  NumberPermanentsCardsInHandOrCardsInGraveyards(Box<GameNumber>, Box<Permanents>, Box<CardsInHand>, Box<CardsInGraveyards>),
+
   // Stack
   Spell(Box<Spell>),
+  EachSpell(Box<Spells>),
 
   // Cards In Graveyards
-  AGraveyardCard(Box<CardsInGraveyards>),
-  AGraveyardCardAtRandom(Box<CardsInGraveyards>),
-  AGraveyardCardAtRandomInEachPlayersGraveyard(Box<CardsInGraveyards>, Box<Players>),
-  AnyNumberOfGraveyardCards(Box<CardsInGraveyards>),
-  AnyNumberOfGroupGraveyardCards(Box<CardsInGraveyards>, GroupFilter),
-  GraveyardCards(Box<CardsInGraveyards>),
-  GraveyardCard(Box<CardInGraveyards>),
-  NumberGraveyardCards(Box<GameNumber>, Box<CardsInGraveyards>),
-  UptoOneGraveyardCard(Box<CardsInGraveyards>),
+  ACardOfTypeInEachPlayersGraveyard(Box<CardsInGraveyards>, Box<Players>),
+  UptoNumberCardsInGraveyards(Box<GameNumber>, Box<CardsInGraveyards>),
+  ACardInGraveyards(Box<CardsInGraveyards>),
+  ACardInGraveyardsAtRandom(Box<CardsInGraveyards>),
+  ACardInGraveyardsAtRandomInEachPlayersGraveyard(Box<CardsInGraveyards>, Box<Players>),
+  AnyNumberOfCardsInGraveyards(Box<CardsInGraveyards>),
+  CardInGraveyards(Box<CardInGraveyards>),
+  EachCardInGraveyards(Box<CardsInGraveyards>),
+  NumberCardsInGraveyards(Box<GameNumber>, Box<CardsInGraveyards>),
+  NumberCardsInGraveyardsAtRandom(Box<GameNumber>, Box<CardsInGraveyards>),
+  UptoOneCardInGraveyards(Box<CardsInGraveyards>),
+  UptoOneCardOfEachCardTypeAmongCardsInGraveyards(Box<CardsInGraveyards>),
+  UptoOneCardOfTypeInEachPlayersGraveyard(Box<CardsInGraveyards>, Box<Players>),
 
   // Cards In Hand
   ARandomCardFromPlayersHand(Box<Player>),
   CardInHand(Box<CardInHand>),
   ACardOfTypeFromPlayersHand(Box<CardsInHand>, Box<Player>),
 
+  AnyNumberOfCardsFromHand,
+  EachCardInHand(Box<CardsInHand>),
+  EachPlayersHand(Box<Players>),
+
+  ACardFromHand,
+  ACardFromHandAtRandom,
+  ACardOfTypeFromHand(Box<CardsInHand>),
+  NumberCardsFromHand(Box<GameNumber>),
+  PlayersHand(Box<Player>),
+
   // Cards In Library
-  TheTopCardOfPlayersLibrary(Player ),
+  ACardFromPlayersLibraryAtRandom(Box<Player>),
+  ACardOfTypeFromPlayersLibraryAtRandom(Box<CardsInLibrary>, Box<Player>),
+  AllCardsFromPlayersLibrary(Box<Player>),
+  AllCardsOfTypeFromPlayersLibrary(Box<CardsInLibrary>, Box<Player>),
+  NumberCardsFromPlayersLibraryAtRandom(Box<GameNumber>, Box<Player>),
+  TheBottomCardOfEachPlayersLibraries(Box<Players>),
+  TheBottomCardOfTypeInPlayersLibrary(Box<CardsInLibrary>, Box<Player>),
+  TheBottomNumberCardsOfPlayersLibrary(Box<GameNumber>, Box<Player>),
+  TheTopCardOfEachPlayersLibraries(Box<Players>),
+  TheTopCardOfPlayersLibrary(Box<Player>),
   TheTopNumberCardsOfPlayersLibrary(Box<GameNumber>, Box<Player>),
-  ARandomCardFromPlayersLibrary(Player ),
-  ARandomCardOfTypeFromPlayersLibrary(CardsInLibrary, Box<Player>),
 
   // Permanents
-  APermanent(Box<Permanents>),
   Permanent(Box<Permanent>),
-  Permanents(Box<Permanents>),
+  EachPermanent(Box<Permanents>),
+
+  APermanent(Box<Permanents>),
+  NumberPermanents(Box<GameNumber>, Box<Permanents>),
   UptoOnePermanent(Box<Permanents>),
+  AnyNumberOfPermanents(Box<Permanents>),
 }
 
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_ExilableCost", content = "args"))]
+pub enum ExilableCost {
+  ACardOfTypeMilledThisWay(Box<CardsInLibrary>),
+
+  // Stack
+  Spell(Box<Spell>),
+  ASpell(Box<Spells>),
+
+  // Cards In Graveyards
+  NumberCardsInASingleGraveyard(Box<GameNumber>, Box<CardsInGraveyards>, Box<Players>),
+  ACardInGraveyards(Box<CardsInGraveyards>),
+  AnyNumberOfCardsInGraveyards(Box<CardsInGraveyards>),
+  AnyNumberOfGroupCardsInGraveyards(Box<CardsInGraveyards>, Box<GroupFilter>),
+  CardInGraveyards(Box<CardInGraveyards>),
+  EachCardInGraveyards(Box<CardsInGraveyards>),
+  NumberCardsInGraveyards(Box<GameNumber>, Box<CardsInGraveyards>),
+  NumberOrMoreCardsInGraveyards(Box<GameNumber>, Box<CardsInGraveyards>),
+
+  // Cards In Hand
+  CardInHand(Box<CardInHand>),
+  ACardOfTypeFromPlayersHand(Box<CardsInHand>, Box<Player>),
+
+  ACardFromHand,
+  ACardOfTypeFromHand(Box<CardsInHand>),
+  NumberCardsOfTypeFromHand(Box<GameNumber>, Box<CardsInHand>),
+  PlayersHand(Box<Player>),
+
+  // Cards In Library
+  TheTopCardOfPlayersLibrary(Box<Player>),
+  TheTopNumberCardsOfPlayersLibrary(Box<GameNumber>, Box<Player>),
+
+  // Permanents
+  Permanent(Box<Permanent>),
+  EachPermanent(Box<Permanents>),
+
+  APermanent(Box<Permanents>),
+  NumberPermanents(Box<GameNumber>, Box<Permanents>),
+  AnyNumberOfPermanents(Box<Permanents>),
+
+  NumberOrMoreGroupPermanents(Box<GameNumber>, Box<Permanents>, Box<GroupFilter>),
+}
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
@@ -8364,6 +8413,7 @@ pub enum ActionOption {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Targets", content = "args"))]
 pub enum Targets {
+  Ref_AnyTargets,
   Ref_TargetPlayersAndPermanents,
 }
 
@@ -8951,7 +9001,6 @@ pub enum Action {
   CreatePerpetualGraveyardCardEffect(Box<CardInGraveyards>, Vec<PerpetualEffect>),
   CreatePerpetualPermanentEffect(Box<Permanent>, Vec<PerpetualEffect>),
   CreatePerpetualPermanentOrGraveyardCardEffect(Box<Permanent>, Box<CardInGraveyards>, Vec<PerpetualEffect>),
-  CreatePerpetualSacrificedCardEffect(Vec<PerpetualEffect>),
   CreatePerpetualSpellEffect(Box<Spell>, Vec<PerpetualEffect>),
   CreatePlayerEffect(Box<Player>, Vec<PlayerEffect>),
   CreatePlayerEffectUntil(Box<Player>, Vec<PlayerEffect>, Expiration),
@@ -9073,108 +9122,11 @@ pub enum Action {
   ExchangeOwnershipOfTwoCards(ExchangeOwnershipCard, ExchangeOwnershipCard),
   ExchangePowerOfTwoCreaturesUntil(Box<Permanent>, Box<Permanent>, Expiration),
   ExchangeTextBoxesOfTwoPermanentsUntil(Box<Permanent>, Box<Permanent>, Expiration),
-  Exile(Vec<Exilable>),
-  ExileACardFromEachPlayersGraveyard(Box<CardsInGraveyards>, Box<Players>),
-  ExileACardFromHand,
-  ExileACardFromHandAtRandom,
-  ExileACardFromHandFaceDown,
-  ExileACardFromHandOrGraveyard(Box<Cards>),
-  ExileACardFromHandUntil(Expiration),
-  ExileACardFromPlayersGraveyardAtRandom(Box<CardsInGraveyards>, Box<Player>),
-  ExileACardFromPlayersHandOrGraveyard(Box<Cards>, Box<Player>),
-  ExileACardFromPlayersRevealedHand(Box<Cards>, Box<Player>),
-  ExileACardOfTypeFromHand(Box<Cards>),
-  ExileACardOfTypeFromHandWithANumberOfCountersOfType(Box<Cards>, Box<GameNumber>, CounterType),
-  ExileACardOfTypeFromPlayersLibraryAtRandom(Box<Cards>, Box<Player>),
-  ExileAGraveyardCard(Box<CardsInGraveyards>),
-  ExileAPermanent(Box<Permanents>),
-  ExileAPermanentUntil(Box<Permanents>, Expiration),
-  ExileAllCardsInPlayersLibrary(Box<Player>),
-  ExileAllCardsOfTypeFromLibrary(CardsInLibrary),
-  ExileAllLibraryCards,
-  ExileAllLibraryCardsFaceDown,
-  ExileAnyNumberOfCardsFromHandFaceDown,
-  ExileAnyNumberOfCardsFromPlayersGraveyard(Box<Cards>, Box<Player>),
-  ExileAnyNumberOfPermanents(Box<Permanents>),
-  ExileAnyNumberOfPermanentsUntil(Box<Permanents>, Expiration),
-  ExileBottomCardOfOtherLibrariesFaceDown(Box<Players>),
-  ExileBottomCardOfPlayersGraveyard(Box<Cards>, Box<Player>),
-  ExileBottomCardOfTypeFromLibrary(Box<Cards>),
-  ExileCardFromHand(CardInHand),
-  ExileCardFromHandAndGraveyardCard(CardInHand, Box<CardInGraveyards>),
-  ExileCardFromHandFaceDown(CardInHand),
-  ExileCardsFromHand(Box<CardsInHand>),
+  Exile(Vec<Exilable>, Vec<ExileFlag>),
+  ExileCardsFromTheTopOfLibraryUntilGroupCardsAreExiled(Box<GroupFilter>),
   ExileCardsFromTheTopOfLibraryUntilACardOfTypeIsExiled(Box<Cards>),
   ExileCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreExiled(Box<GameNumber>, Box<Cards>),
-  ExileCardsInGraveyardDiscardedThisWay,
-  ExileEachCardFromEachPlayersGraveyard(Box<Cards>, Box<Players>),
-  ExileEachCardFromHandAndGraveyard(Box<Cards>),
-  ExileEachCardFromPlayersGraveyard(Box<Cards>, Box<Player>),
-  ExileEachCardFromPlayersGraveyardInShuffledFaceDownPile(Box<Cards>, Box<Player>),
-  ExileEachCardFromPlayersGraveyardUntil(Box<Cards>, Box<Player>, Expiration),
-  ExileEachCardOfTypeFromPlayersHand(Box<Cards>, Box<Player>),
-  ExileEachGraveyardCard(Box<CardsInGraveyards>),
-  ExileEachPermanent(Box<Permanents>),
-  ExileEachPermanentAndGraveyardCard(PermanentsAndGraveyardCards),
-  ExileEachPermanentInAShuffledFaceDownPile(Box<Permanents>),
-  ExileEachPermanentUntil(Box<Permanents>, Expiration),
-  ExileEachPermanentUntilWithTriggerEntersUnderPlayersControl(Box<Permanents>, Expiration, Box<Player>, Box<Actions>),
-  ExileEachPlayersGraveyard(Box<Players>),
-  ExileEachPlayersHand(Box<Players>),
-  ExileEachSpell(Box<Spells>),
-  ExileEnchantedGraveyardCard,
-  ExileGraveyardCard(Box<CardInGraveyards>),
-  ExileGraveyardCardEachCardInEachPlayersGraveyardAndEachPermanent(Box<CardInGraveyards>, Box<Cards>, Box<Players>, Box<Permanents>),
-  ExileGraveyardCardWithACounterOfType(Box<CardInGraveyards>, CounterType),
-  ExileGraveyardCardWithNumberCountersOfType(Box<CardInGraveyards>, Box<GameNumber>, CounterType),
-  ExileHand,
-  ExileHandFaceDown,
-  ExileInShuffledFaceDownPile(Vec<Exilable>),
-  ExileNumberCardsFromHand(Box<GameNumber>),
-  ExileNumberCardsFromLibraryFaceDownAtRandom(Box<GameNumber>),
-  ExileNumberGraveyardCards(Box<GameNumber>, Box<CardsInGraveyards>),
-  ExileNumberPermanents(Box<GameNumber>, Box<Permanents>),
-  ExileNumberPermanentsCardsFromHandOrCardsFromGraveyard(Box<GameNumber>, Box<Permanents>, Box<Cards>, Box<Cards>),
-  ExilePermanent(Box<Permanent>),
-  ExilePermanentAndEachPermanentAndEachCardFromEachPlayersGraveyard(Box<Permanent>, Box<Permanents>, Box<Cards>, Box<Players>),
-  ExilePermanentAndEachPermanentUntil(Box<Permanent>, Box<Permanents>, Expiration),
-  ExilePermanentAndTheTopCardOfPlayersLibraryInShuffledFaceDownPile(Box<Permanent>, Box<Player>),
-  ExilePermanentFaceDown(Box<Permanent>),
-  ExilePermanentUntil(Box<Permanent>, Expiration),
-  ExilePermanentWithACounter(Box<Permanent>, CounterType),
-  ExilePermanentWithANumberOfCounters(Box<Permanent>, Box<GameNumber>, CounterType),
   ExilePermanentsAndMeldIntoNewPermanent(Box<Permanent>, Box<Permanents>, NameString, Vec<EnterFlag>),
-  ExilePermanentsControlledByOrCardsFromHand(Box<Players>, Box<Permanents>, Box<Cards>, Box<GameNumber>),
-  ExilePlayersGraveyard(Box<Player>),
-  ExilePlayersHand(Box<Player>),
-  ExilePlayersHandFaceDown(Box<Player>),
-  ExileSinglePermanentAndEachPermanent(Box<Permanent>, Box<Permanents>),
-  ExileSpell(Box<Spell>),
-  ExileSpellWithANumberOfCountersOnIt(Box<Spell>, Box<GameNumber>, CounterType),
-  ExileTheBottomNumberCardsOfLibrary(Box<GameNumber>),
-  ExileTheCardRevealedThisWay,
-  ExileTheTopCardOfPlayersLibrary(Box<Player>),
-  ExileTheTopCardOfPlayersLibraryFaceDown(Box<Player>),
-  ExileTheTopNumberCardsOfLibrary(Box<GameNumber>),
-  ExileTheTopNumberCardsOfLibraryFaceDown(Box<GameNumber>),
-  ExileTheTopNumberCardsOfLibraryInFaceDownPile(Box<GameNumber>),
-  ExileTheTopNumberCardsOfLibraryInFaceUpPile(Box<GameNumber>),
-  ExileTheTopNumberCardsOfPlayersLibrary(Box<GameNumber>, Box<Player>),
-  ExileTopCardOfEachPlayersLibraries(Box<Players>),
-  ExileTopCardOfEachPlayersLibrariesFaceDown(Box<Players>),
-  ExileTopCardOfEachPlayersLibrariesWithACounterOfType(Box<Players>, CounterType),
-  ExileTopCardOfLibrary,
-  ExileTopCardOfLibraryFaceDown,
-  ExileTopCardOfOtherLibraries(Box<Players>),
-  ExileTopCardOfOtherLibrariesFaceDown(Box<Players>),
-  ExileTopCardsOfLibraryUntilASingleCardOfTypeIsExiled(Box<Cards>),
-  ExileTopCardsOfLibraryUntilGroupCardsAreExiled(GroupFilter),
-  ExileTopNumberCardsOfOtherLibraryFaceDown(Box<GameNumber>, Box<Player>),
-  ExileTopOfLibraryForEachPlayerOrPermanentWithAction(PlayersAndPermanents, Box<Action>),
-  ExileTwoPermanents(Box<Permanent>, Box<Permanent>),
-  ExileUptoNumberCardsOfTypeMilledThisWay(Box<GameNumber>, Box<Cards>),
-  ExileUptoOneCardFromEachPlayersGraveyard(Box<Cards>, Box<Players>),
-  ExileUptoOneCardOfEachCardTypeFromPlayersGraveyard(Box<Player>),
   ExiledCardDealsDamage(CardInExile, Box<GameNumber>, Box<DamageRecipient>),
   ExploreWithEachPermanent(Box<Permanents>),
   ExploreWithPermanent(Box<Permanent>),
@@ -9915,6 +9867,8 @@ pub enum AnteCard {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Target", content = "args"))]
 pub enum Target {
+  UptoNumberTargetPermanentsAndOrCardsInGraveyards(Box<GameNumber>, Box<Permanents>, Box<CardsInGraveyards>),
+
   BetweenOneAndNumberAnyTargets(Box<GameNumber>),
   BetweenOneAndNumberTargetGraveyardCards(Box<GameNumber>, Box<CardsInGraveyards>),
   UptoNumberTargetSpellsOrAbilities(Box<GameNumber>, Box<SpellsAndAbilities>),
@@ -9976,7 +9930,6 @@ pub enum Target {
   UptoNumberAnyTargetsExcept(Box<GameNumber>, OtherTarget),
   UptoNumberTargetGroupPermanents(Box<GameNumber>, Box<Permanents>, GroupFilter),
   UptoNumberTargetPermanents(Box<GameNumber>, Box<Permanents>),
-  UptoNumberTargetPermanentsAndOrCardsInAnyPlayersGraveyard(Box<GameNumber>, Box<Permanents>, Box<Cards>, Box<Players>),
   UptoNumberTargetPermanentsTargetPlayerControls(Box<GameNumber>, Box<Permanents>, Box<Players>),
   UptoNumberTargetPlayers(Box<GameNumber>, Box<Players>),
   UptoNumberTargetSpells(Box<GameNumber>, Box<Spells>),
@@ -12009,7 +11962,7 @@ pub enum RuleSource {
 
   #[serde(rename_all="PascalCase")]
   AddCopiableFromExiled { exiled_id: CardInExileId, exiled_source: Box<RuleSource> },
-  
+
   #[serde(rename_all="PascalCase")]
   Mutate            { effect_source: SourcedRule },
 

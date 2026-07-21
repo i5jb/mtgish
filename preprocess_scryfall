@@ -21,6 +21,12 @@ for scryfall_card in scryfall_cards:
     scryfall_card["name"] = "Pick Your Sketchy Poison"
   if scryfall_card["name"] == "Unquenchable Fury" and scryfall_card["set"] == "tbth":
     scryfall_card["name"] = "Horde's Unquenchable Fury"
+  if scryfall_card["name"] == "Joven and Chandler" and scryfall_card["set"] == "unk":
+    scryfall_card["name"] = "Joven and Chandler, Backup Buddies"
+  if scryfall_card["name"] == "No Way Out" and scryfall_card["set"] == "punk":
+    scryfall_card["name"] = "No Way Out But Through"
+  if scryfall_card["name"] == "Artist Alley" and scryfall_card["set"] == "punk":
+    scryfall_card["name"] = "Artist Alley at the Convention"
 
 # Fix annoying em-dash
 for scryfall_card in scryfall_cards:

@@ -614,12 +614,6 @@
     "replace": "Each opponent sacrifices an artifact of their choice.",
   },
   {
-    "reason":  "Wizard's typo, a comma turned into a period when adding 'sacrifice ... of their choice'",
-    "cards":   ["Sphinx Summoner"],
-    "find":    "put it into your hand. then shuffle",
-    "replace": "put it into your hand, then shuffle",
-  },
-  {
     "reason":  "Wizard's typo, missing space",
     "cards":   ["Humble the Brute"],
     "find":    "Investigate.(Create",

@@ -9617,6 +9617,19 @@
     ]
   },
   {
+    "name": "Ajani Resolute",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ajani Resolute",
+        "manaCost": "{1}{W}",
+        "type": "Legendary Planeswalker — Ajani",
+        "text": "Whenever you gain life, put a loyalty counter on Ajani.\n[0]: You gain 1 life.\n[−4]: Create a 2/2 white Cat Soldier creature token named Ajani's Pridemate with \"Whenever you gain life, put a +1/+1 counter on this token.\"\n[−10]: You get an emblem with \"Creatures you control get +2/+2.\"",
+        "loyalty": "2"
+      }
+    ]
+  },
+  {
     "name": "Ajani Steadfast",
     "layout": "single",
     "cards": [
@@ -9626,6 +9639,19 @@
         "type": "Legendary Planeswalker — Ajani",
         "text": "[+1]: Until end of turn, up to one target creature gets +1/+1 and gains first strike, vigilance, and lifelink.\n[−2]: Put a +1/+1 counter on each creature you control and a loyalty counter on each other planeswalker you control.\n[−7]: You get an emblem with \"If a source would deal damage to you or a planeswalker you control, prevent all but 1 of that damage.\"",
         "loyalty": "4"
+      }
+    ]
+  },
+  {
+    "name": "Ajani Unrelenting",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ajani Unrelenting",
+        "manaCost": "{4}{R}{R}",
+        "type": "Legendary Planeswalker — Ajani",
+        "text": "Whenever you activate a loyalty ability, create a 2/2 colorless Wizard Soldier creature token named Cadet.\n[+1]: Creatures you control get +1/+0 and gain haste until end of turn.\n[−2]: Discard your hand, then draw a card for each creature you control.\n[−3]: Ajani deals 4 damage to each creature except for tokens you control.",
+        "loyalty": "5"
       }
     ]
   },
@@ -13567,6 +13593,18 @@
         "manaCost": "{1}{R}",
         "type": "Enchantment",
         "text": "{1}, Discard a card at random: Put a +1/+1 counter on target creature."
+      }
+    ]
+  },
+  {
+    "name": "Amok Time",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Amok Time",
+        "manaCost": "{2}{G}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\nI — Target creature you control fights up to one target creature an opponent controls.\nII — You gain 3 life.\nIII — Return target creature card from your graveyard to your hand."
       }
     ]
   },
@@ -23078,11 +23116,11 @@
     ]
   },
   {
-    "name": "Artist Alley (Plane)",
+    "name": "Artist Alley at the Convention",
     "layout": "single",
     "cards": [
       {
-        "name": "Artist Alley (Plane)",
+        "name": "Artist Alley at the Convention",
         "type": "Plane — MagicCon",
         "text": "Whenever you planeswalk here and at the beginning of your upkeep, exile the top card of your library. You may play that card this turn.\nWhenever Chaos ensues, exile the top six cards of your library. An opponent or player outside the game chooses a nonland card with their favorite art. Then you may cast that spell without paying its mana cost."
       }
@@ -30009,6 +30047,18 @@
     ]
   },
   {
+    "name": "Bag End Banquet",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bag End Banquet",
+        "manaCost": "{6}",
+        "type": "Artifact",
+        "text": "When this artifact enters, create three Food tokens.\n{T}: Add {C} for each Food you control."
+      }
+    ]
+  },
+  {
     "name": "Bag End Porter",
     "layout": "single",
     "cards": [
@@ -32244,6 +32294,20 @@
     ]
   },
   {
+    "name": "Bard the Bowman",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bard the Bowman",
+        "manaCost": "{1}{W}{U}",
+        "type": "Legendary Creature — Human Archer",
+        "text": "Reach\nWhenever you draw your second card each turn, put a +1/+1 counter on target creature. It gains lifelink until end of turn.",
+        "power": "1",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Bard's Bow",
     "layout": "single",
     "cards": [
@@ -32252,6 +32316,20 @@
         "manaCost": "{2}{G}",
         "type": "Artifact — Equipment",
         "text": "Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)\nEquipped creature gets +2/+2, has reach, and is a Bard in addition to its other types.\nPerseus's Bow — Equip {6} ({6}: Attach to target creature you control. Equip only as a sorcery.)"
+      }
+    ]
+  },
+  {
+    "name": "Bard, King of Dale",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bard, King of Dale",
+        "manaCost": "{4}{W}{U}",
+        "type": "Legendary Creature — Human Noble Archer",
+        "text": "Reach, vigilance\nIf you would draw a card except the first one you draw in each of your draw steps, draw two cards instead.\nIf one or more tokens would be created under your control, twice that many of those tokens are created instead.",
+        "power": "3",
+        "toughness": "5"
       }
     ]
   },
@@ -35401,6 +35479,20 @@
     ]
   },
   {
+    "name": "Beckett Mariner, Impetuous Ensign",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Beckett Mariner, Impetuous Ensign",
+        "manaCost": "{1}{R}",
+        "type": "Legendary Creature — Human Officer",
+        "text": "First strike\nReckless Behavior — Whenever Beckett Mariner becomes tapped, put a promotion counter on her. Then if there are three or more promotion counters on her, remove those counters and she deals 2 damage to each opponent.",
+        "power": "2",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Beckon Apparition",
     "layout": "single",
     "cards": [
@@ -36841,6 +36933,20 @@
     ]
   },
   {
+    "name": "Benjamin Sisko, Besieged",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Benjamin Sisko, Besieged",
+        "manaCost": "{4}{G}{G}",
+        "type": "Legendary Creature — Human Officer",
+        "text": "Play with the top card of your library revealed.\nYou may play lands and cast creature spells from the top of your library.",
+        "power": "5",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Bennie Bracks, Zoologist",
     "layout": "single",
     "cards": [
@@ -37588,6 +37694,20 @@
     ]
   },
   {
+    "name": "Bicycle Elemental",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bicycle Elemental",
+        "manaCost": "{2}{U}",
+        "type": "Artifact Creature — Elemental",
+        "text": "As this creature enters, choose a word.\nEach card in your hand with the chosen word in its name, type line, and/or rules text has cycling {2}. ({2}, Discard that card: Draw a card.)\nWhenever you cycle a card, put a +1/+1 counter on this creature.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Bicycle Rack",
     "layout": "single",
     "cards": [
@@ -37607,6 +37727,20 @@
         "manaCost": "{2}{U}{U}",
         "type": "Legendary Enchantment Artifact",
         "text": "Whenever a creature you control deals combat damage to a player, you may draw a card.\n{1}{U}, {T}: Creatures your opponents control attack this turn if able."
+      }
+    ]
+  },
+  {
+    "name": "Bifur, Melodic Rider",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bifur, Melodic Rider",
+        "manaCost": "{4}{R/W}{R/W}",
+        "type": "Legendary Creature — Dwarf Bard",
+        "text": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)\nWhenever Bifur enters or attacks, put a +1/+1 counter on target creature.\nAs long as you have an enduring story, if an ability of a Dwarf you control triggers, that ability triggers an additional time.",
+        "power": "4",
+        "toughness": "5"
       }
     ]
   },
@@ -37796,6 +37930,18 @@
     ]
   },
   {
+    "name": "Bilbo's Burglaring",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bilbo's Burglaring",
+        "manaCost": "{4}{U}{U}",
+        "type": "Sorcery",
+        "text": "For each opponent, gain control of up to one target artifact that player controls."
+      }
+    ]
+  },
+  {
     "name": "Bilbo's Ring",
     "layout": "single",
     "cards": [
@@ -37816,6 +37962,20 @@
         "manaCost": "{W}{B}{G}",
         "type": "Legendary Creature — Halfling Rogue",
         "text": "If you would gain life, you gain that much life plus 1 instead.\n{2}{W}{B}{G}, {T}, Exile Bilbo: Search your library for any number of creature cards, put them onto the battlefield, then shuffle. Activate only if you have 111 or more life.",
+        "power": "2",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Bilbo, Fellow Conspirator",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bilbo, Fellow Conspirator",
+        "manaCost": "{2}{G}",
+        "type": "Legendary Creature — Halfling Citizen",
+        "text": "If you would create a Food token, instead create a Food token and a Treasure token.",
         "power": "2",
         "toughness": "3"
       }
@@ -38137,6 +38297,20 @@
         "manaCost": "{2}{B}{G}",
         "type": "Enchantment — Saga",
         "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\nI — Destroy target nonland permanent an opponent controls.\nII — Search your library for a Forest card, put it onto the battlefield tapped, then shuffle.\nIII — Creatures you control gain deathtouch until end of turn."
+      }
+    ]
+  },
+  {
+    "name": "Bio-Asset Allocator",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bio-Asset Allocator",
+        "manaCost": "{3}{B}{B}",
+        "type": "Artifact Creature — Borg",
+        "text": "Artifact creatures you control have \"Whenever this creature attacks, each opponent loses 1 life and you gain 1 life.\"",
+        "power": "3",
+        "toughness": "4"
       }
     ]
   },
@@ -45900,6 +46074,20 @@
     ]
   },
   {
+    "name": "Bolg of the North",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bolg of the North",
+        "manaCost": "{3}{B}{R}",
+        "type": "Legendary Creature — Goblin Soldier",
+        "text": "When Bolg enters, you may sacrifice another creature. When you do, Bolg deals damage equal to that creature's power to another target creature. If excess damage was dealt this way, amass Goblins X, where X is that excess damage. (Put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",
+        "power": "5",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Bolrac-Clan Basher",
     "layout": "single",
     "cards": [
@@ -47626,6 +47814,20 @@
     ]
   },
   {
+    "name": "Borg Queen, Perfection Manifest",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Borg Queen, Perfection Manifest",
+        "manaCost": "{4}{B}{B}",
+        "type": "Legendary Artifact Creature — Borg Noble",
+        "text": "Artifact creatures you control get +2/+0.\nWhen Borg Queen enters, assimilate target creature card from an opponent's graveyard. (Put it onto the battlefield under your control with a +1/+1 counter. It's a Borg artifact creature and loses all other creature types.)",
+        "power": "1",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Boris Devilboon",
     "layout": "single",
     "cards": [
@@ -48865,6 +49067,20 @@
         "text": "When this creature attacks or blocks, sacrifice it at the beginning of the next end step.\nUnearth {2}{U} ({2}{U}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)",
         "power": "4",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Brad Boimler, Eager Ensign",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Brad Boimler, Eager Ensign",
+        "manaCost": "{1}{W}",
+        "type": "Legendary Creature — Human Officer",
+        "text": "Lifelink\nWhenever Brad Boimler becomes tapped, until end of turn, if one or more counters would be put on a permanent you control, that many plus one of each of those kinds of counters are put on that permanent instead.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -54169,6 +54385,18 @@
     ]
   },
   {
+    "name": "Burn, Burn, Tree and Fern",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Burn, Burn, Tree and Fern",
+        "manaCost": "{3}{R}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\nI — This Saga deals 6 damage to target creature an opponent controls.\nII — Destroy target artifact an opponent controls.\nIII, IV — Add {R}."
+      }
+    ]
+  },
+  {
     "name": "Burner Rocket",
     "layout": "single",
     "cards": [
@@ -58259,6 +58487,34 @@
         "text": "Ward—{2}, Pay 2 life.\nWhenever you discard one or more cards, target creature gets +2/+0 until end of turn for each card discarded this way. Whenever that creature deals combat damage to a player this turn, you draw a card.",
         "power": "5",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Captain James T. Kirk",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Captain James T. Kirk",
+        "manaCost": "{2}{R}",
+        "type": "Legendary Creature — Human Officer",
+        "text": "Whenever Captain Kirk enters or attacks, choose one. If you have no cards in hand, choose one or more instead.\n• Discard a card, then draw a card.\n• Create a 1/1 red Officer creature token.\n• Creatures you control get +1/+0 until end of turn.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Captain Kathryn Janeway",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Captain Kathryn Janeway",
+        "manaCost": "{3}{G}",
+        "type": "Legendary Creature — Human Officer",
+        "text": "You may play an additional land on each of your turns.\nWhenever Captain Janeway or another creature you control enters, that creature explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on the creature, then put the card back or put it into your graveyard.)",
+        "power": "2",
+        "toughness": "3"
       }
     ]
   },
@@ -75957,6 +76213,18 @@
     ]
   },
   {
+    "name": "Consider the Prime Directive",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Consider the Prime Directive",
+        "manaCost": "{2}{U}",
+        "type": "Instant",
+        "text": "Choose one —\n• Interfere — Counter target spell unless its controller pays {3}.\n• Observe — Tap up to one target creature and put a stun counter on it. Draw a card. (If a permanent with a stun counter would become untapped, remove one from it instead.)"
+      }
+    ]
+  },
+  {
     "name": "Consign // Oblivion",
     "layout": "split",
     "cards": [
@@ -80619,6 +80887,20 @@
     ]
   },
   {
+    "name": "Craterclaw Colossus",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Craterclaw Colossus",
+        "manaCost": "{4}{R}{R}{R}",
+        "type": "Artifact Creature — Beast Construct",
+        "text": "Haste\nWhen this creature enters, creatures you control gain trample and get +X/+0 until end of turn, where X is the number of artifacts you control.",
+        "power": "5",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Craterhoof Behemoth",
     "layout": "single",
     "cards": [
@@ -83846,6 +84128,20 @@
         "text": "Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.\nRemove a +1/+1 counter from this creature: Add one mana of any color.\n{T}: Put a +1/+1 counter on this creature.",
         "power": "1",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Crystalline Entity",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Crystalline Entity",
+        "manaCost": "{8}",
+        "type": "Artifact Creature — Elemental",
+        "text": "Flying\nWhen this creature enters, if you cast it, destroy all nonartifact creatures.",
+        "power": "7",
+        "toughness": "7"
       }
     ]
   },
@@ -88588,6 +88884,20 @@
         "text": "Flying\nWhen Darkstar Banisher enters, exile target nonland permanent with mana value 4 or less an opponent controls.\nWhen Darkstar Banisher leaves the battlefield, the exiled card's owner seeks a card that shares a card type with the exiled card.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Darksteel Angel",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Darksteel Angel",
+        "manaCost": "{9}",
+        "type": "Artifact Creature — Angel",
+        "text": "Flying, indestructible\nYou can't lose the game and your opponents can't win the game.\nCreatures you control can't have -1/-1 counters put on them.",
+        "power": "4",
+        "toughness": "4"
       }
     ]
   },
@@ -96631,6 +96941,18 @@
     ]
   },
   {
+    "name": "Desolation of Smaug",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Desolation of Smaug",
+        "manaCost": "{2}{R}{R}",
+        "type": "Sorcery",
+        "text": "Desolation of Smaug deals 3 damage to each non-Dragon creature.\nAdd four mana in any combination of colors. Spend this mana only to cast Dragon spells."
+      }
+    ]
+  },
+  {
     "name": "Despark",
     "layout": "single",
     "cards": [
@@ -103413,7 +103735,7 @@
         "name": "Doors of Durin",
         "manaCost": "{3}{R}{G}",
         "type": "Legendary Artifact",
-        "text": "Whenever you attack, scry 2, then you may reveal the top card of your library. If it's a creature card, put it onto the battlefield tapped and attacking. Until your next turn, it gains trample if you control a Dwarf and hexproof if you control an Elf."
+        "text": "Whenever you attack, scry 2, then you may reveal the top card of your library. If a creature card is revealed this way, put it onto the battlefield tapped and attacking. Until your next turn, it gains trample if you control a Dwarf and hexproof if you control an Elf."
       }
     ]
   },
@@ -104127,6 +104449,20 @@
         "text": "{2}{G}, {T}: Return target enchantment card from your graveyard to your hand.",
         "power": "3",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Beverly Crusher",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dr. Beverly Crusher",
+        "manaCost": "{2}{W}",
+        "type": "Legendary Creature — Human Doctor",
+        "text": "If you gaining life causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.\nWhenever you gain life, put a +1/+1 counter on Dr. Crusher.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -104915,6 +105251,18 @@
     ]
   },
   {
+    "name": "Dragon's Desire",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dragon's Desire",
+        "manaCost": "{2}{R}{R}",
+        "type": "Sorcery",
+        "text": "Add {R} for each artifact your opponents control."
+      }
+    ]
+  },
+  {
     "name": "Dragon's Disciple",
     "layout": "single",
     "cards": [
@@ -105029,6 +105377,17 @@
         "text": "Whenever you cast a noncreature spell, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\nDelirium — As long as there are four or more card types among cards in your graveyard, this creature gets +2/+2, has flying, and attacks each combat if able.",
         "power": "1",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Dragon-Cursed Halls",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dragon-Cursed Halls",
+        "type": "Land",
+        "text": "{T}: Add {C}.\n{1}, {T}: Until end of turn, target creature gains \"Whenever this creature deals combat damage to a player, create a Treasure token.\""
       }
     ]
   },
@@ -115830,6 +116189,20 @@
     ]
   },
   {
+    "name": "Elrond, Moon-Reader",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Elrond, Moon-Reader",
+        "manaCost": "{2}{U}",
+        "type": "Legendary Creature — Elf Noble",
+        "text": "Whenever you activate an ability of a creature, draw a card. This ability triggers only once each turn.\n{5}{U}{U}: Exile up to two other target nonland permanents you control. Return those cards to the battlefield under their owner's control at the beginning of the next end step.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Elsewhere Flask",
     "layout": "single",
     "cards": [
@@ -116204,7 +116577,7 @@
         "name": "Elven Farsight",
         "manaCost": "{G}",
         "type": "Sorcery",
-        "text": "Scry 3, then you may reveal the top card of your library. If it's a creature card, draw a card."
+        "text": "Scry 3, then you may reveal the top card of your library. If a creature card is revealed this way, draw a card."
       }
     ]
   },
@@ -119935,6 +120308,20 @@
         "type": "Creature — Cat Monk",
         "text": "When this creature enters, you may destroy target enchantment.",
         "power": "1",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Enlightened Confidant",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Enlightened Confidant",
+        "manaCost": "{1}{W}",
+        "type": "Creature — Kor Cleric",
+        "text": "Lifelink\nAt the beginning of your end step, if you gained life this turn, surveil 1. If you put a card with mana value less than or equal to the amount of life you gained this turn into your graveyard this way, put that card into your hand.",
+        "power": "2",
         "toughness": "1"
       }
     ]
@@ -131025,11 +131412,11 @@
     ]
   },
   {
-    "name": "Fear (Not the Alpha One) // Loathing",
+    "name": "Fear (split card) // Loathing",
     "layout": "split",
     "cards": [
       {
-        "name": "Fear (Not the Alpha One)",
+        "name": "Fear (split card)",
         "manaCost": "{B}",
         "type": "Sorcery",
         "text": "Target creature gains fear until end of turn. Draw a card. (It can't be blocked except by black and/or artifact creatures. Yes, this is the same as an existing Magic card name. Deal with it.)\nFuse (You may cast one or both halves of this card from your hand.)"
@@ -146980,6 +147367,20 @@
     ]
   },
   {
+    "name": "Fíli and Kíli, Joyous",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Fíli and Kíli, Joyous",
+        "manaCost": "{2}{R}",
+        "type": "Legendary Creature — Dwarf Bard",
+        "text": "Haste\n{T}: Add {R}{R}. Spend this mana only to cast Dwarf, Equipment, and Saga spells.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "G'raha Tia",
     "layout": "single",
     "cards": [
@@ -148413,6 +148814,40 @@
     ]
   },
   {
+    "name": "Gandalf, Goblins' Bane // Flameshape",
+    "layout": "adventurer",
+    "cards": [
+      {
+        "name": "Gandalf, Goblins' Bane",
+        "manaCost": "{2}{R}",
+        "type": "Legendary Creature — Avatar Wizard",
+        "text": "Whenever you cast a noncreature spell, Gandalf gets +1/+1 until end of turn and deals 1 damage to each opponent.",
+        "power": "2",
+        "toughness": "3"
+      },
+      {
+        "name": "Flameshape",
+        "manaCost": "{1}{R}",
+        "type": "Sorcery — Adventure",
+        "text": "Look at the top two cards of your library and exile them face down. For as long as they remain exiled, you may play them if you control a Wizard."
+      }
+    ]
+  },
+  {
+    "name": "Gandalf, Party Guest",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gandalf, Party Guest",
+        "manaCost": "{1}{U}{R}{W}",
+        "type": "Legendary Creature — Avatar Wizard",
+        "text": "At the beginning of combat on your turn, you may cast an instant or sorcery spell with mana value X or less from your hand without paying its mana cost, where X is twice the number of legendary Wizards you control.",
+        "power": "3",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Gandalf, Westward Voyager",
     "layout": "single",
     "cards": [
@@ -149061,6 +149496,19 @@
     ]
   },
   {
+    "name": "Garruk, Curse Breaker",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Garruk, Curse Breaker",
+        "manaCost": "{3}{G}{G}",
+        "type": "Legendary Planeswalker — Garruk",
+        "text": "Whenever a creature you control with power 4 or greater enters, draw a card.\n[+2]: Untap up to two target lands.\n[−3]: Create a 4/4 green Beast creature token with trample.\n[−4]: Until your next turn, whenever one or more creatures attack one of your opponents, those creatures get +2/+2 and gain trample until end of turn.",
+        "loyalty": "5"
+      }
+    ]
+  },
+  {
     "name": "Garruk, Cursed Huntsman",
     "layout": "single",
     "cards": [
@@ -149109,6 +149557,19 @@
         "type": "Legendary Planeswalker — Garruk",
         "text": "[+1]: Up to one target creature gets +3/+3 and gains trample until end of turn.\n[−2]: Create a 3/3 green Beast creature token. Then if an opponent controls more creatures than you, put a loyalty counter on Garruk.\n[−7]: You get an emblem with \"At the beginning of your end step, you may search your library for a creature card, put it onto the battlefield, then shuffle.\"",
         "loyalty": "4"
+      }
+    ]
+  },
+  {
+    "name": "Garruk, Veiled Butcher",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Garruk, Veiled Butcher",
+        "manaCost": "{3}{B}{B}",
+        "type": "Legendary Planeswalker — Garruk",
+        "text": "If a creature an opponent controls would die, exile it instead.\n[+2]: Up to one target creature gets -4/-1 until your next turn.\n[−2]: Each player sacrifices a creature of their choice. If you sacrificed a creature this way, create a 4/4 green Beast creature token with trample.\n[−3]: Each opponent discards two cards. For each opponent who didn't discard two nonland cards this way, you draw a card.",
+        "loyalty": "5"
       }
     ]
   },
@@ -162489,6 +162950,20 @@
         "manaCost": "{1}{B}",
         "type": "Legendary Creature — Halfling Horror",
         "text": "When Gollum leaves the battlefield, the Ring tempts you.\n{B}, Sacrifice a creature: Return this card from your graveyard to your hand. Activate only as a sorcery.",
+        "power": "3",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Gollum, Riddle Master",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gollum, Riddle Master",
+        "manaCost": "{1}{B}",
+        "type": "Legendary Creature — Halfling Horror",
+        "text": "As Gollum enters, choose odd or even. (Zero is even.)\nWhenever an opponent casts a spell with mana value of the chosen quality, choose one that hasn't been chosen —\n• Put a +1/+1 counter on Gollum.\n• Each opponent loses 2 life and you gain 2 life.\n• Draw a card.",
         "power": "3",
         "toughness": "1"
       }
@@ -180766,6 +181241,18 @@
     ]
   },
   {
+    "name": "Highly Illogical",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Highly Illogical",
+        "manaCost": "{1}{U}",
+        "type": "Instant",
+        "text": "Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)\nCounter target spell with mana value 2 or less. If this spell was kicked, instead counter target spell."
+      }
+    ]
+  },
+  {
     "name": "Highspire Artisan",
     "layout": "single",
     "cards": [
@@ -184072,6 +184559,20 @@
     ]
   },
   {
+    "name": "Hoshi Sato, Exolinguist",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Hoshi Sato, Exolinguist",
+        "manaCost": "{4}{U}",
+        "type": "Legendary Creature — Human Scientist",
+        "text": "Federation — When Hoshi Sato enters, look at the top X cards of your library, where X is the number of creature types among non-Borg creatures you control. Put one of them into your hand and the rest on the bottom of your library in a random order.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Host of the Hereafter",
     "layout": "single",
     "cards": [
@@ -185197,7 +185698,7 @@
         "name": "Hulk's Thunderclap",
         "manaCost": "{1}{G}",
         "type": "Sorcery",
-        "text": "As an additional cost to cast this spell, you may behold a Gamma creature. (You may choose a Gamma creature you control or reveal a Gamma creature card from your hand.)\nTarget creature you control deals damage equal to its power to another target creature. If this spell's additional cost was paid, destroy target noncreature artifact or enchantment."
+        "text": "As an additional cost to cast this spell, you may behold a Gamma creature. (You may choose a Gamma creature you control or reveal a Gamma creature card from your hand.)\nTarget creature you control deals damage equal to its power to another target creature. If this spell's additional cost was paid, destroy target noncreature artifact or noncreature enchantment."
       }
     ]
   },
@@ -191223,6 +191724,18 @@
         "manaCost": "{2}{U}",
         "type": "World Enchantment",
         "text": "Whenever a player casts an instant spell, counter it unless that player pays {X}, where X is its mana value."
+      }
+    ]
+  },
+  {
+    "name": "In the Pale Moonlight",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "In the Pale Moonlight",
+        "manaCost": "{3}{B}{B}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\nI — Each opponent sacrifices a nontoken creature of their choice.\nII — Investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\nIII — You may sacrifice an artifact or creature. If you do, create two 2/2 black Romulan creature tokens."
       }
     ]
   },
@@ -203866,6 +204379,20 @@
     "cards": [
       {
         "name": "Joven and Chandler",
+        "manaCost": "{2}{R}{R}{R}",
+        "type": "Legendary Creature — Human Rogue",
+        "text": "Whenever an artifact is put into a graveyard from the battlefield, put a number of +1/+1 counters equal to that artifact's mana value on Joven and Chandler.\n{R}{R}{R}, {T}: Gain control of target artifact until end of turn. Untap it. It gains haste until end of turn.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Joven and Chandler, Backup Buddies",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Joven and Chandler, Backup Buddies",
         "manaCost": "{3}{R}{R}",
         "type": "Legendary Creature — Human Rogue",
         "text": "Backup 2 (When this creature enters the battlefield, put two +1/+1 counters on target creature. If that's another creature, it gains the following abilities until end of turn.)\nHaste\nWhenever this creature deals combat damage to an opponent, destroy target artifact that player controls.",
@@ -207210,7 +207737,7 @@
         "name": "Karolina Dean, Runaway",
         "manaCost": "{3}{R}",
         "type": "Legendary Creature — Alien Hero",
-        "text": "Flying\nAt the beginning of your first main phase, add {W}{U}{B}{R}{G}. You can't spend this mana to cast spells from your hand.",
+        "text": "Flying\nAt the beginning of your first main phase, add {W}{U}{B}{R}{G}. This mana can't be spent to cast spells from your hand.",
         "power": "3",
         "toughness": "3"
       }
@@ -212009,6 +212536,20 @@
     ]
   },
   {
+    "name": "Kirk, Enterprising Captain",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Kirk, Enterprising Captain",
+        "manaCost": "{3}{R}",
+        "type": "Legendary Creature — Human Officer",
+        "text": "Menace (This creature can't be blocked except by two or more creatures.)\nWhenever Kirk attacks while creatures you control have total power 8 or greater, exile the top card of your library. You may play that card this turn.",
+        "power": "4",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Kirol, Attentive First-Year",
     "layout": "single",
     "cards": [
@@ -213117,6 +213658,20 @@
         "text": "Double strike\nWhenever Klement, Tempest Acolyte is dealt damage, it deals that much damage to any target.",
         "power": "2",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Klingon Strike Force",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Klingon Strike Force",
+        "manaCost": "{3}{R}{R}",
+        "type": "Creature — Klingon Warrior",
+        "text": "Trample (This creature can deal excess combat damage to the player it's attacking.)\nHaste (This creature can attack and {T} as soon as it comes under your control.)\nWhen this creature dies, it deals 2 damage to each opponent.",
+        "power": "5",
+        "toughness": "5"
       }
     ]
   },
@@ -224822,6 +225377,34 @@
     ]
   },
   {
+    "name": "Liliana the Faultless",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Liliana the Faultless",
+        "manaCost": "{W}",
+        "type": "Legendary Creature — Human Cleric",
+        "text": "Whenever another creature or planeswalker you control enters, you gain 1 life.\n{1}, {T}, Discard a card: Another target creature or planeswalker you control gains hexproof until end of turn.",
+        "power": "1",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Liliana the Repentant",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Liliana the Repentant",
+        "manaCost": "{1}{B}",
+        "type": "Legendary Creature — Human Warlock",
+        "text": "Whenever another creature or planeswalker you control enters, mill two cards.\nExhaust — {5}{B}: Return target creature or planeswalker card from your graveyard to the battlefield. Put a +1/+1 counter on Liliana. Activate only as a sorcery. (Activate each exhaust ability only once.)",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Liliana's Caress",
     "layout": "single",
     "cards": [
@@ -227819,6 +228402,18 @@
     ]
   },
   {
+    "name": "Long-Lost Lances",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Long-Lost Lances",
+        "manaCost": "{2}",
+        "type": "Artifact — Equipment",
+        "text": "Equipped creature gets +2/+0.\nDuring your turn, creatures you control that are equipped have first strike and vigilance.\nEquip {2}"
+      }
+    ]
+  },
+  {
     "name": "Long-Range Sensor",
     "layout": "single",
     "cards": [
@@ -230133,7 +230728,7 @@
         "name": "Lucy MacLean, Positively Armed",
         "manaCost": "{4}{W}",
         "type": "Legendary Creature — Human Survivor",
-        "text": "Golden Rule - Whenever a token enters, you may have target player other than its controller create a token that's a copy of it, then you draw a card if an opponent created a token this way. Do this only once each turn.",
+        "text": "Golden Rule — Whenever a token enters, you may have target player other than its controller create a token that's a copy of it, then you draw a card if an opponent created a token this way. Do this only once each turn.",
         "power": "3",
         "toughness": "5"
       }
@@ -255861,6 +256456,20 @@
     ]
   },
   {
+    "name": "Munitions Enthusiast",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Munitions Enthusiast",
+        "manaCost": "{1}{R}",
+        "type": "Creature — Klingon Warrior",
+        "text": "Trample\nWhen this creature dies, it deals 1 damage to any target.",
+        "power": "3",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Munitions Expert",
     "layout": "single",
     "cards": [
@@ -260713,6 +261322,18 @@
         "name": "Neck Tangle",
         "type": "Sorcery",
         "text": "If there are five or more Heads on the battlefield, tap two of them and they don't untap during the Hydra's next untap step. Otherwise, reveal the top card of the Hydra's library and the Hydra casts that card."
+      }
+    ]
+  },
+  {
+    "name": "Necklace of Girion",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Necklace of Girion",
+        "manaCost": "{2}{G}",
+        "type": "Legendary Artifact",
+        "text": "Whenever you cast a green spell and whenever a Forest you control enters, put a +1/+1 counter on target creature you control.\n{T}: Add {G}."
       }
     ]
   },
@@ -266222,11 +266843,11 @@
     ]
   },
   {
-    "name": "No Way Out (Playtest)",
+    "name": "No Way Out But Through",
     "layout": "single",
     "cards": [
       {
-        "name": "No Way Out (Playtest)",
+        "name": "No Way Out But Through",
         "type": "Plane — Duskmourn",
         "text": "No Way Out enters with three dread counters.\nYou can never leave — If a player would planeswalk while this plane has dread counters, chaos ensues instead.\nWhenever you roll the planar die, manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)\nWhenever Chaos ensures each player may turn a face-down permanent they control face-up. Remove a dread counter from this plane."
       }
@@ -273676,6 +274297,20 @@
     ]
   },
   {
+    "name": "Operations Officer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Operations Officer",
+        "manaCost": "{3}{W}",
+        "type": "Creature — Human Officer",
+        "text": "Lifelink (Damage dealt by this creature also causes you to gain that much life.)\nWhen this creature enters, draw a card.\nWhenever this creature attacks, put a +1/+1 counter on it.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Ophidian",
     "layout": "single",
     "cards": [
@@ -275291,6 +275926,20 @@
         "text": "Trample\nThis creature can't attack if defending player controls an untapped creature with power 3 or greater.\nThis creature can't block creatures with power 3 or greater.",
         "power": "6",
         "toughness": "6"
+      }
+    ]
+  },
+  {
+    "name": "Ori, Plate Stacker",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ori, Plate Stacker",
+        "manaCost": "{5}{W}{W}",
+        "type": "Legendary Creature — Dwarf Bard",
+        "text": "When Ori enters, destroy all artifacts and enchantments your opponents control. You gain 1 life for each permanent destroyed this way.",
+        "power": "3",
+        "toughness": "3"
       }
     ]
   },
@@ -279635,6 +280284,26 @@
         "manaCost": "{2}{U}",
         "type": "Enchantment — Aura",
         "text": "Enchant player\nAt the beginning of enchanted player's first upkeep each turn, that player gets an additional upkeep step after this step."
+      }
+    ]
+  },
+  {
+    "name": "Paradox Shaper // Omit Variables",
+    "layout": "preparer",
+    "cards": [
+      {
+        "name": "Paradox Shaper",
+        "manaCost": "{1}{U/B}",
+        "type": "Creature — Octopus Wizard",
+        "text": "At the beginning of your upkeep, if this creature isn't prepared, it becomes prepared.\n{2}: Put target card from your graveyard on the bottom of your library.",
+        "power": "1",
+        "toughness": "3"
+      },
+      {
+        "name": "Omit Variables",
+        "manaCost": "{U/B}",
+        "type": "Sorcery",
+        "text": "Mill three cards. (Put the top three cards of your library into your graveyard.)"
       }
     ]
   },
@@ -286110,6 +286779,20 @@
         "text": "Whenever Pianna attacks, attacking creatures get +1/+1 until end of turn.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Picard, Steadfast Captain",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Picard, Steadfast Captain",
+        "manaCost": "{4}{W}{W}",
+        "type": "Legendary Creature — Human Officer",
+        "text": "Whenever Picard enters or attacks, put two +1/+1 counters on another target creature you control.",
+        "power": "4",
+        "toughness": "4"
       }
     ]
   },
@@ -295765,6 +296448,26 @@
         "text": "This spell can't be countered.\nCreature spells you control can't be countered.",
         "power": "4",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Prudent Fateseer // Peer Review",
+    "layout": "preparer",
+    "cards": [
+      {
+        "name": "Prudent Fateseer",
+        "manaCost": "{1}{W/U}{W/U}",
+        "type": "Creature — Dwarf Wizard",
+        "text": "This creature enters prepared.\nWhenever you scry or surveil, creatures you control get +1/+0 until end of turn. This ability triggers only once each turn.",
+        "power": "1",
+        "toughness": "4"
+      },
+      {
+        "name": "Peer Review",
+        "manaCost": "{2}{W/U}",
+        "type": "Sorcery",
+        "text": "Create a 2/2 colorless Wizard Soldier creature token named Cadet. Surveil 1."
       }
     ]
   },
@@ -326703,6 +327406,20 @@
     ]
   },
   {
+    "name": "Salt Vampire",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Salt Vampire",
+        "manaCost": "{1}{B}",
+        "type": "Creature — Vampire Shapeshifter",
+        "text": "Lifelink\nWhen this creature enters, look at target opponent's hand. You may choose a nonland card from it. If you do, that player exiles that card, then draws a card.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Saltblast",
     "layout": "single",
     "cards": [
@@ -340097,6 +340814,18 @@
     ]
   },
   {
+    "name": "Set Phasers to . . .",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Set Phasers to . . .",
+        "manaCost": "{W}",
+        "type": "Instant",
+        "text": "Choose one —\n• Stun — Tap target creature and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n• Kill — This spell deals 3 damage to target attacking creature."
+      }
+    ]
+  },
+  {
     "name": "Setessan Battle Priest",
     "layout": "single",
     "cards": [
@@ -340359,6 +341088,20 @@
         "text": "This creature gets +1/+1 for each other creature named Seven Dwarves you control.\nA deck can have up to seven cards named Seven Dwarves.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Seven of Nine",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Seven of Nine",
+        "manaCost": "{2}{U}{B}",
+        "type": "Legendary Artifact Creature — Human Scientist",
+        "text": "Whenever you face a dilemma, draw a card. (You face a dilemma as you choose one or more modes for a spell or ability.)",
+        "power": "2",
+        "toughness": "4"
       }
     ]
   },
@@ -348593,6 +349336,20 @@
     ]
   },
   {
+    "name": "Silvan Reveler",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Silvan Reveler",
+        "manaCost": "{2}{G}{U}",
+        "type": "Creature — Elf Citizen",
+        "text": "When this creature enters, draw a card, then discard a card. If you discard a land card this way, put it from your graveyard onto the battlefield tapped.\nLandfall — Whenever a land you control enters, you may pay {1}{G}{U}. If you do, return this card from your graveyard to your hand.",
+        "power": "3",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Silvanus's Invoker",
     "layout": "single",
     "cards": [
@@ -356125,6 +356882,20 @@
     ]
   },
   {
+    "name": "Smaug the Impenetrable",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Smaug the Impenetrable",
+        "manaCost": "{5}{B}{R}",
+        "type": "Legendary Creature — Dragon",
+        "text": "Flying, indestructible, haste\nWhenever Smaug is dealt noncombat damage, create that many Treasure tokens.",
+        "power": "8",
+        "toughness": "7"
+      }
+    ]
+  },
+  {
     "name": "Smaug the Magnificent",
     "layout": "single",
     "cards": [
@@ -359895,7 +360666,7 @@
       {
         "name": "Sorin's Remastered Manor",
         "type": "Plane — Innistrad",
-        "text": "When you planeswalk here and at the beginning your upkeep, put a spooky counter on target creature you control.\nSpooky creatures you control have +1/+1 and menace. (A creature is spooky if it has a spooky counter or it could be a horror movie monster.)\nA Murder at Markov Manor - Whenever chaos ensues, target spooky creature you control bites target opponent or creature an opponent controls. (The creature deals damage equal to its power to the creature your opponent controls. You gain that much life.)"
+        "text": "When you planeswalk here and at the beginning your upkeep, put a spooky counter on target creature you control.\nSpooky creatures you control have +1/+1 and menace. (A creature is spooky if it has a spooky counter or it could be a horror movie monster.)\nA Murder at Markov Manor — Whenever chaos ensues, target spooky creature you control bites target opponent or creature an opponent controls. (The creature deals damage equal to its power to the creature your opponent controls. You gain that much life.)"
       }
     ]
   },
@@ -364239,7 +365010,7 @@
         "name": "Sphinx Summoner",
         "manaCost": "{3}{U}{B}",
         "type": "Artifact Creature — Sphinx",
-        "text": "Flying\nWhen this creature enters, you may search your library for an artifact creature card, reveal it, put it into your hand. then shuffle.",
+        "text": "Flying\nWhen this creature enters, you may search your library for an artifact creature card, reveal it, put it into your hand, then shuffle.",
         "power": "3",
         "toughness": "3"
       }
@@ -367465,6 +368236,20 @@
     ]
   },
   {
+    "name": "Spock, Logical Choice",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Spock, Logical Choice",
+        "manaCost": "{3}{U}{U}",
+        "type": "Legendary Creature — Vulcan Human Scientist",
+        "text": "Vigilance (Attacking doesn't cause this creature to tap.)\n{T}: Draw a card.",
+        "power": "3",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Spoils of Adventure",
     "layout": "single",
     "cards": [
@@ -370328,6 +371113,17 @@
     ]
   },
   {
+    "name": "Stardew Valley",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Stardew Valley",
+        "type": "Land",
+        "text": "{T}: Add {C}.\n{2}, {T}, Tap an untapped creature you control: Create a Food token.\n{3}, {T}: Choose target permanent you control. Draw a card, then another player of your choice may gain control of that permanent. Activate only as a sorcery."
+      }
+    ]
+  },
+  {
     "name": "Starfall",
     "layout": "single",
     "cards": [
@@ -372822,6 +373618,18 @@
     ]
   },
   {
+    "name": "Sting, Bilbo's Sword",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Sting, Bilbo's Sword",
+        "manaCost": "{2}",
+        "type": "Legendary Artifact — Equipment",
+        "text": "Flash\nWhen Sting enters, put a hone counter on Sting for each creature target opponent controls. Attach Sting to up to one target creature you control. (Each hone counter on an Equipment grants +1/+0 to equipped creature.)\nEquip {3}"
+      }
+    ]
+  },
+  {
     "name": "Sting, the Glinting Dagger",
     "layout": "single",
     "cards": [
@@ -372900,6 +373708,26 @@
         "text": "Reach\nWhen this creature enters, you may destroy target creature with flying.",
         "power": "2",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Stingerquill Voxmancer // Vicious Verse",
+    "layout": "preparer",
+    "cards": [
+      {
+        "name": "Stingerquill Voxmancer",
+        "manaCost": "{B/R}",
+        "type": "Creature — Goblin Sorcerer",
+        "text": "At the beginning of your upkeep, if this creature isn't prepared, it becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)",
+        "power": "1",
+        "toughness": "2"
+      },
+      {
+        "name": "Vicious Verse",
+        "manaCost": "{B/R}",
+        "type": "Sorcery",
+        "text": "Vicious Verse deals 1 damage to target opponent."
       }
     ]
   },
@@ -380993,6 +381821,18 @@
         "manaCost": "{1}{R}",
         "type": "Sorcery",
         "text": "Choose one —\n• Suplex deals 3 damage to target creature. If that creature would die this turn, exile it instead.\n• Exile target artifact."
+      }
+    ]
+  },
+  {
+    "name": "Supper for Spiders",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Supper for Spiders",
+        "manaCost": "{1}{B}",
+        "type": "Instant",
+        "text": "Put onto the battlefield under your control all creature cards in your opponents' graveyards that were put there from the battlefield this turn. They are Food artifacts with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\" (They lose all other types and subtypes.)"
       }
     ]
   },
@@ -391363,6 +392203,20 @@
     ]
   },
   {
+    "name": "Tenacious Tosk",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Tenacious Tosk",
+        "manaCost": "{3}{G}",
+        "type": "Creature — Tosk Rogue",
+        "text": "This creature can't be blocked by more than one creature.\nWhenever this creature deals combat damage to a player, put a +1/+1 counter on it.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Tenacious Underdog",
     "layout": "single",
     "cards": [
@@ -394819,6 +395673,20 @@
     ]
   },
   {
+    "name": "The Chief Warg",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Chief Warg",
+        "manaCost": "{2}{B}{G}",
+        "type": "Legendary Creature — Wolf",
+        "text": "Menace (This creature can't be blocked except by two or more creatures.)\nFerocious — Whenever you attack while you control a creature with power 4 or greater, you draw a card and lose 1 life.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "The Cinematic Phoenix",
     "layout": "single",
     "cards": [
@@ -394841,6 +395709,18 @@
         "manaCost": "{4}{W}{W}",
         "type": "Legendary Artifact",
         "text": "Affinity for Knights (This spell costs {1} less to cast for each Knight you control.)\nCreatures you control get +1/+1.\nWhenever you cast a legendary spell, create a 2/2 white Knight creature token with vigilance.\n{3}{W}, {T}: Create a 2/2 white Knight creature token with vigilance."
+      }
+    ]
+  },
+  {
+    "name": "The City on the Edge of Forever",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The City on the Edge of Forever",
+        "manaCost": "{3}{W}{B}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\nI — All artifacts and creatures phase out. Create a 0/1 white Human creature token with \"Permanents can't phase in.\" (Treat phased-out permanents and anything attached to them as though they don't exist.)\nII — You draw two cards and each player loses 2 life.\nIII — Sacrifice a creature token. If you do, you gain 5 life."
       }
     ]
   },
@@ -395560,6 +396440,18 @@
         "text": "The Duke enters with a +1/+1 counter on him.\n{T}, Remove a counter from The Duke: Put a +1/+1 counter on another target creature you control. It gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)",
         "power": "0",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "The Eagles Are Coming!",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Eagles Are Coming!",
+        "manaCost": "{1}{W}",
+        "type": "Instant",
+        "text": "Kicker {2}{W}{W} (You may pay an additional {2}{W}{W} as you cast this spell.)\nChoose target creature you own. If this spell was kicked, instead choose any number of target creatures you own. Return each chosen creature to your hand. At the beginning of the next upkeep, create a 4/4 white Bird Soldier creature token with flying for each creature returned to your hand this way."
       }
     ]
   },
@@ -397493,6 +398385,17 @@
     ]
   },
   {
+    "name": "The Lonely Mountain",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Lonely Mountain",
+        "type": "Land — Mountain",
+        "text": "({T}: Add {R}.)\nThis land enters tapped unless you control an Equipment.\n{4}{R}, {T}: Create a 2/2 red Dwarf creature token. This ability costs {1} less to activate for each Equipment you control. Activate only as a sorcery."
+      }
+    ]
+  },
+  {
     "name": "The Long Reach of Night // Animus of Night's Reach",
     "layout": "transform",
     "cards": [
@@ -397570,7 +398473,7 @@
       {
         "name": "The Maelstrom",
         "type": "Plane — Alara",
-        "text": "When you planeswalk to The Maelstrom and at the beginning of your upkeep, you may reveal the top card of your library. If it's a permanent card, you may put it onto the battlefield. If you revealed a card but didn't put it onto the battlefield, put it on the bottom of your library.\nWhenever chaos ensues, return target permanent card from your graveyard to the battlefield."
+        "text": "When you planeswalk to The Maelstrom and at the beginning of your upkeep, you may reveal the top card of your library. If a permanent card is revealed this way, you may put it onto the battlefield. If you revealed a card but didn't put it onto the battlefield, put it on the bottom of your library.\nWhenever chaos ensues, return target permanent card from your graveyard to the battlefield."
       }
     ]
   },
@@ -398615,6 +399518,20 @@
     ]
   },
   {
+    "name": "The Queen of Dale",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Queen of Dale",
+        "manaCost": "{1}{W}",
+        "type": "Legendary Creature — Human Noble",
+        "text": "Whenever an opponent casts their first noncreature spell each turn, you recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",
+        "power": "2",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "The Rack",
     "layout": "single",
     "cards": [
@@ -399604,6 +400521,19 @@
         "text": "Flying, haste\nWhen The Thanos-Copter enters, Vehicles you control become artifact creatures until end of turn.\nWhenever a Vehicle you control deals combat damage to a player, draw a card.\nCrew 2",
         "power": "5",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "The Theorist, Jace Beleren",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Theorist, Jace Beleren",
+        "manaCost": "{2}{U}{U}",
+        "type": "Legendary Planeswalker — Jace",
+        "text": "At the beginning of each opponent's draw step, you draw a card.\n[+1]: Create a 1/1 blue Illusion creature token.\n[−2]: For each opponent, return up to one target artifact or creature that player controls to its owner's hand.\n[−6]: Draw three cards. Then put X +1/+1 counters on each creature you control, where X is the number of cards in your hand.",
+        "loyalty": "3"
       }
     ]
   },
@@ -401728,6 +402658,34 @@
     ]
   },
   {
+    "name": "Thorin Oakenshield",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Thorin Oakenshield",
+        "manaCost": "{R}{W}",
+        "type": "Legendary Creature — Dwarf Noble",
+        "text": "Trample\nStoried (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)\nAs long as you have an enduring story, artifacts and creatures you control have ward {1}.",
+        "power": "3",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Thorin, King of Durin's Folk",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Thorin, King of Durin's Folk",
+        "manaCost": "{3}{R}{W}",
+        "type": "Legendary Creature — Dwarf Noble",
+        "text": "Whenever Thorin or another Dwarf you control enters, create a Treasure token.\nOther Dwarves you control get +1/+0 for each artifact token you control.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Thorin, Mountain-king",
     "layout": "single",
     "cards": [
@@ -403187,7 +404145,7 @@
         "name": "Thran Turbine",
         "manaCost": "{1}",
         "type": "Artifact",
-        "text": "At the beginning of your upkeep, you may add {C}{C}. You can't spend this mana to cast spells."
+        "text": "At the beginning of your upkeep, you may add {C}{C}. This mana can't be spent to cast spells."
       }
     ]
   },
@@ -403226,6 +404184,20 @@
         "manaCost": "{4}",
         "type": "Artifact",
         "text": "Echo {4} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\nYou may choose not to untap this artifact during your untap step.\n{2}, {T}: All creatures get +2/+2 for as long as this artifact remains tapped."
+      }
+    ]
+  },
+  {
+    "name": "Thranduil, the Elvenking",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Thranduil, the Elvenking",
+        "manaCost": "{2}{B}{G}{U}",
+        "type": "Legendary Creature — Elf Noble",
+        "text": "Thranduil has all activated abilities of all Elf cards in your graveyard.\nWhenever another legendary Elf you control enters, draw two cards, then discard a card.",
+        "power": "5",
+        "toughness": "6"
       }
     ]
   },
@@ -407141,6 +408113,20 @@
     ]
   },
   {
+    "name": "Tinybones, Pocket Nuisance",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Tinybones, Pocket Nuisance",
+        "manaCost": "{2}{B}",
+        "type": "Legendary Creature — Skeleton Rogue",
+        "text": "When Tinybones enters, each opponent discards a card.\nWhenever a player discards one or more cards, Tinybones deals 1 damage to each opponent.",
+        "power": "2",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Tinybones, Trinket Thief",
     "layout": "single",
     "cards": [
@@ -407440,6 +408426,20 @@
         "manaCost": "{R}",
         "type": "Instant",
         "text": "Target creature gets +3/+1 until end of turn. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)"
+      }
+    ]
+  },
+  {
+    "name": "Titanbones, Towering Heart",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Titanbones, Towering Heart",
+        "manaCost": "{3}{G}",
+        "type": "Legendary Creature — Skeleton Druid",
+        "text": "Reach\nWhenever you gain life, put two +1/+1 counters on Titanbones.\nWhen you discard this card, you gain 3 life.",
+        "power": "4",
+        "toughness": "3"
       }
     ]
   },
@@ -408156,6 +409156,20 @@
         "text": "First strike\nWhenever another nontoken creature you control leaves the battlefield, put a +1/+1 counter on Tokka & Rahzar and create a Treasure token. This ability triggers only once each turn.",
         "power": "3",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Tolabow, Loch Rascal",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Tolabow, Loch Rascal",
+        "manaCost": "{2}{U}{U}",
+        "type": "Legendary Creature — Otter",
+        "text": "Rulebreaker — A deck with this commander can have instant and sorcery cards of one additional color not in this commander's color identity and any basic land cards.\nWhenever you cast an instant or sorcery spell, create a 1/1 blue and red Otter creature token with prowess. (Whenever you cast a noncreature spell, it gets +1/+1 until end of turn.)",
+        "power": "3",
+        "toughness": "2"
       }
     ]
   },
@@ -413275,6 +414289,20 @@
     ]
   },
   {
+    "name": "Trelane, Squire of Gothos",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Trelane, Squire of Gothos",
+        "manaCost": "{5}{U}",
+        "type": "Legendary Creature — Q",
+        "text": "Vigilance (Attacking doesn't cause this creature to tap.)\nWard {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\nTrelane can't be blocked.",
+        "power": "4",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Trelasarra, Moon Dancer",
     "layout": "single",
     "cards": [
@@ -417933,6 +418961,20 @@
         "text": "When U.S.Agent enters, create a colorless Equipment artifact token named Sturdy Shield with \"Equipped creature gets +1/+2\" and equip {2}. Attach it to U.S.Agent.",
         "power": "3",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "U.S.S. Enterprise-D, Galaxy-Class",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "U.S.S. Enterprise-D, Galaxy-Class",
+        "manaCost": "{3}",
+        "type": "Legendary Artifact — Spacecraft",
+        "text": "Whenever one or more charge counters are put on U.S.S. Enterprise-D for the first time each turn, exile the top card of your library. You may play that card this turn.\nStation (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+.)\n7+ | Flying, vigilance",
+        "power": "4",
+        "toughness": "5"
       }
     ]
   },
@@ -430722,6 +431764,26 @@
         "manaCost": "{2}{B}{B}",
         "type": "Sorcery",
         "text": "Return target creature card from your graveyard to the battlefield. If {G} was spent to cast this spell, that creature enters with an additional +1/+1 counter on it."
+      }
+    ]
+  },
+  {
+    "name": "Vigorbloom Vanguard // Seed Suture",
+    "layout": "preparer",
+    "cards": [
+      {
+        "name": "Vigorbloom Vanguard",
+        "manaCost": "{1}{G/W}",
+        "type": "Creature — Troll Druid",
+        "text": "This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)\nEach creature you control with a +1/+1 counter on it has vigilance.",
+        "power": "2",
+        "toughness": "2"
+      },
+      {
+        "name": "Seed Suture",
+        "manaCost": "{G/W}",
+        "type": "Sorcery",
+        "text": "Put a +1/+1 counter on target creature. You gain 1 life."
       }
     ]
   },
@@ -450068,6 +451130,26 @@
     ]
   },
   {
+    "name": "Woodwork Prodigy // Soul Tether",
+    "layout": "preparer",
+    "cards": [
+      {
+        "name": "Woodwork Prodigy",
+        "manaCost": "{2}{R/G}",
+        "type": "Creature — Cat Druid",
+        "text": "At the beginning of your upkeep, if this creature isn't prepared, it becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)",
+        "power": "3",
+        "toughness": "3"
+      },
+      {
+        "name": "Soul Tether",
+        "manaCost": "{2}{R/G}",
+        "type": "Sorcery",
+        "text": "Create a Heartwood token. (It's a red and green artifact with \"{T}: Add {R} or {G}.\")"
+      }
+    ]
+  },
+  {
     "name": "Woodwraith Corrupter",
     "layout": "single",
     "cards": [
@@ -457427,6 +458509,20 @@
     ]
   },
   {
+    "name": "_____ Goblin",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "_____ Goblin",
+        "manaCost": "{2}{R}",
+        "type": "Creature — Goblin Guest",
+        "text": "When this creature enters, you may put a name sticker on it. Add {R} for each unique vowel on that sticker. (The vowels are A, E, I, O, U, and Y.)",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "_____ _____ Rocketship",
     "layout": "single",
     "cards": [
@@ -457476,20 +458572,6 @@
         "name": "______",
         "type": "Land",
         "text": "When you play this land for the first time, its name forever becomes a creature type and a noncreature card type of your choice belonging to your first name. (For example, Gavin's Dragon and Sorceries. Make sure to fill in the name so everyone knows where they're shopping.)\n{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast spells of the chosen types or spells whose names begin with the first letter of your name."
-      }
-    ]
-  },
-  {
-    "name": "________ Goblin",
-    "layout": "single",
-    "cards": [
-      {
-        "name": "________ Goblin",
-        "manaCost": "{2}{R}",
-        "type": "Creature — Goblin Guest",
-        "text": "When this creature enters, you may put a name sticker on it. Add {R} for each unique vowel on that sticker. (The vowels are A, E, I, O, U, and Y.)",
-        "power": "2",
-        "toughness": "2"
       }
     ]
   },

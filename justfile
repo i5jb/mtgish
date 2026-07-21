@@ -27,9 +27,9 @@ download_mtgjson: make_temp
 [doc("Download scryfall data (this or mtgjson, pick one)")]
 download_scryfall: make_temp
   #!/usr/bin/env bash
-  curl -A "mtg-grammer-checker/0.1 (personal project, ran manually)" https://api.scryfall.com/bulk-data | jq . > {{TEMP_DIR}}/Scryfall-Bulk-Data-latest.json
-  SCRYFALL_ORACLE_CARDS_URI=$( jq -r ".data | map(select(.name == \"Oracle Cards\"))[0].download_uri" {{TEMP_DIR}}/Scryfall-Bulk-Data-latest.json )
-  curl -A "mtg-grammer-checker/0.1 (personal project, ran manually)" $SCRYFALL_ORACLE_CARDS_URI | jq . > {{TEMP_DIR}}/Scryfall-OracleCards-latest.json
+  curl -A "mtg-grammer-checker/0.1 (personal project, ran manually)"  https://api.scryfall.com/bulk-data/oracle-cards  | jq . > {{TEMP_DIR}}/Scryfall-Bulk-Data-latest.json
+  SCRYFALL_ORACLE_CARDS_URI=$( jq -r ".jsonl_download_uri" {{TEMP_DIR}}/Scryfall-Bulk-Data-latest.json )
+  curl -A "mtg-grammer-checker/0.1 (personal project, ran manually)" $SCRYFALL_ORACLE_CARDS_URI | gunzip | jq -s . > {{TEMP_DIR}}/Scryfall-OracleCards-latest.json
   {{BASE_DIR}}/preprocess_scryfall {{TEMP_DIR}}/Scryfall-OracleCards-latest.json > {{BASE_DIR}}/data/oracle.json
 
 # ------------------------
@@ -203,7 +203,7 @@ rust_build_all: rust_build_ronl_to_bincode rust_build_ronl_to_pretty_ron rust_bu
 [group('convert')]
 convert_to_ron_pretty:
   #!/usr/bin/env bash
-  {{TEMP_DIR}}/ronl_to_pretty_ron data/mtgish.lines.ron > data/mtgish.pretty.ron
+  {{TEMP_DIR}}/ronl_to_pretty_ron data/mtgish.lines.ron > data/mtgish.pretty.ron 2> {{TEMP_DIR}}/ron.failing.txt
 
 [group('convert')]
 convert_to_json:

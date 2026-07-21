@@ -1,0 +1,349 @@
+{
+
+  "{{EXILABLE_LIST}}": {
+    "[{{EXILABLE}}, {{EXILABLE}}, {{EXILABLE}}, {{EXILABLE}}, {{EXILABLE}}]": "",
+    "[{{EXILABLE}}, {{EXILABLE}}, {{EXILABLE}}]": "",
+    "[{{EXILABLE}}, {{EXILABLE}}]": "",
+    "[{{EXILABLE}}]": ""
+  },
+  "{{EXILABLE_COST_LIST}}": {
+    "[{{EXILABLE_COST}}, {{EXILABLE_COST}}, {{EXILABLE_COST}}]": "",
+    "[{{EXILABLE_COST}}, {{EXILABLE_COST}}]": "",
+    "[{{EXILABLE_COST}}]": ""
+  },
+
+  "{{EXILE_FLAGS}}": {
+    "[]": "",
+    "[ExilesIntoShuffledFaceDownPile]": "",
+    "[ExilesIntoFaceDownPile]": "",
+    "[ExilesIntoFaceUpPile]": "",
+    "[ExilesFaceDown]": "",
+    "[ExilesFaceUp]": "",
+    "[ExilesWithACounter({{COUNTER_TYPE}})]": "",
+    "[ExilesWithNumberCounters({{NUMBER}}, {{COUNTER_TYPE}})]": "",
+    "[Limited({{EXPIRATION}})]": "",
+    "[LimitedWithTriggerEnters({{EXPIRATION}}, {{PERMANENTS}}, {{TOP_LEVEL_ACTIONS}})]": "",
+  },
+
+  "{{EXILABLE}}": {
+    "NumberPermanentsCardsInHandOrCardsInGraveyards({{NUMBER}}, {{PERMANENTS}}, {{CARDS_IN_HAND}}, {{CARDS_IN_GRAVEYARDS}})": "",
+    "NumberPermanentsOrCardsInHand({{NUMBER}}, {{PERMANENTS}}, {{CARDS_IN_HAND}})": "",
+
+    // ----------
+    // Permanents
+    // ----------
+
+    "Permanent({{PERMANENT}})": "",
+    "EachPermanent({{PERMANENTS}})": "",
+
+    "APermanent({{PERMANENTS}})": "",
+    "NumberPermanents({{NUMBER}}, {{PERMANENTS}})": "",
+    "UptoOnePermanent({{PERMANENTS}})": "",
+    "AnyNumberOfPermanents({{PERMANENTS}})": "",
+
+    // -------------------
+    // Cards in Graveyards
+    // -------------------
+
+    "CardInGraveyards({{CARD_IN_GRAVEYARDS}})": "",
+    "EachCardInGraveyards({{CARDS_IN_GRAVEYARDS}})": "",
+
+    "ACardInGraveyards({{CARDS_IN_GRAVEYARDS}})": "",
+    "NumberCardsInGraveyards({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}})": "",
+    "UptoNumberCardsInGraveyards({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}})": "",
+    "UptoOneCardInGraveyards({{CARDS_IN_GRAVEYARDS}})": "",
+    "AnyNumberOfCardsInGraveyards({{CARDS_IN_GRAVEYARDS}})": "",
+
+    "UptoOneCardOfEachCardTypeAmongCardsInGraveyards({{CARDS_IN_GRAVEYARDS}})": "",
+    "UptoOneCardOfTypeInEachPlayersGraveyard({{CARDS_IN_GRAVEYARDS}}, {{PLAYERS}})": "",
+    "ACardOfTypeInEachPlayersGraveyard({{CARDS_IN_GRAVEYARDS}}, {{PLAYERS}})": "",
+
+    "ACardInGraveyardsAtRandom({{CARDS_IN_GRAVEYARDS}})": "",
+    "ACardInGraveyardsAtRandomInEachPlayersGraveyard({{CARDS_IN_GRAVEYARDS}}, {{PLAYERS}})": "",
+    "NumberCardsInGraveyardsAtRandom({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}})": "",
+
+    // -------------
+    // Cards in Hand
+    // -------------
+
+    "ACardFromHand": "",
+    "NumberCardsFromHand({{NUMBER}})": "",
+    "AnyNumberOfCardsFromHand": "",
+
+    "ACardOfTypeFromHand({{CARDS_IN_HAND}})": "",
+
+    "ACardOfTypeFromPlayersHand({{CARDS_IN_HAND}}, {{PLAYER}})": "",
+
+    "PlayersHand({{PLAYER}})": "",
+    "EachPlayersHand({{PLAYERS}})": "",
+
+    "CardInHand({{CARD_IN_HAND}})": "",
+
+    "EachCardInHand({{CARDS_IN_HAND}})": "",
+
+    "ARandomCardFromPlayersHand({{PLAYER}})": "",
+
+    "ACardFromHandAtRandom": "",
+
+    // ----------------
+    // Cards in Library
+    // ----------------
+    "TheTopCardOfPlayersLibrary({{PLAYER}})": "",
+    "TheTopNumberCardsOfPlayersLibrary({{NUMBER}}, {{PLAYER}})": "",
+    "TheTopCardOfEachPlayersLibraries({{PLAYERS}})": "",
+    "TheBottomNumberCardsOfPlayersLibrary({{NUMBER}}, {{PLAYER}})": "",
+    "TheBottomCardOfEachPlayersLibraries({{PLAYERS}})": "",
+    "TheBottomCardOfTypeInPlayersLibrary({{CARDS_IN_LIBRARY}}, {{PLAYER}})": "",
+
+    "AllCardsFromPlayersLibrary({{PLAYER}})": "",
+    "AllCardsOfTypeFromPlayersLibrary({{CARDS_IN_LIBRARY}}, {{PLAYER}})": "",
+
+    "ACardFromPlayersLibraryAtRandom({{PLAYER}})": "",
+    "NumberCardsFromPlayersLibraryAtRandom({{NUMBER}}, {{PLAYER}})": "",
+
+    "ACardOfTypeFromPlayersLibraryAtRandom({{CARDS_IN_LIBRARY}}, {{PLAYER}})": "",
+
+    // ------
+    // Spells
+    // ------
+
+    "Spell({{SPELL}})": "",
+    "EachSpell({{SPELLS}})": "",
+  },
+
+  "{{EXILABLE_COST}}": {
+    "ACardOfTypeMilledThisWay({{CARDS_IN_LIBRARY}})": "",
+
+    // ----------
+    // Permanents
+    // ----------
+
+    "Permanent({{PERMANENT}})": "",
+    "EachPermanent({{PERMANENTS}})": "",
+
+    "APermanent({{PERMANENTS}})": "",
+    "NumberPermanents({{NUMBER}}, {{PERMANENTS}})": "",
+    "NumberOrMoreGroupPermanents({{NUMBER}}, {{PERMANENTS}}, {{GROUP_FILTER}})": "",
+    "AnyNumberOfPermanents({{PERMANENTS}})": "",
+
+    // -------------------
+    // Cards in Graveyards
+    // -------------------
+
+    "CardInGraveyards({{CARD_IN_GRAVEYARDS}})": "",
+    "EachCardInGraveyards({{CARDS_IN_GRAVEYARDS}})": "",
+
+    "ACardInGraveyards({{CARDS_IN_GRAVEYARDS}})": "",
+    "NumberCardsInGraveyards({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}})": "",
+    "NumberCardsInASingleGraveyard({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}}, {{PLAYERS}})": "",
+    "NumberOrMoreCardsInGraveyards({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}})": "",
+    "AnyNumberOfCardsInGraveyards({{CARDS_IN_GRAVEYARDS}})": "",
+    "AnyNumberOfGroupCardsInGraveyards({{CARDS_IN_GRAVEYARDS}}, {{GROUP_FILTER}})": "",
+
+    // -------------
+    // Cards in Hand
+    // -------------
+
+    "ACardFromHand": "",
+
+    "ACardOfTypeFromHand({{CARDS_IN_HAND}})": "",
+    "NumberCardsOfTypeFromHand({{NUMBER}}, {{CARDS_IN_HAND}})": "",
+
+    "ACardOfTypeFromPlayersHand({{CARDS_IN_HAND}}, {{PLAYER}})": "",
+
+    "PlayersHand({{PLAYER}})": "",
+
+    "CardInHand({{CARD_IN_HAND}})": "",
+
+    // ----------------
+    // Cards in Library
+    // ----------------
+    "TheTopCardOfPlayersLibrary({{PLAYER}})": "",
+    "TheTopNumberCardsOfPlayersLibrary({{NUMBER}}, {{PLAYER}})": "",
+
+    // ------
+    // Spells
+    // ------
+
+    "ASpell({{SPELLS}})": "",
+    "Spell({{SPELL}})": "",
+  },
+
+
+
+  "{{_PLAYER_ACTION[Exile]}}": {
+    "Exile({{EXILABLE_LIST}}, {{EXILE_FLAGS}})": "",
+
+    "ActionForEachExiledCard({{CARDS_IN_EXILE}}, {{ACTION_LIST}})": "",
+    "ActionForEachPermanentExiledThisWayByController({{ACTION_LIST}})": "",
+    "ActionForEachPermanentExiledThisWay({{ACTION_LIST}})": "",
+
+    "PlayersExileTopCardOfLibraryAndFindHighestManaValueUntilSingleWinner({{PLAYERS}})": "",
+
+    "ExiledCardDealsDamage({{CARD_IN_EXILE}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+
+    "ExileCardsFromTheTopOfLibraryUntilACardOfTypeIsExiled({{CARDS}})": "",
+    "ExileCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreExiled({{NUMBER}}, {{CARDS}})": "",
+    "ExileCardsFromTheTopOfLibraryUntilGroupCardsAreExiled({{GROUP_FILTER}})": "",
+
+    "ExilePermanentsAndMeldIntoNewPermanent({{PERMANENT}}, {{PERMANENTS}}, {{QUOTED_NAMED_CARD}}, {{ENTER_FLAGS}})": "",
+  },
+  "{{_COST[Exile]}}": {
+    "Exile({{EXILABLE_COST_LIST}}, {{EXILE_FLAGS}})": "",
+    "ExileACardInGraveyardsAndPayItsManaCost({{CARDS_IN_GRAVEYARDS}})": "",
+  },
+  "{{_CONDITION[Exile]}}": {
+    "ExiledCardPassesFilter({{CARD_IN_EXILE}}, {{CARDS_IN_EXILE}})": "",
+    "ExiledPermanentWasUnearthed": "",
+
+    "ANumberOfCardsWerePutIntoExileThisTurn({{COMPARISON}}, {{CARDS}})": "",
+    "ACardOfTypeWasExiledThisTurn({{CARDS_IN_EXILE}})": "",
+    "ACardWasExiledThisWay({{CARDS}})": "",
+    "ANumberOfGroupCardsWereExiledThisWay({{COMPARISON}}, {{CARDS}}, {{GROUP_FILTER}})": "",
+    "APermanentWasExiledThisWay({{PERMANENTS}})": "",
+    "AnExiledCardPassesFilter({{CARDS_IN_EXILE}}, {{CARDS_IN_EXILE}})": "",
+    "CardIsExiled({{CARD_IN_EXILE}})": "",
+
+    "NumCardsInExileIs({{COMPARISON}}, {{CARDS_IN_EXILE}})": "",
+    "NumDifferentManaValuesAmongCardsInExileIs({{COMPARISON}}, {{CARDS_IN_EXILE}})": "",
+    "TheCardExiledThisWayIsStillExiled": "",
+    "TheLastCardExiledThisWayWasACard({{CARDS}})": "",
+    "TheTotalManaValueOfExiledCardsIs({{CARDS_IN_EXILE}}, {{COMPARISON}})": "",
+    "ThereAreNumberCardTypesAmongExiled({{COMPARISON}}, {{CARDS_IN_EXILE}})": "",
+  },
+  "{{_EXPIRATION[Exile]}}": {
+    "UntilCardIsNoLongerExiled({{CARD_IN_EXILE}})": "",
+    "UntilCardsAreNoLongerExiled({{CARDS_IN_EXILE}})": "",
+    "UntilItIsNoLongerExiled": "",
+  },
+  "{{_NUMBER[Exile]}}": {
+    "NumCardsInExile({{CARDS_IN_EXILE}})": "",
+    "NumDifferentManaValuesAmongCardsInExile({{CARDS_IN_EXILE}})": "",
+    "NumGraveyardCardsExiledThisWay": "",
+    "NumGraveyardCardsOfTypeExiledThisWay({{CARDS}})": "",
+    "NumHandCardsExiledFaceDownThisWay": "",
+    "NumHandCardsExiledThisWay": "",
+    "NumPermanentsExiledThisWay": "",
+    "NumPermanentsOfTypeExiledThisWay({{PERMANENTS}})": "",
+    "NumberOfCardsOfTypeExiledThisWay({{CARDS}})": "",
+    "PowerOfExiledCard({{CARD_IN_EXILE}})": "",
+    "PowerOfTheExiledCreature": "",
+    "TheGreatestManaValueAmongExiledCards({{CARDS_IN_EXILE}})": "",
+    "TheNumberOfCardsInHandExiledThisWay": "",
+    "TheNumberOfLibraryCardsExiledThisWay": "",
+    "TheNumberOfLibraryCardsOfTypeExiledThisWay({{CARDS}})": "",
+    "TheNumberOfPermanentsExiledThisTurn({{PERMANENTS}})": "",
+    "TotalManaValueOfExiledCards({{CARDS_IN_EXILE}})": "",
+    "TotalPowerOfExiledCards({{CARDS_IN_EXILE}})": "",
+    "TotalPowerOfPermanentsExiledThisWay({{PERMANENTS}})": "",
+    "TotalToughnessOfExiledCards({{CARDS_IN_EXILE}})": "",
+    "ToughnessOfExiledCard({{CARD_IN_EXILE}})": "",
+    "ToughnessOfTheExiledCreature": "",
+  },
+  "{{_PERMANENTS[Exile]}}": {
+    "HasExiledCards": "",
+    "HasExiledNumCards({{COMPARISON}})": "",
+    "ThePermanentsExiledThisWay": "",
+  },
+  "{{_PERMANENT[Exile]}}": {
+    "ThePermanentExiledByPlayerThisWay({{PLAYER}})": "",
+    "ThePermanentExiledThisWay": "",
+    "ThisExiledPermanentCard": "",
+  },
+  "{{_PLAYERS[Exile]}}": {
+    "ControlledAPermanentExiledThisWay": "",
+    "DidntPlayACardFromExileThisTurn({{CARDS}})": "",
+    "NumCardsOwnedInExileIs({{COMPARISON}}, {{CARDS_IN_EXILE}})": "",
+    "OwnersOfExiledCards({{CARDS_IN_EXILE}})": "",
+    "OwnsACardInExile({{CARDS_IN_EXILE}})": "",
+  },
+  "{{CARDS_IN_EXILE_LIST}}": {
+    "[{{CARDS_IN_EXILE}}, {{CARDS_IN_EXILE}}, {{CARDS_IN_EXILE}}]": "",
+    "[{{CARDS_IN_EXILE}}, {{CARDS_IN_EXILE}}]": ""
+  },
+  "{{CARDS_IN_EXILE}}": {
+    "{{_CARDS_IN_EXILE[PutCounters]}}": "",
+
+    "And({{CARDS_IN_EXILE_LIST}})": "",
+    "AnyExiledCard": "",
+
+    "InExile": "",
+    "InTheChosenPile": "",
+    "InTheExiledPileChosenThisWay": "",
+    "InTheExiledPileNotChosenThisWay": "",
+    "IsFaceDown": "",
+    "IsFaceUp": "",
+    "IsForetold": "",
+    "IsSuspended": "",
+    "IsWarped": "",
+    "Not({{CARDS_IN_EXILE}})": "",
+    "Or({{CARDS_IN_EXILE_LIST}})": "",
+    "Other({{CARD_IN_EXILE}})": "",
+    "OwnedByAPlayer({{PLAYERS}})": "",
+    "SingleExiledCard({{CARD_IN_EXILE}})": "",
+    "TheCardsConjuredThisWay": "",
+    "TheCardsExiledByPlayerThisWay({{PLAYER}})": "",
+    "TheCardsExiledThisWay": "",
+    "TheExiledCards": "",
+    "TheExiledCardsChosenThisWay": "",
+    "TheNonSpecificCardsExiledThisWay": "",
+    "TheOtherPermanentsExiledThisWay": "",
+    "ThePilesExiledThisWay": "",
+    "TheSpecificCardsExiledThisWay": "",
+    "Trigger_ThoseExiledCards": "",
+    "WasPutIntoExileFromAPlayersGraveyardThisTurn({{PLAYERS}})": "",
+    "WasExiledByPlayer({{PLAYER}})": "",
+    "WasExiledByPlayerForDraftCard({{PLAYER}}, {{QUOTED_NAMED_CARD}})": "",
+    "WasExiledByPlayerThisWay({{PLAYER}})": "",
+    "WasExiledByPlayerWithPermanent({{PLAYER}}, {{PERMANENT}})": "",
+    "WasExiledByPlayerWithPermanentThisTurn({{PLAYER}}, {{PERMANENT}})": "",
+    "WasExiledThisTurn": "",
+    "WasExiledThisWay": "",
+    "WasExiledWithAnAbility({{ABILITIES}})": "",
+    "WasExiledWithDeadPermanent": "",
+    "WasExiledWithPermanent({{PERMANENT}})": "",
+    "WasExiledWithPermanentsDelveAbility({{PERMANENT}})": "",
+    "WasExiledWithPlane(ThisPlane)": "",
+    "WasTurnedFaceUpThisWay": "",
+    "{{BASIC_CARD}}": "",
+    "{{CARDS_IN_EXILE[CraftWith]}}": ""
+  },
+  "{{CARD_IN_EXILE}}": {
+    "EachableExiled": "",
+    "Ref_TargetExiledCard": "",
+    "Ref_TargetExiledCard1": "",
+    "Ref_TargetExiledCard2": "",
+    "TheCardConjuredIntoExileThisWay": "",
+    "TheCardExiledThisWay": "",
+    "TheChosenExiledCard": "",
+    "TheExiledCard": "",
+    "TheExiledCardChosenThisWay": "",
+    "TheExiledCardFoundThisWay": "",
+    "TheExiledDeadPermanent": "",
+    "TheExiledTopOfLibrary": "",
+    "TheFirstCardExiledThisWay": "",
+    "TheLastExiledCard": "",
+    "TheOtherExiledCard({{CARDS_IN_EXILE}})": "",
+    "TheSecondCardExiledThisWay": "",
+    "TheSingleCardExiledThisWay": "",
+    "TheSinglePermanentExiledThisWay": "",
+    "TheSpecificCardExiledThisWay": "",
+    "ThisExiledCard": "",
+    "ThisExiledPermanentCard": "",
+    "TopCardOfExiledPile": "",
+    "Trigger_ThatExiledCard": "",
+    "WhenAPermanentIsExiled_ThatExiledPermanent": ""
+  },
+
+  "{{EXILE_EFFECT_LIST}}": {
+    "[{{EXILE_EFFECT}}, {{EXILE_EFFECT}}]": "",
+    "[{{EXILE_EFFECT}}]": ""
+  },
+  "{{EXILE_EFFECT}}": {
+    "AddAbility([{{RULE}}])": "",
+    "AddAbilityIfItDoesntHaveIt({{RULES}})": "",
+    "IsForetold": "",
+    "IsForetoldForCost(ItsManaCostReducedBy({{COST_REDUCTION}}))": "",
+    "IsPlotted": ""
+  },
+}
