@@ -219,6 +219,7 @@
     "IsNonEnchantmentType({{CURSE}})": ""
   },
   "{{BASIC_GAME_EFFECT}}": {
+    "APlayerGainingLifeCausesAbilitiesToTriggerAnAdditionalTime({{PLAYERS}}, {{ABILITIES}})": "",
     "APermanentAttackingCausesAbilitiesToTriggerAnAdditionalTime({{PERMANENTS}}, {{ABILITIES}})": "",
     "APermanentBecomingTheTargetOfASpellOrAbilityCausesAbilitiesToTriggerAnAdditionalTime({{PERMANENTS}}, {{SPELLS_OR_ABILITIES}}, {{ABILITIES}})": "",
     "APermanentBeingDealtDamageCausesAbilitiesToTriggerAnAdditionalTime({{PERMANENTS}}, {{ABILITIES}})": "",
@@ -305,6 +306,7 @@
     "{{_PLAYER_ACTION[PutCounters][WouldPutCounters]}}": "",
     "{{_PLAYER_ACTION[Exile]}}": "",
 
+    "Recruit": "",
     "AbandonScheme(ThisScheme)": "",
     "AcceptARandomCondition({{OFFERER}})": "",
     "AcceptARandomOffer({{OFFERER}})": "",
@@ -370,6 +372,7 @@
     "Amass({{NUMBER}}, Orc)": "",
     "Amass({{NUMBER}}, Sliver)": "",
     "Amass({{NUMBER}}, Zombie)": "",
+    "Amass({{NUMBER}}, Goblin)": "",
     "AnteTopCardOfLibrary": "",
     "Ascend": "",
     "AttachAPermanentToAPermanent({{PERMANENTS}}, {{PERMANENTS}})": "",
@@ -891,6 +894,7 @@
     "ForEachPlayerChooseAWord({{PLAYERS}}, [{{VOTE_OPTION}}, {{VOTE_OPTION}}])": "",
     "ForEachValueInRangeConjureDuplicateOfARandomCardOfTypeOntoBattlefield({{NUMBER}}, {{NUMBER}}, {{CARDS}}, {{ENTER_FLAGS}})": "",
     "Forage": "",
+    "Assimilate({{CARD_IN_GRAVEYARDS}})": "",
     "GainControlOfAPermanentControlledByEachPlayer({{PERMANENTS}}, {{PLAYERS}})": "",
     "GainControlOfAPermanentUntil({{PERMANENTS}}, {{EXPIRATION}})": "",
     "GainControlOfEachPermanent({{PERMANENTS}})": "",
@@ -1556,7 +1560,7 @@
     "SharesANameWithSpell({{SPELL}})": "",
     "SharesANameWithPermanent({{PERMANENT}})": "",
     "SingleGraveyardCard({{CARD_IN_GRAVEYARDS}})": "",
-    "TheCardsSurveiledThisWay": "",
+    "TheGraveyardCardsSurveiledThisWay": "",
     "TheChosenGraveyardCards": "",
     "TheGraveyardCardsChosenThisWay": "",
     "TheGraveyardCardsNotChosenThisWay": "",
@@ -2663,6 +2667,7 @@
     "DuringPlayersNextUntapStep({{PLAYER}})": "",
     "DuringTheCombatPhaseCreatedThisWay": "",
     "DuringTheExtraTurnCreatedThisWay": "",
+    "ForAsLongAsCardIsExiled({{CARD_IN_EXILE}})": "",
     "ForAsLongAsPermanentRemainsAttachedToPermanent({{PERMANENT}}, {{PERMANENT}})": "",
     "ForAsLongAsPermanentRemainsFaceDown({{PERMANENT}})": "",
     "ForAsLongAsPermanentRemainsTapped({{PERMANENT}})": "",
@@ -2979,6 +2984,8 @@
     "SpaceSculptor": ""
   },
   "{{KEYWORD_RULE}}": {
+    "Storied": "",
+
     "Absorb({{DIGITS}})": "",
     "Affinity({{PERMANENTS}})": "",
     "Afflict({{DIGITS}})": "",
@@ -4385,6 +4392,7 @@
     "HasNotActivatedAnExhaustAbilityThisTurn": "",
     "HasNotCompletedDungeon({{QUOTED_NAMED_CARD}})": "",
     "HasTheCitysBlessing": "",
+    "HasAnEnduringStory": "",
     "HasTheInitiative": "",
     "HasWaterEarthFireAndAirBendedThisTurn": "",
     "HasntBeenDealtCombatDamageSinceTheirLastTurn": "",
@@ -4412,7 +4420,8 @@
     "LostLifeThisTurn": "",
     "NumCardTypesInGraveyardIs({{COMPARISON}})": "",
     "NumCardsDrawnThisTurnIs({{COMPARISON}})": "",
-    "NumCardsInGraveyardIs({{COMPARISON}}, {{CARDS}})": "",
+    "NumCardsInGraveyardIs({{COMPARISON}})": "",
+    "NumCardsOfTypeInGraveyardIs({{COMPARISON}}, {{CARDS_IN_GRAVEYARDS}})": "",
     "NumCardsInHandAtBeginningOfTurnWas({{COMPARISON}})": "",
     "NumCardsInHandIs({{COMPARISON}})": "",
     "NumCardsInLibraryIs({{COMPARISON}})": "",
@@ -6807,6 +6816,7 @@
   },
   "{{_PLAYER_ACTION[RevealLibrary]}}": {
     "EachPlayerRevealsCardsFromTheTopOfTheirLibraryUntilTheyRevealACardOfType({{PLAYERS}}, {{CARDS}}, [PutACardFoundThisWayOntoTheBattlefield({{ENTER_FLAGS}}), PutTheRemainingCardsIntoGraveyard])": "",
+    "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed({{CARDS}}, [IfElse(ACardOfTypeWasFoundThisWay({{CARDS_IN_LIBRARY}}), [PutTheCardFoundThisWayOntoTheBattlefield({{ENTER_FLAGS}})], [PutTheCardFoundThisWayIntoHand]), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed({{CARDS}}, [CreatePermanentLayerEffectUntil({{PERMANENT}}, {{LAYER_EFFECT_LIST}}, {{EXPIRATION}}), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed({{CARDS}}, [CreatePermanentLayerEffectUntil({{PERMANENT}}, {{LAYER_EFFECT_LIST}}, {{EXPIRATION}}), PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder])": "",
     "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed({{CARDS}}, [ExileTheCardFoundThisWay, PutTheRemainingCardsBackIntoLibraryAndShuffle])": "",
@@ -6934,6 +6944,7 @@
     "ForEachPlayerSearchLibrary({{PLAYERS}}, [FindACardOfType({{CARDS}}), ExileFoundCards, Shuffle])": "",
     "SearchHandAndLibrary([FindAnyNumberOfCardsOfType({{CARDS_IN_LIBRARY}}), ExileFoundCards, Shuffle])": "",
     "SearchHandAndOrLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), MayCastFoundCardsWithoutPaying, ShuffleLibraryIfSearched])": "",
+    "SearchHandAndOrLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), ShuffleLibraryIfSearched])": "",
     "SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), CastFoundCardsWithoutPaying, Shuffle])": "",
     "SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), ExileFoundCards, Shuffle])": "",
     "SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), IfElse(ACardOfTypeWasFoundThisWay({{CARDS_IN_LIBRARY}}), [PutFoundCardsOntoBattlefield({{ENTER_FLAGS}})], [MayCost({{COST}}), IfElse(CostWasPaid, [PutFoundCardsOntoBattlefield({{ENTER_FLAGS}})], [PutFoundCardsIntoHand])]), Shuffle])": "",

@@ -62,25 +62,23 @@
     "(Exile them. While each one is exiled, its owner may cast it for {2} rather than its mana cost.)": "",
     "(To airbend a creature, exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)": ""
   },
-  "{{Reminder[AmassOrcs]}}": {
+  "{{Reminder[Amass]}}": {
+    "(To amass Goblins X, that player puts X +1/+1 counters on an Army they control. It's also a Goblin. If they don't control an Army, they create a 0/0 black Goblin Army creature token first.)": "",
+    "(Put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
     "(Put X +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
     "(Put a +1/+1 counter on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
     "(Put three +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
     "(Put two +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
     "(To amass Orcs 2, put two +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
     "(To amass Orcs 3, put three +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
-    "(To amass Orcs X, put X +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": ""
-  },
-  "{{Reminder[AmassSlivers]}}": {
-    "(Put two +1/+1 counters on an Army you control. It's also a Sliver. If you don't control an Army, create a 0/0 black Sliver Army creature token first.)": ""
-  },
-  "{{Reminder[AmassZombies]}}": {
+    "(To amass Orcs X, put X +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
+    "(Put two +1/+1 counters on an Army you control. It's also a Sliver. If you don't control an Army, create a 0/0 black Sliver Army creature token first.)": "",
     "(Put X +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
     "(Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
     "(Put four +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
     "(Put three +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
     "(Put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
-    "(To amass Zombies 2, put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": ""
+    "(To amass Zombies 2, put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
   },
   "{{Reminder[Annihilator]}}": {
     "(Whenever a creature with annihilator 1 attacks, defending player sacrifices a permanent of their choice.)": "",
@@ -1862,6 +1860,15 @@
     "(Enchanted creature has \"Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it\". If you put another Role on the creature later, put this one into the graveyard.)": "",
     "(If you control another Role on it, put that one into the graveyard. Enchanted creature has \"Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it\".)": ""
   },
+  "{{Reminder[Storied]}}": {
+    "(If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)": ""
+  },
+  "{{Reminder[Assimilate]}}": {
+    "(Put it onto the battlefield under your control with a +1/+1 counter. It's a Borg artifact creature and loses all other creature types.)": "",
+  },
+  "{{Reminder[Recruit]}}": {
+    "(Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)": "",
+  },
   "{{Reminder}}": {
     "(Activate each power-up ability only . . . once? Reduce the cost by his mana cost if he entered this turn.)": "",
     "(He must survive the damage to get the counters.)": "",
@@ -2596,9 +2603,7 @@
     "{{Reminder[Afflict]}}": "",
     "{{Reminder[Afterlife]}}": "",
     "{{Reminder[Airbend]}}": "",
-    "{{Reminder[AmassOrcs]}}": "",
-    "{{Reminder[AmassSlivers]}}": "",
-    "{{Reminder[AmassZombies]}}": "",
+    "{{Reminder[Amass]}}": "",
     "{{Reminder[Annihilator]}}": "",
     "{{Reminder[Ascend]}}": "",
     "{{Reminder[Attach][AmassOrcs]}}": "",
@@ -2847,6 +2852,9 @@
     "{{Reminder[Worthy]}}": "",
     "{{Reminder[WouldUntapReplacementEffect]}}": "",
     "{{Reminder[YouMayCastTheCopiedCard]}}": "",
-    "{{Reminder[YoungHeroRoleToken]}}": ""
+    "{{Reminder[YoungHeroRoleToken]}}": "",
+    "{{Reminder[Recruit]}}": "",
+    "{{Reminder[Storied]}}": "",
+    "{{Reminder[Assimilate]}}": "",
   }
 }

@@ -1,8 +1,7 @@
 {
-  // NAME TITLE
-  "King Darien XLVIII"             : "King Darien"   ,
-
   // NAME LAST
+  "Ajani Resolute"                 : "Ajani"         ,
+  "Ajani Unrelenting"              : "Ajani"         ,
   "Ajani Vengeant"                 : "Ajani"         ,
   "Altaïr Ibn-La'Ahad"             : "Altaïr"        ,
   "Arni Brokenbrow"                : "Arni"          ,
@@ -53,6 +52,8 @@
   "Agatha of the Vile Cauldron"    : "Agatha"        ,
   "Ashcoat of the Shadow Swarm"    : "Ashcoat"       ,
   "Beregond of the Guard"          : "Beregond"      ,
+  "Bolg of the North"              : "Bolg"          ,
+  "Braulios of Pheres Band"        : "Braulios"      ,
   "Durnan of the Yawning Portal"   : "Durnan"        ,
   "Ellivere of the Wild Court"     : "Ellivere"      ,
   "Elrond of the White Council"    : "Elrond"        ,
@@ -90,7 +91,6 @@
   "Batroc the Leaper"              : "Batroc"        ,
   "Bladewing the Risen"            : "Bladewing"     ,
   "Bontu the Glorified"            : "Bontu"         ,
-  "Braulios of Pheres Band"        : "Braulios"      ,
   "Carth the Lion"                 : "Carth"         ,
   "Celeborn the Wise"              : "Celeborn"      ,
   "Crovax the Cursed"              : "Crovax"        ,
@@ -156,4 +156,14 @@
 
   // NAME of a VALUE
   "Sakashima of a Thousand Faces"  : "Sakashima"     ,
+
+  // TITLE FIRST M. LAST
+  "Captain James T. Kirk"          : "Captain Kirk"  ,
+
+  // TITLE FIRST LAST
+  "Captain Kathryn Janeway"        : "Captain Janeway" ,
+  "Dr. Beverly Crusher"            : "Dr. Crusher"   ,
+
+  // TITLE LAST GENERATION
+  "King Darien XLVIII"             : "King Darien"   ,
 }

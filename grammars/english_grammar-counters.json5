@@ -183,6 +183,7 @@
     "possession": "PossessionCounter",
     "pressure": "PressureCounter",
     "prey": "PreyCounter",
+    "promotion": "PromotionCounter",
     "pupa": "PupaCounter",
     "quest": "QuestCounter",
     "rally": "RallyCounter",

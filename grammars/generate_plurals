@@ -98,6 +98,7 @@ flat_creature_types = [
   ("Bison"          , "Bisons"          , "Bison"         ),
   ("Blinkmoth"      , "Blinkmoths"      , "Blinkmoth"     ),
   ("Boar"           , "Boars"           , "Boar"          ),
+  ("Borg"           , "Borgs"           , "Borg"          ),
   ("Bringer"        , "Bringers"        , "Bringer"       ),
   ("Brushwagg"      , "Brushwaggs"      , "Brushwagg"     ),
   ("C'tan"          , "C'tans"          , "Ctan"          ),

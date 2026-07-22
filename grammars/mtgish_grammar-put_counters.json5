@@ -594,6 +594,10 @@
   },
 
   "{{_PLAYER_ACTION[PutCounters][WouldPutCounters]}}": {
+    // Text: "Until end of turn, if one or more counters would be put on a permanent you control, that many plus one of each of those kinds of counters are put on that permanent instead"
+    // Card: [[Brad Boimler, Eager Ensign]]
+    "CreateReplaceWouldPutCountersUntil(CountersWouldBePutOnAPermanent({{PERMANENTS}}), [PutNewAmount({{NUMBER}})], {{EXPIRATION}})": "",
+
     // Text: "Until end of turn, if you would put one or more +1/+1 counters on a permanent, put that many plus one +1/+1 counters on it instead"
     // Card: [[Prairie Dog]]
     "CreateReplaceWouldPutCountersUntil(APlayerWouldPutAnyNumberOfCountersOfTypeOnAPermanent({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}}), [PutNewAmount({{NUMBER}})], {{EXPIRATION}})": "",

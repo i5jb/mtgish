@@ -29095,6 +29095,20 @@
     ]
   },
   {
+    "name": "Azog, Moria's Ruin",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Azog, Moria's Ruin",
+        "manaCost": "{2}{B}",
+        "type": "Legendary Creature — Goblin Soldier",
+        "text": "When Azog enters, destroy up to one other target creature. Its controller amasses Goblins X, where X is that creature's power. If you controlled that creature, draw a card. (To amass Goblins X, that player puts X +1/+1 counters on an Army they control. It's also a Goblin. If they don't control an Army, they create a 0/0 black Goblin Army creature token first.)",
+        "power": "1",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Azor's Elocutors",
     "layout": "single",
     "cards": [
@@ -37083,6 +37097,20 @@
         "text": "When this creature enters, create two 1/1 blue Merfolk Wizard creature tokens.\nTap two untapped Merfolk you control: Untap this creature. It gains shroud until end of turn. (It can't be the target of spells or abilities.)",
         "power": "5",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Beorn the Fierce",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Beorn the Fierce",
+        "manaCost": "{3}{G}{G}",
+        "type": "Legendary Creature — Bear Shapeshifter Warrior",
+        "text": "Trample\nOther Bears you control get +2/+2.\nAt the beginning of combat on your turn, put a trample counter on up to one target creature you control. It becomes a Bear in addition to its other types. Then if you control three or more Bears, draw two cards.",
+        "power": "6",
+        "toughness": "6"
       }
     ]
   },
@@ -111839,6 +111867,20 @@
     ]
   },
   {
+    "name": "Eagle of the Great Shelf",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Eagle of the Great Shelf",
+        "manaCost": "{4}{W}",
+        "type": "Creature — Bird Soldier",
+        "text": "Flying\nWhenever this creature attacks, it gets +1/+1 until end of turn for each other creature you control.",
+        "power": "2",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Eagle of the Watch",
     "layout": "single",
     "cards": [
@@ -116614,6 +116656,20 @@
         "manaCost": "{G}",
         "type": "Enchantment",
         "text": "Sacrifice a Forest: Target attacking creature gets -3/-0 until end of turn."
+      }
+    ]
+  },
+  {
+    "name": "Elven Raft-Steerer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Elven Raft-Steerer",
+        "manaCost": "{2}{U}",
+        "type": "Creature — Elf Pilot",
+        "text": "Landfall — Whenever a land you control enters, choose one —\n• Tap target creature an opponent controls.\n• Untap target creature you control.",
+        "power": "3",
+        "toughness": "2"
       }
     ]
   },
@@ -198482,6 +198538,20 @@
     ]
   },
   {
+    "name": "Iron Hills Blacksmith",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Iron Hills Blacksmith",
+        "manaCost": "{1}{W}",
+        "type": "Creature — Dwarf Artificer",
+        "text": "Double strike\nWhen this creature enters, create a colorless Equipment artifact token named Axe with \"Equipped creature gets +1/+0\" and equip {2}.",
+        "power": "1",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Iron Lad, Diverging Destiny",
     "layout": "single",
     "cards": [
@@ -219901,6 +219971,18 @@
         "manaCost": "{2}{B}{B}",
         "type": "Enchantment",
         "text": "Whenever a permanent other than this enchantment is put into a graveyard from the battlefield, this enchantment deals 1 damage to each creature and each player.\nWhen no creatures are on the battlefield, sacrifice this enchantment."
+      }
+    ]
+  },
+  {
+    "name": "Last Light of Durin's Day",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Last Light of Durin's Day",
+        "manaCost": "{1}{R}",
+        "type": "Enchantment",
+        "text": "Whenever a Mountain you control enters, put a quest counter on this enchantment. If it has six or more quest counters on it, sacrifice it. If you do, search your hand and/or library for a Dragon card and put it onto the battlefield. If you search your library this way, shuffle.\nMountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)"
       }
     ]
   },
@@ -275396,6 +275478,18 @@
     ]
   },
   {
+    "name": "Orcrist, Goblin-cleaver",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Orcrist, Goblin-cleaver",
+        "manaCost": "{3}",
+        "type": "Legendary Artifact — Equipment",
+        "text": "Equipped creature gets +2/+2 and has trample.\nWhenever equipped creature deals combat damage to a player, choose a creature type. Create a Treasure token for each creature you control of that type.\nEquip {3}"
+      }
+    ]
+  },
+  {
     "name": "Orcus, Prince of Undeath",
     "layout": "single",
     "cards": [
@@ -281074,6 +281168,18 @@
         "manaCost": "{X}{X}{U}",
         "type": "Sorcery",
         "text": "X target creatures gain islandwalk until end of turn. (They can't be blocked as long as defending player controls an Island.)"
+      }
+    ]
+  },
+  {
+    "name": "Part in Friendship",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Part in Friendship",
+        "manaCost": "{4}{G}",
+        "type": "Enchantment",
+        "text": "Whenever a nontoken creature you control dies, reveal cards from the top of your library until you reveal a creature card. If its mana value is less than or equal to the number of lands you control, put it onto the battlefield. Otherwise, put it into your hand. Put the rest on the bottom of your library in a random order. This ability triggers only once each turn."
       }
     ]
   },
@@ -319457,6 +319563,18 @@
         "text": "Squad {3} (As an additional cost to cast this spell, you may pay {3} any number of times. When this creature enters, create that many tokens that are copies of it.)\nDeathtouch\nWhenever this creature deals combat damage to a player, create a Mutagen token.",
         "power": "2",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Roads Go Ever, Ever On",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Roads Go Ever, Ever On",
+        "manaCost": "{1}{W}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\nI — Search your library for up to two basic Plains cards, exile them, then shuffle. You gain 2 life.\nII, III — Put a card exiled with this Saga into its owner's hand.\nIV — Whenever you attack this turn, target creature you control gets +1/+1 until end of turn for each Plains you control."
       }
     ]
   },
@@ -374730,6 +374848,18 @@
     ]
   },
   {
+    "name": "Stone by Sunlight",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Stone by Sunlight",
+        "manaCost": "{1}{W}",
+        "type": "Instant",
+        "text": "Choose one —\n• Destroy target creature with power 4 or greater.\n• Until end of turn, target creature becomes an artifact in addition to its other types and gains indestructible. (Damage and effects that say \"destroy\" don't destroy it.)"
+      }
+    ]
+  },
+  {
     "name": "Stone of Erech",
     "layout": "single",
     "cards": [
@@ -397545,6 +397675,20 @@
     ]
   },
   {
+    "name": "The Great Goblin",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Great Goblin",
+        "manaCost": "{1}{B/R}{B/R}",
+        "type": "Legendary Creature — Goblin Noble",
+        "text": "Whenever you put one or more counters on a Goblin, Orc, or Army you control, The Great Goblin deals 2 damage to target opponent.\nWhenever another Goblin, Orc, or Army you control dies, exile the top card of your library. You may play it until the end of your next turn.",
+        "power": "3",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "The Great Henge",
     "layout": "single",
     "cards": [
@@ -398430,6 +398574,20 @@
     ]
   },
   {
+    "name": "The Lord of the Eagles",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Lord of the Eagles",
+        "manaCost": "{7}{U}{U}",
+        "type": "Legendary Creature — Bird Noble",
+        "text": "Flash\nThis spell costs {X} less to cast, where X is the total power of creatures you control with flying.\nFlying",
+        "power": "8",
+        "toughness": "8"
+      }
+    ]
+  },
+  {
     "name": "The Lost and the Damned",
     "layout": "single",
     "cards": [
@@ -398631,6 +398789,20 @@
         "text": "Flying\nWhen The Master of Keys enters, put X +1/+1 counters on it and mill twice X cards.\nEach enchantment card in your graveyard has escape. The escape cost is equal to the card's mana cost plus exile three other cards from your graveyard. (You may cast cards from your graveyard for their escape cost.)",
         "power": "3",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "The Master of Lake-town",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Master of Lake-town",
+        "manaCost": "{1}{B}{B}",
+        "type": "Legendary Creature — Human Advisor",
+        "text": "Deathtouch\nWhenever a player loses life, that player mills that many cards. (Damage causes loss of life.)\nWhen The Master of Lake-town dies, draw a card for each graveyard with seven or more cards in it.",
+        "power": "3",
+        "toughness": "2"
       }
     ]
   },
@@ -398912,6 +399084,18 @@
     ]
   },
   {
+    "name": "The Misty Mountains Cold",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Misty Mountains Cold",
+        "manaCost": "{2}{R}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\nI, II, III, IV — Create a Treasure token. Then if you control four or more Treasures, sacrifice this Saga. If you do, create a 6/6 red Dragon creature token with flying. (A Treasure token is an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")"
+      }
+    ]
+  },
+  {
     "name": "The Misty Stepper",
     "layout": "single",
     "cards": [
@@ -399004,6 +399188,18 @@
         "text": "When The Motherlode enters, choose target opponent. You get an amount of {E} (energy counters) equal to the number of nonbasic lands that player controls.\nWhenever The Motherlode attacks, you may pay {E}{E}{E}{E}. When you do, destroy target nonbasic land defending player controls, and creatures that player controls without flying can't block this turn.",
         "power": "5",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "The Mountain-king's Return",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Mountain-king's Return",
+        "manaCost": "{2}{W}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\nI — Recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)\nII — Return target creature card with mana value 3 or less from your graveyard to the battlefield.\nIII — Put a +1/+1 counter on up to one target creature."
       }
     ]
   },
