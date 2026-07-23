@@ -244,38 +244,24 @@
 
   // Each token that would be created under an opponent's control this turn is created under your control instead
   "{{_PLAYER_ACTION[CreateTokens][TokensWouldBeCreatedUnderAPlayersControl]}}": {
+    // Text: "each token that would be created under an opponent's control this turn is created under your control instead"
     // Card: [[Crafty Cutpurse]]
-     "CreateReplaceTokensWouldBeCreatedUnderAPlayersControlUntil({{REPLACABLE_EVENT[CreateTokens][TokensWouldBeCreatedUnderAPlayersControl]}}, {{REPLACEMENT_ACTIONS[CreateTokens][TokensWouldBeCreatedUnderAPlayersControl]}}, {{EXPIRATION}})": "",
-  },
-
-  "{{REPLACABLE_EVENT[CreateTokens][TokensWouldBeCreatedUnderAPlayersControl]}}": {
-    // Text: "each token that would be created under an opponent’s control ..."
-    // Card: [[Crafty Cutpurse]]
-    "TokensWouldBeCreatedUnderAPlayersControl({{PLAYERS}})": "",
-  },
-  "{{REPLACEMENT_ACTIONS[CreateTokens][TokensWouldBeCreatedUnderAPlayersControl]}}": {
-    // Text: "... is created under your control instead"
-    // Card: [[Crafty Cutpurse]]
-    "[CreateTokensUnderPlayersControlInstead([ThoseTokens], {{PLAYER}})]": "",
+    "CreateReplaceTokensWouldBeCreatedUnderAPlayersControlUntil(TokensWouldBeCreatedUnderAPlayersControl({{PLAYERS}}), [CreateTokensUnderPlayersControlInstead([ThoseTokens], {{PLAYER}})], {{EXPIRATION}})": "",
   },
 
   // If you would create a Fish token, create {{a}} {{PT}} {{CreatureToken}} instead
   // If you would create a Shark token, create {{a}} {{PT}} {{CreatureToken}} instead
   // If you would create a Clue, Food, or Treasure token, instead create one of each
   "{{_STATIC_EFFECT[CreateTokens][APlayerWouldCreateAToken]}}": {
+    // Text: "If you would create a Food token, instead create a Food token and a Treasure token"
+    // Card: [[Bilbo, Fellow Conspirator]]
+    // Text: "If you would create a Clue, Food, or Treasure token, instead create one of each."
+    // Card: [[Academy Manufactor]]
+    // Text: "If you would create a Fish token, create a 3/3 blue Shark creature token instead."
     // Card: [[Fisher's Talent]]
-    "ReplaceAPlayerWouldCreateAToken({{REPLACABLE_EVENT[CreateTokens][APlayerWouldCreateAToken]}}, {{REPLACEMENT_ACTIONS[CreateTokens][APlayerWouldCreateAToken]}})": "",
-  },
-
-  "{{REPLACABLE_EVENT[CreateTokens][APlayerWouldCreateAToken]}}": {
-    // Text: "If you would create a Fish token, ..."
+    // Text: "If you would create a Shark token, create an 8/8 blue Octopus creature token instead."
     // Card: [[Fisher's Talent]]
-    "APlayerWouldCreateAToken({{PLAYERS}}, {{PERMANENTS}})": "",
-  },
-  "{{REPLACEMENT_ACTIONS[CreateTokens][APlayerWouldCreateAToken]}}": {
-    // Text: "... , create a ... token instead."
-    // Card: [[Fisher's Talent]]
-    "[CreateTokensInstead({{CREATABLE_TOKEN_LIST}})]": "",
+    "ReplaceAPlayerWouldCreateAToken(APlayerWouldCreateAToken({{PLAYERS}}, {{PERMANENTS}}), [CreateTokensInstead({{CREATABLE_TOKEN_LIST}})])": "",
   },
 
   // If you would create one or more Treasure tokens, instead create those tokens plus an additional Treasure token
@@ -283,35 +269,27 @@
   // If you would create one or more tokens, you may instead create that many {{PT}} {{CreatureTokens}} with {{Hasable}} or that many {{PT}} {{CreatureTokens}} with {{Hasable}}
   // The first time you would create one or more tokens during each of your turns, you may instead choose a creature other than {{~Permanent}} and create that many tokens that are copies of that creature
   "{{_STATIC_EFFECT[CreateTokens][APlayerWouldCreateTokens]}}": {
+    // Text: "If you would create one or more tokens, instead create those tokens plus an additional Food token"
+    // Card: [[Tippy-Toe, Terrific Partner]]
+    // Text: "If you would create one or more Treasure tokens, instead create those tokens plus an additional Treasure token."
+    // Card: [[Jolene, the Plunder Queen]], [[Xorn]]
+    // Text: "If you would create one or more artifact tokens, instead create those tokens plus an additional Map token."
+    // Card: [[Worldwalker Helm]]
+    "ReplaceAPlayerWouldCreateTokens(APlayerWouldCreateTokens({{PLAYERS}}, {{PERMANENTS}}), [CreateTokensInstead([ThoseTokens, {{CREATABLE_TOKEN}}])])": "",
+
+    // Text: "If you would create one or more tokens, you may instead create that many 2/2 green Cat creature tokens with haste or that many 3/1 green Dog creature tokens with vigilance."
     // Card: [[Jinnie Fay, Jetmir's Second]]
-    "ReplaceAPlayerWouldCreateTokens({{REPLACABLE_EVENT[CreateTokens][APlayerWouldCreateTokens]}}, {{REPLACEMENT_ACTIONS[CreateTokens][APlayerWouldCreateTokens]}})": "",
-  },
+    "ReplaceAPlayerWouldCreateTokens(APlayerWouldCreateTokens({{PLAYERS}}, {{PERMANENTS}}), [ChooseAnAction([[CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([ThoseTokens])]])])": "",
 
-  "{{REPLACABLE_EVENT[CreateTokens][APlayerWouldCreateTokens]}}": {
-    // Text: "If you would create one or more tokens, ..."
-    // Card: [[Jinnie Fay, Jetmir's Second]]
-    "APlayerWouldCreateTokens({{PLAYERS}}, {{PERMANENTS}})": "",
-
-    // Text: "The first time you would create one or more tokens during each of your turns, ..."
-    // Card: [[Esix, Fractal Bloom]]
-    "APlayerWouldCreateTokensForTheFirstTimeEachTurn({{PLAYERS}}, {{PERMANENTS}})": "",
-  },
-  "{{REPLACEMENT_ACTIONS[CreateTokens][APlayerWouldCreateTokens]}}": {
-    // Text: "..., instead create those tokens plus an additional ... token"
-    // Card: [[Xorn]]
-    "[CreateTokensInstead([ThoseTokens, {{CREATABLE_TOKEN}}])]": "",
-
-    // Text: "... , you may instead create that many ... tokens .. or that many ... tokens"
-    // Card: [[Jinnie Fay, Jetmir's Second]]
-    "[ChooseAnAction([[CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([ThoseTokens])]])]": "",
-
-    // Text: "..., you may instead create that many tokens that are copies of ..."
+    // Text: "the first time you would create one or more tokens each turn, you may instead create that many tokens that are copies of equipped creature
+    // Card: [[Mirrormind Crown]]
+    // Text: "The first time you would create one or more tokens each turn, you may instead create that many tokens that are copies of enchanted permanent"
     // Card: [[Moonlit Meditation]]
-    "[ChooseAnAction([[CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([ThoseTokens])]])]": "",
+    "ReplaceAPlayerWouldCreateTokens(APlayerWouldCreateTokensForTheFirstTimeEachTurn({{PLAYERS}}, {{PERMANENTS}}), [ChooseAnAction([[CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([ThoseTokens])]])])": "",
 
-    // Text: "..., you may instead choose a creature ... and create that many tokens that are copies of that creature"
-    // Card: [Esix, Fractal Bloom]
-    "[MayCost(ChooseAPermanent({{PERMANENTS}})), IfElse(CostWasPaid, [CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([ThoseTokens])])]": "",
+    // Text: "The first time you would create one or more tokens during each of your turns, you may instead choose a creature other than Esix and create that many tokens that are copies of that creature."
+    // Card: [[Esix, Fractal Bloom]]
+    "ReplaceAPlayerWouldCreateTokens(APlayerWouldCreateTokensForTheFirstTimeEachTurn({{PLAYERS}}, {{PERMANENTS}}), [MayCost(ChooseAPermanent({{PERMANENTS}})), IfElse(CostWasPaid, [CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([ThoseTokens])])])": "",
   },
 
   //                    If one or more          tokens would be created                   , twice that many of those tokens are created instead
@@ -324,60 +302,54 @@
   //                    If one or more          tokens would be created under your control, those tokens plus a Clue token are created instead
   //                    If one or more creature tokens would be created under your control, that many {{PT}} {{CreatureTokens}} with {{Hasable}} and {{Hasable}} are created instead
   "{{_STATIC_EFFECT[CreateTokens][AnyNumberOfTokensWouldBeCreated]}}": {
+    // Text: "If one or more tokens would be created, twice that many of those tokens are created instead"
+    // Card: [[Primal Vigor]]
+    "ReplaceAnyNumberOfTokensWouldBeCreated(AnyNumberOfTokensWouldBeCreated({{PERMANENTS}}), [CreateTokensInstead([ThoseTokens, ThoseTokens])])": "",
+
+    // Text: "If one or more tokens would be created under your control, twice that many of those tokens are created instead"
+    // Card: [[Adrix and Nev, Twincasters]], [[Bard, King of Dale]], [[Elspeth, Storm Slayer]], [[Exalted Sunborn]], [[Mondrak, Glory Dominus]]
+    "ReplaceAnyNumberOfTokensWouldBeCreated(AnyNumberOfTokensWouldBeCreatedUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}}), [CreateTokensInstead([ThoseTokens, ThoseTokens])])": "",
+
+    // Text: "If one or more creature tokens would be created under your control, three times that many of those tokens are created instead"
+    // Card: [[Ojer Taq, Deepest Foundation]]
+    "ReplaceAnyNumberOfTokensWouldBeCreated(AnyNumberOfTokensWouldBeCreatedUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}}), [CreateTokensInstead([ThoseTokens, ThoseTokens, ThoseTokens])])": "",
+
+    // Text: "If one or more tokens would be created under your control, those tokens plus a Clue token are created instead"
+    // Card: [[Case of the Pilfered Proof]]
+    // Text: "If one or more tokens would be created under your control, those tokens plus a Mutagen token are created instead"
+    // Card: [[Donatello, the Brains]]
+    // Text: "If one or more tokens would be created under your control, those tokens plus an additional Food token are created instead"
     // Card: [[Peregrin Took]]
-    "ReplaceAnyNumberOfTokensWouldBeCreated({{REPLACABLE_EVENT[CreateTokens][AnyNumberOfTokensWouldBeCreated]}}, {{REPLACEMENT_ACTIONS[CreateTokens][AnyNumberOfTokensWouldBeCreated]}})": "",
+    // Text: "If one or more creature tokens would be created under your control, those tokens plus a 1/1 white Soldier creature token are created instead"
+    // Card: [[Queen Allenal of Ruadach]]
+    // Text: "If one or more tokens would be created under your control, those tokens plus a 1/1 green Frog creature token are created instead"
+    // Card: [[Quina, Qu Gourmet]]
+    // Text: "If one or more artifact tokens would be created under your control, those tokens plus an additional 1/1 colorless Thopter artifact creature token with flying are created instead"
+    // Card: [[Stridehangar Automaton]]
+    "ReplaceAnyNumberOfTokensWouldBeCreated(AnyNumberOfTokensWouldBeCreatedUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}}), [CreateTokensInstead([ThoseTokens, {{CREATABLE_TOKEN}}])])": "",
+
+    // Text: "If one or more tokens would be created under your control, those tokens plus that many 1/1 green Squirrel creature tokens are created instead"
+    // Card: [[Chatterfang, Squirrel General]]
+    // Text: "If one or more creature tokens would be created under your control, that many 4/4 white Angel creature tokens with flying and vigilance are created instead"
+    // Card: [[Divine Visitation]]
+    "ReplaceAnyNumberOfTokensWouldBeCreated(AnyNumberOfTokensWouldBeCreatedUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}}), [CreateTokensInstead({{CREATABLE_TOKEN_LIST}})])": "",
+
   },
   "{{_PLAYER_ACTION[CreateTokens][AnyNumberOfTokensWouldBeCreated]}}": {
+    // Text: "Until end of turn, if one or more tokens would be created under your control, twice that many of those tokens are created instead."
     // Card: [[Kaya, Geist Hunter]]
-    "CreateReplaceAnyNumberOfTokensWouldBeCreatedUntil({{REPLACABLE_EVENT[CreateTokens][AnyNumberOfTokensWouldBeCreated]}}, {{REPLACEMENT_ACTIONS[CreateTokens][AnyNumberOfTokensWouldBeCreated]}}, {{EXPIRATION}})": "",
-  },
-
-  "{{REPLACABLE_EVENT[CreateTokens][AnyNumberOfTokensWouldBeCreated]}}": {
-    // Text: "If one or more tokens would be created, ..."
-    // Card: [[Primal Vigor]]
-    "AnyNumberOfTokensWouldBeCreated({{PERMANENTS}})": "",
-
-    // Text: "If one or more tokens would be created under your control, ..."
-    // Card: [[Adrix and Nev, Twincasters]]
-    "AnyNumberOfTokensWouldBeCreatedUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}})": "",
-  },
-  "{{REPLACEMENT_ACTIONS[CreateTokens][AnyNumberOfTokensWouldBeCreated]}}": {
-    // Text: "..., twice that many of those tokens are created instead"
-    // Card: [[Adrix and Nev, Twincasters]]
-    "[CreateTokensInstead([ThoseTokens, ThoseTokens])]": "",
-
-    // Text: "..., three times that many of those tokens are created instead"
-    // Card: [[Ojer Taq, Deepest Foundation // Temple of Civilization]]
-    "[CreateTokensInstead([ThoseTokens, ThoseTokens, ThoseTokens])]": "",
-
-    // Text: "..., those tokens plus an additional ... token are created instead"
-    // Card: [[Peregrin Took]]
-    "[CreateTokensInstead([ThoseTokens, {{CREATABLE_TOKEN}}])]": "",
-
-    // Text: "..., that many ... tokens ... are created instead"
-    // Card: [[Divine Visitation]]
-    "[CreateTokensInstead({{CREATABLE_TOKEN_LIST}})]": "",
+    "CreateReplaceAnyNumberOfTokensWouldBeCreatedUntil(AnyNumberOfTokensWouldBeCreatedUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}}), [CreateTokensInstead([ThoseTokens, ThoseTokens])], {{EXPIRATION}})": "",
   },
 
   // If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead
   // If an effect would create one or more tokens                   , it creates twice that many of those tokens instead
   "{{_STATIC_EFFECT[CreateTokens][AnEffectWouldCreateAnyNumberOfTokens]}}": {
-    // Card: [[Anointed Procession]]
-    "ReplaceAnEffectWouldCreateAnyNumberOfTokens({{REPLACABLE_EVENT[CreateTokens][AnEffectWouldCreateAnyNumberOfTokens]}}, {{REPLACEMENT_ACTIONS[CreateTokens][AnEffectWouldCreateAnyNumberOfTokens]}})": "",
-  },
+    // Text: "If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead"
+    // Card: [[Anointed Procession]], [[Doubling Season]], [[Parallel Lives]]
+    "ReplaceAnEffectWouldCreateAnyNumberOfTokens(AnEffectWouldCreateAnyNumberOfTokensUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}}), [CreateTokensInstead([ThoseTokens, ThoseTokens])])": "",
 
-  "{{REPLACABLE_EVENT[CreateTokens][AnEffectWouldCreateAnyNumberOfTokens]}}": {
-    // Text: "If an effect would create one or more tokens under your control, ..."
-    // Card: [[Anointed Procession]]
-    "AnEffectWouldCreateAnyNumberOfTokensUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}})": "",
-
-    // Text: "If an effect would create one or more tokens, ..."
+    // Text: "If an effect would create one or more tokens, it creates twice that many of those tokens instead"
     // Card: [[Selesnya Loft Gardens]]
-    "AnEffectWouldCreateAnyNumberOfTokens({{PERMANENTS}})": "",
-  },
-  "{{REPLACEMENT_ACTIONS[CreateTokens][AnEffectWouldCreateAnyNumberOfTokens]}}": {
-    // Text: "..., it creates twice that many of those tokens instead"
-    // Card: [[Anointed Procession]]
-    "[CreateTokensInstead([ThoseTokens, ThoseTokens])]": "",
+    "ReplaceAnEffectWouldCreateAnyNumberOfTokens(AnEffectWouldCreateAnyNumberOfTokens({{PERMANENTS}}), [CreateTokensInstead([ThoseTokens, ThoseTokens])])": "",
   },
 }
