@@ -82,6 +82,7 @@ pub enum CreatureType {
   Bison,
   Blinkmoth,
   Boar,
+  Borg,
   Bringer,
   Brushwagg,
   Camarid,
@@ -193,6 +194,7 @@ pub enum CreatureType {
   Kavu,
   Kirin,
   Kithkin,
+  Klingon,
   Knight,
   Kobold,
   Kor,
@@ -222,8 +224,8 @@ pub enum CreatureType {
   Monk,
   Monkey,
   Moogle,
-  Mount,
   Moonfolk,
+  Mount,
   Mouse,
   Mutant,
   Myr,
@@ -269,6 +271,7 @@ pub enum CreatureType {
   Primarch,
   Prism,
   Processor,
+  Q,
   Qu,
   Rabbit,
   Raccoon,
@@ -280,6 +283,7 @@ pub enum CreatureType {
   Rigger,
   Robot,
   Rogue,
+  Romulan,
   Sable,
   Salamander,
   Samurai,
@@ -339,6 +343,7 @@ pub enum CreatureType {
   Thrull,
   Tiefling,
   TimeLord,
+  Tosk,
   Toy,
   Treefolk,
   Trilobite,
@@ -353,6 +358,7 @@ pub enum CreatureType {
   Vedalken,
   Villain,
   Volver,
+  Vulcan,
   Wall,
   Walrus,
   Warlock,
@@ -669,6 +675,7 @@ pub enum SubType {
   Bison,
   Blinkmoth,
   Boar,
+  Borg,
   Bringer,
   Brushwagg,
   Camarid,
@@ -780,6 +787,7 @@ pub enum SubType {
   Kavu,
   Kirin,
   Kithkin,
+  Klingon,
   Knight,
   Kobold,
   Kor,
@@ -809,8 +817,8 @@ pub enum SubType {
   Monk,
   Monkey,
   Moogle,
-  Mount,
   Moonfolk,
+  Mount,
   Mouse,
   Mutant,
   Myr,
@@ -856,6 +864,7 @@ pub enum SubType {
   Primarch,
   Prism,
   Processor,
+  Q,
   Qu,
   Rabbit,
   Raccoon,
@@ -867,6 +876,7 @@ pub enum SubType {
   Rigger,
   Robot,
   Rogue,
+  Romulan,
   Sable,
   Salamander,
   Samurai,
@@ -926,6 +936,7 @@ pub enum SubType {
   Thrull,
   Tiefling,
   TimeLord,
+  Tosk,
   Toy,
   Treefolk,
   Trilobite,
@@ -940,6 +951,7 @@ pub enum SubType {
   Vedalken,
   Villain,
   Volver,
+  Vulcan,
   Wall,
   Walrus,
   Warlock,
@@ -1283,6 +1295,8 @@ pub enum CounterType {
   VigilanceCounter,
   DecayedCounter,
 
+  PromotionCounter,
+
   // Normal Counter
   AcornCounter,
   AegisCounter,
@@ -1524,6 +1538,7 @@ pub enum LoyaltyNumber {
 pub enum Expiration {
   Or(Vec<Expiration>),
 
+  ForAsLongAsCardIsExiled(Box<CardInExile>),
   AsLongAsPlaneIsFaceUp(Plane),
   DuringPlayersNextTurn(Box<Player>),
   DuringPlayersNextUntapStep(Box<Player>),
@@ -2380,6 +2395,8 @@ pub enum DeckConstruction {
 
   CanHaveAnyNumberOfThisCard,
   CanHaveUptoNumberOfThisCard(Box<GameNumber>),
+  CardsCanBeOneAdditionalColor(Box<Cards>),
+  CanHaveAnyBasicLandCard,
 
   ThisCardIsBanned,
   RemoveFromDeckIfNotPlayingForAnte,
@@ -2567,6 +2584,9 @@ pub enum Rule {
   StationChargedAnimate(GameRange, Vec<Rule>, PT),
   StationCharged(GameRange, Vec<Rule>),
   Station,
+
+  APlayerGainingLifeCausesAbilitiesToTriggerAnAdditionalTime(Box<Players>, Box<Abilities>),
+  Storied,
 
   BasicMayhem,
   Mayhem(Box<Cost>),
@@ -5054,6 +5074,8 @@ pub enum Permanents {
   TheCreatedTokens,
   TheTokensCreatedThisWay,
 
+  IsntPrepared,
+
   APermanentWithTheHighestManaValue(Box<Permanents>),
   APermanentWithTheLowestManaValue(Box<Permanents>),
   AdditionalCostWasPaid,
@@ -6315,6 +6337,10 @@ pub enum Players {
   Other(Box<Player>),
   SinglePlayer(Box<Player>),
 
+  DidntDiscardedNumberCardsOfTypeThisWay(Box<Comparison>, Box<CardsInHand>),
+  NumCardsInGraveyardIs(Box<Comparison>),
+  NumCardsOfTypeInGraveyardIs(Box<Comparison>, Box<CardsInGraveyards>),
+
   AControllerOfTheLeastPermanentsAmongPlayers(Box<Players>, Box<Permanents>),
   AControllerOfTheMostPermanentsAmongPlayers(Box<Players>, Box<Permanents>),
   APlayerNotedByPlayerForCardDuringDraft(Box<Player>, NameString),
@@ -6422,6 +6448,7 @@ pub enum Players {
   HasNotActivatedAnExhaustAbilityThisTurn,
   HasNotCompletedDungeon(NameString),
   HasTheCitysBlessing,
+  HasAnEnduringStory,
   HasTheInitiative,
   HasWaterEarthFireAndAirBendedThisTurn,
   HasntBeenDealtCombatDamageSinceTheirLastTurn,
@@ -6449,7 +6476,6 @@ pub enum Players {
   LostLifeThisTurn,
   NumCardTypesInGraveyardIs(Box<Comparison>),
   NumCardsDrawnThisTurnIs(Box<Comparison>),
-  NumCardsInGraveyardIs(Box<Comparison>, Box<Cards>),
   NumCardsInHandAtBeginningOfTurnWas(Box<Comparison>),
   NumCardsInHandIs(Box<Comparison>),
   NumCardsInLibraryIs(Box<Comparison>),
@@ -7460,7 +7486,7 @@ pub enum CardsInGraveyards {
   Ref_TargetGraveyardCards1,
   Ref_TargetGraveyardCards2,
 
-  TheCardsSurveiledThisWay,
+  TheGraveyardCardsSurveiledThisWay,
   InTheGraveyardPileChosenThisWay,
   TheDiscardedCardsChosenThisWay,
   ThePermanentsSacrificedThisWay,
@@ -8235,6 +8261,7 @@ pub enum CreatableToken {
   TreasureToken,
   VibraniumToken,
   WalkerToken,
+  HeartwoodToken,
 }
 
 
@@ -8588,6 +8615,9 @@ pub enum PutCountersAction {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Action", content = "args"))]
 pub enum Action {
+  Recruit,
+  Assimilate(Box<CardInGraveyards>),
+
   APlayerAction(Box<Players>, Box<Action>),
   APlayerActions(Box<Players>, Vec<Action>),
   APlayerGainsControlOfPermanent(Box<Players>, Box<Permanent>),
@@ -10236,7 +10266,6 @@ pub enum StaticLayer4Effect {
   HasAllLandTypes,
   RemoveAllCreatureTypes,
   RemoveAllLandTypes,
-
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -10265,9 +10294,7 @@ pub enum StaticLayer6Effect {
   AddAbilityAndLoseAllOtherAbilities(Vec<Rule>),
   AddAbilityFromCardsRemovedFromDraftWithCardsNamedHasable(Box<Cards>, NameString, Vec<CheckHasable>),
   AddAbilityFromPermanentHasable(Box<Permanent>, Vec<CheckHasable>),
-  AddAbilityFromCardsInAPlayersGraveyardHasable(Box<Cards>, Box<Players>, Vec<CheckHasable>),
   AddAbilityFromEachPermanentHasable(Box<Permanents>, Vec<CheckHasable>),
-  AddAbilityFromCardsInPlayersGraveyardHasable(Box<Cards>, Box<Player>, Vec<CheckHasable>),
   LosesAbility(CheckHasable),
   LosesAllAbilities,
 }
@@ -10357,9 +10384,8 @@ pub enum StaticLayerEffect {
   AddAbilityAndLoseAllOtherAbilities(Vec<Rule>),
   AddAbilityFromCardsRemovedFromDraftWithCardsNamedHasable(Box<Cards>, NameString, Vec<CheckHasable>),
   AddAbilityFromPermanentHasable(Box<Permanent>, Vec<CheckHasable>),
-  AddAbilityFromCardsInAPlayersGraveyardHasable(Box<Cards>, Box<Players>, Vec<CheckHasable>),
   AddAbilityFromEachPermanentHasable(Box<Permanents>, Vec<CheckHasable>),
-  AddAbilityFromCardsInPlayersGraveyardHasable(Box<Cards>, Box<Player>, Vec<CheckHasable>),
+  AddAbilityFromCardsInGraveyardsHasable(Box<CardsInGraveyards>, Vec<CheckHasable>),
   LosesAbility(CheckHasable),
   LosesAllAbilities,
 
@@ -10382,6 +10408,9 @@ pub enum StaticLayerEffect {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Trigger", content = "args"))]
 pub enum Trigger {
+  // face a dilemma
+  WhenAPlayerFacesADilemma(Box<Players>),
+
   // connive
   WhenAPermanentConnives(Box<Permanents>),
 
@@ -10512,6 +10541,7 @@ pub enum Trigger {
   WhenAPermanentIsDealtAnAmountOfDamage(Box<Permanents>, Box<Comparison>),
   WhenAPermanentIsDealtCombatDamage(Box<Permanents>),
   WhenAPermanentIsDealtDamage(Box<Permanents>),
+  WhenAPermanentIsDealtNoncombatDamage(Box<Permanents>),
   WhenAPermanentIsDealtDamageForTheFirstTimeEachTurn(Box<Permanents>),
   WhenAPermanentIsDealtExcessDamage(Box<Permanents>),
   WhenAPermanentIsDealtExcessNoncombatDamage(Box<Permanents>),
@@ -10668,6 +10698,7 @@ pub enum Trigger {
   WhenAPlayerAttacksWithASingleCreatureAndANumberOfOtherCreatures(Box<Players>, Box<Permanents>, Box<Comparison>, Box<Permanents>),
   WhenAPlayerAttacksWithAnyNumberOfCreatures(Box<Players>, Box<Permanents>),
   WhenAPlayerAttacksWithAnyNumberOfGroupCreatures(Box<Players>, Box<Permanents>, GroupFilter),
+  WhenAPlayerAttacksWithAnyNumberOfGroupCreaturesForTheFirstTimeEachTurn(Box<Players>, Box<Permanents>, GroupFilter),
   WhenAPlayerIsAttacked(Box<Players>),
   WhenAnyNumberOfPlayersAreAttacked(Box<Players>),
   WhenASingleCreatureAndANumberOfOtherCreaturesAttack(Box<Permanent>, Box<Comparison>, Box<Permanents>),

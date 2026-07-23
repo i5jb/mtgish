@@ -46,6 +46,8 @@ type AbilityVariable =
 | { "_AbilityVariable": "TheChosenAbility" }
 | { "_AbilityVariable": "TheChosenAbilities" };
 type Action =
+| { "_Action": "Recruit" }
+| { "_Action": "Assimilate", "args": CardInGraveyards }
 | { "_Action": "APlayerAction", "args": [Players, Action] }
 | { "_Action": "APlayerActions", "args": [Players, Array<Action>] }
 | { "_Action": "APlayerGainsControlOfPermanent", "args": [Players, Permanent] }
@@ -1700,7 +1702,7 @@ type CardsInGraveyards =
 | { "_CardsInGraveyards": "DoesntHaveAbility", "args": CheckHasable }
 | { "_CardsInGraveyards": "Ref_TargetGraveyardCards1" }
 | { "_CardsInGraveyards": "Ref_TargetGraveyardCards2" }
-| { "_CardsInGraveyards": "TheCardsSurveiledThisWay" }
+| { "_CardsInGraveyards": "TheGraveyardCardsSurveiledThisWay" }
 | { "_CardsInGraveyards": "InTheGraveyardPileChosenThisWay" }
 | { "_CardsInGraveyards": "TheDiscardedCardsChosenThisWay" }
 | { "_CardsInGraveyards": "ThePermanentsSacrificedThisWay" }
@@ -2629,6 +2631,7 @@ type CounterType =
 | { "_CounterType": "TrampleCounter" }
 | { "_CounterType": "VigilanceCounter" }
 | { "_CounterType": "DecayedCounter" }
+| { "_CounterType": "PromotionCounter" }
 | { "_CounterType": "AcornCounter" }
 | { "_CounterType": "AegisCounter" }
 | { "_CounterType": "AgeCounter" }
@@ -2897,7 +2900,8 @@ type CreatableToken =
 | { "_CreatableToken": "ShardToken" }
 | { "_CreatableToken": "TreasureToken" }
 | { "_CreatableToken": "VibraniumToken" }
-| { "_CreatableToken": "WalkerToken" };
+| { "_CreatableToken": "WalkerToken" }
+| { "_CreatableToken": "HeartwoodToken" };
 type CreatureType =
 | "Advisor"
 | "Aetherborn"
@@ -2934,6 +2938,7 @@ type CreatureType =
 | "Bison"
 | "Blinkmoth"
 | "Boar"
+| "Borg"
 | "Bringer"
 | "Brushwagg"
 | "Camarid"
@@ -3045,6 +3050,7 @@ type CreatureType =
 | "Kavu"
 | "Kirin"
 | "Kithkin"
+| "Klingon"
 | "Knight"
 | "Kobold"
 | "Kor"
@@ -3074,8 +3080,8 @@ type CreatureType =
 | "Monk"
 | "Monkey"
 | "Moogle"
-| "Mount"
 | "Moonfolk"
+| "Mount"
 | "Mouse"
 | "Mutant"
 | "Myr"
@@ -3121,6 +3127,7 @@ type CreatureType =
 | "Primarch"
 | "Prism"
 | "Processor"
+| "Q"
 | "Qu"
 | "Rabbit"
 | "Raccoon"
@@ -3132,6 +3139,7 @@ type CreatureType =
 | "Rigger"
 | "Robot"
 | "Rogue"
+| "Romulan"
 | "Sable"
 | "Salamander"
 | "Samurai"
@@ -3191,6 +3199,7 @@ type CreatureType =
 | "Thrull"
 | "Tiefling"
 | "TimeLord"
+| "Tosk"
 | "Toy"
 | "Treefolk"
 | "Trilobite"
@@ -3205,6 +3214,7 @@ type CreatureType =
 | "Vedalken"
 | "Villain"
 | "Volver"
+| "Vulcan"
 | "Wall"
 | "Walrus"
 | "Warlock"
@@ -3292,6 +3302,8 @@ type DeckConstruction =
 | { "_DeckConstruction": "ChooseABackground" }
 | { "_DeckConstruction": "CanHaveAnyNumberOfThisCard" }
 | { "_DeckConstruction": "CanHaveUptoNumberOfThisCard", "args": GameNumber }
+| { "_DeckConstruction": "CardsCanBeOneAdditionalColor", "args": Cards }
+| { "_DeckConstruction": "CanHaveAnyBasicLandCard" }
 | { "_DeckConstruction": "ThisCardIsBanned" }
 | { "_DeckConstruction": "RemoveFromDeckIfNotPlayingForAnte" };
 type Direction =
@@ -3513,6 +3525,7 @@ type ExileFlag =
 | { "_ExileFlag": "LimitedWithTriggerEnters", "args": [Expiration, Permanents, Actions] };
 type Expiration =
 | { "_Expiration": "Or", "args": Array<Expiration> }
+| { "_Expiration": "ForAsLongAsCardIsExiled", "args": CardInExile }
 | { "_Expiration": "AsLongAsPlaneIsFaceUp", "args": Plane }
 | { "_Expiration": "DuringPlayersNextTurn", "args": Player }
 | { "_Expiration": "DuringPlayersNextUntapStep", "args": Player }
@@ -4854,6 +4867,7 @@ type Permanents =
 | { "_Permanents": "IsToken" }
 | { "_Permanents": "TheCreatedTokens" }
 | { "_Permanents": "TheTokensCreatedThisWay" }
+| { "_Permanents": "IsntPrepared" }
 | { "_Permanents": "APermanentWithTheHighestManaValue", "args": Permanents }
 | { "_Permanents": "APermanentWithTheLowestManaValue", "args": Permanents }
 | { "_Permanents": "AdditionalCostWasPaid" }
@@ -5842,6 +5856,9 @@ type Players =
 | { "_Players": "Or", "args": Array<Players> }
 | { "_Players": "Other", "args": Player }
 | { "_Players": "SinglePlayer", "args": Player }
+| { "_Players": "DidntDiscardedNumberCardsOfTypeThisWay", "args": [Comparison, CardsInHand] }
+| { "_Players": "NumCardsInGraveyardIs", "args": Comparison }
+| { "_Players": "NumCardsOfTypeInGraveyardIs", "args": [Comparison, CardsInGraveyards] }
 | { "_Players": "AControllerOfTheLeastPermanentsAmongPlayers", "args": [Players, Permanents] }
 | { "_Players": "AControllerOfTheMostPermanentsAmongPlayers", "args": [Players, Permanents] }
 | { "_Players": "APlayerNotedByPlayerForCardDuringDraft", "args": [Player, string] }
@@ -5949,6 +5966,7 @@ type Players =
 | { "_Players": "HasNotActivatedAnExhaustAbilityThisTurn" }
 | { "_Players": "HasNotCompletedDungeon", "args": string }
 | { "_Players": "HasTheCitysBlessing" }
+| { "_Players": "HasAnEnduringStory" }
 | { "_Players": "HasTheInitiative" }
 | { "_Players": "HasWaterEarthFireAndAirBendedThisTurn" }
 | { "_Players": "HasntBeenDealtCombatDamageSinceTheirLastTurn" }
@@ -5976,7 +5994,6 @@ type Players =
 | { "_Players": "LostLifeThisTurn" }
 | { "_Players": "NumCardTypesInGraveyardIs", "args": Comparison }
 | { "_Players": "NumCardsDrawnThisTurnIs", "args": Comparison }
-| { "_Players": "NumCardsInGraveyardIs", "args": [Comparison, Cards] }
 | { "_Players": "NumCardsInHandAtBeginningOfTurnWas", "args": Comparison }
 | { "_Players": "NumCardsInHandIs", "args": Comparison }
 | { "_Players": "NumCardsInLibraryIs", "args": Comparison }
@@ -6832,6 +6849,8 @@ type Rule =
 | { "_Rule": "StationChargedAnimate", "args": [GameRange, Array<Rule>, PT] }
 | { "_Rule": "StationCharged", "args": [GameRange, Array<Rule>] }
 | { "_Rule": "Station" }
+| { "_Rule": "APlayerGainingLifeCausesAbilitiesToTriggerAnAdditionalTime", "args": [Players, Abilities] }
+| { "_Rule": "Storied" }
 | { "_Rule": "BasicMayhem" }
 | { "_Rule": "Mayhem", "args": Cost }
 | { "_Rule": "WebSlinging", "args": Cost }
@@ -7690,9 +7709,7 @@ type StaticLayer6Effect =
 | { "_StaticLayerEffect": "AddAbilityAndLoseAllOtherAbilities", "args": Array<Rule> }
 | { "_StaticLayerEffect": "AddAbilityFromCardsRemovedFromDraftWithCardsNamedHasable", "args": [Cards, string, Array<CheckHasable>] }
 | { "_StaticLayerEffect": "AddAbilityFromPermanentHasable", "args": [Permanent, Array<CheckHasable>] }
-| { "_StaticLayerEffect": "AddAbilityFromCardsInAPlayersGraveyardHasable", "args": [Cards, Players, Array<CheckHasable>] }
 | { "_StaticLayerEffect": "AddAbilityFromEachPermanentHasable", "args": [Permanents, Array<CheckHasable>] }
-| { "_StaticLayerEffect": "AddAbilityFromCardsInPlayersGraveyardHasable", "args": [Cards, Player, Array<CheckHasable>] }
 | { "_StaticLayerEffect": "LosesAbility", "args": CheckHasable }
 | { "_StaticLayerEffect": "LosesAllAbilities" };
 type StaticLayer7Effect =
@@ -7753,9 +7770,8 @@ type StaticLayerEffect =
 | { "_StaticLayerEffect": "AddAbilityAndLoseAllOtherAbilities", "args": Array<Rule> }
 | { "_StaticLayerEffect": "AddAbilityFromCardsRemovedFromDraftWithCardsNamedHasable", "args": [Cards, string, Array<CheckHasable>] }
 | { "_StaticLayerEffect": "AddAbilityFromPermanentHasable", "args": [Permanent, Array<CheckHasable>] }
-| { "_StaticLayerEffect": "AddAbilityFromCardsInAPlayersGraveyardHasable", "args": [Cards, Players, Array<CheckHasable>] }
 | { "_StaticLayerEffect": "AddAbilityFromEachPermanentHasable", "args": [Permanents, Array<CheckHasable>] }
-| { "_StaticLayerEffect": "AddAbilityFromCardsInPlayersGraveyardHasable", "args": [Cards, Player, Array<CheckHasable>] }
+| { "_StaticLayerEffect": "AddAbilityFromCardsInGraveyardsHasable", "args": [CardsInGraveyards, Array<CheckHasable>] }
 | { "_StaticLayerEffect": "LosesAbility", "args": CheckHasable }
 | { "_StaticLayerEffect": "LosesAllAbilities" }
 | { "_StaticLayerEffect": "SetPower", "args": GameNumber }
@@ -7810,6 +7826,7 @@ type SubType =
 | "Bison"
 | "Blinkmoth"
 | "Boar"
+| "Borg"
 | "Bringer"
 | "Brushwagg"
 | "Camarid"
@@ -7921,6 +7938,7 @@ type SubType =
 | "Kavu"
 | "Kirin"
 | "Kithkin"
+| "Klingon"
 | "Knight"
 | "Kobold"
 | "Kor"
@@ -7950,8 +7968,8 @@ type SubType =
 | "Monk"
 | "Monkey"
 | "Moogle"
-| "Mount"
 | "Moonfolk"
+| "Mount"
 | "Mouse"
 | "Mutant"
 | "Myr"
@@ -7997,6 +8015,7 @@ type SubType =
 | "Primarch"
 | "Prism"
 | "Processor"
+| "Q"
 | "Qu"
 | "Rabbit"
 | "Raccoon"
@@ -8008,6 +8027,7 @@ type SubType =
 | "Rigger"
 | "Robot"
 | "Rogue"
+| "Romulan"
 | "Sable"
 | "Salamander"
 | "Samurai"
@@ -8067,6 +8087,7 @@ type SubType =
 | "Thrull"
 | "Tiefling"
 | "TimeLord"
+| "Tosk"
 | "Toy"
 | "Treefolk"
 | "Trilobite"
@@ -8081,6 +8102,7 @@ type SubType =
 | "Vedalken"
 | "Villain"
 | "Volver"
+| "Vulcan"
 | "Wall"
 | "Walrus"
 | "Warlock"
@@ -8458,6 +8480,7 @@ type Transforming =
 type TriggerAndActions =
 | [Trigger, Actions];
 type Trigger =
+| { "_Trigger": "WhenAPlayerFacesADilemma", "args": Players }
 | { "_Trigger": "WhenAPermanentConnives", "args": Permanents }
 | { "_Trigger": "WhenAPlayerWaterEarthFireOrAirBends", "args": Players }
 | { "_Trigger": "WhenAPermanentBecomesTappedToPayATeamworkCost", "args": Permanents }
@@ -8535,6 +8558,7 @@ type Trigger =
 | { "_Trigger": "WhenAPermanentIsDealtAnAmountOfDamage", "args": [Permanents, Comparison] }
 | { "_Trigger": "WhenAPermanentIsDealtCombatDamage", "args": Permanents }
 | { "_Trigger": "WhenAPermanentIsDealtDamage", "args": Permanents }
+| { "_Trigger": "WhenAPermanentIsDealtNoncombatDamage", "args": Permanents }
 | { "_Trigger": "WhenAPermanentIsDealtDamageForTheFirstTimeEachTurn", "args": Permanents }
 | { "_Trigger": "WhenAPermanentIsDealtExcessDamage", "args": Permanents }
 | { "_Trigger": "WhenAPermanentIsDealtExcessNoncombatDamage", "args": Permanents }
@@ -8641,6 +8665,7 @@ type Trigger =
 | { "_Trigger": "WhenAPlayerAttacksWithASingleCreatureAndANumberOfOtherCreatures", "args": [Players, Permanents, Comparison, Permanents] }
 | { "_Trigger": "WhenAPlayerAttacksWithAnyNumberOfCreatures", "args": [Players, Permanents] }
 | { "_Trigger": "WhenAPlayerAttacksWithAnyNumberOfGroupCreatures", "args": [Players, Permanents, GroupFilter] }
+| { "_Trigger": "WhenAPlayerAttacksWithAnyNumberOfGroupCreaturesForTheFirstTimeEachTurn", "args": [Players, Permanents, GroupFilter] }
 | { "_Trigger": "WhenAPlayerIsAttacked", "args": Players }
 | { "_Trigger": "WhenAnyNumberOfPlayersAreAttacked", "args": Players }
 | { "_Trigger": "WhenASingleCreatureAndANumberOfOtherCreaturesAttack", "args": [Permanent, Comparison, Permanents] }

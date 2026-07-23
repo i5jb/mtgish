@@ -106,6 +106,7 @@
     "JunkToken": "",
     "LanderToken": "",
     "MutagenToken": "",
+    "HeartwoodToken": "",
 
     // Oracle tokens (111.11)
     "OracleToken({{QUOTED_ORACLE_TOKEN}})": "",

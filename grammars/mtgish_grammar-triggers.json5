@@ -1,4 +1,7 @@
 {
+  "{{_TRIGGER[FaceADilemma]}}": {
+    "WhenAPlayerFacesADilemma({{PLAYERS}})": "",
+  },
   "{{_TRIGGER[ActivateAnAbility]}}": {
     "WhenAPlayerActivatesAnAbility({{PLAYERS}}, {{ACTIVATED_ABILITIES}})": "",
     "WhenAnAbilityIsActivated({{ACTIVATED_ABILITIES}})": ""
@@ -120,6 +123,7 @@
     "WhenAPermanentIsDealtDamage({{PERMANENTS}})": "",
     "WhenAPermanentIsDealtExcessDamage({{PERMANENTS}})": "",
     "WhenAPermanentIsDealtExcessNoncombatDamage({{PERMANENTS}})": "",
+    "WhenAPermanentIsDealtNoncombatDamage({{PERMANENTS}})": "",
     "WhenAPlayerIsDealtCombatDamage({{PLAYERS}})": "",
     "WhenAPlayerIsDealtDamage({{PLAYERS}})": "",
     "WhenAPlayerIsDealtNoncombatDamage({{PLAYERS}})": "",
@@ -540,6 +544,7 @@
     "WhenAPlayerAttacksWithASingleCreatureAndANumberOfOtherCreatures({{PLAYERS}}, {{PERMANENTS}}, {{COMPARISON}}, {{PERMANENTS}})": "",
     "WhenAPlayerAttacksWithAnyNumberOfCreatures({{PLAYERS}}, {{PERMANENTS}})": "",
     "WhenAPlayerAttacksWithAnyNumberOfGroupCreatures({{PLAYERS}}, {{PERMANENTS}}, {{GROUP_FILTER}})": "",
+    "WhenAPlayerAttacksWithAnyNumberOfGroupCreaturesForTheFirstTimeEachTurn({{PLAYERS}}, {{PERMANENTS}}, {{GROUP_FILTER}})": "",
     "WhenAPlayerIsAttacked({{PLAYERS}})": "",
     "WhenASingleCreatureAndANumberOfOtherCreaturesAttack({{PERMANENT}}, {{COMPARISON}}, {{PERMANENTS}})": "",
     "WhenASingleCreatureAndANumberOfOtherCreaturesAttackDifferentPlayers({{PERMANENT}}, {{COMPARISON}}, {{PERMANENTS}})": "",
@@ -602,6 +607,7 @@
   "{{TRIGGER}}": {
     "If({{CONDITION}}, {{TRIGGER}})": "",
     "Or({{TRIGGER_LIST}})": "",
+    "{{_TRIGGER[FaceADilemma]}}": "",
     "{{_TRIGGER[ActivateAnAbility]}}": "",
     "{{_TRIGGER[AddMana]}}": "",
     "{{_TRIGGER[Archenemy]}}": "",

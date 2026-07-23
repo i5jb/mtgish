@@ -66693,6 +66693,20 @@
     ]
   },
   {
+    "name": "Chief Warg's Company",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Chief Warg's Company",
+        "manaCost": "{1}{B}{G}",
+        "type": "Creature — Wolf",
+        "text": "Trample\nThis creature can't attack unless you control two or more other Wolves.\nAt the beginning of your upkeep, create a 2/2 green Wolf creature token.",
+        "power": "5",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Chief of the Edge",
     "layout": "single",
     "cards": [
@@ -96726,6 +96740,20 @@
     ]
   },
   {
+    "name": "Desert Were-Worm",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Desert Were-Worm",
+        "manaCost": "{4}{R}{R}",
+        "type": "Creature — Dragon Wurm",
+        "text": "This creature gets +2/+0 for each Mountain you control.\nWhenever you attack with creatures with total power 12 or greater for the first time each turn, untap all attacking creatures. After this phase, there is an additional combat phase.",
+        "power": "0",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Desert of the Fervent",
     "layout": "single",
     "cards": [
@@ -104367,6 +104395,18 @@
         "manaCost": "{2}{B}",
         "type": "Sorcery",
         "text": "Target opponent reveals their hand. You choose a nonland card from it. That player discards that card. Destroy up to one target Attraction that player controls. (It's put into their junkyard.)"
+      }
+    ]
+  },
+  {
+    "name": "Down, Down to Goblin-town",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Down, Down to Goblin-town",
+        "manaCost": "{2}{B}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\nI — Target opponent reveals their hand. You choose a nonland card from it. That player discards that card.\nII — Amass Goblins 1. (Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)\nIII, IV — Target opponent loses 1 life and you gain 1 life."
       }
     ]
   },
@@ -150193,6 +150233,18 @@
     ]
   },
   {
+    "name": "Gathering of Darkness",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gathering of Darkness",
+        "manaCost": "{3}{B}",
+        "type": "Sorcery",
+        "text": "Return up to one target creature card from your graveyard to your hand.\nAmass Goblins 3. (Put three +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
+      }
+    ]
+  },
+  {
     "name": "Gatstaf Arsonists // Gatstaf Ravagers",
     "layout": "transform",
     "cards": [
@@ -158615,6 +158667,18 @@
     ]
   },
   {
+    "name": "Gnashing of Teeth",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gnashing of Teeth",
+        "manaCost": "{1}{B}{B}",
+        "type": "Sorcery",
+        "text": "Choose one —\n• Target creature gets -5/-5 until end of turn. If that creature would die this turn, exile it instead.\n• Creatures target player controls get -1/-1 until end of turn."
+      }
+    ]
+  },
+  {
     "name": "Gnat Alley Creeper",
     "layout": "single",
     "cards": [
@@ -162966,6 +163030,20 @@
         "manaCost": "{1}{G}",
         "type": "Legendary Creature — Human Scientist Hero",
         "text": "Reach (This creature can block creatures with flying.)\nPower-up — {4}{G}: Put two +1/+1 counters on Goliath. Then draw a card for each creature you control with power 4 or greater. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Gollum the Abandoned",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gollum the Abandoned",
+        "manaCost": "{1}{B}",
+        "type": "Legendary Creature — Halfling Horror",
+        "text": "Gollum can't block.\nWhen Gollum enters, exile up to one target card from an opponent's graveyard. Each opponent loses 2 life.\n{2}, Sacrifice an artifact or creature: Return this card from your graveyard to your hand. Activate only as a sorcery.",
         "power": "2",
         "toughness": "2"
       }
@@ -240391,6 +240469,20 @@
     ]
   },
   {
+    "name": "Master's Councillors",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Master's Councillors",
+        "manaCost": "{1}{U}",
+        "type": "Creature — Human Advisor",
+        "text": "Vigilance\nThis creature gets +2/+0 for each graveyard with seven or more cards in it.\nWhenever you draw your second card each turn, target player mills three cards. (They put the top three cards of their library into their graveyard.)",
+        "power": "1",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Master's Guidance",
     "layout": "single",
     "cards": [
@@ -306497,6 +306589,20 @@
         "manaCost": "{2}{U}",
         "type": "Sorcery",
         "text": "Exile target artifact or creature. Its controller creates a 1/1 blue Bird creature token with flying.\nForetell {U} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)"
+      }
+    ]
+  },
+  {
+    "name": "Ravenhill Flock",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ravenhill Flock",
+        "manaCost": "{3}{U}",
+        "type": "Creature — Bird",
+        "text": "Flying\nWhenever you draw a card, put a +1/+1 counter on this creature.",
+        "power": "1",
+        "toughness": "2"
       }
     ]
   },
