@@ -36114,6 +36114,20 @@
     ]
   },
   {
+    "name": "Belladonna Took",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Belladonna Took",
+        "manaCost": "{1}{W}",
+        "type": "Legendary Creature — Halfling Citizen",
+        "text": "Whenever a token you control enters, you gain 1 life if this is the first time this ability has resolved this turn. If it's the second time, draw a card. If it's the third time, put a +1/+1 counter on each creature you control.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Belle of the Brawl",
     "layout": "single",
     "cards": [
@@ -37966,6 +37980,18 @@
         "manaCost": "{4}{U}{U}",
         "type": "Sorcery",
         "text": "For each opponent, gain control of up to one target artifact that player controls."
+      }
+    ]
+  },
+  {
+    "name": "Bilbo's Gambit",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bilbo's Gambit",
+        "manaCost": "{1}{W}",
+        "type": "Instant",
+        "text": "Gift a Treasure (You may promise an opponent a gift as you cast this spell. If you do, they create a Treasure token before its other effects. It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")\nReturn target spell to its owner's hand. If the gift was promised, players can't cast spells this turn."
       }
     ]
   },
@@ -48435,6 +48461,20 @@
         "name": "Botanical Sanctum",
         "type": "Land",
         "text": "This land enters tapped unless you control two or fewer other lands.\n{T}: Add {G} or {U}."
+      }
+    ]
+  },
+  {
+    "name": "Bothersome Noisemaker",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bothersome Noisemaker",
+        "manaCost": "{1}{R}",
+        "type": "Creature — Goblin Bard",
+        "text": "Whenever you cast a noncreature spell, amass Goblins 1. (Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -166055,6 +166095,20 @@
     ]
   },
   {
+    "name": "Great Gilded Boat",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Great Gilded Boat",
+        "manaCost": "{2}{U}",
+        "type": "Artifact — Vehicle",
+        "text": "Whenever you attack, you recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)\nCrew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Great Hall of Starnheim",
     "layout": "single",
     "cards": [
@@ -265029,6 +265083,20 @@
     ]
   },
   {
+    "name": "Nighthowl Pursuer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Nighthowl Pursuer",
+        "manaCost": "{B}",
+        "type": "Creature — Wolf",
+        "text": "Menace (This creature can't be blocked except by two or more creatures.)\nFerocious — Whenever this creature attacks while you control a creature with power 4 or greater, this creature gets +2/+2 until end of turn.",
+        "power": "1",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Nighthowler",
     "layout": "single",
     "cards": [
@@ -362543,6 +362611,18 @@
     ]
   },
   {
+    "name": "Sound the Trumpets",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Sound the Trumpets",
+        "manaCost": "{1}{U}{U}",
+        "type": "Instant",
+        "text": "Counter target spell. If that spell's mana value was 2 or less, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)"
+      }
+    ]
+  },
+  {
     "name": "Soundwave, Sonic Spy // Soundwave, Superior Captain",
     "layout": "transform",
     "cards": [
@@ -400125,6 +400205,20 @@
     ]
   },
   {
+    "name": "The Sackville-Bagginses",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Sackville-Bagginses",
+        "manaCost": "{1}{B}",
+        "type": "Legendary Creature — Halfling Citizen",
+        "text": "When The Sackville-Bagginses enter, you may sacrifice another creature or artifact. If you do, draw a card and create a Treasure token.\nWhenever you sacrifice a token, target opponent loses 1 life.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "The Sad Creaturez",
     "layout": "single",
     "cards": [
@@ -404486,6 +404580,18 @@
         "manaCost": "{4}",
         "type": "Artifact",
         "text": "Echo {4} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\nYou may choose not to untap this artifact during your untap step.\n{2}, {T}: All creatures get +2/+2 for as long as this artifact remains tapped."
+      }
+    ]
+  },
+  {
+    "name": "Thranduil's Decree",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Thranduil's Decree",
+        "manaCost": "{4}{U}{U}",
+        "type": "Instant",
+        "text": "Counter target spell. If a permanent spell is countered this way, exile it instead of putting it into its owner's graveyard. You may cast that card without paying its mana cost for as long as it remains exiled."
       }
     ]
   },

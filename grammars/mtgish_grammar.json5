@@ -850,6 +850,7 @@
     "DrawUptoNumberCards({{NUMBER}})": "",
     "EachCreatureConnives({{PERMANENTS}})": "",
     "EachPermanentDealsDamage({{PERMANENTS}}, {{NUMBER}}, {{DAMAGE_RECIPIENT}})": "",
+    "ExiledCardDealsDamage({{CARD_IN_EXILE}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
     "EachPermanentDoesntUntapDuringControllersNextUntap({{PERMANENTS}})": "",
     "EachPlayerCantCastSpellsDuringTheirNextTurn({{PLAYERS}}, {{SPELLS}})": "",
     "Earthbend({{PERMANENT}}, {{NUMBER}})": "",

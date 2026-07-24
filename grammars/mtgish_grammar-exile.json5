@@ -180,8 +180,6 @@
 
     "PlayersExileTopCardOfLibraryAndFindHighestManaValueUntilSingleWinner({{PLAYERS}})": "",
 
-    "ExiledCardDealsDamage({{CARD_IN_EXILE}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-
     "ExileCardsFromTheTopOfLibraryUntilACardOfTypeIsExiled({{CARDS}})": "",
     "ExileCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreExiled({{NUMBER}}, {{CARDS}})": "",
     "ExileCardsFromTheTopOfLibraryUntilGroupCardsAreExiled({{GROUP_FILTER}})": "",
