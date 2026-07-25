@@ -283,7 +283,6 @@
     "SharesAManaValueWithSpell({{SPELL}})": ""
   },
   "{{BASIC_NAME_FILTER}}": {
-    "DoesntShareANameWithSpell({{SPELL}})": "",
     "IsNamed(NamedCard({{QUOTED_NAMED_CARD}}))": "",
     "IsNamed(OneOfTheChosenNames)": "",
     "IsNamed(TheChosenName)": "",
@@ -305,6 +304,10 @@
     "{{_PLAYER_ACTION[PutCounters][NoteCounters]}}": "",
     "{{_PLAYER_ACTION[PutCounters][WouldPutCounters]}}": "",
     "{{_PLAYER_ACTION[Exile]}}": "",
+
+    "SetRepeatablePlayers({{PLAYERS}})": "",
+
+    "MeldExiledIntoNewPermanent({{CARDS_IN_EXILE}}, {{QUOTED_NAMED_CARD}}, {{ENTER_FLAGS}})": "",
 
     "Recruit": "",
     "AbandonScheme(ThisScheme)": "",
@@ -1615,6 +1618,8 @@
     "CanEnchantPermanent({{PERMANENT}})": "",
 
     "SharesACardtypeWithTheCycledCard": "",
+    "SharesACardtypeWithSpell({{SPELL}})": "",
+    "DoesntShareANameWithSpell({{SPELL}})": "",
 
     "DoesntShareALandTypeWithAPermanent({{PERMANENTS}})": "",
     "DoesntShareANameWithAPermanent({{PERMANENTS}})": "",
@@ -4295,6 +4300,8 @@
     "{{_PLAYERS[PutCounters]}}": "",
     "{{_PLAYERS[Exile]}}": "",
 
+    "RepeatablePlayers": "",
+
     "AControllerOfTheLeastPermanentsAmongPlayers({{PLAYERS}}, {{PERMANENTS}})": "",
     "AControllerOfTheMostPermanentsAmongPlayers({{PLAYERS}}, {{PERMANENTS}})": "",
     "APlayerNotedByPlayerForCardDuringDraft({{PLAYER}}, {{QUOTED_NAMED_CARD}})": "",
@@ -4504,7 +4511,6 @@
   "{{PLAYER}}": {
     "ControllerOfEachableExiledPermanent": "",
     "OwnerOfExiledCard({{CARD_IN_EXILE}})": "",
-    "ThePlayerWhoExiledTheCardWithTheHighestManaValue": "",
 
     "APlayerWouldMillAnyNumberOfCards_ThatPlayer": "",
     "ActionForEachPlayer_ThatPlayer": "",
@@ -4871,7 +4877,7 @@
     "[ContinueDealingDamage, SpellDealsDamage({{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})]": "",
 
     "[CancelThatDamage, DestroyPermanent({{PERMANENT}})]": "",
-    "[CancelThatDamage, PlayerAction({{PLAYER}}, Exile([TheTopNumberCardsOfPlayersLibrary({{NUMBER}}, {{PLAYER}})], []))]": "",
+    "[CancelThatDamage, PlayerAction({{PLAYER}}, Exile([TheTopNumberCardsOfLibrary({{NUMBER}})], []))]": "",
     "[CancelThatDamage, PlayerAction({{PLAYER}}, MillNumberCards({{NUMBER}}))]": "",
     "[CancelThatDamage, PutCounters([NumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})]), PlayerAction({{PLAYER}}, MillNumberCards({{NUMBER}}))]": "",
     "[CancelThatDamage, PutCounters([NumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})])]": "",
@@ -4937,7 +4943,7 @@
     "[PreventThatDamage, EachPlayerAction({{PLAYERS}}, DrawNumberCards({{NUMBER}}))]": "",
     "[PreventThatDamage, EachPlayerAction({{PLAYERS}}, MillNumberCards({{NUMBER}}))]": "",
     "[PreventThatDamage, Exile([NumberCardsInGraveyards({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}})], [])]": "",
-    "[PreventThatDamage, Exile([TheTopNumberCardsOfPlayersLibrary({{NUMBER}}, {{PLAYER}})], [])]": "",
+    "[PreventThatDamage, Exile([TheTopNumberCardsOfLibrary({{NUMBER}})], [])]": "",
     "[PreventThatDamage, GainLife({{NUMBER}})]": "",
     "[PreventThatDamage, If(DamageFromAPermanentSourceWasPreventedThisWay({{PERMANENTS}}), [ReflexiveTrigger({{TOP_LEVEL_ACTIONS}})])]": "",
     "[PreventThatDamage, If(DamageFromASourceWasPreventedThisWay({{DAMAGE_SOURCES}}), [GainLife({{NUMBER}})])]": "",
@@ -4985,9 +4991,9 @@
     "[DrawNumberCards({{NUMBER}})]": "",
     "[EachPlayerAction({{PLAYERS}}, DiscardACard)]": "",
     "[EachPlayerAction({{PLAYERS}}, PutAPermanentIntoItsOwnersHand({{PERMANENTS}}))]": "",
-    "[ExileCardsFromTheTopOfLibraryUntilACardOfTypeIsExiled({{CARDS_IN_LIBRARY}}), MayAction(CastExiledCardWithoutPaying({{CARD_IN_EXILE}})), PutEachExiledCardOnTheBottomOfTheirOwnersLibraryInARandomOrder({{CARDS_IN_EXILE}})]": "",
-    "[Exile([TheTopNumberCardsOfPlayersLibrary({{NUMBER}}, {{PLAYER}})], []), CreatePlayerEffectUntil({{PLAYER}}, {{PLAYER_EFFECT_LIST}}, {{EXPIRATION}})]": "",
-    "[Exile([TheTopCardOfPlayersLibrary(You)], [ExilesFaceDown])]": "",
+    "[Exile([CardsFromTheTopOfLibraryUntilACardOfTypeIsExiled({{CARDS_IN_LIBRARY}})], []), MayAction(CastExiledCardWithoutPaying({{CARD_IN_EXILE}})), PutEachExiledCardOnTheBottomOfTheirOwnersLibraryInARandomOrder({{CARDS_IN_EXILE}})]": "",
+    "[Exile([TheTopNumberCardsOfLibrary({{NUMBER}})], []), CreatePlayerEffectUntil({{PLAYER}}, {{PLAYER_EFFECT_LIST}}, {{EXPIRATION}})]": "",
+    "[Exile([TheTopCardOfLibrary], [ExilesFaceDown])]": "",
     "[GainLife({{NUMBER}})]": "",
     "[LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [PutAGenericCardIntoGraveyard, PutTheRemainingCardsOnTopOfLibraryInAnyOrder]), DrawACard]": "",
     "[LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [PutAGenericCardIntoHand, PutTheRemainingCardsIntoGraveyard])]": "",
@@ -4998,8 +5004,8 @@
     "[PermanentDealsDamage({{PERMANENT}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})]": "",
 
     "[PlayerAction({{PLAYER}}, ChooseAPlayer({{PLAYERS}})), PlayerAction({{PLAYER}}, Exile([TheTopCardOfPlayersLibrary({{PLAYER}})], []))]": "",
-    "[PlayerAction({{PLAYER}}, Exile([TheTopCardOfPlayersLibrary({{PLAYER}})], [])), CreatePlayerEffectUntil({{PLAYER}}, {{PLAYER_EFFECT_LIST}}, {{EXPIRATION}})]": "",
-    "[PlayerAction({{PLAYER}}, Exile([TheTopCardOfPlayersLibrary({{PLAYER}})], []))]": "",
+    "[PlayerAction({{PLAYER}}, Exile([TheTopCardOfLibrary], [])), CreatePlayerEffectUntil({{PLAYER}}, {{PLAYER_EFFECT_LIST}}, {{EXPIRATION}})]": "",
+    "[PlayerAction({{PLAYER}}, Exile([TheTopCardOfLibrary], []))]": "",
 
     "[PlayerAction({{PLAYER}}, RevealTopCardOfLibrary), AnyPlayerMayCost(Other({{PLAYER}}), PayLife({{NUMBER}})), IfElse(CostWasPaid, [PlayerAction({{PLAYER}}, PutTopOfLibraryInGraveyard)], [PlayerAction({{PLAYER}}, DrawACard)])]": "",
     "[PlayerActions({{PLAYER}}, [DrawACard, RevealTheCardDrawnThisWay, If(ACardWasRevealedThisWay({{CARDS_IN_HAND}}), [DiscardTheCardDrawnThisWay])])]": "",
@@ -5287,7 +5293,7 @@
     "[PlayerAction({{PLAYER}}, MillNumberCards({{NUMBER}}))]": ""
   },
   "{{REPLACEMENT_ACTIONS[WouldPayLife]}}": {
-    "[Exile([TheTopNumberCardsOfPlayersLibrary({{NUMBER}}, {{PLAYER}})], [])]": ""
+    "[Exile([TheTopNumberCardsOfLibrary({{NUMBER}})], [])]": ""
   },
   "{{REPLACEMENT_ACTIONS[WouldPlaneswalk]}}": {
     "[ChaosEnsues]": "",

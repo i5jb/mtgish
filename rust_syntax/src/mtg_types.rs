@@ -3177,7 +3177,6 @@ pub enum ReplacementActionWouldDraw {
   DrawNumberCards(Box<GameNumber>),
   EachPlayerAction(Box<Players>, Box<ReplacementActionWouldDraw>),
   Exile(Vec<Exilable>, Vec<ExileFlag>),
-  ExileCardsFromTheTopOfLibraryUntilACardOfTypeIsExiled(Box<CardsInLibrary>),
   GainLife(Box<GameNumber>),
   If(Condition, Vec<ReplacementActionWouldDraw>),
   IfElse(Condition, Vec<ReplacementActionWouldDraw>, Vec<ReplacementActionWouldDraw>),
@@ -4991,7 +4990,6 @@ pub enum Cards {
   SharesACardtypeWithThePermanentDestroyedThisWay,
   SharesACreatureTypeWithDeadPermanent,
   DoesntHaveAbility(CheckHasable),
-  DoesntShareANameWithSpell(Box<Spell>),
   HasAbility(CheckHasable),
   HasAnAdventure,
   HasBasicLandType,
@@ -6305,7 +6303,6 @@ pub enum Player {
   ThePlayerThatChoseAction,
   ThePlayerWhoControlsTheMostPermanents(Box<Permanents>),
   ThePlayerWhoCreatedThisAbility,
-  ThePlayerWhoExiledTheCardWithTheHighestManaValue,
   ThePlayerWithTheInitiative,
   ThePlayerWithTheMostCardsInHand,
   ThePlayerWithTheMostLife,
@@ -6337,6 +6334,8 @@ pub enum Players {
   Other(Box<Player>),
   SinglePlayer(Box<Player>),
 
+  RepeatablePlayers,
+  ExiledACardWithTheHighestManaValue,
   DidntDiscardedNumberCardsOfTypeThisWay(Box<Comparison>, Box<CardsInHand>),
   NumCardsInGraveyardIs(Box<Comparison>),
   NumCardsOfTypeInGraveyardIs(Box<Comparison>, Box<CardsInGraveyards>),
@@ -7960,6 +7959,9 @@ pub enum SpellOrAbility {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_CardsInLibrary", content = "args"))]
 pub enum CardsInLibrary {
+  SharesACardtypeWithSpell(Box<Spell>),
+  DoesntShareANameWithSpell(Box<Spell>),
+
   CanEnchantPermanent(Box<Permanent>),
   CanEnchantThatEnteringPermanent,
   DoesntShareALandTypeWithAPermanent(Box<Permanents>),
@@ -8308,17 +8310,26 @@ pub enum Exilable {
   PlayersHand(Box<Player>),
 
   // Cards In Library
+  TheTopCardOfLibrary,
+  TheTopNumberCardsOfLibrary(Box<GameNumber>),
+  AllCardsFromLibrary,
+
+  TheBottomCardOfTypeInLibrary(Box<CardsInLibrary>),
+  TheBottomNumberCardsOfLibrary(Box<GameNumber>),
+
   ACardFromPlayersLibraryAtRandom(Box<Player>),
   ACardOfTypeFromPlayersLibraryAtRandom(Box<CardsInLibrary>, Box<Player>),
   AllCardsFromPlayersLibrary(Box<Player>),
   AllCardsOfTypeFromPlayersLibrary(Box<CardsInLibrary>, Box<Player>),
   NumberCardsFromPlayersLibraryAtRandom(Box<GameNumber>, Box<Player>),
   TheBottomCardOfEachPlayersLibraries(Box<Players>),
-  TheBottomCardOfTypeInPlayersLibrary(Box<CardsInLibrary>, Box<Player>),
-  TheBottomNumberCardsOfPlayersLibrary(Box<GameNumber>, Box<Player>),
   TheTopCardOfEachPlayersLibraries(Box<Players>),
   TheTopCardOfPlayersLibrary(Box<Player>),
   TheTopNumberCardsOfPlayersLibrary(Box<GameNumber>, Box<Player>),
+
+  CardsFromTheTopOfLibraryUntilACardOfTypeIsExiled(Box<CardsInLibrary>),
+  CardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreExiled(Box<GameNumber>, Box<CardsInLibrary>),
+  CardsFromTheTopOfLibraryUntilGroupCardsAreExiled(Box<GroupFilter>),
 
   // Permanents
   Permanent(Box<Permanent>),
@@ -8360,8 +8371,8 @@ pub enum ExilableCost {
   PlayersHand(Box<Player>),
 
   // Cards In Library
-  TheTopCardOfPlayersLibrary(Box<Player>),
-  TheTopNumberCardsOfPlayersLibrary(Box<GameNumber>, Box<Player>),
+  TheTopCardOfLibrary,
+  TheTopNumberCardsOfLibrary(Box<GameNumber>),
 
   // Permanents
   Permanent(Box<Permanent>),
@@ -8617,6 +8628,9 @@ pub enum PutCountersAction {
 pub enum Action {
   Recruit,
   Assimilate(Box<CardInGraveyards>),
+
+  MeldExiledIntoNewPermanent(Box<CardsInExile>, NameString, Vec<EnterFlag>),
+  SetRepeatablePlayers(Box<Players>),
 
   APlayerAction(Box<Players>, Box<Action>),
   APlayerActions(Box<Players>, Vec<Action>),
@@ -9153,10 +9167,6 @@ pub enum Action {
   ExchangePowerOfTwoCreaturesUntil(Box<Permanent>, Box<Permanent>, Expiration),
   ExchangeTextBoxesOfTwoPermanentsUntil(Box<Permanent>, Box<Permanent>, Expiration),
   Exile(Vec<Exilable>, Vec<ExileFlag>),
-  ExileCardsFromTheTopOfLibraryUntilGroupCardsAreExiled(Box<GroupFilter>),
-  ExileCardsFromTheTopOfLibraryUntilACardOfTypeIsExiled(Box<Cards>),
-  ExileCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreExiled(Box<GameNumber>, Box<Cards>),
-  ExilePermanentsAndMeldIntoNewPermanent(Box<Permanent>, Box<Permanents>, NameString, Vec<EnterFlag>),
   ExiledCardDealsDamage(CardInExile, Box<GameNumber>, Box<DamageRecipient>),
   ExploreWithEachPermanent(Box<Permanents>),
   ExploreWithPermanent(Box<Permanent>),
@@ -9349,7 +9359,6 @@ pub enum Action {
   PlayerRepeatedMayCost(Box<Player>, Box<GameNumber>, Box<Cost>),
   PlayersDiscardCards(Box<CardsInHand>),
   PlayersExchangeLifeTotals(Box<Player>, Box<Player>),
-  PlayersExileTopCardOfLibraryAndFindHighestManaValueUntilSingleWinner(Box<Players>),
   PlayersRevealTopCardOfLibraryAndFindHighestManaValue(Box<Players>),
   Populate,
   PopulateNumberTimes(Box<GameNumber>),

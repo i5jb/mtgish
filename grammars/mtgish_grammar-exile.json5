@@ -88,20 +88,29 @@
     // ----------------
     // Cards in Library
     // ----------------
+    "TheTopCardOfLibrary": "",
+    "TheTopNumberCardsOfLibrary({{NUMBER}})": "",
+    "AllCardsFromLibrary": "",
+
     "TheTopCardOfPlayersLibrary({{PLAYER}})": "",
     "TheTopNumberCardsOfPlayersLibrary({{NUMBER}}, {{PLAYER}})": "",
-    "TheTopCardOfEachPlayersLibraries({{PLAYERS}})": "",
-    "TheBottomNumberCardsOfPlayersLibrary({{NUMBER}}, {{PLAYER}})": "",
-    "TheBottomCardOfEachPlayersLibraries({{PLAYERS}})": "",
-    "TheBottomCardOfTypeInPlayersLibrary({{CARDS_IN_LIBRARY}}, {{PLAYER}})": "",
-
     "AllCardsFromPlayersLibrary({{PLAYER}})": "",
+
+    "TheTopCardOfEachPlayersLibraries({{PLAYERS}})": "",
+    "TheBottomCardOfEachPlayersLibraries({{PLAYERS}})": "",
+
+    "TheBottomNumberCardsOfLibrary({{NUMBER}})": "",
+    "TheBottomCardOfTypeInLibrary({{CARDS_IN_LIBRARY}})": "",
+
     "AllCardsOfTypeFromPlayersLibrary({{CARDS_IN_LIBRARY}}, {{PLAYER}})": "",
 
     "ACardFromPlayersLibraryAtRandom({{PLAYER}})": "",
     "NumberCardsFromPlayersLibraryAtRandom({{NUMBER}}, {{PLAYER}})": "",
-
     "ACardOfTypeFromPlayersLibraryAtRandom({{CARDS_IN_LIBRARY}}, {{PLAYER}})": "",
+
+    "CardsFromTheTopOfLibraryUntilACardOfTypeIsExiled({{CARDS_IN_LIBRARY}})": "",
+    "CardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreExiled({{NUMBER}}, {{CARDS_IN_LIBRARY}})": "",
+    "CardsFromTheTopOfLibraryUntilGroupCardsAreExiled({{GROUP_FILTER}})": "",
 
     // ------
     // Spells
@@ -158,8 +167,8 @@
     // ----------------
     // Cards in Library
     // ----------------
-    "TheTopCardOfPlayersLibrary({{PLAYER}})": "",
-    "TheTopNumberCardsOfPlayersLibrary({{NUMBER}}, {{PLAYER}})": "",
+    "TheTopCardOfLibrary": "",
+    "TheTopNumberCardsOfLibrary({{NUMBER}})": "",
 
     // ------
     // Spells
@@ -169,22 +178,12 @@
     "Spell({{SPELL}})": "",
   },
 
-
-
   "{{_PLAYER_ACTION[Exile]}}": {
     "Exile({{EXILABLE_LIST}}, {{EXILE_FLAGS}})": "",
 
     "ActionForEachExiledCard({{CARDS_IN_EXILE}}, {{ACTION_LIST}})": "",
     "ActionForEachPermanentExiledThisWayByController({{ACTION_LIST}})": "",
     "ActionForEachPermanentExiledThisWay({{ACTION_LIST}})": "",
-
-    "PlayersExileTopCardOfLibraryAndFindHighestManaValueUntilSingleWinner({{PLAYERS}})": "",
-
-    "ExileCardsFromTheTopOfLibraryUntilACardOfTypeIsExiled({{CARDS}})": "",
-    "ExileCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreExiled({{NUMBER}}, {{CARDS}})": "",
-    "ExileCardsFromTheTopOfLibraryUntilGroupCardsAreExiled({{GROUP_FILTER}})": "",
-
-    "ExilePermanentsAndMeldIntoNewPermanent({{PERMANENT}}, {{PERMANENTS}}, {{QUOTED_NAMED_CARD}}, {{ENTER_FLAGS}})": "",
   },
   "{{_COST[Exile]}}": {
     "Exile({{EXILABLE_COST_LIST}}, {{EXILE_FLAGS}})": "",
@@ -249,6 +248,7 @@
     "ThisExiledPermanentCard": "",
   },
   "{{_PLAYERS[Exile]}}": {
+    "ExiledACardWithTheHighestManaValue": "",
     "ControlledAPermanentExiledThisWay": "",
     "DidntPlayACardFromExileThisTurn({{CARDS}})": "",
     "NumCardsOwnedInExileIs({{COMPARISON}}, {{CARDS_IN_EXILE}})": "",
