@@ -32334,6 +32334,20 @@
     ]
   },
   {
+    "name": "Bard's Company",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bard's Company",
+        "manaCost": "{2}{W}{U}",
+        "type": "Creature — Human Citizen",
+        "text": "You may cast this spell as though it had flash if you control a Human.\nOther creatures you control get +1/+1.\nWhenever this creature enters or attacks, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",
+        "power": "2",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Bard, King of Dale",
     "layout": "single",
     "cards": [
@@ -37125,6 +37139,18 @@
         "text": "Trample\nOther Bears you control get +2/+2.\nAt the beginning of combat on your turn, put a trample counter on up to one target creature you control. It becomes a Bear in addition to its other types. Then if you control three or more Bears, draw two cards.",
         "power": "6",
         "toughness": "6"
+      }
+    ]
+  },
+  {
+    "name": "Beorn's Hospitality",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Beorn's Hospitality",
+        "manaCost": "{1}{G}",
+        "type": "Enchantment",
+        "text": "Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature you control.\n{5}{G}{G}: This enchantment becomes a Bear creature in addition to its other types and gains \"This creature's power and toughness are each equal to the number of lands you control.\" (This effect doesn't end.)"
       }
     ]
   },
@@ -104439,6 +104465,18 @@
     ]
   },
   {
+    "name": "Down in the Valley",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Down in the Valley",
+        "manaCost": "{2}{G}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\nI — Search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nII — This Saga gains \"Landfall — Whenever a land you control enters, create a 1/1 green Elf creature token.\"\nIII, IV — Elves you control get +1/+0 and gain vigilance until end of turn."
+      }
+    ]
+  },
+  {
     "name": "Down, Down to Goblin-town",
     "layout": "single",
     "cards": [
@@ -111321,6 +111359,20 @@
         "text": "Assist (Another player can pay up to {5} of this spell's cost.)\nWhen this creature enters, creatures your team controls get +1/+1 until end of turn.",
         "power": "3",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Dwarven Mauler",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dwarven Mauler",
+        "manaCost": "{R}",
+        "type": "Creature — Dwarf Warrior",
+        "text": "Equip abilities you activate that target this creature cost {2} less to activate.",
+        "power": "2",
+        "toughness": "1"
       }
     ]
   },
@@ -148360,6 +148412,20 @@
     ]
   },
   {
+    "name": "Galion, Elvenking's Butler",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Galion, Elvenking's Butler",
+        "manaCost": "{2}{G}{G}",
+        "type": "Legendary Creature — Elf Advisor",
+        "text": "Whenever Galion attacks, choose up to one other target creature you control. Its base power and toughness become equal to Galion's power and toughness until end of turn.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Gallant Cavalry",
     "layout": "single",
     "cards": [
@@ -148980,6 +149046,20 @@
         "text": "At the beginning of combat on your turn, you may cast an instant or sorcery spell with mana value X or less from your hand without paying its mana cost, where X is twice the number of legendary Wizards you control.",
         "power": "3",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Gandalf, Spark Starter",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gandalf, Spark Starter",
+        "manaCost": "{4}{R}{R}",
+        "type": "Legendary Creature — Avatar Wizard",
+        "text": "Reach\nWhen Gandalf enters, he deals 3 damage divided as you choose among one, two, or three targets.",
+        "power": "4",
+        "toughness": "3"
       }
     ]
   },
@@ -166102,7 +166182,7 @@
         "name": "Great Gilded Boat",
         "manaCost": "{2}{U}",
         "type": "Artifact — Vehicle",
-        "text": "Whenever you attack, you recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)\nCrew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",
+        "text": "Whenever you attack, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)\nCrew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",
         "power": "4",
         "toughness": "4"
       }
@@ -250519,6 +250599,20 @@
         "text": "{2}, {T}, Discard a card: Draw a card for each card you've discarded this turn.",
         "power": "3",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Misty Mountains Raider",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Misty Mountains Raider",
+        "manaCost": "{4}{R}",
+        "type": "Creature — Goblin Soldier",
+        "text": "Whenever you attack, amass Goblins 2. (Put two +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",
+        "power": "4",
+        "toughness": "4"
       }
     ]
   },
@@ -405540,6 +405634,18 @@
         "manaCost": "{4}{R}",
         "type": "Instant — Arcane",
         "text": "You may put a creature card from your hand onto the battlefield. That creature gains haste. Sacrifice that creature at the beginning of the next end step.\nSplice onto Arcane {2}{R}{R} (As you cast an Arcane spell, you may reveal this card from your hand and pay its splice cost. If you do, add this card's effects to that spell.)"
+      }
+    ]
+  },
+  {
+    "name": "Through the Forest Gate",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Through the Forest Gate",
+        "manaCost": "{6}{G}{G}",
+        "type": "Sorcery",
+        "text": "Look at the top twenty cards of your library, put any number of land cards from among them onto the battlefield tapped, then shuffle. You gain 8 life."
       }
     ]
   },
