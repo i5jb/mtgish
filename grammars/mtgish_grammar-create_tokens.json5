@@ -140,6 +140,8 @@
   },
 
   "{{_PLAYER_ACTION[CreateTokens]}}": {
+    "MultiCreateTokens([CreateTokens({{CREATABLE_TOKEN_LIST}}), EachPlayerCreatesTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}})])": "",
+    "EachPlayerCreatesTokensForEachPermanent({{PLAYERS}}, {{PERMANENTS}}, {{CREATABLE_TOKEN_LIST}})": "",
     "CreateTokens({{CREATABLE_TOKEN_LIST}})": "",
     "CreateTokensWithFlags({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
     "ForEachPlayerCreateTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}})": "",

@@ -48,6 +48,19 @@ type AbilityVariable =
 type Action =
 | { "_Action": "Recruit" }
 | { "_Action": "Assimilate", "args": CardInGraveyards }
+| { "_Action": "MultiDraw", "args": Array<MultiDrawable> }
+| { "_Action": "MultiCreateTokens", "args": Array<MultiCreateToken> }
+| { "_Action": "PutCardsInLibraryIntoGraveyard", "args": CardsInLibrary }
+| { "_Action": "PutCardsInLibraryOntoTheBattlefield", "args": [CardsInLibrary, Array<EnterFlag>] }
+| { "_Action": "PutCardsInLibraryOnTheBottomOfLibraryInAnyOrder", "args": CardsInLibrary }
+| { "_Action": "PutLibraryCardsIntoHand", "args": CardsInLibrary }
+| { "_Action": "EachPlayerRevealsCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreRevealed", "args": [Players, GameNumber, CardsInLibrary] }
+| { "_Action": "EachPlayerRevealsTheTopNumberCardsOfLibrary", "args": [Players, GameNumber] }
+| { "_Action": "ChooseNumberCardsInGraveyards", "args": [GameNumber, CardsInGraveyards] }
+| { "_Action": "EachPlayerCreatesTokensForEachPermanent", "args": [Players, Permanents, Array<CreatableToken>] }
+| { "_Action": "PutAllCardsFromGraveyardIntoHand", "args": CardsInGraveyards }
+| { "_Action": "PutAnyNumberOfCardsFromGraveyardIntoHand", "args": CardsInGraveyards }
+| { "_Action": "PutUptoNumberCardsFromGraveyardIntoHand", "args": [GameNumber, CardsInGraveyards] }
 | { "_Action": "MeldExiledIntoNewPermanent", "args": [CardsInExile, string, Array<EnterFlag>] }
 | { "_Action": "SetRepeatablePlayers", "args": Players }
 | { "_Action": "APlayerAction", "args": [Players, Action] }
@@ -192,7 +205,7 @@ type Action =
 | { "_Action": "ChooseACardInEachPlayersGraveyard", "args": [Cards, Players] }
 | { "_Action": "ChooseACardInHand", "args": CardsInHand }
 | { "_Action": "ChooseACardInHandAtRandom", "args": Cards }
-| { "_Action": "ChooseACardInHandOfEachColor", "args": Cards }
+| { "_Action": "ChooseACardInHandOfEachColor" }
 | { "_Action": "ChooseACardInHandOrAPermanent", "args": [Cards, Permanents] }
 | { "_Action": "ChooseACardInPlayersGraveyard", "args": [Cards, Player] }
 | { "_Action": "ChooseACardInPlayersGraveyardAtRandom", "args": [Cards, Player] }
@@ -273,7 +286,6 @@ type Action =
 | { "_Action": "ChooseNumberCardsFromAmongCardsInHandRevealedThisWay", "args": [GameNumber, Cards] }
 | { "_Action": "ChooseNumberCardsInEachPlayersGraveyard", "args": [GameNumber, Cards, Players] }
 | { "_Action": "ChooseNumberCardsInHand", "args": GameNumber }
-| { "_Action": "ChooseNumberCardsInPlayersGraveyard", "args": [GameNumber, Cards, Player] }
 | { "_Action": "ChooseNumberGraveyardCards", "args": [GameNumber, CardsInGraveyards] }
 | { "_Action": "ChooseNumberPermanents", "args": [GameNumber, Permanents] }
 | { "_Action": "ChooseOneOrTwoPermanents", "args": Permanents }
@@ -551,7 +563,6 @@ type Action =
 | { "_Action": "EachPermanentDealsDamage", "args": [Permanents, GameNumber, DamageRecipient] }
 | { "_Action": "EachPermanentDoesntUntapDuringControllersNextUntap", "args": Permanents }
 | { "_Action": "EachPlayerAction", "args": [Players, Action] }
-| { "_Action": "EachPlayerActions", "args": [Players, Array<Action>] }
 | { "_Action": "EachPlayerCantCastSpellsDuringTheirNextTurn", "args": [Players, Spells] }
 | { "_Action": "EachPlayerChoosesAnAction", "args": [Players, Array<Action>] }
 | { "_Action": "EachPlayerMakesAVillainousChoice", "args": [Players, Array<Array<Action>>] }
@@ -775,7 +786,6 @@ type Action =
 | { "_Action": "PlayerMayCost", "args": [Player, Cost] }
 | { "_Action": "PlayerMustCost", "args": [Player, Cost] }
 | { "_Action": "PlayerRepeatedMayCost", "args": [Player, GameNumber, Cost] }
-| { "_Action": "PlayersDiscardCards", "args": CardsInHand }
 | { "_Action": "PlayersExchangeLifeTotals", "args": [Player, Player] }
 | { "_Action": "PlayersRevealTopCardOfLibraryAndFindHighestManaValue", "args": Players }
 | { "_Action": "Populate" }
@@ -958,7 +968,6 @@ type Action =
 | { "_Action": "ReturnAnExiledCardToOwnersHand", "args": CardsInExile }
 | { "_Action": "ReturnAnyNumberCardsMilledThisWayToHand", "args": Cards }
 | { "_Action": "ReturnAnyNumberOfCardsFromGraveyardToBattlefield", "args": [CardsInGraveyards, Player, Array<EnterFlag>] }
-| { "_Action": "ReturnAnyNumberOfCardsFromGraveyardToHand", "args": Cards }
 | { "_Action": "ReturnAnyNumberOfGroupCardsFromGraveyardToHand", "args": [Cards, GroupFilter] }
 | { "_Action": "ReturnAnyNumberOfGroupCardsFromPlayersGraveyardToBattlefield", "args": [CardsInGraveyards, GroupFilter, Player, Array<EnterFlag>] }
 | { "_Action": "ReturnAnyNumberOfGroupCardsMilledThisWayToBattlefield", "args": [Cards, GroupFilter, Array<EnterFlag>] }
@@ -1763,7 +1772,6 @@ type CardsInHand =
 | { "_CardsInHand": "And", "args": Array<CardsInHand> }
 | { "_CardsInHand": "Or", "args": Array<CardsInHand> }
 | { "_CardsInHand": "AnyCard" }
-| { "_CardsInHand": "ExceptFor", "args": CardsInHand }
 | { "_CardsInHand": "Other", "args": CardInHand }
 | { "_CardsInHand": "SingleCardInHand", "args": CardInHand }
 | { "_CardsInHand": "InAPlayersHand", "args": Players }
@@ -1808,6 +1816,8 @@ type CardsInHand =
 type CardsInLibrary =
 | { "_CardsInLibrary": "SharesACardtypeWithSpell", "args": Spell }
 | { "_CardsInLibrary": "DoesntShareANameWithSpell", "args": Spell }
+| { "_CardsInLibrary": "RevealedFromPlayersLibraryThisWay", "args": Player }
+| { "_CardsInLibrary": "TheLibraryCardsFoundThisWay" }
 | { "_CardsInLibrary": "CanEnchantPermanent", "args": Permanent }
 | { "_CardsInLibrary": "CanEnchantThatEnteringPermanent" }
 | { "_CardsInLibrary": "DoesntShareALandTypeWithAPermanent", "args": Permanents }
@@ -3233,6 +3243,7 @@ type CreatureType =
 | "Zubera";
 type CreatureTypeVariable =
 | { "_CreatureTypeVariable": "CreatureTypesOfExiled", "args": CardInExile }
+| { "_CreatureTypeVariable": "TheCreatureTypeChosenByPlayerThisWay", "args": Player }
 | { "_CreatureTypeVariable": "TheChosenCreatureType" }
 | { "_CreatureTypeVariable": "TheChosenCreatureTypes" }
 | { "_CreatureTypeVariable": "TheNotedCreatureType" };
@@ -3483,6 +3494,7 @@ type Exilable =
 | { "_Exilable": "AnyNumberOfCardsFromHand" }
 | { "_Exilable": "EachCardInHand", "args": CardsInHand }
 | { "_Exilable": "EachPlayersHand", "args": Players }
+| { "_Exilable": "ACardOfTypeFromEachPlayersHand", "args": [CardsInHand, Players] }
 | { "_Exilable": "ACardFromHand" }
 | { "_Exilable": "ACardFromHandAtRandom" }
 | { "_Exilable": "ACardOfTypeFromHand", "args": CardsInHand }
@@ -3491,6 +3503,7 @@ type Exilable =
 | { "_Exilable": "TheTopCardOfLibrary" }
 | { "_Exilable": "TheTopNumberCardsOfLibrary", "args": GameNumber }
 | { "_Exilable": "AllCardsFromLibrary" }
+| { "_Exilable": "EachCardInLibrary", "args": CardsInLibrary }
 | { "_Exilable": "TheBottomCardOfTypeInLibrary", "args": CardsInLibrary }
 | { "_Exilable": "TheBottomNumberCardsOfLibrary", "args": GameNumber }
 | { "_Exilable": "ACardFromPlayersLibraryAtRandom", "args": Player }
@@ -3839,7 +3852,6 @@ type GameNumber =
 | { "_GameNumber": "NumPermanentsExiledThisWay" }
 | { "_GameNumber": "NumPermanentsOfTypeExiledThisWay", "args": Permanents }
 | { "_GameNumber": "NumPermanentsPhasedOutThisWay" }
-| { "_GameNumber": "NumPermanentsShuffledIntoLibraryThisWay" }
 | { "_GameNumber": "NumPermanentsShuffledIntoLibraryThisWayByPlayer", "args": Player }
 | { "_GameNumber": "NumPlayers", "args": Players }
 | { "_GameNumber": "NumPointsOfBushidoPermanentHas", "args": Permanent }
@@ -4353,14 +4365,15 @@ type LookAtTopOfLibraryAction =
 | { "_LookAtTopOfLibraryAction": "PutTheRemainingCardsIntoHand" }
 | { "_LookAtTopOfLibraryAction": "PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder" }
 | { "_LookAtTopOfLibraryAction": "PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder" }
-| { "_LookAtTopOfLibraryAction": "MayRevealUptoNumberCardsOfTypeAndPutIntoHand", "args": [GameNumber, Cards] }
+| { "_LookAtTopOfLibraryAction": "MayRevealUptoNumberCardsOfTypeAndPutIntoHand", "args": [GameNumber, CardsInLibrary] }
 | { "_LookAtTopOfLibraryAction": "SeparateIntoFaceUpFileAndFaceDownPile" }
 | { "_LookAtTopOfLibraryAction": "PlayerChoosesPileTopPutIntoHand", "args": Player }
 | { "_LookAtTopOfLibraryAction": "LeaveRemainingCardsOnTopOfLibraryInSameOrder" }
 | { "_LookAtTopOfLibraryAction": "SeparateIntoTwoFaceDownPiles" }
 | { "_LookAtTopOfLibraryAction": "PlayerExilesAPile", "args": Player }
 | { "_LookAtTopOfLibraryAction": "PlayerLooksAtRemainingCardsAndPutsAGenericCardIntoHand", "args": Player }
-| { "_LookAtTopOfLibraryAction": "MayRevealMultipleCardsOfTypeAndPutIntoHand", "args": Array<Cards> }
+| { "_LookAtTopOfLibraryAction": "MayRevealMultipleCardsOfTypeAndPutIntoHand", "args": Array<CardsInLibrary> }
+| { "_LookAtTopOfLibraryAction": "MayRevealMultipleCardsOfType", "args": Array<CardsInLibrary> }
 | { "_LookAtTopOfLibraryAction": "CreatePermanentLayerEffectUntil", "args": [Permanent, Array<LayerEffect>, Expiration] }
 | { "_LookAtTopOfLibraryAction": "If", "args": [Condition, Array<LookAtTopOfLibraryAction>] }
 | { "_LookAtTopOfLibraryAction": "Unless", "args": [Condition, Array<LookAtTopOfLibraryAction>] }
@@ -4577,6 +4590,12 @@ type MoveCountersAction =
 | { "_MoveCountersAction": "NumberCountersOfTypeFromPermanentOntoNewPermanent", "args": [GameNumber, CounterType, Permanent, Permanent] };
 type MoveCountersCost =
 | { "_MoveCountersCost": "AtLeastOneCounterFromPermanentOntoNewPermanent", "args": [Permanent, Permanent] };
+type MultiCreateToken =
+| { "_MultiCreateToken": "CreateTokens", "args": Array<CreatableToken> }
+| { "_MultiCreateToken": "EachPlayerCreatesTokens", "args": [Players, Array<CreatableToken>] };
+type MultiDrawable =
+| { "_MultiDraw": "DrawNumberCards", "args": GameNumber }
+| { "_MultiDraw": "EachPlayerDrawsACard", "args": Players };
 type MultipleDamageRecipients =
 | { "_MultipleDamageRecipients": "MultipleRecipients", "args": Array<DamageRecipients> }
 | { "_MultipleDamageRecipients": "EachPermanent", "args": Permanents };
@@ -5163,7 +5182,6 @@ type Permanents =
 | { "_Permanents": "ThePermanentsExiledThisWay" }
 | { "_Permanents": "ThePermanentsGainedControlOfThisWay" }
 | { "_Permanents": "ThePermanentsList" }
-| { "_Permanents": "ThePermanentsListForPlayer", "args": Player }
 | { "_Permanents": "ThePermanentsNotChosenThisWay" }
 | { "_Permanents": "ThePermanentsPhasedOutThisWay" }
 | { "_Permanents": "ThePermanentsPutOnTheBattlefieldThisWay" }
@@ -5789,7 +5807,6 @@ type Player =
 | { "_Player": "ControllerOfTriggeredAbility", "args": Ability }
 | { "_Player": "DealsDamage_ThatPlayer" }
 | { "_Player": "DefendingPlayer" }
-| { "_Player": "EachPlayerAction_ThatPlayer" }
 | { "_Player": "EachablePlayer" }
 | { "_Player": "HostController" }
 | { "_Player": "HostPlayer" }
@@ -5859,6 +5876,8 @@ type Players =
 | { "_Players": "Or", "args": Array<Players> }
 | { "_Players": "Other", "args": Player }
 | { "_Players": "SinglePlayer", "args": Player }
+| { "_Players": "ExiledACardThisWay" }
+| { "_Players": "Trigger_ThoseDefendingPlayers" }
 | { "_Players": "RepeatablePlayers" }
 | { "_Players": "ExiledACardWithTheHighestManaValue" }
 | { "_Players": "DidntDiscardedNumberCardsOfTypeThisWay", "args": [Comparison, CardsInHand] }
@@ -5923,7 +5942,6 @@ type Players =
 | { "_Players": "CreatedATokenThisTurn" }
 | { "_Players": "CycledANumberOfCardsThisGame", "args": [Comparison, Cards] }
 | { "_Players": "CycledANumberOfCardsThisTurn", "args": [Comparison, Cards] }
-| { "_Players": "DefendingPlayerThisCombat" }
 | { "_Players": "Descended" }
 | { "_Players": "DevotionToColorsIs", "args": [Array<SimpleColor>, Comparison] }
 | { "_Players": "DidntActivateAnAbilityThisTurn", "args": ActivatedAbilities }
@@ -6827,7 +6845,6 @@ type RevealTheTopNumberCardsOfLibraryAction =
 | { "_RevealTheTopNumberCardsOfLibraryAction": "PutTheCardFoundThisWayIntoHand" }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "PutTheCardFoundThisWayOnTopOfLibrary" }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "PutTheCardFoundThisWayOntoTheBattlefield", "args": Array<EnterFlag> }
-| { "_RevealTheTopNumberCardsOfLibraryAction": "PutTheCardsFoundThisWayIntoExile" }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "PutTheCardsFoundThisWayIntoGraveyard" }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "PutTheCardsFoundThisWayIntoHand" }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "PutTheCardsFoundThisWayOntoTheBattlefield", "args": Array<EnterFlag> }

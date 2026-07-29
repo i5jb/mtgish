@@ -40,6 +40,27 @@ alt__card_a["faceName"], alt__card_b["faceName"] = "Fasto", "Furiouso"
 atomic_cards["data"]["Fast // Furious"]   = [norm_card_a, norm_card_b]
 atomic_cards["data"]["Fasto // Furiouso"] = [alt__card_a, alt__card_b]
 
+card = atomic_cards["data"].pop("Joven and Chandler")
+norm_card = list(filter(lambda x: x["text"].startswith("Whenever"),  card))[0]
+alt__card = list(filter(lambda x: x["text"].startswith("Backup 2"), card))[0]
+alt__card["name"] = "Joven and Chandler, Backup Buddies"
+atomic_cards["data"]["Joven and Chandler"]                 = [norm_card]
+atomic_cards["data"]["Joven and Chandler, Backup Buddies"] = [alt__card]
+
+card = atomic_cards["data"].pop("No Way Out")
+norm_card = list(filter(lambda x: x["text"].startswith("Target opponent"),   card))[0]
+alt__card = list(filter(lambda x: x["text"].startswith("No Way Out enters"), card))[0]
+alt__card["name"] = "No Way Out But Through"
+atomic_cards["data"]["No Way Out"]             = [norm_card]
+atomic_cards["data"]["No Way Out But Through"] = [alt__card]
+
+card = atomic_cards["data"].pop("Artist Alley")
+alt__card_a = list(filter(lambda x: x["text"].startswith("{T}: Add {C}"), card))[0]
+alt__card_b = list(filter(lambda x: x["text"].startswith("Whenever you"), card))[0]
+alt__card_b["name"] = "Artist Alley at the Convention"
+atomic_cards["data"]["Artist Alley"]                   = [alt__card_a]
+atomic_cards["data"]["Artist Alley at the Convention"] = [alt__card_b]
+
 # Fix annoying em-dash
 card = atomic_cards["data"].pop("Human—Time Lord Meta-Crisis")
 card[0]["name"] = card[0]["name"].replace("—", "-")
@@ -136,7 +157,7 @@ for cardname, cardsides in atomic_cards["data"].items():
     sides = sorted(sides, key=lambda card: card["text"])
     cards.append({ "name": cardname, "layout": "variants",  "cards": sides })
 
-  else: print("Uknown layout?", layout, cardname, file=sys.stderr)
+  else: print("Unknown layout?", layout, cardname, file=sys.stderr)
 
 cards = sorted(cards, key=lambda card: card["name"])
 json.dump(cards, sys.stdout, indent=2, ensure_ascii=False)

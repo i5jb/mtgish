@@ -219514,7 +219514,7 @@
     "cards": [
       {
         "name": "Land Station",
-        "manaCost": "{2}{G}",
+        "manaCost": "{1}{G}",
         "type": "Artifact — Spacecraft",
         "text": "When this Spacecraft enters, reveal a basic land card from outside the game and put it into your hand. (remembering that the nearest land station may be behind you).\nStation (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 10+.)\n10+ | Flying\nThis creature gets +1/+1 for each basic land you control.",
         "power": "0",

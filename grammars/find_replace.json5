@@ -212,7 +212,6 @@
     "find":    "Gert and Old Lace enter,",
     "replace": "Gert and Old Lace enters,",
   },
-   
   {
     "reason":  "I don't like CARD_NAME being plural, it messes with my grammar",
     "cards":   ["Falcon and Redwing"],

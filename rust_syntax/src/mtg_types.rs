@@ -1228,6 +1228,7 @@ pub struct OracleTypeline {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_CreatureTypeVariable", content = "args"))]
 pub enum CreatureTypeVariable {
   CreatureTypesOfExiled(Box<CardInExile>),
+  TheCreatureTypeChosenByPlayerThisWay(Box<Player>),
   TheChosenCreatureType,
   TheChosenCreatureTypes,
   TheNotedCreatureType,
@@ -5365,7 +5366,6 @@ pub enum Permanents {
   ThePermanentsExiledThisWay,
   ThePermanentsGainedControlOfThisWay,
   ThePermanentsList,
-  ThePermanentsListForPlayer(Box<Player>),
   ThePermanentsNotChosenThisWay,
   ThePermanentsPhasedOutThisWay,
   ThePermanentsPutOnTheBattlefieldThisWay,
@@ -5883,7 +5883,6 @@ pub enum GameNumber {
   NumPermanentsExiledThisWay,
   NumPermanentsOfTypeExiledThisWay(Box<Permanents>),
   NumPermanentsPhasedOutThisWay,
-  NumPermanentsShuffledIntoLibraryThisWay,
   NumPermanentsShuffledIntoLibraryThisWayByPlayer(Box<Player>),
   NumPlayers(Box<Players>),
   NumPointsOfBushidoPermanentHas(Box<Permanent>),
@@ -6259,7 +6258,6 @@ pub enum Player {
   ControllerOfTriggeredAbility(Ability),
   DealsDamage_ThatPlayer,
   DefendingPlayer,
-  EachPlayerAction_ThatPlayer,
   EachablePlayer,
   HostController,
   HostPlayer,
@@ -6334,6 +6332,9 @@ pub enum Players {
   Other(Box<Player>),
   SinglePlayer(Box<Player>),
 
+  ExiledACardThisWay,
+  Trigger_ThoseDefendingPlayers,
+
   RepeatablePlayers,
   ExiledACardWithTheHighestManaValue,
   DidntDiscardedNumberCardsOfTypeThisWay(Box<Comparison>, Box<CardsInHand>),
@@ -6399,7 +6400,6 @@ pub enum Players {
   CreatedATokenThisTurn,
   CycledANumberOfCardsThisGame(Box<Comparison>, Box<Cards>),
   CycledANumberOfCardsThisTurn(Box<Comparison>, Box<Cards>),
-  DefendingPlayerThisCombat,
   Descended,
   DevotionToColorsIs(Vec<SimpleColor>, Box<Comparison>),
   DidntActivateAnAbilityThisTurn(Box<ActivatedAbilities>),
@@ -6858,7 +6858,6 @@ pub enum CardsInHand {
   And(Vec<CardsInHand>),
   Or(Vec<CardsInHand>),
   AnyCard,
-  ExceptFor(Box<CardsInHand>),
   Other(CardInHand),
   SingleCardInHand(CardInHand),
 
@@ -7828,14 +7827,15 @@ pub enum LookAtTopOfLibraryAction {
   PutTheRemainingCardsIntoHand,
   PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder,
   PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder,
-  MayRevealUptoNumberCardsOfTypeAndPutIntoHand(Box<GameNumber>, Box<Cards>),
+  MayRevealUptoNumberCardsOfTypeAndPutIntoHand(Box<GameNumber>, Box<CardsInLibrary>),
   SeparateIntoFaceUpFileAndFaceDownPile,
   PlayerChoosesPileTopPutIntoHand(Box<Player>),
   LeaveRemainingCardsOnTopOfLibraryInSameOrder,
   SeparateIntoTwoFaceDownPiles,
   PlayerExilesAPile(Box<Player>),
   PlayerLooksAtRemainingCardsAndPutsAGenericCardIntoHand(Box<Player>),
-  MayRevealMultipleCardsOfTypeAndPutIntoHand(Vec<Cards>),
+  MayRevealMultipleCardsOfTypeAndPutIntoHand(Vec<CardsInLibrary>),
+  MayRevealMultipleCardsOfType(Vec<CardsInLibrary>),
   CreatePermanentLayerEffectUntil(Box<Permanent>, Vec<LayerEffect>, Expiration),
   If(Condition, Vec<LookAtTopOfLibraryAction>),
   Unless(Condition, Vec<LookAtTopOfLibraryAction>),
@@ -7961,6 +7961,9 @@ pub enum SpellOrAbility {
 pub enum CardsInLibrary {
   SharesACardtypeWithSpell(Box<Spell>),
   DoesntShareANameWithSpell(Box<Spell>),
+
+  RevealedFromPlayersLibraryThisWay(Box<Player>),
+  TheLibraryCardsFoundThisWay,
 
   CanEnchantPermanent(Box<Permanent>),
   CanEnchantThatEnteringPermanent,
@@ -8171,7 +8174,6 @@ pub enum RevealTheTopNumberCardsOfLibraryAction {
   PutTheCardFoundThisWayIntoHand,
   PutTheCardFoundThisWayOnTopOfLibrary,
   PutTheCardFoundThisWayOntoTheBattlefield(Vec<EnterFlag>),
-  PutTheCardsFoundThisWayIntoExile,
   PutTheCardsFoundThisWayIntoGraveyard,
   PutTheCardsFoundThisWayIntoHand,
   PutTheCardsFoundThisWayOntoTheBattlefield(Vec<EnterFlag>),
@@ -8303,6 +8305,8 @@ pub enum Exilable {
   EachCardInHand(Box<CardsInHand>),
   EachPlayersHand(Box<Players>),
 
+  ACardOfTypeFromEachPlayersHand(Box<CardsInHand>, Box<Players>),
+
   ACardFromHand,
   ACardFromHandAtRandom,
   ACardOfTypeFromHand(Box<CardsInHand>),
@@ -8313,6 +8317,7 @@ pub enum Exilable {
   TheTopCardOfLibrary,
   TheTopNumberCardsOfLibrary(Box<GameNumber>),
   AllCardsFromLibrary,
+  EachCardInLibrary(Box<CardsInLibrary>),
 
   TheBottomCardOfTypeInLibrary(Box<CardsInLibrary>),
   TheBottomNumberCardsOfLibrary(Box<GameNumber>),
@@ -8624,10 +8629,42 @@ pub enum PutCountersAction {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_MultiCreateToken", content = "args"))]
+pub enum MultiCreateToken {
+  CreateTokens(Vec<CreatableToken>),
+  EachPlayerCreatesTokens(Box<Players>, Vec<CreatableToken>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_MultiDraw", content = "args"))]
+pub enum MultiDrawable {
+  DrawNumberCards(Box<GameNumber>),
+  EachPlayerDrawsACard(Box<Players>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Action", content = "args"))]
 pub enum Action {
   Recruit,
   Assimilate(Box<CardInGraveyards>),
+
+  MultiDraw(Vec<MultiDrawable>),
+  MultiCreateTokens(Vec<MultiCreateToken>),
+
+  PutCardsInLibraryIntoGraveyard(Box<CardsInLibrary>),
+  PutCardsInLibraryOntoTheBattlefield(Box<CardsInLibrary>, Vec<EnterFlag>),
+  PutCardsInLibraryOnTheBottomOfLibraryInAnyOrder(Box<CardsInLibrary>),
+  PutLibraryCardsIntoHand(Box<CardsInLibrary>),
+
+  EachPlayerRevealsCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreRevealed(Box<Players>, Box<GameNumber>, Box<CardsInLibrary>),
+  EachPlayerRevealsTheTopNumberCardsOfLibrary(Box<Players>, Box<GameNumber>),
+  ChooseNumberCardsInGraveyards(Box<GameNumber>, Box<CardsInGraveyards>),
+  EachPlayerCreatesTokensForEachPermanent(Box<Players>, Box<Permanents>, Vec<CreatableToken>),
+  PutAllCardsFromGraveyardIntoHand(Box<CardsInGraveyards>),
+  PutAnyNumberOfCardsFromGraveyardIntoHand(Box<CardsInGraveyards>),
+  PutUptoNumberCardsFromGraveyardIntoHand(Box<GameNumber>, Box<CardsInGraveyards>),
 
   MeldExiledIntoNewPermanent(Box<CardsInExile>, NameString, Vec<EnterFlag>),
   SetRepeatablePlayers(Box<Players>),
@@ -8774,7 +8811,7 @@ pub enum Action {
   ChooseACardInEachPlayersGraveyard(Box<Cards>, Box<Players>),
   ChooseACardInHand(Box<CardsInHand>),
   ChooseACardInHandAtRandom(Box<Cards>),
-  ChooseACardInHandOfEachColor(Box<Cards>),
+  ChooseACardInHandOfEachColor,
   ChooseACardInHandOrAPermanent(Box<Cards>, Box<Permanents>),
   ChooseACardInPlayersGraveyard(Box<Cards>, Box<Player>),
   ChooseACardInPlayersGraveyardAtRandom(Box<Cards>, Box<Player>),
@@ -8855,7 +8892,6 @@ pub enum Action {
   ChooseNumberCardsFromAmongCardsInHandRevealedThisWay(Box<GameNumber>, Box<Cards>),
   ChooseNumberCardsInEachPlayersGraveyard(Box<GameNumber>, Box<Cards>, Box<Players>),
   ChooseNumberCardsInHand(Box<GameNumber>),
-  ChooseNumberCardsInPlayersGraveyard(Box<GameNumber>, Box<Cards>, Box<Player>),
   ChooseNumberGraveyardCards(Box<GameNumber>, Box<CardsInGraveyards>),
   ChooseNumberPermanents(Box<GameNumber>, Box<Permanents>),
   ChooseOneOrTwoPermanents(Box<Permanents>),
@@ -9133,7 +9169,6 @@ pub enum Action {
   EachPermanentDealsDamage(Box<Permanents>, Box<GameNumber>, DamageRecipient),
   EachPermanentDoesntUntapDuringControllersNextUntap(Box<Permanents>),
   EachPlayerAction(Box<Players>, Box<Action>),
-  EachPlayerActions(Box<Players>, Vec<Action>),
   EachPlayerCantCastSpellsDuringTheirNextTurn(Box<Players>, Box<Spells>),
   EachPlayerChoosesAnAction(Box<Players>, Vec<Action>),
   EachPlayerMakesAVillainousChoice(Box<Players>, Vec<Vec<Action>>),
@@ -9357,7 +9392,6 @@ pub enum Action {
   PlayerMayCost(Box<Player>, Box<Cost>),
   PlayerMustCost(Box<Player>, Box<Cost>),
   PlayerRepeatedMayCost(Box<Player>, Box<GameNumber>, Box<Cost>),
-  PlayersDiscardCards(Box<CardsInHand>),
   PlayersExchangeLifeTotals(Box<Player>, Box<Player>),
   PlayersRevealTopCardOfLibraryAndFindHighestManaValue(Box<Players>),
   Populate,
@@ -9540,7 +9574,6 @@ pub enum Action {
   ReturnAnExiledCardToOwnersHand(Box<CardsInExile>),
   ReturnAnyNumberCardsMilledThisWayToHand(Box<Cards>),
   ReturnAnyNumberOfCardsFromGraveyardToBattlefield(Box<CardsInGraveyards>, Box<Player>, Vec<EnterFlag>),
-  ReturnAnyNumberOfCardsFromGraveyardToHand(Box<Cards>),
   ReturnAnyNumberOfGroupCardsFromGraveyardToHand(Box<Cards>, GroupFilter),
   ReturnAnyNumberOfGroupCardsFromPlayersGraveyardToBattlefield(Box<CardsInGraveyards>, GroupFilter, Box<Player>, Vec<EnterFlag>),
   ReturnAnyNumberOfGroupCardsMilledThisWayToBattlefield(Box<Cards>, GroupFilter, Vec<EnterFlag>),
