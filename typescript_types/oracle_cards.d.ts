@@ -50,6 +50,11 @@ type Action =
 | { "_Action": "Assimilate", "args": CardInGraveyards }
 | { "_Action": "MultiDraw", "args": Array<MultiDrawable> }
 | { "_Action": "MultiCreateTokens", "args": Array<MultiCreateToken> }
+| { "_Action": "CreateTokens", "args": [Array<CreatableToken>, Array<TokenFlag>] }
+| { "_Action": "CreateTokensForEachPlayer", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
+| { "_Action": "CreateTokensForEachPermanent", "args": [Permanents, Array<CreatableToken>, Array<TokenFlag>] }
+| { "_Action": "EachPlayerCreatesTokens", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
+| { "_Action": "EachPlayerCreatesTokensForEachPermanent", "args": [Players, Permanents, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "PutCardsInLibraryIntoGraveyard", "args": CardsInLibrary }
 | { "_Action": "PutCardsInLibraryOntoTheBattlefield", "args": [CardsInLibrary, Array<EnterFlag>] }
 | { "_Action": "PutCardsInLibraryOnTheBottomOfLibraryInAnyOrder", "args": CardsInLibrary }
@@ -57,7 +62,6 @@ type Action =
 | { "_Action": "EachPlayerRevealsCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreRevealed", "args": [Players, GameNumber, CardsInLibrary] }
 | { "_Action": "EachPlayerRevealsTheTopNumberCardsOfLibrary", "args": [Players, GameNumber] }
 | { "_Action": "ChooseNumberCardsInGraveyards", "args": [GameNumber, CardsInGraveyards] }
-| { "_Action": "EachPlayerCreatesTokensForEachPermanent", "args": [Players, Permanents, Array<CreatableToken>] }
 | { "_Action": "PutAllCardsFromGraveyardIntoHand", "args": CardsInGraveyards }
 | { "_Action": "PutAnyNumberOfCardsFromGraveyardIntoHand", "args": CardsInGraveyards }
 | { "_Action": "PutUptoNumberCardsFromGraveyardIntoHand", "args": [GameNumber, CardsInGraveyards] }
@@ -493,8 +497,6 @@ type Action =
 | { "_Action": "CreateReplaceWouldPutIntoGraveyardUntil", "args": [ReplacableEventWouldPutIntoGraveyard, Array<ReplacementActionWouldPutIntoGraveyard>, Expiration] }
 | { "_Action": "CreateSpellEffect", "args": [Spell, Array<SpellEffect>] }
 | { "_Action": "CreateSpellOrPermanentEffect", "args": [Expiration, SpellOrPermanent, Array<SpellOrPermanentEffect>] }
-| { "_Action": "CreateTokens", "args": Array<CreatableToken> }
-| { "_Action": "CreateTokensWithFlags", "args": [Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "CreateTrigger", "args": [Trigger, Actions] }
 | { "_Action": "CreateTriggerOnce", "args": [Expiration, Trigger, Actions] }
 | { "_Action": "CreateTriggerUntil", "args": [Trigger, Actions, Expiration] }
@@ -616,11 +618,7 @@ type Action =
 | { "_Action": "FlipCoins", "args": GameNumber }
 | { "_Action": "FlipPermanent", "args": Permanent }
 | { "_Action": "ForEachPermanentConjureCardOntoBattlefield", "args": [Permanents, string, Array<EnterFlag>] }
-| { "_Action": "ForEachPermanentCreateTokens", "args": [Permanents, Array<CreatableToken>] }
-| { "_Action": "ForEachPermanentCreateTokensWithFlags", "args": [Permanents, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "ForEachPlayerChooseAWord", "args": [Players, Array<string>] }
-| { "_Action": "ForEachPlayerCreateTokens", "args": [Players, Array<CreatableToken>] }
-| { "_Action": "ForEachPlayerCreateTokensWithFlags", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "ForEachPlayerSearchLibrary", "args": [Players, Array<SearchLibraryAction>] }
 | { "_Action": "ForEachValueInRangeConjureDuplicateOfARandomCardOfTypeOntoBattlefield", "args": [GameNumber, GameNumber, Cards, Array<EnterFlag>] }
 | { "_Action": "Forage" }
@@ -1295,7 +1293,7 @@ type ActionPreventDamage =
 | { "_ActionPreventDamage": "CreateFutureTrigger", "args": [FutureTrigger, Actions] }
 | { "_ActionPreventDamage": "ReflexiveTrigger", "args": Actions }
 | { "_ActionPreventDamage": "ReflexiveActionTrigger_CountersRemoved", "args": [ActionPreventDamageReflesiveActionTriggerRemoveCounters, Actions] }
-| { "_ActionPreventDamage": "CreateTokens", "args": Array<CreatableToken> }
+| { "_ActionPreventDamage": "CreateTokens", "args": [Array<CreatableToken>, Array<TokenFlag>] }
 | { "_ActionPreventDamage": "DrawNumberCards", "args": GameNumber }
 | { "_ActionPreventDamage": "Exile", "args": [Array<ExilableCost>, Array<ExileFlag>] }
 | { "_ActionPreventDamage": "GainLife", "args": GameNumber }
@@ -2438,8 +2436,7 @@ type Cost =
 | { "_Cost": "CreatePermanentLayerEffectUntil", "args": [Permanent, Array<LayerEffect>, Expiration] }
 | { "_Cost": "CreatePermanentRuleEffectUntil", "args": [Permanent, Array<PermanentRule>, Expiration] }
 | { "_Cost": "CreatePlayerEffectUntil", "args": [Player, Array<PlayerEffect>, Expiration] }
-| { "_Cost": "CreateTokens", "args": Array<CreatableToken> }
-| { "_Cost": "CreateTokensWithFlags", "args": [Array<CreatableToken>, Array<TokenFlag>] }
+| { "_Cost": "CreateTokens", "args": [Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Cost": "CreatureConnives", "args": Permanent }
 | { "_Cost": "DestroyPermanent", "args": Permanent }
 | { "_Cost": "DiscardACard" }
@@ -2593,7 +2590,7 @@ type Cost =
 | { "_Cost": "WaterbendX", "args": Array<ManaSymbolX> };
 type CostPlayerAction =
 | { "_CostPlayerAction": "GainControlOfPermanentUntil", "args": [Permanent, Expiration] }
-| { "_CostPlayerAction": "CreateTokens", "args": Array<CreatableToken> }
+| { "_CostPlayerAction": "CreateTokens", "args": [Array<CreatableToken>, Array<TokenFlag>] }
 | { "_CostPlayerAction": "GainControlOfPermanent", "args": Permanent }
 | { "_CostPlayerAction": "DrawACard" }
 | { "_CostPlayerAction": "LoseLife", "args": GameNumber }
@@ -4591,8 +4588,8 @@ type MoveCountersAction =
 type MoveCountersCost =
 | { "_MoveCountersCost": "AtLeastOneCounterFromPermanentOntoNewPermanent", "args": [Permanent, Permanent] };
 type MultiCreateToken =
-| { "_MultiCreateToken": "CreateTokens", "args": Array<CreatableToken> }
-| { "_MultiCreateToken": "EachPlayerCreatesTokens", "args": [Players, Array<CreatableToken>] };
+| { "_MultiCreateToken": "CreateTokens", "args": [Array<CreatableToken>, Array<TokenFlag>] }
+| { "_MultiCreateToken": "EachPlayerCreatesTokens", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] };
 type MultiDrawable =
 | { "_MultiDraw": "DrawNumberCards", "args": GameNumber }
 | { "_MultiDraw": "EachPlayerDrawsACard", "args": Players };
@@ -6515,7 +6512,7 @@ type ReplacementActionWouldDraw =
 | { "_ReplacementActionWouldDraw": "ChooseAPlayer", "args": Players }
 | { "_ReplacementActionWouldDraw": "ChooseAnAction", "args": Array<Array<ReplacementActionWouldDraw>> }
 | { "_ReplacementActionWouldDraw": "CreatePlayerEffectUntil", "args": [Player, Array<PlayerEffect>, Expiration] }
-| { "_ReplacementActionWouldDraw": "CreateTokens", "args": Array<CreatableToken> }
+| { "_ReplacementActionWouldDraw": "CreateTokens", "args": [Array<CreatableToken>, Array<TokenFlag>] }
 | { "_ReplacementActionWouldDraw": "DiscardACard" }
 | { "_ReplacementActionWouldDraw": "DiscardTheCardDrawnThisWay" }
 | { "_ReplacementActionWouldDraw": "DrawACard" }
@@ -6723,7 +6720,7 @@ type ReplacementActionWouldPutIntoGraveyardPutCounters =
 type ReplacementActionWouldPutIntoGraveyard =
 | { "_ReplacementActionWouldPutIntoGraveyard": "CreateFutureTrigger", "args": [FutureTrigger, Actions] }
 | { "_ReplacementActionWouldPutIntoGraveyard": "CreatePlayerEffectUntil", "args": [Player, Array<PlayerEffect>, Expiration] }
-| { "_ReplacementActionWouldPutIntoGraveyard": "CreateTokens", "args": Array<CreatableToken> }
+| { "_ReplacementActionWouldPutIntoGraveyard": "CreateTokens", "args": [Array<CreatableToken>, Array<TokenFlag>] }
 | { "_ReplacementActionWouldPutIntoGraveyard": "ExileItInstead" }
 | { "_ReplacementActionWouldPutIntoGraveyard": "ExileItWithACounterInstead", "args": CounterType }
 | { "_ReplacementActionWouldPutIntoGraveyard": "ExileItWithNumberCountersInstead", "args": [GameNumber, CounterType] }
@@ -7280,7 +7277,7 @@ type Schemes =
 | { "_Schemes": "IsNonSupertype", "args": SuperType };
 type SearchLibraryAction =
 | { "_SearchLibraryAction": "CreatePermanentLayerEffectUntil", "args": [Permanent, Array<LayerEffect>, Expiration] }
-| { "_SearchLibraryAction": "CreateTokens", "args": Array<CreatableToken> }
+| { "_SearchLibraryAction": "CreateTokens", "args": [Array<CreatableToken>, Array<TokenFlag>] }
 | { "_SearchLibraryAction": "DiscardACardAtRandom" }
 | { "_SearchLibraryAction": "EachPlayerLosesLife", "args": [Players, GameNumber] }
 | { "_SearchLibraryAction": "ExileLibraryAndGraveyard" }

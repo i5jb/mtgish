@@ -153,11 +153,14 @@ func ReportUnused(usedTemplates UsedTemplates, tokens []string, breadcrumb Bread
   if matchReference == "" { return }
 
   // if (matchReference == "CommaName") { fmt.Printf("{{CommaName}} = %s\n", name) }
-  // if (matchReference == "CardACommaName") { fmt.Printf("{{CardACommaName}} = %s\n", name) }
-  // if (matchReference == "CardBCommaName") { fmt.Printf("{{CardBCommaName}} = %s\n", name) }
-  // if (matchReference == "CardABCommaName") { fmt.Printf("{{CardABCommaName}} = %s\n", name) }
+  // if (matchReference == "CardACommaName") { fmt.Printf("{{CommaName}} = %s\n", name) }
+  // if (matchReference == "CardBCommaName") { fmt.Printf("{{CommaName}} = %s\n", name) }
+  // if (matchReference == "CardABCommaName") { fmt.Printf("{{CommaName}} = %s\n", name) }
+  // if (matchReference == "ShortName") { fmt.Printf("{{ShortName}} = %s\n", name) }
+  // if (matchReference == "CardAShortName") { fmt.Printf("{{ShortName}} = %s\n", name) }
+  // if (matchReference == "CardBShortName") { fmt.Printf("{{ShortName}} = %s\n", name) }
 
-   usedTemplates[matchReference][matchIndex]++
+  usedTemplates[matchReference][matchIndex]++
   for _, sub_breadcrumb := range breadcrumb.Breadcrumbs {
     ReportUnused(usedTemplates, tokens, sub_breadcrumb, name) }
 }

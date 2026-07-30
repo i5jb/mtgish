@@ -45,6 +45,7 @@
   },
 
   "{{TOKEN_FLAGS}}": {
+    "[]": "",
     "[EntersAttachedToAPermanent({{PERMANENTS}})]": "",
     "[EntersAttachedToPermanent({{PERMANENT}})]": "",
     "[EntersAttacking]": "",
@@ -140,22 +141,19 @@
   },
 
   "{{_PLAYER_ACTION[CreateTokens]}}": {
-    "MultiCreateTokens([CreateTokens({{CREATABLE_TOKEN_LIST}}), EachPlayerCreatesTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}})])": "",
-    "EachPlayerCreatesTokensForEachPermanent({{PLAYERS}}, {{PERMANENTS}}, {{CREATABLE_TOKEN_LIST}})": "",
-    "CreateTokens({{CREATABLE_TOKEN_LIST}})": "",
-    "CreateTokensWithFlags({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
-    "ForEachPlayerCreateTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}})": "",
-    "ForEachPlayerCreateTokensWithFlags({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
-    "ForEachPermanentCreateTokens({{PERMANENTS}}, {{CREATABLE_TOKEN_LIST}})": "",
-    "ForEachPermanentCreateTokensWithFlags({{PERMANENTS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+    "CreateTokens({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+    "CreateTokensForEachPlayer({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+    "CreateTokensForEachPermanent({{PERMANENTS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+    "EachPlayerCreatesTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+    "EachPlayerCreatesTokensForEachPermanent({{PLAYERS}}, {{PERMANENTS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+    "MultiCreateTokens([CreateTokens({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}}), EachPlayerCreatesTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})])": "",
   },
 
   "{{_COST[CreateTokens]}}": {
-    "CreateTokens({{CREATABLE_TOKEN_LIST}})": "",
-    "CreateTokensWithFlags({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+    "CreateTokens({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
 
-    "HaveAPlayerTakeAction({{PLAYERS}}, CreateTokens({{CREATABLE_TOKEN_LIST}}))": "",
-    "HavePlayerTakeAction({{PLAYER}}, CreateTokens({{CREATABLE_TOKEN_LIST}}))": "",
+    "HaveAPlayerTakeAction({{PLAYERS}}, CreateTokens({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}}))": "",
+    "HavePlayerTakeAction({{PLAYER}}, CreateTokens({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}}))": "",
   },
 
   // --------

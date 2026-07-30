@@ -3094,7 +3094,7 @@ pub enum ReplacementActionWouldPutIntoGraveyardPutCounters {
 pub enum ReplacementActionWouldPutIntoGraveyard {
   CreateFutureTrigger(FutureTrigger, Box<Actions>),
   CreatePlayerEffectUntil(Box<Player>, Vec<PlayerEffect>, Expiration),
-  CreateTokens(Vec<CreatableToken>),
+  CreateTokens(Vec<CreatableToken>, Vec<TokenFlag>),
   ExileItInstead,
   ExileItWithACounterInstead(CounterType),
   ExileItWithNumberCountersInstead(Box<GameNumber>, CounterType),
@@ -3171,7 +3171,7 @@ pub enum ReplacementActionWouldDraw {
   ChooseAPlayer(Box<Players>),
   ChooseAnAction(Vec<Vec<ReplacementActionWouldDraw>>),
   CreatePlayerEffectUntil(Box<Player>, Vec<PlayerEffect>, Expiration),
-  CreateTokens(Vec<CreatableToken>),
+  CreateTokens(Vec<CreatableToken>, Vec<TokenFlag>),
   DiscardACard,
   DiscardTheCardDrawnThisWay,
   DrawACard,
@@ -3270,7 +3270,7 @@ pub enum ActionPreventDamage {
   ReflexiveTrigger(Box<Actions>),
   ReflexiveActionTrigger_CountersRemoved(Box<ActionPreventDamageReflesiveActionTriggerRemoveCounters>, Box<Actions>),
 
-  CreateTokens(Vec<CreatableToken>),
+  CreateTokens(Vec<CreatableToken>, Vec<TokenFlag>),
   DrawNumberCards(Box<GameNumber>),
   Exile(Vec<ExilableCost>, Vec<ExileFlag>),
   GainLife(Box<GameNumber>),
@@ -4631,7 +4631,7 @@ pub enum SearchLibraryActionValueAction {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_SearchLibraryAction", content = "args"))]
 pub enum SearchLibraryAction {
   CreatePermanentLayerEffectUntil(Box<Permanent>, Vec<LayerEffect>, Expiration),
-  CreateTokens(Vec<CreatableToken>),
+  CreateTokens(Vec<CreatableToken>, Vec<TokenFlag>),
   DiscardACardAtRandom,
   EachPlayerLosesLife(Box<Players>, Box<GameNumber>),
   ExileLibraryAndGraveyard,
@@ -4767,8 +4767,7 @@ pub enum Cost {
   CreatePermanentLayerEffectUntil(Box<Permanent>, Vec<LayerEffect>, Expiration),
   CreatePermanentRuleEffectUntil(Box<Permanent>, Vec<PermanentRule>, Expiration),
   CreatePlayerEffectUntil(Box<Player>, Vec<PlayerEffect>, Expiration),
-  CreateTokens(Vec<CreatableToken>),
-  CreateTokensWithFlags(Vec<CreatableToken>, Vec<TokenFlag>),
+  CreateTokens(Vec<CreatableToken>, Vec<TokenFlag>),
   CreatureConnives(Box<Permanent>),
   DestroyPermanent(Box<Permanent>),
   DiscardACard,
@@ -7575,7 +7574,7 @@ pub enum TokenSubtypes {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_CostPlayerAction", content = "args"))]
 pub enum CostPlayerAction {
   GainControlOfPermanentUntil(Box<Permanent>, Expiration),
-  CreateTokens(Vec<CreatableToken>),
+  CreateTokens(Vec<CreatableToken>, Vec<TokenFlag>),
   GainControlOfPermanent(Box<Permanent>),
   DrawACard,
   LoseLife(Box<GameNumber>),
@@ -8631,8 +8630,8 @@ pub enum PutCountersAction {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_MultiCreateToken", content = "args"))]
 pub enum MultiCreateToken {
-  CreateTokens(Vec<CreatableToken>),
-  EachPlayerCreatesTokens(Box<Players>, Vec<CreatableToken>),
+  CreateTokens(Vec<CreatableToken>, Vec<TokenFlag>),
+  EachPlayerCreatesTokens(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -8651,7 +8650,19 @@ pub enum Action {
   Assimilate(Box<CardInGraveyards>),
 
   MultiDraw(Vec<MultiDrawable>),
+
   MultiCreateTokens(Vec<MultiCreateToken>),
+  CreateTokens(Vec<CreatableToken>, Vec<TokenFlag>),
+  CreateTokensForEachPlayer(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
+  CreateTokensForEachPermanent(Box<Permanents>, Vec<CreatableToken>, Vec<TokenFlag>),
+  EachPlayerCreatesTokens(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
+  EachPlayerCreatesTokensForEachPermanent(Box<Players>, Box<Permanents>, Vec<CreatableToken>, Vec<TokenFlag>),
+
+  //ForEachPermanentCreateTokens(Box<Permanents>, Vec<CreatableToken>),
+  //ForEachPermanentCreateTokensWithFlags(Box<Permanents>, Vec<CreatableToken>, Vec<TokenFlag>),
+  //ForEachPlayerCreateTokens(Box<Players>, Vec<CreatableToken>),
+  //ForEachPlayerCreateTokensWithFlags(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
+  //EachPlayerCreatesTokensForEachPermanent(Box<Players>, Box<Permanents>, Vec<CreatableToken>),
 
   PutCardsInLibraryIntoGraveyard(Box<CardsInLibrary>),
   PutCardsInLibraryOntoTheBattlefield(Box<CardsInLibrary>, Vec<EnterFlag>),
@@ -8661,7 +8672,6 @@ pub enum Action {
   EachPlayerRevealsCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreRevealed(Box<Players>, Box<GameNumber>, Box<CardsInLibrary>),
   EachPlayerRevealsTheTopNumberCardsOfLibrary(Box<Players>, Box<GameNumber>),
   ChooseNumberCardsInGraveyards(Box<GameNumber>, Box<CardsInGraveyards>),
-  EachPlayerCreatesTokensForEachPermanent(Box<Players>, Box<Permanents>, Vec<CreatableToken>),
   PutAllCardsFromGraveyardIntoHand(Box<CardsInGraveyards>),
   PutAnyNumberOfCardsFromGraveyardIntoHand(Box<CardsInGraveyards>),
   PutUptoNumberCardsFromGraveyardIntoHand(Box<GameNumber>, Box<CardsInGraveyards>),
@@ -9099,8 +9109,6 @@ pub enum Action {
   CreateReplaceWouldPutIntoGraveyardUntil(ReplacableEventWouldPutIntoGraveyard, Vec<ReplacementActionWouldPutIntoGraveyard>, Expiration),
   CreateSpellEffect(Box<Spell>, Vec<SpellEffect>),
   CreateSpellOrPermanentEffect(Expiration, SpellOrPermanent, Vec<SpellOrPermanentEffect>),
-  CreateTokens(Vec<CreatableToken>),
-  CreateTokensWithFlags(Vec<CreatableToken>, Vec<TokenFlag>),
   CreateTrigger(Trigger, Box<Actions>),
   CreateTriggerOnce(Expiration, Trigger, Box<Actions>),
   CreateTriggerUntil(Trigger, Box<Actions>, Expiration),
@@ -9222,11 +9230,7 @@ pub enum Action {
   FlipCoins(Box<GameNumber>),
   FlipPermanent(Box<Permanent>),
   ForEachPermanentConjureCardOntoBattlefield(Box<Permanents>, NameString, Vec<EnterFlag>),
-  ForEachPermanentCreateTokens(Box<Permanents>, Vec<CreatableToken>),
-  ForEachPermanentCreateTokensWithFlags(Box<Permanents>, Vec<CreatableToken>, Vec<TokenFlag>),
   ForEachPlayerChooseAWord(Box<Players>, Vec<VoteOption>),
-  ForEachPlayerCreateTokens(Box<Players>, Vec<CreatableToken>),
-  ForEachPlayerCreateTokensWithFlags(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
   ForEachPlayerSearchLibrary(Box<Players>, Vec<SearchLibraryAction>),
   ForEachValueInRangeConjureDuplicateOfARandomCardOfTypeOntoBattlefield(Box<GameNumber>, Box<GameNumber>, Box<Cards>, Vec<EnterFlag>),
   Forage,
