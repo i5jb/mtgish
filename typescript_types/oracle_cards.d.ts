@@ -58,6 +58,7 @@ type Action =
 | { "_Action": "PutCardsInLibraryIntoGraveyard", "args": CardsInLibrary }
 | { "_Action": "PutCardsInLibraryOntoTheBattlefield", "args": [CardsInLibrary, Array<EnterFlag>] }
 | { "_Action": "PutCardsInLibraryOnTheBottomOfLibraryInAnyOrder", "args": CardsInLibrary }
+| { "_Action": "PutCardsInLibraryOnTheBottomOfLibraryInARandomOrder", "args": CardsInLibrary }
 | { "_Action": "PutLibraryCardsIntoHand", "args": CardsInLibrary }
 | { "_Action": "EachPlayerRevealsCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreRevealed", "args": [Players, GameNumber, CardsInLibrary] }
 | { "_Action": "EachPlayerRevealsTheTopNumberCardsOfLibrary", "args": [Players, GameNumber] }
@@ -820,7 +821,7 @@ type Action =
 | { "_Action": "PutAPermanentIntoItsOwnersHand", "args": Permanents }
 | { "_Action": "PutAPowerAndToughnessStickerOnAPermanent", "args": Permanents }
 | { "_Action": "PutARandomCardFromLibraryIntoGraveyard", "args": Cards }
-| { "_Action": "PutARandomCardFromLibraryOntoBattlefield", "args": [Cards, Array<EnterFlag>] }
+| { "_Action": "PutARandomCardFromLibraryOntoBattlefield", "args": [CardsInLibrary, Array<EnterFlag>] }
 | { "_Action": "PutARandomCardFromPlayersLibraryOntoBattlefield", "args": [Cards, Player, Array<EnterFlag>] }
 | { "_Action": "PutARandomCardOfTypeFromAmongTheTopNumberCardsOfLibraryIntoHand", "args": [Cards, GameNumber] }
 | { "_Action": "PutAStickerOnACardInPlayersGraveyard", "args": [CardsInGraveyards, Player] }
@@ -1074,6 +1075,7 @@ type Action =
 | { "_Action": "RevealTheCardsDrawnThisWay" }
 | { "_Action": "RevealTheSecretlyChosenNumber" }
 | { "_Action": "RevealTheTopCardOfPlayersLibrary", "args": Player }
+| { "_Action": "RevealTheTopNumberCardsOfLibraryNEW", "args": GameNumber }
 | { "_Action": "RevealTheTopNumberCardsOfLibrary", "args": [GameNumber, Array<RevealTheTopNumberCardsOfLibraryAction>] }
 | { "_Action": "RevealTheTopNumberCardsOfPlanarDeckAndTriggerEachCHAOSAbilityThenPutOnBottomOfPlanarDeckInAnyOrder", "args": GameNumber }
 | { "_Action": "RevealTopCardOfLibrary" }
@@ -1814,6 +1816,7 @@ type CardsInHand =
 type CardsInLibrary =
 | { "_CardsInLibrary": "SharesACardtypeWithSpell", "args": Spell }
 | { "_CardsInLibrary": "DoesntShareANameWithSpell", "args": Spell }
+| { "_CardsInLibrary": "RevealedFromLibraryThisWay" }
 | { "_CardsInLibrary": "RevealedFromPlayersLibraryThisWay", "args": Player }
 | { "_CardsInLibrary": "TheLibraryCardsFoundThisWay" }
 | { "_CardsInLibrary": "CanEnchantPermanent", "args": Permanent }

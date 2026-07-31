@@ -18,6 +18,7 @@
     "(Then exile this card. You may play the land later from exile.)": ""
   },
   "{{Reminder[AffinityFor]}}": {
+    "(This spell costs {1} less to cast for each Elf you control.)": "",
     "(It costs {1} less to cast for each artifact you control as you cast it.)": "",
     "(It costs {1} less to cast for each artifact you control.)": "",
     "(They cost {1} less to cast for each Aura you control.)": "",
@@ -69,11 +70,13 @@
     "(To airbend a creature, exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)": ""
   },
   "{{Reminder[Amass]}}": {
-    "(Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
-    "(Put three +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
-    "(To amass Goblins X, that player puts X +1/+1 counters on an Army they control. It's also a Goblin. If they don't control an Army, they create a 0/0 black Goblin Army creature token first.)": "",
     "(Put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
+    "(Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
+    "(Put four +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
+    "(Put three +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
     "(Put two +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
+    "(To amass Goblins 1, put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
+    "(To amass Goblins X, that player puts X +1/+1 counters on an Army they control. It's also a Goblin. If they don't control an Army, they create a 0/0 black Goblin Army creature token first.)": "",
 
     "(Put X +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
     "(Put a +1/+1 counter on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
@@ -1291,6 +1294,7 @@
     "(Whenever this creature attacks, you may have target creature defending player controls untap and block it if able.)": ""
   },
   "{{Reminder[Prowess]}}": {
+    "(Whenever its controller casts a noncreature spell, that creature gets +1/+1 until end of turn.)": "",
     "(Whenever you cast a noncreature spell, a creature with prowess gets +1/+1 until end of turn.)": "",
     "(Whenever you cast a noncreature spell, it gets +1/+1 until end of turn.)": "",
     "(Whenever you cast a noncreature spell, the token gets +1/+1 until end of turn.)": ""
@@ -1719,6 +1723,7 @@
     "(They're 2/2 creatures.)": ""
   },
   "{{Reminder[TypeCycling]}}": {
+    "({4}, Discard this card: Search your library for a Halfling card, reveal it, put it into your hand, then shuffle.)": "",
     "({1}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)": "",
     "({1}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)": "",
     "({1}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffle.)": "",

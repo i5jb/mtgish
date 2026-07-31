@@ -12233,6 +12233,18 @@
     ]
   },
   {
+    "name": "Along the Crooked Way",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Along the Crooked Way",
+        "manaCost": "{2}{B}",
+        "type": "Enchantment",
+        "text": "When this enchantment enters, return target creature card from your graveyard to your hand.\nWhenever a creature card leaves your graveyard, amass Goblins 1.\n{1}{B}: Goblins and Orcs you control gain menace until end of turn."
+      }
+    ]
+  },
+  {
     "name": "Alora, Cheerful Assassin",
     "layout": "single",
     "cards": [
@@ -30750,6 +30762,20 @@
     ]
   },
   {
+    "name": "Balin, Loremaster",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Balin, Loremaster",
+        "manaCost": "{3}{R}{R}",
+        "type": "Legendary Creature — Dwarf Bard",
+        "text": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)\nWhenever Balin or another Dwarf you control enters, you may discard your hand. Draw X cards, where X is the number of cards discarded this way. If you have an enduring story, Balin deals X damage to each opponent.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Ball Lightning",
     "layout": "single",
     "cards": [
@@ -32344,6 +32370,20 @@
         "text": "You may cast this spell as though it had flash if you control a Human.\nOther creatures you control get +1/+1.\nWhenever this creature enters or attacks, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",
         "power": "2",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Bard, Heir of Girion",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bard, Heir of Girion",
+        "manaCost": "{2}{W}{U}",
+        "type": "Legendary Creature — Human Archer",
+        "text": "Reach, vigilance\nOther creatures you control get +1/+1.\nWhenever you attack, draw a card.",
+        "power": "4",
+        "toughness": "4"
       }
     ]
   },
@@ -36008,6 +36048,20 @@
     ]
   },
   {
+    "name": "Bejeweled Warg",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bejeweled Warg",
+        "manaCost": "{1}{G}",
+        "type": "Creature — Wolf",
+        "text": "Trample\nWhenever this creature deals combat damage to a player, choose one —\n• Put a +1/+1 counter on target Wolf you control.\n• Create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")",
+        "power": "3",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Belbe's Armor",
     "layout": "single",
     "cards": [
@@ -37155,6 +37209,26 @@
     ]
   },
   {
+    "name": "Beorn, Reluctant Host // Till and Tend",
+    "layout": "adventurer",
+    "cards": [
+      {
+        "name": "Beorn, Reluctant Host",
+        "manaCost": "{4}{G}",
+        "type": "Legendary Creature — Human Bear Shapeshifter",
+        "text": "Trample",
+        "power": "5",
+        "toughness": "5"
+      },
+      {
+        "name": "Till and Tend",
+        "manaCost": "{1}{G}",
+        "type": "Sorcery — Adventure",
+        "text": "You may play an additional land this turn. (Then exile this card. You may cast the creature later from exile.)"
+      }
+    ]
+  },
+  {
     "name": "Bequeathal",
     "layout": "single",
     "cards": [
@@ -37998,6 +38072,26 @@
     ]
   },
   {
+    "name": "Bilbo Baggins, Burglar // Take a Glance",
+    "layout": "adventurer",
+    "cards": [
+      {
+        "name": "Bilbo Baggins, Burglar",
+        "manaCost": "{2}{U}",
+        "type": "Legendary Creature — Halfling Rogue",
+        "text": "When Bilbo Baggins enters, draw a card.",
+        "power": "2",
+        "toughness": "1"
+      },
+      {
+        "name": "Take a Glance",
+        "manaCost": "{U}",
+        "type": "Sorcery — Adventure",
+        "text": "Scry 2. (Then exile this card. You may cast the creature later from exile.)"
+      }
+    ]
+  },
+  {
     "name": "Bilbo's Burglaring",
     "layout": "single",
     "cards": [
@@ -38104,6 +38198,20 @@
         "manaCost": "{1}{U}",
         "type": "Legendary Creature — Halfling Rogue",
         "text": "Spells you cast from anywhere other than your hand cost {1} less to cast.\nWhenever Bilbo attacks, you may cast an artifact, instant, or sorcery spell from your graveyard. If an instant or sorcery spell cast this way would be put into your graveyard, exile it instead.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Bilbo, Unexpected Adventurer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bilbo, Unexpected Adventurer",
+        "manaCost": "{3}{W}",
+        "type": "Legendary Creature — Halfling Rogue",
+        "text": "Bilbo can't be blocked by creatures with power 3 or greater.\nWhenever Bilbo deals combat damage to a player or battle, put up to one target nonland permanent card with mana value 3 or less from a graveyard onto the battlefield under its owner's control.",
         "power": "2",
         "toughness": "2"
       }
@@ -46164,6 +46272,20 @@
         "text": "When Bolg enters, you may sacrifice another creature. When you do, Bolg deals damage equal to that creature's power to another target creature. If excess damage was dealt this way, amass Goblins X, where X is that excess damage. (Put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",
         "power": "5",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Bolg, Erebor's Reckoning",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bolg, Erebor's Reckoning",
+        "manaCost": "{4}{B}{R}",
+        "type": "Legendary Creature — Goblin Soldier",
+        "text": "Trample\nAt the beginning of each combat, other Goblins and Orcs you control get +2/+2 until end of turn. Creatures your opponents control get -1/-1 until end of turn.",
+        "power": "6",
+        "toughness": "6"
       }
     ]
   },
@@ -58013,6 +58135,20 @@
     ]
   },
   {
+    "name": "Cantankerous Keepers",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Cantankerous Keepers",
+        "manaCost": "{5}{G}",
+        "type": "Creature — Elf Soldier",
+        "text": "Affinity for Elves (This spell costs {1} less to cast for each Elf you control.)\nWhen this creature enters, mill four cards, then put all Elf cards from among them into your hand.",
+        "power": "4",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Cantivore",
     "layout": "single",
     "cards": [
@@ -66811,6 +66947,20 @@
         "text": "Other Warrior creatures you control get +0/+1.",
         "power": "2",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Chief of the Wilds",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Chief of the Wilds",
+        "manaCost": "{2}{B}{G}",
+        "type": "Legendary Creature — Wolf",
+        "text": "Menace\nWhenever another Wolf you control enters, put two +1/+1 counters on Chief of the Wilds.\nIf an ability of another Wolf or battle you control triggers, that ability triggers an additional time.",
+        "power": "4",
+        "toughness": "4"
       }
     ]
   },
@@ -75991,6 +76141,18 @@
     ]
   },
   {
+    "name": "Confusticate and Bebother",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Confusticate and Bebother",
+        "manaCost": "{2}{U}",
+        "type": "Instant",
+        "text": "Choose one —\n• Counter target spell unless its controller pays {4}.\n• Draw two cards, then discard a card."
+      }
+    ]
+  },
+  {
     "name": "Congregate",
     "layout": "single",
     "cards": [
@@ -82846,6 +83008,18 @@
     ]
   },
   {
+    "name": "Crude Bent Blade",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Crude Bent Blade",
+        "manaCost": "{2}{B}",
+        "type": "Artifact — Equipment",
+        "text": "When this Equipment enters, target opponent sacrifices a creature of their choice.\nEquipped creature gets +2/+1.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)"
+      }
+    ]
+  },
+  {
     "name": "Crude Rampart",
     "layout": "single",
     "cards": [
@@ -87752,6 +87926,18 @@
         "manaCost": "{1}{W}",
         "type": "Artifact — Equipment",
         "text": "Equipped creature gets +2/+1.\nWhen equipped creature dies, you may have this Equipment become a 2/1 Construct artifact creature with flying and ward {1}. If you do, it isn't an Equipment.\nEquip {1}"
+      }
+    ]
+  },
+  {
+    "name": "Dancing from Dark to Dawn",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dancing from Dark to Dawn",
+        "manaCost": "{3}{G}{G}",
+        "type": "Enchantment",
+        "text": "Whenever you cast a creature spell, put X +1/+1 counters on target creature you control, where X is that spell's mana value.\nLandfall — Whenever a land you control enters, create a 2/2 green Bear creature token."
       }
     ]
   },
@@ -97049,6 +97235,20 @@
     ]
   },
   {
+    "name": "Desolation Prowler",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Desolation Prowler",
+        "manaCost": "{1}{B}",
+        "type": "Creature — Wolf",
+        "text": "Pay 2 life: This creature gets +2/+2 until end of turn. Activate only once each turn.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Desolation Twin",
     "layout": "single",
     "cards": [
@@ -103912,6 +104112,20 @@
         "text": "Each creature assigns combat damage equal to its toughness rather than its power.",
         "power": "0",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Dori, Bearer of Friends",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dori, Bearer of Friends",
+        "manaCost": "{2}{R}",
+        "type": "Legendary Creature — Dwarf Warrior",
+        "text": "Trample\nWhen Dori enters, create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")",
+        "power": "3",
+        "toughness": "2"
       }
     ]
   },
@@ -110848,6 +111062,20 @@
     ]
   },
   {
+    "name": "Duskwatch Hunter",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Duskwatch Hunter",
+        "manaCost": "{2}{B/G}",
+        "type": "Creature — Wolf",
+        "text": "This creature can't be blocked by tokens.\nWhen this creature enters, put a +1/+1 counter on target creature.",
+        "power": "3",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Duskwatch Recruiter // Krallenhorde Howler",
     "layout": "transform",
     "cards": [
@@ -111122,6 +111350,20 @@
     ]
   },
   {
+    "name": "Dwalin, Weaponmaster",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dwalin, Weaponmaster",
+        "manaCost": "{1}{R/W}",
+        "type": "Legendary Creature — Dwarf Warrior",
+        "text": "First strike\nWhenever Dwalin enters or attacks, put a hone counter on each Equipment you control. (Each hone counter on an Equipment grants +1/+0 to equipped creature.)",
+        "power": "2",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Dwarfhold Champion",
     "layout": "single",
     "cards": [
@@ -111359,6 +111601,18 @@
         "text": "Assist (Another player can pay up to {5} of this spell's cost.)\nWhen this creature enters, creatures your team controls get +1/+1 until end of turn.",
         "power": "3",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Dwarven Mattock",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dwarven Mattock",
+        "manaCost": "{2}",
+        "type": "Artifact — Equipment",
+        "text": "When this Equipment enters, attach it to target Dwarf you control.\nEquipped creature gets +2/+2 and has ward {1}. (Whenever equipped creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)"
       }
     ]
   },
@@ -111810,6 +112064,48 @@
     ]
   },
   {
+    "name": "Dáin Ironfoot",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dáin Ironfoot",
+        "manaCost": "{2}{R}",
+        "type": "Legendary Creature — Dwarf Warrior",
+        "text": "When Dáin enters, create a colorless Equipment artifact token named Axe with \"Equipped creature gets +1/+0\" and equip {2}. When you do, attach it to target creature you control.\nWhenever Dáin attacks, each equipped attacking creature gains double strike until end of turn.",
+        "power": "1",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Dáin of the Ancient Halls",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dáin of the Ancient Halls",
+        "manaCost": "{3}{R}{W}",
+        "type": "Legendary Creature — Dwarf Noble",
+        "text": "Vigilance, haste\nWhenever Dáin attacks, he deals damage equal to the number of Dwarves you control to each opponent.",
+        "power": "4",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Dáin's Company",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dáin's Company",
+        "manaCost": "{R}{W}",
+        "type": "Creature — Dwarf Warrior",
+        "text": "This creature has lifelink as long as you control another Dwarf.\nWhen this creature enters, look at the top four cards of your library. You may reveal a Dwarf or Equipment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Déjà Vu",
     "layout": "single",
     "cards": [
@@ -112023,6 +112319,18 @@
         "text": "Flying, vigilance",
         "power": "2",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Eagle's Rescue",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Eagle's Rescue",
+        "manaCost": "{2}{W/U}{W/U}",
+        "type": "Enchantment — Aura",
+        "text": "Enchant creature\nEnchanted creature gets +2/+2 and has flying.\n{2}{W/U}{W/U}: Return this card from your graveyard to the battlefield attached to target creature you control with power 1 or less. Activate only as a sorcery."
       }
     ]
   },
@@ -116792,6 +117100,17 @@
     ]
   },
   {
+    "name": "Elven Passage",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Elven Passage",
+        "type": "Land",
+        "text": "{T}, Pay 1 life, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. You may behold an Elf. If you do, untap that land. (To behold an Elf, choose an Elf you control or reveal an Elf card from your hand.)"
+      }
+    ]
+  },
+  {
     "name": "Elven Raft-Steerer",
     "layout": "single",
     "cards": [
@@ -116842,6 +117161,17 @@
         "text": "Whenever this creature becomes blocked by a creature, put that creature on top of its owner's library.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Elvenking's Halls",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Elvenking's Halls",
+        "type": "Land",
+        "text": "This land enters tapped.\n{T}: Add {G} or {U}.\n{2}{G}{U}, {T}, Sacrifice this land: Put two +1/+1 counters on target Elf you control. Activate only as a sorcery."
       }
     ]
   },
@@ -131133,6 +131463,18 @@
     ]
   },
   {
+    "name": "Fateful Discovery",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Fateful Discovery",
+        "manaCost": "{3}{U}{U}",
+        "type": "Enchantment",
+        "text": "Whenever an artifact you control enters, draw a card."
+      }
+    ]
+  },
+  {
     "name": "Fateful End",
     "layout": "single",
     "cards": [
@@ -132074,6 +132416,20 @@
         "manaCost": "{4}{B}",
         "type": "Sorcery",
         "text": "Return target creature card from your graveyard to the battlefield. If it's a Dragon, put two +1/+1 counters on it."
+      }
+    ]
+  },
+  {
+    "name": "Fearsome Goblin Pair",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Fearsome Goblin Pair",
+        "manaCost": "{2}{B/R}",
+        "type": "Creature — Goblin Soldier",
+        "text": "When this creature dies, amass Goblins 4. (Put four +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",
+        "power": "1",
+        "toughness": "1"
       }
     ]
   },
@@ -145592,6 +145948,20 @@
     ]
   },
   {
+    "name": "Front Porch Sentries",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Front Porch Sentries",
+        "manaCost": "{1}{B}",
+        "type": "Creature — Goblin Soldier",
+        "text": "When this creature dies, target creature an opponent controls gets -1/-1 until end of turn.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Frontier Bivouac",
     "layout": "single",
     "cards": [
@@ -147569,6 +147939,20 @@
     ]
   },
   {
+    "name": "Fíli the Pathfinder",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Fíli the Pathfinder",
+        "manaCost": "{3}{W}",
+        "type": "Legendary Creature — Dwarf Scout",
+        "text": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)\nAs long as you have an enduring story, creatures you control get +1/+1.\nWhenever Fíli or another nontoken Dwarf you control enters, create a 2/2 red Dwarf creature token.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "G'raha Tia",
     "layout": "single",
     "cards": [
@@ -149050,6 +149434,20 @@
     ]
   },
   {
+    "name": "Gandalf, Shadow's Foe",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gandalf, Shadow's Foe",
+        "manaCost": "{5}{U}{U}",
+        "type": "Legendary Creature — Avatar Wizard",
+        "text": "Vigilance\nWhen Gandalf enters, exile up to three target lands you control, then return them to the battlefield tapped under their owner's control.\nLandfall — Whenever a land you control enters, draw a card and put a +1/+1 counter on Gandalf.",
+        "power": "3",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Gandalf, Spark Starter",
     "layout": "single",
     "cards": [
@@ -149060,6 +149458,20 @@
         "text": "Reach\nWhen Gandalf enters, he deals 3 damage divided as you choose among one, two, or three targets.",
         "power": "4",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Gandalf, Wandering Wizard",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gandalf, Wandering Wizard",
+        "manaCost": "{4}{U}",
+        "type": "Legendary Creature — Avatar Wizard",
+        "text": "Ward {3} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {3}.)\n{6}: Gandalf's owner shuffles him into their library and draws three cards.",
+        "power": "4",
+        "toughness": "5"
       }
     ]
   },
@@ -152326,6 +152738,18 @@
     ]
   },
   {
+    "name": "Getaway Barrel",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Getaway Barrel",
+        "manaCost": "{3}{R}",
+        "type": "Artifact",
+        "text": "When this artifact is put into a graveyard from the battlefield, reveal the top thirteen cards of your library. Put a random creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order."
+      }
+    ]
+  },
+  {
     "name": "Getaway Car",
     "layout": "single",
     "cards": [
@@ -154992,6 +155416,20 @@
     ]
   },
   {
+    "name": "Gigantic Big Bear",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gigantic Big Bear",
+        "manaCost": "{5}{G}{G}",
+        "type": "Creature — Bear",
+        "text": "This spell can't be countered.\nHexproof, haste",
+        "power": "10",
+        "toughness": "7"
+      }
+    ]
+  },
+  {
     "name": "Gigantiform",
     "layout": "single",
     "cards": [
@@ -156353,6 +156791,24 @@
     ]
   },
   {
+    "name": "Glamdring, Foe-hammer // Gleam of Death",
+    "layout": "adventurer",
+    "cards": [
+      {
+        "name": "Glamdring, Foe-hammer",
+        "manaCost": "{2}",
+        "type": "Legendary Artifact — Equipment",
+        "text": "Instant and sorcery spells you cast cost {X} less to cast, where X is equipped creature's power.\nEquip {2}"
+      },
+      {
+        "name": "Gleam of Death",
+        "manaCost": "{3}{U}",
+        "type": "Sorcery — Adventure",
+        "text": "Mill six cards, then put all instant and sorcery cards from among them into your hand. (Then exile this card. You may cast the artifact later from exile.)"
+      }
+    ]
+  },
+  {
     "name": "Glamer Gifter",
     "layout": "single",
     "cards": [
@@ -156792,6 +157248,18 @@
         "text": "When this creature enters, amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)\nZombie tokens you control have hexproof and menace.",
         "power": "1",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Gleaming Splendor",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gleaming Splendor",
+        "manaCost": "{1}{W}",
+        "type": "Enchantment",
+        "text": "Whenever an opponent draws their second card each turn, you create a Treasure token.\n{2}{W}: Two target players each draw a card."
       }
     ]
   },
@@ -158604,6 +159072,26 @@
         "manaCost": "{G}",
         "type": "Instant",
         "text": "Cast this spell only after combat.\nDestroy all creatures that were blocked by target Wall this turn. They can't be regenerated. For each creature that died this way, put a creature card from the graveyard of the player who controlled that creature the last time it became blocked by that Wall onto the battlefield under its owner's control."
+      }
+    ]
+  },
+  {
+    "name": "Glóin the Mighty // Easy Pickings",
+    "layout": "adventurer",
+    "cards": [
+      {
+        "name": "Glóin the Mighty",
+        "manaCost": "{3}{R}",
+        "type": "Legendary Creature — Dwarf Warrior",
+        "text": "At the beginning of your first main phase, add {R}{R}.",
+        "power": "4",
+        "toughness": "3"
+      },
+      {
+        "name": "Easy Pickings",
+        "manaCost": "{2}{R}",
+        "type": "Sorcery — Adventure",
+        "text": "Easy Pickings deals 1 damage to each creature your opponents control. (Then exile this card. You may cast the creature later from exile.)"
       }
     ]
   },
@@ -160850,6 +161338,18 @@
     ]
   },
   {
+    "name": "Goblin Plate Mail",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Goblin Plate Mail",
+        "manaCost": "{1}{B/R}",
+        "type": "Artifact — Equipment",
+        "text": "When this Equipment enters, amass Goblins 1, then attach this Equipment to the amassed Army. (To amass Goblins 1, put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)\nEquipped creature gets +1/+0 and has menace.\nEquip {4}"
+      }
+    ]
+  },
+  {
     "name": "Goblin Polka Band",
     "layout": "single",
     "cards": [
@@ -161765,6 +162265,17 @@
         "manaCost": "{3}{R}",
         "type": "Instant",
         "text": "Create two 1/1 red Goblin Wizard creature tokens with prowess. (Whenever you cast a noncreature spell, they get +1/+1 until end of turn.)"
+      }
+    ]
+  },
+  {
+    "name": "Goblin-town",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Goblin-town",
+        "type": "Land",
+        "text": "This land enters tapped.\n{T}: Add {B} or {R}.\n{2}{B}{R}, {T}, Sacrifice this land: Put two +1/+1 counters on target Goblin or Orc you control. Activate only as a sorcery."
       }
     ]
   },
@@ -163234,6 +163745,26 @@
         "text": "Whenever Gollum attacks, look at the top two cards of your library, put them back in any order, then choose land or nonland. An opponent guesses whether the top card of your library is the chosen kind. Reveal that card. If they guessed right, remove Gollum from combat. Otherwise, you draw a card and Gollum can't be blocked this turn.",
         "power": "2",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Gollum, Silent Slinker // Meager Meal",
+    "layout": "adventurer",
+    "cards": [
+      {
+        "name": "Gollum, Silent Slinker",
+        "manaCost": "{3}{B}",
+        "type": "Legendary Creature — Halfling Horror",
+        "text": "Menace (This creature can't be blocked except by two or more creatures.)",
+        "power": "4",
+        "toughness": "3"
+      },
+      {
+        "name": "Meager Meal",
+        "manaCost": "{B}",
+        "type": "Sorcery — Adventure",
+        "text": "Put a +1/+1 counter on up to one target creature. Target player gains 2 life. (Then exile this card. You may cast the creature later from exile.)"
       }
     ]
   },
@@ -166189,6 +166720,20 @@
     ]
   },
   {
+    "name": "Great Goblin, Foul-Hearted",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Great Goblin, Foul-Hearted",
+        "manaCost": "{3}{B}{R}",
+        "type": "Legendary Creature — Goblin Noble",
+        "text": "Whenever Great Goblin enters or attacks, amass Goblins 3.\nArmies you control have trample.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Great Hall of Starnheim",
     "layout": "single",
     "cards": [
@@ -166295,6 +166840,26 @@
         "manaCost": "{R}",
         "type": "Instant",
         "text": "Spree (Choose one or more additional costs.)\n+ {2}{R} — Untap all creatures you control. If it's your combat phase, there is an additional combat phase after this phase.\n+ {2} — Creatures you control get +1/+0 and gain first strike until end of turn.\n+ {R} — Choose target opponent. Whenever a creature you control deals combat damage to that player this turn, create a tapped Treasure token."
+      }
+    ]
+  },
+  {
+    "name": "Great Ugly-Looking Goblin // Clap! Snap!",
+    "layout": "adventurer",
+    "cards": [
+      {
+        "name": "Great Ugly-Looking Goblin",
+        "manaCost": "{5}{B}",
+        "type": "Creature — Goblin Soldier",
+        "text": "Each creature you control with a +1/+1 counter on it has menace. (It can't be blocked except by two or more creatures.)",
+        "power": "4",
+        "toughness": "4"
+      },
+      {
+        "name": "Clap! Snap!",
+        "manaCost": "{1}{B}",
+        "type": "Sorcery — Adventure",
+        "text": "Amass Goblins 2. (Then exile this card. You may cast the creature later from exile.)"
       }
     ]
   },
@@ -176424,6 +176989,20 @@
     ]
   },
   {
+    "name": "Head of the Hunt",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Head of the Hunt",
+        "manaCost": "{2}{B}{B}",
+        "type": "Creature — Wolf",
+        "text": "Flash\nIf a creature an opponent controls would die, exile it instead. When you do, create a 2/2 green Wolf creature token.",
+        "power": "4",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Head to Head",
     "layout": "single",
     "cards": [
@@ -182542,6 +183121,17 @@
         "text": "Reach, deathtouch\nWhen this creature dies, put up to one other target card from a graveyard on the bottom of its owner's library.",
         "power": "2",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Hobbit Hole",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Hobbit Hole",
+        "type": "Land",
+        "text": "{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\nHalflingcycling {4} ({4}, Discard this card: Search your library for a Halfling card, reveal it, put it into your hand, then shuffle.)"
       }
     ]
   },
@@ -195202,6 +195792,18 @@
     ]
   },
   {
+    "name": "Inside Information",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Inside Information",
+        "manaCost": "{X}{B}{B}",
+        "type": "Sorcery",
+        "text": "Exile the top X cards of target opponent's library. You may play those cards this turn. If you cast a spell this way, pay life equal to its mana value rather than pay its mana cost."
+      }
+    ]
+  },
+  {
     "name": "Inside Out",
     "layout": "single",
     "cards": [
@@ -198746,6 +199348,17 @@
         "text": "Vigilance\nThis creature attacks or blocks each combat if able.",
         "power": "5",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Iron Hills",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Iron Hills",
+        "type": "Land",
+        "text": "This land enters tapped.\n{T}: Add {R} or {W}.\n{2}{R}{W}, {T}, Sacrifice this land: Put two +1/+1 counters on target Dwarf you control. Activate only as a sorcery."
       }
     ]
   },
@@ -211041,6 +211654,18 @@
     ]
   },
   {
+    "name": "Key to the Side-Door",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Key to the Side-Door",
+        "manaCost": "{1}",
+        "type": "Artifact",
+        "text": "{2}, {T}: Target creature can't be blocked this turn.\n{1}, {T}, Discard a legendary card with the same name as a legendary permanent you control: Draw two cards."
+      }
+    ]
+  },
+  {
     "name": "Keymaster Rogue",
     "layout": "single",
     "cards": [
@@ -218541,6 +219166,20 @@
     ]
   },
   {
+    "name": "Kíli the Resourceful",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Kíli the Resourceful",
+        "manaCost": "{1}{W}",
+        "type": "Legendary Creature — Dwarf Scout",
+        "text": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)\nAs long as you have an enduring story, you may pay {0} rather than pay the equip cost of the first equip ability you activate each turn.\nWhenever another Dwarf or Equipment you control enters, draw a card. This ability triggers only once each turn.",
+        "power": "1",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Lab Rats",
     "layout": "single",
     "cards": [
@@ -219235,6 +219874,37 @@
     ]
   },
   {
+    "name": "Lake-town",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Lake-town",
+        "type": "Land",
+        "text": "This land enters tapped.\n{T}: Add {W} or {U}.\n{2}{W}{U}, {T}, Sacrifice this land: Put two +1/+1 counters on target Human you control. Activate only as a sorcery."
+      }
+    ]
+  },
+  {
+    "name": "Lake-town Mariners // Gone Fishing",
+    "layout": "adventurer",
+    "cards": [
+      {
+        "name": "Lake-town Mariners",
+        "manaCost": "{4}{U}{U}",
+        "type": "Creature — Human Citizen",
+        "text": "Vigilance\nWard {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)",
+        "power": "6",
+        "toughness": "5"
+      },
+      {
+        "name": "Gone Fishing",
+        "manaCost": "{3}{U}",
+        "type": "Instant — Adventure",
+        "text": "Exile two target creatures and/or lands you control, then return them to the battlefield under their owner's control."
+      }
+    ]
+  },
+  {
     "name": "Lakeside Shack",
     "layout": "single",
     "cards": [
@@ -219914,6 +220584,20 @@
         "text": "Defender\nTap three untapped creatures you control: Surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)",
         "power": "1",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Large Bear",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Large Bear",
+        "manaCost": "{3}{B/G}{B/G}",
+        "type": "Creature — Bear",
+        "text": "Reach, trample, haste",
+        "power": "5",
+        "toughness": "5"
       }
     ]
   },
@@ -226790,6 +227474,20 @@
         "name": "Littjara Mirrorlake",
         "type": "Land",
         "text": "This land enters tapped.\n{T}: Add {U}.\n{2}{G}{G}{U}, {T}, Sacrifice this land: Create a token that's a copy of target creature you control, except it enters with an additional +1/+1 counter on it. Activate only as a sorcery."
+      }
+    ]
+  },
+  {
+    "name": "Little Bear",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Little Bear",
+        "manaCost": "{2}{G}",
+        "type": "Creature — Bear",
+        "text": "Flash\nWhen this creature enters, untap another target creature you control. If that creature is a Bear, put a +1/+1 counter on it.",
+        "power": "3",
+        "toughness": "2"
       }
     ]
   },
@@ -248440,6 +249138,17 @@
     ]
   },
   {
+    "name": "Mirkwood",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Mirkwood",
+        "type": "Land",
+        "text": "This land enters tapped.\n{T}: Add {B} or {G}.\n{2}{B}{G}, {T}, Sacrifice this land: Put two +1/+1 counters on target Bear, Spider, or Wolf you control. Activate only as a sorcery."
+      }
+    ]
+  },
+  {
     "name": "Mirkwood Bats",
     "layout": "single",
     "cards": [
@@ -248478,6 +249187,34 @@
         "text": "Trample\nWhenever this creature enters or attacks, return target Elf card from your graveyard to your hand. You gain life equal to that card's power.",
         "power": "6",
         "toughness": "6"
+      }
+    ]
+  },
+  {
+    "name": "Mirkwood Nurturer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Mirkwood Nurturer",
+        "manaCost": "{2}{G/U}",
+        "type": "Creature — Elf Ranger",
+        "text": "When this creature enters, return up to one other target permanent you control to its owner's hand. If you do, put a +1/+1 counter on this creature.",
+        "power": "3",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Mirkwood Pathmaker",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Mirkwood Pathmaker",
+        "manaCost": "{2}{G}",
+        "type": "Creature — Elf Ranger",
+        "text": "Mirkwood Pathmaker's power and toughness are each equal to the number of lands you control.",
+        "power": "*",
+        "toughness": "*"
       }
     ]
   },
@@ -255272,6 +256009,26 @@
     ]
   },
   {
+    "name": "Most Decrepit Old Bird // Speak Secrets",
+    "layout": "adventurer",
+    "cards": [
+      {
+        "name": "Most Decrepit Old Bird",
+        "manaCost": "{U}",
+        "type": "Creature — Bird",
+        "text": "Flying\nThreshold — This creature gets +1/+1 as long as there are seven or more cards in your graveyard.",
+        "power": "1",
+        "toughness": "1"
+      },
+      {
+        "name": "Speak Secrets",
+        "manaCost": "{1}{U}",
+        "type": "Sorcery — Adventure",
+        "text": "Mill four cards, then put an instant or sorcery card from among them into your hand."
+      }
+    ]
+  },
+  {
     "name": "Most Valuable Slayer",
     "layout": "single",
     "cards": [
@@ -258162,7 +258919,7 @@
         "name": "Myojin of Night's Reach and Grim Betrayal",
         "manaCost": "{5}{B}{B}{B}",
         "type": "Legendary Creature — Spirit",
-        "text": "Myojin of Night's Reach and Grim Betrayal enters the battlefield with an indestructible counter on it if you cast it from your hand.\nRemove an indestructible counter from Myojin of Night's Reach Grim Betrayal: Each opponent discards their hand. Put onto the battlefield under your control all creature cards in all graveyards that were put there from anywhere this turn.",
+        "text": "Myojin of Night's Reach and Grim Betrayal enters the battlefield with an indestructible counter on it if you cast it from your hand.\nRemove an indestructible counter from Myojin of Night's Reach and Grim Betrayal: Each opponent discards their hand. Put onto the battlefield under your control all creature cards in all graveyards that were put there from anywhere this turn.",
         "power": "10",
         "toughness": "4"
       }
@@ -260787,6 +261544,20 @@
         "manaCost": "{1}{B}",
         "type": "Instant",
         "text": "As an additional cost to cast this spell, sacrifice a creature.\nDraw two cards. If the sacrificed creature was legendary, draw three cards instead."
+      }
+    ]
+  },
+  {
+    "name": "Nasty Little Rabbit",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Nasty Little Rabbit",
+        "manaCost": "{G}",
+        "type": "Creature — Rabbit",
+        "text": "Ferocious — At the beginning of combat on your turn, if you control a creature with power 4 or greater, put a +1/+1 counter on this creature.",
+        "power": "1",
+        "toughness": "2"
       }
     ]
   },
@@ -267788,6 +268559,20 @@
     ]
   },
   {
+    "name": "Nori, Teller of Tales",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Nori, Teller of Tales",
+        "manaCost": "{1}{R/W}",
+        "type": "Legendary Creature — Dwarf Bard",
+        "text": "Whenever Nori attacks, target attacking creature gains first strike until end of turn.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Norika Yamazaki, the Poet",
     "layout": "single",
     "cards": [
@@ -272550,6 +273335,20 @@
     ]
   },
   {
+    "name": "Old Fat Spider",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Old Fat Spider",
+        "manaCost": "{4}{G}{G}",
+        "type": "Creature — Spider",
+        "text": "Reach\nThis creature can't be blocked by creatures with power 2 or less.\nWhenever this creature becomes the target of a spell or ability an opponent controls, draw a card.",
+        "power": "6",
+        "toughness": "7"
+      }
+    ]
+  },
+  {
     "name": "Old Flitterfang",
     "layout": "single",
     "cards": [
@@ -276041,6 +276840,19 @@
     ]
   },
   {
+    "name": "Ordinary Bear",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ordinary Bear",
+        "manaCost": "{3}{G}",
+        "type": "Creature — Bear",
+        "power": "4",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Ordinary Pony",
     "layout": "single",
     "cards": [
@@ -276274,6 +277086,20 @@
         "text": "Trample\nThis creature can't attack if defending player controls an untapped creature with power 3 or greater.\nThis creature can't block creatures with power 3 or greater.",
         "power": "6",
         "toughness": "6"
+      }
+    ]
+  },
+  {
+    "name": "Ori, Keeper of Songs",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ori, Keeper of Songs",
+        "manaCost": "{2}{W}",
+        "type": "Legendary Creature — Dwarf Bard",
+        "text": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)\nAs long as you have an enduring story, Ori gets +1/+0 and has vigilance.",
+        "power": "3",
+        "toughness": "3"
       }
     ]
   },
@@ -282066,6 +282892,20 @@
         "manaCost": "{1}",
         "type": "Artifact — Equipment",
         "text": "Equipped creature has \"{2}, {T}: This creature deals 1 damage to target creature. If a colorless creature is dealt damage this way, tap it.\"\nEquip {2}"
+      }
+    ]
+  },
+  {
+    "name": "Patient Instructor",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Patient Instructor",
+        "manaCost": "{2}{W/U}",
+        "type": "Creature — Human Citizen",
+        "text": "Vigilance\nWhen this creature enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -290362,6 +291202,18 @@
         "manaCost": "{4}{R}",
         "type": "Sorcery",
         "text": "Destroy target artifact or land.\nSuspend 4—{1}{R} (Rather than cast this card from your hand, you may pay {1}{R} and exile it with four time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost.)"
+      }
+    ]
+  },
+  {
+    "name": "Plunder the Trollshaws",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Plunder the Trollshaws",
+        "manaCost": "{1}{U}",
+        "type": "Instant",
+        "text": "Draw a card. If this spell was cast from a graveyard, draw two cards instead.\nFlashback {3}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)"
       }
     ]
   },
@@ -301753,6 +302605,20 @@
     ]
   },
   {
+    "name": "Radagast of Rhosgobel",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Radagast of Rhosgobel",
+        "manaCost": "{2}{G}{G}",
+        "type": "Legendary Creature — Avatar Wizard",
+        "text": "The first creature spell you cast each turn costs {2} less to cast and can be cast as though it had flash.",
+        "power": "2",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Radagast the Brown",
     "layout": "single",
     "cards": [
@@ -302497,6 +303363,18 @@
         "text": "{2}: Target black or green creature gains haste until end of turn. (It can attack and {T} this turn.)",
         "power": "2",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Rage into the Valley",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Rage into the Valley",
+        "manaCost": "{2}{B}",
+        "type": "Sorcery",
+        "text": "You draw a card and lose 1 life.\nAmass Goblins 2. (Put two +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
       }
     ]
   },
@@ -315973,6 +316851,20 @@
     ]
   },
   {
+    "name": "Rhovanion Rampager",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Rhovanion Rampager",
+        "manaCost": "{2}{B}",
+        "type": "Creature — Wolf",
+        "text": "Whenever this creature attacks, you may sacrifice another creature. If you do, put a number of +1/+1 counters on this creature equal to the sacrificed creature's power.\nWhen this creature dies, amass Goblins X, where X is this creature's power. (Put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",
+        "power": "3",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Rhox",
     "layout": "single",
     "cards": [
@@ -321155,6 +322047,18 @@
         "manaCost": "{U}{U}{R}",
         "type": "Sorcery",
         "text": "Exchange control of two target permanents that share a permanent type."
+      }
+    ]
+  },
+  {
+    "name": "Roll-Roll-Roll-Roll",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Roll-Roll-Roll-Roll",
+        "manaCost": "{2}{U}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\nI, II, III, IV — Exile up to one target creature or land you control. If you do, return it to the battlefield under its owner's control at the beginning of the next end step."
       }
     ]
   },
@@ -357296,6 +358200,20 @@
     ]
   },
   {
+    "name": "Smaug, Wicked Worm",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Smaug, Wicked Worm",
+        "manaCost": "{3}{B}{R}",
+        "type": "Legendary Creature — Dragon",
+        "text": "Flying\nWhen Smaug enters, create X tapped Treasure tokens, where X is the number of artifacts your opponents control.\nWhenever you cast a spell, if mana from a Treasure was spent to cast it, you draw a card and lose 1 life.",
+        "power": "5",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Smell Fear",
     "layout": "single",
     "cards": [
@@ -375162,6 +376080,20 @@
         "text": "Whenever this creature blocks or becomes blocked by a creature with fewer letters in its name, destroy that creature at end of combat. (Punctuation and spaces aren't letters.)\nWhenever an opponent reads this creature, that player is turned to stone until end of turn. Stoned players can't attack, block, cast spells, or activate abilities.",
         "power": "2.5",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Stone-Giant of High Pass",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Stone-Giant of High Pass",
+        "manaCost": "{5}{R}{R}",
+        "type": "Creature — Giant",
+        "text": "Whenever this creature enters or attacks, create a 3/1 colorless Wall artifact creature token with defender named Stone Boulder.\n{2}{R}, Sacrifice an artifact: This creature deals 4 damage to any target.",
+        "power": "7",
+        "toughness": "7"
       }
     ]
   },
@@ -395706,6 +396638,18 @@
     ]
   },
   {
+    "name": "The Black Arrow",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Black Arrow",
+        "manaCost": "{3}",
+        "type": "Legendary Artifact — Equipment",
+        "text": "Flash\nWhen The Black Arrow enters, it deals 1 damage to any target. If a Dragon is dealt damage this way, destroy it.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)"
+      }
+    ]
+  },
+  {
     "name": "The Black Breath",
     "layout": "single",
     "cards": [
@@ -399665,6 +400609,20 @@
     ]
   },
   {
+    "name": "The Notary Hobbits",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Notary Hobbits",
+        "manaCost": "{3}{G}{G}",
+        "type": "Legendary Creature — Halfling Advisor",
+        "text": "When The Notary Hobbits enter, if they're not a token, create two tokens that are copies of them, except the tokens aren't legendary.\n{T}: Add {C} for each Halfling you control.",
+        "power": "1",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "The Octopus Official",
     "layout": "single",
     "cards": [
@@ -403162,6 +404120,20 @@
     ]
   },
   {
+    "name": "Thorin, Company's Leader",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Thorin, Company's Leader",
+        "manaCost": "{4}{R}",
+        "type": "Legendary Creature — Dwarf Warrior",
+        "text": "Whenever a Dwarf you control deals combat damage to a player or battle, create two Treasure tokens.\n{10}: Creatures you control gain double strike until end of turn.",
+        "power": "4",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Thorin, King of Durin's Folk",
     "layout": "single",
     "cards": [
@@ -404678,6 +405650,34 @@
     ]
   },
   {
+    "name": "Thranduil the Strategist",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Thranduil the Strategist",
+        "manaCost": "{3}{G}{U}",
+        "type": "Legendary Creature — Elf Noble",
+        "text": "Other Elves you control have \"{T}: Add {G} or {U}.\"\nLandfall — Whenever a land you control enters, create a 1/1 green Elf creature token.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Thranduil's Company",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Thranduil's Company",
+        "manaCost": "{2}{G}{U}",
+        "type": "Creature — Elf Soldier",
+        "text": "As long as you control another Elf, you may play an additional land on each of your turns.\nLandfall — Whenever a land you control enters, put two +1/+1 counters on target creature you control. It gains vigilance until end of turn.",
+        "power": "3",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Thranduil's Decree",
     "layout": "single",
     "cards": [
@@ -404686,6 +405686,26 @@
         "manaCost": "{4}{U}{U}",
         "type": "Instant",
         "text": "Counter target spell. If a permanent spell is countered this way, exile it instead of putting it into its owner's graveyard. You may cast that card without paying its mana cost for as long as it remains exiled."
+      }
+    ]
+  },
+  {
+    "name": "Thranduil, Sindarin Liege // Silvan Rally",
+    "layout": "adventurer",
+    "cards": [
+      {
+        "name": "Thranduil, Sindarin Liege",
+        "manaCost": "{2}{G/U}{G/U}",
+        "type": "Legendary Creature — Elf Noble",
+        "text": "Other Elves you control get +1/+1.\nLandfall — Whenever a land you control enters, create a 1/1 green Elf creature token.",
+        "power": "2",
+        "toughness": "3"
+      },
+      {
+        "name": "Silvan Rally",
+        "manaCost": "{1}{G/U}{G/U}",
+        "type": "Sorcery — Adventure",
+        "text": "Mill four cards, then put up to two land cards from among them into your hand. (Then exile this card. You may cast the creature later from exile.)"
       }
     ]
   },
@@ -405818,6 +406838,18 @@
         "text": "Flash (You may cast this spell any time you could cast an instant.)\nFlying\nSpells you cast with mana value 5 or greater cost {1} less to cast and can't be countered.",
         "power": "4",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Thrór's Map",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Thrór's Map",
+        "manaCost": "{2}",
+        "type": "Legendary Artifact",
+        "text": "When Thrór's Map enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.\n{2}, {T}: Draw a card, then discard a card."
       }
     ]
   },
@@ -416155,6 +417187,18 @@
     ]
   },
   {
+    "name": "Troll Negotiations",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Troll Negotiations",
+        "manaCost": "{2}{G}{G}",
+        "type": "Sorcery",
+        "text": "Put two +1/+1 counters on target creature you control. Then it fights target creature an opponent controls. (Each deals damage equal to its power to the other.)"
+      }
+    ]
+  },
+  {
     "name": "Troll of Khazad-dûm",
     "layout": "single",
     "cards": [
@@ -421192,6 +422236,18 @@
         "manaCost": "{2}{W}",
         "type": "Sorcery",
         "text": "Target creature gets +3/+3 and gains flying until end of turn.\nWhenever a Zombie you control enters, you may pay {W}. If you do, return this card from your graveyard to your hand."
+      }
+    ]
+  },
+  {
+    "name": "Uncover the Moon-Letters",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Uncover the Moon-Letters",
+        "manaCost": "{3}{U}",
+        "type": "Enchantment",
+        "text": "Whenever you cast a noncreature spell, you may draw X cards, where X is the amount of mana spent to cast that spell. If you do, discard two cards."
       }
     ]
   },
@@ -444396,6 +445452,18 @@
     ]
   },
   {
+    "name": "Well-Worn Spatula",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Well-Worn Spatula",
+        "manaCost": "{1}",
+        "type": "Artifact — Equipment",
+        "text": "When this Equipment enters, you gain 2 life.\nEquipped creature gets +1/+1.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)"
+      }
+    ]
+  },
+  {
     "name": "Wellgabber Apothecary",
     "layout": "single",
     "cards": [
@@ -447020,6 +448088,20 @@
         "manaCost": "{X}{G}{G}",
         "type": "Sorcery",
         "text": "Manifest the top card of your library, then put X +1/+1 counters on it. (To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)"
+      }
+    ]
+  },
+  {
+    "name": "Wilderland Scrounger",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Wilderland Scrounger",
+        "manaCost": "{4}{G}",
+        "type": "Creature — Wolf",
+        "text": "Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, put a +1/+1 counter on each creature you control.",
+        "power": "3",
+        "toughness": "6"
       }
     ]
   },
@@ -450544,6 +451626,18 @@
     ]
   },
   {
+    "name": "Wizard's Staff",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Wizard's Staff",
+        "manaCost": "{1}{U}",
+        "type": "Artifact — Equipment",
+        "text": "Equipped creature has prowess. (Whenever its controller casts a noncreature spell, that creature gets +1/+1 until end of turn.)\nIf an ability of equipped creature triggers, that ability triggers an additional time.\nEquip Wizard {1}\nEquip {3}"
+      }
+    ]
+  },
+  {
     "name": "Wizards of Thay",
     "layout": "single",
     "cards": [
@@ -451571,6 +452665,20 @@
         "type": "Creature — Elemental",
         "text": "Vigilance, trample\nConverge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.",
         "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Woodland Weavemaster",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Woodland Weavemaster",
+        "manaCost": "{1}{G}",
+        "type": "Creature — Elf Druid",
+        "text": "Vigilance\nWhenever another Elf you control enters, this creature gets +1/+1 until end of turn.\n{T}: Add X mana of any one color, where X is this creature's power. Spend this mana only to cast Elf spells and activate abilities of Elf sources.",
+        "power": "1",
         "toughness": "2"
       }
     ]

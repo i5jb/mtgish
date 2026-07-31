@@ -1049,8 +1049,10 @@
     "PutANameStickerOnPermanent({{PERMANENT}})": "",
     "PutAPermanentIntoItsOwnersHand({{PERMANENTS}})": "",
     "PutAPowerAndToughnessStickerOnAPermanent({{PERMANENTS}})": "",
-    "PutARandomCardFromLibraryIntoGraveyard({{CARDS}})": "",
-    "PutARandomCardFromLibraryOntoBattlefield({{CARDS}}, {{ENTER_FLAGS}})": "",
+
+    "PutCardsInLibraryOnTheBottomOfLibraryInARandomOrder({{CARDS_IN_LIBRARY}})": "",
+    "PutARandomCardFromLibraryIntoGraveyard({{CARDS_IN_LIBRARY}})": "",
+    "PutARandomCardFromLibraryOntoBattlefield({{CARDS_IN_LIBRARY}}, {{ENTER_FLAGS}})": "",
     "PutARandomCardFromPlayersLibraryOntoBattlefield({{CARDS}}, {{PLAYER}}, {{ENTER_FLAGS}})": "",
     "PutARandomCardOfTypeFromAmongTheTopNumberCardsOfLibraryIntoHand({{CARDS}}, {{NUMBER}})": "",
     "PutAStickerOnACardInPlayersGraveyard({{CARDS_IN_GRAVEYARDS}}, {{PLAYER}})": "",
@@ -1587,6 +1589,7 @@
 
     "AnyCardInLibrary": "",
 
+    "RevealedFromLibraryThisWay": "",
     "RevealedFromPlayersLibraryThisWay({{PLAYER}})": "",
     "TheLibraryCardsFoundThisWay": "",
     "TheCardsConjuredInLibraryThisWay": "",
@@ -7043,6 +7046,9 @@
     "RevealCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreRevealed({{NUMBER}}, {{CARDS}}, [PutTheRemainingCardsIntoGraveyard])": "",
     "RevealLibrary([APlayerChoosesMultipleCardsOfType({{PLAYERS}}, [{{CARDS}}, {{CARDS}}, {{CARDS}}]), PutTheChosenCardsIntoHand, PutTheRemainingCardsBackIntoLibraryAndShuffle])": "",
     "RevealLibrary([If({{CONDITION}}, [SpellDealsDamage({{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENT}})]), PutTheRemainingCardsBackIntoLibraryAndShuffle])": "",
+
+    "RevealTheTopNumberCardsOfLibraryNEW({{NUMBER}})": "",
+
     "RevealTheTopNumberCardsOfLibrary({{NUMBER}}, [APlayerChoosesACardOfType({{PLAYERS}}, {{CARDS}}), PutTheChosenCardOntoTheBattlefield({{ENTER_FLAGS}}), PutTheRemainingCardsIntoGraveyard])": "",
     "RevealTheTopNumberCardsOfLibrary({{NUMBER}}, [APlayerChoosesAGenericCard({{PLAYERS}}), PutTheChosenCardIntoGraveyard, LeaveTheRemainingCardsOnTopOfLibraryInTheSameOrder])": "",
     "RevealTheTopNumberCardsOfLibrary({{NUMBER}}, [APlayerChoosesAGenericCard({{PLAYERS}}), PutTheChosenCardIntoGraveyard, PutTheRemainingCardsIntoHand])": "",

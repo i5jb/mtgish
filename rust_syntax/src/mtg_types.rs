@@ -7961,6 +7961,7 @@ pub enum CardsInLibrary {
   SharesACardtypeWithSpell(Box<Spell>),
   DoesntShareANameWithSpell(Box<Spell>),
 
+  RevealedFromLibraryThisWay,
   RevealedFromPlayersLibraryThisWay(Box<Player>),
   TheLibraryCardsFoundThisWay,
 
@@ -8667,6 +8668,7 @@ pub enum Action {
   PutCardsInLibraryIntoGraveyard(Box<CardsInLibrary>),
   PutCardsInLibraryOntoTheBattlefield(Box<CardsInLibrary>, Vec<EnterFlag>),
   PutCardsInLibraryOnTheBottomOfLibraryInAnyOrder(Box<CardsInLibrary>),
+  PutCardsInLibraryOnTheBottomOfLibraryInARandomOrder(Box<CardsInLibrary>),
   PutLibraryCardsIntoHand(Box<CardsInLibrary>),
 
   EachPlayerRevealsCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreRevealed(Box<Players>, Box<GameNumber>, Box<CardsInLibrary>),
@@ -9432,7 +9434,7 @@ pub enum Action {
   PutAPermanentIntoItsOwnersHand(Box<Permanents>),
   PutAPowerAndToughnessStickerOnAPermanent(Box<Permanents>),
   PutARandomCardFromLibraryIntoGraveyard(Box<Cards>),
-  PutARandomCardFromLibraryOntoBattlefield(Box<Cards>, Vec<EnterFlag>),
+  PutARandomCardFromLibraryOntoBattlefield(Box<CardsInLibrary>, Vec<EnterFlag>),
   PutARandomCardFromPlayersLibraryOntoBattlefield(Box<Cards>, Box<Player>, Vec<EnterFlag>),
   PutARandomCardOfTypeFromAmongTheTopNumberCardsOfLibraryIntoHand(Box<Cards>, Box<GameNumber>),
   PutAStickerOnACardInPlayersGraveyard(Box<CardsInGraveyards>, Box<Player>),
@@ -9686,6 +9688,7 @@ pub enum Action {
   RevealTheCardsDrawnThisWay,
   RevealTheSecretlyChosenNumber,
   RevealTheTopCardOfPlayersLibrary(Box<Player>),
+  RevealTheTopNumberCardsOfLibraryNEW(Box<GameNumber>),
   RevealTheTopNumberCardsOfLibrary(Box<GameNumber>, Vec<RevealTheTopNumberCardsOfLibraryAction>),
   RevealTheTopNumberCardsOfPlanarDeckAndTriggerEachCHAOSAbilityThenPutOnBottomOfPlanarDeckInAnyOrder(Box<GameNumber>),
   RevealTopCardOfLibrary,
