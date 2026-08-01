@@ -2656,6 +2656,7 @@
     "DuringTheCombatPhaseCreatedThisWay": "",
     "DuringTheExtraTurnCreatedThisWay": "",
     "ForAsLongAsCardIsExiled({{CARD_IN_EXILE}})": "",
+    "ForAsLongAsPermanentRemainsOnTheBattlefield({{PERMANENT}})": "",
     "ForAsLongAsPermanentRemainsAttachedToPermanent({{PERMANENT}}, {{PERMANENT}})": "",
     "ForAsLongAsPermanentRemainsFaceDown({{PERMANENT}})": "",
     "ForAsLongAsPermanentRemainsTapped({{PERMANENT}})": "",

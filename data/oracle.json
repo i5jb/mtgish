@@ -25696,6 +25696,20 @@
     ]
   },
   {
+    "name": "Attercop",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Attercop",
+        "manaCost": "{1}{G}",
+        "type": "Creature — Spider",
+        "text": "Reach, deathtouch\nLandfall — Whenever a land you control enters, this creature gets +1/+1 until end of turn.",
+        "power": "2",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Attrition",
     "layout": "single",
     "cards": [
@@ -38104,6 +38118,18 @@
     ]
   },
   {
+    "name": "Bilbo's Deadly Slice",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bilbo's Deadly Slice",
+        "manaCost": "{1}{B}{B}",
+        "type": "Instant",
+        "text": "Destroy target creature."
+      }
+    ]
+  },
+  {
     "name": "Bilbo's Gambit",
     "layout": "single",
     "cards": [
@@ -45395,6 +45421,26 @@
     ]
   },
   {
+    "name": "Bofur, Reliable Guardian // Concerted Care",
+    "layout": "adventurer",
+    "cards": [
+      {
+        "name": "Bofur, Reliable Guardian",
+        "manaCost": "{W}",
+        "type": "Legendary Creature — Dwarf Scout",
+        "text": "Lifelink",
+        "power": "1",
+        "toughness": "1"
+      },
+      {
+        "name": "Concerted Care",
+        "manaCost": "{1}{W}",
+        "type": "Instant — Adventure",
+        "text": "Target artifact or creature you control gains hexproof and indestructible until end of turn. (Then exile this card. You may cast the creature later from exile.)"
+      }
+    ]
+  },
+  {
     "name": "Bog Badger",
     "layout": "single",
     "cards": [
@@ -46276,6 +46322,20 @@
     ]
   },
   {
+    "name": "Bolg's Company",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bolg's Company",
+        "manaCost": "{B}{R}",
+        "type": "Creature — Goblin Soldier",
+        "text": "This creature has haste as long as you control another Goblin.\n{T}, Sacrifice another Goblin: Add {B}{R}.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Bolg, Erebor's Reckoning",
     "layout": "single",
     "cards": [
@@ -46510,6 +46570,20 @@
         "text": "Battalion — Whenever this creature and at least two other creatures attack, this creature deals 1 damage to any target.",
         "power": "1",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Bombur, Gentle Dreamer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bombur, Gentle Dreamer",
+        "manaCost": "{2}{R}",
+        "type": "Legendary Creature — Dwarf Bard",
+        "text": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)\nBombur doesn't untap during your untap step unless you have an enduring story.",
+        "power": "5",
+        "toughness": "3"
       }
     ]
   },
@@ -48741,6 +48815,20 @@
         "name": "Bottomless Vault",
         "type": "Land",
         "text": "This land enters tapped.\nYou may choose not to untap this land during your untap step.\nAt the beginning of your upkeep, if this land is tapped, put a storage counter on it.\n{T}, Remove any number of storage counters from this land: Add {B} for each storage counter removed this way."
+      }
+    ]
+  },
+  {
+    "name": "Boughside Wanderers",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Boughside Wanderers",
+        "manaCost": "{4}{G}{G}",
+        "type": "Creature — Elf Scout",
+        "text": "When this creature enters, look at the top four cards of your library. You may reveal a permanent card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nLandfall — Whenever a land you control enters, this creature gets +2/+2 until end of turn.",
+        "power": "4",
+        "toughness": "4"
       }
     ]
   },
@@ -62213,6 +62301,18 @@
         "manaCost": "{3}{G}",
         "type": "Sorcery",
         "text": "Search your library for up to X basic land cards, where X is the number of different powers among creatures you control. Put those cards onto the battlefield tapped, then shuffle."
+      }
+    ]
+  },
+  {
+    "name": "Celebrate the Mountain-king",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Celebrate the Mountain-king",
+        "manaCost": "{3}{W}",
+        "type": "Enchantment",
+        "text": "When this enchantment enters, for each opponent, exile up to one target nonland permanent that player controls until this enchantment leaves the battlefield.\nWhen this enchantment enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)"
       }
     ]
   },
@@ -107243,6 +107343,20 @@
     ]
   },
   {
+    "name": "Dreaded Bat-Cloud",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dreaded Bat-Cloud",
+        "manaCost": "{4}{B}",
+        "type": "Creature — Bat",
+        "text": "This spell costs {3} less to cast if a creature died this turn.\nFlying, deathtouch",
+        "power": "4",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Dreadfeast Demon",
     "layout": "single",
     "cards": [
@@ -111712,6 +111826,20 @@
     ]
   },
   {
+    "name": "Dwarven Provisioner",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dwarven Provisioner",
+        "manaCost": "{1}{W}",
+        "type": "Creature — Dwarf Citizen",
+        "text": "{3}{W}: Creatures you control get +1/+1 until end of turn.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Dwarven Recruiter",
     "layout": "single",
     "cards": [
@@ -111773,6 +111901,18 @@
         "text": "{T}: Choose target attacking or blocking creature whose controller controls an Island. This creature deals 2 damage to that creature at end of combat. Activate only before the end of combat step.",
         "power": "1",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Dwarven Shortsword",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dwarven Shortsword",
+        "manaCost": "{3}{W}",
+        "type": "Artifact — Equipment",
+        "text": "When this Equipment enters, create a 2/2 red Dwarf creature token, then attach this Equipment to it.\nEquipped creature gets +1/+2.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)"
       }
     ]
   },
@@ -112100,6 +112240,20 @@
         "manaCost": "{R}{W}",
         "type": "Creature — Dwarf Warrior",
         "text": "This creature has lifelink as long as you control another Dwarf.\nWhen this creature enters, look at the top four cards of your library. You may reveal a Dwarf or Equipment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Dáin, Lord of the Iron Hills",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dáin, Lord of the Iron Hills",
+        "manaCost": "{1}{W}",
+        "type": "Legendary Creature — Dwarf Noble",
+        "text": "Vigilance\nStoried (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)\nAs long as you have an enduring story, creatures can't attack you unless their controller pays {1} for each of those creatures.",
         "power": "2",
         "toughness": "2"
       }
@@ -117176,6 +117330,20 @@
     ]
   },
   {
+    "name": "Elvenking's Harper",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Elvenking's Harper",
+        "manaCost": "{1}{U}",
+        "type": "Creature — Elf Bard",
+        "text": "{4}{U}: Target creature can't be blocked this turn.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Elves of Deep Shadow",
     "layout": "single",
     "cards": [
@@ -119601,6 +119769,18 @@
         "name": "Enchanted Prairie",
         "type": "Enchantment Land",
         "text": "Enchanted Prairie enters tapped.\n{T}: Add {W} or {U}."
+      }
+    ]
+  },
+  {
+    "name": "Enchanted River's Grasp",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Enchanted River's Grasp",
+        "manaCost": "{2}{U}",
+        "type": "Enchantment — Aura",
+        "text": "Enchant creature\nWhen this Aura enters, tap enchanted creature and remove all counters from it.\nEnchanted creature loses all abilities and doesn't untap during its controller's untap step."
       }
     ]
   },
@@ -123000,6 +123180,20 @@
         "type": "Creature — Wall",
         "text": "Defender (This creature can't attack.)\nReach (This creature can block creatures with flying.)\nOther creatures you control get +1/+0.\nWhenever you attack with two or more creatures, draw a card.",
         "power": "3",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Esgaroth Garrison",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Esgaroth Garrison",
+        "manaCost": "{4}{W}",
+        "type": "Creature — Human Soldier",
+        "text": "Esgaroth Garrison's power is equal to the number of creatures you control.\nWhen this creature enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",
+        "power": "*",
         "toughness": "5"
       }
     ]
@@ -154755,6 +154949,18 @@
     ]
   },
   {
+    "name": "Giant's Boulder",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Giant's Boulder",
+        "manaCost": "{1}",
+        "type": "Artifact",
+        "text": "When this artifact enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)\n{1}, {T}: Add one mana of any color.\n{7}, {T}, Sacrifice this artifact: Destroy target permanent."
+      }
+    ]
+  },
+  {
     "name": "Giant's Grasp",
     "layout": "single",
     "cards": [
@@ -162280,6 +162486,20 @@
     ]
   },
   {
+    "name": "Goblin-town Flunkies",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Goblin-town Flunkies",
+        "manaCost": "{1}{R}",
+        "type": "Creature — Goblin Soldier",
+        "text": "Haste\nWhen this creature enters, amass Goblins 1. (Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",
+        "power": "1",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Goblins of the Flarg",
     "layout": "single",
     "cards": [
@@ -166681,6 +166901,20 @@
     ]
   },
   {
+    "name": "Great Fierce Bee",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Great Fierce Bee",
+        "manaCost": "{2}{B}",
+        "type": "Creature — Insect",
+        "text": "Flying\nWhenever one or more other creatures die, scry 1. (Look at the top card of your library. You may put that card on the bottom.)",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Great Forest Druid",
     "layout": "single",
     "cards": [
@@ -170748,6 +170982,20 @@
     ]
   },
   {
+    "name": "Guardian of the Halls",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Guardian of the Halls",
+        "manaCost": "{1}{G}",
+        "type": "Creature — Elf Soldier",
+        "text": "Trample\n{5}{G}{G}: Put three +1/+1 counters on this creature.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Guardian's Magemark",
     "layout": "single",
     "cards": [
@@ -171328,6 +171576,20 @@
         "manaCost": "{B}",
         "type": "Instant — Adventure",
         "text": "Create a Food token. (Then exile this card. You may cast the creature later from exile.)"
+      }
+    ]
+  },
+  {
+    "name": "Gundabad Opportunist",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gundabad Opportunist",
+        "manaCost": "{3}{R}",
+        "type": "Creature — Goblin Rogue",
+        "text": "When this creature enters, exile the top card of your library. Until the end of your next turn, you may play that card.",
+        "power": "4",
+        "toughness": "2"
       }
     ]
   },
@@ -199377,6 +199639,20 @@
     ]
   },
   {
+    "name": "Iron Hills Stalwart",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Iron Hills Stalwart",
+        "manaCost": "{4}{R}",
+        "type": "Creature — Dwarf Warrior",
+        "text": "Reach, trample\nWhen this creature enters, attach target Equipment you control to up to one target creature you control.",
+        "power": "4",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Iron Lad, Diverging Destiny",
     "layout": "single",
     "cards": [
@@ -219885,6 +220161,20 @@
     ]
   },
   {
+    "name": "Lake-town Lookout",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Lake-town Lookout",
+        "manaCost": "{W}",
+        "type": "Creature — Human Scout",
+        "text": "When this creature dies, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",
+        "power": "1",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Lake-town Mariners // Gone Fishing",
     "layout": "adventurer",
     "cards": [
@@ -219901,6 +220191,34 @@
         "manaCost": "{3}{U}",
         "type": "Instant — Adventure",
         "text": "Exile two target creatures and/or lands you control, then return them to the battlefield under their owner's control."
+      }
+    ]
+  },
+  {
+    "name": "Lake-town Toymaker",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Lake-town Toymaker",
+        "manaCost": "{3}{W}",
+        "type": "Creature — Human Artificer",
+        "text": "At the beginning of combat on your turn, if you've drawn two or more cards this turn, another target creature you control gets +3/+0 and gains first strike until end of turn.",
+        "power": "3",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Lakeshore Apothecary",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Lakeshore Apothecary",
+        "manaCost": "{1}{U}",
+        "type": "Creature — Human Cleric",
+        "text": "Vigilance\nWhenever you draw your second card each turn, put a +1/+1 counter on this creature.",
+        "power": "1",
+        "toughness": "2"
       }
     ]
   },
@@ -229306,6 +229624,20 @@
     ]
   },
   {
+    "name": "Long Lake Nuisance",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Long Lake Nuisance",
+        "manaCost": "{3}{U}",
+        "type": "Creature — Bird",
+        "text": "Flying\nWhen this creature enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",
+        "power": "3",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Long List of the Ents",
     "layout": "single",
     "cards": [
@@ -229364,6 +229696,20 @@
         "manaCost": "{1}{W}",
         "type": "Instant",
         "text": "Exile target creature. At the beginning of the next end step, return that card to the battlefield under its owner's control with a +1/+1 counter on it."
+      }
+    ]
+  },
+  {
+    "name": "Long-Bodied Grey Dog",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Long-Bodied Grey Dog",
+        "manaCost": "{3}",
+        "type": "Creature — Dog",
+        "text": "Flash\nReach\nWhen this creature enters, create a tapped Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -235296,6 +235642,18 @@
         "manaCost": "{2}",
         "type": "Artifact",
         "text": "If a creature with a magnet counter on it attacks, all creatures with magnet counters on them attack if able.\nWhenever a creature with a magnet counter on it attacks, all creatures with magnet counters on them block that creature this turn if able.\n{1}, {T}: Put a magnet counter on target creature."
+      }
+    ]
+  },
+  {
+    "name": "Magnificent End",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Magnificent End",
+        "manaCost": "{4}{W}",
+        "type": "Instant",
+        "text": "This spell costs {3} less to cast if it targets a tapped creature.\nMagnificent End deals 5 damage to target creature."
       }
     ]
   },
@@ -249191,6 +249549,20 @@
     ]
   },
   {
+    "name": "Mirkwood Meditator",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Mirkwood Meditator",
+        "manaCost": "{2}{U}",
+        "type": "Creature — Elf Druid",
+        "text": "Landfall — Whenever a land you control enters, you may have this creature's base power and toughness become 4/2 until end of turn.",
+        "power": "2",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Mirkwood Nurturer",
     "layout": "single",
     "cards": [
@@ -253223,6 +253595,18 @@
         "manaCost": "{2}{B}",
         "type": "Instant",
         "text": "Target creature gets +2/+1 and gains lifelink until end of turn.\nDraw a card."
+      }
+    ]
+  },
+  {
+    "name": "Moment of Glory",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Moment of Glory",
+        "manaCost": "{W}",
+        "type": "Sorcery",
+        "text": "Put a +1/+1 counter on target creature you control. If this spell was cast from a graveyard, also put a +1/+1 counter on each other creature you control.\nFlashback {4}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)"
       }
     ]
   },
@@ -273349,6 +273733,18 @@
     ]
   },
   {
+    "name": "Old Fat Spider Can't See Me",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Old Fat Spider Can't See Me",
+        "manaCost": "{2}{U}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\nI — Target creature you control gains hexproof for as long as this Saga remains on the battlefield.\nII — Prevent all damage that would be dealt by up to one target creature for as long as this Saga remains on the battlefield.\nIII, IV — Draw a card."
+      }
+    ]
+  },
+  {
     "name": "Old Flitterfang",
     "layout": "single",
     "cards": [
@@ -273498,6 +273894,20 @@
         "text": "When you cast this spell, reveal cards from the top of your library until you reveal X creature cards. Put all creature cards revealed this way into your graveyard, then put the rest on the bottom of your library in a random order.\nOld Stickfingers's power and toughness are each equal to the number of creature cards in your graveyard.",
         "power": "*",
         "toughness": "*"
+      }
+    ]
+  },
+  {
+    "name": "Old Thrush",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Old Thrush",
+        "manaCost": "{2}",
+        "type": "Creature — Bird",
+        "text": "Flying\nWhen this creature enters, you gain 2 life. You may search your library for a basic land card, reveal it, then shuffle and put that card on top.",
+        "power": "1",
+        "toughness": "2"
       }
     ]
   },
@@ -288755,6 +289165,18 @@
     ]
   },
   {
+    "name": "Pinecone Strike",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Pinecone Strike",
+        "manaCost": "{1}{R}",
+        "type": "Instant",
+        "text": "Choose one or both —\n• Pinecone Strike deals 3 damage to target creature. If that creature would die this turn, exile it instead.\n• Destroy target artifact token."
+      }
+    ]
+  },
+  {
     "name": "Pinecrest Ridge",
     "layout": "single",
     "cards": [
@@ -300889,6 +301311,18 @@
     ]
   },
   {
+    "name": "Quarrel",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Quarrel",
+        "manaCost": "{1}{G}",
+        "type": "Instant",
+        "text": "Target creature you control deals damage equal to its power to target creature an opponent controls."
+      }
+    ]
+  },
+  {
     "name": "Quarrel's End",
     "layout": "single",
     "cards": [
@@ -303517,6 +303951,18 @@
         "power": "3",
         "toughness": "3",
         "colorIndicator": "B"
+      }
+    ]
+  },
+  {
+    "name": "Ragged Short Spear",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ragged Short Spear",
+        "manaCost": "{1}{R}",
+        "type": "Artifact — Equipment",
+        "text": "When this Equipment enters, you may discard a card. If you do, draw two cards.\nEquipped creature gets +2/+0.\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)"
       }
     ]
   },
@@ -307642,6 +308088,20 @@
         "type": "Creature — Bird",
         "text": "Flying\nWhenever you draw a card, put a +1/+1 counter on this creature.",
         "power": "1",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Ravening Warg",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ravening Warg",
+        "manaCost": "{1}{B}",
+        "type": "Creature — Wolf",
+        "text": "Deathtouch\nFerocious — Whenever this creature attacks while you control a creature with power 4 or greater, you gain 2 life.",
+        "power": "2",
         "toughness": "2"
       }
     ]
@@ -316228,6 +316688,18 @@
         "text": "When this creature enters, create a number of 1/1 white Human Soldier creature tokens equal to your devotion to white. (Each {W} in the mana costs of permanents you control counts toward your devotion to white.)",
         "power": "1",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Reverent Howl",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Reverent Howl",
+        "manaCost": "{2}{B}",
+        "type": "Instant",
+        "text": "Choose one —\n• Target player draws two cards and loses 2 life.\n• Target creature gets +2/+2 and gains lifelink until end of turn."
       }
     ]
   },
@@ -358200,6 +358672,18 @@
     ]
   },
   {
+    "name": "Smaug's Fury",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Smaug's Fury",
+        "manaCost": "{1}{R}",
+        "type": "Instant",
+        "text": "Target creature gets +3/+0 and gains reach and first strike until end of turn."
+      }
+    ]
+  },
+  {
     "name": "Smaug, Wicked Worm",
     "layout": "single",
     "cards": [
@@ -358210,6 +358694,26 @@
         "text": "Flying\nWhen Smaug enters, create X tapped Treasure tokens, where X is the number of artifacts your opponents control.\nWhenever you cast a spell, if mana from a Treasure was spent to cast it, you draw a card and lose 1 life.",
         "power": "5",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Smaug, the Great Calamity // Spew Flame",
+    "layout": "adventurer",
+    "cards": [
+      {
+        "name": "Smaug, the Great Calamity",
+        "manaCost": "{5}{R}{R}",
+        "type": "Legendary Creature — Dragon",
+        "text": "Flying",
+        "power": "5",
+        "toughness": "5"
+      },
+      {
+        "name": "Spew Flame",
+        "manaCost": "{4}{R}",
+        "type": "Sorcery — Adventure",
+        "text": "Spew Flame deals 5 damage to target creature. (Then exile this card. You may cast the creature later from exile.)"
       }
     ]
   },
@@ -359661,6 +360165,20 @@
         "text": "Vigilance\nDuring your turn, this creature has base power and toughness 5/2.\n{5}{U}{U}: This creature can't be blocked this turn.",
         "power": "2",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Snowslope Hunter",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Snowslope Hunter",
+        "manaCost": "{2}{R}",
+        "type": "Creature — Goblin Ranger",
+        "text": "Sacrifice another creature or artifact: Exile the top card of your library. You may play it until the end of your next turn. Activate only during your turn and only once each turn.",
+        "power": "2",
+        "toughness": "3"
       }
     ]
   },
@@ -375226,6 +375744,18 @@
     ]
   },
   {
+    "name": "Stir Up Trouble",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Stir Up Trouble",
+        "manaCost": "{B}",
+        "type": "Sorcery",
+        "text": "As an additional cost to cast this spell, sacrifice an artifact or creature or pay {4}.\nDestroy target creature."
+      }
+    ]
+  },
+  {
     "name": "Stir the Grave",
     "layout": "single",
     "cards": [
@@ -376556,6 +377086,20 @@
         "manaCost": "{G}",
         "type": "Instant",
         "text": "Put a +1/+1 counter on target creature you control. Untap that creature."
+      }
+    ]
+  },
+  {
+    "name": "Stony-Voiced Goblins",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Stony-Voiced Goblins",
+        "manaCost": "{1}{B}",
+        "type": "Creature — Goblin Bard",
+        "text": "When this creature enters, each opponent discards a card.",
+        "power": "1",
+        "toughness": "1"
       }
     ]
   },
@@ -396645,7 +397189,7 @@
         "name": "The Black Arrow",
         "manaCost": "{3}",
         "type": "Legendary Artifact — Equipment",
-        "text": "Flash\nWhen The Black Arrow enters, it deals 1 damage to any target. If a Dragon is dealt damage this way, destroy it.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)"
+        "text": "Flash\nWhen The Black Arrow enters, it deals 1 damage to any target. If a Dragon is dealt damage this way, destroy it.\nEquipped creature gets +1/+1 and has reach.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)"
       }
     ]
   },
@@ -404120,6 +404664,18 @@
     ]
   },
   {
+    "name": "Thorin's Last Stand",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Thorin's Last Stand",
+        "manaCost": "{2}{W}{W}",
+        "type": "Instant",
+        "text": "Choose one —\n• Creatures you control get +2/+1 until end of turn.\n• Destroy target artifact or enchantment. You gain 2 life."
+      }
+    ]
+  },
+  {
     "name": "Thorin, Company's Leader",
     "layout": "single",
     "cards": [
@@ -408437,6 +408993,18 @@
         "manaCost": "{3}{U}{U}",
         "type": "Sorcery",
         "text": "Draw four cards."
+      }
+    ]
+  },
+  {
+    "name": "Tidings of War",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Tidings of War",
+        "manaCost": "{R}",
+        "type": "Sorcery",
+        "text": "Amass Goblins 1. If this spell was cast from a graveyard, amass Goblins 3 instead. (To amass Goblins X, put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)\nFlashback {3}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)"
       }
     ]
   },
@@ -417305,6 +417873,20 @@
     ]
   },
   {
+    "name": "Troop of Ponies",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Troop of Ponies",
+        "manaCost": "{2}",
+        "type": "Creature — Horse",
+        "text": "{2}, {T}, Sacrifice this creature: Search your library for up to two basic land cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle.",
+        "power": "2",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Trophy Hunter",
     "layout": "single",
     "cards": [
@@ -423344,6 +423926,18 @@
         "manaCost": "{1}{W}",
         "type": "Enchantment — Aura",
         "text": "Enchant creature\nEnchanted creature can't attack or block.\n{5}, Sacrifice this Aura: Exile enchanted creature. You create a 1/1 black Ninja creature token. Activate only as a sorcery."
+      }
+    ]
+  },
+  {
+    "name": "Uneasy Partings",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Uneasy Partings",
+        "manaCost": "{3}{U}",
+        "type": "Instant",
+        "text": "This spell costs {1} less to cast if it targets an attacking nontoken creature.\nTarget creature's owner puts it on their choice of the top or bottom of their library."
       }
     ]
   },
@@ -430005,6 +430599,26 @@
         "text": "Flying\nWhenever this creature attacks or blocks, roll a six-sided die. This creature gets +X/+0 until end of turn, where X is the result minus 1.",
         "power": "5",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Velvetwing Butterflies // Gaze in Wonder",
+    "layout": "adventurer",
+    "cards": [
+      {
+        "name": "Velvetwing Butterflies",
+        "manaCost": "{2}{W}",
+        "type": "Creature — Insect",
+        "text": "Flying",
+        "power": "2",
+        "toughness": "2"
+      },
+      {
+        "name": "Gaze in Wonder",
+        "manaCost": "{1}{W}",
+        "type": "Instant — Adventure",
+        "text": "Tap one or two target creatures. (Then exile this card. You may cast the creature later from exile.)"
       }
     ]
   },
@@ -438232,6 +438846,18 @@
     ]
   },
   {
+    "name": "Vow to Erebor",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Vow to Erebor",
+        "manaCost": "{1}{W}",
+        "type": "Instant",
+        "text": "Untap target creature you control. It gets +2/+2 until end of turn. If it's a Dwarf, you may attach an Equipment you control to it."
+      }
+    ]
+  },
+  {
     "name": "Voyage Home",
     "layout": "single",
     "cards": [
@@ -441937,6 +442563,18 @@
     ]
   },
   {
+    "name": "Warg Tactics",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Warg Tactics",
+        "manaCost": "{1}{G}",
+        "type": "Instant",
+        "text": "Choose one —\n• Destroy target creature with flying.\n• Put a +1/+1 counter on target creature you control. It gains trample and hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)"
+      }
+    ]
+  },
+  {
     "name": "Wargate",
     "layout": "single",
     "cards": [
@@ -441945,6 +442583,20 @@
         "manaCost": "{X}{G}{W}{U}",
         "type": "Sorcery",
         "text": "Search your library for a permanent card with mana value X or less, put it onto the battlefield, then shuffle."
+      }
+    ]
+  },
+  {
+    "name": "Wargling",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Wargling",
+        "manaCost": "{1}{G}",
+        "type": "Creature — Wolf",
+        "text": "Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, until end of turn, this creature gets +1/+0 and creatures you control gain trample.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -460301,6 +460953,20 @@
         "text": "First strike\nAt the beginning of combat on your turn, if another Human entered the battlefield under your control this turn, create two 2/2 red Human Knight creature tokens with trample and haste. Then if you control six or more Humans, draw a card.",
         "power": "5",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Óin the Brave",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Óin the Brave",
+        "manaCost": "{1}{R}",
+        "type": "Legendary Creature — Dwarf Warrior",
+        "text": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)\nAs long as you have an enduring story, Óin gets +1/+0 and has haste.\n{1}, {T}, Discard a card: Draw a card.",
+        "power": "1",
+        "toughness": "3"
       }
     ]
   }

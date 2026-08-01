@@ -1549,6 +1549,7 @@ pub enum Expiration {
   ForAsLongAsPermanentRemainsAttachedToPermanent(Box<Permanent>, Box<Permanent>),
   ForAsLongAsPermanentRemainsFaceDown(Box<Permanent>),
   ForAsLongAsPermanentRemainsTapped(Box<Permanent>),
+  ForAsLongAsPermanentRemainsOnTheBattlefield(Box<Permanent>),
   UntilAPlayerBecomesTheMonarch(Box<Players>),
   UntilAPlayerCastsASpell(Box<Players>, Box<Spells>),
   UntilAPlayerExilesACardWithThisAbility(Box<Players>),
