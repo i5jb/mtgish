@@ -442,6 +442,7 @@ pub enum ArtifactType {
   Food,
   Fortification,
   Gold,
+  Heartwood,
   Incubator,
   Infinity,
   Junk,
@@ -1023,6 +1024,7 @@ pub enum SubType {
   Food,
   Fortification,
   Gold,
+  Heartwood,
   Incubator,
   Infinity,
   Junk,
@@ -5074,6 +5076,7 @@ pub enum Permanents {
   TheTokensCreatedThisWay,
 
   IsntPrepared,
+  WasDestroyedThisWay,
 
   APermanentWithTheHighestManaValue(Box<Permanents>),
   APermanentWithTheLowestManaValue(Box<Permanents>),
@@ -8218,11 +8221,10 @@ pub enum CreatableToken {
 
   // Token Copies of Things
   TokenCopyOfDiscardedCard(Box<CardInHand>, TokenCopyEffects),
-  TokenCopyOfEachCardOfTypeRevealedThisWay(Box<Cards>, TokenCopyEffects),
+  TokenCopyOfEachCardInLibrary(Box<CardsInLibrary>, TokenCopyEffects),
   TokenCopyOfAPermanent(Box<Permanents>, TokenCopyEffects),
   TokenCopyOfEachExiledCard(CardsInExile, TokenCopyEffects),
   TokenCopyOfAnExiledCard(CardsInExile, TokenCopyEffects),
-  TokenCopyOfEachPermanentDestroyedThisWay(TokenCopyEffects),
   TokenCopyOfExiledCard(CardInExile, TokenCopyEffects),
   TokenCopyOfNamedCard(NameString, TokenCopyEffects),
   TokenCopyOfSpell(Box<Spell>, TokenCopyEffects),
@@ -8233,7 +8235,6 @@ pub enum CreatableToken {
   TokenCopyOfEachGraveyardCard(Box<CardsInGraveyards>, TokenCopyEffects),
   TokenCopyOfEachPermanent(Box<Permanents>, TokenCopyEffects),
   TokenCopyOfPermanent(Box<Permanent>, TokenCopyEffects),
-  TokenCopyOfAnEnteringPermanent(Box<Permanents>, TokenCopyEffects),
 
   // Replacement-Effect Tokens
   ThoseTokens,
@@ -8658,13 +8659,6 @@ pub enum Action {
   CreateTokensForEachPlayer(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
   CreateTokensForEachPermanent(Box<Permanents>, Vec<CreatableToken>, Vec<TokenFlag>),
   EachPlayerCreatesTokens(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
-  EachPlayerCreatesTokensForEachPermanent(Box<Players>, Box<Permanents>, Vec<CreatableToken>, Vec<TokenFlag>),
-
-  //ForEachPermanentCreateTokens(Box<Permanents>, Vec<CreatableToken>),
-  //ForEachPermanentCreateTokensWithFlags(Box<Permanents>, Vec<CreatableToken>, Vec<TokenFlag>),
-  //ForEachPlayerCreateTokens(Box<Players>, Vec<CreatableToken>),
-  //ForEachPlayerCreateTokensWithFlags(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
-  //EachPlayerCreatesTokensForEachPermanent(Box<Players>, Box<Permanents>, Vec<CreatableToken>),
 
   PutCardsInLibraryIntoGraveyard(Box<CardsInLibrary>),
   PutCardsInLibraryOntoTheBattlefield(Box<CardsInLibrary>, Vec<EnterFlag>),

@@ -3805,6 +3805,7 @@
     "{{_PERMANENTS[PutCounters]}}": "",
     "{{_PERMANENTS[Exile]}}": "",
 
+    "WasDestroyedThisWay": "",
     "IsntPrepared": "",
     "APermanentWithTheHighestManaValue({{PERMANENTS}})": "",
     "APermanentWithTheLowestManaValue({{PERMANENTS}})": "",

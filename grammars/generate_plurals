@@ -448,6 +448,7 @@ flat_artifact_types = [
   ("Clue"         , "Clues"         , "Clue"         ),
   ("Map"          , "Maps"          , "Map"          ),
   ("Gold"         , "Golds"         , "Gold"         ),
+  ("Heartwood"    , "Heartwoods"    , "Heartwood"    ),
   ("Incubator"    , "Incubators"    , "Incubator"    ),
   ("Mutagen"      , "Mutagens"      , "Mutagen"      ),
   ("Vibranium"    , "Vibraniums"    , "Vibranium"    ),

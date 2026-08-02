@@ -1,37 +1,17 @@
 {
-  "{{TOKEN_COPY_EFFECT}}": {
-    "AddSupertypes([{{SUPERTYPE}}])": "",
-    "RemoveSupertypes([{{SUPERTYPE}}])": "",
+  "{{CREATABLE_TOKEN}}": {
+    "{{CREATABLE_TOKEN[Number]}}": "",
+    "{{CREATABLE_TOKEN[TokenCopies]}}": "",
+    "{{CREATABLE_TOKEN[Defined]}}": "",
+    "{{CREATABLE_TOKEN[Gift]}}": "",
+    "{{CREATABLE_TOKEN[Oracle]}}": "",
+    "{{CREATABLE_TOKEN[Normal]}}": "",
+  },
 
-    "AddCardtypes([Artifact, Creature])": "",
-    "AddCardtypes([Artifact])": "",
-    "AddCardtypes([Creature])": "",
-    "AddCardtypes([Enchantment])": "",
-    "SetCardtypes([Creature])": "",
-    "SetCardtypes([Artifact])": "",
-    "SetCardtypes([Enchantment])": "",
-    "SetCardtypes([Enchantment, Creature])": "",
-
-    "AddArtifactTypes([Food])": "",
-    "SetArtifactTypes([Food])": "",
-    "AddCreatureTypes([{{ZOMBIE}}])": "",
-    "SetCreatureTypes([{{ZOMBIE}}])": "",
-
-    "AddAbility([{{RULE}}])": "",
-    "LosesAbility({{CHECK_HASABLE}})": "",
-    "RemoveThisAbility": "",
-    "AddAbilityFromEachExiledHasable({{CARDS_IN_EXILE}}, {{CHECK_HASABLE_LIST}})": "",
-
-    "AddColor(SimpleColorList([{{SIMPLE_COLOR}}]))": "",
-    "SetColor(SimpleColorList([{{SIMPLE_COLOR}}]))": "",
-    "SetColor(SimpleColorList([{{SIMPLE_COLOR}}, {{SIMPLE_COLOR}}]))": "",
-    "SetColor(Colorless)": "",
-
-    "SetName({{QUOTED_NAMED_CARD}})": "",
-
-    "SetPT({{PT}})": "",
-
-    "SetLoyalty({{NUMBER}})": "",
+  "{{CREATABLE_TOKEN_LIST}}": {
+    "[{{CREATABLE_TOKEN}}, {{CREATABLE_TOKEN}}, {{CREATABLE_TOKEN}}]": "",
+    "[{{CREATABLE_TOKEN}}, {{CREATABLE_TOKEN}}]": "",
+    "[{{CREATABLE_TOKEN}}]": "",
   },
 
   "{{TOKEN_COPY_EFFECT_LIST}}": {
@@ -44,115 +24,572 @@
     "NoTokenCopyEffects": "",
   },
 
+  "{{TOKEN_COPY_EFFECT}}": {
+    // Text: "Create a token that’s a copy of target artifact or enchantment
+    //        you control, except it’s legendary"
+    // Card: [[Adagia, Windswept Bastion]]
+    "AddSupertypes([{{SUPERTYPE}}])": "",
+
+    // Text: "Create a token that’s a copy of target creature you control,
+    //        except it isn’t legendary"
+    // Card: [[Multiversal Recruitment]]
+    "RemoveSupertypes([{{SUPERTYPE}}])": "",
+
+    // Text: "you may create a tapped and attacking token that’s a copy of
+    //        target attacking legendary creature you control other than
+    //        Shaun, except it’s not legendary and it’s a Synth artifact
+    //        creature in addition to its other types"
+    // Card: [[Shaun, Father of Synths]]
+    "AddCardtypes([Artifact, Creature])": "",
+
+    // Text: "create a token that’s a copy of it, except it’s an artifact in
+    //        addition to its other types"
+    // Card: [[Vaultborn Tyrant]]
+    "AddCardtypes([Artifact])": "",
+
+    // Text: "Create a token that’s a copy of another target creature you
+    //        control, except it’s a 1/1 red Balloon creature in addition to
+    //        its other colors and types and it has flying and haste"
+    // Card: [[The Jolly Balloon Man]]
+    "AddCardtypes([Creature])": "",
+
+    // Text: "create a token that’s a copy of another target creature, except
+    //        it’s an enchantment in addition to its other types"
+    // Card: [[Felhide Spiritbinder]]
+    "AddCardtypes([Enchantment])": "",
+
+    // Text: "Create a token that’s a copy of target creature card exiled with
+    //        this artifact, except it’s a 6/6 green Dinosaur creature with
+    //        trample"
+    // Card: [[Dino DNA]]
+    "SetCardtypes([Creature])": "",
+
+    // Text: "Create a token that’s a copy of that card, except it’s an
+    //        artifact and it loses all other card types"
+    // Card: [[Espers to Magicite]]
+    "SetCardtypes([Artifact])": "",
+
+    // Text: "create a token that’s a copy of that card, except it’s an
+    //        enchantment and loses all other card types"
+    // Card: [[Myrkul, Lord of Bones]]
+    "SetCardtypes([Enchantment])": "",
+
+    // Text: "Create a token that’s a copy of that card, except it’s a 1/1
+    //        enchantment creature"
+    // Card: [[Fear of Ridicule]]
+    "SetCardtypes([Enchantment, Creature])": "",
+
+    // Text: "create a token that's a copy of that creature, except it's a 1/1
+    //        Food Golem artifact creature in addition to its other types and
+    //        it has "{2}, {T}, Sacrifice this token: You gain 3 life.""
+    // Card: [[Brenard, Ginger Sculptor]]
+    "AddArtifactTypes([Food])": "",
+
+    // Text: "create a token that's a copy of that creature, except it's a
+    //        Food artifact with "{2}, {T}, Sacrifice this token: You gain 3
+    //        life," and it loses all other card types"
+    // Card: [[Shelob, Child of Ungoliant]]
+    "SetArtifactTypes([Food])": "",
+
+    // Text: "create a token that’s a copy of that creature, except it’s not
+    //        legendary and it’s a 2/2 black Zombie in addition to its other
+    //        colors and types"
+    // Card: [[Ratadrabik of Urborg]]
+    "AddCreatureTypes([{{ZOMBIE}}])": "",
+
+    // Text: "create a token that’s a copy of that creature, except it’s a
+    //        0/1 white Illusion"
+    // Card: [[Preston, the Vanisher]]
+    "SetCreatureTypes([{{ZOMBIE}}])": "",
+
+    // Text: "Create a token that’s a copy of target nonlegendary creature you
+    //        control, except it has haste. Sacrifice it at the beginning of
+    //        the next end step"
+    // Card: [[Kiki-Jiki, Mirror Breaker]]
+    "AddAbility([{{RULE}}])": "",
+
+    // Text: "create a token that’s a copy of this creature, except it has
+    //        haste and loses soulbond"
+    // Card: [[Mirage Phalanx]]
+    "LosesAbility({{CHECK_HASABLE}})": "",
+
+    // Text: "create a token that’s a copy of Inchblade Companion, except it
+    //        doesn’t have this ability"
+    // Card: [[Inchblade Companion]]
+    "RemoveThisAbility": "",
+
+    // Text: "Create Vecna, a legendary 8/8 black Zombie God creature token
+    //        with indestructible and all triggered abilities of the exiled
+    //        cards"
+    // Card: [[The Book of Vile Darkness]]
+    "AddAbilityFromEachExiledHasable({{CARDS_IN_EXILE}}, {{CHECK_HASABLE_LIST}})": "",
+
+    // Text: "Create a token that’s a copy of another target creature you
+    //        control, except it’s a 1/1 red Balloon creature in addition to
+    //        its other colors and types and it has flying and haste"
+    // Card: [[The Jolly Balloon Man]]
+    "AddColor(SimpleColorList([{{SIMPLE_COLOR}}]))": "",
+
+    // Text: "Create a token that’s a copy of it, except it’s a 4/4 black
+    //        Zombie"
+    // Card: [[Lazotep Quarry]]
+    "SetColor(SimpleColorList([{{SIMPLE_COLOR}}]))": "",
+
+    // Text: "For each creature card in your graveyard, create a token
+    //        that’s a copy of it, except it’s a 1/1 black and green Insect"
+    // Card: [[Grist, Voracious Larva // Grist, the Plague Swarm]]
+    "SetColor(SimpleColorList([{{SIMPLE_COLOR}}, {{SIMPLE_COLOR}}]))": "",
+
+    // Text: "Create a token that’s a copy of one of those creatures, except
+    //        its power is equal to the total power of those creatures, its
+    //        toughness is equal to the total toughness of those creatures,
+    //        and it’s a colorless Eldrazi creature"
+    // Card: [[Benthic Anomaly]]
+    "SetColor(Colorless)": "",
+
+    // Text: "Create a token that’s a copy of target creature, except it’s a
+    //        legendary Alien named Prisoner Zero"
+    // Card: [[The Eleventh Hour]]
+    "SetName({{QUOTED_NAMED_CARD}})": "",
+
+    // Text: "Create a token that’s a copy of it, except it’s a 4/4 black
+    //        Zombie"
+    // Card: [[Lazotep Quarry]]
+    "SetPT({{PT}})": "",
+
+    // Text: "create a token that’s a copy of Jace, except it’s not legendary
+    //        and its starting loyalty is 1"
+    // Card: [[Jace, Mirror Mage]]
+    "SetLoyalty({{NUMBER}})": "",
+  },
+
   "{{TOKEN_FLAGS}}": {
+    // Text: "Create a Food token"
+    // Card: [[Gilded Goose]]
     "[]": "",
+
+    // Text: "When one or more creatures enter under your control, create a
+    //        Wicked Role token attached to one of them"
+    // Card: [[Dunbarrow Revivalist]]
     "[EntersAttachedToAPermanent({{PERMANENTS}})]": "",
+
+    // Text: "Create a Wicked Role token attached to up to one target creature"
+    // Card: [[Eriette's Whisper]]
     "[EntersAttachedToPermanent({{PERMANENT}})]": "",
+
+    // Text: "create a 1/1 white Cat Soldier creature token with vigilance
+    //        that’s attacking"
+    // Card: [[Brimaz, King of Oreskos]]
     "[EntersAttacking]": "",
+
+    // Text: "Create a 1/1 green Saproling creature token that’s blocking
+    //        target creature attacking you"
+    // Card: [[Flash Foliage]]
     "[EntersBlockingAttacker({{PERMANENT}})]": "",
-    "[EntersAttackingPlayer({{PLAYER}})]": "",
+
+    // Text: "create a 4/4 white Angel creature token with flying that’s
+    //        tapped and attacking that player"
+    // Card: [[Seraphic Greatsword]]
     "[EntersTapped, EntersAttackingPlayer({{PLAYER}})]": "",
+
+    // Text: "for each opponent, create a 1/1 white Human creature token
+    //        that’s tapped and attacking that player or a planeswalker
+    //        they control"
+    // Card: [[Adeline, Resplendent Cathar]]
     "[EntersTapped, EntersAttackingPlayerOrPlaneswalkerControlledBy({{PLAYER}})]": "",
+
+    // Text: "create a 2/2 colorless Robot artifact creature token that’s
+    //        tapped and attacking"
+    // Card: [[Kavaron Harrier]]
     "[EntersTapped, EntersAttacking]": "",
+
+    // Text: "create a tapped Powerstone token"
+    // Card: [[Stone Retrieval Unit]]
     "[EntersTapped]": "",
+
+    // Text: "Create a token that’s a copy of target creature you control,
+    //        except it enters with an additional +1/+1 counter on it"
+    // Card: [[Littjara Mirrorlake]]
     "[EntersWithACounter({{COUNTER_TYPE}})]": "",
+
+    // Text: "create a 0/0 green Ooze creature token with trample. The token
+    //        enters with X +1/+1 counters on it, where X is the number of
+    //        other creatures you control"
+    // Card: [[Printlifter Ooze]]
     "[EntersWithNumberCounters({{NUMBER}}, {{COUNTER_TYPE}})]": "",
+
+    // Text: "For each opponent, create two 3/3 blue and red Elemental creature
+    //        tokens with flying that attack that opponent this turn if able"
+    // Card: [[Furygale Flocking]]
     "[EntersWithRuleEffectUntil({{PERMANENT_RULE_LIST}}, {{EXPIRATION}})]": "",
   },
 
-  "{{CREATABLE_TOKEN}}": {
+  "{{CREATABLE_TOKEN[Number]}}": {
+    // Text: "create two 1/1 blue Fish creature tokens"
+    // Text: "create two tapped Treasure tokens"
+    // Card: [[Frost Fair Lure Fish]]
     "NumberTokens({{NUMBER}}, {{CREATABLE_TOKEN}})": "",
-    "NumberTokensForEach({{NUMBER}}, {{NUMBER}}, {{CREATABLE_TOKEN}})": "",
 
+    // Text: "Create two 1/1 green Saproling creature tokens for each card of
+    //        the chosen type revealed this way"
+    // Card: [[Fertile Imagination]]
+    "NumberTokensForEach({{NUMBER}}, {{NUMBER}}, {{CREATABLE_TOKEN}})": "",
+  },
+
+  "{{CREATABLE_TOKEN[TokenCopies]}}": {
+    // Text: "copy a random card with the same mana cost as that creature.
+    //        You may pay {3}. If you do, choose one of those copies. If
+    //        a copy of a permanent card is chosen, you may create a token
+    //        that’s a copy of that card."
+    // Card: [[Maelstrom Archangel Avatar]]
     "TokenFromCopy": "",
 
+    // Text: "Whenever you discard a creature card, ... create a tapped
+    //        token that’s a copy of that card"
+    // Card: [[Hashaton, Scarab's Fist]]
     "TokenCopyOfDiscardedCard(Trigger_ThatDiscardedCard, {{TOKEN_COPY_EFFECT_LIST}})": "",
 
+    // Text: "Each friend creates a token that’s a copy of a creature they
+    //        control"
+    // Card: [[Zndrsplt's Judgment]]
     "TokenCopyOfAPermanent({{PERMANENTS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "Create a token that’s a copy of a card exiled with this artifact"
+    // Card: [[Mimic Vat]]
     "TokenCopyOfAnExiledCard({{CARDS_IN_EXILE}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
 
-    "TokenCopyOfAnEnteringPermanent({{PERMANENTS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+    // Text: "When you cast this spell, create a token that’s a copy of it,
+    //        except it isn’t legendary."
+    // Card: [[Osgood, Operation Double]]
     "TokenCopyOfSpell({{SPELL}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
-    "TokenCopyOfEachCardOfTypeRevealedThisWay({{CARDS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "Each player reveals the top card of their library. For each
+    //        creature card revealed this way, create a token that’s a copy
+    //        of that card"
+    // Card: [[Haunting Imitation]]
+    "TokenCopyOfEachCardInLibrary({{CARDS_IN_LIBRARY}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "create a token that’s a copy of your commander"
+    // Card: [[I Am Never Alone]]
+    // Text: "Create a token that’s a copy of one of your commanders"
+    // Card: [[Baldur's Gate Wilderness]]
     "TokenCopyOfCommander({{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "create a token that’s a copy of this creature"
+    // Card: [[Homunculus Horde]]
     "TokenCopyOfPermanent({{PERMANENT}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "For each creature target player controls, create a token that’s
+    //        a copy of that creature."
+    // Card: [[Clone Legion]]
+    // Text: "create Stangg Twin, a legendary 3/4 red and green Human Warrior
+    //        creature token. It enters tapped and attacking. For each Aura
+    //        and Equipment attached to Stangg, create a token that’s a copy
+    //        of it attached to Stangg Twin"
+    // Card: [[Stangg, Echo Warrior]]
     "TokenCopyOfEachPermanent({{PERMANENTS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "For each creature card in your graveyard, create a token
+    //        that’s a copy of it"
+    // Card: [[Grist, Voracious Larva // Grist, the Plague Swarm]]
     "TokenCopyOfEachGraveyardCard({{CARDS_IN_GRAVEYARDS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "For each creature card exiled this way, create a token that’s
+    //        a copy of it"
+    // Card: [[Foggy Swamp Visions]]
     "TokenCopyOfEachExiledCard({{CARDS_IN_EXILE}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "Create a token that’s a copy of target creature card in your
+    //        graveyard"
+    // Card: [[Feldon of the Third Path]]
     "TokenCopyOfGraveyardCard({{CARD_IN_GRAVEYARDS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "Create a token that’s a copy of target creature card exiled
+    //        with this artifact"
+    // Card: [[Dino DNA]]
     "TokenCopyOfExiledCard({{CARD_IN_EXILE}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
-    "TokenCopyOfEachPermanentDestroyedThisWay({{TOKEN_COPY_EFFECT_LIST}})": "",
 
+    // Text: "create a token that’s a copy of a card named Arrest"
+    // Card: [[Peacekeeper Avatar]]
     "TokenCopyOfNamedCard({{QUOTED_NAMED_CARD}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "Create a token that’s a copy of a random creature card with
+    //        mana value X"
+    // Card: [[Pool of Vigorous Growth]]
     "TokenCopyOfACardAtRandom({{CARDS_IN_ORACLE}})": "",
+  },
 
-    // Defined Tokens (111.10)
+  "{{CREATABLE_TOKEN[Defined]}}": {
+    // See data/tokens.json5
+
+    // Text: "Create a Treasure token"
+    // Card: [[Glittermonger]]
+    // Define: "A colorless Treasure artifact with "{T}, Sacrifice this
+    //          token: Add one mana of any color.""
     "TreasureToken": "",
+
+    // Text: "Create a Food token"
+    // Card: [[Gilded Goose]]
+    // Define: "A colorless Food artifact with "{2}, {T}, Sacrifice this
+    //          token: You gain 3 life.""
     "FoodToken": "",
+
+    // Text: "Create a Gold token"
+    // Card: [[Gild]]
+    // Define: "A colorless Gold artifact with "Sacrifice this token: Add
+    //          one mana of any color.""
     "GoldToken": "",
+
+    // Text: "create a Walker token"
+    // Card: [[Gisa's Favorite Shovel]]
+    // Define: "A 2/2 black Zombie creature named Walker."
     "WalkerToken": "",
+
+    // Text: "Create a Shard token"
+    // Card: [[Niko Aris]]
+    // Define: "A colorless Shard enchantment with "{2}, Sacrifice this
+    //          token: Scry 1, then draw a card.""
     "ShardToken": "",
+
+    // Text: "Create a Clue token"
+    // Card: [[Cunning Maneuver]]
+    // Define: "A colorless Clue artifact with "{2}, Sacrifice this token:
+    //          Draw a card.""
     "ClueToken": "",
+
+    // Text: "create a Blood token"
+    // Card: [[Belligerent Guest]]
+    // Define: "A colorless Blood artifact with "{1}, {T}, Discard a card,
+    //          Sacrifice this token: Draw a card.""
     "BloodToken": "",
+
+    // Text: "create a tapped Powerstone token"
+    // Card: [[Stone Retrieval Unit]]
+    // Define: "A colorless Powerstone artifact with "{T}: Add {C}. This mana
+    //          can't be spent to cast a nonartifact spell.""
     "PowerstoneToken": "",
+
+    // Text: "incubate 5"
+    // Card: [[Converter Beast]]
+    // CR: "To incubate N, create an Incubator token that enters the
+    //      battlefield with N +1/+1 counters on it"
+    // Define: "A double-faced token.
+    //          Its front face is a colorless Incubator artifact with "{2}:
+    //           Transform this token."
+    //          Its back face is a 0/0 colorless Phyrexian artifact creature."
     // "IncubatorToken": "",
+
+    // Text: "create a Cursed Role token attached to target creature"
+    // Card: [[Spiteful Hexmage]]
+    // Define: "A colorless Aura Role enchantment named Cursed with enchant
+    //          creature and "Enchanted creature has base power and toughness
+    //          1/1.""
     "CursedRoleToken": "",
+
+    // Text: "Create a Monster Role token attached to target creature"
+    // Card: [[Curse of the Werefox]]
+    // Define: "A colorless Aura Role enchantment named Monster with enchant
+    //          creature and "Enchanted creature gets +1/+1 and has trample.""
     "MonsterRoleToken": "",
+
+    // Text: "create a Royal Role token attached to another target creature"
+    // Card: [[Charmed Clothier]]
+    // Define: "A colorless Aura Role enchantment named Royal with enchant
+    //          creature and "Enchanted creature gets +1/+1 and has ward {1}.""
     "RoyalRoleToken": "",
+
+    // Text: "create a Sorcerer Role token attached to target creature"
+    // Card: [[Spellbook Vendor]]
+    // Define: "A colorless Aura Role enchantment named Sorcerer with enchant
+    //          creature and "Enchanted creature gets +1/+1 and has 'Whenever
+    //          this creature attacks, scry 1.'""
     "SorcererRoleToken": "",
+
+    // Text: "create a Virtuous Role token attached to another target creature"
+    // Card: [[Ellivere of the Wild Court]]
+    // Define: "A colorless Aura Role enchantment named Virtuous with enchant
+    //          creature and "Enchanted creature gets +1/+1 for each
+    //          enchantment.""
     "VirtuousRoleToken": "",
+
+    // Text: "Create a Wicked Role token attached to up to one target creature"
+    // Card: [[Eriette's Whisper]]
+    // Define: "A colorless Aura Role enchantment named Wicked with enchant
+    //          creature, "Enchanted creature gets +1/+1," and "When this token
+    //          is put into a graveyard from the battlefield, each opponent
+    //          loses 1 life.""
     "WickedRoleToken": "",
+
+    // Text: "Create a Young Hero Role token attached to up to one target
+    //        creature"
+    // Card: [[Cut In]]
+    // Define: "A colorless Aura Role enchantment named Young Hero with enchant
+    //          creature and "Enchanted creature has 'Whenever this creature
+    //          attacks, if its toughness is 3 or less, put a +1/+1 counter on
+    //          it.'""
     "YoungHeroRoleToken": "",
+
+    // Text: "create a Map token"
+    // Card: [[Cartographer's Companion]]
+    // Define: "A colorless Map artifact with "{1}, {T}, Sacrifice this token:
+    //          Target creature you control explores. Activate only as a
+    //          sorcery.""
     "MapToken": "",
+
+    // Text: "Create a Junk token"
+    // Card: [[Break Down]]
+    // Define: "A colorless Junk artifact with "{T}, Sacrifice this token:
+    //          Exile the top card of your library. You may play that card
+    //          this turn. Activate only as a sorcery.""
     "JunkToken": "",
+
+    // Text: "Create a Lander token"
+    // Card: [[Sami's Curiosity]]
+    // Define: "A colorless Lander artifact with "{2}, {T}, Sacrifice this
+    //          token: Search your library for a basic land card, put it onto
+    //          the battlefield tapped, then shuffle.""
     "LanderToken": "",
+
+    // Text: "Create a Mutagen token"
+    // Card: [[Ooze Spill]]
+    // Define: "A colorless Mutagen artifact with "{1}, {T}, Sacrifice this
+    //          token: Put a +1/+1 counter on target creature. Activate only
+    //          as a sorcery.""
     "MutagenToken": "",
-    "HeartwoodToken": "",
 
-    // Oracle tokens (111.11)
-    "OracleToken({{QUOTED_ORACLE_TOKEN}})": "",
-
-    // Gift tokens (207.174)
-    "FishToken": "",
-    "OctopusToken": "",
-
-    // Spoiler tokens
+    // Text: "Create a tapped Vibranium token"
+    // Card: [[The Great Mound]]
+    // Define: "A colorless Vibranium artifact with indestructible and "{T}:
+    //          Add {C}. This mana can't be spent to cast a nonartifact
+    //          spell.""
     "VibraniumToken": "",
 
-    // Normal Tokens
+    // Text: "Create a Heartwood token"
+    // Card: [[Woodwork Prodigy // Soul Tether]]
+    // Define: "A red and green Heartwood artifact with "{T}: Add {R} or
+    //         {G}.""
+    "HeartwoodToken": "",
+  },
+
+  "{{CREATABLE_TOKEN[Gift]}}": {
+    // See data/tokens.json5
+
+    // Text: "Gift a tapped Fish"
+    // Card: [[Parting Gust]]
+    // Define: "A 1/1 blue Fish creature."
+    "FishToken": "",
+
+    // Text: "Gift an Octopus"
+    // Card: [[Octomancer]]
+    // Define: "A 1/1 blue Octopus creature."
+    "OctopusToken": "",
+  },
+
+  "{{CREATABLE_TOKEN[Oracle]}}": {
+    // CR: If an effect instructs a player to create a token by name, doesn't
+    // define any other characteristics for that token, and the name is not
+    // one of the types in the list of predefined tokens above, that player
+    // uses the card with that name in the Oracle card reference to determine
+    // the characteristics of that token.
+
+    // Text: "create a tapped Mutavault token"
+    // Card: [[Mutable Explorer]]
+    // Text: "Create a Spellgorger Weird token"
+    // Card: [[Ral and the Implicit Maze]]
+    // Text: "Create a Tarmogoyf token"
+    // Card: [[Tarmogoyf Nest]], [[Disa the Restless]]
+    "OracleToken({{QUOTED_ORACLE_TOKEN}})": "",
+  },
+
+  "{{CREATABLE_TOKEN[Normal]}}": {
+    // Text: "A red and green Heartwood artifact with "{T}: Add {R} or {G}."
+    // Token: [[Heartwood Token]]
     "Token({{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})": "",
+
+    // Text: "create a 1/1 colorless Thopter artifact creature token with
+    //        flying"
+    // Card: [[Aspiring Aeronaut]]
     "TokenWithPT({{PT}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})": "",
+
+    // Text: "create a colorless artifact token named Scrap"
+    // Card: [[Farid, Enterprising Salvager]]
     "NamedToken({{QUOTED_NAMED_CARD}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})": "",
+
+    // Text: "Create a 1/1 black and red Demon creature token named Minor
+    //        Demon"
+    // Card: [[Boris Devilboon]]
     "NamedTokenWithPT({{QUOTED_NAMED_CARD}}, {{PT}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})": "",
+
+    // Text: "Create Vecna, a legendary 8/8 black Zombie God creature token
+    //        with indestructible and all triggered abilities of the exiled
+    //        cards"
+    // Card: [[The Book of Vile Darkness]]
     "NamedTokenWithPTAndWithCopyEffects({{QUOTED_NAMED_CARD}}, {{PT}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "A double-faced token.
+    //        Its front face is a colorless Incubator artifact with "{2}:
+    //         Transform this token."
+    //        Its back face is a 0/0 colorless Phyrexian artifact creature."
+    // Token: [[Incubator Token]]
     "TransformingToken({{CREATABLE_TOKEN}}, {{CREATABLE_TOKEN}})": "",
   },
 
   "{{TOKEN_SUBTYPES}}": {
+    // Text: "create a 1/1 green Elf Warrior creature token"
+    // Card: [[Elderleaf Mentor]]
     "SubtypesList({{SUBTYPE_LIST}})": "",
+
+    // Text: "Create a 2/2 creature token of the chosen color and type"
+    // Card: [[Volrath's Laboratory]]
     "TheChosenCreatureType": "",
+
+    // Text: "create a tapped colorless land token named Everywhere that is
+    //        every basic land type"
+    // Card: [[Overlord of the Hauntwoods]]
     "AllBasicLandTypes": ""
   },
 
-  "{{CREATABLE_TOKEN_LIST}}": {
-    "[{{CREATABLE_TOKEN}}, {{CREATABLE_TOKEN}}, {{CREATABLE_TOKEN}}]": "",
-    "[{{CREATABLE_TOKEN}}, {{CREATABLE_TOKEN}}]": "",
-    "[{{CREATABLE_TOKEN}}]": "",
-  },
-
   "{{_PLAYER_ACTION[CreateTokens]}}": {
+    // Text: "Create a Food token"
+    // Text: "Create a tapped Treasure token"
+    // Text: "Create a 3/2 colorless Vehicle artifact token with crew 1"
+    // Card: [[Wish Good Luck]]
     "CreateTokens({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+
+    // Text: "for each opponent, create a 1/1 white Human creature token
+    //        that’s tapped and attacking that player or a planeswalker they
+    //        control"
+    // Card: [[Adeline, Resplendent Cathar]]
     "CreateTokensForEachPlayer({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+
+    // Text: "For each of X target permanents, create X tokens that are copies
+    //        of that permanent"
+    // Card: [[Doppelgang]]
     "CreateTokensForEachPermanent({{PERMANENTS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+
+    // Text: "each opponent creates a 1/1 white Human creature token"
+    // Card: [[Slaughter Specialist]]
     "EachPlayerCreatesTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
-    "EachPlayerCreatesTokensForEachPermanent({{PLAYERS}}, {{PERMANENTS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+
+    // Text: "For each player who chose money, you and that player each create
+    //        a Treasure token"
+    // Card: [[Master of Ceremonies]]
     "MultiCreateTokens([CreateTokens({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}}), EachPlayerCreatesTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})])": "",
   },
 
   "{{_COST[CreateTokens]}}": {
+    // Text: "you may create a 2/2 green Wolf creature token. If you do, ..."
+    // Card: [[Turntimber Ranger]]
     "CreateTokens({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
 
+    // Text: "Cumulative upkeep—Have an opponent create a 1/1 red Survivor
+    //        creature token"
+    // Card: [[Varchild's War-Riders]]
     "HaveAPlayerTakeAction({{PLAYERS}}, CreateTokens({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}}))": "",
+
+    // Text: "target opponent may have you create two Lander tokens. If they
+    //        don’t, ..."
+    // Card: [[Terrapact Intimidator]]
     "HavePlayerTakeAction({{PLAYER}}, CreateTokens({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}}))": "",
   },
 
@@ -169,7 +606,8 @@
     // Card: [[Staff of the Storyteller]]
     "WhenAPlayerCreatesAnyNumberOfTokens({{PLAYERS}}, {{PERMANENTS}})": "",
 
-    // Text: "Whenever you create one or more tokens for the first time each turn, [...]"
+    // Text: "Whenever you create one or more tokens for the first time each
+    //        turn, [...]"
     // Card: [[Akim, the Soaring Wind]]
     "WhenAPlayerCreatesAnyNumberOfTokensForTheFirstTimeEachTurn({{PLAYERS}}, {{PERMANENTS}})": ""
   },
@@ -193,7 +631,8 @@
     // Card: [[Druid of the Spade]]
     "IsToken": "",
 
-    // Text: "Create two ... tokens. They gain .... Sacrifice them at the beginning of the next end step"
+    // Text: "Create two ... tokens. They gain .... Sacrifice them at the
+    //        beginning of the next end step"
     // Card: [[Chandra, Acolyte of Flame]]
     "TheTokensCreatedThisWay": "",
 
@@ -229,11 +668,13 @@
     // Card: [[Vazi, Keen Negotiator]]
     "TheTotalNumberOfTokensPlayersCreatedThisTurn({{PERMANENTS}}, {{PLAYERS}})": "",
 
-    // Text: "If you created fewer than two tokens this way, create a number of ... tokens ... equal to the difference."
+    // Text: "If you created fewer than two tokens this way, create a number
+    //        of ... tokens ... equal to the difference."
     // Card: [[Your Own Face Mocks You]]
     "TheNumberOfTokensCreatedThisWay": "",
 
-    // Text: "The first time you would create one or more tokens each turn, you may instead create that many ..."
+    // Text: "The first time you would create one or more tokens each turn,
+    //        you may instead create that many ..."
     // Card: [[Moonlit Meditation]]
     "WouldCreateTokens_NumberTokens": "",
   },
@@ -242,16 +683,12 @@
   // Replacement Effects
   // -------------------
 
-  // Each token that would be created under an opponent's control this turn is created under your control instead
   "{{_PLAYER_ACTION[CreateTokens][TokensWouldBeCreatedUnderAPlayersControl]}}": {
     // Text: "each token that would be created under an opponent's control this turn is created under your control instead"
     // Card: [[Crafty Cutpurse]]
     "CreateReplaceTokensWouldBeCreatedUnderAPlayersControlUntil(TokensWouldBeCreatedUnderAPlayersControl({{PLAYERS}}), [CreateTokensUnderPlayersControlInstead([ThoseTokens], {{PLAYER}})], {{EXPIRATION}})": "",
   },
 
-  // If you would create a Fish token, create {{a}} {{PT}} {{CreatureToken}} instead
-  // If you would create a Shark token, create {{a}} {{PT}} {{CreatureToken}} instead
-  // If you would create a Clue, Food, or Treasure token, instead create one of each
   "{{_STATIC_EFFECT[CreateTokens][APlayerWouldCreateAToken]}}": {
     // Text: "If you would create a Food token, instead create a Food token and a Treasure token"
     // Card: [[Bilbo, Fellow Conspirator]]
@@ -264,10 +701,6 @@
     "ReplaceAPlayerWouldCreateAToken(APlayerWouldCreateAToken({{PLAYERS}}, {{PERMANENTS}}), [CreateTokensInstead({{CREATABLE_TOKEN_LIST}})])": "",
   },
 
-  // If you would create one or more Treasure tokens, instead create those tokens plus an additional Treasure token
-  // If you would create one or more artifact tokens, instead create those tokens plus an additional Map token
-  // If you would create one or more tokens, you may instead create that many {{PT}} {{CreatureTokens}} with {{Hasable}} or that many {{PT}} {{CreatureTokens}} with {{Hasable}}
-  // The first time you would create one or more tokens during each of your turns, you may instead choose a creature other than {{~Permanent}} and create that many tokens that are copies of that creature
   "{{_STATIC_EFFECT[CreateTokens][APlayerWouldCreateTokens]}}": {
     // Text: "If you would create one or more tokens, instead create those tokens plus an additional Food token"
     // Card: [[Tippy-Toe, Terrific Partner]]
@@ -292,15 +725,6 @@
     "ReplaceAPlayerWouldCreateTokens(APlayerWouldCreateTokensForTheFirstTimeEachTurn({{PLAYERS}}, {{PERMANENTS}}), [MayCost(ChooseAPermanent({{PERMANENTS}})), IfElse(CostWasPaid, [CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([ThoseTokens])])])": "",
   },
 
-  //                    If one or more          tokens would be created                   , twice that many of those tokens are created instead
-  // Until end of turn, if one or more          tokens would be created under your control, twice that many of those tokens are created instead
-  //                    If one or more          tokens would be created under your control, twice that many of those tokens are created instead
-  //                    If one or more creature tokens would be created under your control, three times that many of those tokens are created instead
-  //                    If one or more creature tokens would be created under your control, those tokens plus {{a}} {{PT}} {{CreatureToken}} are created instead
-  //                    If one or more          tokens would be created under your control, those tokens plus an additional Food token are created instead
-  //                    If one or more          tokens would be created under your control, those tokens plus that many {{PT}} {{CreatureTokens}} are created instead
-  //                    If one or more          tokens would be created under your control, those tokens plus a Clue token are created instead
-  //                    If one or more creature tokens would be created under your control, that many {{PT}} {{CreatureTokens}} with {{Hasable}} and {{Hasable}} are created instead
   "{{_STATIC_EFFECT[CreateTokens][AnyNumberOfTokensWouldBeCreated]}}": {
     // Text: "If one or more tokens would be created, twice that many of those tokens are created instead"
     // Card: [[Primal Vigor]]
@@ -341,8 +765,6 @@
     "CreateReplaceAnyNumberOfTokensWouldBeCreatedUntil(AnyNumberOfTokensWouldBeCreatedUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}}), [CreateTokensInstead([ThoseTokens, ThoseTokens])], {{EXPIRATION}})": "",
   },
 
-  // If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead
-  // If an effect would create one or more tokens                   , it creates twice that many of those tokens instead
   "{{_STATIC_EFFECT[CreateTokens][AnEffectWouldCreateAnyNumberOfTokens]}}": {
     // Text: "If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead"
     // Card: [[Anointed Procession]], [[Doubling Season]], [[Parallel Lives]]

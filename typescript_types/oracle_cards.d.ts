@@ -54,7 +54,6 @@ type Action =
 | { "_Action": "CreateTokensForEachPlayer", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "CreateTokensForEachPermanent", "args": [Permanents, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "EachPlayerCreatesTokens", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
-| { "_Action": "EachPlayerCreatesTokensForEachPermanent", "args": [Players, Permanents, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "PutCardsInLibraryIntoGraveyard", "args": CardsInLibrary }
 | { "_Action": "PutCardsInLibraryOntoTheBattlefield", "args": [CardsInLibrary, Array<EnterFlag>] }
 | { "_Action": "PutCardsInLibraryOnTheBottomOfLibraryInAnyOrder", "args": CardsInLibrary }
@@ -1435,6 +1434,7 @@ type ArtifactType =
 | "Food"
 | "Fortification"
 | "Gold"
+| "Heartwood"
 | "Incubator"
 | "Infinity"
 | "Junk"
@@ -2868,11 +2868,10 @@ type CreatableToken =
 | { "_CreatableToken": "NamedTokenWithPTAndWithCopyEffects", "args": [string, PT, TokenColorList, Array<SuperType>, Array<CardType>, TokenSubtypes, Array<Rule>, TokenCopyEffects] }
 | { "_CreatableToken": "TransformingToken", "args": [CreatableToken, CreatableToken] }
 | { "_CreatableToken": "TokenCopyOfDiscardedCard", "args": [CardInHand, TokenCopyEffects] }
-| { "_CreatableToken": "TokenCopyOfEachCardOfTypeRevealedThisWay", "args": [Cards, TokenCopyEffects] }
+| { "_CreatableToken": "TokenCopyOfEachCardInLibrary", "args": [CardsInLibrary, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfAPermanent", "args": [Permanents, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfEachExiledCard", "args": [CardsInExile, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfAnExiledCard", "args": [CardsInExile, TokenCopyEffects] }
-| { "_CreatableToken": "TokenCopyOfEachPermanentDestroyedThisWay", "args": TokenCopyEffects }
 | { "_CreatableToken": "TokenCopyOfExiledCard", "args": [CardInExile, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfNamedCard", "args": [string, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfSpell", "args": [Spell, TokenCopyEffects] }
@@ -2883,7 +2882,6 @@ type CreatableToken =
 | { "_CreatableToken": "TokenCopyOfEachGraveyardCard", "args": [CardsInGraveyards, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfEachPermanent", "args": [Permanents, TokenCopyEffects] }
 | { "_CreatableToken": "TokenCopyOfPermanent", "args": [Permanent, TokenCopyEffects] }
-| { "_CreatableToken": "TokenCopyOfAnEnteringPermanent", "args": [Permanents, TokenCopyEffects] }
 | { "_CreatableToken": "ThoseTokens" }
 | { "_CreatableToken": "OracleToken", "args": string }
 | { "_CreatableToken": "VirtuousRoleToken" }
@@ -3552,6 +3550,7 @@ type Expiration =
 | { "_Expiration": "ForAsLongAsPermanentRemainsAttachedToPermanent", "args": [Permanent, Permanent] }
 | { "_Expiration": "ForAsLongAsPermanentRemainsFaceDown", "args": Permanent }
 | { "_Expiration": "ForAsLongAsPermanentRemainsTapped", "args": Permanent }
+| { "_Expiration": "ForAsLongAsPermanentRemainsOnTheBattlefield", "args": Permanent }
 | { "_Expiration": "UntilAPlayerBecomesTheMonarch", "args": Players }
 | { "_Expiration": "UntilAPlayerCastsASpell", "args": [Players, Spells] }
 | { "_Expiration": "UntilAPlayerExilesACardWithThisAbility", "args": Players }
@@ -4891,6 +4890,7 @@ type Permanents =
 | { "_Permanents": "TheCreatedTokens" }
 | { "_Permanents": "TheTokensCreatedThisWay" }
 | { "_Permanents": "IsntPrepared" }
+| { "_Permanents": "WasDestroyedThisWay" }
 | { "_Permanents": "APermanentWithTheHighestManaValue", "args": Permanents }
 | { "_Permanents": "APermanentWithTheLowestManaValue", "args": Permanents }
 | { "_Permanents": "AdditionalCostWasPaid" }
@@ -8187,6 +8187,7 @@ type SubType =
 | "Food"
 | "Fortification"
 | "Gold"
+| "Heartwood"
 | "Incubator"
 | "Infinity"
 | "Junk"
