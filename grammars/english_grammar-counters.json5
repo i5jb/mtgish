@@ -187,6 +187,7 @@
     "pupa": "PupaCounter",
     "quest": "QuestCounter",
     "rally": "RallyCounter",
+    "refine": "RefineCounter",
     "rejection": "RejectionCounter",
     "reprieve": "ReprieveCounter",
     "rev": "RevCounter",

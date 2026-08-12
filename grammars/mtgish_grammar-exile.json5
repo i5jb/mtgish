@@ -91,6 +91,7 @@
     // ----------------
     "TheTopCardOfLibrary": "",
     "TheTopNumberCardsOfLibrary({{NUMBER}})": "",
+    //"AllCardsOfTypeFromLibrary({{CARDS_IN_LIBRARY}})": "",
     "AllCardsFromLibrary": "",
 
     "TheTopCardOfPlayersLibrary({{PLAYER}})": "",
@@ -103,7 +104,7 @@
     "TheBottomNumberCardsOfLibrary({{NUMBER}})": "",
     "TheBottomCardOfTypeInLibrary({{CARDS_IN_LIBRARY}})": "",
 
-    "AllCardsOfTypeFromPlayersLibrary({{CARDS_IN_LIBRARY}}, {{PLAYER}})": "",
+    //"AllCardsOfTypeFromPlayersLibrary({{CARDS_IN_LIBRARY}}, {{PLAYER}})": "",
     "EachCardInLibrary({{CARDS_IN_LIBRARY}})": "",
 
     "ACardFromPlayersLibraryAtRandom({{PLAYER}})": "",

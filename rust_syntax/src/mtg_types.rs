@@ -1453,6 +1453,7 @@ pub enum CounterType {
   PupaCounter,
   QuestCounter,
   RallyCounter,
+  RefineCounter,
   RejectionCounter,
   ReprieveCounter,
   RevCounter,
@@ -2341,7 +2342,6 @@ pub enum CastEffect {
   MaySpendManaAsThoughAnyColorToCast,
   MaySpendManaAsThoughAnyTypeToCast,
   OptionalAdditionalCastingCost(Box<Cost>),
-  OptionalAdditionalCastingCostForReflexiveTrigger(Box<Cost>, Box<Actions>),
   PayLifeForEachPreviousCastRatherThanManaForEachPreviousCast(Box<GameNumber>),
   ReduceCastingCost(CostReduction),
   ReduceCastingCostForAlternateCost(CostReduction, Box<Cost>),
@@ -2399,8 +2399,8 @@ pub enum DeckConstruction {
 
   CanHaveAnyNumberOfThisCard,
   CanHaveUptoNumberOfThisCard(Box<GameNumber>),
-  CardsCanBeOneAdditionalColor(Box<Cards>),
-  CanHaveAnyBasicLandCard,
+  // CardsCanBeOneAdditionalColor(Box<Cards>),
+  // CanHaveAnyBasicLandCard,
 
   ThisCardIsBanned,
   RemoveFromDeckIfNotPlayingForAnte,
@@ -3048,13 +3048,6 @@ pub enum ReplacementActionWouldDrawLookAtTheTopNumberCardsOfLibraryAction {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
-#[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldPutIntoGraveyardCost", content = "args"))]
-pub enum ReplacementActionWouldPutIntoGraveyardCost {
-  ExileItInstead
-}
-
-#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
-#[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldPayLife", content = "args"))]
 pub enum ReplacementActionWouldPayLife {
   Exile(Vec<Exilable>, Vec<ExileFlag>),
@@ -3095,6 +3088,8 @@ pub enum ReplacementActionWouldPutIntoGraveyardPutCounters {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldPutIntoGraveyard", content = "args"))]
 pub enum ReplacementActionWouldPutIntoGraveyard {
+  Reflexive_Exile_WhenYouDo(Vec<Exilable>, Vec<ExileFlag>, Box<Actions>),
+
   CreateFutureTrigger(FutureTrigger, Box<Actions>),
   CreatePlayerEffectUntil(Box<Player>, Vec<PlayerEffect>, Expiration),
   CreateTokens(Vec<CreatableToken>, Vec<TokenFlag>),
@@ -3102,16 +3097,13 @@ pub enum ReplacementActionWouldPutIntoGraveyard {
   ExileItWithACounterInstead(CounterType),
   ExileItWithNumberCountersInstead(Box<GameNumber>, CounterType),
   GainLife(Box<GameNumber>),
-  If(Condition, Vec<ReplacementActionWouldPutIntoGraveyard>),
   LoseLife(Box<GameNumber>),
   MayAction(Box<ReplacementActionWouldPutIntoGraveyard>),
-  MustCost(ReplacementActionWouldPutIntoGraveyardCost),
   PlayerAction(Box<Player>, Box<ReplacementActionWouldPutIntoGraveyard>),
   PutCounters(Vec<ReplacementActionWouldPutIntoGraveyardPutCounters>),
   PutItInOwnersHandInstead,
   PutItOnBottomOfOwnersLibraryInstead,
   PutItOnTopOfOwnersLibraryInstead,
-  ReflexiveTrigger(Box<Actions>),
   RevealItAndPutItOnBottomOfOwnersLibraryInstead,
   ShuffleItIntoLibraryInstead,
   TakeAnExtraTurn,
@@ -3239,14 +3231,6 @@ pub enum ActionPreventDamageCost {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
-#[cfg_attr(feature = "write_out_json", serde(tag = "_ActionPreventDamageReflesiveActionTriggerRemoveCounters", content = "args"))]
-pub enum ActionPreventDamageReflesiveActionTriggerRemoveCounters {
-  RemoveCounters(Vec<ActionPreventDamageRemoveCounters>)
-}
-
-
-#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
-#[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ActionPreventDamage", content = "args"))]
 pub enum ActionPreventDamage {
   If(Condition, Vec<ActionPreventDamage>),
@@ -3270,8 +3254,10 @@ pub enum ActionPreventDamage {
   ChooseAPlayer(Box<Players>),
 
   CreateFutureTrigger(FutureTrigger, Box<Actions>),
-  ReflexiveTrigger(Box<Actions>),
-  ReflexiveActionTrigger_CountersRemoved(Box<ActionPreventDamageReflesiveActionTriggerRemoveCounters>, Box<Actions>),
+  Reflexive_PreventThatDamage_WhenDamageFromAPermanentSourceIsPreventedThisWay(Box<Permanents>, Box<Actions>),
+  Reflexive_PreventThatDamage_WhenDamageIsPreventedThisWay(Box<Actions>),
+  Reflexive_PreventThatDamage_WhenDamageFromASourceIsPreventedThisWay(Box<DamageSources>, Box<Actions>),
+  Reflexive_RemoveCounters_WhenOneOrMoreAreRemovedThisWay(Vec<RemoveCountersAction>, Box<Actions>),
 
   CreateTokens(Vec<CreatableToken>, Vec<TokenFlag>),
   DrawNumberCards(Box<GameNumber>),
@@ -3656,6 +3642,11 @@ pub enum ExileFlag {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldEnter", content = "args"))]
 pub enum ReplacementActionWouldEnter {
+  MayAction(Box<ReplacementActionWouldEnter>),
+  ReflexiveEnters(Box<Actions>),
+  Reflexive_EnterAsACopyOfACardInGraveyards_WhenYouDo(Box<CardsInGraveyards>, CopyEffects, Box<Actions>),
+  Reflexive_EnterAsACopyOfAPermanent_WhenYouDo(Box<Permanents>, CopyEffects, Box<Actions>),
+
   APlayerAction(Box<Players>, Box<ReplacementActionWouldEnter>),
   BecomeDay,
   ChooseABasicLandType,
@@ -3735,7 +3726,6 @@ pub enum ReplacementActionWouldEnter {
   PayAnyAmountOfLifeUpto(Box<GameNumber>),
   PutCounters(Vec<ReplacementActionWouldEnterPutCounters>),
   PutIntoGraveyardInstead,
-  ReflexiveTrigger(Box<Actions>),
   RememberLifeTotal,
   RemoveCounters(Vec<ReplacementActionWouldEnterRemoveCounters>),
   RevealHand,
@@ -4394,7 +4384,6 @@ pub enum Condition {
   ANumberOfTokensWereCreatedThisWay(Box<Comparison>),
   APermanentAttackedThisCombat(Box<Permanents>),
   APermanentDiesThisWay(Box<Permanents>),
-  APermanentEnteredTheBattlefieldThisWay,
   APermanentEnteredTheBattlefieldUnderAPlayersControlThisTurn(Box<Permanents>, Box<Players>),
   APermanentEnteredTheBattlefieldUnderPlayersControlThisTurn(Box<Permanents>, Box<Player>),
   APermanentExploredThisTurn(Box<Permanents>),
@@ -4518,7 +4507,6 @@ pub enum Condition {
   PermanentDiesThisWay,
   PermanentPassesFilter(Box<Permanent>, Box<Permanents>),
   PermanentPutInGraveyardPassesFilter(PermanentsAndGraveyardCards),
-  PermanentRegeneratedThisWay,
   PermanentTransformedThisWay(Box<Permanent>),
   PermanentWasDestroyedThisWay,
   PermanentsChangedControlThisWay,
@@ -4717,14 +4705,15 @@ pub enum Cost {
   And(Vec<Cost>),
   Or(Vec<Cost>),
 
+  Reflexive_Discard_WhenYouDo(Box<Discardable>, Box<Actions>),
+  Reflexive_Sacrifice_WhenYouDo(Vec<Sacrificable>, Box<Actions>),
+
   AbandonScheme(SingleScheme),
   AddMana(ManaProduce),
-  Amass(Box<GameNumber>, CreatureType),
   AnteAPermanent(Box<Permanents>),
   AnteTopCardOfLibrary,
   AttachAPermanentToAPlayer(Box<Permanents>, Box<Players>),
   AttachAPermanentToPermanent(Box<Permanents>, Box<Permanent>),
-  AttachEachPermanentToPermanent(Box<Permanents>, Box<Permanent>),
   AttachPermanentToAPermanent(Box<Permanent>, Box<Permanents>),
   AttachPermanentToPermanent(Box<Permanent>, Box<Permanent>),
   BeginGameWithCardOnBattlefield(PregameCard, Vec<EnterFlag>),
@@ -4738,7 +4727,6 @@ pub enum Cost {
   CastCopiedCard,
   CastCopiedCardWithoutPaying,
   CastGraveyardCard(Box<CardInGraveyards>),
-  CastGraveyardCardWithAdditionalCostIntoExile(Box<CardInGraveyards>, Box<Cost>),
   CastGraveyardCardWithoutPaying(Box<CardInGraveyards>),
   CastSpellFromExile(Box<Spells>, CardInExile),
   CastSpellFromExileWithoutPaying(Box<Spells>, CardInExile),
@@ -4759,8 +4747,6 @@ pub enum Cost {
   ChooseAnyNumberPermanentsAndPayManaForEach(Box<Permanents>, ManaCost),
   ChooseColors,
   CollectEvidence(Box<GameNumber>),
-  CollectEvidenceAnyX,
-  ConjureDuplicateOfPermanentIntoHand(Box<Permanent>),
   ConvertPermanent(Box<Permanent>),
   CopyAnExiledCard(Box<CardsInExile>),
   CopyExiledCard(Box<CardInExile>),
@@ -4771,7 +4757,6 @@ pub enum Cost {
   CreatePermanentRuleEffectUntil(Box<Permanent>, Vec<PermanentRule>, Expiration),
   CreatePlayerEffectUntil(Box<Player>, Vec<PlayerEffect>, Expiration),
   CreateTokens(Vec<CreatableToken>, Vec<TokenFlag>),
-  CreatureConnives(Box<Permanent>),
   DestroyPermanent(Box<Permanent>),
   DiscardACard,
   DiscardACardAtRandom,
@@ -4787,7 +4772,6 @@ pub enum Cost {
   DiscardNumberGroupCardsOfType(Box<GameNumber>, Box<Cards>, GroupFilter),
   DrawACard,
   DrawNumberCards(Box<GameNumber>),
-  Earthbend(Box<Permanent>, Box<GameNumber>),
   ExchangeControl(Box<Permanent>, Box<Permanent>),
   ExchangeControlOfSpellAndPermanent(Box<Spell>, Box<Permanent>),
   ExertPermanent(Box<Permanent>),
@@ -4835,7 +4819,6 @@ pub enum Cost {
   PayManaCostOfSpell(Box<Spell>),
   PayManaForEach(ManaCost, Box<GameNumber>),
   PayManaReduceForEach(ManaCost, CostReduction, Box<GameNumber>),
-  PayManaUptoNumberTimes(ManaCost, Box<GameNumber>),
   PayManaX(ManaCostX, Box<GameNumber>),
   PayMana_OnlyProducedByTreasure(ManaCost),
   PayOneOrMoreEnergy,
@@ -4849,7 +4832,6 @@ pub enum Cost {
   PutACardFromPlayersGraveyardOnBattlefield(Box<CardsInGraveyards>, Box<Player>, Vec<EnterFlag>),
   PutACardOfTypeMilledThisWayIntoHand(Box<Cards>),
   PutAGraveyardCardOnTheBottomOfItsOwnersLibrary(Box<CardsInGraveyards>),
-  PutANameStickerOnPermanent(Box<Permanent>),
   PutANumberOfExiledCardsIntoOwnersGraveyard(Box<GameNumber>, CardsInExile),
   PutAPermanentIntoItsOwnersHand(Box<Permanents>),
   PutAnExiledCardIntoOwnersGraveyard(Box<CardsInExile>),
@@ -4884,7 +4866,6 @@ pub enum Cost {
   RevealTopCardOfLibrary,
   RevealTopCardOfLibraryAndPutIntoHand(Box<Cards>),
   RevealTopCardOfLibraryOfType(Box<Cards>),
-  RollAD6,
   RollAD8,
   SacrificeAPermanent(Box<Permanents>),
   SacrificeAnyNumberOfGroupPermanents(Box<Permanents>, GroupFilter),
@@ -4901,7 +4882,6 @@ pub enum Cost {
   ShuffleCardsFromHandIntoLibrary(Box<CardsInHand>),
   ShuffleGraveyardCardIntoLibrary(Box<CardInGraveyards>),
   ShufflePermanentIntoLibrary(Box<Permanent>),
-  Surveil(Box<GameNumber>),
   SuspectAPermanent(Box<Permanents>),
   TapAPermanent(Box<Permanents>),
   TapAnyNumberOfGroupPermanents(Box<Permanents>, GroupFilter),
@@ -4923,8 +4903,6 @@ pub enum Cost {
   WaterbendCustomX(ManaCostX, Box<GameNumber>),
   WaterbendX(ManaCostX),
 }
-
-type ReflexiveAction = Cost;
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
@@ -8117,7 +8095,6 @@ pub enum RevealTheTopNumberCardsOfLibraryAction {
   ForEachColorAmongPermanentsYouMayExileACardOfThatColorFoundThisWay(Box<Permanents>),
   PutAnyNumberOfFoundCardsOntoBattlefield(Vec<EnterFlag>),
   ChooseAPlayer(Box<Players>),
-  ReflexiveTrigger(Box<Actions>),
   APlayerChoosesACardOfType(Box<Players>, Box<Cards>),
   MayPutAnyNumberOfGroupCardsIntoHand(Box<Cards>, GroupFilter),
   MayExileACardOfEachCardType,
@@ -8270,6 +8247,90 @@ pub enum CreatableToken {
   HeartwoodToken,
 }
 
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_Millable", content = "args"))]
+pub enum Millable {
+  ACard,
+  NumberCards(Box<GameNumber>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_PuttableInHand", content = "args"))]
+pub enum PuttableInHand {
+  ConjuredDuplicateOfPermanent(Box<Permanent>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_PuttableOnBattlefield", content = "args"))]
+pub enum PuttableOnBattlefield {
+  AnyNumberOfCardsFromLibrary(Box<CardsInLibrary>),
+  ACardOfTypeFromLibrary(Box<CardsInLibrary>),
+  CardInGraveyard(Box<CardInGraveyards>),
+  CardInHand(Box<CardInHand>),
+  TheTopCardOfLibrary,
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_Drawable", content = "args"))]
+pub enum Drawable {
+  ACard,
+  NumberCards(Box<GameNumber>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_Discardable", content = "args"))]
+pub enum Discardable {
+  ACard,
+  NumberCards(Box<GameNumber>),
+  AnyNumberOfCards,
+  Hand,
+
+  ACardOfType(CardsInHand),
+  AnyNumberOfCardsOfType(CardsInHand),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_DamageDealer", content = "args"))]
+pub enum DamageDealer {
+  Permanent(Box<Permanent>),
+  Spell(Spell),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_Attachable", content = "args"))]
+pub enum Attachable {
+  EachPermanentToPermanent(Box<Permanents>, Box<Permanent>),
+  PermanentToPermanent(Box<Permanent>, Box<Permanent>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_Sacrificable", content = "args"))]
+pub enum Sacrificable {
+  APermanent(Box<Permanents>),
+  AnyNumberOfPermanents(Box<Permanents>),
+  Permanent(Box<Permanent>),
+  UptoNumberPermanents(Box<GameNumber>, Box<Permanents>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_Tappable", content = "args"))]
+pub enum Tappable {
+  EachPermanent(Box<Permanents>),
+  AnyNumberOfPermanents(Box<Permanents>),
+  NumberPermanents(Box<GameNumber>, Box<Permanents>),
+  APermanent(Box<Permanents>),
+  Permanent(Box<Permanent>),
+}
+
 
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -8319,6 +8380,7 @@ pub enum Exilable {
   TheTopCardOfLibrary,
   TheTopNumberCardsOfLibrary(Box<GameNumber>),
   AllCardsFromLibrary,
+  AllCardsOfTypeFromLibrary(Box<CardsInLibrary>),
   EachCardInLibrary(Box<CardsInLibrary>),
 
   TheBottomCardOfTypeInLibrary(Box<CardsInLibrary>),
@@ -8327,7 +8389,6 @@ pub enum Exilable {
   ACardFromPlayersLibraryAtRandom(Box<Player>),
   ACardOfTypeFromPlayersLibraryAtRandom(Box<CardsInLibrary>, Box<Player>),
   AllCardsFromPlayersLibrary(Box<Player>),
-  AllCardsOfTypeFromPlayersLibrary(Box<CardsInLibrary>, Box<Player>),
   NumberCardsFromPlayersLibraryAtRandom(Box<GameNumber>, Box<Player>),
   TheBottomCardOfEachPlayersLibraries(Box<Players>),
   TheTopCardOfEachPlayersLibraries(Box<Players>),
@@ -8466,6 +8527,7 @@ pub enum Targets {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_RemoveCountersAction", content = "args"))]
 pub enum RemoveCountersAction {
+  NumberCountersOfTypeFromAmongPermanents(Box<GameNumber>, CounterType, Box<Permanents>),
   ACounterFromCardInExile(Box<CardInExile>),
   ACounterFromPermanent(Box<Permanent>),
   ACounterFromPlayer(Box<Player>),
@@ -8639,11 +8701,20 @@ pub enum MultiCreateToken {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
-#[cfg_attr(feature = "write_out_json", serde(tag = "_MultiDraw", content = "args"))]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_MultiDrawable", content = "args"))]
 pub enum MultiDrawable {
   DrawNumberCards(Box<GameNumber>),
   EachPlayerDrawsACard(Box<Players>),
 }
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_Dice", content = "args"))]
+pub enum Dice {
+  D20,
+  D6,
+}
+
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
@@ -8660,11 +8731,80 @@ pub enum Action {
   CreateTokensForEachPermanent(Box<Permanents>, Vec<CreatableToken>, Vec<TokenFlag>),
   EachPlayerCreatesTokens(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
 
+  Reflexive_AddMana_WhenYouDo(ManaProduce, Box<Actions>),
+  Reflexive_Amass_WhenYouDo(Box<GameNumber>, CreatureType, Box<Actions>),
+  Reflexive_Attach_WhenYouDo(Box<Attachable>, Box<Actions>),
+  Reflexive_Blight_WhenYouDo(Box<GameNumber>, Box<Actions>),
+  Reflexive_ChooseAPlayerAtRandom_WhenYouDo(Box<Players>, Box<Actions>),
+  Reflexive_CollectEvidence_WhenYouDo(Box<GameNumber>, Box<Actions>),
+  Reflexive_CollectEvidenceAnyX_WhenYouDo(Box<Actions>),
+  Reflexive_ConvertPermanent_WhenYouDo(Box<Permanent>, Box<Actions>),
+  Reflexive_CreateTokens_WhenYouDo(Vec<CreatableToken>, Vec<TokenFlag>, Box<Actions>),
+  Reflexive_CreateTokens_WhenYouDo_If(Vec<CreatableToken>, Vec<TokenFlag>, Box<Condition>, Box<Actions>),
+  Reflexive_CreatureConnives_WhenItConnivesThisWay(Box<Permanent>, Box<Actions>),
+  Reflexive_DealDamage_WhenYouDo(Box<DamageDealer>, Box<GameNumber>, Box<DamageRecipient>, Box<Actions>),
+  Reflexive_DealDamage_WhenExcessDamageIsDealtThisWay(Box<DamageDealer>, Box<GameNumber>, Box<DamageRecipient>, Box<Actions>),
+  Reflexive_Discard_Draw_WhenYouDo(Box<Discardable>, Box<Drawable>, Box<Actions>),
+  Reflexive_Discard_WhenACardIsDiscardedThisWay(Box<Discardable>, Box<Actions>),
+  Reflexive_Discard_WhenACardOfTypeIsDiscardedThisWay(Box<Discardable>, Box<CardsInLibrary>, Box<Actions>),
+  Reflexive_Discard_WhenYouDiscardOneOrMoreCardsThisWay(Box<Discardable>, Box<Actions>),
+  Reflexive_Discard_WhenYouDo(Box<Discardable>, Box<Actions>),
+  Reflexive_DraftACardFromSpellBook_WhenYouDo(SpellBookName, Box<Actions>),
+  Reflexive_Draw_EachPlayerMayDraw_WhenACardIsDrawnThisWay(Box<Drawable>, Box<Players>, Box<Drawable>, Box<Actions>),
+  Reflexive_Draw_WhenYouDo(Box<Drawable>, Box<Actions>),
+  Reflexive_EachPlayerExiles_WhenAnyNumberOfCardsOfTypeAreExiledThisWay(Box<Players>, Vec<Exilable>, Vec<ExileFlag>, Box<Cards>, Box<Actions>),
+  Reflexive_Earthbend_WhenYouDo(Box<Permanent>, Box<GameNumber>, Box<Actions>),
+  Reflexive_Exile_WhenACardIsExiledThisWay(Vec<Exilable>, Vec<ExileFlag>, Box<Actions>),
+  Reflexive_Exile_WhenACardOfTypeIsExiledThisWay(Vec<Exilable>, Vec<ExileFlag>, Box<Cards>, Box<Actions>),
+  Reflexive_Exile_WhenYouDo(Vec<Exilable>, Vec<ExileFlag>, Box<Actions>),
+  Reflexive_Fight_WhenExcessDamageIsDealtToPermanent(Box<Permanent>, Box<Permanent>, Box<Permanent>, Box<Actions>),
+  Reflexive_FlipACoin_WhenYouWin_WhenYouLose(Box<Actions>, Box<Actions>),
+  Reflexive_Forage_WhenYouDo(Box<Actions>),
+  Reflexive_HavePlayerGainControlOfPermanent_WhenYouDo(Box<Player>, Box<Permanent>, Box<Actions>),
+  Reflexive_EachPlayerMills_WhenOneOrMoreCardsAreMilledThisWay(Box<Players>, Box<Millable>, Box<Actions>),
+  Reflexive_Mill_WhenYouDo(Box<Millable>, Box<Actions>),
+  Reflexive_Mill_WhenYouDo_If(Box<Millable>, Box<Condition>, Box<Actions>),
+  Reflexive_PayAnyAmountOfEnergy_WhenYouDo(Box<Actions>),
+  Reflexive_PayEnergy_WhenYouDo(Box<GameNumber>, Box<Actions>),
+  Reflexive_PayLife_WhenYouDo(Box<GameNumber>, Box<Actions>),
+  Reflexive_PayManaAnyNumberOfTimes_WhenYouPayOneOrMoreTimes(ManaCost, Box<Actions>),
+  Reflexive_PayManaUptoNumberTimes_WhenYouDo(ManaCost, Box<GameNumber>, Box<Actions>),
+  Reflexive_PayManaAnyX_WhenYouDo(ManaCostX, Box<Actions>),
+  Reflexive_PayMana_WhenYouDo(ManaCost, Box<Actions>),
+  Reflexive_PayMana_PayLife_WhenYouDo(ManaCost, Box<GameNumber>, Box<Actions>),
+  Reflexive_PayMana_Sacrifice_WhenYouDo(ManaCost, Vec<Sacrificable>, Box<Actions>),
+  Reflexive_PutAPermanentInOwnersHand_WhenYouDo(Box<Permanents>, Box<Actions>),
+  Reflexive_PutCounters_WhenYouDo(Vec<PutCountersAction>, Box<Actions>),
+  Reflexive_PutCounters_WhenYouDo_If(Vec<PutCountersAction>, Box<Condition>, Box<Actions>),
+  Reflexive_PutOnBattlefield_WhenAPermanentEntersThisWay(Vec<PuttableOnBattlefield>, Vec<EnterFlag>, Box<Permanents>, Box<Actions>),
+  Reflexive_PutOnBattlefield_WhenThatPermanentEnters(Vec<PuttableOnBattlefield>, Vec<EnterFlag>, Box<Actions>),
+  Reflexive_PutOnBattlefield_WhenYouDo(Vec<PuttableOnBattlefield>, Vec<EnterFlag>, Box<Actions>),
+  Reflexive_PutOnBattlefield_WhenAPermanentIsPutOnTheBattlefieldThisWay(Vec<PuttableOnBattlefield>, Vec<EnterFlag>, Box<Actions>),
+  Reflexive_PutOnBattlefield_WhenYouPutAnyNumberOfPermanentsOnTheBattlefieldThisWay(Vec<PuttableOnBattlefield>, Vec<EnterFlag>, Box<Actions>),
+  Reflexive_PutANameStickerOnPermanent_WhenYouDo(Box<Permanent>, Box<Actions>),
+  Reflexive_RemoveCounters_WhenYouDo(Vec<RemoveCountersAction>, Box<Actions>),
+  Reflexive_RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed_WhenYouRevealACardOfTypeThisWay(Box<CardsInLibrary>, Vec<RevealTheTopNumberCardsOfLibraryAction>, Box<CardsInLibrary>, Box<Actions>),
+  Reflexive_RevealAnyNumberOfCardsOfTypeFromHand_WhenYouDo(CardsInHand, Box<Actions>),
+  Reflexive_RevealACardOfTypeFromHand_WhenYouDo(CardsInHand, Box<Actions>),
+  Reflexive_RollDice_WhenYouDo(Box<Dice>, Box<Actions>),
+  Reflexive_Tap_WhenYouDo(Vec<Tappable>, Box<Actions>),
+  Reflexive_PlayerSacrifices_WhenTheyDo(Box<Player>, Vec<Sacrificable>, Box<Actions>),
+  Reflexive_Sacrifice_WhenYouDo(Vec<Sacrificable>, Box<Actions>),
+  Reflexive_Sacrifice_WhenAPermanentIsSacrificedThisWay(Vec<Sacrificable>, Box<Permanents>, Box<Actions>),
+  Reflexive_SearchLibrary_WhenYouSearchYourLibraryThisWay(Vec<SearchLibraryAction>, Box<Actions>),
+  Reflexive_Surveil_WhenYouDo(Box<GameNumber>, Box<Actions>),
+  Reflexive_CastGraveyardCardWithAdditionalCostIntoExile_WhenYouCastThatSpell(Box<CardInGraveyards>, Box<Cost>, Box<Actions>),
+
+  Reflexive_PutCardInHand_WhenYouDo(Vec<PuttableInHand>, Box<Actions>),
+  Reflexive_RevealTheTopNumberCardsOfLibrary_WhenAnyNumberOfCardsOfTypeRevealedThisWay(Box<GameNumber>, Box<CardsInLibrary>, Box<Actions>),
+  RegeneratePermanent_WhenItRengeratesThisWay(Box<Permanent>, Box<Actions>),
+
   PutCardsInLibraryIntoGraveyard(Box<CardsInLibrary>),
   PutCardsInLibraryOntoTheBattlefield(Box<CardsInLibrary>, Vec<EnterFlag>),
   PutCardsInLibraryOnTheBottomOfLibraryInAnyOrder(Box<CardsInLibrary>),
   PutCardsInLibraryOnTheBottomOfLibraryInARandomOrder(Box<CardsInLibrary>),
   PutLibraryCardsIntoHand(Box<CardsInLibrary>),
+  PutTheRemainingLibraryCardsOnTheBottomOfLibraryInARandomOrder,
 
   EachPlayerRevealsCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreRevealed(Box<Players>, Box<GameNumber>, Box<CardsInLibrary>),
   EachPlayerRevealsTheTopNumberCardsOfLibrary(Box<Players>, Box<GameNumber>),
@@ -8914,7 +9054,7 @@ pub enum Action {
   ChooseUptoNumberPermanents(Box<GameNumber>, Box<Permanents>),
   ChooseUptoNumberPermanentsForEach(Box<GameNumber>, Box<Permanents>, Box<GameNumber>),
   ChooseUptoOnePermanent(Box<Permanents>),
-  ChooseUptoOnePermanentForEachPlayer(Box<Permanents>),
+  ChooseUptoOnePermanentForEachPlayer(Box<Permanents>, Box<Players>),
   ChooseWord(Vec<VoteOption>),
   Cipher(Box<Spell>),
   CircleNumberColors(Box<GameNumber>, ChoosableColor),
@@ -9291,6 +9431,7 @@ pub enum Action {
   LookAtTheTopCardOfEachPlayersLibrary(Box<Players>),
   LookAtTheTopCardOfPlayersLibrary(Box<Player>),
   LookAtTheTopNumberCardsOfLibrary(Box<GameNumber>, Vec<LookAtTopOfLibraryAction>),
+  LookAtTheTopNumberCardsOfLibraryNEW(Box<GameNumber>),
   LookAtTheTopNumberCardsOfPlayersLibrary(Box<Player>, Box<GameNumber>, Vec<LookAtTopOfLibraryAction>),
   LookAtTopOfLibrary,
   LoseLife(Box<GameNumber>),
@@ -9320,8 +9461,7 @@ pub enum Action {
   MayHavePlayerAction(Box<Player>, Box<Action>),
   MayPutACardFromHandOrGraveyardOnBattlefieldForEachPermanent(Box<Cards>, Vec<EnterFlag>, Box<Permanents>),
   MayPutTheTopCardOfPlayersLibraryOfTypeInGraveyardForCost(Box<Player>, Box<Cards>, Box<Cost>),
-  MayReflexiveAction(Box<Cost>),
-  MayReflexiveActionTrigger(ReflexiveAction, Box<Actions>),
+
   MayReselectWhichPlayerOrPermanentEachCreatureIsAttacking(Box<Permanents>),
   MillACard,
   MillCardsUntilACardOfTypeIsMilledOrUntilNumberCardsHaveBeenPutIntoGraveyardThisWay(Box<Cards>, Box<GameNumber>),
@@ -9538,12 +9678,7 @@ pub enum Action {
   PutUptoOneCardOfEachCardtypeAmongPermanentsFromHandOnTheBattlefield(Box<Permanents>, Vec<EnterFlag>),
   RedistributeLifeTotalsOfPlayers(Box<Players>),
   ReducePlayersSpeed(Box<Player>, Box<GameNumber>),
-  ReflexiveAction(Box<Cost>),
-  ReflexiveActionTrigger(ReflexiveAction, Box<Actions>),
-  ReflexiveActionTriggerI(ReflexiveAction, Condition, Box<Actions>),
-  ReflexiveTrigger(Box<Actions>),
-  ReflexiveTriggerI(Condition, Box<Actions>),
-  ReflexiveTriggerNumberTimes(Box<GameNumber>, Box<Actions>),
+  ReflexiveTriggerNEW(Box<Actions>),
   RegenerateEachPermanent(Box<Permanents>),
   RegeneratePermanent(Box<Permanent>),
   RememberLifeTotal,

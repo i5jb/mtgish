@@ -104,6 +104,18 @@
     ]
   },
   {
+    "name": "70,000 Light-Years from Home",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "70,000 Light-Years from Home",
+        "manaCost": "{1}{W}",
+        "type": "Sorcery",
+        "text": "Exile target creature or Spacecraft. Its controller may search their library for a basic land card, reveal it, put it into their hand, then shuffle."
+      }
+    ]
+  },
+  {
     "name": "A Chaotic Night in Vegas",
     "layout": "single",
     "cards": [
@@ -161,6 +173,18 @@
         "manaCost": "{2}{G}",
         "type": "Enchantment — Saga",
         "text": "(As this Saga enters and after your draw step add a lore counter. Sacrifice after III.)\nI — Conjure a card named Gilded Goose onto the battlefield.\nII, III — You may tap an untapped Bird you control and sacrifice an artifact. If you do, conjure a card named Golden Egg onto the battlefield."
+      }
+    ]
+  },
+  {
+    "name": "A Good Day to Die",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "A Good Day to Die",
+        "manaCost": "{B}",
+        "type": "Instant",
+        "text": "Target creature gets +2/+0 until end of turn. When that creature dies this turn, you draw a card."
       }
     ]
   },
@@ -23299,6 +23323,19 @@
     ]
   },
   {
+    "name": "Arzakon",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Arzakon",
+        "manaCost": "{W}{U}{B}{R}{G}",
+        "type": "Legendary Planeswalker — Arzakon",
+        "text": "[+2]: Arzakon deals 3 damage to any other target.\n[−3]: Create a Black Lotus token. (It's a {0} artifact with \"{T}, Sacrifice this token: Add three mana of any one color.\")\n[−7]: Each player shuffles their hand and graveyard into their library, then draws seven cards.\nArzakon can be your commander.",
+        "loyalty": "4"
+      }
+    ]
+  },
+  {
     "name": "As Foretold",
     "layout": "single",
     "cards": [
@@ -23555,6 +23592,18 @@
         "text": "The first nonlegendary artifact spell you cast each turn has casualty 2. (As you cast it, you may sacrifice a creature with power 2 or greater. When you do, copy it. A copy of an artifact spell becomes a token.)\nWhenever you sacrifice another creature, put a +1/+1 counter on Ashad.",
         "power": "3",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Ashaya's Enduring Bond",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ashaya's Enduring Bond",
+        "manaCost": "{1}{R}{G}",
+        "type": "Legendary Sorcery",
+        "text": "(You may cast a legendary sorcery only if you control a legendary creature or planeswalker.)\nDiscover X, where X is the amount of mana spent to cast this spell. (Exile cards from the top of your library until you exile a nonland card with that mana value or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)\nAshaya's Enduring Bond can be your commander."
       }
     ]
   },
@@ -24546,6 +24595,20 @@
         "manaCost": "{3}{G}",
         "type": "Sorcery",
         "text": "Create a 3/3 green Elephant creature token."
+      }
+    ]
+  },
+  {
+    "name": "Assault Drone",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Assault Drone",
+        "manaCost": "{3}{B}",
+        "type": "Artifact Creature — Borg",
+        "text": "Artifact creatures you control get +1/+0.",
+        "power": "2",
+        "toughness": "4"
       }
     ]
   },
@@ -26938,6 +27001,20 @@
     ]
   },
   {
+    "name": "Automated Warfare System",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Automated Warfare System",
+        "manaCost": "{2}{B}",
+        "type": "Artifact Creature — Construct",
+        "text": "Flying\nWhenever this creature attacks, you may sacrifice another creature or artifact. If you do, draw a card.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Automatic Librarian",
     "layout": "single",
     "cards": [
@@ -27004,6 +27081,20 @@
         "text": "Shroud (This creature can't be the target of spells or abilities.)\nFlying\nWhenever a creature an opponent controls dies, put a +2/+2 counter on each Vampire you control that dealt damage to that creature this turn.",
         "power": "5",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Autumn Willow, Harmony",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Autumn Willow, Harmony",
+        "manaCost": "{3}{G}{G}",
+        "type": "Legendary Creature — Avatar",
+        "text": "Hexproof\nWhen Autumn Willow enters, create a 1/1 green Forest Dryad land creature token. (It's affected by summoning sickness.)\nWhenever you tap a land creature for mana, add an additional {G}.",
+        "power": "3",
+        "toughness": "3"
       }
     ]
   },
@@ -30014,6 +30105,20 @@
     ]
   },
   {
+    "name": "Badgey, Malicious Glitch",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Badgey, Malicious Glitch",
+        "manaCost": "{3}{B}",
+        "type": "Legendary Artifact Creature — Illusion Horror",
+        "text": "Whenever Badgey becomes tapped, each opponent loses 1 life and you gain 1 life.",
+        "power": "4",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Badlands",
     "layout": "single",
     "cards": [
@@ -30636,6 +30741,20 @@
         "text": "{T}: Remove target blocking creature from combat. Creatures it was blocking that hadn't become blocked by another creature this combat become unblocked, then it blocks an attacking creature of your choice. Activate only during the declare blockers step.",
         "power": "3",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Balefang the Unslayable",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Balefang the Unslayable",
+        "manaCost": "{3}{R}{R}",
+        "type": "Legendary Creature — Demon Dragon",
+        "text": "Flying, trample, protection from Angels and from Archons\nPlayers can't gain life.\nWhen Balefang enters, target opponent creates a tapped Baneslayer Angel token. The token is goaded for the rest of the game. (It's a {3}{W}{W} 5/5 Angel creature with flying, first strike, lifelink, and protection from Demons and from Dragons.)",
+        "power": "5",
+        "toughness": "5"
       }
     ]
   },
@@ -33751,6 +33870,18 @@
     ]
   },
   {
+    "name": "Bat'leth",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bat'leth",
+        "manaCost": "{2}{B}",
+        "type": "Artifact — Equipment",
+        "text": "When this Equipment enters, target creature an opponent controls gets -2/-2 until end of turn.\nEquipped creature gets +2/+0.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)"
+      }
+    ]
+  },
+  {
     "name": "Bat-",
     "layout": "single",
     "cards": [
@@ -34335,6 +34466,20 @@
         "text": "Whenever this creature becomes blocked, it deals 1 damage to each creature blocking it.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Battle-Scarred Survivalist",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Battle-Scarred Survivalist",
+        "manaCost": "{1}{B}",
+        "type": "Creature — Klingon Scout",
+        "text": "Menace (This creature can't be blocked except by two or more creatures.)\nWhenever another creature dies, put a +1/+1 counter on this creature. This ability triggers only once each turn.",
+        "power": "1",
+        "toughness": "1"
       }
     ]
   },
@@ -44687,6 +44832,20 @@
     ]
   },
   {
+    "name": "Blor the Impervious",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Blor the Impervious",
+        "manaCost": "{3}{G}{G}",
+        "type": "Legendary Creature — Frog Warrior",
+        "text": "Trample, hexproof, indestructible",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Blorbian Buddy",
     "layout": "single",
     "cards": [
@@ -48621,6 +48780,20 @@
         "text": "Whenever you cast a spell, you may gain ½ life for each word in that spell's name.",
         "power": "1",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Boss Uramon, Shadow's Reach",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Boss Uramon, Shadow's Reach",
+        "manaCost": "{3}{B}",
+        "type": "Legendary Creature — Human Rogue",
+        "text": "Shadow (This creature can block or be blocked by only creatures with shadow.)\nAttacking Ninjas and Rogues you control have deathtouch.\nWhenever one or more Ninjas and/or Rogues you control deal combat damage to a player, create a 1/1 black Rat Rogue creature token.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -58223,6 +58396,20 @@
     ]
   },
   {
+    "name": "Cantankerous Captain",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Cantankerous Captain",
+        "manaCost": "{2}{R}",
+        "type": "Creature — Tellarite Officer",
+        "text": "At the beginning of combat on your turn, target creature you control gets +1/+0 until end of turn. Then that creature gains menace until end of turn if creatures you control have total power 8 or greater. (It can't be blocked except by two or more creatures.)",
+        "power": "2",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Cantankerous Keepers",
     "layout": "single",
     "cards": [
@@ -59103,6 +59290,18 @@
         "manaCost": "{X}{R}{W}",
         "type": "Instant",
         "text": "The next X damage that would be dealt to target creature, planeswalker, or player this turn is dealt to another target creature, planeswalker, or player instead."
+      }
+    ]
+  },
+  {
+    "name": "Captain's Tutelage",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Captain's Tutelage",
+        "manaCost": "{1}{R}",
+        "type": "Enchantment — Aura",
+        "text": "Flash\nEnchant creature\nWhen this Aura enters, enchanted creature gains first strike until end of turn.\nEnchanted creature gets +2/+0."
       }
     ]
   },
@@ -63654,6 +63853,34 @@
     ]
   },
   {
+    "name": "Ceti Eel",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ceti Eel",
+        "manaCost": "{3}{B}",
+        "type": "Creature — Worm",
+        "text": "When this creature enters, mill two cards, then put a +1/+1 counter on this creature for each artifact and/or creature card in your graveyard. (To mill two cards, put the top two cards of your library into your graveyard.)",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Cha'DIch Investigator",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Cha'DIch Investigator",
+        "manaCost": "{4}{B}",
+        "type": "Creature — Klingon Warrior",
+        "text": "When this creature enters, create a 2/1 red Klingon Warrior creature token with haste.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Chain Assassination",
     "layout": "single",
     "cards": [
@@ -66995,6 +67222,20 @@
     ]
   },
   {
+    "name": "Chief Magistrate of Mercadia",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Chief Magistrate of Mercadia",
+        "manaCost": "{4}{R}{W}",
+        "type": "Legendary Creature — Human Noble",
+        "text": "When Chief Magistrate of Mercadia enters, you become the monarch.\nAt the beginning of your upkeep, create a 2/1 red Goblin creature token with haste. Then if you're the monarch, for each creature token you control, create a token that's a copy of it.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Chief Warg's Company",
     "layout": "single",
     "cards": [
@@ -67487,6 +67728,20 @@
         "text": "Flying\nWhen this creature enters, you may sacrifice another artifact. If you do, put two +1/+1 counters on this creature and it assembles a Contraption. (Put the top card of your Contraption deck face up onto one of your sprockets.)",
         "power": "1",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Chira, All In",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Chira, All In",
+        "manaCost": "{3}{R}",
+        "type": "Legendary Creature — Human Rogue",
+        "text": "Whenever you discard one or more cards at random, select one or more targets at random, choose one or more modes at random, flip one or more coins, or roll one or more dice, put a +1/+1 counter on Chira and create a tapped Treasure token.",
+        "power": "3",
+        "toughness": "3"
       }
     ]
   },
@@ -71706,6 +71961,20 @@
     ]
   },
   {
+    "name": "Cloistered Telepath",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Cloistered Telepath",
+        "manaCost": "{1}{U}",
+        "type": "Creature — Talosian Advisor",
+        "text": "Flash\nWhen this creature enters, draw a card, then discard a card.",
+        "power": "2",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Cloistered Youth // Unholy Fiend",
     "layout": "transform",
     "cards": [
@@ -73511,6 +73780,20 @@
     ]
   },
   {
+    "name": "Cold-Blooded Crew",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Cold-Blooded Crew",
+        "manaCost": "{4}{G}{G}",
+        "type": "Creature — Gorn Warrior",
+        "text": "When this creature enters, put two +1/+1 counters on target creature.\nThis creature can't be blocked by creatures with power 2 or less.\nBasic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Cold-Eyed Selkie",
     "layout": "single",
     "cards": [
@@ -73715,6 +73998,20 @@
         "manaCost": "{1}{R}{R}",
         "type": "Sorcery",
         "text": "Escalate {1} (Pay this cost for each mode chosen beyond the first.)\nChoose one or more —\n• Target player discards all the cards in their hand, then draws that many cards.\n• Collective Defiance deals 4 damage to target creature.\n• Collective Defiance deals 3 damage to target opponent or planeswalker."
+      }
+    ]
+  },
+  {
+    "name": "Collective Drone",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Collective Drone",
+        "manaCost": "{1}{B}",
+        "type": "Artifact Creature — Borg",
+        "text": "Collective Drone's power is equal to the number of artifact creatures you control.",
+        "power": "*",
+        "toughness": "2"
       }
     ]
   },
@@ -74656,6 +74953,18 @@
     ]
   },
   {
+    "name": "Command Decision",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Command Decision",
+        "manaCost": "{1}{W}",
+        "type": "Sorcery",
+        "text": "Choose one —\n• Destroy target creature with power 4 or greater.\n• Draw a card."
+      }
+    ]
+  },
+  {
     "name": "Command From the Shadows",
     "layout": "single",
     "cards": [
@@ -75077,6 +75386,18 @@
         "text": "During deckbuilding, choose a number from one to nine. Write that number in this card's mana cost, power, and toughness.",
         "power": "*",
         "toughness": "*"
+      }
+    ]
+  },
+  {
+    "name": "Common Goal",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Common Goal",
+        "manaCost": "{1}{G}",
+        "type": "Sorcery",
+        "text": "One or two target creatures you control each deal damage equal to their power to target creature an opponent controls."
       }
     ]
   },
@@ -83772,6 +84093,18 @@
     ]
   },
   {
+    "name": "Cryogenic Stasis",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Cryogenic Stasis",
+        "manaCost": "{1}{U}",
+        "type": "Instant",
+        "text": "Tap target creature and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nDraw a card."
+      }
+    ]
+  },
+  {
     "name": "Cryoshatter",
     "layout": "single",
     "cards": [
@@ -86673,6 +87006,20 @@
     ]
   },
   {
+    "name": "Cybernetic Specialist",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Cybernetic Specialist",
+        "manaCost": "{2}",
+        "type": "Artifact Creature — Human Scientist",
+        "text": "When this creature enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\n{1}, {T}: Put target card from your graveyard on the bottom of your library.",
+        "power": "2",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Cybernetica Datasmith",
     "layout": "single",
     "cards": [
@@ -87149,6 +87496,20 @@
         "text": "When D00-DL, Caricaturist enters, create a 4/4 colorless Sketch creature token, which you have fifteen seconds to draw. The token has flying if it has wings in its art. The same is true for first strike and a sword, vigilance and a shield, menace and mean eyes, trample and horns, deathtouch and claws, lifelink and fangs, and haste and footwear.",
         "power": "1",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "DOT-7 Repair Squad",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "DOT-7 Repair Squad",
+        "manaCost": "{3}{W}",
+        "type": "Artifact Creature — Robot",
+        "text": "Flying\n{1}{W}: Untap target creature. Activate only as a sorcery and only once each turn.",
+        "power": "3",
+        "toughness": "3"
       }
     ]
   },
@@ -89790,6 +90151,18 @@
     ]
   },
   {
+    "name": "Dathon and Picard at El-Adrel",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dathon and Picard at El-Adrel",
+        "manaCost": "{2}{G}",
+        "type": "Instant",
+        "text": "Choose one —\n• Temba, His Arms Wide — Target creature gets +3/+3 and gains trample until end of turn.\n• Shaka, When the Walls Fell — Each opponent sacrifices a nontoken artifact or enchantment of their choice."
+      }
+    ]
+  },
+  {
     "name": "Daughter of Autumn",
     "layout": "single",
     "cards": [
@@ -90249,6 +90622,20 @@
         "text": "This spell costs {2} less to cast if an Elf died this turn or a Soldier entered this turn.\nWhenever this Vehicle enters or attacks, target opponent creates a Carnival of Souls token.\nCrew 2",
         "power": "4",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Davvol, Evincar of Rath",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Davvol, Evincar of Rath",
+        "manaCost": "{2}{B}{G}",
+        "type": "Legendary Creature — Phyrexian Noble",
+        "text": "Whenever another creature you control enters, you lose 1 life and add {B}.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -94485,6 +94872,19 @@
         "text": "Flying\nDisguise {4}{W} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)",
         "power": "4",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Defense Force Aggressor",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Defense Force Aggressor",
+        "manaCost": "{R}",
+        "type": "Creature — Klingon Warrior",
+        "power": "2",
+        "toughness": "1"
       }
     ]
   },
@@ -100116,6 +100516,18 @@
     ]
   },
   {
+    "name": "Direct Hit",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Direct Hit",
+        "manaCost": "{2}{R}",
+        "type": "Sorcery",
+        "text": "Direct Hit deals 5 damage to target creature."
+      }
+    ]
+  },
+  {
     "name": "Director Nick Fury",
     "layout": "single",
     "cards": [
@@ -101612,6 +102024,18 @@
         "manaCost": "{2}",
         "type": "Artifact",
         "text": "Flash\nAs this artifact enters, choose a card name.\nSpells with the chosen name cost {3} more to cast.\nActivated abilities of sources with the chosen name can't be activated unless they're mana abilities."
+      }
+    ]
+  },
+  {
+    "name": "Disruptor Pistol",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Disruptor Pistol",
+        "manaCost": "{2}",
+        "type": "Artifact",
+        "text": "{4}, {T}, Sacrifice this artifact: It deals 5 damage to target creature."
       }
     ]
   },
@@ -103366,6 +103790,34 @@
         "manaCost": "{3}{U}",
         "type": "Instant",
         "text": "Target player gains control of up to three target nonattacking creatures until end of turn. Untap those creatures. They block this turn if able."
+      }
+    ]
+  },
+  {
+    "name": "Dominion Saboteur",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dominion Saboteur",
+        "manaCost": "{4}{U}",
+        "type": "Creature — Shapeshifter",
+        "text": "You may have this creature enter as a copy of any artifact or creature on the battlefield, except it isn't legendary. If you do, it enters with additional counters on it equal to the same number and kinds of counters the copied permanent has on it.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Dominion Supervisor",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dominion Supervisor",
+        "manaCost": "{2}{G}",
+        "type": "Creature — Vorta Doctor",
+        "text": "When this creature enters, put a +1/+1 counter on target creature.\nCreatures you control with counters on them have trample.",
+        "power": "3",
+        "toughness": "1"
       }
     ]
   },
@@ -105837,6 +106289,20 @@
         "text": "Whenever you cast a noncreature spell, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\nDelirium — As long as there are four or more card types among cards in your graveyard, this creature gets +2/+2, has flying, and attacks each combat if able.",
         "power": "1",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Dragon's Smile",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dragon's Smile",
+        "manaCost": "{5}{R}{R}",
+        "type": "Legendary Artifact — Vehicle",
+        "text": "Flying\nOnce during each of your turns, you may pay {0} rather than pay the mana cost for a spell you cast from exile.\nWhenever Dragon's Smile deals combat damage to a player, that player exiles that many cards from the top of their library. You may play those cards this turn.\nCrew 3",
+        "power": "4",
+        "toughness": "5"
       }
     ]
   },
@@ -112104,6 +112570,19 @@
     ]
   },
   {
+    "name": "Dyfed, the Guiding Hand",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dyfed, the Guiding Hand",
+        "manaCost": "{3}{U}{U}",
+        "type": "Legendary Planeswalker — Dyfed",
+        "text": "[+1]: Create two tapped Powerstone tokens. (They're artifacts with \"{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.\")\n[−X]: Untap X target artifacts.\n[−6]: Search your library for an artifact card, put it onto the battlefield, then shuffle.\nDyfed, the Guiding Hand can be your commander.",
+        "loyalty": "4"
+      }
+    ]
+  },
+  {
     "name": "Dying Wail",
     "layout": "single",
     "cards": [
@@ -114791,6 +115270,32 @@
     ]
   },
   {
+    "name": "Eject the Warp Core",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Eject the Warp Core",
+        "manaCost": "{1}{B}",
+        "type": "Instant",
+        "text": "Kicker—Sacrifice an artifact or creature. (You may sacrifice an artifact or creature in addition to any other costs as you cast this spell.)\nTarget creature gets -2/-2 until end of turn. If this spell was kicked, that creature gets -6/-6 until end of turn instead."
+      }
+    ]
+  },
+  {
+    "name": "Ekthi, Contaminator Priest",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ekthi, Contaminator Priest",
+        "manaCost": "{3}{W}",
+        "type": "Legendary Creature — Phyrexian Cleric",
+        "text": "Other Phyrexians you control get +1/+1.\nEach Equipment you control has living weapon. (Whenever an Equipment you control enters, create a 0/0 black Phyrexian Germ creature token, then attach that Equipment to it.)",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Ekundu Cyclops",
     "layout": "single",
     "cards": [
@@ -114979,6 +115484,20 @@
         "power": "13",
         "toughness": "13",
         "colorIndicator": "B"
+      }
+    ]
+  },
+  {
+    "name": "Elda, Conjurer of Spectacle",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Elda, Conjurer of Spectacle",
+        "manaCost": "{2}{G}{W}",
+        "type": "Legendary Creature — Human Wizard",
+        "text": "The first nonlegendary creature spell you cast each turn has demonstrate. (When you cast that spell, you may copy it. If you do, choose an opponent to also copy it. Each copy becomes a token.)",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -118781,6 +119300,20 @@
         "manaCost": "{2}{W}",
         "type": "Instant",
         "text": "Destroy target nonland permanent. Its controller creates a Lander token. (It's an artifact with \"{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\")"
+      }
+    ]
+  },
+  {
+    "name": "Emergency Medical Hologram",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Emergency Medical Hologram",
+        "manaCost": "{W}",
+        "type": "Artifact Creature — Illusion Doctor",
+        "text": "When this creature enters, put a +1/+1 counter on target creature. You gain 1 life.",
+        "power": "0",
+        "toughness": "1"
       }
     ]
   },
@@ -124896,6 +125429,18 @@
     ]
   },
   {
+    "name": "Evasive Maneuvers",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Evasive Maneuvers",
+        "manaCost": "{W}",
+        "type": "Instant",
+        "text": "Target blocking creature you control gets +2/+2 until end of turn.\nDraw a card."
+      }
+    ]
+  },
+  {
     "name": "Evelyn, the Covetous",
     "layout": "single",
     "cards": [
@@ -126327,6 +126872,20 @@
         "manaCost": "{2}{B}",
         "type": "Sorcery",
         "text": "Yell \"Who wants a souvenir?\" and announce the name of a nonland card in your graveyard. Each player in an Un-game who can hear you may bid life. You start the bidding at 0. The high bidder loses life equal to the high bid. They copy the card and may cast the copy without paying its mana cost. If you didn't win the bid, you gain life equal to the high bid and create that many Treasure tokens."
+      }
+    ]
+  },
+  {
+    "name": "Exocomp",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Exocomp",
+        "manaCost": "{2}{U}",
+        "type": "Artifact Creature — Construct",
+        "text": "Flying (This creature can't be blocked except by creatures with flying or reach.)",
+        "power": "3",
+        "toughness": "1"
       }
     ]
   },
@@ -132908,6 +133467,34 @@
     ]
   },
   {
+    "name": "Federation Field Medic",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Federation Field Medic",
+        "manaCost": "{3}{W}",
+        "type": "Creature — Human Doctor",
+        "text": "Vigilance\nWhen this creature enters, choose one —\n• Put a +1/+1 counter on target creature. It gains vigilance until end of turn.\n• Draw a card if you control a permanent with a counter on it.",
+        "power": "3",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Federation Probe",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Federation Probe",
+        "manaCost": "{U}",
+        "type": "Artifact Creature — Construct",
+        "text": "Flying\nWhen this creature enters, choose one —\n• Target creature gets +1/+1 until end of turn.\n• Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",
+        "power": "1",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Feebleness",
     "layout": "single",
     "cards": [
@@ -134188,6 +134775,19 @@
         "manaCost": "{6}",
         "type": "Artifact",
         "text": "Creature spells cost {2} more to cast."
+      }
+    ]
+  },
+  {
+    "name": "Feroz, Ulgrotha's Warden",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Feroz, Ulgrotha's Warden",
+        "manaCost": "{3}{G}{W}{U}",
+        "type": "Legendary Planeswalker — Feroz",
+        "text": "[+2]: Create two 1/1 blue Bird creature tokens with flying.\n[0]: Draw a card. You may put a permanent card with mana value 4 or less from your hand onto the battlefield.\n[−7]: Create a Feroz's Ban token. (It's a {6} artifact with \"Creature spells cost {2} more to cast.\")\nFeroz, Ulgrotha's Warden can be your commander.",
+        "loyalty": "5"
       }
     ]
   },
@@ -137627,6 +138227,18 @@
     ]
   },
   {
+    "name": "First Contact",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "First Contact",
+        "manaCost": "{1}{G}",
+        "type": "Instant",
+        "text": "Mill four cards. You may put a permanent card from among them into your hand. If this spell is the first spell you've cast this game, you gain 2 life. (To mill four cards, put the top four cards of your library into your graveyard.)"
+      }
+    ]
+  },
+  {
     "name": "First Day of Class",
     "layout": "single",
     "cards": [
@@ -140333,6 +140945,20 @@
         "text": "Flying\nWhen this creature dies, each player mills two cards. Then you may exile this card. When you do, put target creature or battle card from your graveyard on top of your library. (To mill two cards, a player puts the top two cards of their library into their graveyard.)",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Flitwing, Lyev Detective",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Flitwing, Lyev Detective",
+        "manaCost": "{2}{U}",
+        "type": "Legendary Creature — Faerie Detective",
+        "text": "Flying\nIf you would create one or more tokens, you may create that many Clue tokens instead. (They're artifacts with \"{2}, Sacrifice this token: Draw a card.\")",
+        "power": "1",
+        "toughness": "1"
       }
     ]
   },
@@ -145039,6 +145665,20 @@
         "text": "Protection from wordy (Something is wordy if it has four or more lines of rules text.)",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Free Borg Revolutionaries",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Free Borg Revolutionaries",
+        "manaCost": "{3}{W}{W}",
+        "type": "Artifact Creature — Borg Rebel",
+        "text": "When this creature enters, creatures you control get +1/+1 until end of turn.\nBasic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",
+        "power": "4",
+        "toughness": "5"
       }
     ]
   },
@@ -156225,6 +156865,18 @@
     ]
   },
   {
+    "name": "Gin'tak Charge",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gin'tak Charge",
+        "manaCost": "{R}",
+        "type": "Sorcery",
+        "text": "Gin'tak Charge deals 2 damage to any target."
+      }
+    ]
+  },
+  {
     "name": "Gingerbehemoth",
     "layout": "single",
     "cards": [
@@ -157351,6 +158003,20 @@
         "name": "Shattered Yard",
         "manaCost": "{4}{R}",
         "text": "At the beginning of your end step, this Room deals 1 damage to each opponent.\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)"
+      }
+    ]
+  },
+  {
+    "name": "Glava, Five-Advents Mage",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Glava, Five-Advents Mage",
+        "manaCost": "{5}{G}{G}",
+        "type": "Legendary Creature — Human Wizard",
+        "text": "Whenever you cast a permanent spell with {X} in its mana cost or activate an ability with {X} in its activation cost that isn't a mana ability, you may have the value of X become 5. Do this only once each turn.",
+        "power": "5",
+        "toughness": "5"
       }
     ]
   },
@@ -164583,6 +165249,20 @@
     ]
   },
   {
+    "name": "Gorn Captain",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gorn Captain",
+        "manaCost": "{3}{G}",
+        "type": "Creature — Gorn Soldier",
+        "text": "Trample (This creature can deal excess combat damage to the player it's attacking.)",
+        "power": "4",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Gornog, the Red Reaper",
     "layout": "single",
     "cards": [
@@ -165072,6 +165752,20 @@
     ]
   },
   {
+    "name": "Grakk the Pacifist",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Grakk the Pacifist",
+        "manaCost": "{1}{W}",
+        "type": "Legendary Creature — Orc",
+        "text": "Grakk can't attack or block.\nWhenever you cast an Aura spell that targets a creature an opponent controls, draw a card. This ability triggers only once each turn.",
+        "power": "4",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Grakmaw, Skyclave Ravager",
     "layout": "single",
     "cards": [
@@ -165270,6 +165964,20 @@
         "text": "Haste\nWhenever one or more creatures you control attack, add that much mana in any combination of {R} and/or {G}. Until end of turn, you don't lose this mana as steps and phases end.",
         "power": "3",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Grandmother Goby",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Grandmother Goby",
+        "manaCost": "{2}{U}{U}",
+        "type": "Legendary Creature — Merfolk Wizard",
+        "text": "Whenever you cast a noncreature spell, counter that spell. Create a number of 1/1 blue Merfolk creature tokens equal to the amount of mana spent to cast that spell.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -167696,6 +168404,19 @@
     ]
   },
   {
+    "name": "Greensleeves",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Greensleeves",
+        "manaCost": "{4}{G}{G}",
+        "type": "Legendary Planeswalker — Greensleeves",
+        "text": "[+2]: Create a Giant Badger token. (It's a {1}{G}{G} 2/2 Badger creature with \"Whenever this token blocks, it gets +2/+2 until end of turn.\")\n[−3]: Mill three cards. Put all permanent cards from among them into your hand.\n[−8]: Until end of turn, creatures you control have base power and toughness 8/8 and gain trample.\nGreensleeves can be your commander.",
+        "loyalty": "5"
+      }
+    ]
+  },
+  {
     "name": "Greensleeves, Maro-Sorcerer",
     "layout": "single",
     "cards": [
@@ -169323,6 +170044,20 @@
         "text": "{R}: This creature gets +2/+0 until end of turn. Activate only during the declare blockers step, only if at least one creature is blocking this creature, and only once each turn.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Grizzlegom, Hurloon Hero",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Grizzlegom, Hurloon Hero",
+        "manaCost": "{5}{R}{G}",
+        "type": "Legendary Creature — Minotaur Warrior",
+        "text": "Rulebreaker — A deck with this commander can have any land cards.\nWhenever Grizzlegom attacks, create a 1/1 white Soldier creature token for each Plains you control. Draw a card for each Island you control. Each opponent loses 1 life for each Swamp you control. Put a +1/+1 counter on Grizzlegom for each Mountain you control. You gain 1 life for each Forest you control.",
+        "power": "4",
+        "toughness": "4"
       }
     ]
   },
@@ -171162,6 +171897,18 @@
     ]
   },
   {
+    "name": "Guidance Failure",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Guidance Failure",
+        "manaCost": "{3}{U}",
+        "type": "Instant",
+        "text": "This spell costs {1} less to cast if it targets an attacking creature.\nTarget creature or Spacecraft's owner puts it on their choice of the top or bottom of their library."
+      }
+    ]
+  },
+  {
     "name": "Guide of Souls",
     "layout": "single",
     "cards": [
@@ -171560,6 +172307,20 @@
     ]
   },
   {
+    "name": "Gumato",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gumato",
+        "manaCost": "{4}{G}",
+        "type": "Creature — Ape Beast",
+        "text": "Vigilance (Attacking doesn't cause this creature to tap.)\n{T}: Add {G}{G}{G}.",
+        "power": "4",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Gumdrop Poisoner // Tempt with Treats",
     "layout": "adventurer",
     "cards": [
@@ -171879,6 +172640,20 @@
         "type": "Creature — Bird Soldier",
         "text": "Flying\nWhenever this creature becomes blocked, you may untap it and remove it from combat.",
         "power": "2",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Gustha Ebbasdotter",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gustha Ebbasdotter",
+        "manaCost": "{3}{U}{U}",
+        "type": "Legendary Creature — Human Wizard",
+        "text": "Protection from red\nWhenever you cast your first spell during each opponent's turn, draw three cards, then put two cards from your hand on top of your library in any order.",
+        "power": "3",
         "toughness": "3"
       }
     ]
@@ -177200,6 +177975,18 @@
     ]
   },
   {
+    "name": "He's Dead, Jim",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "He's Dead, Jim",
+        "manaCost": "{3}{B}",
+        "type": "Instant",
+        "text": "Destroy target creature. Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)"
+      }
+    ]
+  },
+  {
     "name": "Head Banger",
     "layout": "single",
     "cards": [
@@ -177219,6 +178006,20 @@
         "manaCost": "{3}{B}{B}",
         "type": "Sorcery",
         "text": "Target opponent puts the cards from their hand on top of their library. Search that player's library for that many cards. The player puts those cards into their hand, then shuffles."
+      }
+    ]
+  },
+  {
+    "name": "Head of Security",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Head of Security",
+        "manaCost": "{1}{W}",
+        "type": "Creature — Andorian Soldier",
+        "text": "First strike (This creature deals combat damage before creatures without first strike.)",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -183160,6 +183961,20 @@
     ]
   },
   {
+    "name": "Hive Mind Coprocessor",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Hive Mind Coprocessor",
+        "manaCost": "{4}{B}",
+        "type": "Artifact Creature — Borg",
+        "text": "Artifact creatures you control have \"Whenever this creature deals combat damage to a player, you may pay 1 life. If you do, draw a card.\"",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Hive Stirrings",
     "layout": "single",
     "cards": [
@@ -184084,6 +184899,20 @@
         "text": "{U}: This creature gains shroud until end of turn and doesn't untap during your next untap step. Tap it. (A creature with shroud can't be the target of spells or abilities.)",
         "power": "3",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Homer, the Hermit",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Homer, the Hermit",
+        "manaCost": "{B}{G}{U}",
+        "type": "Legendary Creature — Crab Druid",
+        "text": "Landfall — Whenever a land you control enters, any number of target players each mill X cards, where X is twice the number of Crabs, Lobsters, Nautiluses, Starfish, and/or Trilobites you control.",
+        "power": "0",
+        "toughness": "9"
       }
     ]
   },
@@ -185675,6 +186504,20 @@
         "text": "{U}: Untap this creature.",
         "power": "1",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Horta",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Horta",
+        "manaCost": "{4}{R}{R}",
+        "type": "Creature — Elemental",
+        "text": "Trample\nBasic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",
+        "power": "7",
+        "toughness": "6"
       }
     ]
   },
@@ -187303,6 +188146,20 @@
         "text": "Hexproof (This creature can't be the target of spells or abilities your opponents control.)",
         "power": "2",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Humpback Whales",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Humpback Whales",
+        "manaCost": "{4}{U}{U}",
+        "type": "Creature — Whale",
+        "text": "Vigilance, ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\nBasic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",
+        "power": "5",
+        "toughness": "6"
       }
     ]
   },
@@ -189125,6 +189982,18 @@
         "manaCost": "{W}{W}",
         "type": "Enchantment",
         "text": "When you speak in non-rhyming sentences, sacrifice this enchantment.\nSay \"I'm rubber, you're glue. Everything bounces off me and sticks to you\": Change the target of target spell or ability that targets only you."
+      }
+    ]
+  },
+  {
+    "name": "I'm a Doctor, Not a . . .",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "I'm a Doctor, Not a . . .",
+        "manaCost": "{G}",
+        "type": "Instant",
+        "text": "Put a +1/+1 counter on target creature you control. Untap it. Until end of turn, it gets +1/+1 and becomes a Doctor. (It loses all other creature types.)"
       }
     ]
   },
@@ -200740,6 +201609,20 @@
     ]
   },
   {
+    "name": "Istvan, Butcher of Eln",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Istvan, Butcher of Eln",
+        "manaCost": "{1}{B}{B}{B}",
+        "type": "Legendary Creature — Human",
+        "text": "Istvan attacks each combat if able.\nPrevent all damage that would be dealt to Istvan by creatures.\nWhenever a creature an opponent controls dies, put two +1/+1 counters on Istvan.",
+        "power": "1",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Isu the Abominable",
     "layout": "single",
     "cards": [
@@ -200856,6 +201739,20 @@
         "manaCost": "{2}{G}",
         "type": "Sorcery",
         "text": "Choose one —\n• Target creature you control deals damage equal to its power to target creature an opponent controls.\n• Destroy target artifact or enchantment.\nRebound"
+      }
+    ]
+  },
+  {
+    "name": "Itazura, Lingering Wick",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Itazura, Lingering Wick",
+        "manaCost": "{2}{U}{R}",
+        "type": "Legendary Creature — Spirit",
+        "text": "At the beginning of your upkeep, exile the top three cards of your library. Each opponent secretly chooses a number 0 or greater. Then those numbers are revealed. Choose an opponent with the highest number. Itazura deals that much damage to them, then they may cast a spell from among those cards without paying its mana cost. You put a card from among them that wasn't cast this way into your hand.",
+        "power": "1",
+        "toughness": "5"
       }
     ]
   },
@@ -201512,6 +202409,20 @@
         "manaCost": "{3}{W}{W}",
         "type": "Instant",
         "text": "Cast this spell only after combat.\nGain control of target nonartifact, nonblack creature that attacked you this turn and put a -1/-0 counter on it."
+      }
+    ]
+  },
+  {
+    "name": "Jabs, Mistress of Mockery",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Jabs, Mistress of Mockery",
+        "manaCost": "{2}{R}",
+        "type": "Legendary Creature — Human Rogue",
+        "text": "If a triggered ability of a permanent you control but don't own triggers, that ability triggers an additional time.",
+        "power": "2",
+        "toughness": "3"
       }
     ]
   },
@@ -202729,6 +203640,20 @@
         "manaCost": "{2}",
         "type": "Artifact",
         "text": "{3}, {T}: Untap target creature."
+      }
+    ]
+  },
+  {
+    "name": "Jandor, Fortuned Traveler",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Jandor, Fortuned Traveler",
+        "manaCost": "{1}{R}{G}{W}",
+        "type": "Legendary Creature — Human Citizen",
+        "text": "Each Beast, Camel, Horse, Elephant, and Wolf creature you control is a Mount in addition to its other types and has saddle 2. (Tap any number of other creatures you control with total power 2 or more: That Mount becomes saddled until end of turn. Saddle only as a sorcery.)\nWhenever a saddled creature you control attacks, it gets +2/+2 until end of turn. Draw a card. Create a Food token.",
+        "power": "2",
+        "toughness": "4"
       }
     ]
   },
@@ -211982,6 +212907,18 @@
     ]
   },
   {
+    "name": "Khaaaaaaaaaaaannn!",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Khaaaaaaaaaaaannn!",
+        "manaCost": "{X}{R}",
+        "type": "Instant",
+        "text": "Khaaaaaaaaaaaannn! deals twice X damage to target creature. If that creature would die this turn, exile it instead."
+      }
+    ]
+  },
+  {
     "name": "Khabál Ghoul",
     "layout": "single",
     "cards": [
@@ -216321,6 +217258,20 @@
     ]
   },
   {
+    "name": "Kolinahr Priest",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Kolinahr Priest",
+        "manaCost": "{2}{U}",
+        "type": "Creature — Vulcan Monk",
+        "text": "Flash (You may cast this spell any time you could cast an instant.)",
+        "power": "3",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Koll, the Forgemaster",
     "layout": "single",
     "cards": [
@@ -218472,6 +219423,20 @@
     ]
   },
   {
+    "name": "Kruge, Genesis Seeker",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Kruge, Genesis Seeker",
+        "manaCost": "{2}{R}",
+        "type": "Legendary Creature — Klingon Officer",
+        "text": "Whenever Kruge attacks, attacking Klingons you control get +1/+1 until end of turn.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Kruin Outlaw // Terror of Kruin Pass",
     "layout": "transform",
     "cards": [
@@ -219019,6 +219984,20 @@
     ]
   },
   {
+    "name": "Kuroki, Thief of Talents",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Kuroki, Thief of Talents",
+        "manaCost": "{4}{B}",
+        "type": "Legendary Creature — Spirit",
+        "text": "Menace\nAt the beginning of your end step, target opponent may draw four cards. If they do, look at that player's hand and you may cast a spell from their hand without paying its mana cost. If they don't, put two +1/+1 counters on Kuroki.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Kusari-Gama",
     "layout": "single",
     "cards": [
@@ -219452,6 +220431,34 @@
         "text": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)\nAs long as you have an enduring story, you may pay {0} rather than pay the equip cost of the first equip ability you activate each turn.\nWhenever another Dwarf or Equipment you control enters, draw a card. This ability triggers only once each turn.",
         "power": "1",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "La Forge, Perceptive Engineer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "La Forge, Perceptive Engineer",
+        "manaCost": "{1}{U}",
+        "type": "Legendary Creature — Human Artificer",
+        "text": "Vigilance (Attacking doesn't cause this creature to tap.)\n{T}: Add {U}. Spend this mana only to cast an artifact spell.",
+        "power": "1",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "La'An Noonien-Singh, Security",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "La'An Noonien-Singh, Security",
+        "manaCost": "{2}{R}{R}",
+        "type": "Legendary Creature — Human Soldier",
+        "text": "Whenever you attack while creatures you control have total power 8 or greater, target creature can't block this turn.",
+        "power": "4",
+        "toughness": "3"
       }
     ]
   },
@@ -233649,6 +234656,20 @@
     ]
   },
   {
+    "name": "Lyna, Veil of Vengeance",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Lyna, Veil of Vengeance",
+        "manaCost": "{W}{U}{B}",
+        "type": "Legendary Creature — Soltari Cleric",
+        "text": "Shadow (This creature can block or be blocked by only creatures with shadow.)\nWhenever a creature you control with shadow deals combat damage to a player, draw a card.\n{3}: Put a shadow counter on another target creature. Activate only as a sorcery.",
+        "power": "2",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Lynde, Cheerful Tormentor",
     "layout": "single",
     "cards": [
@@ -237027,6 +238048,18 @@
     ]
   },
   {
+    "name": "Malfunctioning Holodeck",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Malfunctioning Holodeck",
+        "manaCost": "{2}{W}",
+        "type": "Artifact",
+        "text": "Ward {2} (Whenever this artifact becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\nWhen this artifact enters, exile target nonland permanent an opponent controls until this artifact leaves the battlefield."
+      }
+    ]
+  },
+  {
     "name": "Malicious Advice",
     "layout": "single",
     "cards": [
@@ -240007,6 +241040,18 @@
     ]
   },
   {
+    "name": "Marooned",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Marooned",
+        "manaCost": "{U}",
+        "type": "Enchantment — Aura",
+        "text": "Enchant artifact or creature\nWhen this Aura enters, you may pay {3}. If you do, tap enchanted permanent.\nEnchanted permanent doesn't untap during its controller's untap step and can't be beamed up."
+      }
+    ]
+  },
+  {
     "name": "Marrow Bats",
     "layout": "single",
     "cards": [
@@ -241182,6 +242227,20 @@
     ]
   },
   {
+    "name": "Massimo, the Magician",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Massimo, the Magician",
+        "manaCost": "{U}{R}{W}",
+        "type": "Legendary Creature — Cat Wizard",
+        "text": "Whenever Massimo or another creature you control enters, exile up to one target instant or sorcery card with mana value 1 from your graveyard. If a card is exiled this way, that creature gains \"Whenever this creature deals combat damage to a player, copy the exiled card. You may cast the copy without paying its mana cost.\"",
+        "power": "3",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Massive Might",
     "layout": "single",
     "cards": [
@@ -241932,6 +242991,20 @@
     ]
   },
   {
+    "name": "Matoc, Lavamancer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Matoc, Lavamancer",
+        "manaCost": "{3}{R}",
+        "type": "Legendary Creature — Human Barbarian Wizard",
+        "text": "Whenever a source you control deals damage, if at least one permanent or player was dealt exactly 2 of that damage, exile the top card of your library. You may play it until the end of your next turn.\n{R}, {T}, Exile two cards from your graveyard: Matoc deals 2 damage to any other target.",
+        "power": "2",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Matopi Golem",
     "layout": "single",
     "cards": [
@@ -242097,6 +243170,20 @@
         "manaCost": "{2}{W}",
         "type": "Artifact — Equipment",
         "text": "When this Equipment enters, attach it to target creature you control.\nEquipped creature gets +2/+2 and has flying and first strike.(It deals combat damage before creatures without first strike.)\nEquip {2}{W}{W}"
+      }
+    ]
+  },
+  {
+    "name": "Maular, the Next Evolution",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Maular, the Next Evolution",
+        "manaCost": "{5}{G}{G}",
+        "type": "Legendary Creature — Dinosaur Mutant",
+        "text": "Rulebreaker — A deck with this commander can have creature cards with mana value 7 or greater of any color identity and any basic land cards.\nWhenever a creature you control with mana value 7 or greater attacks, double its power and toughness until end of turn.",
+        "power": "10",
+        "toughness": "10"
       }
     ]
   },
@@ -242808,6 +243895,20 @@
     ]
   },
   {
+    "name": "Meatsqueak, Hoard Lord",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Meatsqueak, Hoard Lord",
+        "manaCost": "{2}{G}",
+        "type": "Legendary Creature — Squirrel",
+        "text": "Whenever another creature dies, create a Food token. This ability triggers only once each turn. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\nFor every seven Foods you control, Squirrels you control get +3/+3.",
+        "power": "2",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Mech Hangar",
     "layout": "single",
     "cards": [
@@ -243303,6 +244404,20 @@
         "manaCost": "{4}{U}{U}{U}",
         "type": "Legendary Enchantment",
         "text": "All creatures get -X/-0, where X is the number of cards in your hand."
+      }
+    ]
+  },
+  {
+    "name": "Mek'leth Berserker",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Mek'leth Berserker",
+        "manaCost": "{3}{R}",
+        "type": "Creature — Klingon Berserker",
+        "text": "Menace (This creature can't be blocked except by two or more creatures.)",
+        "power": "4",
+        "toughness": "3"
       }
     ]
   },
@@ -250899,6 +252014,20 @@
     ]
   },
   {
+    "name": "Miss Highwater",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Miss Highwater",
+        "manaCost": "{2}{B}{B}",
+        "type": "Legendary Creature — Demon Advisor",
+        "text": "Menace\nWhenever Miss Highwater deals combat damage to a player who doesn't have a contract counter, they may discard their hand. If they do, they draw seven cards and get a contract counter. For as long as they have a contract counter, when they lose the game, for each artifact and creature they controlled, create a token that's a copy of it.",
+        "power": "5",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Misshapen Fiend",
     "layout": "single",
     "cards": [
@@ -255202,6 +256331,20 @@
     ]
   },
   {
+    "name": "Moopsy",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Moopsy",
+        "manaCost": "{G}",
+        "type": "Creature — Beast",
+        "text": "Deathtouch\n{2}: This creature gains reach until end of turn.",
+        "power": "1",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Moor Fiend",
     "layout": "single",
     "cards": [
@@ -257562,6 +258705,20 @@
         "text": "At the beginning of your first main phase, add {R} or {G} for each Raccoon you control.\nWhenever you expend 4, you gain 3 life. (You expend 4 as you spend your fourth total mana to cast spells during a turn.)\nWhenever you expend 8, exile the top two cards of your library. Until the end of your next turn, you may play those cards.",
         "power": "2",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Mugato",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Mugato",
+        "manaCost": "{3}{G}{G}",
+        "type": "Creature — Ape Beast",
+        "text": "Reach, vigilance, deathtouch",
+        "power": "6",
+        "toughness": "6"
       }
     ]
   },
@@ -264175,6 +265332,20 @@
     ]
   },
   {
+    "name": "Nephilim Epochal",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Nephilim Epochal",
+        "manaCost": "{U/R}{R/G}{G/W}{W/B}",
+        "type": "Legendary Creature — Elder Nephilim",
+        "text": "When Nephilim Epochal enters, search your library for a Nephilim card, reveal it, put it into your hand, then shuffle.\nNephilim you control get +1/+1 for each other Nephilim you control and can't be blocked by monocolored creatures.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Nerd Rage",
     "layout": "single",
     "cards": [
@@ -268133,6 +269304,20 @@
         "text": "Flying\nWhenever you draw a card, Niv-Mizzet deals 1 damage to any target.\n{T}: Draw a card.",
         "power": "4",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Nivea, Beloved Battlemage",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Nivea, Beloved Battlemage",
+        "manaCost": "{2}{W}",
+        "type": "Legendary Creature — Human Wizard Warrior",
+        "text": "Whenever a creature you control becomes blocked, you may untap it and remove it from combat.\n{5}{W}{W}{W}, Sacrifice Nivea: Create an Akroma, Angel of Wrath token. (She's a {5}{W}{W}{W} legendary 6/6 Angel creature with flying, first strike, vigilance, trample, haste, and protection from black and from red.)",
+        "power": "3",
+        "toughness": "1"
       }
     ]
   },
@@ -273719,6 +274904,20 @@
     ]
   },
   {
+    "name": "Olag and Miau, New Friends",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Olag and Miau, New Friends",
+        "manaCost": "{W}{B}{G}",
+        "type": "Legendary Creature — Zombie Cat",
+        "text": "Whenever another Zombie you control enters, put a +1/+1 counter on target Cat you control.\nWhenever another Cat you control enters, put a +1/+1 counter on target Zombie you control.\nAt the beginning of your end step, each opponent loses life equal to the number of tapped Cats and/or Zombies you control.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Old Fat Spider",
     "layout": "single",
     "cards": [
@@ -273978,6 +275177,20 @@
         "text": "Trample\nWhen Old-Growth Troll dies, if it was a creature, return it to the battlefield. It's an Aura enchantment with enchant Forest you control and \"Enchanted Forest has '{T}: Add {G}{G}' and '{1}, {T}, Sacrifice this land: Create a tapped 4/4 green Troll Warrior creature token with trample.'\"",
         "power": "4",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Olinda the Oblivious",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Olinda the Oblivious",
+        "manaCost": "{3}{B}",
+        "type": "Legendary Creature — Skunk Rogue",
+        "text": "Whenever Olinda enters or attacks, for each opponent, put an odor counter on up to one target creature that player controls without an odor counter on it. Each of those creatures has \"At the beginning of your upkeep, you lose 2 life\" for as long as it has an odor counter on it. (They continue to smell after Olinda has left the battlefield.)",
+        "power": "3",
+        "toughness": "3"
       }
     ]
   },
@@ -277470,6 +278683,20 @@
         "text": "When this creature enters, look at the top three cards of your library, then put one of them into your hand and the rest into your graveyard.",
         "power": "3",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Organic Avulsion Unit",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Organic Avulsion Unit",
+        "manaCost": "{2}{B}",
+        "type": "Artifact Creature — Borg",
+        "text": "{2}: Artifact creatures you control gain menace until end of turn. (A creature with menace can't be blocked except by two or more creatures.)",
+        "power": "2",
+        "toughness": "3"
       }
     ]
   },
@@ -284382,6 +285609,20 @@
     ]
   },
   {
+    "name": "Pelia, Immortal Innovator",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Pelia, Immortal Innovator",
+        "manaCost": "{3}{U}",
+        "type": "Legendary Creature — Lanthanite Artificer",
+        "text": "When Pelia enters, return target creature an opponent controls to its owner's hand.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Pelt Collector",
     "layout": "single",
     "cards": [
@@ -285072,6 +286313,18 @@
         "manaCost": "{1}{U}",
         "type": "Instant",
         "text": "Return target nonland permanent you don't control to its owner's hand. If its mana value was 2 or less, scry 2."
+      }
+    ]
+  },
+  {
+    "name": "Perils of the Past",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Perils of the Past",
+        "manaCost": "{1}{R}",
+        "type": "Instant",
+        "text": "Choose one —\n• Use the Relic — Target creature gets +3/+2 until end of turn.\n• Destroy the Relic — Destroy target artifact."
       }
     ]
   },
@@ -288393,6 +289646,20 @@
     ]
   },
   {
+    "name": "Picard, Leading by Example",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Picard, Leading by Example",
+        "manaCost": "{1}{W}",
+        "type": "Legendary Creature — Human Officer",
+        "text": "{1}, {T}: Another target creature gets +X/+X until end of turn, where X is Picard's power. Activate only as a sorcery.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Picard, Steadfast Captain",
     "layout": "single",
     "cards": [
@@ -290883,6 +292150,20 @@
     ]
   },
   {
+    "name": "Planetary Patrol",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Planetary Patrol",
+        "manaCost": "{1}{R}",
+        "type": "Creature — Scout",
+        "text": "Landfall — Whenever a land you control enters, this creature gets +1/+1 until end of turn.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Planewide Celebration",
     "layout": "single",
     "cards": [
@@ -290996,6 +292277,18 @@
         "manaCost": "{R}",
         "type": "Sorcery",
         "text": "Plasma Bolt deals 2 damage to any target.\nVoid — Plasma Bolt deals 3 damage instead if a nonland permanent left the battlefield this turn or a spell was warped this turn."
+      }
+    ]
+  },
+  {
+    "name": "Plasma Cascade",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Plasma Cascade",
+        "manaCost": "{2}{R}",
+        "type": "Instant",
+        "text": "Plasma Cascade deals 3 damage to any target. You may discard a card. If you do, draw a card."
       }
     ]
   },
@@ -312919,6 +314212,20 @@
     ]
   },
   {
+    "name": "Relentless Drednok",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Relentless Drednok",
+        "manaCost": "{B}",
+        "type": "Artifact Creature — Robot",
+        "text": "Lifelink\n{2}{B}, Exile this card from your graveyard: You draw a card and lose 1 life.",
+        "power": "1",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Relentless Hunter",
     "layout": "single",
     "cards": [
@@ -314933,6 +316240,18 @@
         "text": "Sacrifice this creature: Prevent all combat damage target creature would deal this turn.",
         "power": "1",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Resistance Is Futile",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Resistance Is Futile",
+        "manaCost": "{1}{B}",
+        "type": "Sorcery",
+        "text": "Choose one —\n• Destroy target nonartifact creature.\n• Return target artifact creature card with mana value 3 or less from your graveyard to the battlefield."
       }
     ]
   },
@@ -318511,6 +319830,20 @@
         "text": "Rigo enters with a shield counter on it. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\nWhenever you attack a player or planeswalker with one or more creatures with power 1 or less, draw a card.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Rikala, Homarid King",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Rikala, Homarid King",
+        "manaCost": "{1}{G}{U}",
+        "type": "Legendary Creature — Lobster Noble",
+        "text": "At the beginning of your upkeep, put a tide counter on Rikala. Then if there are four or more tide counters on Rikala, remove them.\nCreatures you control get +1/+0 for each tide counter on Rikala.\nWhenever you tap an Island for mana, if there are three or more tide counters on Rikala, add an additional {U}.",
+        "power": "0",
+        "toughness": "4"
       }
     ]
   },
@@ -322186,6 +323519,20 @@
         "power": "0",
         "toughness": "1",
         "colorIndicator": "R"
+      }
+    ]
+  },
+  {
+    "name": "Rogue Artificial Intelligence",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Rogue Artificial Intelligence",
+        "manaCost": "{4}{B}{B}",
+        "type": "Artifact Creature — Construct",
+        "text": "When this creature enters, choose one —\n• You gain 3 life.\n• Surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nBasic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",
+        "power": "6",
+        "toughness": "5"
       }
     ]
   },
@@ -327338,6 +328685,20 @@
     ]
   },
   {
+    "name": "Saavik, Stoic Student",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Saavik, Stoic Student",
+        "manaCost": "{4}{W}",
+        "type": "Legendary Creature — Vulcan Advisor",
+        "text": "Flash\nFederation — When Saavik enters, she deals X damage to target attacking or blocking creature an opponent controls, where X is the number of creature types among non-Borg creatures you control.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Sab-Sunen, Luxa Embodied",
     "layout": "single",
     "cards": [
@@ -328687,6 +330048,20 @@
         "text": "{U}{R}, {T}: Create a token that's a copy of another target creature or artifact you control, except it's an artifact in addition to its other types. It gains haste. Sacrifice it at the beginning of the next end step.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Sahir, Visitor in Darkness",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Sahir, Visitor in Darkness",
+        "manaCost": "{1}{B}{B}",
+        "type": "Legendary Creature — Human Wizard",
+        "text": "Eminence — At the beginning of your upkeep, Sahir deals 1 damage to you. This ability triggers only if Sahir is in the command zone or on the battlefield.\nWhenever a source you control deals exactly 1 damage to you and whenever a spell or ability you control causes you to lose exactly 1 life, put a +1/+1 counter on Sahir. If this is the second time this ability has resolved this turn, draw a card.",
+        "power": "3",
+        "toughness": "3"
       }
     ]
   },
@@ -332023,6 +333398,20 @@
     ]
   },
   {
+    "name": "Sash and Waistcoat, Unmen",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Sash and Waistcoat, Unmen",
+        "manaCost": "{1}{U}",
+        "type": "Legendary Creature — Insect Rogue",
+        "text": "Whenever a face-down creature attacks one of your opponents, it can't be blocked this combat.\n{3}: Manifest the top card of your library. Any player may activate this ability but only as a sorcery. (To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Saskia the Unyielding",
     "layout": "single",
     "cards": [
@@ -332238,6 +333627,20 @@
         "manaCost": "{R}",
         "type": "Sorcery",
         "text": "Create a 1/1 red Satyr creature token with \"This token can't block.\"\nEscape—{2}{R}, Exile two other cards from your graveyard. (You may cast this card from your graveyard for its escape cost.)"
+      }
+    ]
+  },
+  {
+    "name": "Saurian Explorer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Saurian Explorer",
+        "manaCost": "{3}{G}",
+        "type": "Creature — Dinosaur Scout",
+        "text": "Landfall — Whenever a land you control enters, this creature gets +2/+2 until end of turn.\n{6}: Create a tapped Planet land token named New Planet with \"{T}: Add one mana of any color.\" Activate only as a sorcery.",
+        "power": "4",
+        "toughness": "3"
       }
     ]
   },
@@ -340160,6 +341563,20 @@
     ]
   },
   {
+    "name": "Selenia, the Cursed Heart",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Selenia, the Cursed Heart",
+        "manaCost": "{4}{W}{B}",
+        "type": "Legendary Creature — Angel Warrior",
+        "text": "Flying, lifelink\nIf you would gain life, you gain twice that much life instead.\nWhen Selenia dies, create a legendary black Aura Curse enchantment token named Selenia's Curse attached to target opponent. The token has enchant player and \"If enchanted player would lose life, they lose twice that much life instead.\"",
+        "power": "2",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Selesnya Charm",
     "layout": "single",
     "cards": [
@@ -340597,6 +342014,20 @@
         "text": "When this creature enters, create a 1/1 white Bird creature token with flying.",
         "power": "1",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Seluma, Light of Aysen",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Seluma, Light of Aysen",
+        "manaCost": "{4}{W}",
+        "type": "Legendary Creature — Angel Warrior",
+        "text": "Rulebreaker — A deck with this commander can have Angel cards of any color identity and any basic land cards.\nFlying\nWhenever Seluma deals combat damage to a player, return target Angel creature card from your graveyard to the battlefield.",
+        "power": "4",
+        "toughness": "4"
       }
     ]
   },
@@ -346506,6 +347937,18 @@
     ]
   },
   {
+    "name": "Shields Up!",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Shields Up!",
+        "manaCost": "{1}{W}",
+        "type": "Instant",
+        "text": "Target artifact or creature you control gains hexproof and indestructible until end of turn. If it's a creature, put a +1/+1 counter on it. (It can't be the target of spells or abilities your opponents control. Damage and effects that say \"destroy\" don't destroy it.)"
+      }
+    ]
+  },
+  {
     "name": "Shields of Velis Vel",
     "layout": "single",
     "cards": [
@@ -349033,6 +350476,34 @@
     ]
   },
   {
+    "name": "Shuttle Ace",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Shuttle Ace",
+        "manaCost": "{4}{W}",
+        "type": "Creature — Kelpien Pilot",
+        "text": "During your turn, this creature has flying.\nWhenever this creature becomes tapped, you gain 2 life.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Shuttle Crew",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Shuttle Crew",
+        "manaCost": "{2}{W}",
+        "type": "Creature — Human Officer",
+        "text": "Flying (This creature can't be blocked except by creatures with flying or reach.)\nWhen this creature enters, it deals 4 damage to target tapped creature an opponent controls.",
+        "power": "1",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Shy Town",
     "layout": "single",
     "cards": [
@@ -349204,6 +350675,20 @@
         "manaCost": "{2}{B}",
         "type": "Instant",
         "text": "Two target creatures each get -1/-1 until end of turn."
+      }
+    ]
+  },
+  {
+    "name": "Sickbay Orderly",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Sickbay Orderly",
+        "manaCost": "{2}{W}",
+        "type": "Creature — Caitian Doctor",
+        "text": "Lifelink (Damage dealt by this creature also causes you to gain that much life.)",
+        "power": "3",
+        "toughness": "2"
       }
     ]
   },
@@ -349835,6 +351320,19 @@
         "text": "{T}: This creature deals damage equal to its power to target opponent.",
         "power": "1",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Sifa Grent",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Sifa Grent",
+        "manaCost": "{3}{B}{R}",
+        "type": "Legendary Planeswalker — Sifa",
+        "text": "Whenever a creature dies, target opponent loses 1 life and you gain 1 life.\n[+1]: Goad up to two target creatures.\n[−6]: Each opponent exiles the top two cards of their library. Until end of turn, you may play those cards without paying their mana costs.\nSifa Grent can be your commander.",
+        "loyalty": "4"
       }
     ]
   },
@@ -350797,6 +352295,20 @@
         "manaCost": "{1}{U}",
         "type": "Instant",
         "text": "Choose target creature. If a spell or ability that targets that creature would cause a source to deal damage to that creature this turn, prevent that damage."
+      }
+    ]
+  },
+  {
+    "name": "Silicate Surveyor",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Silicate Surveyor",
+        "manaCost": "{4}{R}",
+        "type": "Creature — Tholian Scout",
+        "text": "Reach\nWhen this creature enters, exile the top card of your library. Until the end of your next turn, you may play that card.",
+        "power": "4",
+        "toughness": "4"
       }
     ]
   },
@@ -373050,6 +374562,19 @@
     ]
   },
   {
+    "name": "Starfleet Crew",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Starfleet Crew",
+        "manaCost": "{1}{W}",
+        "type": "Creature — Officer",
+        "power": "2",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Starforged Sword",
     "layout": "single",
     "cards": [
@@ -383807,6 +385332,18 @@
     ]
   },
   {
+    "name": "Support Mission",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Support Mission",
+        "manaCost": "{2}{G}",
+        "type": "Enchantment",
+        "text": "Whenever a creature you control enters, put a quest counter on this enchantment. Put a +1/+1 counter on that creature. If this enchantment has five or more quest counters on it, instead put two +1/+1 counters on that creature."
+      }
+    ]
+  },
+  {
     "name": "Support Skyforge",
     "layout": "single",
     "cards": [
@@ -387351,6 +388888,20 @@
     ]
   },
   {
+    "name": "Syndicate Liquidators",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Syndicate Liquidators",
+        "manaCost": "{4}{G}",
+        "type": "Creature — Orion Pirate",
+        "text": "Trample\nLandfall — Whenever a land you control enters, put two +1/+1 counters on target creature you control.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Syndicate Messenger",
     "layout": "single",
     "cards": [
@@ -387927,6 +389478,20 @@
     ]
   },
   {
+    "name": "T'Pol, Vulcan Representative",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "T'Pol, Vulcan Representative",
+        "manaCost": "{4}{U}",
+        "type": "Legendary Creature — Vulcan Scientist",
+        "text": "When T'Pol enters, tap target creature an opponent controls and put two stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",
+        "power": "4",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "T-45 Power Armor",
     "layout": "single",
     "cards": [
@@ -388113,6 +389678,20 @@
         "manaCost": "{W}",
         "type": "Instant",
         "text": "Target blocking or blocked creature you control gets +2/+2 until end of turn."
+      }
+    ]
+  },
+  {
+    "name": "Tactical Officer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Tactical Officer",
+        "manaCost": "{1}{W}",
+        "type": "Creature — Human Officer",
+        "text": "Whenever you attack while creatures you control have total power 8 or greater, put a +1/+1 counter on this creature. Untap it.",
+        "power": "2",
+        "toughness": "1"
       }
     ]
   },
@@ -389063,6 +390642,20 @@
         "text": "Cast this spell only if you've cast another green spell this turn.\nTrample",
         "power": "4",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Talarian Hook Spider",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Talarian Hook Spider",
+        "manaCost": "{1}{G}",
+        "type": "Creature — Spider",
+        "text": "Reach (This creature can block creatures with flying.)",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -398601,6 +400194,20 @@
     ]
   },
   {
+    "name": "The Everforger",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Everforger",
+        "manaCost": "{6}",
+        "type": "Legendary Artifact Creature — Construct",
+        "text": "Rulebreaker — A deck with this commander can have artifact creature and Equipment cards of any color identity and any basic land cards.\nWhenever you cast an artifact creature or Equipment spell, you may copy that spell. Do this only once each turn. (The copy becomes a token.)",
+        "power": "4",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "The Explorer",
     "layout": "single",
     "cards": [
@@ -400393,6 +402000,20 @@
     ]
   },
   {
+    "name": "The Madcap Jester",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Madcap Jester",
+        "manaCost": "{1}{U}{B}{R}",
+        "type": "Legendary Creature — Clown Wizard",
+        "text": "Whenever The Madcap Jester attacks, each opponent exiles the top card of their library.\nWhenever a spell or ability you control causes one or more cards to be exiled from an opponent's library, you may play those cards until the end of your next turn. Mana of any type can be spent to cast spells this way.",
+        "power": "3",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "The Maelstrom",
     "layout": "single",
     "cards": [
@@ -400996,6 +402617,20 @@
         "text": "{1}, {T}: Choose a tournament-legal Mox you don't control at random. Create a token that's a copy of it. Then if you control all ten, create a Mox Lotus token. (The ten are Amber, Chrome, Diamond, Emerald, Jet, Opal, Pearl, Ruby, Sapphire, and Tantalite. Perhaps roll a d10?)\n{W}{U}{B}{R}{G}: Untap The Mox Painter.",
         "power": "1",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "The Muckslinger Gang",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Muckslinger Gang",
+        "manaCost": "{1}{B}{R}{G}",
+        "type": "Legendary Creature — Goblin Lizard Beast",
+        "text": "Each other creature you control gets +3/+3 as long as it's not attacking or blocking.\nCreature spells you control and creature cards you own in any zone other than the battlefield or the stack get +3/+3.",
+        "power": "3",
+        "toughness": "3"
       }
     ]
   },
@@ -402793,6 +404428,19 @@
     ]
   },
   {
+    "name": "The Unluckiest Planeswalker",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Unluckiest Planeswalker",
+        "manaCost": "{2}{R}",
+        "type": "Legendary Planeswalker",
+        "text": "Rulebreaker — A deck with this commander can have Aura cards of any color identity and any basic land cards.\n[+1]: Add one mana of any color. When you spend this mana to cast an Aura spell this turn, create a 1/1 red Gremlin creature token.\n[−3]: Discard your hand, then draw cards equal to twice the number of Auras you control. For each Aura attached to you, attach it to an opponent of your choice.\nThe Unluckiest Planeswalker can be your commander.",
+        "loyalty": "4"
+      }
+    ]
+  },
+  {
     "name": "The Unspeakable",
     "layout": "single",
     "cards": [
@@ -403156,6 +404804,20 @@
         "manaCost": "{2}{G}",
         "type": "Enchantment — Saga",
         "text": "Read ahead (Choose a chapter and start with that many lore counters. Add one after your draw step. Skipped chapters don't trigger. Sacrifice after III.)\nI — Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\nII — Create a 1/1 green Saproling creature token.\nIII — Domain — Target creature you control gets +X/+X and gains trample until end of turn, where X is the number of basic land types among lands you control."
+      }
+    ]
+  },
+  {
+    "name": "The Weaver King",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Weaver King",
+        "manaCost": "{4}{U}{B}",
+        "type": "Legendary Creature — Horror Wizard",
+        "text": "Shadow (This creature can block or be blocked by only creatures with shadow.)\nWhenever The Weaver King deals combat damage to a player, they mill that many cards. Then for each opponent, put a creature card from that player's graveyard that was put there from their library this turn onto the battlefield under your control.",
+        "power": "3",
+        "toughness": "6"
       }
     ]
   },
@@ -404446,6 +406108,19 @@
         "text": "Whenever this creature attacks, untap target nonland permanent.",
         "power": "3",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Thomil, the Destroyer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Thomil, the Destroyer",
+        "manaCost": "{3}{B}{B}",
+        "type": "Legendary Planeswalker — Thomil",
+        "text": "[+2]: Create a 2/2 black Zombie creature token.\n[0]: You may sacrifice a creature. If you do, add {B}{B}{B}.\n[−5]: Create a Lord of the Pit token. (It's a {4}{B}{B}{B} 7/7 Demon creature with flying, trample, and \"At the beginning of your upkeep, sacrifice another creature. If you can't, this token deals 7 damage to you.\")\nThomil, the Destroyer can be your commander.",
+        "loyalty": "4"
       }
     ]
   },
@@ -411281,7 +412956,7 @@
         "name": "Tolabow, Loch Rascal",
         "manaCost": "{2}{U}{U}",
         "type": "Legendary Creature — Otter",
-        "text": "Rulebreaker — A deck with this commander can have instant and sorcery cards of one additional color not in this commander's color identity and any basic land cards.\nWhenever you cast an instant or sorcery spell, create a 1/1 blue and red Otter creature token with prowess. (Whenever you cast a noncreature spell, it gets +1/+1 until end of turn.)",
+        "text": "Rulebreaker — If Tolabow, Loch Rascal is your commander, the color identity of instant and sorcery cards in your deck can include one color of your choice not in your commander's color identity, and your deck can have any basic land cards.\nWhenever you cast an instant or sorcery spell, create a 1/1 blue and red Otter creature token with prowess. (Whenever you cast a noncreature spell, it gets +1/+1 until end of turn.)",
         "power": "3",
         "toughness": "2"
       }
@@ -416646,6 +418321,20 @@
     ]
   },
   {
+    "name": "Tresserhorn's Lord, Returned",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Tresserhorn's Lord, Returned",
+        "manaCost": "{2}{U}{B}{R}",
+        "type": "Legendary Creature — Zombie Noble",
+        "text": "Trample, indestructible\nWhen Tresserhorn's Lord enters, sacrifice him unless you sacrifice three creatures, pay 3 life, and have target opponent draw three cards.\nWhenever you sacrifice a creature, draw a card.",
+        "power": "10",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Trestle Troll",
     "layout": "single",
     "cards": [
@@ -418732,7 +420421,7 @@
         "name": "Tsagan, Raider Warlord",
         "manaCost": "{R}{W}{B}",
         "type": "Legendary Creature — Dinosaur Berserker",
-        "text": "Double strike\nStart your engines!\nWhenever Tsagan attacks, creatures you control get +1/+0 until end of turn for each creature you control with first strike or double strike.\nMax speed — Tsagan has deathtouch. Other creatures you control have first strike.",
+        "text": "Double strike\nStart your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)\nWhenever Tsagan attacks, creatures you control get +1/+0 until end of turn for each creature you control with first strike or double strike.\nMax speed — Tsagan has deathtouch. Other creatures you control have first strike.",
         "power": "1",
         "toughness": "4"
       }
@@ -427421,6 +429110,20 @@
     ]
   },
   {
+    "name": "Uugguu, the Omniplasm",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Uugguu, the Omniplasm",
+        "manaCost": "{B}{G}{U}",
+        "type": "Legendary Creature — Ooze",
+        "text": "Whenever another nontoken Ooze creature you control dies, create two tokens that are copies of that creature, except they're 2/2 and they aren't legendary.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Uurg, Spawn of Turg",
     "layout": "single",
     "cards": [
@@ -427442,7 +429145,7 @@
         "name": "Uvilda, Dean of Perfection",
         "manaCost": "{2}{U}",
         "type": "Legendary Creature — Djinn Wizard",
-        "text": "{T}: You may exile an instant or sorcery card from your hand and put three hone counters on it. It gains \"At the beginning of your upkeep, if this card is exiled, remove a hone counter from it\" and \"When the last hone counter is removed from this card, if it's exiled, you may cast it. It costs {4} less to cast this way.\"",
+        "text": "{T}: You may exile an instant or sorcery card from your hand and put three refine counters on it. It gains \"At the beginning of your upkeep, if this card is exiled, remove a refine counter from it\" and \"When the last refine counter is removed from this card, if it's exiled, you may cast it. It costs {4} less to cast this way.\"",
         "power": "2",
         "toughness": "2"
       },
@@ -427467,6 +429170,20 @@
         "text": "Flying\n{2}, Return two lands you control to their owner's hand: Copy target instant or sorcery spell. You may choose new targets for the copy.",
         "power": "4",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "V'Ger, the Intruder",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "V'Ger, the Intruder",
+        "manaCost": "{6}{U}",
+        "type": "Legendary Artifact Creature — Construct",
+        "text": "Flying\nWhenever V'Ger enters or attacks, choose one —\n• Look at target opponent's hand, then draw a card.\n• Creatures your opponents control get -1/-0 until your next turn.",
+        "power": "5",
+        "toughness": "7"
       }
     ]
   },
@@ -427984,6 +429701,20 @@
         "type": "Legendary Planeswalker — Tibalt",
         "text": "As Tibalt enters, you get an emblem with \"You may play cards exiled with Tibalt, Cosmic Impostor, and you may spend mana as though it were mana of any color to cast those spells.\"\n[+2]: Exile the top card of each player's library.\n[−3]: Exile target artifact or creature.\n[−8]: Exile all graveyards. Add {R}{R}{R}.",
         "loyalty": "5"
+      }
+    ]
+  },
+  {
+    "name": "Valko Indorian",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Valko Indorian",
+        "manaCost": "{3}{B}",
+        "type": "Legendary Creature — Human Wizard",
+        "text": "Rulebreaker — A deck with this commander can have Phyrexian cards of any color identity and any basic land cards.\nPhyrexian creatures you control have menace and lifelink.",
+        "power": "2",
+        "toughness": "4"
       }
     ]
   },
@@ -431480,6 +433211,19 @@
         "text": "Flash (You may cast this spell any time you could cast an instant.)\nWhen Venser enters, return target spell or permanent to its owner's hand.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Venser, Visionary Traveler",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Venser, Visionary Traveler",
+        "manaCost": "{3}{W}{U}",
+        "type": "Legendary Planeswalker — Venser",
+        "text": "Each nontoken creature you control that wasn't cast from your hand enters with two additional +1/+1 counters on it.\n[+1]: Exile up to one other target permanent you control. At the beginning of the next end step, return that card to the battlefield under its owner's control.\n[−2]: For each opponent, return up to one target nonland permanent that player controls to its owner's hand.\nVenser, Visionary Traveler can be your commander.",
+        "loyalty": "4"
       }
     ]
   },
@@ -443223,6 +444967,19 @@
     ]
   },
   {
+    "name": "Warship Flight Crew",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Warship Flight Crew",
+        "manaCost": "{1}{R}",
+        "type": "Creature — Klingon Pilot",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Warship Scout",
     "layout": "single",
     "cards": [
@@ -447768,6 +449525,20 @@
     ]
   },
   {
+    "name": "Whtz, the Bibliophile",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Whtz, the Bibliophile",
+        "manaCost": "{1}{W}{U}",
+        "type": "Legendary Creature — Homunculus",
+        "text": "Rulebreaker — A deck with this commander has no maximum deck size.\n{3}, {T}: You draw a card and gain 1 life. This ability costs {3} less to activate if you had 200 or more cards in your starting deck.",
+        "power": "1",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Wibbly-wobbly, Timey-wimey",
     "layout": "single",
     "cards": [
@@ -449187,6 +450958,20 @@
         "type": "Legendary Planeswalker — Will",
         "text": "[+2]: Until your next turn, up to two target creatures each have base power and toughness 0/3 and lose all abilities.\n[−2]: Target player draws two cards. Until your next turn, instant, sorcery, and planeswalker spells that player casts cost {2} less to cast.\n[−8]: Target player gets an emblem with \"Whenever you cast an instant or sorcery spell, copy it. You may choose new targets for the copy.\"\nPartner with Rowan Kenrith\nWill Kenrith can be your commander.",
         "loyalty": "4"
+      }
+    ]
+  },
+  {
+    "name": "Will Riker, Assuming Command",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Will Riker, Assuming Command",
+        "manaCost": "{4}{W}",
+        "type": "Legendary Creature — Human Officer",
+        "text": "When Will Riker enters, put a +1/+1 counter on another target creature you control.",
+        "power": "4",
+        "toughness": "5"
       }
     ]
   },
@@ -453665,6 +455450,20 @@
     ]
   },
   {
+    "name": "Worf, Chief Tactical Officer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Worf, Chief Tactical Officer",
+        "manaCost": "{2}{W}",
+        "type": "Legendary Creature — Klingon Warrior Officer",
+        "text": "Vigilance (Attacking doesn't cause this creature to tap.)",
+        "power": "2",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Work a Double",
     "layout": "single",
     "cards": [
@@ -454296,6 +456095,19 @@
         "text": "Whenever you cast a Knight spell, create a 1/1 white Human creature token.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Worzel, the Protector",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Worzel, the Protector",
+        "manaCost": "{1}{W}{W}{W}",
+        "type": "Legendary Planeswalker — Worzel",
+        "text": "[0]: Create a 1/1 white Cat creature token with \"{T}: Put a loyalty counter on each planeswalker you control.\"\n[−1]: Look at the top six cards of your library. You may reveal a planeswalker or basic Plains card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n[−8]: Create ten Scryb Sprites tokens. (They're {G} 1/1 Faerie creatures with flying.)\nWorzel, the Protector can be your commander.",
+        "loyalty": "4"
       }
     ]
   },
@@ -455765,6 +457577,20 @@
     ]
   },
   {
+    "name": "Xenobotanist",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Xenobotanist",
+        "manaCost": "{1}{G}",
+        "type": "Creature — Vulcan Scientist",
+        "text": "{T}: Add one mana of any color.",
+        "power": "1",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Xenograft",
     "layout": "single",
     "cards": [
@@ -455841,6 +457667,20 @@
         "manaCost": "{2}{B}{B}",
         "type": "Legendary Creature — Human Soldier",
         "text": "Horsemanship (This creature can't be blocked except by creatures with horsemanship.)\nSacrifice Xiahou Dun: Return target black card from your graveyard to your hand. Activate only during your turn, before attackers are declared.",
+        "power": "3",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Xindi Surveyors",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Xindi Surveyors",
+        "manaCost": "{2}{G}",
+        "type": "Creature — Xindi Scientist",
+        "text": "Landfall — Whenever a land you control enters, put a +1/+1 counter on this creature.",
         "power": "3",
         "toughness": "2"
       }
@@ -457976,6 +459816,20 @@
     ]
   },
   {
+    "name": "Yume, Chronicler of Valor",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Yume, Chronicler of Valor",
+        "manaCost": "{1}{W}",
+        "type": "Legendary Creature — Human Druid",
+        "text": "The first spell you cast during each of your turns has assist. When you cast that spell, if another player spent mana to cast it, you and that player each draw a card. (As you cast a spell with assist, you may choose another player. They may pay some or all of the generic mana in the spell's cost.)",
+        "power": "1",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Yuna's Decision",
     "layout": "single",
     "cards": [
@@ -458178,6 +460032,20 @@
         "text": "Magecraft — Whenever you cast or copy an instant or sorcery spell, scry 1. If that spell's mana value is 5 or greater, create a 4/4 blue and red Elemental creature token. If that spell's mana value is 10 or greater, Zaffai deals 10 damage to an opponent chosen at random.",
         "power": "1",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Zagorka, Mother of Sanctum",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Zagorka, Mother of Sanctum",
+        "manaCost": "{1}{G}{U}{R}",
+        "type": "Legendary Creature — Human Peasant",
+        "text": "Vigilance, trample\nAt the beginning of your end step, each player may create a tapped land token named Sanctum with \"{T}: Add one mana of any color.\" Each opponent who does can't attack you during their next turn.",
+        "power": "4",
+        "toughness": "2"
       }
     ]
   },

@@ -142,7 +142,7 @@ for scryfall_card in scryfall_cards:
       cards.append({ "name": scryfall_card["name"], "layout": "split", "cards": sides })
     continue
 
-  if layout in {"art_series", "emblem", "token", "double_faced_token", "flip_token"}: continue
+  if layout in {"art_series", "emblem", "token", "double_faced_token", "flip_token", "front_card"}: continue
   print(layout, scryfall_card["name"])
 
 cards_by_name = {}
