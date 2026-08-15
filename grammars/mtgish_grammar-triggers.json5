@@ -1,5 +1,6 @@
 {
   "{{_TRIGGER[FaceADilemma]}}": {
+    "WhenAPlayerSelectsAModeAtRandom({{PLAYERS}})": "",
     "WhenAPlayerFacesADilemma({{PLAYERS}})": "",
   },
   "{{_TRIGGER[ActivateAnAbility]}}": {
@@ -91,6 +92,7 @@
     "WhenAPlayerPaysAPermanentsCumulativeUpkeepCost({{PLAYERS}}, {{PERMANENTS}})": ""
   },
   "{{_TRIGGER[CycleOrDiscard]}}": {
+    "WhenAPlayerDiscardsACardAtRandom({{PLAYERS}})": "",
     "WhenAPlayerCyclesACard({{PLAYERS}}, {{CARDS_IN_HAND}})": "",
     "WhenAPlayerCyclesACardForTheFirstTimeEachTurn({{PLAYERS}}, {{CARDS_IN_HAND}})": "",
     "WhenAPlayerCyclesOrDiscardsACard({{PLAYERS}}, {{CARDS_IN_HAND}})": "",
@@ -250,6 +252,7 @@
     "WhenACardIsPutIntoExile({{CARDS}})": "",
     "WhenAPermanentIsExiled({{PERMANENTS}})": "",
     "WhenASpellOrAbilityExilesAnyNumberOfPermanents({{SPELLS_OR_ABILITIES}}, {{PERMANENTS}})": "",
+    "WhenASpellOrAbilityCausesAnyNumberOfCardToBeExiledFromAPlayersLibrary({{SPELLS_OR_ABILITIES}}, {{PLAYERS}})": "",
     "WhenAnyNumberOfCardsArePutIntoExile({{CARDS}})": "",
     "WhenAnyNumberOfCardsArePutIntoExileFromAPlayersGraveyard({{CARDS}}, {{PLAYERS}})": "",
     "WhenAnyNumberOfCardsArePutIntoExileFromAPlayersGraveyardAndOrLibrary({{CARDS}}, {{PLAYERS}})": "",
@@ -267,6 +270,7 @@
     "WhenAPermanentExploresACardOfType({{PERMANENTS}}, {{CARDS}})": ""
   },
   "{{_TRIGGER[FlipCoins]}}": {
+    "WhenAPlayerFlipsAnyNumberOfCoins({{PLAYERS}})": "",
     "WhenAPlayerLosesACoinFlip({{PLAYERS}})": "",
     "WhenAPlayerWinsACoinFlip({{PLAYERS}})": ""
   },
@@ -312,6 +316,7 @@
     "WhenAPlayerLosesLife({{PLAYERS}})": "",
     "WhenAPlayerLosesLifeDuringTheirTurn({{PLAYERS}})": "",
     "WhenAPlayerLosesLifeForTheFirstTimeEachTurn({{PLAYERS}})": "",
+    "WhenASpellOrAbilityCausesAPlayerToLoseAnAmountOfLife({{SPELLS_OR_ABILITIES}}, {{PLAYERS}}, {{COMPARISON}})": "",
     "WhenAnyNumberOfPlayersEachLoseAnAmountOfLife({{PLAYERS}}, {{COMPARISON}})": "",
     "WhenAnyNumberOfPlayersLoseLife({{PLAYERS}})": ""
   },
@@ -491,6 +496,7 @@
     "WhenAPlayerBecomesTheTargetOfAnAbility({{PLAYERS}}, {{ABILITIES}})": "",
     "WhenAPlayerBecomesTheTargetOfASpell({{PLAYERS}}, {{SPELLS}})": "",
     "WhenAPlayerBecomesTheTargetOfASpellOrAbility({{PLAYERS}}, {{SPELLS_OR_ABILITIES}})": "",
+    "WhenAPlayerSelectsAnyNumberOfTargetsAtRandom({{PLAYERS}})": "",
     "WhenAPlayerChoosesTargetsForASpellOrAbility({{PLAYERS}}, {{SPELLS_OR_ABILITIES}})": "",
     "WhenASpellBecomesTheTargetOfASpellOrAbility({{SPELLS}}, {{SPELLS_OR_ABILITIES}})": "",
     "WhenAnyNumberOfPlayersAndOrPermanentsBecomeTheTargetOfASpellOrAbility({{PLAYERS}}, {{PERMANENTS}}, {{SPELLS_OR_ABILITIES}})": ""

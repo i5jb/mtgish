@@ -163,6 +163,7 @@
     "nest": "NestCounter",
     "net": "NetCounter",
     "night": "NightCounter",
+    "odor": "OdorCounter",
     "oil": "OilCounter",
     "omen": "OmenCounter",
     "ore": "OreCounter",

@@ -498,12 +498,6 @@
   },
   {
     "reason":  "Wizard's issue with CARD_NAME update",
-    "cards":   ["Elvish Spirit Guide"],
-    "find":    "Exile this creature from your hand",
-    "replace": "Exile this card from your hand",
-  },
-  {
-    "reason":  "Wizard's issue with CARD_NAME update",
     "cards":   ["Sword of the Ages"],
     "find":    "then exile this artifact and those creature cards",
     "replace": "then exile this card and those creature cards",

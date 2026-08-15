@@ -120,6 +120,14 @@ type Action =
 | { "_Action": "Reflexive_PutCardInHand_WhenYouDo", "args": [Array<PuttableInHand>, Actions] }
 | { "_Action": "Reflexive_RevealTheTopNumberCardsOfLibrary_WhenAnyNumberOfCardsOfTypeRevealedThisWay", "args": [GameNumber, CardsInLibrary, Actions] }
 | { "_Action": "RegeneratePermanent_WhenItRengeratesThisWay", "args": [Permanent, Actions] }
+| { "_Action": "DealDamage", "args": [DamageDealer, GameNumber, DamageRecipient] }
+| { "_Action": "EachPlayerMayCreateTokens", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
+| { "_Action": "GoadEachCreatureUntil", "args": [Permanents, Expiration] }
+| { "_Action": "MayCastASpellFromAmongCardsInHandsWithoutPaying", "args": [Spells, CardsInHand] }
+| { "_Action": "MayCastCopiedCardWithoutPaying" }
+| { "_Action": "PutACardFromEachPlayersGraveyardOntoTheBattlefield", "args": [CardsInGraveyards, Players, Array<EnterFlag>] }
+| { "_Action": "SecretlyChooseANumberGreaterThanOrEqualToNumber", "args": number }
+| { "_Action": "SetValueXOfSpellOrAbility", "args": [SpellOrAbility, GameNumber] }
 | { "_Action": "PutCardsInLibraryIntoGraveyard", "args": CardsInLibrary }
 | { "_Action": "PutCardsInLibraryOntoTheBattlefield", "args": [CardsInLibrary, Array<EnterFlag>] }
 | { "_Action": "PutCardsInLibraryOnTheBottomOfLibraryInAnyOrder", "args": CardsInLibrary }
@@ -181,6 +189,7 @@ type Action =
 | { "_Action": "AttachAnyNumberOfPermanentsToAnyPermanents", "args": [Permanents, Permanents] }
 | { "_Action": "AttachAnyNumberOfPermanentsToPermanent", "args": [Permanents, Permanent] }
 | { "_Action": "AttachAnyNumberOfPermanentsToPlayerOrPermanent", "args": [Permanents, PlayerOrPermanent] }
+| { "_Action": "AttachEachPermanentToAPlayerOfChoice", "args": [Permanents, Players] }
 | { "_Action": "AttachEachPermanentToAPermanent", "args": [Permanents, Permanents] }
 | { "_Action": "AttachEachPermanentToPermanent", "args": [Permanents, Permanent] }
 | { "_Action": "AttachPermanentToACardInAPlayersGraveyard", "args": [Permanent, Cards, Players] }
@@ -1527,6 +1536,7 @@ type Boon =
 | { "_Boon": "ThisBoon" };
 type CardEffect =
 | { "_CardEffect": "SetPT", "args": PT }
+| { "_CardEffect": "AdjustPT", "args": [number, number] }
 | { "_CardEffect": "AddLandType", "args": LandType }
 | { "_CardEffect": "SetCreatureTypeVariable", "args": CreatureTypeVariable }
 | { "_CardEffect": "AddCreatureType", "args": CreatureType }
@@ -2405,6 +2415,7 @@ type Condition =
 | { "_Condition": "TopCardOfPlayersLibraryPassesFilter_Digital", "args": [Player, Cards] }
 | { "_Condition": "TotalPowerOfPermanentsIs", "args": [Comparison, Permanents] }
 | { "_Condition": "TotalToughnessOfPermanentsIs", "args": [Comparison, Permanents] }
+| { "_Condition": "TriggerAPermanentOrPlayerWasDealtAnAmountOfDamage", "args": Comparison }
 | { "_Condition": "TriggerChoseCreatureAsRingBearer", "args": Permanents }
 | { "_Condition": "TriggerDiceResultIs", "args": Comparison }
 | { "_Condition": "TriggerXIs", "args": Comparison }
@@ -2673,6 +2684,7 @@ type CounterType =
 | { "_CounterType": "ExperienceCounter" }
 | { "_CounterType": "PoisonCounter" }
 | { "_CounterType": "RadCounter" }
+| { "_CounterType": "ContractCounter" }
 | { "_CounterType": "DefenseCounter" }
 | { "_CounterType": "LoreCounter" }
 | { "_CounterType": "LoyaltyCounter" }
@@ -2821,6 +2833,7 @@ type CounterType =
 | { "_CounterType": "NestCounter" }
 | { "_CounterType": "NetCounter" }
 | { "_CounterType": "NightCounter" }
+| { "_CounterType": "OdorCounter" }
 | { "_CounterType": "OilCounter" }
 | { "_CounterType": "OmenCounter" }
 | { "_CounterType": "OreCounter" }
@@ -3300,7 +3313,8 @@ type CreatureTypeVariable =
 | { "_CreatureTypeVariable": "TheNotedCreatureType" };
 type DamageDealer =
 | { "_DamageDealer": "Permanent", "args": Permanent }
-| { "_DamageDealer": "Spell", "args": Spell };
+| { "_DamageDealer": "Spell", "args": Spell }
+| { "_DamageDealer": "CommandCard", "args": Commander };
 type DamageRecipient =
 | { "_DamageRecipient": "MultipleRecipients", "args": Array<DamageRecipient> }
 | { "_DamageRecipient": "CreatureOrPlaneswalkerChosenAtRandom", "args": Permanents }
@@ -3365,6 +3379,10 @@ type DeckConstruction =
 | { "_DeckConstruction": "ChooseABackground" }
 | { "_DeckConstruction": "CanHaveAnyNumberOfThisCard" }
 | { "_DeckConstruction": "CanHaveUptoNumberOfThisCard", "args": GameNumber }
+| { "_DeckConstruction": "HasNoMaximumDeckSize" }
+| { "_DeckConstruction": "CanHaveAnyBasicLandCards" }
+| { "_DeckConstruction": "CanHaveAnyCards", "args": Cards }
+| { "_DeckConstruction": "CanHaveAnyCardsWithOneSingleAdditionalColor", "args": Cards }
 | { "_DeckConstruction": "ThisCardIsBanned" }
 | { "_DeckConstruction": "RemoveFromDeckIfNotPlayingForAnte" };
 type Dice =
@@ -3607,6 +3625,7 @@ type ExileFlag =
 | { "_ExileFlag": "LimitedWithTriggerEnters", "args": [Expiration, Permanents, Actions] };
 type Expiration =
 | { "_Expiration": "Or", "args": Array<Expiration> }
+| { "_Expiration": "ForAsLongAsPlayerHasACounterOfType", "args": [Player, CounterType] }
 | { "_Expiration": "ForAsLongAsCardIsExiled", "args": CardInExile }
 | { "_Expiration": "AsLongAsPlaneIsFaceUp", "args": Plane }
 | { "_Expiration": "DuringPlayersNextTurn", "args": Player }
@@ -4595,6 +4614,7 @@ type ManaUseModifier =
 | { "_ManaUseModifier": "FlagSpellsCastWith", "args": [Spells, Array<SpellEffect>] }
 | { "_ManaUseModifier": "DontLoseAsStepsAndPhasesEnd", "args": Expiration }
 | { "_ManaUseModifier": "TriggerSpentOnSpell", "args": [Spells, Actions] }
+| { "_ManaUseModifier": "TriggerSpentOnSpellThisTurn", "args": [Spells, Actions] }
 | { "_ManaUseModifier": "TriggerSpentOnSpellOrAbility", "args": [SpellsAndAbilities, Actions] }
 | { "_ManaUseModifier": "FlagPermanentsCastWith", "args": [Permanents, Array<EnterFlag>] }
 | { "_ManaUseModifier": "CanOnlySpendToActivatePowerUpAbilities" }
@@ -5352,6 +5372,7 @@ type PlaneswalkerType =
 | "Aminatou"
 | "Angrath"
 | "Arlinn"
+| "Arzakon"
 | "Ashiok"
 | "Bahamut"
 | "Basri"
@@ -5368,13 +5389,16 @@ type PlaneswalkerType =
 | "Dihada"
 | "Domri"
 | "Dovin"
+| "Dyfed"
 | "Ellywick"
 | "Elminster"
 | "Elspeth"
 | "Estrid"
+| "Feroz"
 | "Freyalise"
 | "Garruk"
 | "Gideon"
+| "Greensleeves"
 | "Grist"
 | "Guff"
 | "Huatli"
@@ -5406,6 +5430,7 @@ type PlaneswalkerType =
 | "Samut"
 | "Sarkhan"
 | "Serra"
+| "Sifa"
 | "Sivitri"
 | "Sorin"
 | "Szat"
@@ -5414,6 +5439,7 @@ type PlaneswalkerType =
 | "Teferi"
 | "Teyo"
 | "Tezzeret"
+| "Thomil"
 | "Tibalt"
 | "Tyvar"
 | "Ugin"
@@ -5424,6 +5450,7 @@ type PlaneswalkerType =
 | "Vronos"
 | "Will"
 | "Windgrace"
+| "Worzel"
 | "Wrenn"
 | "Xenagos"
 | "Yanggu"
@@ -5946,6 +5973,9 @@ type Players =
 | { "_Players": "Or", "args": Array<Players> }
 | { "_Players": "Other", "args": Player }
 | { "_Players": "SinglePlayer", "args": Player }
+| { "_Players": "CreatedATokenThisWay" }
+| { "_Players": "HadANumberOfCardsInTheirStartingDeck", "args": Comparison }
+| { "_Players": "SpentManaToCastSpell", "args": Spell }
 | { "_Players": "ExiledACardThisWay" }
 | { "_Players": "Trigger_ThoseDefendingPlayers" }
 | { "_Players": "RepeatablePlayers" }
@@ -7087,6 +7117,7 @@ type Rule =
 | { "_Rule": "Demonstrate" }
 | { "_Rule": "Dethrone" }
 | { "_Rule": "Disturb", "args": Cost }
+| { "_Rule": "BeamMeUp", "args": Cost }
 | { "_Rule": "DoubleAgenda" }
 | { "_Rule": "DoubleStrike" }
 | { "_Rule": "DoubleTeam" }
@@ -7213,6 +7244,7 @@ type Rule =
 | { "_Rule": "CDA_Types", "args": CDA_Types }
 | { "_Rule": "Companion", "args": Companion }
 | { "_Rule": "DeckConstruction", "args": DeckConstruction }
+| { "_Rule": "DeckConstructionIfCommander", "args": DeckConstruction }
 | { "_Rule": "ConspiracyDeck", "args": ConspiracyDeck }
 | { "_Rule": "StartingHandSizeIs", "args": GameNumber }
 | { "_Rule": "SpellActions", "args": Actions }
@@ -7468,6 +7500,7 @@ type SpellCopyEffects =
 type SpellEffect =
 | { "_SpellEffect": "EntersWithLayerEffectUntil", "args": [Array<LayerEffect>, Expiration] }
 | { "_SpellEffect": "WebSlinging", "args": Cost }
+| { "_SpellEffect": "AdjustPT", "args": [number, number] }
 | { "_SpellEffect": "ResolvesIntoExileInsteadOfGraveyardWithACounter", "args": CounterType }
 | { "_SpellEffect": "Wither" }
 | { "_SpellEffect": "Evoke", "args": Cost }
@@ -7585,6 +7618,7 @@ type Spells =
 | { "_Spells": "Or", "args": Array<Spells> }
 | { "_Spells": "Other", "args": Spell }
 | { "_Spells": "AnySpell" }
+| { "_Spells": "APlayerSpentManaToCastIt", "args": Players }
 | { "_Spells": "ManaAmountOfTypeWasSpentToCastIt", "args": [Comparison, Color] }
 | { "_Spells": "HasColorManaSymbolInManaCost", "args": Color }
 | { "_Spells": "HasHybridManaInCost" }
@@ -8286,6 +8320,7 @@ type SubType =
 | "Aminatou"
 | "Angrath"
 | "Arlinn"
+| "Arzakon"
 | "Ashiok"
 | "Bahamut"
 | "Basri"
@@ -8302,13 +8337,16 @@ type SubType =
 | "Dihada"
 | "Domri"
 | "Dovin"
+| "Dyfed"
 | "Ellywick"
 | "Elminster"
 | "Elspeth"
 | "Estrid"
+| "Feroz"
 | "Freyalise"
 | "Garruk"
 | "Gideon"
+| "Greensleeves"
 | "Grist"
 | "Guff"
 | "Huatli"
@@ -8340,6 +8378,7 @@ type SubType =
 | "Samut"
 | "Sarkhan"
 | "Serra"
+| "Sifa"
 | "Sivitri"
 | "Sorin"
 | "Szat"
@@ -8348,6 +8387,7 @@ type SubType =
 | "Teferi"
 | "Teyo"
 | "Tezzeret"
+| "Thomil"
 | "Tibalt"
 | "Tyvar"
 | "Ugin"
@@ -8358,6 +8398,7 @@ type SubType =
 | "Vronos"
 | "Will"
 | "Windgrace"
+| "Worzel"
 | "Wrenn"
 | "Xenagos"
 | "Yanggu"
@@ -8564,6 +8605,7 @@ type TokenCopyEffect =
 | { "_TokenCopyEffect": "SetLoyalty", "args": GameNumber };
 type TokenFlag =
 | { "_TokenFlag": "EntersAttachedToAPermanent", "args": Permanents }
+| { "_TokenFlag": "EntersAttachedToPlayer", "args": Player }
 | { "_TokenFlag": "EntersWithACounter", "args": CounterType }
 | { "_TokenFlag": "EntersBlockingAttacker", "args": Permanent }
 | { "_TokenFlag": "EntersWithNumberCounters", "args": [GameNumber, CounterType] }
@@ -8590,6 +8632,12 @@ type Transforming =
 type TriggerAndActions =
 | [Trigger, Actions];
 type Trigger =
+| { "_Trigger": "WhenAPlayerSelectsAModeAtRandom", "args": Players }
+| { "_Trigger": "WhenAPlayerDiscardsACardAtRandom", "args": Players }
+| { "_Trigger": "WhenASpellOrAbilityCausesAnyNumberOfCardToBeExiledFromAPlayersLibrary", "args": [SpellsAndAbilities, Players] }
+| { "_Trigger": "WhenASpellOrAbilityCausesAPlayerToLoseAnAmountOfLife", "args": [SpellsAndAbilities, Players, Comparison] }
+| { "_Trigger": "WhenAPlayerFlipsAnyNumberOfCoins", "args": Players }
+| { "_Trigger": "WhenAPlayerSelectsAnyNumberOfTargetsAtRandom", "args": Players }
 | { "_Trigger": "WhenAPlayerFacesADilemma", "args": Players }
 | { "_Trigger": "WhenAPermanentConnives", "args": Permanents }
 | { "_Trigger": "WhenAPlayerWaterEarthFireOrAirBends", "args": Players }

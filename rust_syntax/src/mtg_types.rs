@@ -464,6 +464,7 @@ pub enum PlaneswalkerType {
   Aminatou,
   Angrath,
   Arlinn,
+  Arzakon,
   Ashiok,
   Bahamut,
   Basri,
@@ -480,13 +481,16 @@ pub enum PlaneswalkerType {
   Dihada,
   Domri,
   Dovin,
+  Dyfed,
   Ellywick,
   Elminster,
   Elspeth,
   Estrid,
+  Feroz,
   Freyalise,
   Garruk,
   Gideon,
+  Greensleeves,
   Grist,
   Guff,
   Huatli,
@@ -518,6 +522,7 @@ pub enum PlaneswalkerType {
   Samut,
   Sarkhan,
   Serra,
+  Sifa,
   Sivitri,
   Sorin,
   Szat,
@@ -526,6 +531,7 @@ pub enum PlaneswalkerType {
   Teferi,
   Teyo,
   Tezzeret,
+  Thomil,
   Tibalt,
   Tyvar,
   Ugin,
@@ -536,6 +542,7 @@ pub enum PlaneswalkerType {
   Vronos,
   Will,
   Windgrace,
+  Worzel,
   Wrenn,
   Xenagos,
   Yanggu,
@@ -1043,6 +1050,7 @@ pub enum SubType {
   Aminatou,
   Angrath,
   Arlinn,
+  Arzakon,
   Ashiok,
   Bahamut,
   Basri,
@@ -1059,13 +1067,16 @@ pub enum SubType {
   Dihada,
   Domri,
   Dovin,
+  Dyfed,
   Ellywick,
   Elminster,
   Elspeth,
   Estrid,
+  Feroz,
   Freyalise,
   Garruk,
   Gideon,
+  Greensleeves,
   Grist,
   Guff,
   Huatli,
@@ -1097,6 +1108,7 @@ pub enum SubType {
   Samut,
   Sarkhan,
   Serra,
+  Sifa,
   Sivitri,
   Sorin,
   Szat,
@@ -1105,6 +1117,7 @@ pub enum SubType {
   Teferi,
   Teyo,
   Tezzeret,
+  Thomil,
   Tibalt,
   Tyvar,
   Ugin,
@@ -1115,6 +1128,7 @@ pub enum SubType {
   Vronos,
   Will,
   Windgrace,
+  Worzel,
   Wrenn,
   Xenagos,
   Yanggu,
@@ -1275,6 +1289,7 @@ pub enum CounterType {
   ExperienceCounter,
   PoisonCounter,
   RadCounter,
+  ContractCounter,
 
   // Planeswalker / Siege / Saga Counter
   DefenseCounter,
@@ -1430,6 +1445,7 @@ pub enum CounterType {
   NestCounter,
   NetCounter,
   NightCounter,
+  OdorCounter,
   OilCounter,
   OmenCounter,
   OreCounter,
@@ -1542,6 +1558,7 @@ pub enum LoyaltyNumber {
 pub enum Expiration {
   Or(Vec<Expiration>),
 
+  ForAsLongAsPlayerHasACounterOfType(Box<Player>, Box<CounterType>),
   ForAsLongAsCardIsExiled(Box<CardInExile>),
   AsLongAsPlaneIsFaceUp(Plane),
   DuringPlayersNextTurn(Box<Player>),
@@ -2399,8 +2416,11 @@ pub enum DeckConstruction {
 
   CanHaveAnyNumberOfThisCard,
   CanHaveUptoNumberOfThisCard(Box<GameNumber>),
-  // CardsCanBeOneAdditionalColor(Box<Cards>),
-  // CanHaveAnyBasicLandCard,
+
+  HasNoMaximumDeckSize,
+  CanHaveAnyBasicLandCards,
+  CanHaveAnyCards(Box<Cards>),
+  CanHaveAnyCardsWithOneSingleAdditionalColor(Box<Cards>),
 
   ThisCardIsBanned,
   RemoveFromDeckIfNotPlayingForAnte,
@@ -2760,6 +2780,7 @@ pub enum Rule {
   Demonstrate,
   Dethrone,
   Disturb(Box<Cost>),
+  BeamMeUp(Box<Cost>),
   DoubleAgenda,
   DoubleStrike,
   DoubleTeam,
@@ -2890,6 +2911,7 @@ pub enum Rule {
 
   Companion(Companion),
   DeckConstruction(DeckConstruction),
+  DeckConstructionIfCommander(DeckConstruction),
   ConspiracyDeck(ConspiracyDeck),
   StartingHandSizeIs(Box<GameNumber>),
   SpellActions(Box<Actions>),
@@ -4551,6 +4573,7 @@ pub enum Condition {
   TopCardOfPlayersLibraryPassesFilter_Digital(Box<Player>, Box<Cards>),
   TotalPowerOfPermanentsIs(Box<Comparison>, Box<Permanents>),
   TotalToughnessOfPermanentsIs(Box<Comparison>, Box<Permanents>),
+  TriggerAPermanentOrPlayerWasDealtAnAmountOfDamage(Box<Comparison>),
   TriggerChoseCreatureAsRingBearer(Box<Permanents>),
   TriggerDiceResultIs(Box<Comparison>),
   TriggerXIs(Box<Comparison>),
@@ -5637,6 +5660,7 @@ pub enum StaticCopyEffects {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_TokenFlag", content = "args"))]
 pub enum TokenFlag {
   EntersAttachedToAPermanent(Box<Permanents>),
+  EntersAttachedToPlayer(Box<Player>),
   EntersWithACounter(CounterType),
   EntersBlockingAttacker(Box<Permanent>),
   EntersWithNumberCounters(Box<GameNumber>, CounterType),
@@ -6313,6 +6337,10 @@ pub enum Players {
   Other(Box<Player>),
   SinglePlayer(Box<Player>),
 
+  CreatedATokenThisWay,
+  HadANumberOfCardsInTheirStartingDeck(Box<Comparison>),
+  SpentManaToCastSpell(Box<Spell>),
+
   ExiledACardThisWay,
   Trigger_ThoseDefendingPlayers,
 
@@ -6557,6 +6585,8 @@ pub enum Spells {
   Or(Vec<Spells>),
   Other(Box<Spell>),
   AnySpell,
+
+  APlayerSpentManaToCastIt(Box<Players>),
 
   // ManaAmountOfTypeWasSpentToCastIt", Box<Comparison>, ManaProduceSymbol: "Colorless, // FIXME: ManaAmountOfTypeWasSpentToCastIt / Colorless
   // ManaAmountOfTypeWasSpentToCastIt", Box<Comparison>, ManaProduceSymbol: color }       // FIXME: ManaAmountOfTypeWasSpentToCastIt / Color
@@ -7856,6 +7886,7 @@ pub enum ManaUseModifier {
   FlagSpellsCastWith(Box<Spells>, Vec<SpellEffect>),
   DontLoseAsStepsAndPhasesEnd(Box<Expiration>),
   TriggerSpentOnSpell(Box<Spells>, Box<Actions>),
+  TriggerSpentOnSpellThisTurn(Box<Spells>, Box<Actions>),
   TriggerSpentOnSpellOrAbility(SpellsAndAbilities, Box<Actions>),
   FlagPermanentsCastWith(Box<Permanents>, Vec<EnterFlag>),
 
@@ -8300,6 +8331,7 @@ pub enum Discardable {
 pub enum DamageDealer {
   Permanent(Box<Permanent>),
   Spell(Spell),
+  CommandCard(Commander),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -8799,6 +8831,15 @@ pub enum Action {
   Reflexive_RevealTheTopNumberCardsOfLibrary_WhenAnyNumberOfCardsOfTypeRevealedThisWay(Box<GameNumber>, Box<CardsInLibrary>, Box<Actions>),
   RegeneratePermanent_WhenItRengeratesThisWay(Box<Permanent>, Box<Actions>),
 
+  DealDamage(Box<DamageDealer>, Box<GameNumber>, Box<DamageRecipient>),
+  EachPlayerMayCreateTokens(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
+  GoadEachCreatureUntil(Box<Permanents>, Box<Expiration>),
+  MayCastASpellFromAmongCardsInHandsWithoutPaying(Box<Spells>, Box<CardsInHand>),
+  MayCastCopiedCardWithoutPaying,
+  PutACardFromEachPlayersGraveyardOntoTheBattlefield(Box<CardsInGraveyards>, Box<Players>, Vec<EnterFlag>),
+  SecretlyChooseANumberGreaterThanOrEqualToNumber(i32),
+  SetValueXOfSpellOrAbility(Box<SpellOrAbility>, Box<GameNumber>),
+
   PutCardsInLibraryIntoGraveyard(Box<CardsInLibrary>),
   PutCardsInLibraryOntoTheBattlefield(Box<CardsInLibrary>, Vec<EnterFlag>),
   PutCardsInLibraryOnTheBottomOfLibraryInAnyOrder(Box<CardsInLibrary>),
@@ -8863,6 +8904,7 @@ pub enum Action {
   AttachAnyNumberOfPermanentsToAnyPermanents(Box<Permanents>, Box<Permanents>),
   AttachAnyNumberOfPermanentsToPermanent(Box<Permanents>, Box<Permanent>),
   AttachAnyNumberOfPermanentsToPlayerOrPermanent(Box<Permanents>, PlayerOrPermanent),
+  AttachEachPermanentToAPlayerOfChoice(Box<Permanents>, Box<Players>),
   AttachEachPermanentToAPermanent(Box<Permanents>, Box<Permanents>),
   AttachEachPermanentToPermanent(Box<Permanents>, Box<Permanent>),
   AttachPermanentToACardInAPlayersGraveyard(Box<Permanent>, Box<Cards>, Box<Players>),
@@ -10259,6 +10301,7 @@ pub enum ExiledCardEffect {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_CardEffect", content = "args"))]
 pub enum CardEffect {
   SetPT(PT),
+  AdjustPT(i32, i32),
 
   AddLandType(LandType),
   SetCreatureTypeVariable(CreatureTypeVariable),
@@ -10290,6 +10333,7 @@ pub enum StackEffect {
 pub enum SpellEffect {
   EntersWithLayerEffectUntil(Vec<LayerEffect>, Box<Expiration>),
   WebSlinging(Box<Cost>),
+  AdjustPT(i32, i32),
 
   ResolvesIntoExileInsteadOfGraveyardWithACounter(CounterType),
   Wither,
@@ -10587,6 +10631,13 @@ pub enum StaticLayerEffect {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Trigger", content = "args"))]
 pub enum Trigger {
+  WhenAPlayerSelectsAModeAtRandom(Box<Players>),
+  WhenAPlayerDiscardsACardAtRandom(Box<Players>),
+  WhenASpellOrAbilityCausesAnyNumberOfCardToBeExiledFromAPlayersLibrary(Box<SpellsAndAbilities>, Box<Players>),
+  WhenASpellOrAbilityCausesAPlayerToLoseAnAmountOfLife(Box<SpellsAndAbilities>, Box<Players>, Box<Comparison>),
+  WhenAPlayerFlipsAnyNumberOfCoins(Box<Players>),
+  WhenAPlayerSelectsAnyNumberOfTargetsAtRandom(Box<Players>),
+
   // face a dilemma
   WhenAPlayerFacesADilemma(Box<Players>),
 

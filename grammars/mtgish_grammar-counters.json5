@@ -169,6 +169,7 @@
     "NestCounter": "",
     "NetCounter": "",
     "NightCounter": "",
+    "OdorCounter": "",
     "OilCounter": "",
     "OmenCounter": "",
     "OreCounter": "",
@@ -253,6 +254,7 @@
     "LoyaltyCounter": ""
   },
   "{{PLAYER_COUNTER}}": {
+    "ContractCounter": "",
     "ExperienceCounter": "",
     "PoisonCounter": "",
     "RadCounter": ""

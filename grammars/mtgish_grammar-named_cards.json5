@@ -80,9 +80,16 @@
     "\"Davriel, Soul Broker\"": ""
   },
   "{{QUOTED_ORACLE_TOKEN}}": {
+    "\"Akroma, Angel of Wrath\"": "",
+    "\"Baneslayer Angel\"": "",
+    "\"Black Lotus\"": "",
+    "\"Feroz's Ban\"": "",
+    "\"Giant Badger\"": "",
+    "\"Lord of the Pit\"": "",
+    "\"Mutavault\"": "",
+    "\"Scryb Sprites\"": "",
     "\"Spellgorger Weird\"": "",
     "\"Tarmogoyf\"": "",
-    "\"Mutavault\"": "",
   },
   "{{QUOTED_NAMED_CARD}}": {
     "\"Zabu\"": "",
@@ -99,6 +106,8 @@
     "\"Cadet\"": "",
     "\"Axe\"": "",
     "\"Stone Boulder\"": "",
+    "\"Sanctum\"": "",
+    "\"Selenia's Curse\"": "",
 
     "\"Walker\"": "",
     "\"Cursed\"": "",

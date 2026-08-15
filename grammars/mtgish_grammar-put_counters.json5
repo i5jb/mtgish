@@ -673,6 +673,10 @@
     // Text: "That land is an Island in addition to its other types for as long as it has a flood counter on it"
     // Card: [[Aquitect's Will]]
     "ForAsLongAsPermanentHasACounterOfTypeOnIt({{PERMANENT}}, {{COUNTER_TYPE}})": "",
+
+    // Text: "For as long as they have a contract counter, when ..."
+    // Card: [[Miss Highwater]]
+    "ForAsLongAsPlayerHasACounterOfType({{PLAYER}}, {{COUNTER_TYPE}})": "",
   },
 
   "{{_NUMBER[PutCounters]}}": {
@@ -827,6 +831,11 @@
     // Text: "as long as defending player has a rad counter"
     // Card: [[Nightkin Ambusher]]
     "HasACounterOfType({{COUNTER_TYPE}})": "",
+
+    // Text: "deals combat damage to a player who doesn't have a
+    //        contract counter"
+    // Card: [[Miss Highwater]]
+    "HasNoCountersOfType({{COUNTER_TYPE}})": "",
 
     // Text: "For each opponent who has three or more poison counters ..."
     // Card: [[Geth's Summons]]

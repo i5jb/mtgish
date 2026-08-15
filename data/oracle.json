@@ -14944,7 +14944,7 @@
         "name": "Ancient Spider",
         "manaCost": "{2}{G}{W}",
         "type": "Creature — Spider",
-        "text": "First strike; reach (This creature can block creatures with flying.)",
+        "text": "Reach (This creature can block creatures with flying.)\nFirst strike",
         "power": "2",
         "toughness": "5"
       }
@@ -23288,7 +23288,7 @@
         "name": "Arwen, Mortal Queen",
         "manaCost": "{1}{G}{W}",
         "type": "Legendary Creature — Elf Noble",
-        "text": "Arwen enters with an indestructible counter on it.\n{1}, Remove an indestructible counter from Arwen: Another target creature gains indestructible until end of turn. Put a +1/+1 counter and a lifelink counter on that creature and a +1/+1 counter and a lifelink counter on Arwen.",
+        "text": "Arwen enters with an indestructible counter on her.\n{1}, Remove an indestructible counter from Arwen: Another target creature gains indestructible until end of turn. Put a +1/+1 counter and a lifelink counter on that creature and a +1/+1 counter and a lifelink counter on Arwen.",
         "power": "2",
         "toughness": "2"
       }
@@ -31276,7 +31276,7 @@
         "name": "Balthier and Fran",
         "manaCost": "{1}{R}{G}",
         "type": "Legendary Creature — Human Rabbit",
-        "text": "Reach\nVehicles you control get +1/+1 and have vigilance and reach.\nWhenever a Vehicle crewed by Balthier and Fran this turn attacks, if it's the first combat phase of the turn, you may pay {1}{R}{G}. If you do, after this phase, there is an additional combat phase.",
+        "text": "Reach\nVehicles you control get +1/+1 and have reach and vigilance.\nWhenever a Vehicle crewed by Balthier and Fran this turn attacks, if it's the first combat phase of the turn, you may pay {1}{R}{G}. If you do, after this phase, there is an additional combat phase.",
         "power": "4",
         "toughness": "3"
       }
@@ -33756,7 +33756,7 @@
         "name": "Bassara Tower Archer",
         "manaCost": "{G}{G}",
         "type": "Creature — Human Archer",
-        "text": "Hexproof, reach",
+        "text": "Reach, hexproof",
         "power": "2",
         "toughness": "1"
       }
@@ -38039,7 +38039,7 @@
         "name": "Bifur, Melodic Rider",
         "manaCost": "{4}{R/W}{R/W}",
         "type": "Legendary Creature — Dwarf Bard",
-        "text": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)\nWhenever Bifur enters or attacks, put a +1/+1 counter on target creature.\nAs long as you have an enduring story, if an ability of a Dwarf you control triggers, that ability triggers an additional time.",
+        "text": "Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)\nWhenever Bifur enters or attacks, put a +1/+1 counter on target creature.\nAs long as you have an enduring story, if a triggered ability of a Dwarf you control triggers, that ability triggers an additional time.",
         "power": "4",
         "toughness": "5"
       }
@@ -39479,7 +39479,7 @@
         "name": "Bitterbow Sharpshooters",
         "manaCost": "{4}{G}",
         "type": "Creature — Jackal Archer",
-        "text": "Vigilance, reach",
+        "text": "Reach, vigilance",
         "power": "4",
         "toughness": "4"
       }
@@ -61727,7 +61727,7 @@
         "name": "Catti-brie of Mithral Hall",
         "manaCost": "{G}{W}",
         "type": "Legendary Creature — Human Archer",
-        "text": "First strike, reach\nWhenever Catti-brie attacks, put a +1/+1 counter on it for each Equipment attached to it.\n{1}, Remove all +1/+1 counters from Catti-brie: It deals X damage to target attacking or blocking creature an opponent controls, where X is the number of counters removed this way.",
+        "text": "Reach, first strike\nWhenever Catti-brie attacks, put a +1/+1 counter on it for each Equipment attached to it.\n{1}, Remove all +1/+1 counters from Catti-brie: It deals X damage to target attacking or blocking creature an opponent controls, where X is the number of counters removed this way.",
         "power": "2",
         "toughness": "2"
       }
@@ -64867,7 +64867,7 @@
         "name": "Chancellor of the Tangle",
         "manaCost": "{4}{G}{G}{G}",
         "type": "Creature — Phyrexian Beast",
-        "text": "You may reveal this card from your opening hand. If you do, at the beginning of your first main phase of the game, add {G}.\nVigilance, reach",
+        "text": "You may reveal this card from your opening hand. If you do, at the beginning of your first main phase of the game, add {G}.\nReach, vigilance",
         "power": "6",
         "toughness": "7"
       }
@@ -67299,7 +67299,7 @@
         "name": "Chief of the Wilds",
         "manaCost": "{2}{B}{G}",
         "type": "Legendary Creature — Wolf",
-        "text": "Menace\nWhenever another Wolf you control enters, put two +1/+1 counters on Chief of the Wilds.\nIf an ability of another Wolf or battle you control triggers, that ability triggers an additional time.",
+        "text": "Menace\nWhenever another Wolf you control enters, put two +1/+1 counters on Chief of the Wilds.\nIf a triggered ability of another Wolf or battle you control triggers, that ability triggers an additional time.",
         "power": "4",
         "toughness": "4"
       }
@@ -68490,6 +68490,20 @@
     ]
   },
   {
+    "name": "Christine Chapel, Combat Medic",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Christine Chapel, Combat Medic",
+        "manaCost": "{3}{G}",
+        "type": "Legendary Creature — Human Doctor",
+        "text": "Strange new worlds — When Christine Chapel enters, you gain life equal to the number of differently named lands you control.\nWhenever you gain life, put two +1/+1 counters on Christine Chapel.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Chromanticore",
     "layout": "single",
     "cards": [
@@ -68547,7 +68561,7 @@
         "name": "Chromatic Sphere",
         "manaCost": "{1}",
         "type": "Artifact",
-        "text": "{1}, {T}, Sacrifice this artifact: Add one mana of any color. Draw a card."
+        "text": "{1}, {T}, Sacrifice this artifact: Add one mana of any color. Draw a card. (Activate only as an instant.)"
       }
     ]
   },
@@ -73865,7 +73879,7 @@
         "name": "Colfenor, the Last Yew",
         "manaCost": "{3}{W}{B}{G}",
         "type": "Legendary Creature — Treefolk Shaman",
-        "text": "Vigilance, reach\nWhenever Colfenor or another creature you control dies, return up to one other target creature card with lesser toughness from your graveyard to your hand.",
+        "text": "Reach, vigilance\nWhenever Colfenor or another creature you control dies, return up to one other target creature card with lesser toughness from your graveyard to your hand.",
         "power": "3",
         "toughness": "7"
       }
@@ -85686,7 +85700,7 @@
         "name": "Curious Altisaur",
         "manaCost": "{3}{G}",
         "type": "Creature — Dinosaur",
-        "text": "Vigilance, reach\nWhenever a Dinosaur you control deals combat damage to a player, draw a card.",
+        "text": "Reach, vigilance\nWhenever a Dinosaur you control deals combat damage to a player, draw a card.",
         "power": "2",
         "toughness": "5"
       }
@@ -89944,7 +89958,7 @@
         "name": "Darkwater Egg",
         "manaCost": "{1}",
         "type": "Artifact",
-        "text": "{2}, {T}, Sacrifice this artifact: Add {U}{B}. Draw a card."
+        "text": "{2}, {T}, Sacrifice this artifact: Add {U}{B}. Draw a card. (Activate only as an instant.)"
       }
     ]
   },
@@ -93308,7 +93322,7 @@
         "name": "Deathrite Shaman",
         "manaCost": "{B/G}",
         "type": "Creature — Elf Shaman",
-        "text": "{T}: Exile target land card from a graveyard. Add one mana of any color.\n{B}, {T}: Exile target instant or sorcery card from a graveyard. Each opponent loses 2 life.\n{G}, {T}: Exile target creature card from a graveyard. You gain 2 life.",
+        "text": "{T}: Exile target land card from a graveyard. Add one mana of any color. (Activate only as an instant.)\n{B}, {T}: Exile target instant or sorcery card from a graveyard. Each opponent loses 2 life.\n{G}, {T}: Exile target creature card from a graveyard. You gain 2 life.",
         "power": "1",
         "toughness": "2"
       }
@@ -97015,7 +97029,7 @@
         "name": "Deranged Assistant",
         "manaCost": "{1}{U}",
         "type": "Creature — Human Wizard",
-        "text": "{T}, Mill a card: Add {C}. (To mill a card, put the top card of your library into your graveyard.)",
+        "text": "{T}, Mill a card: Add {C}. (Activate only as an instant. To mill a card, put the top card of your library into your graveyard.)",
         "power": "1",
         "toughness": "1"
       }
@@ -106014,7 +106028,7 @@
         "name": "Dragon Sniper",
         "manaCost": "{G}",
         "type": "Creature — Human Archer",
-        "text": "Vigilance, reach, deathtouch",
+        "text": "Reach, vigilance, deathtouch",
         "power": "1",
         "toughness": "1"
       }
@@ -108844,7 +108858,7 @@
         "name": "Drider",
         "manaCost": "{4}{B}",
         "type": "Creature — Elf Spider",
-        "text": "Reach\nWhenever this creature deals combat damage to a player, create a 2/1 black Spider creature token with menace and reach.",
+        "text": "Reach\nWhenever this creature deals combat damage to a player, create a 2/1 black Spider creature token with reach and menace.",
         "power": "4",
         "toughness": "3"
       }
@@ -115593,7 +115607,7 @@
         "name": "Elder Gargaroth",
         "manaCost": "{3}{G}{G}",
         "type": "Creature — Beast",
-        "text": "Vigilance, reach, trample\nWhenever this creature attacks or blocks, choose one —\n• Create a 3/3 green Beast creature token.\n• You gain 3 life.\n• Draw a card.",
+        "text": "Reach, vigilance, trample\nWhenever this creature attacks or blocks, choose one —\n• Create a 3/3 green Beast creature token.\n• You gain 3 life.\n• Draw a card.",
         "power": "6",
         "toughness": "6"
       }
@@ -118487,7 +118501,7 @@
         "name": "Elvish Spirit Guide",
         "manaCost": "{2}{G}",
         "type": "Creature — Elf Spirit",
-        "text": "Exile this creature from your hand: Add {G}.",
+        "text": "Exile this card from your hand: Add {G}.",
         "power": "2",
         "toughness": "2"
       }
@@ -136805,7 +136819,7 @@
         "name": "Finneas, Ace Archer",
         "manaCost": "{G}{W}",
         "type": "Legendary Creature — Rabbit Archer",
-        "text": "Vigilance, reach\nWhenever Finneas attacks, put a +1/+1 counter on each other creature you control that's a token or a Rabbit. Then if creatures you control have total power 10 or greater, draw a card.",
+        "text": "Reach, vigilance\nWhenever Finneas attacks, put a +1/+1 counter on each other creature you control that's a token or a Rabbit. Then if creatures you control have total power 10 or greater, draw a card.",
         "power": "2",
         "toughness": "2"
       }
@@ -138642,7 +138656,7 @@
         "name": "Fixer, Techno Terror",
         "manaCost": "{1}{B}",
         "type": "Legendary Creature — Human Artificer Villain",
-        "text": "{T}, Pay 2 life: Draw a card. Activate only if an artifact entered under your control this turn.",
+        "text": "{T}, Pay 2 life: Draw a card. Activate only if an artifact entered the battlefield under your control this turn.",
         "power": "2",
         "toughness": "1"
       }
@@ -142050,7 +142064,7 @@
         "name": "Flycatcher Giraffid",
         "manaCost": "{4}{G}",
         "type": "Creature — Antelope Lizard",
-        "text": "This creature enters with your choice of a vigilance counter or a reach counter on it.",
+        "text": "This creature enters with your choice of a reach counter or a vigilance counter on it.",
         "power": "3",
         "toughness": "5"
       }
@@ -142102,7 +142116,7 @@
         "name": "Flying Drone",
         "manaCost": "{1}{U}",
         "type": "Artifact Creature — Robot Scout",
-        "text": "Flying, vigilance\n{1}{U}, {T}: Draw a card, then discard a card. This ability costs {1}{U} less to activate if another creature with flying entered under your control this turn.",
+        "text": "Flying, vigilance\n{1}{U}, {T}: Draw a card, then discard a card. This ability costs {1}{U} less to activate if another creature with flying entered the battlefield under your control this turn.",
         "power": "1",
         "toughness": "2"
       }
@@ -146477,7 +146491,7 @@
         "name": "Frilled Sparkshooter",
         "manaCost": "{3}{R}",
         "type": "Creature — Lizard Archer",
-        "text": "Menace, reach\nThis creature enters with a +1/+1 counter on it if an opponent lost life this turn.",
+        "text": "Reach, menace\nThis creature enters with a +1/+1 counter on it if an opponent lost life this turn.",
         "power": "3",
         "toughness": "3"
       }
@@ -149609,7 +149623,7 @@
         "name": "Galewind Moose",
         "manaCost": "{4}{G}{G}",
         "type": "Creature — Elemental Elk",
-        "text": "Flash\nVigilance, reach, trample",
+        "text": "Flash\nReach, vigilance, trample",
         "power": "6",
         "toughness": "6"
       }
@@ -152550,6 +152564,20 @@
         "text": "Flying\nLandfall — Whenever a land you control enters, target creature has base power and toughness 3/3 until end of turn. If you control six or more lands, that creature has base power and toughness 6/6 until end of turn instead.",
         "power": "1",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "General Chang, Cold Warrior",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "General Chang, Cold Warrior",
+        "manaCost": "{B}",
+        "type": "Legendary Creature — Klingon Warrior Officer",
+        "text": "{1}, Sacrifice a creature: Put a +1/+1 counter on each Klingon you control.",
+        "power": "1",
+        "toughness": "2"
       }
     ]
   },
@@ -167669,7 +167697,7 @@
         "name": "Great Goblin, Foul-Hearted",
         "manaCost": "{3}{B}{R}",
         "type": "Legendary Creature — Goblin Noble",
-        "text": "Whenever Great Goblin enters or attacks, amass Goblins 3.\nArmies you control have trample.",
+        "text": "Whenever Great Goblin enters or attacks, amass Goblins 3. (Put three +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)\nArmies you control have trample.",
         "power": "3",
         "toughness": "3"
       }
@@ -171654,7 +171682,7 @@
         "name": "Guardian of the Forgotten",
         "manaCost": "{3}{W}",
         "type": "Creature — Elephant Warrior",
-        "text": "Vigilance\nWhenever a modified creature you control dies, manifest the top card of your library. (Equipment, Auras you control, and counters are modifications. To manifest a card, put the top card of your library onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)",
+        "text": "Vigilance\nWhenever a modified creature you control dies, manifest the top card of your library. (Equipment, Auras you control, and counters are modifications. To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)",
         "power": "4",
         "toughness": "4"
       }
@@ -173959,7 +173987,7 @@
         "name": "Halana and Alena, Partners",
         "manaCost": "{2}{R}{G}",
         "type": "Legendary Creature — Human Ranger",
-        "text": "First strike (This creature deals combat damage before creatures without first strike.)\nReach (This creature can block creatures with flying.)\nAt the beginning of combat on your turn, put X +1/+1 counters on another target creature you control, where X is Halana and Alena's power. That creature gains haste until end of turn.",
+        "text": "Reach (This creature can block creatures with flying.)\nFirst strike (This creature deals combat damage before creatures without first strike.)\nAt the beginning of combat on your turn, put X +1/+1 counters on another target creature you control, where X is Halana and Alena's power. That creature gains haste until end of turn.",
         "power": "2",
         "toughness": "3"
       }
@@ -176247,7 +176275,7 @@
         "name": "Harold and Bob, First Numens",
         "manaCost": "{2}{G}",
         "type": "Legendary Creature — Treefolk Mutant",
-        "text": "Vigilance, reach\nWhen Harold and Bob dies, if it was a creature, return it to the battlefield. It's an Aura enchantment with enchant Forest you control and \"Enchanted Forest has '{T}: Add three mana of any one color. You get two rad counters.'\" Harold and Bob loses all other abilities.",
+        "text": "Reach, vigilance\nWhen Harold and Bob dies, if it was a creature, return it to the battlefield. It's an Aura enchantment with enchant Forest you control and \"Enchanted Forest has '{T}: Add three mana of any one color. You get two rad counters.'\" Harold and Bob loses all other abilities.",
         "power": "3",
         "toughness": "3"
       }
@@ -177610,7 +177638,7 @@
         "name": "Hawkeye, Master Marksman",
         "manaCost": "{1}{R}",
         "type": "Legendary Creature — Human Archer Hero",
-        "text": "First strike, reach\nTrick Arrows — Whenever Hawkeye becomes tapped, you may pay {1} up to three times. When you do, choose up to that many.\n• Net — Target creature can't block this turn.\n• Explosive — Hawkeye deals 2 damage to target player.\n• Boomerang — Discard a card, then draw a card.",
+        "text": "Reach, first strike\nTrick Arrows — Whenever Hawkeye becomes tapped, you may pay {1} up to three times. When you do, choose up to that many —\n• Net — Target creature can't block this turn.\n• Explosive — Hawkeye deals 2 damage to target player.\n• Boomerang — Discard a card, then draw a card.",
         "power": "2",
         "toughness": "2"
       }
@@ -177624,7 +177652,7 @@
         "name": "Hawkeye, Trick Shot",
         "manaCost": "{3}{R}",
         "type": "Legendary Creature — Human Archer Hero",
-        "text": "First strike, reach\nWhenever Hawkeye or another Hero you control enters, it deals damage equal to the number of Heroes you control to any target.",
+        "text": "Reach, first strike\nWhenever Hawkeye or another Hero you control enters, it deals damage equal to the number of Heroes you control to any target.",
         "power": "3",
         "toughness": "4"
       }
@@ -177692,7 +177720,7 @@
         "name": "Hazard of the Dunes",
         "manaCost": "{3}{G}",
         "type": "Creature — Wurm",
-        "text": "Trample, reach\nExhaust — {6}{G}: Put three +1/+1 counters on this creature. (Activate each exhaust ability only once.)",
+        "text": "Reach, trample\nExhaust — {6}{G}: Put three +1/+1 counters on this creature. (Activate each exhaust ability only once.)",
         "power": "4",
         "toughness": "4"
       }
@@ -182718,7 +182746,7 @@
         "name": "Hierophant Bio-Titan",
         "manaCost": "{10}{G}{G}",
         "type": "Creature — Tyranid",
-        "text": "Frenzied Metabolism — As an additional cost to cast this spell, you may remove any number of +1/+1 counters from among creatures you control. This spell costs {2} less to cast for each counter removed this way.\nVigilance, reach, ward {2}\nTitanic — This creature can't be blocked by creatures with power 2 or less.",
+        "text": "Frenzied Metabolism — As an additional cost to cast this spell, you may remove any number of +1/+1 counters from among creatures you control. This spell costs {2} less to cast for each counter removed this way.\nReach, vigilance, ward {2}\nTitanic — This creature can't be blocked by creatures with power 2 or less.",
         "power": "12",
         "toughness": "12"
       }
@@ -199875,7 +199903,7 @@
         "name": "Invoke the Ancients",
         "manaCost": "{1}{G}{G}{G}{G}",
         "type": "Sorcery",
-        "text": "Create two 4/5 green Spirit creature tokens. For each of them, put your choice of a vigilance counter, a reach counter, or a trample counter on it."
+        "text": "Create two 4/5 green Spirit creature tokens. For each of them, put your choice of a reach counter, a vigilance counter, or a trample counter on it."
       }
     ]
   },
@@ -200462,7 +200490,7 @@
         "name": "Iron Giant",
         "manaCost": "{7}",
         "type": "Artifact Creature — Demon",
-        "text": "Vigilance, reach, trample",
+        "text": "Reach, vigilance, trample",
         "power": "6",
         "toughness": "6"
       }
@@ -202179,7 +202207,7 @@
         "name": "Izoni, Center of the Web",
         "manaCost": "{4}{B}{G}",
         "type": "Legendary Creature — Elf Detective",
-        "text": "Menace\nWhenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.\nSacrifice four tokens: Surveil 2, then draw two cards. You gain 2 life.",
+        "text": "Menace\nWhenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with reach and menace.\nSacrifice four tokens: Surveil 2, then draw two cards. You gain 2 life.",
         "power": "5",
         "toughness": "4"
       }
@@ -209259,7 +209287,7 @@
         "name": "Karakyk Guardian",
         "manaCost": "{3}{G}{U}{R}",
         "type": "Creature — Dragon",
-        "text": "Flying, vigilance, trample\nThis creature has hexproof if it hasn't dealt damage yet. (It can't be the target of spells or abilities your opponents control.)",
+        "text": "Flying, vigilance, trample\nThis creature has hexproof as long as it hasn't dealt damage yet. (It can't be the target of spells or abilities your opponents control.)",
         "power": "6",
         "toughness": "5"
       }
@@ -224485,7 +224513,7 @@
         "name": "Legolas's Quick Reflexes",
         "manaCost": "{G}",
         "type": "Instant",
-        "text": "Split second (As long as this spell is on the stack, players can't cast spells or activate abilities that aren't mana abilities.)\nUntap target creature. Until end of turn, it gains hexproof, reach, and \"Whenever this creature becomes tapped, it deals damage equal to its power to up to one target creature.\""
+        "text": "Split second (As long as this spell is on the stack, players can't cast spells or activate abilities that aren't mana abilities.)\nUntap target creature. Until end of turn, it gains reach, hexproof, and \"Whenever this creature becomes tapped, it deals damage equal to its power to up to one target creature.\""
       }
     ]
   },
@@ -228516,7 +228544,7 @@
         "name": "Lion Umbra",
         "manaCost": "{G}{G}",
         "type": "Enchantment — Aura",
-        "text": "Enchant modified creature (Equipment, Auras its controller controls, and counters are modifications.)\nEnchanted creature gets +3/+3 and has vigilance and reach.\nUmbra armor (If enchanted creature would be destroyed, instead remove all damage from it and destroy this Aura.)"
+        "text": "Enchant modified creature (Equipment, Auras its controller controls, and counters are modifications.)\nEnchanted creature gets +3/+3 and has reach and vigilance.\nUmbra armor (If enchanted creature would be destroyed, instead remove all damage from it and destroy this Aura.)"
       }
     ]
   },
@@ -230468,7 +230496,7 @@
         "name": "Lolth, Spider Queen",
         "manaCost": "{3}{B}{B}",
         "type": "Legendary Planeswalker — Lolth",
-        "text": "Whenever a creature you control dies, put a loyalty counter on Lolth.\n[0]: You draw a card and you lose 1 life.\n[−3]: Create two 2/1 black Spider creature tokens with menace and reach.\n[−8]: You get an emblem with \"Whenever an opponent is dealt combat damage by one or more creatures you control, if that player lost less than 8 life this turn, they lose life equal to the difference.\"",
+        "text": "Whenever a creature you control dies, put a loyalty counter on Lolth.\n[0]: You draw a card and you lose 1 life.\n[−3]: Create two 2/1 black Spider creature tokens with reach and menace.\n[−8]: You get an emblem with \"Whenever an opponent is dealt combat damage by one or more creatures you control, if that player lost less than 8 life this turn, they lose life equal to the difference.\"",
         "loyalty": "4"
       }
     ]
@@ -230802,7 +230830,7 @@
         "name": "Longbow Archer",
         "manaCost": "{W}{W}",
         "type": "Creature — Human Soldier Archer",
-        "text": "First strike; reach (This creature can block creatures with flying.)",
+        "text": "Reach (This creature can block creatures with flying.)\nFirst strike",
         "power": "2",
         "toughness": "2"
       }
@@ -233819,7 +233847,7 @@
         "name": "Lumra, Bellow of the Woods",
         "manaCost": "{4}{G}{G}",
         "type": "Legendary Creature — Elemental Bear",
-        "text": "Vigilance, reach\nLumra's power and toughness are each equal to the number of lands you control.\nWhen Lumra enters, mill four cards. Then return all land cards from your graveyard to the battlefield tapped.",
+        "text": "Reach, vigilance\nLumra's power and toughness are each equal to the number of lands you control.\nWhen Lumra enters, mill four cards. Then return all land cards from your graveyard to the battlefield tapped.",
         "power": "*",
         "toughness": "*"
       }
@@ -236372,7 +236400,7 @@
         "name": "Magmablood Archaic",
         "manaCost": "{2/R}{2/R}{2/R}",
         "type": "Creature — Avatar",
-        "text": "Trample, reach\nConverge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.\nWhenever you cast an instant or sorcery spell, creatures you control get +1/+0 until end of turn for each color of mana spent to cast that spell.",
+        "text": "Reach, trample\nConverge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.\nWhenever you cast an instant or sorcery spell, creatures you control get +1/+0 until end of turn for each color of mana spent to cast that spell.",
         "power": "2",
         "toughness": "2"
       }
@@ -244202,7 +244230,7 @@
         "name": "Medusa, Inhuman Queen",
         "manaCost": "{2}{G}",
         "type": "Legendary Creature — Inhuman Noble Hero",
-        "text": "Vigilance, reach\nWhenever a player casts a noncreature spell, put a +1/+1 counter on Medusa.",
+        "text": "Reach, vigilance\nWhenever a player casts a noncreature spell, put a +1/+1 counter on Medusa.",
         "power": "2",
         "toughness": "2"
       }
@@ -248482,7 +248510,7 @@
         "name": "Millikin",
         "manaCost": "{2}",
         "type": "Artifact Creature — Construct",
-        "text": "{T}, Mill a card: Add {C}. (To mill a card, put the top card of your library into your graveyard.)",
+        "text": "{T}, Mill a card: Add {C}. (Activate only as an instant. To mill a card, put the top card of your library into your graveyard.)",
         "power": "0",
         "toughness": "1"
       }
@@ -252293,7 +252321,7 @@
         "name": "Mister Fantastic",
         "manaCost": "{2}{U}",
         "type": "Legendary Creature — Human Scientist Hero",
-        "text": "Vigilance, reach\nAt the beginning of combat on your turn, if you've cast a noncreature spell this turn, draw a card.\n{R}{G}{W}{U}, {T}: Copy target triggered ability you control twice. You may choose new targets for the copies.",
+        "text": "Reach, vigilance\nAt the beginning of combat on your turn, if you've cast a noncreature spell this turn, draw a card.\n{R}{G}{W}{U}, {T}: Copy target triggered ability you control twice. You may choose new targets for the copies.",
         "power": "2",
         "toughness": "4"
       }
@@ -257475,7 +257503,7 @@
         "name": "Mossfire Egg",
         "manaCost": "{1}",
         "type": "Artifact",
-        "text": "{2}, {T}, Sacrifice this artifact: Add {R}{G}. Draw a card."
+        "text": "{2}, {T}, Sacrifice this artifact: Add {R}{G}. Draw a card. (Activate only as an instant.)"
       }
     ]
   },
@@ -257767,7 +257795,7 @@
         "name": "Motivated Pony",
         "manaCost": "{4}{G}",
         "type": "Creature — Horse",
-        "text": "Trample, haste\nWhenever this creature attacks, attacking creatures get +1/+1 until end of turn. If a Food entered under your control this turn, untap those creatures and they get an additional +2/+2 until end of turn.",
+        "text": "Trample, haste\nWhenever this creature attacks, attacking creatures get +1/+1 until end of turn. If a Food entered the battlefield under your control this turn, untap those creatures and they get an additional +2/+2 until end of turn.",
         "power": "3",
         "toughness": "3"
       }
@@ -258435,7 +258463,7 @@
         "name": "Ms. Marvel, Kamala Khan",
         "manaCost": "{2}{U}",
         "type": "Legendary Creature — Mutant Inhuman Hero",
-        "text": "Vigilance, reach\nYou have no maximum hand size.\nEmbiggen Fist — Whenever you cast a spell that targets a creature you control, draw a card. Until end of turn, Ms. Marvel gains \"Ms. Marvel's base power is equal to the number of cards in your hand.\"",
+        "text": "Reach, vigilance\nYou have no maximum hand size.\nEmbiggen Fist — Whenever you cast a spell that targets a creature you control, draw a card. Until end of turn, Ms. Marvel gains \"Ms. Marvel's base power is equal to the number of cards in your hand.\"",
         "power": "1",
         "toughness": "4"
       }
@@ -275160,7 +275188,7 @@
         "name": "Old-Growth Educator",
         "manaCost": "{2}{B}{G}",
         "type": "Creature — Treefolk Druid",
-        "text": "Vigilance, reach\nInfusion — When this creature enters, put two +1/+1 counters on it if you gained life this turn.",
+        "text": "Reach, vigilance\nInfusion — When this creature enters, put two +1/+1 counters on it if you gained life this turn.",
         "power": "4",
         "toughness": "4"
       }
@@ -276931,6 +276959,18 @@
         "text": "{T}: Add one mana of any color.",
         "power": "1",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Open Communications",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Open Communications",
+        "manaCost": "{U}",
+        "type": "Sorcery",
+        "text": "Draw a card.\nBeam me up {2}{U} (You may cast this card from your graveyard for {2}{U} if you also return a creature you control to its owner's hand. Then exile this spell.)"
       }
     ]
   },
@@ -281320,7 +281360,7 @@
         "name": "Owen Grady, Raptor Trainer",
         "manaCost": "{1}{R}{G}",
         "type": "Legendary Creature — Human Soldier Scientist",
-        "text": "Partner with Blue, Loyal Raptor\n{T}: Put your choice of a menace, trample, reach, or haste counter on target Dinosaur. Activate only as a sorcery.",
+        "text": "Partner with Blue, Loyal Raptor\n{T}: Put your choice of a reach, menace, trample, or haste counter on target Dinosaur. Activate only as a sorcery.",
         "power": "3",
         "toughness": "2"
       }
@@ -282593,7 +282633,7 @@
         "name": "Palladia-Mors, the Ruiner",
         "manaCost": "{3}{R}{G}{W}",
         "type": "Legendary Creature — Elder Dragon",
-        "text": "Flying, vigilance, trample\nPalladia-Mors has hexproof if it hasn't dealt damage yet.",
+        "text": "Flying, vigilance, trample\nPalladia-Mors has hexproof as long as it hasn't dealt damage yet.",
         "power": "6",
         "toughness": "6"
       }
@@ -283794,7 +283834,7 @@
         "name": "Park Heights Maverick",
         "manaCost": "{2}{G}",
         "type": "Creature — Human Soldier",
-        "text": "Dethrone (Whenever this creature attacks the player with the most life or tied for the most life, put a +1/+1 counter on it.)\nThis creature can't be blocked by creatures with power 2 or less.\nWhenever this creature deals combat damage to a player or dies, proliferate.",
+        "text": "Dethrone (Whenever this creature attacks the player with the most life or tied for most life, put a +1/+1 counter on it.)\nThis creature can't be blocked by creatures with power 2 or less.\nWhenever this creature deals combat damage to a player or dies, proliferate.",
         "power": "2",
         "toughness": "2"
       }
@@ -296168,7 +296208,7 @@
         "name": "Priest of Forgotten Gods",
         "manaCost": "{1}{B}",
         "type": "Creature — Human Cleric",
-        "text": "{T}, Sacrifice two other creatures: Any number of target players each lose 2 life and sacrifice a creature of their choice. You add {B}{B} and draw a card.",
+        "text": "{T}, Sacrifice two other creatures: Any number of target players each lose 2 life and sacrifice a creature of their choice. You add {B}{B} and draw a card. (Activate only as an instant.)",
         "power": "1",
         "toughness": "2"
       }
@@ -300463,7 +300503,7 @@
         "name": "Pummeler for Hire",
         "manaCost": "{4}{G}",
         "type": "Creature — Giant Mercenary",
-        "text": "Vigilance, reach\nWard {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\nWhen this creature enters, you gain X life, where X is the greatest power among Giants you control.",
+        "text": "Reach, vigilance\nWard {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\nWhen this creature enters, you gain X life, where X is the greatest power among Giants you control.",
         "power": "4",
         "toughness": "4"
       }
@@ -304557,7 +304597,7 @@
         "name": "Radiant Lotus",
         "manaCost": "{6}",
         "type": "Artifact",
-        "text": "{T}, Sacrifice one or more artifacts: Choose a color. Target player adds three mana of the chosen color for each artifact sacrificed this way."
+        "text": "{T}, Sacrifice one or more artifacts: Choose a color. Target player adds three mana of the chosen color for each artifact sacrificed this way. (Activate only as an instant.)"
       }
     ]
   },
@@ -305509,7 +305549,7 @@
       {
         "name": "Ragnarok, Divine Deliverance",
         "type": "Legendary Creature — Beast Avatar",
-        "text": "Vigilance, menace, trample, reach, haste\nWhen Ragnarok dies, destroy target permanent and return target nonlegendary permanent card from your graveyard to the battlefield.",
+        "text": "Reach, vigilance, menace, trample, haste\nWhen Ragnarok dies, destroy target permanent and return target nonlegendary permanent card from your graveyard to the battlefield.",
         "power": "7",
         "toughness": "6",
         "colorIndicator": "BG"
@@ -307666,7 +307706,7 @@
         "name": "Ramunap Hydra",
         "manaCost": "{3}{G}",
         "type": "Creature — Snake Hydra",
-        "text": "Vigilance, reach, trample\nThis creature gets +1/+1 as long as you control a Desert.\nThis creature gets +1/+1 as long as there is a Desert card in your graveyard.",
+        "text": "Reach, vigilance, trample\nThis creature gets +1/+1 as long as you control a Desert.\nThis creature gets +1/+1 as long as there is a Desert card in your graveyard.",
         "power": "3",
         "toughness": "3"
       }
@@ -307757,7 +307797,7 @@
         "name": "Rancorous Archaic",
         "manaCost": "{5}",
         "type": "Creature — Avatar",
-        "text": "Trample, reach\nConverge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.",
+        "text": "Reach, trample\nConverge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.",
         "power": "2",
         "toughness": "2"
       }
@@ -314994,7 +315034,7 @@
         "name": "Rendmaw, Creaking Nest",
         "manaCost": "{3}{B}{G}",
         "type": "Legendary Artifact Creature — Scarecrow",
-        "text": "Menace, reach\nWhen Rendmaw enters and whenever you play a card with two or more card types, each player creates a tapped 2/2 black Bird creature token with flying. The tokens are goaded for the rest of the game. (They attack each combat if able and attack a player other than you if able.)",
+        "text": "Reach, menace\nWhen Rendmaw enters and whenever you play a card with two or more card types, each player creates a tapped 2/2 black Bird creature token with flying. The tokens are goaded for the rest of the game. (They attack each combat if able and attack a player other than you if able.)",
         "power": "5",
         "toughness": "5"
       }
@@ -315709,7 +315749,7 @@
         "name": "Reptil, Dinomorpher",
         "manaCost": "{G}",
         "type": "Legendary Creature — Human Hero",
-        "text": "Brontosaurus — {3}: Until end of turn, Reptil becomes a Dinosaur Hero with base power and toughness 3/5 and gains vigilance and reach.\nTyrannosaurus Rex — {6}: Until end of turn, Reptil becomes a Dinosaur Hero with base power and toughness 6/6 and gains trample.",
+        "text": "Brontosaurus — {3}: Until end of turn, Reptil becomes a Dinosaur Hero with base power and toughness 3/5 and gains reach and vigilance.\nTyrannosaurus Rex — {6}: Until end of turn, Reptil becomes a Dinosaur Hero with base power and toughness 6/6 and gains trample.",
         "power": "1",
         "toughness": "2"
       }
@@ -316275,7 +316315,7 @@
         "name": "Resistance Skywarden",
         "manaCost": "{3}{R}{R}",
         "type": "Creature — Ogre Rebel",
-        "text": "Menace (This creature can't be blocked except by two or more creatures.)\nReach (This creature can block creatures with flying.)",
+        "text": "Reach (This creature can block creatures with flying.)\nMenace (This creature can't be blocked except by two or more creatures.)",
         "power": "5",
         "toughness": "5"
       }
@@ -319653,7 +319693,7 @@
         "name": "Rig for War",
         "manaCost": "{1}{R}",
         "type": "Instant",
-        "text": "Target creature gets +3/+0 and gains first strike and reach until end of turn."
+        "text": "Target creature gets +3/+0 and gains reach and first strike until end of turn."
       }
     ]
   },
@@ -326785,7 +326825,7 @@
         "name": "Rumbleweed",
         "manaCost": "{10}{G}",
         "type": "Creature — Plant Elemental",
-        "text": "This spell costs {1} less to cast for each land card in your graveyard.\nVigilance, reach, trample\nWhen this creature enters, other creatures you control get +3/+3 and gain trample until end of turn.",
+        "text": "This spell costs {1} less to cast for each land card in your graveyard.\nReach, vigilance, trample\nWhen this creature enters, other creatures you control get +3/+3 and gain trample until end of turn.",
         "power": "8",
         "toughness": "8"
       }
@@ -327761,7 +327801,7 @@
         "name": "Ruric Thar, the Unbowed",
         "manaCost": "{4}{R}{G}",
         "type": "Legendary Creature — Ogre Warrior",
-        "text": "Vigilance, reach\nRuric Thar attacks each combat if able.\nWhenever a player casts a noncreature spell, Ruric Thar deals 6 damage to that player.",
+        "text": "Reach, vigilance\nRuric Thar attacks each combat if able.\nWhenever a player casts a noncreature spell, Ruric Thar deals 6 damage to that player.",
         "power": "6",
         "toughness": "6"
       }
@@ -342091,7 +342131,7 @@
         "name": "Selvala, Explorer Returned",
         "manaCost": "{1}{G}{W}",
         "type": "Legendary Creature — Elf Scout",
-        "text": "Parley — {T}: Each player reveals the top card of their library. For each nonland card revealed this way, add {G} and you gain 1 life. Then each player draws a card.",
+        "text": "Parley — {T}: Each player reveals the top card of their library. For each nonland card revealed this way, add {G} and you gain 1 life. Then each player draws a card. (Activate only as an instant.)",
         "power": "2",
         "toughness": "4"
       }
@@ -342480,7 +342520,7 @@
         "name": "Sentinel Spider",
         "manaCost": "{3}{G}{G}",
         "type": "Creature — Spider",
-        "text": "Vigilance, reach",
+        "text": "Reach, vigilance",
         "power": "4",
         "toughness": "4"
       }
@@ -345024,7 +345064,7 @@
         "name": "Shadowblood Egg",
         "manaCost": "{1}",
         "type": "Artifact",
-        "text": "{2}, {T}, Sacrifice this artifact: Add {B}{R}. Draw a card."
+        "text": "{2}, {T}, Sacrifice this artifact: Add {B}{R}. Draw a card. (Activate only as an instant.)"
       }
     ]
   },
@@ -349427,7 +349467,7 @@
         "name": "Short Bow",
         "manaCost": "{2}",
         "type": "Artifact — Equipment",
-        "text": "Equipped creature gets +1/+1 and has vigilance and reach.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)"
+        "text": "Equipped creature gets +1/+1 and has reach and vigilance.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)"
       }
     ]
   },
@@ -354222,7 +354262,7 @@
         "name": "Sire of Seven Deaths",
         "manaCost": "{7}",
         "type": "Creature — Eldrazi",
-        "text": "First strike, vigilance\nMenace, trample\nReach, lifelink\nWard—Pay 7 life.",
+        "text": "Reach, first strike\nVigilance, menace\nTrample, lifelink\nWard—Pay 7 life.",
         "power": "7",
         "toughness": "7"
       }
@@ -356979,7 +357019,7 @@
         "name": "Skycloud Egg",
         "manaCost": "{1}",
         "type": "Artifact",
-        "text": "{2}, {T}, Sacrifice this artifact: Add {W}{U}. Draw a card."
+        "text": "{2}, {T}, Sacrifice this artifact: Add {W}{U}. Draw a card. (Activate only as an instant.)"
       }
     ]
   },
@@ -368976,7 +369016,7 @@
         "name": "Spider-Man, To the Rescue",
         "manaCost": "{2}{G/W}",
         "type": "Legendary Creature — Spider Human Hero",
-        "text": "Flash\nVigilance, reach\nNo One Dies! — When Spider-Man enters, you may tap him. When you do, another target nonattacking creature you control gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)",
+        "text": "Flash\nReach, vigilance\nNo One Dies! — When Spider-Man enters, you may tap him. When you do, another target nonattacking creature you control gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)",
         "power": "3",
         "toughness": "2"
       }
@@ -384265,7 +384305,7 @@
         "name": "Sungrass Egg",
         "manaCost": "{1}",
         "type": "Artifact",
-        "text": "{2}, {T}, Sacrifice this artifact: Add {G}{W}. Draw a card."
+        "text": "{2}, {T}, Sacrifice this artifact: Add {G}{W}. Draw a card. (Activate only as an instant.)"
       }
     ]
   },
@@ -394186,7 +394226,7 @@
         "name": "Tel-Jilad Archers",
         "manaCost": "{4}{G}",
         "type": "Creature — Elf Archer",
-        "text": "Protection from artifacts; reach (This creature can block creatures with flying.)",
+        "text": "Reach (This creature can block creatures with flying.)\nProtection from artifacts",
         "power": "2",
         "toughness": "4"
       }
@@ -397919,7 +397959,7 @@
         "name": "Thantis, the Warweaver",
         "manaCost": "{3}{B}{R}{G}",
         "type": "Legendary Creature — Spider",
-        "text": "Vigilance, reach\nAll creatures attack each combat if able.\nWhenever a creature attacks you or a planeswalker you control, put a +1/+1 counter on Thantis.",
+        "text": "Reach, vigilance\nAll creatures attack each combat if able.\nWhenever a creature attacks you or a planeswalker you control, put a +1/+1 counter on Thantis.",
         "power": "5",
         "toughness": "5"
       }
@@ -401883,7 +401923,7 @@
         "name": "The Lion-Turtle",
         "manaCost": "{1}{G}{U}",
         "type": "Legendary Creature — Elder Cat Turtle",
-        "text": "Vigilance, reach\nWhen The Lion-Turtle enters, you gain 3 life.\nThe Lion-Turtle can't attack or block unless there are three or more Lesson cards in your graveyard.\n{T}: Add one mana of any color.",
+        "text": "Reach, vigilance\nWhen The Lion-Turtle enters, you gain 3 life.\nThe Lion-Turtle can't attack or block unless there are three or more Lesson cards in your graveyard.\n{T}: Add one mana of any color.",
         "power": "3",
         "toughness": "6"
       }
@@ -402823,7 +402863,7 @@
         "name": "The Odd Acorn Gang",
         "manaCost": "{3}{B}{G}",
         "type": "Legendary Creature — Squirrel Warrior",
-        "text": "Menace, trample, reach\nSquirrels you control have \"{T}: Target Squirrel gets +2/+2 and gains trample until end of turn. Activate only as a sorcery.\"\nWhenever one or more Squirrels you control deal combat damage to a player, draw a card.",
+        "text": "Reach, menace, trample\nSquirrels you control have \"{T}: Target Squirrel gets +2/+2 and gains trample until end of turn. Activate only as a sorcery.\"\nWhenever one or more Squirrels you control deal combat damage to a player, draw a card.",
         "power": "5",
         "toughness": "5"
       }
@@ -404710,7 +404750,7 @@
         "name": "The Warring Triad",
         "manaCost": "{3}",
         "type": "Legendary Artifact Creature — God",
-        "text": "Flying, trample, haste\nAs long as there are fewer than eight cards in your graveyard, The Warring Triad isn't a creature.\n{T}, Mill a card: Target player adds one mana of any color.",
+        "text": "Flying, trample, haste\nAs long as there are fewer than eight cards in your graveyard, The Warring Triad isn't a creature.\n{T}, Mill a card: Target player adds one mana of any color. (Activate only as an instant.)",
         "power": "5",
         "toughness": "5"
       }
@@ -409535,7 +409575,7 @@
         "name": "Thundering Broodwagon",
         "manaCost": "{2}{B}{B}{G}{G}",
         "type": "Artifact — Vehicle",
-        "text": "Menace, reach\nWhen this Vehicle enters, destroy target nonland permanent an opponent controls with mana value 4 or less.\nCrew 3\nCycling {2} ({2}, Discard this card: Draw a card.)",
+        "text": "Reach, menace\nWhen this Vehicle enters, destroy target nonland permanent an opponent controls with mana value 4 or less.\nCrew 3\nCycling {2} ({2}, Discard this card: Draw a card.)",
         "power": "6",
         "toughness": "5"
       }
@@ -411963,7 +412003,7 @@
         "name": "Tippy-Toe, Terrific Partner",
         "manaCost": "{3}{G}",
         "type": "Legendary Creature — Squirrel Hero",
-        "text": "If you would create one or more tokens, instead create those tokens plus an additional Food token.\nAt the beginning of your end step, if you gained life this turn, draw a card.",
+        "text": "If you would create one or more tokens, instead create those tokens plus an additional Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\nAt the beginning of your end step, if you gained life this turn, draw a card.",
         "power": "2",
         "toughness": "4"
       }
@@ -412302,7 +412342,7 @@
       {
         "name": "Titania, Gaea Incarnate",
         "type": "Legendary Creature — Elemental Avatar",
-        "text": "Vigilance, reach, trample, haste\nTitania's power and toughness are each equal to the number of lands you control.\nWhen Titania enters, return all land cards from your graveyard to the battlefield tapped.\n{3}{G}: Put four +1/+1 counters on target land you control. It becomes a 0/0 Elemental creature with haste. It's still a land.",
+        "text": "Reach, vigilance, trample, haste\nTitania's power and toughness are each equal to the number of lands you control.\nWhen Titania enters, return all land cards from your graveyard to the battlefield tapped.\n{3}{G}: Put four +1/+1 counters on target land you control. It becomes a 0/0 Elemental creature with haste. It's still a land.",
         "power": "*",
         "toughness": "*",
         "colorIndicator": "G"
@@ -438087,7 +438127,7 @@
         "name": "Vivien, Champion of the Wilds",
         "manaCost": "{2}{G}",
         "type": "Legendary Planeswalker — Vivien",
-        "text": "You may cast creature spells as though they had flash.\n[+1]: Until your next turn, up to one target creature gains vigilance and reach.\n[−2]: Look at the top three cards of your library. Exile one face down and put the rest on the bottom of your library in any order. For as long as it remains exiled, you may cast it if it's a creature spell.",
+        "text": "You may cast creature spells as though they had flash.\n[+1]: Until your next turn, up to one target creature gains reach and vigilance.\n[−2]: Look at the top three cards of your library. Exile one face down and put the rest on the bottom of your library in any order. For as long as it remains exiled, you may cast it if it's a creature spell.",
         "loyalty": "4"
       }
     ]
@@ -438100,7 +438140,7 @@
         "name": "Vivien, Monsters' Advocate",
         "manaCost": "{3}{G}{G}",
         "type": "Legendary Planeswalker — Vivien",
-        "text": "You may look at the top card of your library any time.\nYou may cast creature spells from the top of your library.\n[+1]: Create a 3/3 green Beast creature token. Put your choice of a vigilance counter, a reach counter, or a trample counter on it.\n[−2]: When you next cast a creature spell this turn, search your library for a creature card with lesser mana value, put it onto the battlefield, then shuffle.",
+        "text": "You may look at the top card of your library any time.\nYou may cast creature spells from the top of your library.\n[+1]: Create a 3/3 green Beast creature token. Put your choice of a reach counter, a vigilance counter, or a trample counter on it.\n[−2]: When you next cast a creature spell this turn, search your library for a creature card with lesser mana value, put it onto the battlefield, then shuffle.",
         "loyalty": "3"
       }
     ]
@@ -440358,7 +440398,7 @@
         "name": "Vorinclex",
         "manaCost": "{3}{G}{G}",
         "type": "Legendary Creature — Phyrexian Praetor",
-        "text": "Trample, reach\nWhen Vorinclex enters, search your library for up to two Forest cards, reveal them, put them into your hand, then shuffle.\n{6}{G}{G}: Exile Vorinclex, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.",
+        "text": "Reach, trample\nWhen Vorinclex enters, search your library for up to two Forest cards, reveal them, put them into your hand, then shuffle.\n{6}{G}{G}: Exile Vorinclex, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.",
         "power": "6",
         "toughness": "6"
       },
@@ -446799,7 +446839,7 @@
         "name": "Weathered Sentinels",
         "manaCost": "{3}",
         "type": "Artifact Creature — Wall",
-        "text": "Defender, vigilance, reach, trample\nThis creature can attack players who attacked you during their last turn as though it didn't have defender.\nWhenever this creature attacks, it gets +3/+3 and gains indestructible until end of turn.",
+        "text": "Defender, reach, vigilance, trample\nThis creature can attack players who attacked you during their last turn as though it didn't have defender.\nWhenever this creature attacks, it gets +3/+3 and gains indestructible until end of turn.",
         "power": "2",
         "toughness": "5"
       }
@@ -450736,7 +450776,7 @@
         "name": "Wildgrowth Archaic",
         "manaCost": "{2/G}{2/G}",
         "type": "Creature — Avatar",
-        "text": "Trample, reach\nConverge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.\nWhenever you cast a creature spell, that creature enters with X additional +1/+1 counters on it, where X is the number of colors of mana spent to cast it.",
+        "text": "Reach, trample\nConverge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.\nWhenever you cast a creature spell, that creature enters with X additional +1/+1 counters on it, where X is the number of colors of mana spent to cast it.",
         "power": "0",
         "toughness": "0"
       }
@@ -451343,7 +451383,7 @@
         "name": "Wilson, Refined Grizzly",
         "manaCost": "{1}{G}",
         "type": "Legendary Creature — Bear Warrior",
-        "text": "This spell can't be countered.\nVigilance, reach, trample\nWard {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\nChoose a Background (You can have a Background as a second commander.)",
+        "text": "This spell can't be countered.\nReach, vigilance, trample\nWard {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\nChoose a Background (You can have a Background as a second commander.)",
         "power": "2",
         "toughness": "2"
       }
@@ -453501,7 +453541,7 @@
         "name": "Witch-king of Angmar",
         "manaCost": "{3}{B}{B}",
         "type": "Legendary Creature — Wraith Noble",
-        "text": "Flying\nWhenever one or more creatures deal combat damage to you, each opponent sacrifices a creature of their choice that dealt combat damage to you this turn. The Ring tempts you.\nDiscard a card: Witch-king of Angmar gains indestructible until end of turn. Tap it.",
+        "text": "Flying\nWhenever one or more creatures deal combat damage to you, each opponent sacrifices a creature of their choice that dealt combat damage to you this turn. The Ring tempts you.\nDiscard a card: Witch-king of Angmar gains indestructible until end of turn. Tap him.",
         "power": "5",
         "toughness": "3"
       }
@@ -454070,7 +454110,7 @@
         "name": "Wizard's Staff",
         "manaCost": "{1}{U}",
         "type": "Artifact — Equipment",
-        "text": "Equipped creature has prowess. (Whenever its controller casts a noncreature spell, that creature gets +1/+1 until end of turn.)\nIf an ability of equipped creature triggers, that ability triggers an additional time.\nEquip Wizard {1}\nEquip {3}"
+        "text": "Equipped creature has prowess. (Whenever its controller casts a noncreature spell, that creature gets +1/+1 until end of turn.)\nIf a triggered ability of equipped creature triggers, that ability triggers an additional time.\nEquip Wizard {1}\nEquip {3}"
       }
     ]
   },
@@ -459959,7 +459999,7 @@
         "name": "Zacama, Primal Calamity",
         "manaCost": "{6}{R}{G}{W}",
         "type": "Legendary Creature — Elder Dinosaur",
-        "text": "Vigilance, reach, trample\nWhen Zacama enters, if you cast it, untap all lands you control.\n{2}{R}: Zacama deals 3 damage to target creature.\n{2}{G}: Destroy target artifact or enchantment.\n{2}{W}: You gain 3 life.",
+        "text": "Reach, vigilance, trample\nWhen Zacama enters, if you cast it, untap all lands you control.\n{2}{R}: Zacama deals 3 damage to target creature.\n{2}{G}: Destroy target artifact or enchantment.\n{2}{W}: You gain 3 life.",
         "power": "9",
         "toughness": "9"
       }

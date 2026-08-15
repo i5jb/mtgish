@@ -177,6 +177,11 @@
     // Card: [[Eriette's Whisper]]
     "[EntersAttachedToPermanent({{PERMANENT}})]": "",
 
+    // Text: "create a legendary black Aura Curse enchantment token named
+    //        Selenia's Curse attached to target opponent"
+    // Card: [[Selenia, the Cursed Heart]]
+    "[EntersAttachedToPlayer({{PLAYER}})]": "",
+
     // Text: "create a 1/1 white Cat Soldier creature token with vigilance
     //        that’s attacking"
     // Card: [[Brimaz, King of Oreskos]]
@@ -498,6 +503,18 @@
     // Card: [[Ral and the Implicit Maze]]
     // Text: "Create a Tarmogoyf token"
     // Card: [[Tarmogoyf Nest]], [[Disa the Restless]]
+    // Text: "Create a Black Lotus token"
+    // Card: [[Arzakon]]
+    // Text: "Create a tapped Baneslayer Angel token"
+    // Card: [[Balefang the Unslayable]]
+    // Text: "Create a Feroz's Ban token"
+    // Card: [[Feroz, Ulgrotha's Warden]]
+    // Text: "Create a Giant Badger token"
+    // Card: [[Greensleeves]]
+    // Text: "Create a Lord of the Pit token"
+    // Card: [[Thomil, the Destroyer]]
+    // Text: "Create ten Scryb Sprites tokens"
+    // Card: [[Worzel, the Protector]]
     "OracleToken({{QUOTED_ORACLE_TOKEN}})": "",
   },
 
@@ -571,6 +588,11 @@
     // Card: [[Slaughter Specialist]]
     "EachPlayerCreatesTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
 
+    // Text: "each player may create a tapped land token named Sanctum with
+    //        "{T}: Add one mana of any color""
+    // Card: [[Zagorka, Mother of Sanctum]]
+    "EachPlayerMayCreateTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+
     // Text: "For each player who chose money, you and that player each create
     //        a Treasure token"
     // Card: [[Master of Ceremonies]]
@@ -620,6 +642,10 @@
     // Text: "Activate only if you created a token this turn"
     // Card: [[Idol of Oblivion]]
     "CreatedATokenThisTurn": "",
+
+    // Text: "each player may create [...]. Each opponent who does [...]."
+    // Card: [[Zagorka, Mother of Sanctum]]
+    "CreatedATokenThisWay": "",
   },
 
   "{{_PERMANENTS[CreateTokens]}}": {
@@ -713,6 +739,10 @@
     // Text: "If you would create one or more tokens, you may instead create that many 2/2 green Cat creature tokens with haste or that many 3/1 green Dog creature tokens with vigilance."
     // Card: [[Jinnie Fay, Jetmir's Second]]
     "ReplaceAPlayerWouldCreateTokens(APlayerWouldCreateTokens({{PLAYERS}}, {{PERMANENTS}}), [ChooseAnAction([[CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([ThoseTokens])]])])": "",
+
+    // Text: "If you would create one or more tokens, you may create that many Clue tokens instead."
+    // Card: [[Flitwing, Lyev Detective]]
+    "ReplaceAPlayerWouldCreateTokens(APlayerWouldCreateTokens({{PLAYERS}}, {{PERMANENTS}}), [ChooseAnAction([[CreateTokensInstead([{{CREATABLE_TOKEN}}])], [CreateTokensInstead([ThoseTokens])]])])": "",
 
     // Text: "the first time you would create one or more tokens each turn, you may instead create that many tokens that are copies of equipped creature
     // Card: [[Mirrormind Crown]]

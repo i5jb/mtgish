@@ -11,6 +11,10 @@
   "{{Reminder[FaceADilemma]}}": {
     "(You face a dilemma as you choose one or more modes for a spell or ability.)": "",
   },
+  "{{Reminder[LivingWeapon]}}": {
+    "(When this Equipment enters, create a 0/0 black Phyrexian Germ creature token, then attach this to it.)": "",
+    "(Whenever an Equipment you control enters, create a 0/0 black Phyrexian Germ creature token, then attach that Equipment to it.)": "",
+  },
   "{{Reminder[Adventure]}}": {
     "(Then exile this card. You may cast the artifact later from exile.)": "",
     "(Then exile this card. You may cast the creature later from exile.)": "",
@@ -247,6 +251,7 @@
     "(To cloak a card, put it onto the battlefield face down as a 2/2 creature with ward {2}. Turn it face up any time for its mana cost if it's a creature card.)": ""
   },
   "{{Reminder[ClueToken]}}": {
+    "(They're artifacts with \"{2}, Sacrifice this token: Draw a card\".)": "",
     "(A Clue token is an artifact with \"{2}, Sacrifice this token: Draw a card\".)": "",
     "(It's an artifact with \"{2}, Sacrifice this token: Draw a card\".)": ""
   },
@@ -435,6 +440,7 @@
     "(Each card you exile from your graveyard while casting those spells pays for {1}.)": ""
   },
   "{{Reminder[Demonstrate]}}": {
+    "(When you cast that spell, you may copy it. If you do, choose an opponent to also copy it. Each copy becomes a token.)": "",
     "(When you cast that spell, you may copy it. If you do, choose an opponent to also copy it. A copy of a permanent spell becomes a token.)": "",
     "(When you cast this spell, you may copy it. If you do, choose an opponent to also copy it. Players may choose new targets for their copies.)": "",
     "(When you cast this spell, you may copy it. If you do, choose an opponent to also copy it.)": "",
@@ -970,6 +976,9 @@
   "{{Reminder[MatoyaArchonElder]}}": {
     "(Draw after you scry or surveil.)": ""
   },
+  "{{Reminder[BeamMeUp]}}": {
+    "(You may cast this card from your graveyard for {2}{U} if you also return a creature you control to its owner's hand. Then exile this spell.)": "",
+  },
   "{{Reminder[Mayhem]}}": {
     "(You may cast a card from your graveyard for its mayhem cost if you discarded it this turn. Timing rules still apply.)": "",
     "(You may cast this card from your graveyard for {1}{B} if you discarded it this turn.)": "",
@@ -1030,9 +1039,6 @@
     "(Whenever this creature attacks, create three tapped and attacking 1/1 red Warrior creature tokens. Sacrifice them at the beginning of the next end step.)": "",
     "(Whenever this creature attacks, create two tapped and attacking 1/1 red Warrior creature tokens. Sacrifice them at the beginning of the next end step.)": ""
   },
-  "{{Reminder[Modified][Manifest]}}": {
-    "(Equipment, Auras you control, and counters are modifications. To manifest a card, put the top card of your library onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)": ""
-  },
   "{{Reminder[ModularSunburst]}}": {
     "(This creature enters with a +1/+1 counter on it for each color of mana spent to cast it. When it dies, you may put its +1/+1 counters on target artifact creature.)": ""
   },
@@ -1086,9 +1092,6 @@
     "(A Mutagen token is an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery\".)": "",
     "(It's an artifact with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery\".)": "",
     "(They're artifacts with \"{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery\".)": ""
-  },
-  "{{Reminder[MutavaultToken]}}": {
-    "(It's a land with \"{T}: Add {C}\" and \"{1}: This token becomes a 2/2 creature with all creature types until end of turn. It's still a land\".)": ""
   },
   "{{Reminder[Myriad]}}": {
     "(Whenever a creature with myriad attacks, for each opponent other than defending player, you may create a token copy that's tapped and attacking that player or a planeswalker they control. Exile the tokens at end of combat.)": "",
@@ -1398,6 +1401,7 @@
     "(If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has ward {1}.)": ""
   },
   "{{Reminder[Saddle]}}": {
+    "(Tap any number of other creatures you control with total power 2 or more: That Mount becomes saddled until end of turn. Saddle only as a sorcery.)": "",
     "(Tap any number of other creatures you control with total power 1 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)": "",
     "(Tap any number of other creatures you control with total power 2 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)": "",
     "(Tap any number of other creatures you control with total power 3 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)": "",
@@ -1490,9 +1494,6 @@
   },
   "{{Reminder[SpaceSculptor]}}": {
     "(Space Beleren divides the battlefield into alpha, beta, and gamma sectors. If a creature isn't assigned to a sector, its controller assigns it to one. Opponents assign first.)": ""
-  },
-  "{{Reminder[SpellgorgerWeirdToken]}}": {
-    "(It's a {2}{R} 2/2 Weird creature with \"Whenever you cast a noncreature spell, put a +1/+1 counter on Spellgorger Weird\".)": ""
   },
   "{{Reminder[SplitSecond]}}": {
     "(As long as a spell with split second is on the stack, players can't cast spells or activate abilities that aren't mana abilities.)": "",
@@ -1619,8 +1620,17 @@
     "(Rather than cast this card from your hand, you may pay {X}{B}{B}{B} and exile it with X time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost. It has haste.)": "",
     "(Rather than cast this card from your hand, you may pay {X}{G}{G} and exile it with X time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost. It has haste.)": ""
   },
-  "{{Reminder[TarmogoyfToken]}}": {
-    "(It's a {1}{G} Lhurgoyf creature with \"Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1\".)": ""
+  "{{Reminder[OracleToken]}}": {
+    "(It's a land with \"{T}: Add {C}\" and \"{1}: This token becomes a 2/2 creature with all creature types until end of turn. It's still a land\".)": "",
+    "(It's a {0} artifact with \"{T}, Sacrifice this token: Add three mana of any one color\".)": "",
+    "(It's a {1}{G} Lhurgoyf creature with \"Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1\".)": "",
+    "(It's a {1}{G}{G} 2/2 Badger creature with \"Whenever this token blocks, it gets +2/+2 until end of turn\".)": "",
+    "(It's a {2}{R} 2/2 Weird creature with \"Whenever you cast a noncreature spell, put a +1/+1 counter on Spellgorger Weird\".)": "",
+    "(It's a {3}{W}{W} 5/5 Angel creature with flying, first strike, lifelink, and protection from Demons and from Dragons.)": "",
+    "(It's a {4}{B}{B}{B} 7/7 Demon creature with flying, trample, and \"At the beginning of your upkeep, sacrifice another creature. If you can't, this token deals 7 damage to you\".)": "",
+    "(It's a {6} artifact with \"Creature spells cost {2} more to cast\".)": "",
+    "(She's a {5}{W}{W}{W} legendary 6/6 Angel creature with flying, first strike, vigilance, trample, haste, and protection from black and from red.)": "",
+    "(They're {G} 1/1 Faerie creatures with flying.)": "",
   },
   "{{Reminder[Teamwork]}}": {
     "(As an additional cost to cast this spell, you may tap any number of creatures you control with total power 1 or more.)": "",
@@ -1901,7 +1911,14 @@
   "{{Reminder[HoneCounter]}}": {
     "(Each hone counter on an Equipment grants +1/+0 to equipped creature.)": "",
   },
+  "{{Reminder[Assist]}}": {
+    "(As you cast a spell with assist, you may choose another player. They may pay some or all of the generic mana in the spell's cost.)": "",
+  },
   "{{Reminder}}": {
+    "{{Reminder[Assist]}}": "",
+    "(They continue to smell after Olinda has left the battlefield.)": "",
+    "(Activate only as an instant. To mill a card, put the top card of your library into your graveyard.)": "",
+    "(Equipment, Auras you control, and counters are modifications. To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)": "",
     "(They lose all other types and subtypes.)": "",
     "(Activate each power-up ability only . . . once? Reduce the cost by his mana cost if he entered this turn.)": "",
     "(He must survive the damage to get the counters.)": "",
@@ -2386,7 +2403,6 @@
     "(When another creature is put into your graveyard from the battlefield, you may pay half your life, rounded up. If you do, return this card from your graveyard to your hand. Otherwise, exile this card.)": "",
     "(When it dies, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it.)": "",
     "(When it dies, if it had no -1/-1 counters on it, return it to the battlefield under its owner's control with a -1/-1 counter on it.)": "",
-    "(When this Equipment enters, create a 0/0 black Phyrexian Germ creature token, then attach this to it.)": "",
     "(When this creature dies, exile it haunting target creature.)": "",
     "(When this creature dies, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it.)": "",
     "(When this creature dies, if it had no -1/-1 counters on it, return it to the battlefield under its owner's control with a -1/-1 counter on it.)": "",
@@ -2429,7 +2445,6 @@
     "(Whenever it deals combat damage to a player, that player gets three poison counters. A player with ten or more poison counters loses the game.)": "",
     "(Whenever the creature becomes blocked, it gets +2/+2 until end of turn for each creature blocking it beyond the first.)": "",
     "(Whenever this creature attacks the player with the most life or tied for most life, put a +1/+1 counter on it.)": "",
-    "(Whenever this creature attacks the player with the most life or tied for the most life, put a +1/+1 counter on it.)": "",
     "(Whenever this creature attacks with another creature with greater power, put a +1/+1 counter on this creature.)": "",
     "(Whenever this creature attacks, each other attacking creature gets +1/+0 until end of turn.)": "",
     "(Whenever this creature attacks, it gets +1/+1 until end of turn for each opponent you attacked this combat.)": "",
@@ -2624,6 +2639,7 @@
     "({W/U} can be paid with either {W} or {U}.)": "",
     "({W}, {T}: Put a +1/+1 counter on this creature. Outlast only as a sorcery.)": "",
     "({W}: Put a level counter on this. Level up only as a sorcery.)": "",
+    "{{Reminder[LivingWeapon]}}": "",
     "{{Reminder[AdditionalBeginningPhase]}}": "",
     "{{Reminder[Adventure][FoodToken]}}": "",
     "{{Reminder[Adventure]}}": "",
@@ -2756,6 +2772,7 @@
     "{{Reminder[ManifestDread]}}": "",
     "{{Reminder[MapToken]}}": "",
     "{{Reminder[MatoyaArchonElder]}}": "",
+    "{{Reminder[BeamMeUp]}}": "",
     "{{Reminder[Mayhem]}}": "",
     "{{Reminder[Menace][TreasureToken]}}": "",
     "{{Reminder[Mentor]}}": "",
@@ -2763,7 +2780,6 @@
     "{{Reminder[Mill]}}": "",
     "{{Reminder[Miracle]}}": "",
     "{{Reminder[Mobilize]}}": "",
-    "{{Reminder[Modified][Manifest]}}": "",
     "{{Reminder[ModularSunburst]}}": "",
     "{{Reminder[Modular]}}": "",
     "{{Reminder[MonsterRoleToken][Fight]}}": "",
@@ -2776,7 +2792,6 @@
     "{{Reminder[MultiProwess]}}": "",
     "{{Reminder[MultipleRequiredTargets]}}": "",
     "{{Reminder[MutagenToken]}}": "",
-    "{{Reminder[MutavaultToken]}}": "",
     "{{Reminder[Myriad]}}": "",
     "{{Reminder[Ninjutsu]}}": "",
     "{{Reminder[NonbasicLandTypes]}}": "",
@@ -2838,7 +2853,6 @@
     "{{Reminder[SorcererRoleToken]}}": "",
     "{{Reminder[Soulbond]}}": "",
     "{{Reminder[SpaceSculptor]}}": "",
-    "{{Reminder[SpellgorgerWeirdToken]}}": "",
     "{{Reminder[SplitSecond]}}": "",
     "{{Reminder[Spree]}}": "",
     "{{Reminder[Squad]}}": "",
@@ -2851,7 +2865,7 @@
     "{{Reminder[Surveil]}}": "",
     "{{Reminder[Suspected]}}": "",
     "{{Reminder[Suspend]}}": "",
-    "{{Reminder[TarmogoyfToken]}}": "",
+    "{{Reminder[OracleToken]}}": "",
     "{{Reminder[Teamwork]}}": "",
     "{{Reminder[TieBreakerClarification]}}": "",
     "{{Reminder[Tiered]}}": "",
