@@ -1834,6 +1834,7 @@
     "(They're 2/2 black Zombie creatures.)": ""
   },
   "{{Reminder[Ward]}}": {
+    "(Whenever this artifact becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)": "",
     "(Whenever a Dragon you control becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)": "",
     "(Whenever an artifact you control becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)": "",
     "(Whenever another Merfolk you control becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)": "",

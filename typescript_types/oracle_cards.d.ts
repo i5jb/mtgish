@@ -2979,6 +2979,7 @@ type CreatureType =
 | "Aetherborn"
 | "Alien"
 | "Ally"
+| "Andorian"
 | "Angel"
 | "Antelope"
 | "Ape"
@@ -3013,6 +3014,7 @@ type CreatureType =
 | "Borg"
 | "Bringer"
 | "Brushwagg"
+| "Caitian"
 | "Camarid"
 | "Camel"
 | "Capybara"
@@ -3088,6 +3090,7 @@ type CreatureType =
 | "God"
 | "Golem"
 | "Gorgon"
+| "Gorn"
 | "Graveborn"
 | "Gremlin"
 | "Griffin"
@@ -3120,6 +3123,7 @@ type CreatureType =
 | "Juggernaut"
 | "Kangaroo"
 | "Kavu"
+| "Kelpien"
 | "Kirin"
 | "Kithkin"
 | "Klingon"
@@ -3130,6 +3134,7 @@ type CreatureType =
 | "Kree"
 | "Lamia"
 | "Lammasu"
+| "Lanthanite"
 | "Leech"
 | "Lemur"
 | "Leviathan"
@@ -3175,6 +3180,7 @@ type CreatureType =
 | "Orb"
 | "Orc"
 | "Orgg"
+| "Orion"
 | "Otter"
 | "Ouphe"
 | "Ox"
@@ -3264,9 +3270,12 @@ type CreatureType =
 | "Survivor"
 | "Symbiote"
 | "Synth"
+| "Talosian"
+| "Tellarite"
 | "Tentacle"
 | "Tetravite"
 | "Thalakos"
+| "Tholian"
 | "Thopter"
 | "Thrull"
 | "Tiefling"
@@ -3286,6 +3295,7 @@ type CreatureType =
 | "Vedalken"
 | "Villain"
 | "Volver"
+| "Vorta"
 | "Vulcan"
 | "Wall"
 | "Walrus"
@@ -3302,6 +3312,7 @@ type CreatureType =
 | "Worm"
 | "Wraith"
 | "Wurm"
+| "Xindi"
 | "Yeti"
 | "Zombie"
 | "Zubera";
@@ -4766,6 +4777,7 @@ type PermanentOrExiledCard =
 type Permanent =
 | { "_Permanent": "ById", "args": number }
 | { "_Permanent": "WouldConnive_ThatPermanent" }
+| { "_Permanent": "ThePermanentCopiedThisWay" }
 | { "_Permanent": "TheChosenPermanentForPlayer", "args": Player }
 | { "_Permanent": "ThePermanentBlightedThisWay" }
 | { "_Permanent": "ThePermanentAttachedThisWay" }
@@ -4926,6 +4938,7 @@ type PermanentRule =
 | { "_PermanentRule": "CantBeTurnedFaceUp" }
 | { "_PermanentRule": "CantBecomeSuspected" }
 | { "_PermanentRule": "CantBecomeTappedUnlessItIsBeingDeclaredAsAnAttacker" }
+| { "_PermanentRule": "CantBeBeamedUp" }
 | { "_PermanentRule": "CantBlock" }
 | { "_PermanentRule": "CantBlockAlone" }
 | { "_PermanentRule": "CantBlockAttacker", "args": Permanent }
@@ -6682,6 +6695,7 @@ type ReplacementActionWouldEnter =
 | { "_ReplacementActionWouldEnter": "ReflexiveEnters", "args": Actions }
 | { "_ReplacementActionWouldEnter": "Reflexive_EnterAsACopyOfACardInGraveyards_WhenYouDo", "args": [CardsInGraveyards, CopyEffects, Actions] }
 | { "_ReplacementActionWouldEnter": "Reflexive_EnterAsACopyOfAPermanent_WhenYouDo", "args": [Permanents, CopyEffects, Actions] }
+| { "_ReplacementActionWouldEnter": "EntersWithDuplicateCountersOfPermanent", "args": Permanent }
 | { "_ReplacementActionWouldEnter": "APlayerAction", "args": [Players, ReplacementActionWouldEnter] }
 | { "_ReplacementActionWouldEnter": "BecomeDay" }
 | { "_ReplacementActionWouldEnter": "ChooseABasicLandType" }
@@ -7736,6 +7750,7 @@ type Spells =
 | { "_Spells": "TargetsPlayer", "args": Player }
 | { "_Spells": "TargetsSpell", "args": Spell }
 | { "_Spells": "TheNthSpellCastByPlayerThisTurn", "args": [GameNumber, Spells, Player] }
+| { "_Spells": "TheNthSpellCastByPlayerThisGame", "args": [GameNumber, Spells, Player] }
 | { "_Spells": "TheNthSpellCastThisTurn", "args": GameNumber }
 | { "_Spells": "TheSpellsCastThisWay" }
 | { "_Spells": "WasBargained" }
@@ -7932,6 +7947,7 @@ type SubType =
 | "Aetherborn"
 | "Alien"
 | "Ally"
+| "Andorian"
 | "Angel"
 | "Antelope"
 | "Ape"
@@ -7966,6 +7982,7 @@ type SubType =
 | "Borg"
 | "Bringer"
 | "Brushwagg"
+| "Caitian"
 | "Camarid"
 | "Camel"
 | "Capybara"
@@ -8041,6 +8058,7 @@ type SubType =
 | "God"
 | "Golem"
 | "Gorgon"
+| "Gorn"
 | "Graveborn"
 | "Gremlin"
 | "Griffin"
@@ -8073,6 +8091,7 @@ type SubType =
 | "Juggernaut"
 | "Kangaroo"
 | "Kavu"
+| "Kelpien"
 | "Kirin"
 | "Kithkin"
 | "Klingon"
@@ -8083,6 +8102,7 @@ type SubType =
 | "Kree"
 | "Lamia"
 | "Lammasu"
+| "Lanthanite"
 | "Leech"
 | "Lemur"
 | "Leviathan"
@@ -8128,6 +8148,7 @@ type SubType =
 | "Orb"
 | "Orc"
 | "Orgg"
+| "Orion"
 | "Otter"
 | "Ouphe"
 | "Ox"
@@ -8217,9 +8238,12 @@ type SubType =
 | "Survivor"
 | "Symbiote"
 | "Synth"
+| "Talosian"
+| "Tellarite"
 | "Tentacle"
 | "Tetravite"
 | "Thalakos"
+| "Tholian"
 | "Thopter"
 | "Thrull"
 | "Tiefling"
@@ -8239,6 +8263,7 @@ type SubType =
 | "Vedalken"
 | "Villain"
 | "Volver"
+| "Vorta"
 | "Vulcan"
 | "Wall"
 | "Walrus"
@@ -8255,6 +8280,7 @@ type SubType =
 | "Worm"
 | "Wraith"
 | "Wurm"
+| "Xindi"
 | "Yeti"
 | "Zombie"
 | "Zubera"

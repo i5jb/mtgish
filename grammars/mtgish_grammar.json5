@@ -4204,6 +4204,7 @@
     "DecreaseEquipAbilityCostWhenTargetingAPermanent({{COST_REDUCTION}}, {{PERMANENTS}})": "",
     "DetermineLethalDamageUsingPowerRatherThanToughness": "",
     "DoesntUntapDuringControllersUntap": "",
+    "CantBeBeamedUp": "",
     "IsAColorlessSourceOfDamage": "",
     "IsGoadedByPlayer({{PLAYER}})": "",
     "MayAssignCombatDamageAsThoughNotBlocked": "",
@@ -4233,6 +4234,7 @@
     "UntapsDuringOtherPlayersUntapSteps({{PLAYERS}})": ""
   },
   "{{PERMANENT}}": {
+    "ThePermanentCopiedThisWay": "",
     "ActionPermanent": "",
     "AnyTargetAsAPermanent": "",
     "ApplyPermanentEffect_It": "",
@@ -5274,6 +5276,7 @@
     //"[MayActions([EnterAsACopyOfACardInAPlayersGraveyard({{CARDS_IN_GRAVEYARDS}}, {{PLAYERS}}, {{COPY_EFFECT_LIST}}), ReflexiveTrigger({{TOP_LEVEL_ACTIONS}})])]": "",
     "[MayActions([EnterAsACopyOfACardInAPlayersGraveyard({{CARDS_IN_GRAVEYARDS}}, {{PLAYERS}}, {{COPY_EFFECT_LIST}})])]": "",
     "[MayActions([EnterAsACopyOfACardInExile({{CARDS_IN_EXILE}}, {{COPY_EFFECT_LIST}})])]": "",
+    "[MayActions([EnterAsACopyOfAPermanent({{PERMANENTS}}, {{COPY_EFFECT_LIST}}), EntersWithDuplicateCountersOfPermanent({{PERMANENT}})])]": "",
     "[MayActions([EnterAsACopyOfAPermanent({{PERMANENTS}}, {{COPY_EFFECT_LIST}}), EntersTapped])]": "",
     "[MayActions([EnterAsACopyOfAPermanent({{PERMANENTS}}, {{COPY_EFFECT_LIST}}), EntersWithNumberCounters({{NUMBER}}, {{COUNTER_TYPE}})])]": "",
     "[MayActions([EnterAsACopyOfAPermanent({{PERMANENTS}}, {{COPY_EFFECT_LIST}}), If(APermanentWasCopiedThisWay({{PERMANENTS}}), [EntersWithACounter({{COUNTER_TYPE}})]), If(APermanentWasCopiedThisWay({{PERMANENTS}}), [EntersWithACounter({{COUNTER_TYPE}})])])]": "",
@@ -5781,6 +5784,7 @@
     "TargetsPermanent({{PERMANENT}})": "",
     "TargetsPlayer({{PLAYER}})": "",
     "TargetsSpell({{SPELL}})": "",
+    "TheNthSpellCastByPlayerThisGame({{NUMBER}}, {{SPELLS}}, {{PLAYER}})": "",
     "TheNthSpellCastByPlayerThisTurn({{NUMBER}}, {{SPELLS}}, {{PLAYER}})": "",
     "TheNthSpellCastThisTurn({{NUMBER}})": "",
     "TheSpellsCastThisWay": "",
