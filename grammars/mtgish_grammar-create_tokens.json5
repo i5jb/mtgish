@@ -1,11 +1,16 @@
 {
   "{{CREATABLE_TOKEN}}": {
+    "{{SINGLE_CREATABLE_TOKEN}}": "",
     "{{CREATABLE_TOKEN[Number]}}": "",
-    "{{CREATABLE_TOKEN[TokenCopies]}}": "",
+    "{{CREATABLE_TOKEN[MultipleTokenCopies]}}": "",
+  },
+
+  "{{SINGLE_CREATABLE_TOKEN}}": {
+    "{{CREATABLE_TOKEN[Normal]}}": "",
     "{{CREATABLE_TOKEN[Defined]}}": "",
     "{{CREATABLE_TOKEN[Gift]}}": "",
     "{{CREATABLE_TOKEN[Oracle]}}": "",
-    "{{CREATABLE_TOKEN[Normal]}}": "",
+    "{{CREATABLE_TOKEN[SingleTokenCopy]}}": "",
   },
 
   "{{CREATABLE_TOKEN_LIST}}": {
@@ -233,15 +238,15 @@
     // Text: "create two 1/1 blue Fish creature tokens"
     // Text: "create two tapped Treasure tokens"
     // Card: [[Frost Fair Lure Fish]]
-    "NumberTokens({{NUMBER}}, {{CREATABLE_TOKEN}})": "",
+    "NumberTokens({{NUMBER}}, {{SINGLE_CREATABLE_TOKEN}})": "",
 
     // Text: "Create two 1/1 green Saproling creature tokens for each card of
     //        the chosen type revealed this way"
     // Card: [[Fertile Imagination]]
-    "NumberTokensForEach({{NUMBER}}, {{NUMBER}}, {{CREATABLE_TOKEN}})": "",
+    "NumberTokensForEach({{NUMBER}}, {{NUMBER}}, {{SINGLE_CREATABLE_TOKEN}})": "",
   },
 
-  "{{CREATABLE_TOKEN[TokenCopies]}}": {
+  "{{CREATABLE_TOKEN[SingleTokenCopy]}}": {
     // Text: "copy a random card with the same mana cost as that creature.
     //        You may pay {3}. If you do, choose one of those copies. If
     //        a copy of a permanent card is chosen, you may create a token
@@ -268,12 +273,6 @@
     // Card: [[Osgood, Operation Double]]
     "TokenCopyOfSpell({{SPELL}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
 
-    // Text: "Each player reveals the top card of their library. For each
-    //        creature card revealed this way, create a token that’s a copy
-    //        of that card"
-    // Card: [[Haunting Imitation]]
-    "TokenCopyOfEachCardInLibrary({{CARDS_IN_LIBRARY}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
-
     // Text: "create a token that’s a copy of your commander"
     // Card: [[I Am Never Alone]]
     // Text: "Create a token that’s a copy of one of your commanders"
@@ -283,6 +282,33 @@
     // Text: "create a token that’s a copy of this creature"
     // Card: [[Homunculus Horde]]
     "TokenCopyOfPermanent({{PERMANENT}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "Create a token that’s a copy of target creature card in your
+    //        graveyard"
+    // Card: [[Feldon of the Third Path]]
+    "TokenCopyOfGraveyardCard({{CARD_IN_GRAVEYARDS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "Create a token that’s a copy of target creature card exiled
+    //        with this artifact"
+    // Card: [[Dino DNA]]
+    "TokenCopyOfExiledCard({{CARD_IN_EXILE}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "create a token that’s a copy of a card named Arrest"
+    // Card: [[Peacekeeper Avatar]]
+    "TokenCopyOfNamedCard({{QUOTED_NAMED_CARD}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
+
+    // Text: "Create a token that’s a copy of a random creature card with
+    //        mana value X"
+    // Card: [[Pool of Vigorous Growth]]
+    "TokenCopyOfACardAtRandom({{CARDS_IN_ORACLE}})": "",
+  },
+
+  "{{CREATABLE_TOKEN[MultipleTokenCopies]}}": {
+    // Text: "Each player reveals the top card of their library. For each
+    //        creature card revealed this way, create a token that’s a copy
+    //        of that card"
+    // Card: [[Haunting Imitation]]
+    "TokenCopyOfEachCardInLibrary({{CARDS_IN_LIBRARY}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
 
     // Text: "For each creature target player controls, create a token that’s
     //        a copy of that creature."
@@ -303,25 +329,6 @@
     //        a copy of it"
     // Card: [[Foggy Swamp Visions]]
     "TokenCopyOfEachExiledCard({{CARDS_IN_EXILE}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
-
-    // Text: "Create a token that’s a copy of target creature card in your
-    //        graveyard"
-    // Card: [[Feldon of the Third Path]]
-    "TokenCopyOfGraveyardCard({{CARD_IN_GRAVEYARDS}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
-
-    // Text: "Create a token that’s a copy of target creature card exiled
-    //        with this artifact"
-    // Card: [[Dino DNA]]
-    "TokenCopyOfExiledCard({{CARD_IN_EXILE}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
-
-    // Text: "create a token that’s a copy of a card named Arrest"
-    // Card: [[Peacekeeper Avatar]]
-    "TokenCopyOfNamedCard({{QUOTED_NAMED_CARD}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
-
-    // Text: "Create a token that’s a copy of a random creature card with
-    //        mana value X"
-    // Card: [[Pool of Vigorous Growth]]
-    "TokenCopyOfACardAtRandom({{CARDS_IN_ORACLE}})": "",
   },
 
   "{{CREATABLE_TOKEN[Defined]}}": {
@@ -597,6 +604,76 @@
     //        a Treasure token"
     // Card: [[Master of Ceremonies]]
     "MultiCreateTokens([CreateTokens({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}}), EachPlayerCreatesTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})])": "",
+
+    // Text: "each player creates their choice of a ... creature token ...
+    //        or a ... creature token .."
+    // Card: [[The Pit]]
+    "EachPlayerChoosesAnAction({{PLAYERS}}, [CreateTokens([{{SINGLE_CREATABLE_TOKEN}}], {{TOKEN_FLAGS}}), CreateTokens([{{SINGLE_CREATABLE_TOKEN}}], {{TOKEN_FLAGS}})])": "",
+
+    // Text: "Then each opponent may draw a card and create a 1/1 white Rabbit
+    //        creature token"
+    // Card: [[Tempt with Bunnies]]
+    "EachPlayerMayActions({{PLAYERS}}, [DrawACard, CreateTokens([{{SINGLE_CREATABLE_TOKEN}}], {{TOKEN_FLAGS}})])": "",
+  },
+
+  "{{_PLAYER_ACTION[CreateTokens][Reflexive]}}": {
+    // == Ruling on Ajani, Nacatl Pariah // Ajani, Nacatl Avenger about
+    //     reflexive token triggers:
+    // In a case where you create more than one Cat Warrior creature token with
+    // Ajani, Nacatl Avenger's second ability (for example, because of the
+    // effect of Doubling Season), the reflexive ability will trigger once for
+    // each Cat Warrior you made this way. If a replacement effect causes you
+    // to create different tokens instead (for example, the effect of Divine
+    // Visitation), the creation of those tokens won't cause the reflexive
+    // ability to trigger.
+
+    // == CR for Curse of the Werefox:
+    // If an effect attempts to put an Aura onto the battlefield attached to
+    // either an object or player it can't legally enchant or an object or
+    // player that is undefined, the Aura remains in its current zone, unless
+    // that zone is the stack. In that case, the Aura is put into its owner's
+    // graveyard instead of entering the battlefield. If the Aura is a token,
+    // it isn't created.
+    // == Ruling on Curse of the Werefox:
+    // If you can't attach a Monster Role token to the target creature you
+    // control when Curse of the Werefox resolves, the reflexive trigger that
+    // causes the fight won't happen.
+
+    // None of the other cards have useful rulings...
+
+    // Text: "Create a Monster Role token attached to target creature you
+    //        control. When you do, that creature ..."
+    // Card: [[Curse of the Werefox]]
+    // Text: "create a colorless Equipment artifact token named Axe with
+    //        "Equipped creature gets +1/+0" and equip {2}. When you do,
+    //        attach it to ..."
+    // Card: [[Dáin Ironfoot]],
+    // Text: "create a Food token. When you do, target ..."
+    // Card: [[Eastfarthing Farmer]]
+    // Text: "create a 2/1 white and black Inkling creature token with flying.
+    //        When you do, ..."
+    // Card: [[Forum Filibuster]],
+    // Text: "you may create a Treasure token. When you do, ..."
+    // Card: [[Generous Plunderer]]
+    // Text: "create a 1/1 black Assassin creature token with menace.
+    //        When you do, ..."
+    // Card: [[Ratonhnhaké꞉ton]],
+    // Text: "create a 2/2 white Alien creature token. When you do, ..."
+    // Card: [[North Pole Research Base]]
+    "Reflexive_CreateTokens_WhenYouDo([{{SINGLE_CREATABLE_TOKEN}}], {{TOKEN_FLAGS}}, {{TOP_LEVEL_ACTIONS}})": "",
+
+    // Text: "Create a 2/1 white Cat Warrior creature token. When you do, if
+    //        you control a red permanent other than Ajani, ..."
+    // Card: [[Ajani, Nacatl Pariah // Ajani, Nacatl Avenger]]
+    "Reflexive_CreateTokens_WhenYouDo_If([{{SINGLE_CREATABLE_TOKEN}}], {{TOKEN_FLAGS}}, {{CONDITION}}, {{TOP_LEVEL_ACTIONS}})": "",
+
+    // Text: "create two 2/2 black Zombie creature tokens with decayed. When
+    //        you do, ..."
+    // Card: [[Diregraf Horde]]
+    // Text: "Create two 1/1 blue Faerie creature tokens with flying. When
+    //        you do, ..."
+    // Card: [[Faebloom Trick]]
+    "Reflexive_CreateTokens_WhenYouDo([NumberTokens({{NUMBER}}, {{SINGLE_CREATABLE_TOKEN}})], {{TOKEN_FLAGS}}, {{TOP_LEVEL_ACTIONS}})": "",
   },
 
   "{{_COST[CreateTokens]}}": {

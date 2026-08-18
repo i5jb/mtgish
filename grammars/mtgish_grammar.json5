@@ -301,6 +301,7 @@
   },
   "{{BASIC_PLAYER_ACTION}}": {
     "{{_PLAYER_ACTION[PutCounters]}}": "",
+    "{{_PLAYER_ACTION[PutCounters][Reflexive]}}": "",
     "{{_PLAYER_ACTION[PutCounters][NoteCounters]}}": "",
     "{{_PLAYER_ACTION[PutCounters][WouldPutCounters]}}": "",
     "{{_PLAYER_ACTION[Exile]}}": "",
@@ -450,7 +451,7 @@
     "CastSpellFromExileWithoutPayingAndFlagSpellsCastWithEffect({{SPELLS}}, {{CARD_IN_EXILE}}, {{SPELLS}}, {{SPELL_EFFECT_LIST}})": "",
     "CastSpellFromGraveyardWithoutPayingIntoExile({{SPELLS}}, {{CARD_IN_GRAVEYARDS}})": "",
     "CastSpellFromHandOrGraveyardAlternateCost({{SPELLS}}, PayLife(ItsManaValue))": "",
-    "CastSpellsFromExileWithoutPaying({{SPELLS}}, {{CARDS_IN_EXILE}})": "",
+    //"CastSpellsFromExileWithoutPaying({{SPELLS}}, {{CARDS_IN_EXILE}})": "",
     "CastTheCardDiscardedThisWayWithoutPaying": "",
     "CastTheCardRevealedThisWayWithoutPaying": "",
     "CastTopCardOfLibraryForAlternateCost({{MANACOST}})": "",
@@ -502,7 +503,7 @@
     "ChooseADamageRecipient({{DAMAGE_RECIPIENTS_LIST}})": "",
     "ChooseADamageSource({{DAMAGE_SOURCES}})": "",
     "ChooseAGraveyardCard({{GRAVEYARD_CARDS}})": "",
-    "ChooseAGraveyardCardThatHasntBeenChosen({{CARDS_IN_GRAVEYARDS}})": "",
+    //"ChooseAGraveyardCardThatHasntBeenChosen({{CARDS_IN_GRAVEYARDS}})": "",
     "ChooseAGraveyardPile": "",
     "ChooseALandType": "",
     "ChooseALandTypeAndABasicLandType": "",
@@ -520,7 +521,7 @@
     "ChooseAPermanentOfEachBasicLandTypeAvailable({{PERMANENTS}})": "",
     "ChooseAPermanentOfEachPowerAvailable({{PERMANENTS}})": "",
     "ChooseAPermanentPile": "",
-    "ChooseAPermanentThatHasntBeenChosen({{PERMANENTS}})": "",
+    //"ChooseAPermanentThatHasntBeenChosen({{PERMANENTS}})": "",
     "ChooseAPermanentType": "",
     "ChooseAPileCreatedByEachPlayer({{PLAYERS}})": "",
     "ChooseAPileCreatedByEachPlayerAtRandom({{PLAYERS}})": "",
@@ -553,7 +554,7 @@
     "ChooseLeftOrRight": "",
     "ChooseLibraryFilter([{{CARDS}}, {{CARDS}}])": "",
     "ChooseMultiplePermanentsAmoungPermanents([{{PERMANENTS}}, {{PERMANENTS}}, {{PERMANENTS}}, {{PERMANENTS}}], {{PERMANENTS}})": "",
-    "ChooseMultiplePermanentsAmoungPermanents([{{PERMANENTS}}, {{PERMANENTS}}, {{PERMANENTS}}], {{PERMANENTS}})": "",
+    //"ChooseMultiplePermanentsAmoungPermanents([{{PERMANENTS}}, {{PERMANENTS}}, {{PERMANENTS}}], {{PERMANENTS}})": "",
     "ChooseMultiplePermanentsAmoungPermanentsForEachPlayer({{PLAYERS}}, [{{PERMANENTS}}, {{PERMANENTS}}, {{PERMANENTS}}, {{PERMANENTS}}], {{PERMANENTS}})": "",
     "ChooseNamedPileForPermanent([{{VOTE_OPTION}}, {{VOTE_OPTION}}], {{PERMANENT}})": "",
     "ChooseNewTargetsForAnyNumberOfSpellsOrAbilities({{SPELLS_OR_ABILITIES}})": "",
@@ -1178,13 +1179,6 @@
     "Reflexive_CollectEvidenceAnyX_WhenYouDo({{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_CollectEvidence_WhenYouDo(Integer({{DIGITS}}), {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_ConvertPermanent_WhenYouDo({{PERMANENT}}, {{TOP_LEVEL_ACTIONS}})": "",
-    "Reflexive_CreateTokens_WhenYouDo([FoodToken], [], {{TOP_LEVEL_ACTIONS}})": "",
-    "Reflexive_CreateTokens_WhenYouDo([TreasureToken], [], {{TOP_LEVEL_ACTIONS}})": "",
-    "Reflexive_CreateTokens_WhenYouDo([MonsterRoleToken], [EntersAttachedToPermanent({{PERMANENT}})], {{TOP_LEVEL_ACTIONS}})": "",
-    "Reflexive_CreateTokens_WhenYouDo([NamedToken({{QUOTED_NAMED_CARD}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})], [], {{TOP_LEVEL_ACTIONS}})": "",
-    "Reflexive_CreateTokens_WhenYouDo([NumberTokens({{NUMBER}}, {{CREATABLE_TOKEN}})], [], {{TOP_LEVEL_ACTIONS}})": "",
-    "Reflexive_CreateTokens_WhenYouDo([TokenWithPT({{PT}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})], [], {{TOP_LEVEL_ACTIONS}})": "",
-    "Reflexive_CreateTokens_WhenYouDo_If([TokenWithPT({{PT}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})], [], {{CONDITION}}, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_CreatureConnives_WhenItConnivesThisWay({{PERMANENT}}, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_DealDamage_WhenYouDo(Permanent({{PERMANENT}}), {{NUMBER}}, {{DAMAGE_RECIPIENT}}, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_DealDamage_WhenExcessDamageIsDealtThisWay(Spell({{SPELL}}), {{NUMBER}}, {{DAMAGE_RECIPIENT}}, {{TOP_LEVEL_ACTIONS}})": "",
@@ -1231,9 +1225,6 @@
     "Reflexive_PayMana_Sacrifice_WhenYouDo({{MANACOST}}, [APermanent({{PERMANENTS}})], {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_PutCardInHand_WhenYouDo([ConjuredDuplicateOfPermanent({{PERMANENT}})], {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_PutAPermanentInOwnersHand_WhenYouDo({{PERMANENTS}}, {{TOP_LEVEL_ACTIONS}})": "",
-    "Reflexive_PutCounters_WhenYouDo([ACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})], {{TOP_LEVEL_ACTIONS}})": "",
-    "Reflexive_PutCounters_WhenYouDo([NumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})], {{TOP_LEVEL_ACTIONS}})": "",
-    "Reflexive_PutCounters_WhenYouDo_If([ACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})], {{CONDITION}}, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_PutOnBattlefield_WhenAPermanentEntersThisWay([CardInHand(TheCardDraftedThisWay)], {{ENTER_FLAGS}}, {{PERMANENTS}}, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_PutOnBattlefield_WhenYouDo([CardInGraveyard({{CARD_IN_GRAVEYARDS}})], {{ENTER_FLAGS}}, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_PutOnBattlefield_WhenYouDo([TheTopCardOfLibrary], {{ENTER_FLAGS}}, {{TOP_LEVEL_ACTIONS}})": "",
@@ -1545,13 +1536,14 @@
     "ValueActions({{NUMBER}}, [{{VALUE_ACTION}}, {{VALUE_ACTION}}, {{VALUE_ACTION}}])": "",
     "ValueActions({{NUMBER}}, [{{VALUE_ACTION}}, {{VALUE_ACTION}}])": "",
     "VentureIntoTheDungeon": "",
-    "VoteForACardInGraveyard({{CARDS_IN_GRAVEYARDS}})": "",
-    "VoteForAPermanent({{PERMANENTS}})": "",
+    //"VoteForACardInGraveyard({{CARDS_IN_GRAVEYARDS}})": "",
+    //"VoteForAPermanent({{PERMANENTS}})": "",
     "VoteForColor([{{COLOR}}, {{COLOR}}, {{COLOR}}, {{COLOR}}])": "",
     "WinTheGame": "",
     "WouldDealExcessDamage_DealExcessToPlayerInstead({{PLAYER}})": "",
 
     "{{_PLAYER_ACTION[CreateTokens]}}": "",
+    "{{_PLAYER_ACTION[CreateTokens][Reflexive]}}": "",
     "{{_PLAYER_ACTION[CreateTokens][TokensWouldBeCreatedUnderAPlayersControl]}}": "",
     "{{_PLAYER_ACTION[CreateTokens][AnyNumberOfTokensWouldBeCreated]}}": "",
     "{{_PLAYER_ACTION[Fight]}}": "",
@@ -6339,6 +6331,7 @@
     "EachPlayerAction({{PLAYERS}}, TurnEachExiledCardFaceUp({{CARDS_IN_EXILE}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, CopySpellAndMayChooseNewTargets({{SPELL}}))": "",
+    "EachPlayerMayAction({{PLAYERS}}, CopySpellAndMayChooseNewTargets({{SPELL}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, AddMana(And({{MANA_PRODUCE_SYMBOL_LIST}})))": "",
 
@@ -6363,8 +6356,6 @@
 
     "EachPlayerAction({{PLAYERS}}, PutTopOfLibraryOnBattlefield({{ENTER_FLAGS}}))": "",
 
-    "EachPlayerAction({{PLAYERS}}, PutCounters([{{PUT_COUNTERS}}]))": "",
-
     "EachPlayerAction({{PLAYERS}}, SacrificePermanent({{PERMANENT}}))": "",
     "EachPlayerAction({{PLAYERS}}, SacrificeAPermanent({{PERMANENTS}}))": "",
     "EachPlayerAction({{PLAYERS}}, SacrificeEachPermanent({{PERMANENTS}}))": "",
@@ -6375,6 +6366,7 @@
     "EachPlayerAction({{PLAYERS}}, SacrificeAllPermanentsExceptForAPermanentOfEachLandType({{PERMANENTS}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, GainControlOfEachPermanent({{PERMANENTS}}))": "",
+    "EachPlayerAction({{PLAYERS}}, GainControlOfPermanent({{PERMANENT}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, LoseLife({{NUMBER}}))": "",
     "EachPlayerAction({{PLAYERS}}, LoseLifeForEach({{NUMBER}}, {{NUMBER}}))": "",
@@ -6392,6 +6384,14 @@
     "EachPlayerAction({{PLAYERS}}, LoseUnspentMana)": "",
 
     "EachPlayerAction({{PLAYERS}}, PayAnyAmountOfMana)": "",
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [PayAnyAmountOfMana])": "",
+    "EachPlayerStartingWithMayAction({{PLAYERS}}, {{PLAYER}}, PayAnyAmountOfMana)": "",
+
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [PayAnyAmountOfLife])": "",
+
+    "EachPlayerMayAction({{PLAYERS}}, DiscardACard)": "",
+    "EachPlayerChoosesAnAction({{PLAYERS}}, [DiscardACard, SacrificeAPermanent({{PERMANENTS}})])": "",
+    "EachPlayerChoosesAnAction({{PLAYERS}}, [Exile({{EXILABLE_LIST}}, {{EXILE_FLAGS}}), Exile({{EXILABLE_LIST}}, {{EXILE_FLAGS}})])": "",
 
     "EachPlayerAction({{PLAYERS}}, DiscardACard)": "",
     "EachPlayerAction({{PLAYERS}}, DiscardACardAtRandom)": "",
@@ -6415,18 +6415,22 @@
     "EachPlayerAction({{PLAYERS}}, ShuffleGraveyardIntoLibrary)": "",
     "EachPlayerAction({{PLAYERS}}, ShuffleHandGraveyardAndPermanentsIntoLibrary)": "",
     "EachPlayerAction({{PLAYERS}}, ShuffleHandAndPermanentsIntoLibrary)": "",
-
+    "EachPlayerMayAction({{PLAYERS}}, ShuffleHandAndGraveyardIntoLibrary)": "",
 
     "EachPlayerAction({{PLAYERS}}, ChooseNumberCardsInHand({{NUMBER}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, DrawACard)": "",
     "EachPlayerAction({{PLAYERS}}, DrawNumberCards({{NUMBER}}))": "",
     "EachPlayerAction({{PLAYERS}}, DrawUptoNumberCards({{NUMBER}}))": "",
+    "EachPlayerMayAction({{PLAYERS}}, DrawUptoNumberCards({{NUMBER}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, SeekACard({{CARDS_IN_LIBRARY}}))": "",
 
+    "EachPlayerMayAction({{PLAYERS}}, Scry({{NUMBER}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, Exile({{EXILABLE_LIST}}, {{EXILE_FLAGS}}))": "",
+    "EachPlayerMayAction({{PLAYERS}}, Exile({{EXILABLE_LIST}}, {{EXILE_FLAGS}}))": "",
+    "EachPlayerMayActions({{PLAYERS}}, [Exile({{EXILABLE_LIST}}, {{EXILE_FLAGS}}), DrawNumberCards({{NUMBER}})])": "",
 
     "EachPlayerAction({{PLAYERS}}, PutACardFromHandOnTopOfLibrary)": "",
 
@@ -6435,6 +6439,12 @@
     "EachPlayerAction({{PLAYERS}}, SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle]))": "",
     "EachPlayerAction({{PLAYERS}}, SearchLibrary([FindAGenericCard, RevealFoundCards, PutFoundCardsIntoHand, Shuffle]))": "",
     "EachPlayerAction({{PLAYERS}}, SearchLibrary([FindAGenericCard, SetAsideFoundCards, Shuffle, PutSetAsideCardsOnTopOfLibrary]))": "",
+    "EachPlayerMayAction({{PLAYERS}}, SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), RevealFoundCards, PutFoundCardsIntoHand, Shuffle]))": "",
+    "EachPlayerMayAction({{PLAYERS}}, SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle]))": "",
+    "EachPlayerMayAction({{PLAYERS}}, SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle]))": "",
+    "EachPlayerMayAction({{PLAYERS}}, SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), PutAFoundCardOntoBattlefield({{ENTER_FLAGS}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle]))": "",
+    "EachPlayerMayAction({{PLAYERS}}, SearchLibrary([FindAGenericCard, PutFoundCardsIntoHand, Shuffle]))": "",
+    "EachPlayerMayAction({{PLAYERS}}, SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), RevealFoundCards, PutFoundCardsIntoHand, Shuffle]))": "",
 
     "EachPlayerAction({{PLAYERS}}, ReturnEachCardFromPlayersGraveyardToBattlefield({{CARDS_IN_GRAVEYARDS}}, {{PLAYER}}, {{ENTER_FLAGS}}))": "",
     "EachPlayerAction({{PLAYERS}}, ReturnACardFromGraveyardToBattlefield({{CARDS}}, {{ENTER_FLAGS}}))": "",
@@ -6442,17 +6452,22 @@
     "EachPlayerAction({{PLAYERS}}, PutACardFromPlayersGraveyardOnBattlefield({{CARDS_IN_GRAVEYARDS}}, {{PLAYER}}, {{ENTER_FLAGS}}))": "",
     "EachPlayerAction({{PLAYERS}}, ReturnNumberCardsFromGraveyardToBattlefield({{NUMBER}}, {{CARDS}}, {{ENTER_FLAGS}}))": "",
     "EachPlayerAction({{PLAYERS}}, ReturnEachCardFromPlayersGraveyardToBattlefieldThatWasPutThereFromBattlefieldThisTurn({{CARDS}}, {{PLAYER}}, {{ENTER_FLAGS}}))": "",
+    "EachPlayerMayAction({{PLAYERS}}, ReturnACardFromGraveyardToBattlefield({{CARDS}}, {{ENTER_FLAGS}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, PutAllCardsFromGraveyardIntoHand({{CARDS_IN_GRAVEYARDS}}))": "",
     "EachPlayerAction({{PLAYERS}}, PutACardFromGraveyardIntoHand({{CARDS_IN_GRAVEYARDS}}))": "",
     "EachPlayerAction({{PLAYERS}}, PutUptoNumberCardsFromGraveyardIntoHand({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}}))": "",
     "EachPlayerAction({{PLAYERS}}, PutAnyNumberOfCardsFromGraveyardIntoHand({{CARDS_IN_GRAVEYARDS}}))": "",
+    "EachPlayerMayAction({{PLAYERS}}, ReturnAGraveyardCardToHand({{CARDS}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, PutAPermanentIntoItsOwnersHand({{PERMANENTS}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, PutACardFromHandOnBattlefield({{CARDS_IN_HAND}}, {{ENTER_FLAGS}}))": "",
     "EachPlayerAction({{PLAYERS}}, PutCardFromHandOnBattlefield({{CARDS_IN_HAND}}, {{ENTER_FLAGS}}))": "",
     "EachPlayerAction({{PLAYERS}}, PutAnyNumberOfCardsFromHandOntoBattlefield({{CARDS}}, {{ENTER_FLAGS}}))": "",
+    "EachPlayerMayAction({{PLAYERS}}, PutAnyNumberOfCardsFromHandOntoBattlefield({{CARDS}}, {{ENTER_FLAGS}}))": "",
+    "EachPlayerMayAction({{PLAYERS}}, PutACardFromHandOnBattlefield({{CARDS_IN_HAND}}, {{ENTER_FLAGS}}))": "",
+    "EachPlayerStartingWithMayAction({{PLAYERS}}, {{PLAYER}}, PutACardFromHandOnBattlefield({{CARDS_IN_HAND}}, {{ENTER_FLAGS}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, SeparatePermanentsIntoTwoPilesAndAPlayerChoosesAPile({{PERMANENTS}}, {{PLAYERS}}))": "",
 
@@ -6461,7 +6476,11 @@
 
     "EachPlayerAction({{PLAYERS}}, SeparatePermanentsIntoNumberPiles({{PERMANENTS}}, {{NUMBER}}))": "",
     "EachPlayerAction({{PLAYERS}}, SeparatePermanentsIntoNamedPiles({{PERMANENTS}}, [{{VOTE_OPTION}}, {{VOTE_OPTION}}]))": "",
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [SeparatePermanentsIntoNumberPiles({{PERMANENTS}}, {{NUMBER}})])": "",
 
+    "EachPlayerMayActions({{PLAYERS}}, [DiscardHand, DrawNumberCards({{NUMBER}})])": "",
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [ChooseAPermanentThatHasntBeenChosen({{PERMANENTS}})])": "",
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [ChooseMultiplePermanentsAmoungPermanents([{{PERMANENTS}}, {{PERMANENTS}}, {{PERMANENTS}}], {{PERMANENTS}})])": "",
     "EachPlayerAction({{PLAYERS}}, SecretlyChooseAPermanent({{PERMANENTS}}))": "",
     "EachPlayerAction({{PLAYERS}}, SecretlyVoteForAPermanent({{PERMANENTS}}))": "",
     "EachPlayerAction({{PLAYERS}}, ChooseMultiplePermanentsAmoungPermanents([{{PERMANENTS}}, {{PERMANENTS}}, {{PERMANENTS}}, {{PERMANENTS}}], {{PERMANENTS}}))": "",
@@ -6473,9 +6492,14 @@
     "EachPlayerAction({{PLAYERS}}, ChooseAPermanentOfEachBasicLandTypeAvailable({{PERMANENTS}}))": "",
     "EachPlayerAction({{PLAYERS}}, ChooseUptoNumberPermanentsForEach({{NUMBER}}, {{PERMANENTS}}, {{NUMBER}}))": "",
     "EachPlayerAction({{PLAYERS}}, ChooseAPartyFromAmongPermanents({{PERMANENTS}}))": "",
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [ChooseUptoOnePermanent({{PERMANENTS}})])": "",
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [ChooseUptoNumberPermanents({{NUMBER}}, {{PERMANENTS}})])": "",
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [ChooseAPermanent({{PERMANENTS}})])": "",
+    "EachPlayerStartingWithActionInDirection({{PLAYERS}}, {{PLAYER}}, TheChosenDirection, [ChooseAPermanent({{PERMANENTS}})])": "",
 
     "EachPlayerAction({{PLAYERS}}, ChooseACardInPlayersGraveyard({{CARDS}}, {{PLAYER}}))": "",
     "EachPlayerAction({{PLAYERS}}, ChooseNumberCardsInGraveyards({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}}))": "",
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [ChooseAGraveyardCardThatHasntBeenChosen({{CARDS_IN_GRAVEYARDS}})])": "",
 
     "EachPlayerAction({{PLAYERS}}, ChooseACardName({{CARDS_IN_ORACLE}}))": "",
     "EachPlayerAction({{PLAYERS}}, ChooseACreatureType)": "",
@@ -6484,10 +6508,13 @@
     "EachPlayerAction({{PLAYERS}}, ChooseAColor(AnyColor))": "",
     "EachPlayerAction({{PLAYERS}}, SwapWordChoice({{VOTE_OPTION}}, {{VOTE_OPTION}}))": "",
 
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [VoteForAWord([{{VOTE_OPTION}}, {{VOTE_OPTION}}])])": "",
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [VoteForAPermanent({{PERMANENTS}})])": "",
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [VoteForACardInGraveyard({{CARDS_IN_GRAVEYARDS}})])": "",
+
     "EachPlayerAction({{PLAYERS}}, SecretlyVoteForAPlayer({{PLAYERS}}))": "",
     "EachPlayerAction({{PLAYERS}}, SecretlyVoteForAWord([{{VOTE_OPTION}}, {{VOTE_OPTION}}]))": "",
     "EachPlayerAction({{PLAYERS}}, SecretlyVoteForUptoOnePermanent({{PERMANENTS}}))": "",
-
 
     "EachPlayerAction({{PLAYERS}}, SecretlyChooseANumber)": "",
     "EachPlayerAction({{PLAYERS}}, SecretlyChooseANumberBetween({{DIGITS}}, {{DIGITS}}))": "",
@@ -6517,10 +6544,12 @@
     "EachPlayerAction({{PLAYERS}}, ChooseACardInHandOfEachColor)": "",
 
     "EachPlayerAction({{PLAYERS}}, PutEachExiledCardOntoTheBattlefield({{CARDS_IN_EXILE}}, {{ENTER_FLAGS}}))": "",
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [ReturnAnExiledCardToBattlefield({{CARDS_IN_EXILE}}, {{ENTER_FLAGS}})])": "",
 
     "EachPlayerAction({{PLAYERS}}, PutEachExiledCardOnTheBottomOfTheirOwnersLibraryInARandomOrder({{CARDS_IN_EXILE}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, MayAction(CastExiledCardWithoutPaying({{CARD_IN_EXILE}})))": "",
+    "EachPlayerMayAction({{PLAYERS}}, CastSpellsFromExileWithoutPaying({{SPELLS}}, {{CARDS_IN_EXILE}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, ConjureDuplicatesOfNumberRandomCardsOfTypeFromPlayersLibraryIntoHand({{NUMBER}}, {{CARDS}}, {{PLAYER}}))": "",
 
@@ -6534,16 +6563,17 @@
     //"EachPlayerActions({{PLAYERS}}, [{{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}])": "",
     //"EachPlayerActions({{PLAYERS}}, [{{BASIC_PLAYER_ACTION}}])": "",
 
-    "EachPlayerChoosesAnAction({{PLAYERS}}, [{{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}])": "",
+    //"EachPlayerMayAction({{PLAYERS}}, {{BASIC_PLAYER_ACTION}})": "",
+    //"EachPlayerMayActions({{PLAYERS}}, [{{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}])": "",
+    //"EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [{{BASIC_PLAYER_ACTION}}])": "",
+    //"EachPlayerStartingWithActionInDirection({{PLAYERS}}, {{PLAYER}}, TheChosenDirection, [{{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}])": "",
+    //"EachPlayerStartingWithMayAction({{PLAYERS}}, {{PLAYER}}, {{BASIC_PLAYER_ACTION}})": "",
+    //"EachPlayerChoosesAnAction({{PLAYERS}}, [{{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}])": "",
+
     "EachPlayerMakesAVillainousChoice({{PLAYERS}}, [{{ACTION_LIST}}, {{ACTION_LIST}}])": "",
-    "EachPlayerMayAction({{PLAYERS}}, {{BASIC_PLAYER_ACTION}})": "",
-    "EachPlayerMayActions({{PLAYERS}}, [{{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}])": "",
     "EachPlayerMayCost({{PLAYERS}}, {{COST}})": "",
     "EachPlayerMustCost({{PLAYERS}}, {{COST}})": "",
     "EachPlayerRepeatedMayCost({{PLAYERS}}, {{NUMBER}}, {{COST}})": "",
-    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [{{BASIC_PLAYER_ACTION}}])": "",
-    "EachPlayerStartingWithActionInDirection({{PLAYERS}}, {{PLAYER}}, TheChosenDirection, [{{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}])": "",
-    "EachPlayerStartingWithMayAction({{PLAYERS}}, {{PLAYER}}, {{BASIC_PLAYER_ACTION}})": "",
 
 
 
@@ -7313,7 +7343,7 @@
     "SearchLibrary([FindCardsOfType({{CARDS_IN_LIBRARY_LIST}}), RevealFoundCards, PutFoundCardsIntoHand, Shuffle])": "",
     "SearchLibrary([FindExactlyNumberGroupCards({{NUMBER}}, {{CARDS_IN_LIBRARY}}, {{GROUP_FILTER}}), RevealFoundCards, APlayerChoosesAFoundCard({{PLAYERS}}), PutChosenFoundCardIntoHand, PutFoundCardsIntoGraveyard, Shuffle])": "",
     "SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), ExileFoundCards, Shuffle])": "",
-    "SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), PutAFoundCardOntoBattlefield({{ENTER_FLAGS}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle])": "",
+    //"SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), PutAFoundCardOntoBattlefield({{ENTER_FLAGS}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle])": "",
     "SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), PutFoundCardsIntoGraveyard, Shuffle])": "",
     "SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), DontShuffle])": "",
     "SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle])": "",

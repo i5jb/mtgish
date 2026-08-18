@@ -904,8 +904,33 @@
     "WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAnyNumberOfPermanents({{PLAYERS}}, {{COUNTER_TYPE}}, {{PERMANENTS}})": "",
   },
 
+  "{{_PLAYER_ACTION[PutCounters][Reflexive]}}": {
+   // == Ruling on Etched Slith:
+   // In a case where you put more than one +1/+1 counter on Etched Slith with
+   // its last ability (for example, because of the effect of Doubling
+   // Season), the reflexive ability will trigger once for each +1/+1 counter
+   // you put on it this way.
 
+   // == Ruling on Craig Boone:
+   // In the rare case where more than two quest counters are placed on
+   // Craig Boone because of the effect of its last ability (for example,
+   // because of the effect of Doubling Season), the reflexive triggered
+   // ability will trigger once for every two quest counters placed on Craig
+   // Boone this way.
 
+    // Text: "put a +1/+1 counter on it. When you do, ..."
+    // Card: [[Etched Slith]]
+    "Reflexive_PutCounters_WhenYouDo([ACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})], {{TOP_LEVEL_ACTIONS}})": "",
+
+    // Text: "put two quest counters on Craig Boone. When you do, ..."
+    // Card: [[Craig Boone, Novac Guard]]
+    "Reflexive_PutCounters_WhenYouDo([NumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})], {{TOP_LEVEL_ACTIONS}})": "",
+
+    // Text: "put a quest counter on this enchantment. When you do, if it has
+    //        four or more quest counters on it, ..."
+    // Card: [[Earthbender Ascension]]
+    "Reflexive_PutCounters_WhenYouDo_If([ACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})], {{CONDITION}}, {{TOP_LEVEL_ACTIONS}})": "",
+  },
 
   "{{_COST[PutCounters]}}": {
     "PutCounters([{{PUT_COUNTERS_COST}}])": "",
@@ -927,7 +952,36 @@
     "RemoveCounters([{{REMOVE_COUNTERS}}, {{REMOVE_COUNTERS}}])": "",
 
     "MoveCounters([{{MOVE_COUNTERS}}])": "",
-  },
 
+    // == Ruling on Agitator Ant:
+    // If a creature can't have +1/+1 counters put on it, its controller can't
+    // choose it just to have it become goaded. If it can have counters put on
+    // it but replacement effects cause it not to receive +1/+1 counters, it
+    // doesn't become goaded.
+    // == Ruling on Eye of Doom:
+    // The active player chooses a permanent first, followed by each other
+    // player in turn order. Each player will know what previous players have
+    // chosen when making their own choice. Then the doom counters are put on
+    // all the chosen permanents simultaneously. 
+    // == Ruling on Promise of Loyalty:
+    // Each player, including you, must put a vow counter on a creature they
+    // control if able. They can't choose to opt out and sacrifice all of their
+    // creatures. The creature you put a vow counter on will remember its
+    // promise if another player gains control of it.
+
+    // Text: "each player chooses a nonland permanent and puts a doom counter
+    //        on it."
+    // Card: [[Eye of Doom]]
+    // Text: "Each player puts a vow counter on a creature they control and
+    //        sacrifices the rest."
+    // Card: [[Promise of Loyalty]]
+    "EachPlayerAction({{PLAYERS}}, PutCounters([{{PUT_COUNTERS}}]))": "",
+
+    // Text: "each player may put two +1/+1 counters on a creature they
+    //        control. Goad each creature that had counters put on it
+    //        this way."
+    // Card: [[Agitator Ant]]
+    "EachPlayerMayAction({{PLAYERS}}, PutCounters([{{PUT_COUNTERS}}]))": "",
+  },
 
 }
