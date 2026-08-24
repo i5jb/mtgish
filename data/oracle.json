@@ -1817,8 +1817,8 @@
         "manaCost": "{4}{R}",
         "type": "Creature — Elf Archer",
         "text": "Reach\nDomain — When Meria's Outrider enters, it deals damage equal to the number of basic land types among lands you control to any target.",
-        "power": "4",
-        "toughness": "4"
+        "power": "5",
+        "toughness": "5"
       }
     ]
   },
@@ -215052,7 +215052,7 @@
       {
         "name": "Kithkin Brinefarer",
         "manaCost": "{1}{G}{W}",
-        "type": "Creature — Kithkin Warrior",
+        "type": "Creature — Kithkin Warrior Bard",
         "text": "Whenever a Kithkin card is put into your hand from your library, conjure a duplicate of that card into your hand.\nWhenever you attack, Kithkin creature cards in your hand perpetually get +1/+1.",
         "power": "3",
         "toughness": "3"
@@ -221615,7 +221615,7 @@
         "name": "Landlore Navigator",
         "manaCost": "{1}{U}",
         "type": "Creature — Orc Pirate",
-        "text": "Whenever Landlore Navigator attacks, create a Map token.\nAt the beginning of your end step, if two or more artifacts entered under your control this turn, conjure a card named Thieving Magpie onto the battlefield.",
+        "text": "Whenever Landlore Navigator attacks, create a Map token.\nAt the beginning of your end step, if two or more artifacts entered the battlefield under your control this turn, conjure a card named Thieving Magpie onto the battlefield.",
         "power": "2",
         "toughness": "1"
       }
@@ -280635,7 +280635,7 @@
         "name": "Overcooked",
         "manaCost": "{2}{R}",
         "type": "Enchantment",
-        "text": "Players can't gain life.\nCelebration — At the beginning of your end step, create a Food token. If two or more nonland permanents entered under your control this turn, instead conjure a card named Food Fight onto the battlefield."
+        "text": "Players can't gain life.\nCelebration — At the beginning of your end step, create a Food token. If two or more nonland permanents entered the battlefield under your control this turn, instead conjure a card named Food Fight onto the battlefield."
       }
     ]
   },
@@ -282030,7 +282030,7 @@
         "name": "Painful Bond",
         "manaCost": "{1}{B}",
         "type": "Instant",
-        "text": "Draw two cards, then cards in your hand with mana value 3 or greater perpetually gain \"When you cast this spell, you lose 1 life.\""
+        "text": "Draw two cards, then nonland cards in your hand with mana value 3 or less perpetually gain \"When you cast this spell, you lose 1 life.\""
       }
     ]
   },

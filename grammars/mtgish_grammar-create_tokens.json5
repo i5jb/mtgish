@@ -608,12 +608,7 @@
     // Text: "each player creates their choice of a ... creature token ...
     //        or a ... creature token .."
     // Card: [[The Pit]]
-    "EachPlayerChoosesAnAction({{PLAYERS}}, [CreateTokens([{{SINGLE_CREATABLE_TOKEN}}], {{TOKEN_FLAGS}}), CreateTokens([{{SINGLE_CREATABLE_TOKEN}}], {{TOKEN_FLAGS}})])": "",
-
-    // Text: "Then each opponent may draw a card and create a 1/1 white Rabbit
-    //        creature token"
-    // Card: [[Tempt with Bunnies]]
-    "EachPlayerMayActions({{PLAYERS}}, [DrawACard, CreateTokens([{{SINGLE_CREATABLE_TOKEN}}], {{TOKEN_FLAGS}})])": "",
+    "EachPlayerCreatesTokensOfTheirChoice({{PLAYERS}}, [{{SINGLE_CREATABLE_TOKEN}}], {{TOKEN_FLAGS}}, [{{SINGLE_CREATABLE_TOKEN}}], {{TOKEN_FLAGS}})": "",
   },
 
   "{{_PLAYER_ACTION[CreateTokens][Reflexive]}}": {

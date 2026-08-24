@@ -54,6 +54,8 @@ type Action =
 | { "_Action": "CreateTokensForEachPlayer", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "CreateTokensForEachPermanent", "args": [Permanents, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "EachPlayerCreatesTokens", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
+| { "_Action": "EachPlayerCreatesTokensOfTheirChoice", "args": [Players, Array<CreatableToken>, Array<TokenFlag>, Array<CreatableToken>, Array<TokenFlag>] }
+| { "_Action": "EachPlayerMayChooseToDoActions", "args": Players }
 | { "_Action": "Reflexive_AddMana_WhenYouDo", "args": [ManaProduce, Actions] }
 | { "_Action": "Reflexive_Amass_WhenYouDo", "args": [GameNumber, CreatureType, Actions] }
 | { "_Action": "Reflexive_Attach_WhenYouDo", "args": [Attachable, Actions] }
@@ -5986,6 +5988,8 @@ type Players =
 | { "_Players": "Or", "args": Array<Players> }
 | { "_Players": "Other", "args": Player }
 | { "_Players": "SinglePlayer", "args": Player }
+| { "_Players": "ChoseToDoActions" }
+| { "_Players": "AllowedToDrawCards" }
 | { "_Players": "CreatedATokenThisWay" }
 | { "_Players": "HadANumberOfCardsInTheirStartingDeck", "args": Comparison }
 | { "_Players": "SpentManaToCastSpell", "args": Spell }

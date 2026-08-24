@@ -6361,6 +6361,8 @@ pub enum Players {
   Other(Box<Player>),
   SinglePlayer(Box<Player>),
 
+  ChoseToDoActions,
+  AllowedToDrawCards,
   CreatedATokenThisWay,
   HadANumberOfCardsInTheirStartingDeck(Box<Comparison>),
   SpentManaToCastSpell(Box<Spell>),
@@ -8787,6 +8789,9 @@ pub enum Action {
   CreateTokensForEachPlayer(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
   CreateTokensForEachPermanent(Box<Permanents>, Vec<CreatableToken>, Vec<TokenFlag>),
   EachPlayerCreatesTokens(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
+  EachPlayerCreatesTokensOfTheirChoice(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>, Vec<CreatableToken>, Vec<TokenFlag>),
+
+  EachPlayerMayChooseToDoActions(Box<Players>),
 
   Reflexive_AddMana_WhenYouDo(ManaProduce, Box<Actions>),
   Reflexive_Amass_WhenYouDo(Box<GameNumber>, CreatureType, Box<Actions>),
