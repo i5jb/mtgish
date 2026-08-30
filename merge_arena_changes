@@ -1,0 +1,48 @@
+#!/usr/bin/python3
+
+import json
+import sys
+import re
+
+oracle_base_cards_filename = sys.argv[1]
+arena_digital_cards_filename = sys.argv[2]
+
+with open(oracle_base_cards_filename, "r") as f:
+  oracle_base_cards = json.loads(f.read())
+with open(arena_digital_cards_filename, "r") as f:
+  arena_digital_cards = json.loads(f.read())
+
+oracle_cards = []
+for oracle_base_card in oracle_base_cards:
+  name = oracle_base_card["name"]
+  layout = oracle_base_card["layout"]
+
+  if (name in arena_digital_cards):
+    arena_digital_card = arena_digital_cards[name]
+    if "card_faces" in arena_digital_card:
+      assert(len(oracle_base_card["cards"]) == 2)
+      assert(len(arena_digital_card["card_faces"]) == 2)
+
+      face1 = arena_digital_card["card_faces"][0]["oracle_text"]
+      face2 = arena_digital_card["card_faces"][1]["oracle_text"]
+
+      face1 = re.sub(r"(?m)^([+−-]?[0-9X]+):", r"[\1]:", face1)
+      face2 = re.sub(r"(?m)^([+−-]?[0-9X]+):", r"[\1]:", face2)
+
+      oracle_base_card["cards"][0]["text"] = face1
+      oracle_base_card["cards"][1]["text"] = face2
+    else:
+      assert(len(oracle_base_card["cards"]) == 1)
+
+      face = arena_digital_card["oracle_text"]
+
+      face = re.sub(r"(?m)^([+−-]?[0-9X]+):", r"[\1]:", face)
+
+      oracle_base_card["cards"][0]["text"] = face
+
+    if oracle_base_card["cards"][0]["text"] == "":
+      oracle_base_card["cards"][0].pop("text")
+
+  oracle_cards.append(oracle_base_card)
+
+json.dump(oracle_cards, sys.stdout, indent=2, ensure_ascii=False)

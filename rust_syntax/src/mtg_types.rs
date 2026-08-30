@@ -2004,6 +2004,9 @@ pub enum PlayerEffect {
   CantGetCounters,
   CantGetCountersOfType(CounterType),
 
+  MayCastExiledCardAndMaySpendManaAsThoughAnyTypeToCastIf(Box<CardInExile>, Box<Condition>),
+  OnceEachTurnMayCastASpellFromAmongCardsInGraveyardsWithEffect(Box<Spells>, Box<CardsInGraveyards>, Vec<SpellEffect>),
+
   MayActivatePowerUpAbilitiesOfPermanentsAnAdditionalTime(Box<Permanents>),
   MayPayAlternateCostForFirstPowerUpCostEachTurn(ManaCost),
 
@@ -2379,7 +2382,6 @@ pub enum CastEffect {
   MayCastAsThoughItHadFlashIfXIs(Box<Comparison>),
   MayCastAsThoughItHadFlashWithSpecialAction(Vec<Action>),
   MayCastWithoutPayingIf(Condition),
-  MaySpendManaAsThoughAnyColorToCast,
   MaySpendManaAsThoughAnyTypeToCast,
   OptionalAdditionalCastingCost(Box<Cost>),
   PayLifeForEachPreviousCastRatherThanManaForEachPreviousCast(Box<GameNumber>),
@@ -5612,7 +5614,6 @@ pub enum CopyEffect {
   AddLandTypes(Vec<LandType>),
   SetArtifactTypes(Vec<ArtifactType>),
   SetCreatureTypes(Vec<CreatureType>),
-  MergeTypeline,
 
   // Abilities
   AddAbilityVariable(AbilityVariable),
@@ -6628,7 +6629,6 @@ pub enum Spells {
   WasCastForItsWarpCost,
   WasCastUsingTeamwork,
   DoesntHaveAbility(CheckHasable),
-  IsNonEnchantmentType(EnchantmentType),
   DoesntShareANameWithACardInPlayersLibrary(Box<Player>),
   HasAbility(CheckHasable),
   ManaSpentIsLessThanManaValue,
@@ -9484,6 +9484,7 @@ pub enum Action {
   IncubateNumberTimes(Box<GameNumber>, Box<GameNumber>),
   IntensifyCard(Box<SingleCard>),
   IntensifyPermanent(Box<Permanent>),
+  IntensifyCardsOwnedByPlayer(Box<Cards>, Box<Player>),
   Investigate,
   InvestigateTimes(Box<GameNumber>),
   Learn,
@@ -9571,7 +9572,6 @@ pub enum Action {
   PermanentDoesntUntapDuringControllersNextUntap(Box<Permanent>),
   PermanentOrDeadPermanentDealsDamage(Box<GameNumber>, Box<DamageRecipient>),
   PerpetuallyExchangePowerOfPermanentAndPermanent(Box<Permanent>, Box<Permanent>),
-  PerpetuallyIncreaseIntensityOfCardsOwnedByPlayer(Box<Cards>, Box<Player>, Box<GameNumber>),
   PerpetuallyIncreaseIntensityOfPermanent(Box<Permanent>, Box<GameNumber>),
   PhaseInEachPermanent(Box<Permanents>),
   PhaseInEachPermanentAndPhaseOutEachPermanent(Box<Permanents>, Box<Permanents>),

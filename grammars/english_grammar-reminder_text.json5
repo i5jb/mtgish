@@ -488,10 +488,6 @@
   "{{Reminder[DoubleStrike][Indestructible]}}": {
     "(This creature deals both first-strike and regular combat damage. Damage and effects that say \"destroy\" don't destroy this creature.)": ""
   },
-  "{{Reminder[DoubleTeam]}}": {
-    "(When a creature with double team attacks, conjure a duplicate into your hand, then both of them perpetually lose double team.)": "",
-    "(When this creature attacks, conjure a duplicate into your hand, then both of them perpetually lose double team.)": ""
-  },
   "{{Reminder[Dredge]}}": {
     "(If you would draw a card, you may mill a card instead. If you do, return this card from your graveyard to your hand.)": "",
     "(If you would draw a card, you may mill five cards instead. If you do, return this card from your graveyard to your hand.)": "",
@@ -1114,7 +1110,6 @@
     "({3}{W}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)": "",
     "({4}{U}{B}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)": "",
     "({B}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)": "",
-    "({U/B}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)": "",
     "({U}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)": "",
     "({U}{B}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)": ""
   },
@@ -1321,7 +1316,6 @@
   },
   "{{Reminder[Reconfigure]}}": {
     "(Pay {2} or {E}{E}{E}: Attach to target creature you control; or unattach from a creature. Reconfigure only as a sorcery. While attached, this isn't a creature.)": "",
-    "({1}: Attach to target creature you control; or unattach from a creature. Reconfigure only as a sorcery. While attached, this isn't a creature.)": "",
     "({2}: Attach to target creature you control; or unattach from a creature. Reconfigure only as a sorcery. While attached, this isn't a creature.)": "",
     "({2}{B}{B}: Attach to target creature you control; or unattach from a creature. Reconfigure only as a sorcery. While attached, this isn't a creature.)": "",
     "({2}{U}: Attach to target creature you control; or unattach from a creature. Reconfigure only as a sorcery. While attached, this isn't a creature.)": "",
@@ -1428,15 +1422,11 @@
     "(Look at the top four cards of your library, then put any number of them on the bottom and the rest on top in any order.)": "",
     "(Look at the top three cards of your library, then put any number of them on the bottom and the rest on top in any order.)": "",
     "(Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)": "",
-    "(To scry 1, look at the top card of your library, then you may put that card on the bottom of your library.)": "",
     "(To scry 1, look at the top card of your library, then you may put that card on the bottom.)": "",
     "(To scry 2, look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)": "",
     "(To scry 3, look at the top three cards of your library, then put any number of them on the bottom and the rest on top in any order.)": "",
     "(To scry X, a player looks at the top X cards of their library, then puts any number of them on the bottom and the rest on top in any order.)": "",
     "(To scry X, look at the top X cards of your library, then put any number of them on the bottom and the rest on top in any order.)": ""
-  },
-  "{{Reminder[Seek]}}": {
-    "(To seek a card, put one at random from your library into your hand.)": ""
   },
   "{{Reminder[SetColorAndCreatureType]}}": {
     "(It loses its other colors and creature types.)": ""
@@ -1724,9 +1714,7 @@
   },
   "{{Reminder[TreasureToken]}}": {
     "(A Treasure token is an artifact with \"{T}, Sacrifice this token: Add one mana of any color\".)": "",
-    "(It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color\".)": "",
     "(It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color\".)": "",
-    "(They're artifacts with \"{T}, Sacrifice this artifact: Add one mana of any color\".)": "",
     "(They're artifacts with \"{T}, Sacrifice this token: Add one mana of any color\".)": "",
     "(Treasure tokens are artifacts with \"{T}, Sacrifice this token: Add one mana of any color\".)": ""
   },
@@ -2706,7 +2694,6 @@
     "{{Reminder[Disguise]}}": "",
     "{{Reminder[DoctorsCompanion]}}": "",
     "{{Reminder[DoubleStrike][Indestructible]}}": "",
-    "{{Reminder[DoubleTeam]}}": "",
     "{{Reminder[Dredge]}}": "",
     "{{Reminder[DryadArbor]}}": "",
     "{{Reminder[Earthbend][Exhaust]}}": "",
@@ -2844,7 +2831,6 @@
     "{{Reminder[SagaCards]}}": "",
     "{{Reminder[Scry][TreasureToken]}}": "",
     "{{Reminder[Scry]}}": "",
-    "{{Reminder[Seek]}}": "",
     "{{Reminder[SetColorAndCreatureType]}}": "",
     "{{Reminder[ShardToken]}}": "",
     "{{Reminder[ShieldCounter]}}": "",

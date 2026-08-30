@@ -123,74 +123,12 @@
     "replace": "Slivers spellbook",
   },
 
-  // Spellbooks should be named, not generic
-  {
-    "reason":  "CARD_NAME fix was too aggressive, Spellbook fix",
-    "cards":   ["Arms Scavenger"],
-    "find":    "draft a card from this creature's spellbook, then exile it",
-    "replace": "draft a card from Arms Scavenger's spellbook, then exile it",
-  },
-  {
-    "reason":  "CARD_NAME fix was too aggressive, Spellbook fix",
-    "cards":   ["Key to the Archive"],
-    "find":    "draft a card from this artifact's spellbook, then discard a card",
-    "replace": "draft a card from Key to the Archive's spellbook, then discard a card",
-  },
-  {
-    "reason":  "CARD_NAME fix was too aggressive, Spellbook fix",
-    "cards":   ["Loose in the Park"],
-    "find":    "draft a card from this enchantment's spellbook and exile it",
-    "replace": "draft a card from Loose in the Park's spellbook and exile it",
-  },
-  {
-    "reason":  "CARD_NAME fix was too aggressive, Spellbook fix",
-    "cards":   ["Tireless Angler"],
-    "find":    "draft a card from this creature's spellbook.",
-    "replace": "draft a card from Tireless Angler's spellbook.",
-  },
-
   // Alchemy pickiness (A-Name vs Name)
-  {
-    "reason":  "Alchemy pickiness",
-    "cards":   ["A-Uurg, Spawn of Turg"],
-    "find":    "A-Uurg, Spawn of Turg's power",
-    "replace": "Uurg, Spawn of Turg's power",
-  },
-  {
-    "reason":  "Alchemy pickiness #1",
-    "cards":   ["A-Thran Portal"],
-    "find":    "Mana abilities of A-Thran Portal cost",
-    "replace": "Mana abilities of Thran Portal cost",
-  },
-  {
-    "reason":  "Alchemy pickiness #2",
-    "cards":   ["A-Thran Portal"],
-    "find":    "As A-Thran Portal enters",
-    "replace": "As Thran Portal enters",
-  },
-  {
-    "reason":  "Alchemy pickiness",
-    "cards":   ["A-Cauldron Familiar"],
-    "find":    "A-Cauldron Familiar can't block",
-    "replace": "Cauldron Familiar can't block",
-  },
-  {
-    "reason":  "Alchemy pickiness",
-    "cards":   ["A-Earthquake Dragon"],
-    "find":    "Return A-Earthquake Dragon from your graveyard",
-    "replace": "Return Earthquake Dragon from your graveyard",
-  },
   {
     "reason":  "Alchemy pickiness",
     "cards":   ["A-Earthquake Dragon"],
     "find":    "the total mana value of Dragons you control not named Earthquake Dragon",
     "replace": "the total mana value of Dragons you control not named A-Earthquake Dragon",
-  },
-  {
-    "reason":  "Alchemy pickiness",
-    "cards":   ["A-Moss-Pit Skeleton"],
-    "find":    "return A-Moss-Pit Skeleton from",
-    "replace": "return Moss-Pit Skeleton from",
   },
 
   // Plural vs. singular for CARD_NAME
@@ -553,12 +491,6 @@
     "replace": "Target creature gets -3/-3",
   },
   {
-    "reason":  "Wizards typo, missing comma in Saga reminder text",
-    "cards":   ["A Golden Opportunity", "Naktamun Shines Again", "The Conundrum of Bowls", "Victory of the Pyrohammer"],
-    "find":    "after your draw step add a lore counter",
-    "replace": "after your draw step, add a lore counter",
-  },
-  {
     "reason":  "Wizards typo, the 'offer' in 'Tempting offer' should be lower case",
     "cards":   ["Tempt with Bunnies"],
     "find":    "Tempting Offer",
@@ -572,12 +504,6 @@
   },
   {
     "reason":  "Wizard's typo, find/replace of CARD_NAME probably screwed up",
-    "cards":   ["Longtusk Stalker"],
-    "find":    "{E}{E}: this creature perpetually",
-    "replace": "{E}{E}: This creature perpetually",
-  },
-  {
-    "reason":  "Wizard's typo, find/replace of CARD_NAME probably screwed up",
     "cards":   ["Necratog"],
     "find":    "graveyard: this creature",
     "replace": "graveyard: This creature",
@@ -587,30 +513,6 @@
     "cards":   ["Niko, Light of Hope"],
     "find":    "become copies of it until the next end step",
     "replace": "become copies of it until the beginning of the next end step",
-  },
-  {
-    "reason":  "Wizard's typo, somehow the ENTERS change got reverted",
-    "cards":   ["Forsaken Crossroads"],
-    "find":    "Forsaken Crossroads enters the battlefield tapped",
-    "replace": "This land enters tapped",
-  },
-  {
-    "reason":  "Wizard's typo, somehow the ENTERS change got reverted",
-    "cards":   ["Forsaken Crossroads"],
-    "find":    "As Forsaken Crossroads enters the battlefield",
-    "replace": "As this land enters",
-  },
-  {
-    "reason":  "Wizard's typo, somehow the ENTERS change got reverted",
-    "cards":   ["Rope Line Attendant"],
-    "find":    "When Rope Line Attendant enters the battlefield",
-    "replace": "When this creature enters",
-  },
-  {
-    "reason":  "Wizard's typo, somehow the ENTERS change got reverted",
-    "cards":   ["Rope Line Attendant"],
-    "find":    "perpetually gain \"When this creature enters the battlefield",
-    "replace": "perpetually gain \"When this creature enters",
   },
   {
     "reason":  "Wizard's typo, missed 'of their choice' update",
@@ -723,16 +625,22 @@
 
   // Unsorted fixes
   {
+    "reason":  "Arena missed first main -> precombat main change",
+    "cards":   ["Ghitu Embercoiler"],
+    "find":    "At the beginning of your precombat main phase,",
+    "replace": "At the beginning of your first main phase,",
+  },
+  {
+    "reason":  "Arena quoted ability period to space",
+    "cards":   ["Viconia, Disciple of Rebirth"],
+    "find":    "spell\". and \"When ",
+    "replace": "spell\" and \"When ",
+  },
+  {
     "reason":  "Not a fan of Wizard's wording here",
     "cards":   ["Moku, Meandering Drummer"],
     "find":    "Moku gets +2/+1 and creatures you control gain haste until end of turn",
     "replace": "Moku gets +2/+1 until end of turn and creatures you control gain haste until end of turn",
-  },
-  {
-    "reason":  "Naming reversion when removing boon text",
-    "cards":   ["Tenacious Pup"] ,
-    "find":    "When Tenacious Pup enters the battlefield, ",
-    "replace": "When this creature enters, ",
   },
   {
     "reason":  "Didn't get the entering the battlefield update?",
@@ -777,24 +685,6 @@
     "replace": "Each player sacrifices X creatures of their choice and you gain X life",
   },
   {
-    "reason":  "Arena? -- Errata update revision -- An extra 'one' got added",
-    "cards":   ["Menagerie Curator"],
-    "find":    "Add one mana of any one color",
-    "replace": "Add one mana of any color",
-  },
-  {
-    "reason":  "Arena? - Errata update revsion - One-time boon fix somehow got revereted",
-    "cards":   ["Flaming Fist Duskguard", "Valiant Farewell"],
-    "find":    "you get a boon with \"When you cast your next creature spell",
-    "replace": "you get a one-time boon with \"When you cast a creature spell",
-  },
-  {
-    "reason":  "Arena? -- Errata update typo - 'the' got lost",
-    "cards":   ["Forgeborn Phoenix"],
-    "find":    "graveyard to battlefield tapped",
-    "replace": "graveyard to the battlefield tapped",
-  },
-  {
     "reason":  "Improve wording - the second half can be treated as a static effect",
     "cards":   ["Seshiro the Anointed Avatar"],
     "find":    "At the beginning of the game, choose a creature type. Creatures you control",
@@ -803,8 +693,8 @@
   {
     "reason":  "X can't be 0 is in an annoying place.",
     "cards":   ["Ornate Imitations"],
-    "find":    "For each number between 1 and X, conjure a duplicate of a random creature card with that mana value onto the battlefield. X can't be 0.",
-    "replace": "X can't be 0.\nFor each number between 1 and X, conjure a duplicate of a random creature card with that mana value onto the battlefield.",
+    "find":    "For each number between 1 and X, conjure a random creature card with that mana value onto the battlefield. X can't be 0.",
+    "replace": "X can't be 0.\nFor each number between 1 and X, conjure a random creature card with that mana value onto the battlefield.",
   },
   {
     "reason":  "You can't add {2} technically. This was fixed on Happy Dead Squirrel",

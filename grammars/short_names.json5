@@ -69,12 +69,15 @@
   "Karlov of the Ghost Council"    : "Karlov"        ,
   "Lavinia of the Tenth"           : "Lavinia"       ,
   "Loran of the Third Path"        : "Loran"         ,
+  "Minthara of the Absolute"       : "Minthara"      ,
   "Moritte of the Frost"           : "Moritte"       ,
   "Narset of the Ancient Way"      : "Narset"        ,
   "Ruhan of the Fomori"            : "Ruhan"         ,
   "Teysa of the Ghost Council"     : "Teysa"         ,
   "Uglúk of the White Hand"        : "Uglúk"         ,
   "Ureni of the Unwritten"         : "Ureni"         ,
+  "Wyll of the Blade Pact"         : "Wyll"          ,
+  "Wyll of the Fey Pact"           : "Wyll"          ,
   "Éomer of the Riddermark"        : "Éomer"         ,
 
   // NAME LAST of VALUE
@@ -102,6 +105,7 @@
   "Fíli the Pathfinder"            : "Fíli"          ,
   "Fumiko the Lowblood"            : "Fumiko"        ,
   "Gandalf the Grey"               : "Gandalf"       ,
+  "Ghalma the Shaper"              : "Ghalma"        ,
   "Goka the Unjust"                : "Goka"          ,
   "Gorm the Great"                 : "Gorm"          ,
   "Gollum the Abandoned"           : "Gollum"        ,

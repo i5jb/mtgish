@@ -21,7 +21,8 @@ download_mtgjson: make_temp
   #!/usr/bin/env bash
   curl https://mtgjson.com/api/v5/Meta.json                  | jq . > {{TEMP_DIR}}/Mtgjson-Meta-latest.json
   curl https://mtgjson.com/api/v5/AtomicCards.json.xz | unxz | jq . > {{TEMP_DIR}}/Mtgjson-AtomicCards-latest.json
-  {{BASE_DIR}}/preprocess_mtgjson {{TEMP_DIR}}/Mtgjson-AtomicCards-latest.json > {{BASE_DIR}}/data/oracle.json
+  {{BASE_DIR}}/preprocess_mtgjson {{TEMP_DIR}}/Mtgjson-AtomicCards-latest.json > {{TEMP_DIR}}/oracle_base.json
+  {{BASE_DIR}}/merge_arena_changes {{TEMP_DIR}}/oracle_base.json {{BASE_DIR}}/arena_digital.json > {{BASE_DIR}}/data/oracle.json
 
 [group('download')]
 [doc("Download scryfall data (this or mtgjson, pick one)")]
@@ -30,7 +31,8 @@ download_scryfall: make_temp
   curl -A "mtg-grammer-checker/0.1 (personal project, ran manually)"  https://api.scryfall.com/bulk-data/oracle-cards  | jq . > {{TEMP_DIR}}/Scryfall-Bulk-Data-latest.json
   SCRYFALL_ORACLE_CARDS_URI=$( jq -r ".jsonl_download_uri" {{TEMP_DIR}}/Scryfall-Bulk-Data-latest.json )
   curl -A "mtg-grammer-checker/0.1 (personal project, ran manually)" $SCRYFALL_ORACLE_CARDS_URI | gunzip | jq -s . > {{TEMP_DIR}}/Scryfall-OracleCards-latest.json
-  {{BASE_DIR}}/preprocess_scryfall {{TEMP_DIR}}/Scryfall-OracleCards-latest.json > {{BASE_DIR}}/data/oracle.json
+  {{BASE_DIR}}/preprocess_scryfall {{TEMP_DIR}}/Scryfall-OracleCards-latest.json > {{TEMP_DIR}}/oracle_base.json
+  {{BASE_DIR}}/merge_arena_changes {{TEMP_DIR}}/oracle_base.json {{BASE_DIR}}/data/arena_digital.json > {{BASE_DIR}}/data/oracle.json
 
 # ------------------------
 # Generate plural grammars

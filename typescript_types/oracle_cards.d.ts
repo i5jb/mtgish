@@ -741,6 +741,7 @@ type Action =
 | { "_Action": "IncubateNumberTimes", "args": [GameNumber, GameNumber] }
 | { "_Action": "IntensifyCard", "args": SingleCard }
 | { "_Action": "IntensifyPermanent", "args": Permanent }
+| { "_Action": "IntensifyCardsOwnedByPlayer", "args": [Cards, Player] }
 | { "_Action": "Investigate" }
 | { "_Action": "InvestigateTimes", "args": GameNumber }
 | { "_Action": "Learn" }
@@ -827,7 +828,6 @@ type Action =
 | { "_Action": "PermanentDoesntUntapDuringControllersNextUntap", "args": Permanent }
 | { "_Action": "PermanentOrDeadPermanentDealsDamage", "args": [GameNumber, DamageRecipient] }
 | { "_Action": "PerpetuallyExchangePowerOfPermanentAndPermanent", "args": [Permanent, Permanent] }
-| { "_Action": "PerpetuallyIncreaseIntensityOfCardsOwnedByPlayer", "args": [Cards, Player, GameNumber] }
 | { "_Action": "PerpetuallyIncreaseIntensityOfPermanent", "args": [Permanent, GameNumber] }
 | { "_Action": "PhaseInEachPermanent", "args": Permanents }
 | { "_Action": "PhaseInEachPermanentAndPhaseOutEachPermanent", "args": [Permanents, Permanents] }
@@ -2001,7 +2001,6 @@ type CastEffect =
 | { "_CastEffect": "MayCastAsThoughItHadFlashIfXIs", "args": Comparison }
 | { "_CastEffect": "MayCastAsThoughItHadFlashWithSpecialAction", "args": Array<Action> }
 | { "_CastEffect": "MayCastWithoutPayingIf", "args": Condition }
-| { "_CastEffect": "MaySpendManaAsThoughAnyColorToCast" }
 | { "_CastEffect": "MaySpendManaAsThoughAnyTypeToCast" }
 | { "_CastEffect": "OptionalAdditionalCastingCost", "args": Cost }
 | { "_CastEffect": "PayLifeForEachPreviousCastRatherThanManaForEachPreviousCast", "args": GameNumber }
@@ -2442,7 +2441,6 @@ type CopyEffect =
 | { "_CopyEffect": "AddLandTypes", "args": Array<LandType> }
 | { "_CopyEffect": "SetArtifactTypes", "args": Array<ArtifactType> }
 | { "_CopyEffect": "SetCreatureTypes", "args": Array<CreatureType> }
-| { "_CopyEffect": "MergeTypeline" }
 | { "_CopyEffect": "AddAbilityVariable", "args": AbilityVariable }
 | { "_CopyEffect": "AddAbility", "args": Array<Rule> }
 | { "_CopyEffect": "AddAbilityIfItDoesntHaveAbility", "args": [Rule, CheckHasable] }
@@ -5559,6 +5557,8 @@ type PlaneType =
 type PlayerEffect =
 | { "_PlayerEffect": "CantGetCounters" }
 | { "_PlayerEffect": "CantGetCountersOfType", "args": CounterType }
+| { "_PlayerEffect": "MayCastExiledCardAndMaySpendManaAsThoughAnyTypeToCastIf", "args": [CardInExile, Condition] }
+| { "_PlayerEffect": "OnceEachTurnMayCastASpellFromAmongCardsInGraveyardsWithEffect", "args": [Spells, CardsInGraveyards, Array<SpellEffect>] }
 | { "_PlayerEffect": "MayActivatePowerUpAbilitiesOfPermanentsAnAdditionalTime", "args": Permanents }
 | { "_PlayerEffect": "MayPayAlternateCostForFirstPowerUpCostEachTurn", "args": Array<ManaSymbol> }
 | { "_PlayerEffect": "MayCastExiledCardForAlternateCost", "args": [CardInExile, Cost] }
@@ -7647,7 +7647,6 @@ type Spells =
 | { "_Spells": "WasCastForItsWarpCost" }
 | { "_Spells": "WasCastUsingTeamwork" }
 | { "_Spells": "DoesntHaveAbility", "args": CheckHasable }
-| { "_Spells": "IsNonEnchantmentType", "args": EnchantmentType }
 | { "_Spells": "DoesntShareANameWithACardInPlayersLibrary", "args": Player }
 | { "_Spells": "HasAbility", "args": CheckHasable }
 | { "_Spells": "ManaSpentIsLessThanManaValue" }
