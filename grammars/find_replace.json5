@@ -1,108 +1,4 @@
 [
-  // Baldur's Gate Wilderness Fixes
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nGoblin Camp",
-    "replace": " (Leads to: Goblin Camp, Emerald Grove, Auntie's Teahouse)\nGoblin Camp",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nEmerald Grove",
-    "replace": " (Leads to: Defiled Temple)\nEmerald Grove",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nAuntie's Teahouse",
-    "replace": " (Leads to: Defiled Temple, Mountain Pass)\nAuntie's Teahouse",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nDefiled Temple",
-    "replace": " (Leads to: Mountain Pass)\nDefiled Temple",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nMountain Pass",
-    "replace": " (Leads to: Ebonlake Grotto, Grymforge)\nMountain Pass",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nEbonlake Grotto",
-    "replace": " (Leads to: Grymforge, Githyanki Crèche)\nEbonlake Grotto",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nGrymforge",
-    "replace": " (Leads to: Last Light Inn)\nGrymforge",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nGithyanki Crèche",
-    "replace": " (Leads to: Last Light Inn, Reithwin Tollhouse)\nGithyanki Crèche",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nLast Light Inn",
-    "replace": " (Leads to: Reithwin Tollhouse)\nLast Light Inn",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nReithwin Tollhouse",
-    "replace": " (Leads to: Moonrise Towers, Gauntlet of Shar)\nReithwin Tollhouse",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nMoonrise Towers",
-    "replace": " (Leads to: Gauntlet of Shar, Balthazar's Lab)\nMoonrise Towers",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nGauntlet of Shar",
-    "replace": " (Leads to: Circus of the Last Days)\nGauntlet of Shar",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nBalthazar's Lab",
-    "replace": " (Leads to: Circus of the Last Days, Undercity Ruins)\nBalthazar's Lab",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nCircus of the Last Days",
-    "replace": " (Leads to: Undercity Ruins)\nCircus of the Last Days",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nUndercity Ruins",
-    "replace": " (Leads to: Steel Watch Foundry, Ansur's Sanctum)\nUndercity Ruins",
-  },
-  {
-    "reason":  "Fix leads-to",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "\nSteel Watch Foundry",
-    "replace": " (Leads to: Ansur's Sanctum, Temple of Bhaal)\nSteel Watch Foundry",
-  },
-  {
-    "reason":  "Fix mana cost typo",
-    "cards":   ["Baldur's Gate Wilderness"],
-    "find":    "this turn cost 3 less to",
-    "replace": "this turn cost {3} less to",
-  },
-
   // Spellbook capitalization
   {
     "reason":  "Arena typo, spellbook is lowercase. See Three Pigs spellbook and Planets spellbook",
@@ -129,6 +25,76 @@
     "cards":   ["A-Earthquake Dragon"],
     "find":    "the total mana value of Dragons you control not named Earthquake Dragon",
     "replace": "the total mana value of Dragons you control not named A-Earthquake Dragon",
+  },
+
+  // Alchemy issue with Gate lands
+  {
+    "reason":  "The mana ability should be intrinsic, not spelled out",
+    "cards":   ["Gate of the Black Dragon"],
+    "find":    "{3}{B}, {T}: Seek a nonland card. Activate only once.\n{T}: Add {B}.",
+    "replace": "{3}{B}, {T}: Seek a nonland card. Activate only once.",
+  },
+  {
+    "reason":  "The mana ability should be intrinsic, not spelled out",
+    "cards":   ["Gate to Manorborn"],
+    "find":    "{3}{G}, {T}: Seek a nonland card. Activate only once.\n{T}: Add {G}.",
+    "replace": "{3}{G}, {T}: Seek a nonland card. Activate only once.",
+  },
+  {
+    "reason":  "The mana ability should be intrinsic, not spelled out",
+    "cards":   ["Gate to Seatower"],
+    "find":    "{3}{U}, {T}: Seek a nonland card. Activate only once.\n{T}: Add {U}.",
+    "replace": "{3}{U}, {T}: Seek a nonland card. Activate only once.",
+  },
+  {
+    "reason":  "The mana ability should be intrinsic, not spelled out",
+    "cards":   ["Gate to Tumbledown"],
+    "find":    "{3}{R}, {T}: Seek a nonland card. Activate only once.\n{T}: Add {R}.",
+    "replace": "{3}{R}, {T}: Seek a nonland card. Activate only once.",
+  },
+  {
+    "reason":  "The mana ability should be intrinsic, not spelled out",
+    "cards":   ["Gate to the Citadel"],
+    "find":    "{3}{W}, {T}: Seek a nonland card. Activate only once.\n{T}: Add {W}.",
+    "replace": "{3}{W}, {T}: Seek a nonland card. Activate only once.",
+  },
+
+  // Other Alchemy fixes
+  {
+    "reason":  "Arena missed first main -> precombat main change",
+    "cards":   ["Ghitu Embercoiler"],
+    "find":    "At the beginning of your precombat main phase,",
+    "replace": "At the beginning of your first main phase,",
+  },
+  {
+    "reason":  "Arena quoted ability period to space",
+    "cards":   ["Viconia, Disciple of Blood"],
+    "find":    "spell\". and \"When ",
+    "replace": "spell\" and \"When ",
+  },
+  {
+    "reason":  "Arena? -- Didn't get the 'sacrifice ... of their choice' update",
+    "cards":   ["Mycelic Ballad"],
+    "find":    "Each player sacrifices X creatures and you gain X life",
+    "replace": "Each player sacrifices X creatures of their choice and you gain X life",
+  },
+  {
+    "reason":  "X can't be 0 is in an annoying place.",
+    "cards":   ["Ornate Imitations"],
+    "find":    "For each number between 1 and X, conjure a random creature card with that mana value onto the battlefield. X can't be 0.",
+    "replace": "X can't be 0.\nFor each number between 1 and X, conjure a random creature card with that mana value onto the battlefield.",
+  },
+  {
+    "reason":  "Keyword statements should be on their own line",
+    "cards":   ["Razor Demon"],
+    "find":    "Flying, Ward-Discard",
+    "replace": "Flying\nWard-Discard",
+  },
+  {
+    "reason":  "Keyword statements should be on their own line",
+    "cards":   ["Dazzling Flameweaver"],
+    "find":    "Menace, Ward-Pay",
+    "replace": "Menace\nWard-Pay",
   },
 
   // Plural vs. singular for CARD_NAME
@@ -625,18 +591,6 @@
 
   // Unsorted fixes
   {
-    "reason":  "Arena missed first main -> precombat main change",
-    "cards":   ["Ghitu Embercoiler"],
-    "find":    "At the beginning of your precombat main phase,",
-    "replace": "At the beginning of your first main phase,",
-  },
-  {
-    "reason":  "Arena quoted ability period to space",
-    "cards":   ["Viconia, Disciple of Rebirth"],
-    "find":    "spell\". and \"When ",
-    "replace": "spell\" and \"When ",
-  },
-  {
     "reason":  "Not a fan of Wizard's wording here",
     "cards":   ["Moku, Meandering Drummer"],
     "find":    "Moku gets +2/+1 and creatures you control gain haste until end of turn",
@@ -679,22 +633,10 @@
     "replace": "Enchanted creature gets +1/+1 for each other creature you control.\nCreatures you control other than enchanted creature get -1/-1.",
   },
   {
-    "reason":  "Arena? -- Didn't get the 'sacrifice ... of their choice' update",
-    "cards":   ["Mycelic Ballad"],
-    "find":    "Each player sacrifices X creatures and you gain X life",
-    "replace": "Each player sacrifices X creatures of their choice and you gain X life",
-  },
-  {
     "reason":  "Improve wording - the second half can be treated as a static effect",
     "cards":   ["Seshiro the Anointed Avatar"],
     "find":    "At the beginning of the game, choose a creature type. Creatures you control",
     "replace": "At the beginning of the game, choose a creature type.\nCreatures you control",
-  },
-  {
-    "reason":  "X can't be 0 is in an annoying place.",
-    "cards":   ["Ornate Imitations"],
-    "find":    "For each number between 1 and X, conjure a random creature card with that mana value onto the battlefield. X can't be 0.",
-    "replace": "X can't be 0.\nFor each number between 1 and X, conjure a random creature card with that mana value onto the battlefield.",
   },
   {
     "reason":  "You can't add {2} technically. This was fixed on Happy Dead Squirrel",
