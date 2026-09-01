@@ -286167,6 +286167,18 @@
     ]
   },
   {
+    "name": "Perfected Theory",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Perfected Theory",
+        "manaCost": "{U}",
+        "type": "Instant",
+        "text": "Choose one —\n• Target creature has base power and toughness 1/1 until end of turn.\n• Target creature has base power and toughness 4/5 until end of turn."
+      }
+    ]
+  },
+  {
     "name": "Perforating Artist",
     "layout": "single",
     "cards": [
