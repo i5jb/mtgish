@@ -504,6 +504,8 @@
     // uses the card with that name in the Oracle card reference to determine
     // the characteristics of that token.
 
+    // Text: "create a Gingerbrute token"
+    // Card: [[Ginger, Queen of Sweets]]
     // Text: "create a tapped Mutavault token"
     // Card: [[Mutable Explorer]]
     // Text: "Create a Spellgorger Weird token"
@@ -593,6 +595,9 @@
 
     // Text: "each opponent creates a 1/1 white Human creature token"
     // Card: [[Slaughter Specialist]]
+    // Text: "For each permanent exiled this way, its controller creates a
+    //        4/4 blue and red Elemental creature token"
+    // Card: [[Rowan, Scholar of Sparks // Will, Scholar of Frost]]
     "EachPlayerCreatesTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
 
     // Text: "each player may create a tapped land token named Sanctum with
@@ -858,6 +863,8 @@
     // Card: [[Chatterfang, Squirrel General]]
     // Text: "If one or more creature tokens would be created under your control, that many 4/4 white Angel creature tokens with flying and vigilance are created instead"
     // Card: [[Divine Visitation]]
+    // Text: "If one or more artifact tokens would be created under your control, that many 5/5 red Dragon creature tokens with flying are created instead"
+    // Card: [[Draconic Visitor]]
     "ReplaceAnyNumberOfTokensWouldBeCreated(AnyNumberOfTokensWouldBeCreatedUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}}), [CreateTokensInstead({{CREATABLE_TOKEN_LIST}})])": "",
 
   },

@@ -286,7 +286,6 @@
     "IsNamed(NamedCard({{QUOTED_NAMED_CARD}}))": "",
     "IsNamed(OneOfTheChosenNames)": "",
     "IsNamed(TheChosenName)": "",
-    "IsNamed(TheNameChosenByPlayer({{PLAYER}}))": "",
     "SharesANameWithACardSpliceOntoSpell({{SPELL}})": "",
     "SharesANameWithAPermanent({{PERMANENTS}})": "",
     "SharesANameWithAnExiled({{CARDS_IN_EXILE}})": "",
@@ -410,6 +409,7 @@
     "CastASpellFromHandGraveyardOrExileWithoutPaying({{SPELLS}}, {{CARDS}}, {{CARDS}}, {{CARDS_IN_EXILE}})": "",
     "CastASpellFromHandWithoutPaying({{SPELLS}})": "",
     "CastASpellFromMilledCardsWithoutPaying({{SPELLS}})": "",
+    "ForEachPlayerMayCastASpellFromAmongCardsThatPlayerMilledThisWayWithoutPaying({{PLAYERS}}, {{SPELLS}})": "",
     "MayCastASpellFromAmongCardsInHandsWithoutPaying({{SPELLS}}, {{CARDS_IN_HAND}})": "",
     "CastASpellFromPlayersGraveyardWithoutPaying({{SPELLS}}, {{PLAYER}})": "",
     "CastASpellFromPlayersGraveyardWithoutPayingIntoExile({{SPELLS}}, {{PLAYER}})": "",
@@ -419,6 +419,7 @@
     "CastAnyNumberOfCardsInPlayersGraveyardWithoutPaying({{CARDS}}, {{PLAYER}})": "",
     "CastAnyNumberOfCopiedCards": "",
     "CastAnyNumberOfCopiedCardsWithoutPaying": "",
+    "CastAnyNumberOfSpellsFromAmongCopiedCardsWithoutPaying({{SPELLS}})": "",
     "CastAnyNumberOfExiledCardsWithoutPaying({{CARDS_IN_EXILE}})": "",
     "CastAnyNumberOfGraveyardCardsWithoutPayingIntoExile({{GRAVEYARD_CARDS}})": "",
     "CastAnyNumberOfGroupSpellsFromExileWithoutPaying({{SPELLS}}, {{GROUP_FILTER}}, {{CARDS_IN_EXILE}})": "",
@@ -841,6 +842,7 @@
     "DoubleXValueOfSpell({{SPELL}})": "",
     "DraftACardFromSpellBook({{SPELLBOOK}})": "",
     "DraftACardFromSpellBookNumberTimes({{SPELLBOOK}}, {{NUMBER}})": "",
+    "EmpowerJace({{NUMBER}})": "",
     "DrawACard": "",
     "DrawNumberCards({{NUMBER}})": "",
     "DrawNumberCardsForEach({{NUMBER}}, {{NUMBER}})": "",
@@ -1021,6 +1023,7 @@
     "PopulateNumberTimes({{NUMBER}})": "",
     "PopulateWithFlags({{ENTER_FLAGS}})": "",
     "PreparePermanent({{PERMANENT}})": "",
+    "PrepareEachPermanent({{PERMANENTS}})": "",
     "Proliferate": "",
     "ProliferateNumberTimes({{NUMBER}})": "",
     "PutACardAndOrACardFromHandOnBattlefield({{CARDS_IN_HAND}}, {{CARDS_IN_HAND}}, {{ENTER_FLAGS}})": "",
@@ -1039,6 +1042,7 @@
     "PutACardFromHandOnTopOfLibrary": "",
     "PutACardFromHandOrGraveyardOnBattlefield({{CARDS}}, {{PLAYER}}, {{ENTER_FLAGS}})": "",
     "PutACardFromOutsideGameInHand({{CARDS}})": "",
+    "PutACardFromOutsideGameInHand(TheCardsFromOutsideGameChosenThisWay)": "",
     "PutACardFromOutsideGameOnTopOfLibrary({{CARDS}})": "",
     "PutACardFromPlayersGraveyardOnBattlefield({{CARDS_IN_GRAVEYARDS}}, {{PLAYER}}, {{ENTER_FLAGS}})": "",
     "PutACardFromPlayersGraveyardOnTopOfLibrary({{CARDS}}, {{PLAYER}})": "",
@@ -1187,6 +1191,7 @@
     "Reflexive_Discard_WhenACardIsDiscardedThisWay(ACard, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_Discard_WhenACardOfTypeIsDiscardedThisWay(ACard, {{CARDS_IN_LIBRARY}}, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_Discard_WhenYouDiscardOneOrMoreCardsThisWay(AnyNumberOfCardsOfType({{CARDS_IN_HAND}}), {{TOP_LEVEL_ACTIONS}})": "",
+    "Reflexive_Discard_WhenYouDiscardOneOrMoreCardsOfTypeThisWay(NumberCards({{NUMBER}}), {{CARDS_IN_HAND}}, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_Discard_WhenYouDo(NumberCards({{NUMBER}}), {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_Discard_WhenYouDo(ACard, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_Discard_WhenYouDo(AnyNumberOfCards, {{TOP_LEVEL_ACTIONS}})": "",
@@ -1369,6 +1374,7 @@
     "RevealAllCardsOfTypeFromHandAndPlayerChoosesCard({{CARDS}}, {{PLAYER}})": "",
     "RevealAnyNumberOfCardsOfTypeFromHand({{CARDS}})": "",
     "RevealCardFromHand(TheCardInHandChosenThisWay)": "",
+    "RevealNumberGroupCardsFromOutsideGame({{NUMBER}}, {{CARDS}}, {{GROUP_FILTER}})": "",
     "RevealCardFromOutsideGameAndPutInHand({{CARDS}})": "",
     "RevealCardFromOutsideGameAndPutInHandOrPutAnExiledCardInOwnersHand({{CARDS}}, {{CARDS_IN_EXILE}})": "",
     "RevealCardsFromTheTopOfPlanarDeckUntilRevealAPlaneCardThenChaosEnsuresOnThatPlaneThenPutAllCardsOnBottomInAnyOrder": "",
@@ -2026,17 +2032,22 @@
   },
   "{{COMPARISON}}": {
     "AnyNumber": "",
-    "EqualTo({{NUMBER}})": "",
+
+    "Negative": "",
     "Even": "",
+    "Odd": "",
+    "Prime": "",
+
+    "OneOf({{NUMBER_LIST}})": "",
+
+    "EqualTo({{NUMBER}})": "",
     "GreaterThan({{NUMBER}})": "",
     "GreaterThanOrEqualTo({{NUMBER}})": "",
     "LessThan({{NUMBER}})": "",
     "LessThanOrEqualTo({{NUMBER}})": "",
     "NotEqualTo({{NUMBER}})": "",
+
     "NotTheChosenQuality": "",
-    "Odd": "",
-    "OneOf({{NUMBER_LIST}})": "",
-    "Prime": "",
     "TheChosenQuality": ""
   },
   "{{CONDITION_LIST}}": {
@@ -2048,10 +2059,8 @@
 
     "And({{CONDITION_LIST}})": "",
 
-
+    "PlayerPaidANumberOfCountersToActivateIt({{PLAYER}}, {{COMPARISON}}, {{COUNTER_TYPE}})": "",
     "ValueIs({{NUMBER}}, {{COMPARISON}})": "",
-
-
 
     "AColorWasChosen": "",
     "ACreatureTypeWasChosen": "",
@@ -2065,7 +2074,6 @@
     "ACardWasPutIntoGraveyardThisWay({{CARDS}})": "",
     "ACardWasPutIntoHandThisWay({{CARDS}})": "",
     "ACardWasPutIntoPlayersGraveyardFromAnywhereThisTurn({{CARDS}}, {{PLAYER}})": "",
-    "ACardWasRevealedByPlayerThisWay({{CARDS}}, {{PLAYER}})": "",
     "ACardWasRevealedThisWay({{CARDS}})": "",
     "ACardWasSurveiledIntoGraveyardThisWay({{CARDS}})": "",
     "ACardWasntDrawnThisWay": "",
@@ -2406,7 +2414,6 @@
     "HavePlayerTakeAction({{PLAYER}}, PutGraveyardCardIntoHand({{CARD_IN_GRAVEYARDS}}))": "",
     "HavePlayerTakeAction({{PLAYER}}, PutTopOfLibraryInGraveyard)": "",
     "HaveSpellDealDamage({{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "Investigate": "",
     "LookAtPlayersHandAndChooseACardToExile({{PLAYER}}, {{CARDS_IN_HAND}})": "",
     "LookAtPlayersHandAndChooseACardToExileUntil({{PLAYER}}, {{CARDS_IN_HAND}}, {{EXPIRATION}})": "",
     "LookAtTheTopCardOfPlayersLibrary({{PLAYER}})": "",
@@ -2488,7 +2495,6 @@
     "SacrificeOneOrMorePermanents({{PERMANENTS}})": "",
     "SacrificePermanent({{PERMANENT}})": "",
     "SacrificeUptoNumberPermanents({{NUMBER}}, {{PERMANENTS}})": "",
-    "SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), DontShuffle])": "",
     "SearchLibrary([FindACardOfType({{CARDS}}), RevealFoundCards, PutFoundCardsIntoHand, Shuffle])": "",
     "SearchLibrary([FindAnyNumberOfCardsOfType({{CARDS}}), ExileFoundCards, Shuffle])": "",
     "SeekACard({{CARDS}})": "",
@@ -3532,7 +3538,6 @@
     "DamageDealtToAnyPlayerThisTurn({{PLAYERS}})": "",
     "DamageDealtToPlayerThisTurn({{PLAYER}})": "",
     "DamageDealtToPlayerThisTurnByPermanents({{PLAYER}}, {{PERMANENTS}})": "",
-    "DistributedNumber": "",
     "EachAdditionalManaCostPaid({{MANACOST}})": "",
     "EachableNumber": "",
     "Emerge_ToughnessOfTheSacrificedCreature": "",
@@ -3746,6 +3751,7 @@
     "TheNumberOfColorsOfTheSacrificedPermanent": "",
     "TheNumberOfColorsSpellIs({{SPELL}})": "",
     "TheNumberOfColorsAmongPermanentsAndSpellsCastThisTurn({{PERMANENTS}}, {{SPELLS}})": "",
+    "TheNumberOfPlaneswalkerTypesAmongPermanents({{PERMANENTS}})": "",
     "TheNumberOfCreatureTypesAmongPermanents({{PERMANENTS}})": "",
     "TheNumberOfCreaturesGoadedThisWay": "",
     "TheNumberOfCreaturesThatAttackedThisTurn({{PERMANENTS}})": "",
@@ -3770,6 +3776,7 @@
     "TheNumberOfPermanentsOnTheBattlefield({{PERMANENTS}})": "",
     "TheNumberOfPermanentsOnTheBattlefieldAsSpellWasCast({{PERMANENTS}})": "",
     "TheNumberOfPermanentsOnTheBattlefieldAtBeginningOfTurn({{PERMANENTS}})": "",
+    "TheNumberOfCardsPutIntoAPlayersGraveyardFromTheirLibraryThisTurn({{PLAYERS}})": "",
     "TheNumberOfPermanentsPutIntoAPlayersGraveyardThisTurn({{PERMANENTS}}, {{PLAYERS}})": "",
     "TheNumberOfPermanentsPutIntoAPlayersGraveyardThisWay({{PERMANENTS}}, {{PLAYERS}})": "",
     "TheNumberOfPermanentsPutIntoPlayersGraveyardThisTurn({{PERMANENTS}}, {{PLAYER}})": "",
@@ -3784,7 +3791,6 @@
     "TheNumberOfPlayersAttackedByPlayerThisCombat({{PLAYERS}}, {{PLAYER}})": "",
     "TheNumberOfPlayersThatDidntPayCost": "",
     "TheNumberOfPlayersThatHaveLostTheGame": "",
-    "TheNumberOfPlayersThatPaidCost": "",
     "TheNumberOfPlayersWhoTookAnActionThisWay": "",
     "TheNumberOfRepeatedCostsNotPaid": "",
     "TheNumberOfRepeatedCostsNotPaidByPlayer({{PLAYER}})": "",
@@ -3897,6 +3903,7 @@
     "{{_PERMANENTS[PutCounters]}}": "",
     "{{_PERMANENTS[Exile]}}": "",
 
+    "CostWasntPaidForIt": "",
     "WasDestroyedThisWay": "",
     "IsntPrepared": "",
     "APermanentWithTheHighestManaValue({{PERMANENTS}})": "",
@@ -3962,6 +3969,7 @@
     "HasTheMostVotesOrTiedForTheMostVotes": "",
     "HasntBeenPhasedOutWithThisAbility": "",
     "HasntDealtDamageThisGame": "",
+    "HasntDealtCombatDamageThisGame": "",
     "InTheChosenPiles": "",
     "InThePileChosenForPermanent({{PERMANENT}})": "",
     "IntensityIs({{COMPARISON}})": "",
@@ -4116,6 +4124,7 @@
     "AbilitiesCantBeActivated": "",
     "AbilitiesOfTypeCantBeActivated({{ACTIVATED_ABILITIES}})": "",
     "AllCreaturesMustBlockIt({{PERMANENTS}})": "",
+    "AssignsCombatDamageAsThoughPowerWerePositive": "",
     "AssignsCombatDamageAsThoughNotBlocked": "",
     "AssignsNoCombatDamage": "",
     "AssignsToughnessCombatDamage": "",
@@ -4191,6 +4200,7 @@
     "CantGainAbility({{CHECK_HASABLE}})": "",
     "CantPhaseOut": "",
     "CantTransform": "",
+    "ArentPutIntoGraveyardForHaving0Loyalty": "",
     "CrewsVehiclesAsThoughPowerWereGreater({{NUMBER}})": "",
     "CrewsVehiclesUsingToughnessRatherThanPower": "",
     "DamageDealtToItCantBePreventedOrRedirected": "",
@@ -4373,6 +4383,11 @@
     "ChoseToDoActions": "",
     "AllowedToDrawCards": "",
 
+    "HasActivatedAnAbilityThisTurn({{ACTIVATED_ABILITIES}})": "",
+    "RevealedACardOfTheirChosenName": "",
+    "DidntRevealACardOfTheirChosenName": "",
+    "DidntTakeAction": "",
+
     "And({{PLAYERS_LIST}})": "",
 
     "{{_PLAYERS[PutCounters]}}": "",
@@ -4410,7 +4425,6 @@
     "CastASpellThisTurn({{SPELLS}})": "",
     "CastNumSpellsThisTurn({{COMPARISON}}, {{SPELLS}})": "",
     "ChoseAFirstPermanentThisWay": "",
-    "ChoseAPermanentThisWay": "",
     "ChoseASecondPermanentThisWay": "",
     "ChoseHighestNumber": "",
     "ChoseLowestNumber": "",
@@ -4555,12 +4569,15 @@
     "SinglePlayer({{PLAYER}})": "",
     "SpeedIs({{COMPARISON}})": "",
     "SpellDefendingPlayer": "",
+    "ScriedThisTurn": "",
     "SurveilledThisTurn": "",
     "TappedAPermanentForManaThisTurn({{PERMANENTS}})": "",
     "TheChosenPlayers": "",
     "Trigger_IsDefendingPlayer": "",
     "Trigger_ThosePlayers": "",
     "VisitedAnAttractionThisTurn": "",
+    "WasDealtNoncombatDamageThisTurn": "",
+    "WasDealtNoncombatDamageLastTurn": "",
     "WasDealtAnAmountOfCombatDamageThisTurn({{COMPARISON}})": "",
     "WasDealtAnAmountOfDamageThisTurn({{COMPARISON}})": "",
     "WasDealtCombatDamageByAPermanentThisGame({{PERMANENTS}})": "",
@@ -5173,7 +5190,6 @@
     "[EntersUnderPlayersControl({{PLAYER}}), EntersTapped, EntersAttackingPlayer({{PLAYER}})]": "",
     "[EntersUnderPlayersControl({{PLAYER}}), EntersTapped, EntersAttackingPlayerOrPlaneswalkerControlledBy({{PLAYER}})]": "",
     "[EntersUnderPlayersControl({{PLAYER}}), EntersTapped, EntersAttacking]": "",
-    "[EntersUnderPlayersControl({{PLAYER}}), EntersTapped]": "",
     "[EntersUnderPlayersControl({{PLAYER}}), EntersWithACounter({{COUNTER_TYPE}}), EntersWithLayerEffect({{LAYER_EFFECT_LIST}})]": "",
     "[EntersUnderPlayersControl({{PLAYER}}), EntersWithACounter({{COUNTER_TYPE}})]": "",
     "[EntersUnderPlayersControl({{PLAYER}}), EntersWithLayerEffect({{LAYER_EFFECT_LIST}})]": "",
@@ -5316,6 +5332,7 @@
     "[MayCost(DiscardACardOfType({{CARDS}})), IfElse(CostWasPaid, [EntersNormally], [PutIntoGraveyardInstead])]": "",
     "[MayCost(EntersTapped), If(CostWasPaid, [PutCounters([NumberCountersOfTypeOnPlayer({{NUMBER}}, {{COUNTER_TYPE}}, {{PLAYER}})])])]": "",
     "[MayCost(ExileTwoCardsFromAmongPlayersGraveyards({{CARDS_IN_GRAVEYARDS}}, {{PLAYERS}})), If(CostWasPaid, [EnterAsCopyOfExiled({{CARD_IN_EXILE}}, {{COPY_EFFECT_LIST}}), EntersWithNumberCounters({{NUMBER}}, {{COUNTER_TYPE}})])]": "",
+    "[MayCost(BeholdA({{CARDS}})), Unless({{CONDITION}}, [EntersTapped])]": "",
     "[MayCost(PayLife({{NUMBER}})), Unless({{CONDITION}}, [EntersTapped])]": "",
     "[MayCost(PutANumberOfExiledCardsIntoOwnersGraveyard({{NUMBER}}, {{CARDS_IN_EXILE}})), If(CostWasPaid, [EntersWithNumberCounters({{NUMBER}}, {{COUNTER_TYPE}})])]": "",
     "[MayCost(PutAPermanentIntoItsOwnersHand({{PERMANENTS}})), If({{CONDITION}}, [EntersWithACounter({{COUNTER_TYPE}})])]": "",
@@ -5600,7 +5617,6 @@
     "Ref_TargetAnteCard": ""
   },
   "{{SINGLE_DAMAGE_RECIPIENT_FILTER}}": {
-    "DistributedAnyTarget": "",
     "Permanent({{PERMANENT}})": "",
     "Player({{PLAYER}})": "",
     "Ref_AnyTarget": "",
@@ -5653,6 +5669,7 @@
     "TargetsPermanent({{PERMANENT}})": ""
   },
   "{{SPELLS}}": {
+    "WasPrepared": "",
     "APlayerSpentManaToCastIt({{PLAYERS}})": "",
     "WasCastUsingTeamwork": "",
     "AdditionalCostWasPaid": "",
@@ -5786,6 +5803,7 @@
     "WasBargained": "",
     "WasCastByPlayerDuringTheirMainPhase": "",
     "WasCastForItsWarpCost": "",
+    "WasntCastFromAPlayersHand({{PLAYERS}})": "",
     "WasCastFromAPlayersGraveyard({{PLAYERS}})": "",
     "WasCastFromAmongCardsInExile({{CARDS_IN_EXILE}})": "",
     "WasCastFromAmongCardsPutIntoTheirHandThisTurn": "",
@@ -6194,6 +6212,7 @@
     "UptoOneTargetGraveyardCard({{CARDS_IN_GRAVEYARDS}})": "",
     "UptoOneTargetGraveyardCardInEachPlayersGraveyard({{CARDS_IN_GRAVEYARDS}}, {{PLAYERS}})": "",
     "UptoOneTargetGraveyardCardOfEachColor({{CARDS_IN_GRAVEYARDS}})": "",
+    "UptoOneTargetGraveyardCardOfEachCardType({{CARDS_IN_GRAVEYARDS}})": "",
     "UptoOneTargetPermanent({{PERMANENTS}})": "",
     "UptoOneTargetPermanentEachPlayerControls({{PERMANENTS}}, {{PLAYERS}})": "",
     "UptoOneTargetPermanent_Optional({{PERMANENTS}})": "",
@@ -6327,6 +6346,32 @@
   "{{_ACTION}}": {
     "MultiDraw([DrawNumberCards({{NUMBER}}), EachPlayerDrawsACard({{PLAYERS}})])": "",
 
+    // These are simultaneous (the creatures are sacrificed and the tokens are created at the same time)
+    "EachPlayerMayCostAndFallback({{PLAYERS}}, [SacrificeAPermanent({{PERMANENTS}})], [CreateTokens([NumberTokens(TheNumberOfPlayersThatDidntPayCost, {{CREATABLE_TOKEN}})], {{TOKEN_FLAGS}})])": "",
+
+    // These are simultaneous (each player either chooses 1 card of type, or chooses X generic cards to discard assuming they have X cards, then all cards are discarded at the same time)
+    "EachPlayerMayCostOrFallback({{PLAYERS}}, [DiscardACardOfType({{CARDS_IN_HAND}})], DiscardNumberCards({{NUMBER}}))": "",
+
+    // These are simultaneous (the creatures are sacrificed, the cards are discarded, and players lose life at the same time)
+    "EachPlayerMayCostOrFallback({{PLAYERS}}, [SacrificeAPermanent({{PERMANENTS}}), DiscardACard], LoseLife({{NUMBER}}))": "",
+    "EachPlayerMayCostOrFallback({{PLAYERS}}, [DiscardACard, SacrificeAPermanent({{PERMANENTS}})], LoseLife({{NUMBER}}))": "",
+
+    // These are simultaneous (the creatures are sacrificed and players lose life at the same time)
+    "EachPlayerMayCostOrFallback({{PLAYERS}}, [SacrificeAPermanent({{PERMANENTS}})], LoseLife({{NUMBER}}))": "",
+
+    // These are simultaneous (the cards are discarded and creatures are sacrificed at the same time)
+    "EachPlayerMayCostOrFallback({{PLAYERS}}, [DiscardACard], SacrificeAPermanent({{PERMANENTS}}))": "",
+
+    // These are simultaneous (the cards are discarded and players lose life at the same time)
+    "EachPlayerMayCostOrFallback({{PLAYERS}}, [DiscardACard], LoseLife({{NUMBER}}))": "",
+
+    // These are simultaneous (the cards are discarded and players lose life at the same time)
+    "EachPlayerMayCostOrFallback({{PLAYERS}}, [DiscardNumberCards({{NUMBER}})], LoseLife({{NUMBER}}))": "",
+
+    "EachPlayerMayCostOrFallback({{PLAYERS}}, [PayLife({{NUMBER}})], PutAPermanentIntoItsOwnersHand({{PERMANENTS}}))": "",
+    "EachPlayerMayCostOrFallback({{PLAYERS}}, [PayMana({{MANACOST}})], SacrificeAPermanent({{PERMANENTS}}))": "",
+    "EachPlayerMayCostOrFallback({{PLAYERS}}, [PayManaCostOfAPermanent({{PERMANENTS}})], SacrificeAPermanent({{PERMANENTS}}))": "",
+
     "EachPlayerMayChooseToDoActions({{PLAYERS}})": "",
 
     "EachPlayerAction({{PLAYERS}}, TapAnyNumberOfPermanents({{PERMANENTS}}))": "",
@@ -6354,13 +6399,16 @@
     "EachPlayerAction({{PLAYERS}}, PutCardsInLibraryOnTheBottomOfLibraryInAnyOrder({{CARDS_IN_LIBRARY}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, RevealTopCardOfLibrary)": "",
+    "EachPlayerAction({{PLAYERS}}, PutTopOfLibraryInHand)": "",
+    "EachPlayerAction({{PLAYERS}}, PutTopOfLibraryOnBottomOfLibrary)": "",
 
     "EachPlayerAction({{PLAYERS}}, LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealMultipleCardsOfType([{{CARDS_IN_LIBRARY}}, {{CARDS_IN_LIBRARY}}])]))": "",
     "EachPlayerAction({{PLAYERS}}, PutLibraryCardsIntoHand({{CARDS_IN_LIBRARY}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, PutTopOfLibraryOnBattlefield({{ENTER_FLAGS}}))": "",
 
-    "EachPlayerAction({{PLAYERS}}, SacrificePermanent({{PERMANENT}}))": "",
+    "EachPlayerMayAction({{PLAYERS}}, SacrificeAPermanent({{PERMANENTS}}))": "",
+    //"EachPlayerAction({{PLAYERS}}, SacrificePermanent({{PERMANENT}}))": "",
     "EachPlayerAction({{PLAYERS}}, SacrificeAPermanent({{PERMANENTS}}))": "",
     "EachPlayerAction({{PLAYERS}}, SacrificeEachPermanent({{PERMANENTS}}))": "",
     "EachPlayerAction({{PLAYERS}}, SacrificePermanents({{PERMANENTS_LIST}}))": "",
@@ -6393,10 +6441,14 @@
 
     "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [PayAnyAmountOfLife])": "",
 
+    "EachPlayerMustCost({{PLAYERS}}, DiscardACard)": "",
     "EachPlayerMayAction({{PLAYERS}}, DiscardACard)": "",
     "EachPlayerChoosesAnAction({{PLAYERS}}, [DiscardACard, SacrificeAPermanent({{PERMANENTS}})])": "",
     "EachPlayerChoosesAnAction({{PLAYERS}}, [Exile({{EXILABLE_LIST}}, {{EXILE_FLAGS}}), Exile({{EXILABLE_LIST}}, {{EXILE_FLAGS}})])": "",
 
+    "EachPlayerMayChooseAnAction({{PLAYERS}}, [DiscardACard, SacrificeAPermanent({{PERMANENTS}})])": "",
+
+    //"EachPlayerMayPayCost({{PLAYERS}}, DiscardACardOfType({{CARDS}}))": "",
     "EachPlayerAction({{PLAYERS}}, DiscardACard)": "",
     "EachPlayerAction({{PLAYERS}}, DiscardACardAtRandom)": "",
     "EachPlayerAction({{PLAYERS}}, DiscardNumberCards({{NUMBER}}))": "",
@@ -6426,11 +6478,14 @@
     "EachPlayerAction({{PLAYERS}}, DrawACard)": "",
     "EachPlayerAction({{PLAYERS}}, DrawNumberCards({{NUMBER}}))": "",
     "EachPlayerAction({{PLAYERS}}, DrawUptoNumberCards({{NUMBER}}))": "",
+    "EachPlayerMayAction({{PLAYERS}}, DrawACard)": "",
     "EachPlayerMayAction({{PLAYERS}}, DrawUptoNumberCards({{NUMBER}}))": "",
+
 
     "EachPlayerAction({{PLAYERS}}, SeekACard({{CARDS_IN_LIBRARY}}))": "",
 
     "EachPlayerMayAction({{PLAYERS}}, Scry({{NUMBER}}))": "",
+    "EachPlayerMayAction({{PLAYERS}}, Investigate)": "",
 
     "EachPlayerAction({{PLAYERS}}, Exile({{EXILABLE_LIST}}, {{EXILE_FLAGS}}))": "",
     "EachPlayerMayAction({{PLAYERS}}, Exile({{EXILABLE_LIST}}, {{EXILE_FLAGS}}))": "",
@@ -6439,12 +6494,14 @@
     "EachPlayerAction({{PLAYERS}}, PutACardFromHandOnTopOfLibrary)": "",
 
     "EachPlayerAction({{PLAYERS}}, SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle]))": "",
+    "EachPlayerAction({{PLAYERS}}, SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), RevealFoundCards, PutFoundCardsIntoHand, Shuffle]))": "",
     "EachPlayerAction({{PLAYERS}}, SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), RevealFoundCards, PutFoundCardsIntoHand, Shuffle]))": "",
     "EachPlayerAction({{PLAYERS}}, SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle]))": "",
     "EachPlayerAction({{PLAYERS}}, SearchLibrary([FindAGenericCard, RevealFoundCards, PutFoundCardsIntoHand, Shuffle]))": "",
     "EachPlayerAction({{PLAYERS}}, SearchLibrary([FindAGenericCard, SetAsideFoundCards, Shuffle, PutSetAsideCardsOnTopOfLibrary]))": "",
     "EachPlayerMayAction({{PLAYERS}}, SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), RevealFoundCards, PutFoundCardsIntoHand, Shuffle]))": "",
     "EachPlayerMayAction({{PLAYERS}}, SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle]))": "",
+    "EachPlayerMayAction({{PLAYERS}}, SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), DontShuffle]))": "",
     "EachPlayerMayAction({{PLAYERS}}, SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle]))": "",
     "EachPlayerMayAction({{PLAYERS}}, SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), PutAFoundCardOntoBattlefield({{ENTER_FLAGS}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle]))": "",
     "EachPlayerMayAction({{PLAYERS}}, SearchLibrary([FindAGenericCard, PutFoundCardsIntoHand, Shuffle]))": "",
@@ -6575,30 +6632,63 @@
     //"EachPlayerChoosesAnAction({{PLAYERS}}, [{{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}])": "",
 
     "EachPlayerMakesAVillainousChoice({{PLAYERS}}, [{{ACTION_LIST}}, {{ACTION_LIST}}])": "",
-    "EachPlayerMayCost({{PLAYERS}}, {{COST}})": "",
-    "EachPlayerMustCost({{PLAYERS}}, {{COST}})": "",
-    "EachPlayerRepeatedMayCost({{PLAYERS}}, {{NUMBER}}, {{COST}})": "",
+    "EachPlayerMayCost({{PLAYERS}}, AnteTopCardOfLibrary)": "",
+    "EachPlayerMayCost({{PLAYERS}}, Or([PayMana({{MANACOST}}), PayMana({{MANACOST}})]))": "",
+    "EachPlayerMayCost({{PLAYERS}}, Or([SacrificeAPermanent({{PERMANENTS}}), DiscardACard]))": "",
+    "EachPlayerRepeatedMayCost({{PLAYERS}}, {{NUMBER}}, PayMana({{MANACOST}}))": "",
+
+    //"ForEachCardtypeChooseNumberPermanents([{{CARDTYPE}}, {{CARDTYPE}}, {{CARDTYPE}}], {{NUMBER}}, {{PERMANENTS}})": "",
+
+    "ActionForEachCardtype([{{CARDTYPE}}, {{CARDTYPE}}, {{CARDTYPE}}, {{CARDTYPE}}], [PlayerAction(Ref_TargetPlayer, ChooseAPermanent({{PERMANENTS}})), PlayerAction(Ref_TargetPlayer, PutPermanentOnTopOfOwnersLibrary({{PERMANENT}}))])": "",
+    "ActionForEachCardtype([{{CARDTYPE}}, {{CARDTYPE}}, {{CARDTYPE}}], [ChooseNumberPermanents({{NUMBER}}, {{PERMANENTS}}), PhaseOutEachPermanent({{PERMANENTS}})])": "",
+    "EachPlayerMayAction({{PLAYERS}}, SacrificeAPermanent({{PERMANENTS}}))": "",
+
+    "ActionForEachCheckableAbility({{CHECK_HASABLE_LIST}}, [CreateEachPermanentLayerEffectUntil({{PERMANENTS}}, {{LAYER_EFFECT_LIST}}, {{EXPIRATION}})])": "",
+
+    "ActionForEachPlayer({{PLAYERS}}, {{ACTION_LIST}})": "", // FIXME: Get rid of this in favor of the below versions
+    //"ActionForEachPlayer({{PLAYERS}}, [CreateFutureTrigger({{FUTURE_TRIGGER}}, {{TOP_LEVEL_ACTIONS}})])": "",
+    // These are sequential (player A loses life, you draw a card, player B loses life, you draw a card, ...)
+    //"ActionForEachPlayer({{PLAYERS}}, [PlayerAction(EachablePlayer, LoseLife({{NUMBER}})), DrawACard])": "",
 
 
+    "ActionForEachPermanentByController(ThePermanentsExiledThisWay, [PlayerAction(EachablePlayer, SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle]))])": "",
+    "ActionForEachPermanentByController(ThePermanentsExiledThisWay, [PlayerAction(EachablePlayer, RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed({{CARDS}}, [PutTheCardFoundThisWayOntoTheBattlefield({{ENTER_FLAGS}}), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder]))])": "",
+    "ActionForEachPermanentByController(ThePermanentsExiledThisWay, [PlayerAction(EachablePlayer, RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed({{CARDS}}, [PutTheCardFoundThisWayOntoTheBattlefield({{ENTER_FLAGS}}), PutTheRemainingCardsBackIntoLibraryAndShuffle]))])": "",
+    "ActionForEachPermanentByController(Ref_TargetPermanents, [PlayerAction(EachablePlayer, FaceAVillianousChoice({{ACTION_LIST_LIST}}))])": "",
+
+
+    // The cards are drawn all at once after all players have chosen
+    "ForEachPermanentAnyPlayerMayCost({{PERMANENTS}}, {{PLAYERS}}, HavePlayerTakeAction({{PLAYER}}, DrawACard))": "",
+    // The permanents are exiled simultaneously
+    "ForEachPermanentAnyPlayerMayCost({{PERMANENTS}}, {{PLAYERS}}, Exile([Permanent(EachablePermanent)], []))": "",
+    "ForEachPermanentAnyPlayerMayCost({{PERMANENTS}}, {{PLAYERS}}, PayLife({{NUMBER}}))": "",
+    "ForEachPermanentAnyPlayerMayCost({{PERMANENTS}}, {{PLAYERS}}, PayMana({{MANACOST}}))": "",
+
+    "ActionForEachDistributedAnyTarget([CreateFuturePreventDamage(NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient(DistributedNumber, DistributedAnyTarget), [PreventThatDamage])])": "",
+
+    "ActionForEachPermanent({{PERMANENTS}}, [FlipACoin, If(YouWonTheCoinFlip, [CreatePreventDamageUntil({{PREVENT_EVENT[WouldDealDamage]}}, {{PREVENT_ACTIONS[WouldDealDamage]}}, {{EXPIRATION}})])])": "",
+
+    // FIXME: The goal is to get rid of these for more specific / documented verions.
+    "ActionForEachPermanent({{PERMANENTS}}, {{ACTION_LIST}})": "",
+    "ActionForEachPermanentThatDiedThisWay({{ACTION_LIST}})": "",
+    "ActionForEachPermanentDestroyedThisWay({{ACTION_LIST}})": "",
+    "ActionForEachPermanentPutInGraveyardThisWay({{ACTION_LIST}})": "",
+    "ActionForEachPlayerInTurnOrder({{PLAYERS}}, {{ACTION_LIST}})": "",
+    "ActionForEachSpellAndAbility({{SPELLS_OR_ABILITIES}}, {{ACTION_LIST}})": "",
+    "ActionForEachTarget(Ref_TargetPlayersAndPermanents, {{ACTION_LIST}})": "",
+    "ActionForEachTarget(Ref_AnyTargets, {{ACTION_LIST}})": "",
+    //"ActionForEachExiledCard({{CARDS_IN_EXILE}}, {{ACTION_LIST}})": "",
+    //"ActionForEachPermanentExiledThisWayByController({{ACTION_LIST}})": "",
+    "ActionForEachPermanentExiledThisWay({{ACTION_LIST}})": "",
+    // END FIXME
+
+
+    "APlayerAction({{PLAYERS}}, ChooseACardFromOutsideGame(TheCardsFromOutsideGameRevealedThisWay))": "",
 
     "APlayerAction({{PLAYERS}}, {{BASIC_PLAYER_ACTION}})": "",
     "APlayerActions({{PLAYERS}}, [{{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}])": "",
     "APlayerGainsControlOfPermanent({{PLAYERS}}, {{PERMANENT}})": "",
     "APlayerMayAction({{PLAYERS}}, {{BASIC_PLAYER_ACTION}})": "",
-    "ActionForEachCardtype([{{CARDTYPE}}, {{CARDTYPE}}, {{CARDTYPE}}, {{CARDTYPE}}], {{ACTION_LIST}})": "",
-    "ActionForEachCardtype([{{CARDTYPE}}, {{CARDTYPE}}, {{CARDTYPE}}], {{ACTION_LIST}})": "",
-    "ActionForEachCheckableAbility({{CHECK_HASABLE_LIST}}, {{ACTION_LIST}})": "",
-    "ActionForEachDistributedAnyTarget({{ACTION_LIST}})": "",
-    "ActionForEachPermanent({{PERMANENTS}}, {{ACTION_LIST}})": "",
-    "ActionForEachPermanentByController({{PERMANENTS}}, {{ACTION_LIST}})": "",
-    "ActionForEachPermanentDestroyedThisWay({{ACTION_LIST}})": "",
-    "ActionForEachPermanentPutInGraveyardThisWay({{ACTION_LIST}})": "",
-    "ActionForEachPermanentThatDiedThisWay({{ACTION_LIST}})": "",
-    "ActionForEachPlayer({{PLAYERS}}, {{ACTION_LIST}})": "",
-    "ActionForEachPlayerInTurnOrder({{PLAYERS}}, {{ACTION_LIST}})": "",
-    "ActionForEachSpellAndAbility({{SPELLS_OR_ABILITIES}}, {{ACTION_LIST}})": "",
-    "ActionForEachTarget(Ref_TargetPlayersAndPermanents, {{ACTION_LIST}})": "",
-    "ActionForEachTarget(Ref_AnyTargets, {{ACTION_LIST}})": "",
     "ActionNumberTimes({{NUMBER}}, {{ACTION_LIST}})": "",
     "AnyPlayerMayCost({{PLAYERS}}, {{COST}})": "",
     "AnyPlayerMayPayMana({{PLAYERS}}, {{MANACOST}}, {{ACTION_LIST}}, {{ACTION_LIST}})": "",
@@ -7118,7 +7208,7 @@
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealAnyNumberOfCardsOfTypeAndPutThemIntoHand({{CARDS}}), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealMultipleCardsOfTypeAndPutIntoHand([{{CARDS}}, {{CARDS}}, {{CARDS}}, {{CARDS}}]), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealMultipleCardsOfTypeAndPutIntoHand([{{CARDS}}, {{CARDS}}, {{CARDS}}]), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
-    "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealMultipleCardsOfTypeAndPutIntoHand([{{CARDS}}, {{CARDS}}]), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
+    //"LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealMultipleCardsOfTypeAndPutIntoHand([{{CARDS}}, {{CARDS}}]), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealMultipleCardsOfTypeAndPutIntoHand([{{CARDS}}, {{CARDS}}]), PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealUptoNumberCardsOfTypeAndPutIntoHand({{NUMBER}}, {{CARDS}}), PutTheRemainingCardsBackIntoLibraryAndShuffle])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealUptoNumberCardsOfTypeAndPutIntoHand({{NUMBER}}, {{CARDS}}), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
@@ -7193,6 +7283,7 @@
     "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed({{CARDS}}, [PutTheCardFoundThisWayOntoTheBattlefield({{ENTER_FLAGS}}), PutTheRemainingCardsIntoGraveyard])": "",
     "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed({{CARDS}}, [PutTheCardFoundThisWayOntoTheBattlefield({{ENTER_FLAGS}}), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed({{CARDS}}, [PutTheCardFoundThisWayOntoTheBattlefield({{ENTER_FLAGS}}), PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder])": "",
+    "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed({{CARDS}}, [PutTheCardFoundThisWayOntoTheBattlefield({{ENTER_FLAGS}}), LoseLife({{NUMBER}}), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed({{CARDS}}, [PutTheCardsNotFoundThisWayIntoGraveyard, PutTheCardFoundThisWayOntoTheBattlefield({{ENTER_FLAGS}})])": "",
     "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed({{CARDS}}, [PutTheRemainingCardsIntoGraveyard])": "",
     "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed({{CARDS}}, [PutTheRemainingCardsIntoHand])": "",
@@ -7581,6 +7672,7 @@
     "MayCastCardInHandWithoutPaying(TheCardConjuredIntoHandThisWay)": "",
     "MayCastCardInHandWithoutPaying(TheCardSeekedThisWay)": "",
     "MayCastExiledCard({{CARD_IN_EXILE}})": "",
+    "MayCastExiledCardsAndMaySpendManaAsThoughAnyTypeToCast({{CARDS_IN_EXILE}})": "",
     "MayCastExiledCardAndMaySpendColorlessManaAsThoughAnyColorToCast({{CARD_IN_EXILE}})": "",
     "MayCastExiledCardAndMaySpendManaAsThoughAnyColorToCast({{CARD_IN_EXILE}})": "",
     "MayCastExiledCardAndMaySpendManaAsThoughAnyColorToCastIf({{CARD_IN_EXILE}}, {{CONDITION}})": "",
@@ -7629,7 +7721,7 @@
     "MayCastSpellsFromGraveyardIntoExile({{SPELLS}})": "",
     "MayCastSpellsFromGraveyardUsingTheirSneakAbility({{SPELLS}}, {{CARDS_IN_GRAVEYARDS}})": "",
     "MayCastSpellsFromGraveyardWithEffect({{SPELLS}}, {{CARDS_IN_GRAVEYARDS}}, {{SPELL_EFFECT_LIST}})": "",
-    "MayCastSpellsFromHandWithoutPaying": "",
+    "MayCastSpellsFromHandWithoutPaying({{SPELLS}})": "",
     "MayCastSpellsFromOtherPlayersGraveyards": "",
     "MayCastSpellsFromTheTopOfTheirGraveyardIntoExile({{SPELLS}})": "",
     "MayCastSpellsFromTopOfLibrary({{SPELLS}})": "",

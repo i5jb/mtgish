@@ -1818,6 +1818,7 @@ pub enum Craftable {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_GameEffect", content = "args"))]
 pub enum GameEffect {
+  TheLegendsRuleDoesntApplyToPermanents(Box<Permanents>),
   PowerUpAbilitiesCantBeActivated,
   CardsCantEnterTheBattlefieldFromExile(Box<Cards>),
   CreaturesCantBlock,
@@ -1838,6 +1839,9 @@ pub enum PermanentRule {
   CantHaveCountersOfTypePutOnIt(CounterType),
   CantHaveCountersOfTypeRemovedFromIt(CounterType),
   CantHaveCountersPutOnIt,
+
+  ArentPutIntoGraveyardForHaving0Loyalty,
+  AssignsCombatDamageAsThoughPowerWerePositive,
 
   StationsPermanentsAsThoughPowerWereGreater(Box<GameNumber>),
   StationsPermanentsUsingToughnessRatherThanPower,
@@ -2025,6 +2029,7 @@ pub enum PlayerEffect {
   MayPlayLandsFromAmongExiledWithEffect(Box<CardsInExile>, Vec<EnterFlag>),
   MayPlayOneCardFromAmongExiledWithoutPaying(Box<CardsInExile>),
 
+  MayCastExiledCardsAndMaySpendManaAsThoughAnyTypeToCast(Box<CardsInExile>),
   FirstTwoCoinFlipsEachTurnAreHeadsAndYouWin,
   MayCastASpellFromAmongCardsMilledThisWay(Box<Spells>),
   MayCastASpellFromTheirGraveyardOnceEachTurnWithEffect(Box<Spells>, Vec<SpellEffect>),
@@ -2217,7 +2222,7 @@ pub enum PlayerEffect {
   MayCastSpellsFromAmongExiledWithoutPaying(Box<Spells>, CardsInExile),
   MayCastSpellsFromGraveyard(Box<Spells>),
   MayCastSpellsFromGraveyardIntoExile(Box<Spells>),
-  MayCastSpellsFromHandWithoutPaying,
+  MayCastSpellsFromHandWithoutPaying(Box<Spells>),
   MayCastSpellsFromOtherPlayersGraveyards,
   MayCastSpellsFromTheTopOfTheirGraveyardIntoExile(Box<Spells>),
   MayCastSpellsFromTopOfLibrary(Box<Spells>),
@@ -3606,6 +3611,7 @@ pub enum ReplacementActionWouldMask {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldEnterCost", content = "args"))]
 pub enum ReplacementActionWouldEnterCost {
   Exile(Vec<ExilableCost>, Vec<ExileFlag>),
+  BeholdA(Box<CardsInHand>),
   DiscardACardOfType(Box<Cards>),
   EntersTapped,
   ExileTwoCardsFromAmongPlayersGraveyards(Box<CardsInGraveyards>, Box<Players>),
@@ -4389,6 +4395,8 @@ pub enum Condition {
   Or(Vec<Condition>),
   And(Vec<Condition>),
 
+  PlayerPaidANumberOfCountersToActivateIt(Box<Player>, Box<Comparison>, Box<CounterType>),
+  YouWonTheCoinFlip,
   ACardLeftPlayersGraveyardThisTurn(Box<Cards>, Box<Player>),
   ACardOfTypeWasExiledThisTurn(Box<CardsInExile>),
   ACardOfTypeWasFoundThisWay(Box<Cards>),
@@ -4400,7 +4408,6 @@ pub enum Condition {
   ACardWasPutIntoGraveyardThisWay(Box<Cards>),
   ACardWasPutIntoHandThisWay(Box<Cards>),
   ACardWasPutIntoPlayersGraveyardFromAnywhereThisTurn(Box<Cards>, Box<Player>),
-  ACardWasRevealedByPlayerThisWay(Box<Cards>, Box<Player>),
   ACardWasRevealedThisWay(Box<Cards>),
   ACardWasSurveiledIntoGraveyardThisWay(Box<Cards>),
   ACardWasntDrawnThisWay,
@@ -4757,6 +4764,7 @@ pub enum Cost {
   Reflexive_Discard_WhenYouDo(Box<Discardable>, Box<Actions>),
   Reflexive_Sacrifice_WhenYouDo(Vec<Sacrificable>, Box<Actions>),
 
+  PayManaCostOfAPermanent(Box<Permanents>),
   AbandonScheme(SingleScheme),
   AddMana(ManaProduce),
   AnteAPermanent(Box<Permanents>),
@@ -4839,7 +4847,6 @@ pub enum Cost {
   HavePermanentDealDamage(Box<Permanent>, Box<GameNumber>, Box<DamageRecipient>),
   HavePlayerTakeAction(Box<Player>, CostPlayerAction),
   HaveSpellDealDamage(Box<Spell>, Box<GameNumber>, Box<DamageRecipient>),
-  Investigate,
   ItsManaCost,
   ItsManaCostReducedBy(CostReduction),
   LookAtPlayersHandAndChooseACardToExile(Box<Player>, Box<CardsInHand>),
@@ -4965,7 +4972,6 @@ pub enum NameFilter {
   OneOfTheChosenNames,
   TheChosenName,
   TheChosenCardName,
-  TheNameChosenByPlayer(Box<Player>),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -5105,6 +5111,8 @@ pub enum Permanents {
   IsntPrepared,
   WasDestroyedThisWay,
 
+  CostWasntPaidForIt,
+  HasntDealtCombatDamageThisGame,
   APermanentWithTheHighestManaValue(Box<Permanents>),
   APermanentWithTheLowestManaValue(Box<Permanents>),
   AdditionalCostWasPaid,
@@ -5786,6 +5794,8 @@ pub enum ManaSources {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_GameNumber", content = "args"))]
 pub enum GameNumber {
+  TheNumberOfCardsPutIntoAPlayersGraveyardFromTheirLibraryThisTurn(Box<Players>),
+  TheNumberOfPlaneswalkerTypesAmongPermanents(Box<Permanents>),
   AManaValueOfAnExiledCard(Box<CardsInExile>),
   ANumberOfCardsInAPlayersHand(Box<Players>),
   APlayerWouldMillAnyNumberOfCards_ThatMuch,
@@ -6111,7 +6121,6 @@ pub enum GameNumber {
   TheNumberOfPlayersAttackedByPlayerThisCombat(Box<Players>, Box<Player>),
   TheNumberOfPlayersThatDidntPayCost,
   TheNumberOfPlayersThatHaveLostTheGame,
-  TheNumberOfPlayersThatPaidCost,
   TheNumberOfPlayersWhoTookAnActionThisWay,
   TheNumberOfRepeatedCostsNotPaid,
   TheNumberOfRepeatedCostsNotPaidByPlayer(Box<Player>),
@@ -6362,6 +6371,14 @@ pub enum Players {
   Other(Box<Player>),
   SinglePlayer(Box<Player>),
 
+  DidntRevealACardOfTheirChosenName,
+  DidntTakeAction,
+  HasActivatedAnAbilityThisTurn(Box<ActivatedAbilities>),
+  RevealedACardOfTheirChosenName,
+  ScriedThisTurn,
+  WasDealtNoncombatDamageLastTurn,
+  WasDealtNoncombatDamageThisTurn,
+
   ChoseToDoActions,
   AllowedToDrawCards,
   CreatedATokenThisWay,
@@ -6403,7 +6420,6 @@ pub enum Players {
   CastASpellThisTurn(Box<Spells>),
   CastNumSpellsThisTurn(Box<Comparison>, Box<Spells>),
   ChoseAFirstPermanentThisWay,
-  ChoseAPermanentThisWay,
   ChoseASecondPermanentThisWay,
   ChoseHighestNumber,
   ChoseLowestNumber,
@@ -6617,6 +6633,8 @@ pub enum Spells {
 
   // ManaAmountOfTypeWasSpentToCastIt", Box<Comparison>, ManaProduceSymbol: "Colorless, // FIXME: ManaAmountOfTypeWasSpentToCastIt / Colorless
   // ManaAmountOfTypeWasSpentToCastIt", Box<Comparison>, ManaProduceSymbol: color }       // FIXME: ManaAmountOfTypeWasSpentToCastIt / Color
+  WasPrepared,
+  WasntCastFromAPlayersHand(Box<Players>),
   ManaAmountOfTypeWasSpentToCastIt(Box<Comparison>, Color),
 
   HasColorManaSymbolInManaCost(Color),
@@ -6902,6 +6920,7 @@ pub enum CardsInHand {
   InAPlayersHand(Box<Players>),
   SharesANameWithPermanent(Box<Permanent>),
 
+  IsPlaneswalkerType(PlaneswalkerType),
   TotalPowerAndToughnessIs(Box<Comparison>),
   DoesntHaveAbility(CheckHasable),
   IsColorless,
@@ -7126,6 +7145,7 @@ pub enum Comparison {
   Even,
   Odd,
   Prime,
+  Negative,
   LessThanOrEqualTo(Box<GameNumber>),
   GreaterThanOrEqualTo(Box<GameNumber>),
   GreaterThan(Box<GameNumber>),
@@ -8150,6 +8170,8 @@ pub enum RevealTheTopNumberCardsOfLibraryAction {
   PutAGenericCardOnBottomOfLibrary,
   PutRemainingCardsInHand,
 
+  LoseLife(Box<GameNumber>),
+
   ForEachColorAmongPermanentsYouMayExileACardOfThatColorFoundThisWay(Box<Permanents>),
   PutAnyNumberOfFoundCardsOntoBattlefield(Vec<EnterFlag>),
   ChooseAPlayer(Box<Players>),
@@ -8453,6 +8475,7 @@ pub enum Exilable {
   TheTopCardOfEachPlayersLibraries(Box<Players>),
   TheTopCardOfPlayersLibrary(Box<Player>),
   TheTopNumberCardsOfPlayersLibrary(Box<GameNumber>, Box<Player>),
+  TheTopNumberCardsOfEachPlayersLibrary(Box<GameNumber>, Box<Players>),
 
   CardsFromTheTopOfLibraryUntilACardOfTypeIsExiled(Box<CardsInLibrary>),
   CardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreExiled(Box<GameNumber>, Box<CardsInLibrary>),
@@ -8679,7 +8702,6 @@ pub enum PutCountersCost {
   ACounterOfTypeOnAPermanent(CounterType, Box<Permanents>),
   ACounterOfTypeOnCardInExile(CounterType, Box<CardInExile>),
   ACounterOfTypeOnPermanent(CounterType, Box<Permanent>),
-  NumberCountersOfTypeOnAPermanent(Box<GameNumber>, CounterType, Box<Permanents>),
   NumberCountersOfTypeOnPermanent(Box<GameNumber>, CounterType, Box<Permanent>),
   NumberCountersOfTypeOnPlayer(Box<GameNumber>, CounterType, Box<Player>),
 }
@@ -8774,6 +8796,14 @@ pub enum Dice {
   D6,
 }
 
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_CardsOutsideTheGame", content = "args"))]
+pub enum CardsOutsideTheGame {
+  AnyCard,
+  TheCardsFromOutsideGameChosenThisWay,
+  TheCardsFromOutsideGameRevealedThisWay,
+}
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
@@ -8781,6 +8811,18 @@ pub enum Dice {
 pub enum Action {
   Recruit,
   Assimilate(Box<CardInGraveyards>),
+
+  CastAnyNumberOfSpellsFromAmongCopiedCardsWithoutPaying(Box<Spells>),
+  ChooseACardFromOutsideGame(Box<CardsOutsideTheGame>),
+  PrepareEachPermanent(Box<Permanents>),
+  EachPlayerMayChooseAnAction(Box<Players>, Vec<Cost>),
+  EachPlayerMayCostAndFallback(Box<Players>, Vec<Cost>, Vec<Action>),
+  EachPlayerMayCostOrFallback(Box<Players>, Vec<Cost>, Box<Action>),
+  EmpowerJace(Box<GameNumber>),
+  ForEachPermanentAnyPlayerMayCost(Box<Permanents>, Box<Players>, Box<Cost>),
+  ForEachPlayerMayCastASpellFromAmongCardsThatPlayerMilledThisWayWithoutPaying(Box<Players>, Box<Spells>),
+  Reflexive_Discard_WhenYouDiscardOneOrMoreCardsOfTypeThisWay(Box<Discardable>, Box<CardsInHand>, Box<Actions>),
+  RevealNumberGroupCardsFromOutsideGame(Box<GameNumber>, Box<Cards>, Box<GroupFilter>),
 
   MultiDraw(Vec<MultiDrawable>),
 
@@ -8902,7 +8944,6 @@ pub enum Action {
   ActionForEachPermanentByController(Box<Permanents>, Vec<Action>),
   ActionForEachPermanentDestroyedThisWay(Vec<Action>),
   ActionForEachPermanentExiledThisWay(Vec<Action>),
-  ActionForEachPermanentExiledThisWayByController(Vec<Action>),
   ActionForEachPermanentPutInGraveyardThisWay(Vec<Action>),
   ActionForEachPermanentThatDiedThisWay(Vec<Action>),
   ActionForEachPlayer(Box<Players>, Vec<Action>),
@@ -9624,7 +9665,7 @@ pub enum Action {
   PutACardFromHandOnBottomOfLibrary,
   PutACardFromHandOnTopOfLibrary,
   PutACardFromHandOrGraveyardOnBattlefield(Box<Cards>, Box<Player>, Vec<EnterFlag>),
-  PutACardFromOutsideGameInHand(Box<Cards>),
+  PutACardFromOutsideGameInHand(Box<CardsOutsideTheGame>),
   PutACardFromOutsideGameOnTopOfLibrary(Box<Cards>),
   PutACardFromPlayersGraveyardOnBattlefield(Box<CardsInGraveyards>, Box<Player>, Vec<EnterFlag>),
   PutACardFromPlayersGraveyardOnTopOfLibrary(Box<Cards>, Box<Player>),
@@ -10149,6 +10190,7 @@ pub enum AnteCard {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Target", content = "args"))]
 pub enum Target {
   UptoNumberTargetPermanentsAndOrCardsInGraveyards(Box<GameNumber>, Box<Permanents>, Box<CardsInGraveyards>),
+  UptoOneTargetGraveyardCardOfEachCardType(Box<CardsInGraveyards>),
 
   BetweenOneAndNumberAnyTargets(Box<GameNumber>),
   BetweenOneAndNumberTargetGraveyardCards(Box<GameNumber>, Box<CardsInGraveyards>),
@@ -10667,6 +10709,9 @@ pub enum Trigger {
   WhenASpellOrAbilityCausesAPlayerToLoseAnAmountOfLife(Box<SpellsAndAbilities>, Box<Players>, Box<Comparison>),
   WhenAPlayerFlipsAnyNumberOfCoins(Box<Players>),
   WhenAPlayerSelectsAnyNumberOfTargetsAtRandom(Box<Players>),
+  WhenACreatureAttacksAPlayerAlone(Box<Permanents>, Box<Players>),
+  WhenAnyNumberOfPlayersAreDealtCombatDamage(Box<Players>),
+  WhenAnyNumberOfPlayersAreDealtNoncombatDamage(Box<Players>),
 
   // face a dilemma
   WhenAPlayerFacesADilemma(Box<Players>),
@@ -10826,7 +10871,6 @@ pub enum Trigger {
   WhenAnyNumberOfCreaturesDealDamageToAPlayer(Box<Permanents>, Box<Players>),
   WhenAnyNumberOfPermanentsAreDealtExcessNoncombatDamage(Box<Permanents>),
   WhenAnyNumberOfPermanentsDealDamageToAnyNumberOfPlayers(Box<Permanents>, Box<Players>),
-  WhenPlayersAreDealtCombatDamage(Box<Players>),
 
   // destroy
   WhenASpellOrAbilityDestroysAPermanent(SpellsAndAbilities, Box<Permanents>),

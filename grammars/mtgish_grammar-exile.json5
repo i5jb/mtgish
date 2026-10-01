@@ -98,6 +98,7 @@
     "TheTopNumberCardsOfPlayersLibrary({{NUMBER}}, {{PLAYER}})": "",
     "AllCardsFromPlayersLibrary({{PLAYER}})": "",
 
+    "TheTopNumberCardsOfEachPlayersLibrary({{NUMBER}}, {{PLAYERS}})": "",
     "TheTopCardOfEachPlayersLibraries({{PLAYERS}})": "",
     "TheBottomCardOfEachPlayersLibraries({{PLAYERS}})": "",
 
@@ -184,9 +185,9 @@
   "{{_PLAYER_ACTION[Exile]}}": {
     "Exile({{EXILABLE_LIST}}, {{EXILE_FLAGS}})": "",
 
-    "ActionForEachExiledCard({{CARDS_IN_EXILE}}, {{ACTION_LIST}})": "",
-    "ActionForEachPermanentExiledThisWayByController({{ACTION_LIST}})": "",
-    "ActionForEachPermanentExiledThisWay({{ACTION_LIST}})": "",
+    "ActionForEachExiledCard({{CARDS_IN_EXILE}}, [CreatePlayerEffectUntil(OwnerOfExiledCard(EachableExiled), [MayPlayExiledCard(EachableExiled)], UntilPlayersNextTurn(OwnerOfExiledCard(EachableExiled)))])": "",
+    "ActionForEachExiledCard({{CARDS_IN_EXILE}}, [CreatePlayerEffectUntil(OwnerOfExiledCard(EachableExiled), [MayPlayExiledCard(EachableExiled)], ForAsLongAsCardIsExiled(EachableExiled))])": "",
+    "ActionForEachExiledCard({{CARDS_IN_EXILE}}, [CreatePlayerEffectUntil(You, [MayPlayExiledCardIf(EachableExiled, {{CONDITION}})], ForAsLongAsCardIsExiled(EachableExiled))])": "",
   },
   "{{_COST[Exile]}}": {
     "Exile({{EXILABLE_COST_LIST}}, {{EXILE_FLAGS}})": "",
@@ -194,22 +195,24 @@
   },
   "{{_CONDITION[Exile]}}": {
     "ExiledCardPassesFilter({{CARD_IN_EXILE}}, {{CARDS_IN_EXILE}})": "",
+    "AnExiledCardPassesFilter({{CARDS_IN_EXILE}}, {{CARDS_IN_EXILE}})": "",
+    "CardIsExiled({{CARD_IN_EXILE}})": "",
+    "NumCardsInExileIs({{COMPARISON}}, {{CARDS_IN_EXILE}})": "",
+    "ThereAreNumberCardTypesAmongExiled({{COMPARISON}}, {{CARDS_IN_EXILE}})": "",
+
     "ExiledPermanentWasUnearthed": "",
 
     "ANumberOfCardsWerePutIntoExileThisTurn({{COMPARISON}}, {{CARDS}})": "",
     "ACardOfTypeWasExiledThisTurn({{CARDS_IN_EXILE}})": "",
+
     "ACardWasExiledThisWay({{CARDS}})": "",
     "ANumberOfGroupCardsWereExiledThisWay({{COMPARISON}}, {{CARDS}}, {{GROUP_FILTER}})": "",
     "APermanentWasExiledThisWay({{PERMANENTS}})": "",
-    "AnExiledCardPassesFilter({{CARDS_IN_EXILE}}, {{CARDS_IN_EXILE}})": "",
-    "CardIsExiled({{CARD_IN_EXILE}})": "",
-
-    "NumCardsInExileIs({{COMPARISON}}, {{CARDS_IN_EXILE}})": "",
-    "NumDifferentManaValuesAmongCardsInExileIs({{COMPARISON}}, {{CARDS_IN_EXILE}})": "",
     "TheCardExiledThisWayIsStillExiled": "",
     "TheLastCardExiledThisWayWasACard({{CARDS}})": "",
+
+    "NumDifferentManaValuesAmongCardsInExileIs({{COMPARISON}}, {{CARDS_IN_EXILE}})": "",
     "TheTotalManaValueOfExiledCardsIs({{CARDS_IN_EXILE}}, {{COMPARISON}})": "",
-    "ThereAreNumberCardTypesAmongExiled({{COMPARISON}}, {{CARDS_IN_EXILE}})": "",
   },
   "{{_EXPIRATION[Exile]}}": {
     "UntilCardIsNoLongerExiled({{CARD_IN_EXILE}})": "",
@@ -217,8 +220,6 @@
     "UntilItIsNoLongerExiled": "",
   },
   "{{_NUMBER[Exile]}}": {
-    "NumCardsInExile({{CARDS_IN_EXILE}})": "",
-    "NumDifferentManaValuesAmongCardsInExile({{CARDS_IN_EXILE}})": "",
     "NumGraveyardCardsExiledThisWay": "",
     "NumGraveyardCardsOfTypeExiledThisWay({{CARDS}})": "",
     "NumHandCardsExiledFaceDownThisWay": "",
@@ -226,16 +227,19 @@
     "NumPermanentsExiledThisWay": "",
     "NumPermanentsOfTypeExiledThisWay({{PERMANENTS}})": "",
     "NumberOfCardsOfTypeExiledThisWay({{CARDS}})": "",
-    "PowerOfExiledCard({{CARD_IN_EXILE}})": "",
-    "PowerOfTheExiledCreature": "",
-    "TheGreatestManaValueAmongExiledCards({{CARDS_IN_EXILE}})": "",
     "TheNumberOfCardsInHandExiledThisWay": "",
     "TheNumberOfLibraryCardsExiledThisWay": "",
     "TheNumberOfLibraryCardsOfTypeExiledThisWay({{CARDS}})": "",
+    "TotalPowerOfPermanentsExiledThisWay({{PERMANENTS}})": "",
+
+    "NumCardsInExile({{CARDS_IN_EXILE}})": "",
+    "NumDifferentManaValuesAmongCardsInExile({{CARDS_IN_EXILE}})": "",
+    "PowerOfExiledCard({{CARD_IN_EXILE}})": "",
+    "PowerOfTheExiledCreature": "",
+    "TheGreatestManaValueAmongExiledCards({{CARDS_IN_EXILE}})": "",
     "TheNumberOfPermanentsExiledThisTurn({{PERMANENTS}})": "",
     "TotalManaValueOfExiledCards({{CARDS_IN_EXILE}})": "",
     "TotalPowerOfExiledCards({{CARDS_IN_EXILE}})": "",
-    "TotalPowerOfPermanentsExiledThisWay({{PERMANENTS}})": "",
     "TotalToughnessOfExiledCards({{CARDS_IN_EXILE}})": "",
     "ToughnessOfExiledCard({{CARD_IN_EXILE}})": "",
     "ToughnessOfTheExiledCreature": "",

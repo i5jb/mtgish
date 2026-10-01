@@ -19,14 +19,6 @@
     "replace": "Slivers spellbook",
   },
 
-  // Alchemy pickiness (A-Name vs Name)
-  {
-    "reason":  "Alchemy pickiness",
-    "cards":   ["A-Earthquake Dragon"],
-    "find":    "the total mana value of Dragons you control not named Earthquake Dragon",
-    "replace": "the total mana value of Dragons you control not named A-Earthquake Dragon",
-  },
-
   // Alchemy issue with Gate lands
   {
     "reason":  "The mana ability should be intrinsic, not spelled out",
@@ -463,12 +455,6 @@
     "replace": "Tempting offer",
   },
   {
-    "reason":  "CARD_NAME update typo on gatherer",
-    "cards":   ["Personal Incarnation"],
-    "find":    "Only this creatures owner",
-    "replace": "Only this creature's owner",
-  },
-  {
     "reason":  "Wizard's typo, find/replace of CARD_NAME probably screwed up",
     "cards":   ["Necratog"],
     "find":    "graveyard: this creature",
@@ -591,6 +577,18 @@
 
   // Unsorted fixes
   {
+    "reason":  "Reversion of entering the battlefield wording",
+    "cards":   ["Karn, Argent Defender"],
+    "find":    "Artifacts and creatures entering the battlefield don't cause abilities to trigger.",
+    "replace": "Artifacts and creatures entering don't cause abilities to trigger.",
+  },
+  {
+    "reason":  "Be more consistent with 'this token', even on token copies",
+    "cards":   ["Face Yourself"] ,
+    "find":    "if you don't control a planeswalker, sacrifice this creature",
+    "replace": "if you don't control a planeswalker, sacrifice this token",
+  },
+  {
     "reason":  "Not a fan of Wizard's wording here",
     "cards":   ["Moku, Meandering Drummer"],
     "find":    "Moku gets +2/+1 and creatures you control gain haste until end of turn",
@@ -692,5 +690,10 @@
     "find":    "Choose target non-Wall creature the active player has controlled continuously since the beginning of the turn. That player may pay {X}, where X is that creature's mana value. If they don't pay, the creature attacks",
     "replace": "Choose target non-Wall creature the active player has controlled continuously since the beginning of the turn. Its controller may pay {X}, where X is that creature's mana value. If they don't pay, that creature attacks",
   },
-
+  {
+    "reason":  "Improved wording",
+    "cards":   ["Chaos Mutation"],
+    "find":    "Exile any number of target creatures controlled by different players.",
+    "replace": "For each player, exile up to one target creatures that player controls.",
+  },
 ]

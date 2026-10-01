@@ -48,6 +48,17 @@ type AbilityVariable =
 type Action =
 | { "_Action": "Recruit" }
 | { "_Action": "Assimilate", "args": CardInGraveyards }
+| { "_Action": "CastAnyNumberOfSpellsFromAmongCopiedCardsWithoutPaying", "args": Spells }
+| { "_Action": "ChooseACardFromOutsideGame", "args": CardsOutsideTheGame }
+| { "_Action": "PrepareEachPermanent", "args": Permanents }
+| { "_Action": "EachPlayerMayChooseAnAction", "args": [Players, Array<Cost>] }
+| { "_Action": "EachPlayerMayCostAndFallback", "args": [Players, Array<Cost>, Array<Action>] }
+| { "_Action": "EachPlayerMayCostOrFallback", "args": [Players, Array<Cost>, Action] }
+| { "_Action": "EmpowerJace", "args": GameNumber }
+| { "_Action": "ForEachPermanentAnyPlayerMayCost", "args": [Permanents, Players, Cost] }
+| { "_Action": "ForEachPlayerMayCastASpellFromAmongCardsThatPlayerMilledThisWayWithoutPaying", "args": [Players, Spells] }
+| { "_Action": "Reflexive_Discard_WhenYouDiscardOneOrMoreCardsOfTypeThisWay", "args": [Discardable, CardsInHand, Actions] }
+| { "_Action": "RevealNumberGroupCardsFromOutsideGame", "args": [GameNumber, Cards, GroupFilter] }
 | { "_Action": "MultiDraw", "args": Array<MultiDrawable> }
 | { "_Action": "MultiCreateTokens", "args": Array<MultiCreateToken> }
 | { "_Action": "CreateTokens", "args": [Array<CreatableToken>, Array<TokenFlag>] }
@@ -159,7 +170,6 @@ type Action =
 | { "_Action": "ActionForEachPermanentByController", "args": [Permanents, Array<Action>] }
 | { "_Action": "ActionForEachPermanentDestroyedThisWay", "args": Array<Action> }
 | { "_Action": "ActionForEachPermanentExiledThisWay", "args": Array<Action> }
-| { "_Action": "ActionForEachPermanentExiledThisWayByController", "args": Array<Action> }
 | { "_Action": "ActionForEachPermanentPutInGraveyardThisWay", "args": Array<Action> }
 | { "_Action": "ActionForEachPermanentThatDiedThisWay", "args": Array<Action> }
 | { "_Action": "ActionForEachPlayer", "args": [Players, Array<Action>] }
@@ -880,7 +890,7 @@ type Action =
 | { "_Action": "PutACardFromHandOnBottomOfLibrary" }
 | { "_Action": "PutACardFromHandOnTopOfLibrary" }
 | { "_Action": "PutACardFromHandOrGraveyardOnBattlefield", "args": [Cards, Player, Array<EnterFlag>] }
-| { "_Action": "PutACardFromOutsideGameInHand", "args": Cards }
+| { "_Action": "PutACardFromOutsideGameInHand", "args": CardsOutsideTheGame }
 | { "_Action": "PutACardFromOutsideGameOnTopOfLibrary", "args": Cards }
 | { "_Action": "PutACardFromPlayersGraveyardOnBattlefield", "args": [CardsInGraveyards, Player, Array<EnterFlag>] }
 | { "_Action": "PutACardFromPlayersGraveyardOnTopOfLibrary", "args": [Cards, Player] }
@@ -1852,6 +1862,7 @@ type CardsInHand =
 | { "_CardsInHand": "SingleCardInHand", "args": CardInHand }
 | { "_CardsInHand": "InAPlayersHand", "args": Players }
 | { "_CardsInHand": "SharesANameWithPermanent", "args": Permanent }
+| { "_CardsInHand": "IsPlaneswalkerType", "args": PlaneswalkerType }
 | { "_CardsInHand": "TotalPowerAndToughnessIs", "args": Comparison }
 | { "_CardsInHand": "DoesntHaveAbility", "args": CheckHasable }
 | { "_CardsInHand": "IsColorless" }
@@ -1960,6 +1971,10 @@ type CardsInOracle =
 | { "_CardsInOracle": "IsNonCreatureType", "args": CreatureType }
 | { "_CardsInOracle": "IsArtifactType", "args": ArtifactType }
 | { "_CardsInOracle": "ManaValueIs", "args": Comparison };
+type CardsOutsideTheGame =
+| { "_CardsOutsideTheGame": "AnyCard" }
+| { "_CardsOutsideTheGame": "TheCardsFromOutsideGameChosenThisWay" }
+| { "_CardsOutsideTheGame": "TheCardsFromOutsideGameRevealedThisWay" };
 type CardType =
 | "Artifact"
 | "Battle"
@@ -2177,6 +2192,7 @@ type Comparison =
 | { "_Comparison": "Even" }
 | { "_Comparison": "Odd" }
 | { "_Comparison": "Prime" }
+| { "_Comparison": "Negative" }
 | { "_Comparison": "LessThanOrEqualTo", "args": GameNumber }
 | { "_Comparison": "GreaterThanOrEqualTo", "args": GameNumber }
 | { "_Comparison": "GreaterThan", "args": GameNumber }
@@ -2206,6 +2222,8 @@ type Condition =
 | { "_Condition": "IsDuringEndStep" }
 | { "_Condition": "Or", "args": Array<Condition> }
 | { "_Condition": "And", "args": Array<Condition> }
+| { "_Condition": "PlayerPaidANumberOfCountersToActivateIt", "args": [Player, Comparison, CounterType] }
+| { "_Condition": "YouWonTheCoinFlip" }
 | { "_Condition": "ACardLeftPlayersGraveyardThisTurn", "args": [Cards, Player] }
 | { "_Condition": "ACardOfTypeWasExiledThisTurn", "args": CardsInExile }
 | { "_Condition": "ACardOfTypeWasFoundThisWay", "args": Cards }
@@ -2217,7 +2235,6 @@ type Condition =
 | { "_Condition": "ACardWasPutIntoGraveyardThisWay", "args": Cards }
 | { "_Condition": "ACardWasPutIntoHandThisWay", "args": Cards }
 | { "_Condition": "ACardWasPutIntoPlayersGraveyardFromAnywhereThisTurn", "args": [Cards, Player] }
-| { "_Condition": "ACardWasRevealedByPlayerThisWay", "args": [Cards, Player] }
 | { "_Condition": "ACardWasRevealedThisWay", "args": Cards }
 | { "_Condition": "ACardWasSurveiledIntoGraveyardThisWay", "args": Cards }
 | { "_Condition": "ACardWasntDrawnThisWay" }
@@ -2460,6 +2477,7 @@ type Cost =
 | { "_Cost": "Or", "args": Array<Cost> }
 | { "_Cost": "Reflexive_Discard_WhenYouDo", "args": [Discardable, Actions] }
 | { "_Cost": "Reflexive_Sacrifice_WhenYouDo", "args": [Array<Sacrificable>, Actions] }
+| { "_Cost": "PayManaCostOfAPermanent", "args": Permanents }
 | { "_Cost": "AbandonScheme", "args": SingleScheme }
 | { "_Cost": "AddMana", "args": ManaProduce }
 | { "_Cost": "AnteAPermanent", "args": Permanents }
@@ -2542,7 +2560,6 @@ type Cost =
 | { "_Cost": "HavePermanentDealDamage", "args": [Permanent, GameNumber, DamageRecipient] }
 | { "_Cost": "HavePlayerTakeAction", "args": [Player, CostPlayerAction] }
 | { "_Cost": "HaveSpellDealDamage", "args": [Spell, GameNumber, DamageRecipient] }
-| { "_Cost": "Investigate" }
 | { "_Cost": "ItsManaCost" }
 | { "_Cost": "ItsManaCostReducedBy", "args": Array<CostReductionSymbol> }
 | { "_Cost": "LookAtPlayersHandAndChooseACardToExile", "args": [Player, CardsInHand] }
@@ -3609,6 +3626,7 @@ type Exilable =
 | { "_Exilable": "TheTopCardOfEachPlayersLibraries", "args": Players }
 | { "_Exilable": "TheTopCardOfPlayersLibrary", "args": Player }
 | { "_Exilable": "TheTopNumberCardsOfPlayersLibrary", "args": [GameNumber, Player] }
+| { "_Exilable": "TheTopNumberCardsOfEachPlayersLibrary", "args": [GameNumber, Players] }
 | { "_Exilable": "CardsFromTheTopOfLibraryUntilACardOfTypeIsExiled", "args": CardsInLibrary }
 | { "_Exilable": "CardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreExiled", "args": [GameNumber, CardsInLibrary] }
 | { "_Exilable": "CardsFromTheTopOfLibraryUntilGroupCardsAreExiled", "args": GroupFilter }
@@ -3809,6 +3827,7 @@ type FutureTrigger =
 | { "_FutureTrigger": "WhenPermanentIsPutIntoAPlayersGraveyard", "args": [Permanent, Players] }
 | { "_FutureTrigger": "WhenPlayerLosesControlOfPermanent", "args": [Player, Permanent] };
 type GameEffect =
+| { "_GameEffect": "TheLegendsRuleDoesntApplyToPermanents", "args": Permanents }
 | { "_GameEffect": "PowerUpAbilitiesCantBeActivated" }
 | { "_GameEffect": "CardsCantEnterTheBattlefieldFromExile", "args": Cards }
 | { "_GameEffect": "CreaturesCantBlock" }
@@ -3821,6 +3840,8 @@ type GameEffect =
 | { "_GameEffect": "SchemesCantBeSetInMotion" }
 | { "_GameEffect": "SpellsAndAbilitiesCantTargetPermanents", "args": [SpellsAndAbilities, Permanents] };
 type GameNumber =
+| { "_GameNumber": "TheNumberOfCardsPutIntoAPlayersGraveyardFromTheirLibraryThisTurn", "args": Players }
+| { "_GameNumber": "TheNumberOfPlaneswalkerTypesAmongPermanents", "args": Permanents }
 | { "_GameNumber": "AManaValueOfAnExiledCard", "args": CardsInExile }
 | { "_GameNumber": "ANumberOfCardsInAPlayersHand", "args": Players }
 | { "_GameNumber": "APlayerWouldMillAnyNumberOfCards_ThatMuch" }
@@ -4146,7 +4167,6 @@ type GameNumber =
 | { "_GameNumber": "TheNumberOfPlayersAttackedByPlayerThisCombat", "args": [Players, Player] }
 | { "_GameNumber": "TheNumberOfPlayersThatDidntPayCost" }
 | { "_GameNumber": "TheNumberOfPlayersThatHaveLostTheGame" }
-| { "_GameNumber": "TheNumberOfPlayersThatPaidCost" }
 | { "_GameNumber": "TheNumberOfPlayersWhoTookAnActionThisWay" }
 | { "_GameNumber": "TheNumberOfRepeatedCostsNotPaid" }
 | { "_GameNumber": "TheNumberOfRepeatedCostsNotPaidByPlayer", "args": Player }
@@ -4711,8 +4731,7 @@ type NameFilter =
 | { "_NameFilter": "NameOfGraveyardCard", "args": CardInGraveyards }
 | { "_NameFilter": "OneOfTheChosenNames" }
 | { "_NameFilter": "TheChosenName" }
-| { "_NameFilter": "TheChosenCardName" }
-| { "_NameFilter": "TheNameChosenByPlayer", "args": Player };
+| { "_NameFilter": "TheChosenCardName" };
 type NameStickerFilter =
 | { "_NameStickerFilter": "TheNameStickerPutOnPermanentThisWay" };
 type NormalObject =
@@ -4868,6 +4887,8 @@ type PermanentRule =
 | { "_PermanentRule": "CantHaveCountersOfTypePutOnIt", "args": CounterType }
 | { "_PermanentRule": "CantHaveCountersOfTypeRemovedFromIt", "args": CounterType }
 | { "_PermanentRule": "CantHaveCountersPutOnIt" }
+| { "_PermanentRule": "ArentPutIntoGraveyardForHaving0Loyalty" }
+| { "_PermanentRule": "AssignsCombatDamageAsThoughPowerWerePositive" }
 | { "_PermanentRule": "StationsPermanentsAsThoughPowerWereGreater", "args": GameNumber }
 | { "_PermanentRule": "StationsPermanentsUsingToughnessRatherThanPower" }
 | { "_PermanentRule": "CanBlockCreaturesWithShadowAsThoughItHadShadow" }
@@ -4994,6 +5015,8 @@ type Permanents =
 | { "_Permanents": "TheTokensCreatedThisWay" }
 | { "_Permanents": "IsntPrepared" }
 | { "_Permanents": "WasDestroyedThisWay" }
+| { "_Permanents": "CostWasntPaidForIt" }
+| { "_Permanents": "HasntDealtCombatDamageThisGame" }
 | { "_Permanents": "APermanentWithTheHighestManaValue", "args": Permanents }
 | { "_Permanents": "APermanentWithTheLowestManaValue", "args": Permanents }
 | { "_Permanents": "AdditionalCostWasPaid" }
@@ -5574,6 +5597,7 @@ type PlayerEffect =
 | { "_PlayerEffect": "SpellsCastGainAbility", "args": [Spells, Array<SpellEffect>] }
 | { "_PlayerEffect": "MayPlayLandsFromAmongExiledWithEffect", "args": [CardsInExile, Array<EnterFlag>] }
 | { "_PlayerEffect": "MayPlayOneCardFromAmongExiledWithoutPaying", "args": CardsInExile }
+| { "_PlayerEffect": "MayCastExiledCardsAndMaySpendManaAsThoughAnyTypeToCast", "args": CardsInExile }
 | { "_PlayerEffect": "FirstTwoCoinFlipsEachTurnAreHeadsAndYouWin" }
 | { "_PlayerEffect": "MayCastASpellFromAmongCardsMilledThisWay", "args": Spells }
 | { "_PlayerEffect": "MayCastASpellFromTheirGraveyardOnceEachTurnWithEffect", "args": [Spells, Array<SpellEffect>] }
@@ -5764,7 +5788,7 @@ type PlayerEffect =
 | { "_PlayerEffect": "MayCastSpellsFromAmongExiledWithoutPaying", "args": [Spells, CardsInExile] }
 | { "_PlayerEffect": "MayCastSpellsFromGraveyard", "args": Spells }
 | { "_PlayerEffect": "MayCastSpellsFromGraveyardIntoExile", "args": Spells }
-| { "_PlayerEffect": "MayCastSpellsFromHandWithoutPaying" }
+| { "_PlayerEffect": "MayCastSpellsFromHandWithoutPaying", "args": Spells }
 | { "_PlayerEffect": "MayCastSpellsFromOtherPlayersGraveyards" }
 | { "_PlayerEffect": "MayCastSpellsFromTheTopOfTheirGraveyardIntoExile", "args": Spells }
 | { "_PlayerEffect": "MayCastSpellsFromTopOfLibrary", "args": Spells }
@@ -5988,6 +6012,13 @@ type Players =
 | { "_Players": "Or", "args": Array<Players> }
 | { "_Players": "Other", "args": Player }
 | { "_Players": "SinglePlayer", "args": Player }
+| { "_Players": "DidntRevealACardOfTheirChosenName" }
+| { "_Players": "DidntTakeAction" }
+| { "_Players": "HasActivatedAnAbilityThisTurn", "args": ActivatedAbilities }
+| { "_Players": "RevealedACardOfTheirChosenName" }
+| { "_Players": "ScriedThisTurn" }
+| { "_Players": "WasDealtNoncombatDamageLastTurn" }
+| { "_Players": "WasDealtNoncombatDamageThisTurn" }
 | { "_Players": "ChoseToDoActions" }
 | { "_Players": "AllowedToDrawCards" }
 | { "_Players": "CreatedATokenThisWay" }
@@ -6026,7 +6057,6 @@ type Players =
 | { "_Players": "CastASpellThisTurn", "args": Spells }
 | { "_Players": "CastNumSpellsThisTurn", "args": [Comparison, Spells] }
 | { "_Players": "ChoseAFirstPermanentThisWay" }
-| { "_Players": "ChoseAPermanentThisWay" }
 | { "_Players": "ChoseASecondPermanentThisWay" }
 | { "_Players": "ChoseHighestNumber" }
 | { "_Players": "ChoseLowestNumber" }
@@ -6301,7 +6331,6 @@ type PutCountersCost =
 | { "_PutCountersCost": "ACounterOfTypeOnAPermanent", "args": [CounterType, Permanents] }
 | { "_PutCountersCost": "ACounterOfTypeOnCardInExile", "args": [CounterType, CardInExile] }
 | { "_PutCountersCost": "ACounterOfTypeOnPermanent", "args": [CounterType, Permanent] }
-| { "_PutCountersCost": "NumberCountersOfTypeOnAPermanent", "args": [GameNumber, CounterType, Permanents] }
 | { "_PutCountersCost": "NumberCountersOfTypeOnPermanent", "args": [GameNumber, CounterType, Permanent] }
 | { "_PutCountersCost": "NumberCountersOfTypeOnPlayer", "args": [GameNumber, CounterType, Player] };
 type PutIntoGraveyardAction =
@@ -6678,6 +6707,7 @@ type ReplacementActionWouldDraw =
 | { "_ReplacementActionWouldDraw": "WinTheGame" };
 type ReplacementActionWouldEnterCost =
 | { "_ReplacementActionWouldEnterCost": "Exile", "args": [Array<ExilableCost>, Array<ExileFlag>] }
+| { "_ReplacementActionWouldEnterCost": "BeholdA", "args": CardsInHand }
 | { "_ReplacementActionWouldEnterCost": "DiscardACardOfType", "args": Cards }
 | { "_ReplacementActionWouldEnterCost": "EntersTapped" }
 | { "_ReplacementActionWouldEnterCost": "ExileTwoCardsFromAmongPlayersGraveyards", "args": [CardsInGraveyards, Players] }
@@ -6907,6 +6937,7 @@ type RevealTheTopNumberCardsOfLibraryAction =
 | { "_RevealTheTopNumberCardsOfLibraryAction": "PlayerAction", "args": [Player, RevealTheTopNumberCardsOfLibraryAction] }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "PutAGenericCardOnBottomOfLibrary" }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "PutRemainingCardsInHand" }
+| { "_RevealTheTopNumberCardsOfLibraryAction": "LoseLife", "args": GameNumber }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "ForEachColorAmongPermanentsYouMayExileACardOfThatColorFoundThisWay", "args": Permanents }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "PutAnyNumberOfFoundCardsOntoBattlefield", "args": Array<EnterFlag> }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "ChooseAPlayer", "args": Players }
@@ -7637,6 +7668,8 @@ type Spells =
 | { "_Spells": "Other", "args": Spell }
 | { "_Spells": "AnySpell" }
 | { "_Spells": "APlayerSpentManaToCastIt", "args": Players }
+| { "_Spells": "WasPrepared" }
+| { "_Spells": "WasntCastFromAPlayersHand", "args": Players }
 | { "_Spells": "ManaAmountOfTypeWasSpentToCastIt", "args": [Comparison, Color] }
 | { "_Spells": "HasColorManaSymbolInManaCost", "args": Color }
 | { "_Spells": "HasHybridManaInCost" }
@@ -8532,6 +8565,7 @@ type Targets =
 | { "_Targets": "Ref_TargetPlayersAndPermanents" };
 type Target =
 | { "_Target": "UptoNumberTargetPermanentsAndOrCardsInGraveyards", "args": [GameNumber, Permanents, CardsInGraveyards] }
+| { "_Target": "UptoOneTargetGraveyardCardOfEachCardType", "args": CardsInGraveyards }
 | { "_Target": "BetweenOneAndNumberAnyTargets", "args": GameNumber }
 | { "_Target": "BetweenOneAndNumberTargetGraveyardCards", "args": [GameNumber, CardsInGraveyards] }
 | { "_Target": "UptoNumberTargetSpellsOrAbilities", "args": [GameNumber, SpellsAndAbilities] }
@@ -8667,6 +8701,9 @@ type Trigger =
 | { "_Trigger": "WhenASpellOrAbilityCausesAPlayerToLoseAnAmountOfLife", "args": [SpellsAndAbilities, Players, Comparison] }
 | { "_Trigger": "WhenAPlayerFlipsAnyNumberOfCoins", "args": Players }
 | { "_Trigger": "WhenAPlayerSelectsAnyNumberOfTargetsAtRandom", "args": Players }
+| { "_Trigger": "WhenACreatureAttacksAPlayerAlone", "args": [Permanents, Players] }
+| { "_Trigger": "WhenAnyNumberOfPlayersAreDealtCombatDamage", "args": Players }
+| { "_Trigger": "WhenAnyNumberOfPlayersAreDealtNoncombatDamage", "args": Players }
 | { "_Trigger": "WhenAPlayerFacesADilemma", "args": Players }
 | { "_Trigger": "WhenAPermanentConnives", "args": Permanents }
 | { "_Trigger": "WhenAPlayerWaterEarthFireOrAirBends", "args": Players }
@@ -8770,7 +8807,6 @@ type Trigger =
 | { "_Trigger": "WhenAnyNumberOfCreaturesDealDamageToAPlayer", "args": [Permanents, Players] }
 | { "_Trigger": "WhenAnyNumberOfPermanentsAreDealtExcessNoncombatDamage", "args": Permanents }
 | { "_Trigger": "WhenAnyNumberOfPermanentsDealDamageToAnyNumberOfPlayers", "args": [Permanents, Players] }
-| { "_Trigger": "WhenPlayersAreDealtCombatDamage", "args": Players }
 | { "_Trigger": "WhenASpellOrAbilityDestroysAPermanent", "args": [SpellsAndAbilities, Permanents] }
 | { "_Trigger": "WhenAPermanentIsDestroyed", "args": Permanents }
 | { "_Trigger": "WhenACreatureIsDevoured", "args": Permanents }

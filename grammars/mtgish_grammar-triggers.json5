@@ -147,7 +147,8 @@
     "WhenAnyNumberOfCreaturesDealDamageToAPlayer({{PERMANENTS}}, {{PLAYERS}})": "",
     "WhenAnyNumberOfPermanentsAreDealtExcessNoncombatDamage({{PERMANENTS}})": "",
     "WhenAnyNumberOfPermanentsDealDamageToAnyNumberOfPlayers({{PERMANENTS}}, {{PLAYERS}})": "",
-    "WhenPlayersAreDealtCombatDamage({{PLAYERS}})": ""
+    "WhenAnyNumberOfPlayersAreDealtNoncombatDamage({{PLAYERS}})": "",
+    "WhenAnyNumberOfPlayersAreDealtCombatDamage({{PLAYERS}})": ""
   },
   "{{_TRIGGER[Destroy]}}": {
     "WhenAPermanentIsDestroyed({{PERMANENTS}})": "",
@@ -532,6 +533,7 @@
     "WhenACreatureAttacksABattle({{PERMANENTS}}, {{PERMANENTS}})": "",
     "WhenACreatureAttacksAPlaneswalker({{PERMANENTS}}, {{PERMANENTS}})": "",
     "WhenACreatureAttacksAPlayer({{PERMANENTS}}, {{PLAYERS}})": "",
+    "WhenACreatureAttacksAPlayerAlone({{PERMANENTS}}, {{PLAYERS}})": "",
     "WhenACreatureAttacksAPlayerOrPlaneswalkerTheyControl({{PERMANENTS}}, {{PLAYERS}})": "",
     "WhenACreatureAttacksAlone({{PERMANENTS}})": "",
     "WhenACreatureAttacksForTheFirstTimeEachTurn({{PERMANENTS}})": "",

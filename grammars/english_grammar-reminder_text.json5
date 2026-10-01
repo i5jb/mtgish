@@ -7,6 +7,18 @@
   },
   "{{Reminder[HeartwoodToken]}}": {
     "(It's a red and green artifact with \"{T}: Add {R} or {G}\".)": "",
+    "(They're red and green artifacts with \"{T}: Add {R} or {G}\".)": "",
+  },
+  "{{Reminder[EmpowerJace]}}": {
+    "(Put a loyalty counter on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put three loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put four loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put five loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put six loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put seven loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put eight loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put that many loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
   },
   "{{Reminder[FaceADilemma]}}": {
     "(You face a dilemma as you choose one or more modes for a spell or ability.)": "",
@@ -155,6 +167,7 @@
     "(Exile an Elf you control or an Elf card from your hand.)": ""
   },
   "{{Reminder[Behold]}}": {
+    "(To behold a Jace, choose a Jace you control or reveal a Jace card from your hand.)": "",
     "(You may choose a Gamma creature you control or reveal a Gamma creature card from your hand.)": "",
     "(You may choose a Hero you control or reveal a Hero card from your hand.)": "",
     "(To behold a Dragon, choose a Dragon you control or reveal a Dragon card from your hand.)": "",
@@ -764,6 +777,7 @@
     "(This creature can attack as soon as it comes under your control.)": ""
   },
   "{{Reminder[Hexproof]}}": {
+    "(They can't be the target of spells or abilities your opponents control.)": "",
     "(A creature with hexproof can't be the target of spells or abilities your opponents control.)": "",
     "(He can't be the target of spells or abilities your opponents control.)": "",
     "(It can't be the target of spells or abilities your opponents control.)": "",
@@ -830,10 +844,10 @@
     "(Effects that say \"destroy\" don't destroy this artifact.)": ""
   },
   "{{Reminder[Investigate]}}": {
-    "(Create a Clue artifact token with \"{2}, Sacrifice this token: Draw a card\".)": "",
     "(Create a Clue token. It's an artifact with \"{2}, Sacrifice this token: Draw a card\".)": "",
     "(Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card\".)": "",
     "(They create a Clue token.)": "",
+    "(They create a Clue token. It's an artifact with \"{2}, Sacrifice this token: Draw a card\".)": "",
     "(To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card\".)": "",
     "(To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this token: Draw a card\".)": ""
   },
@@ -1613,6 +1627,7 @@
   "{{Reminder[OracleToken]}}": {
     "(It's a land with \"{T}: Add {C}\" and \"{1}: This token becomes a 2/2 creature with all creature types until end of turn. It's still a land\".)": "",
     "(It's a {0} artifact with \"{T}, Sacrifice this token: Add three mana of any one color\".)": "",
+    "(It's a {1} 1/1 Food Golem artifact creature with haste, \"{1}: This token can't be blocked this turn except by creatures with haste\", and \"{2}, {T}, Sacrifice this token: You gain 3 life\".)": "",
     "(It's a {1}{G} Lhurgoyf creature with \"Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1\".)": "",
     "(It's a {1}{G}{G} 2/2 Badger creature with \"Whenever this token blocks, it gets +2/+2 until end of turn\".)": "",
     "(It's a {2}{R} 2/2 Weird creature with \"Whenever you cast a noncreature spell, put a +1/+1 counter on Spellgorger Weird\".)": "",
@@ -1904,6 +1919,9 @@
     "(As you cast a spell with assist, you may choose another player. They may pay some or all of the generic mana in the spell's cost.)": "",
   },
   "{{Reminder}}": {
+    "(It has \"{T}: Add {G}\". It's affected by summoning sickness until your next turn.)": "",
+    "(If you draw from an empty library this way, you still win the game.)": "",
+    "(Permanent spells cast this way become tokens.)": "",
     "{{Reminder[Assist]}}": "",
     "(They continue to smell after Olinda has left the battlefield.)": "",
     "(Activate only as an instant. To mill a card, put the top card of your library into your graveyard.)": "",
@@ -1914,6 +1932,7 @@
     "(She can't be blocked except by creatures with flying or reach.)": "",
     "(It can't be blocked except by creatures with flying or reach. It can attack and {T} as soon as it comes under your control.)": "",
     "(He loses all other creature types. Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)": "",
+    "(He loses all other creature types.)": "",
     "(You win even if you have 0 life or didn't draw a card.)": "",
     "(2⁰ = 1, 2¹ = 2, 2² = 4, 2³ = 8, 2⁴ = 16, 2⁵ = 32, and so on.)": "",
     "(A creature with double strike deals both first-strike and regular combat damage.)": "",
@@ -2061,7 +2080,6 @@
     "(For example, if play had proceeded clockwise around the table, it now goes counterclockwise. Then planeswalk away from this phenomenon.)": "",
     "(For example, if play had proceeded clockwise around the table, it now goes counterclockwise.)": "",
     "(For example, if that spell's mana cost is {3}{U}{U}, X is 5.)": "",
-    "(For example, if the card's mana cost is {3}{U}{U}{B}, you add {U}{U}{B}.)": "",
     "(For example, if two Elemental Shamans and an Elemental Spirit are on the battlefield, each gets +2/+2.)": "",
     "(For example, if two Goblin Warriors and a Goblin Shaman are on the battlefield, each gets +2/+2.)": "",
     "(For example, if you cast a Cleric spell with mana cost {1}{W}, it costs {1} to cast.)": "",
@@ -2093,7 +2111,6 @@
     "(If it does, it loses this ability for the rest of the turn.)": "",
     "(If it does, it loses this ability.)": "",
     "(If it doesn't require {R}, it costs {1} less to cast.)": "",
-    "(If it doesn't require {U}, it costs {1} less to cast.)": "",
     "(If it has X in its mana cost, X is 0.)": "",
     "(If it has no +1/+1 counters on it, put three +1/+1 counters on it.)": "",
     "(If it was a creature, it's no longer a creature.)": "",
@@ -2140,6 +2157,7 @@
     "(It can't be blocked except by two or more creatures. {C} represents colorless mana.)": "",
     "(It can't be blocked except by two or more creatures. {S} can be paid with one mana from a snow source.)": "",
     "(It can't be blocked except by two or more creatures.)": "",
+    "(He can't be blocked except by two or more creatures.)": "",
     "(It can't be the target of spells or abilities your opponents control. Damage and effects that say \"destroy\" don't destroy it.)": "",
     "(It can't be the target of spells or abilities your opponents control. It can attack and {T} no matter when it came under your control.)": "",
     "(It can't be the target of spells or abilities.)": "",
@@ -2497,6 +2515,8 @@
     "(You may cast this card converted for {W}{U}.)": "",
     "(You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its megamorph cost and put a +1/+1 counter on it.)": "",
     "(You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)": "",
+    "(You may cast this card face down as a 2/2 creature for {3}. Turn her face up any time for her morph cost.)": "",
+    "(Activate only as an instant. For example, if the card's mana cost is {3}{U}{U}{B}, you add {U}{U}{B}.)": "",
     "(You may cast this card from your graveyard for its flashback cost and any additional costs. Then exile it.)": "",
     "(You may cast this card from your graveyard for its flashback cost, then exile it. You can't exile Flash of Insight to pay for its own flashback cost.)": "",
     "(You may cast this card from your graveyard for its flashback cost. Then exile it. To behold an Elemental, choose an Elemental you control or reveal an Elemental card from your hand.)": "",
@@ -2633,6 +2653,7 @@
     "{{Reminder[Adventure][FoodToken]}}": "",
     "{{Reminder[Adventure]}}": "",
     "{{Reminder[HeartwoodToken]}}": "",
+    "{{Reminder[EmpowerJace]}}": "",
     "{{Reminder[FaceADilemma]}}": "",
     "{{Reminder[AffinityFor]}}": "",
     "{{Reminder[Afflict]}}": "",
