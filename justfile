@@ -71,6 +71,7 @@ parser_show_input: plurals_generate parser_compile
     --mtgjson-files {{BASE_DIR}}/data/oracle.json \
                     {{BASE_DIR}}/data/dungeons.json \
                     {{BASE_DIR}}/data/tokens.json \
+                    {{BASE_DIR}}/data/additional_cards.json \
     --print-preprocess \
     --stop-after-preprocess \
   > {{TEMP_DIR}}/preprocess.txt
@@ -88,6 +89,7 @@ parser_check_grammar: plurals_generate parser_compile
     --mtgjson-files {{BASE_DIR}}/data/oracle.json \
                     {{BASE_DIR}}/data/dungeons.json \
                     {{BASE_DIR}}/data/tokens.json \
+                    {{BASE_DIR}}/data/additional_cards.json \
     --report-unused-grammar-rules \
   > {{TEMP_DIR}}/grammar.failing.txt
 
@@ -104,6 +106,7 @@ parser_debug_subset: plurals_generate parser_compile
     --mtgjson-files {{BASE_DIR}}/data/oracle.json \
                     {{BASE_DIR}}/data/dungeons.json \
                     {{BASE_DIR}}/data/tokens.json \
+                    {{BASE_DIR}}/data/additional_cards.json \
     --limit-to-subset {{BASE_DIR}}/data/debug.json5 \
     --debug-english \
     --debug-mtgish \
@@ -122,6 +125,7 @@ parser_debug_remaining: plurals_generate parser_compile
     --mtgjson-files {{BASE_DIR}}/data/oracle.json \
                     {{BASE_DIR}}/data/dungeons.json \
                     {{BASE_DIR}}/data/tokens.json \
+                    {{BASE_DIR}}/data/additional_cards.json \
     --limit-to-subset {{BASE_DIR}}/data/debug.json5
 
 [group('parsing')]
@@ -137,6 +141,7 @@ parser_list_passing_english: plurals_generate parser_compile
     --mtgjson-files {{BASE_DIR}}/data/oracle.json \
                     {{BASE_DIR}}/data/dungeons.json \
                     {{BASE_DIR}}/data/tokens.json \
+                    {{BASE_DIR}}/data/additional_cards.json \
     --limit-to-subset {{BASE_DIR}}/data/debug.json5 \
     --print-english \
     --continue-after-failures
@@ -154,6 +159,7 @@ parser_generate_mtgish: plurals_generate parser_compile
     --mtgjson-files {{BASE_DIR}}/data/oracle.json \
                     {{BASE_DIR}}/data/dungeons.json \
                     {{BASE_DIR}}/data/tokens.json \
+                    {{BASE_DIR}}/data/additional_cards.json \
     --print-mtgish \
   > {{BASE_DIR}}/data/mtgish.lines.ron
 
