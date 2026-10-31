@@ -18,6 +18,12 @@
     "find":    "Slivers Spellbook",
     "replace": "Slivers spellbook",
   },
+  {
+    "reason":  "Arena typo, spellbook is lowercase. See Three Pigs spellbook and Planets spellbook",
+    "cards":   ["Remnants of Beleren"],
+    "find":    "Beleren Spellbook",
+    "replace": "Beleren spellbook",
+  },
 
   // Alchemy issue with Gate lands
   {
@@ -53,16 +59,16 @@
 
   // Other Alchemy fixes
   {
+    "reason":  "Make it explicit that the abilities are coming from a specific ability pool",
+    "cards":   ["Enter the Eternities"],
+    "find":    "ability. Create a legendary",
+    "replace": "ability from the Enter the Eternities abilitybook. Create a legendary",
+  },
+  {
     "reason":  "Arena missed first main -> precombat main change",
     "cards":   ["Ghitu Embercoiler"],
     "find":    "At the beginning of your precombat main phase,",
     "replace": "At the beginning of your first main phase,",
-  },
-  {
-    "reason":  "Arena quoted ability period to space",
-    "cards":   ["Viconia, Disciple of Blood"],
-    "find":    "spell\". and \"When ",
-    "replace": "spell\" and \"When ",
   },
   {
     "reason":  "Arena? -- Didn't get the 'sacrifice ... of their choice' update",
@@ -75,6 +81,12 @@
     "cards":   ["Ornate Imitations"],
     "find":    "For each number between 1 and X, conjure a random creature card with that mana value onto the battlefield. X can't be 0.",
     "replace": "X can't be 0.\nFor each number between 1 and X, conjure a random creature card with that mana value onto the battlefield.",
+  },
+  {
+    "reason":  "X can't be 0 is in an annoying place.",
+    "cards":   ["Salvaged Imitations"],
+    "find":    "For each number between 1 and X, conjure a random artifact card with that mana value onto the battlefield. X can't be 0.",
+    "replace": "X can't be 0.\nFor each number between 1 and X, conjure a random artifact card with that mana value onto the battlefield.",
   },
   {
     "reason":  "Keyword statements should be on their own line",

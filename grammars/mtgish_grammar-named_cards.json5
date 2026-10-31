@@ -93,6 +93,11 @@
     "\"Tarmogoyf\"": "",
   },
   "{{QUOTED_NAMED_CARD}}": {
+    "\"Seed of Hope\"": "",
+    "\"Aria of Flame\"": "",
+    "\"Nylea's Oracle\"": "",
+    "\"Jace's Sentinel\"": "",
+    "\"Mind Stone\"": "",
     "\"Zabu\"": "",
     "\"Redwing\"": "",
     "\"Moloid\"": "",
@@ -636,7 +641,11 @@
     "\"Zndrsplt, Eye of Wisdom\"": "",
     "\"\\\"Name Sticker\\\" Goblin\"": ""
   },
+  "{{ABILITYBOOK}}": {
+    "\"Enter the Eternities\"": "",
+  },
   "{{SPELLBOOK[Special]}}": {
+    "\"Beleren\"": "",
     "\"Paradigm\"": "",
     "\"Planets\"": "",
     "\"Slivers\"": "",

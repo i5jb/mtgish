@@ -220,6 +220,7 @@ pub enum CreatureType {
   Mercenary,
   Merfolk,
   Metathran,
+  MindlessOne,
   Minion,
   Minotaur,
   Mite,
@@ -395,6 +396,7 @@ pub enum CreatureType {
 pub enum LandType {
   Cave,
   Desert,
+  Dimension,
   Forest,
   Gate,
   Island,
@@ -832,6 +834,7 @@ pub enum SubType {
   Mercenary,
   Merfolk,
   Metathran,
+  MindlessOne,
   Minion,
   Minotaur,
   Mite,
@@ -1004,6 +1007,7 @@ pub enum SubType {
   // LandType
   Cave,
   Desert,
+  Dimension,
   Forest,
   Gate,
   Island,
@@ -1265,6 +1269,7 @@ pub struct OracleTypeline {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_CreatureTypeVariable", content = "args"))]
 pub enum CreatureTypeVariable {
+  TheRememberedCreatureTypes,
   CreatureTypesOfExiled(Box<CardInExile>),
   TheCreatureTypeChosenByPlayerThisWay(Box<Player>),
   TheChosenCreatureType,
@@ -1507,6 +1512,7 @@ pub enum CounterType {
   ShellCounter,
   ShredCounter,
   SilverCounter,
+  SinCounter,
   SkewerCounter,
   SleepCounter,
   SleightCounter,
@@ -2014,10 +2020,12 @@ pub enum PlayerEffect {
   MayActivatePowerUpAbilitiesOfPermanentsAnAdditionalTime(Box<Permanents>),
   MayPayAlternateCostForFirstPowerUpCostEachTurn(ManaCost),
 
+  MayCastExiledCards(Box<CardsInExile>),
   MayCastExiledCardForAlternateCost(Box<CardInExile>, Box<Cost>),
   MayCastASpellFromAmongExileWithoutPayingOnceEachTurn(Box<Spells>, Box<CardsInExile>),
   MayCastASpellFromHandWithoutPayingOnceEachPlayersTurn(Box<Spells>),
   MayCastExiledCardAndMaySpendManaAsThoughAnyTypeToCastIntoExile(Box<CardInExile>),
+  MayCastSpellsFromAmongCardsInGraveyardsWithEffect(Box<Spells>, Box<CardsInGraveyards>, Vec<SpellEffect>),
   MayCastSpellsFromAmongExiledAndMaySpendManaAsThoughAnyTypeToCastAndAsThoughTheyHadFlash(Box<Spells>, Box<CardsInExile>),
   MayCastSpellsFromGraveyardUsingTheirSneakAbility(Box<Spells>, Box<CardsInGraveyards>),
   MayCastSpellsFromGraveyardWithEffect(Box<Spells>, Box<CardsInGraveyards>, Vec<SpellEffect>),
@@ -2387,7 +2395,7 @@ pub enum CastEffect {
   MayCastAsThoughItHadFlashIfXIs(Box<Comparison>),
   MayCastAsThoughItHadFlashWithSpecialAction(Vec<Action>),
   MayCastWithoutPayingIf(Condition),
-  MaySpendManaAsThoughAnyTypeToCast,
+  //MaySpendManaAsThoughAnyTypeToCast,
   OptionalAdditionalCastingCost(Box<Cost>),
   PayLifeForEachPreviousCastRatherThanManaForEachPreviousCast(Box<GameNumber>),
   ReduceCastingCost(CostReduction),
@@ -2635,6 +2643,8 @@ pub struct TriggerAndActions(Trigger, Box<Actions>);
 pub enum Rule {
   AnchorWord(VoteOption, Box<Rule>),
 
+  Prismatic,
+
   StationChargedAnimate(GameRange, Vec<Rule>, PT),
   StationCharged(GameRange, Vec<Rule>),
   Station,
@@ -2713,6 +2723,7 @@ pub enum Rule {
 
   ReplaceWouldLearn(ReplacableEventWouldLearn, Vec<ReplacementActionWouldLearn>),
   ReplaceWouldConnive(ReplacableEventWouldConnive, Vec<ReplacementActionWouldConnive>),
+  ReplaceWouldEmpowerJace(ReplacableEventWouldEmpowerJace, Vec<ReplacementActionWouldEmpowerJace>),
 
   // Rule: Keyword
   StartYourEngines,
@@ -3700,6 +3711,8 @@ pub enum ReplacementActionWouldEnter {
   Reflexive_EnterAsACopyOfACardInGraveyards_WhenYouDo(Box<CardsInGraveyards>, CopyEffects, Box<Actions>),
   Reflexive_EnterAsACopyOfAPermanent_WhenYouDo(Box<Permanents>, CopyEffects, Box<Actions>),
 
+  ForEachPlayerRememberMostPrevalentCreatureTypesInTheirLibrary(Box<Players>),
+
   EntersWithDuplicateCountersOfPermanent(Box<Permanent>),
   APlayerAction(Box<Players>, Box<ReplacementActionWouldEnter>),
   BecomeDay,
@@ -3941,6 +3954,23 @@ pub enum FutureReplacableEventWouldLeaveTheBattlefield {
 pub enum ReplacableEventWouldLeaveTheBattlefield {
   PermanentWouldLeaveTheBattlefield(Box<Permanent>),
 }
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacableEventWouldEmpowerJace", content = "args"))]
+pub enum ReplacableEventWouldEmpowerJace {
+  APlayerWouldEmpowerJace(Box<Players>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldLearn", content = "args"))]
+pub enum ReplacementActionWouldEmpowerJace {
+  EmpowerJace(Box<GameNumber>),
+  PutCounters(Vec<PutCountersAction>),
+  ChooseAnAction(Vec<Vec<ReplacementActionWouldEmpowerJace>>),
+}
+
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
@@ -4621,6 +4651,7 @@ pub enum Condition {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_CardInHand", content = "args"))]
 pub enum CardInHand {
+  TheCardInHandBeheldThisWay,
   TheCardChosenThisWay,
   TheCardConjuredIntoHandThisWay,
   TheCardConjuredThisWay,
@@ -5053,6 +5084,7 @@ pub enum Cards {
   IsNumberColors(Box<Comparison>),
   IsPermanent,
   IsPlaneswalkerType(PlaneswalkerType),
+  IsNonPlaneswalkerType(PlaneswalkerType),
   IsSpellType(SpellType),
   IsSupertype(SuperType),
   IsYourCommander,
@@ -5579,6 +5611,14 @@ pub enum TokenCopyEffects {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_NameVariable", content = "args"))]
+pub enum NameVariable {
+  NameOfPermanent(Box<Permanent>),
+//Name(NameString), // FIXME: Maybe add?
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_TokenCopyEffect", content = "args"))]
 pub enum TokenCopyEffect {
   AddSupertypes(Vec<SuperType>),
@@ -5590,12 +5630,14 @@ pub enum TokenCopyEffect {
   SetArtifactTypes(Vec<ArtifactType>),
   SetCreatureTypes(Vec<CreatureType>),
   AddAbility(Vec<Rule>),
-  LosesAbility(CheckHasable),
-  RemoveThisAbility,
   AddAbilityFromEachExiledHasable(CardsInExile, Vec<CheckHasable>),
+  AddTheDraftedAbilities,
+  RemoveThisAbility,
+  LosesAbility(CheckHasable),
   AddColor(SettableColor),
   SetColor(SettableColor),
   SetName(NameString),
+  SetNameVariable(Box<NameVariable>),
   SetPT(PT),
   SetLoyalty(Box<GameNumber>),
 }
@@ -5794,6 +5836,11 @@ pub enum ManaSources {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_GameNumber", content = "args"))]
 pub enum GameNumber {
+  WouldEmpowerJace_EmpowerAmount,
+  LifeGainedByPlayerThisGame(Box<Player>),
+  NumSpellsCastByPlayerThisGame(Box<Spells>, Box<Player>),
+  TheTotalNumberOfCardsInAmongPlayersStartingDecks(Box<Players>),
+
   TheNumberOfCardsPutIntoAPlayersGraveyardFromTheirLibraryThisTurn(Box<Players>),
   TheNumberOfPlaneswalkerTypesAmongPermanents(Box<Permanents>),
   AManaValueOfAnExiledCard(Box<CardsInExile>),
@@ -7617,6 +7664,7 @@ pub enum TokenColorList {
   TheChosenColor,
   Colors(Vec<SimpleColor>),
   Colorless,
+  ColorsOfPermanent(Box<Permanent>),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -8270,6 +8318,7 @@ pub enum CreatableToken {
 
   // Manually Defined Tokens
   Token(TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>),
+  TokenWithCopyEffects(TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>, TokenCopyEffects),
   TokenWithPT(PT, TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>),
   NamedToken(NameString, TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>),
   NamedTokenWithPT(NameString, PT, TokenColorList, Vec<SuperType>, Vec<CardType>, TokenSubtypes, Vec<Rule>),
@@ -8811,6 +8860,9 @@ pub enum CardsOutsideTheGame {
 pub enum Action {
   Recruit,
   Assimilate(Box<CardInGraveyards>),
+
+  ConjureDuplicateOfARandomCardOfTypeIntoExile(Box<Cards>),
+  DraftAbilitiesFromAbilityBook(Vec<Cost>, SpellBookName),
 
   CastAnyNumberOfSpellsFromAmongCopiedCardsWithoutPaying(Box<Spells>),
   ChooseACardFromOutsideGame(Box<CardsOutsideTheGame>),

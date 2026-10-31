@@ -242,6 +242,7 @@
   "{{SWAMP}}": {
     "Cave": "",
     "Desert": "",
+    "Dimension": "",
     "Forest": "",
     "Gate": "",
     "Island": "",
@@ -443,6 +444,7 @@
     "Mercenary": "",
     "Merfolk": "",
     "Metathran": "",
+    "MindlessOne": "",
     "Minion": "",
     "Minotaur": "",
     "Mite": "",

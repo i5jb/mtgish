@@ -124,6 +124,9 @@ for scryfall_card in scryfall_cards:
     if (sides[1]["type"] in ["Instant — Omen",      "Sorcery — Omen"]):
       cards.append({ "name": scryfall_card["name"], "layout": "ominous", "cards": sides })
       continue
+    if (sides[1]["type"] in ["Instant — Vengeance", "Sorcery — Vengeance"]):
+      cards.append({ "name": scryfall_card["name"], "layout": "avenger", "cards": sides })
+      continue
   if layout in {"prepare"}:
     sides = [cardInfo(cardside) for cardside in scryfall_card["card_faces"]]
     assert(len(sides) == 2)

@@ -204,6 +204,7 @@
     "shell": "ShellCounter",
     "shred": "ShredCounter",
     "silver": "SilverCounter",
+    "sin": "SinCounter",
     "skewer": "SkewerCounter",
     "sleep": "SleepCounter",
     "sleight": "SleightCounter",

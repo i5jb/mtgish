@@ -215,6 +215,7 @@
   "{{Swamps}}": {
     "Caves": "Cave",
     "Deserts": "Desert",
+    "Dimensions": "Dimension",
     "Forests": "Forest",
     "Gates": "Gate",
     "Islands": "Island",
@@ -234,6 +235,7 @@
   "{{Swamp}}": {
     "Cave": "Cave",
     "Desert": "Desert",
+    "Dimension": "Dimension",
     "Forest": "Forest",
     "Gate": "Gate",
     "Island": "Island",
@@ -425,6 +427,7 @@
     "Merfolk": "Merfolk",
     "Metathran": "Metathran",
     "Mice": "Mouse",
+    "Mindless-Ones": "MindlessOne",
     "Minions": "Minion",
     "Minotaurs": "Minotaur",
     "Mites": "Mite",
@@ -767,6 +770,7 @@
     "Mercenary": "Mercenary",
     "Merfolk": "Merfolk",
     "Metathran": "Metathran",
+    "Mindless-One": "MindlessOne",
     "Minion": "Minion",
     "Minotaur": "Minotaur",
     "Mite": "Mite",

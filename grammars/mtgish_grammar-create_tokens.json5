@@ -129,6 +129,12 @@
     // Card: [[The Book of Vile Darkness]]
     "AddAbilityFromEachExiledHasable({{CARDS_IN_EXILE}}, {{CHECK_HASABLE_LIST}})": "",
 
+    // Text: "Create a legendary planeswalker token with the exiled creature's
+    //        name and colors and the drafted abilities"
+    // Card: [[Enter the Eternities]]
+    "AddTheDraftedAbilities": "",
+
+
     // Text: "Create a token that’s a copy of another target creature you
     //        control, except it’s a 1/1 red Balloon creature in addition to
     //        its other colors and types and it has flying and haste"
@@ -156,6 +162,11 @@
     //        legendary Alien named Prisoner Zero"
     // Card: [[The Eleventh Hour]]
     "SetName({{QUOTED_NAMED_CARD}})": "",
+
+    // Text: "Create a legendary planeswalker token with the exiled creature's
+    //        name and colors and the drafted abilities"
+    // Card: [[Enter the Eternities]]
+    "SetNameVariable(NameOfPermanent({{PERMANENT}}))": "",
 
     // Text: "Create a token that’s a copy of it, except it’s a 4/4 black
     //        Zombie"
@@ -540,6 +551,11 @@
     // Text: "create a colorless artifact token named Scrap"
     // Card: [[Farid, Enterprising Salvager]]
     "NamedToken({{QUOTED_NAMED_CARD}}, {{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}})": "",
+
+    // Text: "Create a legendary planeswalker token with the exiled creature's
+    //        name and colors and the drafted abilities"
+    // Card: [[Enter the Eternities]]
+    "TokenWithCopyEffects({{COLOR_LIST}}, {{SUPERTYPE_LIST}}, {{CARDTYPE_LIST}}, {{TOKEN_SUBTYPES}}, {{RULES}}, {{TOKEN_COPY_EFFECT_LIST}})": "",
 
     // Text: "Create a 1/1 black and red Demon creature token named Minor
     //        Demon"

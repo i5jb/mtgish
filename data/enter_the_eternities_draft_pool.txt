@@ -1,0 +1,30 @@
++1: Create a 1/1 green Elf Druid creature token with "{T}: Add {G}."
++1: Untap up to two target lands.
++1: Draw a card.
++1: Until your next turn, up to one target creature gets -4/-0.
++1: Put a +1/+1 counter on each of up to two target creatures.
++1: Untap up to one target creature and up to one target land.
++1: Up to one target land you control becomes a 3/3 Elemental creature with vigilance and haste. It's still a land.
++1: Draw two cards. Then discard two cards unless you discard a creature card.
++1: Until your next turn, whenever a creature attacks you or a planeswalker you control, that creature gets -1/-0 until end of turn.
++1: You gain 2 life. Put a loyalty counter on this planeswalker.
+−2: Destroy target artifact or enchantment.
+−2: Create a 2/2 blue Bird creature token with flying. Draw a card, then discard a card.
+−2: Draw two cards if you control a creature with the greatest power. Otherwise, draw a card.
+−2: Return target card from your graveyard to your hand.
+−2: Target artifact or creature loses all abilities and becomes a green Elk creature with base power and toughness 3/3.
+−2: Target creature you control deals damage equal to its power to target creature or planeswalker.
+−2: Return another target nonland permanent to its owner's hand.
+−2: Seek a noncreature, nonland card.
+−2: Untap one, two, or three target permanents.
+−2: Conjure a card named Tropical Island onto the battlefield.
+−8: Draw a card for each creature you control.
+−8: Creatures you control get +3/+3 and gain trample until end of turn.
+−8: Gain control of another target permanent.
+−8: Search your library for an instant or sorcery card, exile it, then shuffle. You may cast that card without paying its mana cost.
+−8: For each other nonland permanent you control, create a token that's a copy of that permanent.
+−8: Add ten mana of any one color.
+−8: Create two 8/8 blue Octopus creature tokens.
+−8: You get an emblem with "{2}: Draw a card."
+−8: Take an extra turn after this one.
+−8: Until end of turn, whenever you cast a spell, copy it. You may choose new targets for the copy.

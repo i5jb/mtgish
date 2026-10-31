@@ -5739,7 +5739,7 @@
         "name": "Agent of Raffine",
         "manaCost": "{U}",
         "type": "Creature — Human Rogue",
-        "text": "{2}, {T}: Choose target opponent. Conjure a duplicate of the top card of their library into your hand. It perpetually gains \"Mana of any type can be spent to cast this spell.\" Then they exile the top card of their library face down.",
+        "text": "{2}, {T}: Choose target opponent. Conjure a duplicate of the top card of their library into your hand. It perpetually gains prismatic. Then they exile the top card of their library face down.",
         "power": "1",
         "toughness": "2"
       }
@@ -22321,6 +22321,20 @@
     ]
   },
   {
+    "name": "Asymmetry Sage",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Asymmetry Sage",
+        "manaCost": "{U}",
+        "type": "Creature — Human Wizard",
+        "text": "Flying\nMagecraft — Whenever you cast or copy an instant or sorcery spell, target creature you control has base power 3 until end of turn.",
+        "power": "0",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "At Knifepoint",
     "layout": "single",
     "cards": [
@@ -24012,6 +24026,18 @@
         "text": "When this creature dies, you gain 3 life.\nWhenever a player casts a white spell, you may pay {1}. If you do, you gain 1 life.",
         "power": "2",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Auspicious Aquarium",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Auspicious Aquarium",
+        "manaCost": "{5}",
+        "type": "Artifact",
+        "text": "Each creature you control that's a Clamfolk, Crab, Crocodile, Fish, Homarid, Jellyfish, Kraken, Leviathan, Lobster, Merfolk, Nautilus, Octopus, Otter, Oyster, Seal, Serpent, Shark, Shrimp, Sponge, Squid, Starfish, Trilobite, Turtle, Walrus, or Whale gets +2/+2.\nAt the beginning of your upkeep, if you control twelve different creatures from the above list and don't control a Brushwagg, you win the game."
       }
     ]
   },
@@ -25731,6 +25757,20 @@
         "manaCost": "{G}",
         "type": "Instant",
         "text": "Counter target instant or Aura spell that targets a permanent you control."
+      }
+    ]
+  },
+  {
+    "name": "Avoided Stairwurm",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Avoided Stairwurm",
+        "manaCost": "{B}",
+        "type": "Artifact Creature — Wurm",
+        "text": "Menace\nThis creature gets -1/-1 for each creature card in your library.",
+        "power": "5",
+        "toughness": "5"
       }
     ]
   },
@@ -28802,6 +28842,20 @@
         "text": "Lifelink, haste",
         "power": "1",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Banescale Serpent",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Banescale Serpent",
+        "manaCost": "{3}{U}{R}",
+        "type": "Creature — Serpent",
+        "text": "Vigilance, Haste, Protection from instants\nAs this creature enters, for each opponent, note the most prevalent creature type in their library.\nThis creature has protection from each of the noted creature types.",
+        "power": "5",
+        "toughness": "5"
       }
     ]
   },
@@ -34218,6 +34272,18 @@
     ]
   },
   {
+    "name": "Bend Mortal Limits",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Bend Mortal Limits",
+        "manaCost": "{B}",
+        "type": "Sorcery",
+        "text": "Look at all creature and planeswalker cards in target player's hand. You may exile one of those cards. If you do, conjure a duplicate of that card into your graveyard."
+      }
+    ]
+  },
+  {
     "name": "Bend or Break",
     "layout": "single",
     "cards": [
@@ -34938,6 +35004,20 @@
         "manaCost": "{2}{G}",
         "type": "Instant",
         "text": "Target creature gets +4/+4 and gains trample until end of turn."
+      }
+    ]
+  },
+  {
+    "name": "Beta Ray Bill",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Beta Ray Bill",
+        "manaCost": "{2}{G/W}",
+        "type": "Legendary Creature — Alien Warrior Hero",
+        "text": "Valiant — Whenever Beta Ray Bill becomes the target of a spell or ability you control for the first time each turn, put a +1/+1 counter on him and up to one target God you control.",
+        "power": "2",
+        "toughness": "3"
       }
     ]
   },
@@ -35781,7 +35861,7 @@
         "name": "Bind to Secrecy",
         "manaCost": "{U}{B}",
         "type": "Instant",
-        "text": "Choose one —\n• Counter target noncreature spell.\n• Conjure a duplicate of target creature card in an opponent's graveyard into your hand. It perpetually gains \"Mana of any type can be spent to cast this spell.\"\nIf there are five or more mana values among cards in your graveyard, draft a card from Bind to Secrecy's spellbook."
+        "text": "Choose one —\n• Counter target noncreature spell.\n• Conjure a duplicate of target creature card in an opponent's graveyard into your hand. It perpetually gains prismatic.\nIf there are five or more mana values among cards in your graveyard, draft a card from Bind to Secrecy's spellbook."
       }
     ]
   },
@@ -43572,6 +43652,20 @@
         "manaCost": "{1}{U}",
         "type": "Instant",
         "text": "Return target creature to its owner's hand, then roll a six-sided die. If the result is 3 or less, scry a number of cards equal to the result."
+      }
+    ]
+  },
+  {
+    "name": "Boisterous Clique",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Boisterous Clique",
+        "manaCost": "{1}{B}{B}",
+        "type": "Creature — Faerie Warlock",
+        "text": "Flash\nFlying\nWhen this creature enters, look at all nonland cards in target player's hand. You may exile one of those cards. If you do, that player conjures a card named Mind Stone into their hand.",
+        "power": "3",
+        "toughness": "1"
       }
     ]
   },
@@ -62843,6 +62937,18 @@
     ]
   },
   {
+    "name": "Change the Narrative",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Change the Narrative",
+        "manaCost": "{1}{W}{U}",
+        "type": "Enchantment",
+        "text": "Planeswalker spells you cast cost {1} less to cast.\nAt the beginning of your upkeep, conjure a random planeswalker card into your hand. It perpetually gains prismatic."
+      }
+    ]
+  },
+  {
     "name": "Changeling Berserker",
     "layout": "single",
     "cards": [
@@ -69424,7 +69530,7 @@
         "name": "Clone Crafter",
         "manaCost": "{1}{U}",
         "type": "Creature — Human Wizard",
-        "text": "When this creature enters, conjure a duplicate of a random creature card from an opponent's library into your hand. It perpetually gains \"Mana of any type can be spent to cast this spell.\"",
+        "text": "When this creature enters, conjure a duplicate of a random creature card from an opponent's library into your hand. It perpetually gains prismatic.",
         "power": "1",
         "toughness": "2"
       }
@@ -81523,6 +81629,18 @@
         "manaCost": "{3}{W}{W}",
         "type": "Sorcery",
         "text": "Choose one —\n• Destroy all nonland permanent cards originally printed in the Mirrodin, Darksteel, Fifth Dawn, and Scars of Mirrodin expansions.\n• Destroy all nonland permanent cards originally printed in the Mirrodin Besieged, New Phyrexia, and Phyrexia: All Will Be One expansions."
+      }
+    ]
+  },
+  {
+    "name": "Crux of the Theory",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Crux of the Theory",
+        "manaCost": "{1}{U}",
+        "type": "Enchantment",
+        "text": "When this enchantment enters, heist target opponent's library.\nActualize — Whenever you cast a spell that isn't from your starting deck, empower Jace 2."
       }
     ]
   },
@@ -96760,6 +96878,18 @@
     ]
   },
   {
+    "name": "Diabolic Formula",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Diabolic Formula",
+        "manaCost": "{U}{B}",
+        "type": "Enchantment",
+        "text": "Whenever one or more instant and/or sorcery cards leave your graveyard, conjure a random creature card with mana value X onto the battlefield, where X is the greatest mana value among those cards."
+      }
+    ]
+  },
+  {
     "name": "Diabolic Intent",
     "layout": "single",
     "cards": [
@@ -97672,6 +97802,20 @@
         "text": "Whenever you sacrifice a creature, draw a card. This ability triggers only once each turn.\n{2}, {T}, Sacrifice another creature: You gain X life and put X +1/+1 counters on target creature you control, where X is the sacrificed creature's power.",
         "power": "2",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Dina, Flesh Sower",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Dina, Flesh Sower",
+        "manaCost": "{G}{W}",
+        "type": "Legendary Creature — Dryad Cleric",
+        "text": "Lifelink\nWhenever you gain life, Dina perpetually gets +1/+1.\nWhen Dina dies, choose a creature card in your hand. It perpetually gains trample and gets +X/+X, where X is Dina's power.",
+        "power": "1",
+        "toughness": "1"
       }
     ]
   },
@@ -101075,6 +101219,20 @@
         "type": "Legendary Creature — Human Hero",
         "text": "Flying\nWhen Doctor Spectrum enters, choose one —\n• Create a 0/4 colorless Wall creature token with defender.\n• Put a +1/+1 counter on each other Hero you control.\n• Destroy target enchantment.",
         "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Doctor Strange, Master of Magic",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Doctor Strange, Master of Magic",
+        "manaCost": "{2}{W}{U}",
+        "type": "Legendary Creature — Human Sorcerer Hero",
+        "text": "Flying, vigilance, prowess\n{T}: Draw a card. Activate only if you've cast a noncreature spell this turn.",
+        "power": "2",
         "toughness": "3"
       }
     ]
@@ -111783,6 +111941,20 @@
     ]
   },
   {
+    "name": "Echogoyfs",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Echogoyfs",
+        "manaCost": "{U}",
+        "type": "Creature — Lhurgoyf",
+        "text": "Double team\nActualize — Echogoyfs's power is equal to the number of spells you've cast this game that weren't from your starting deck and its toughness is equal to that number plus 1.",
+        "power": "*",
+        "toughness": "1+*"
+      }
+    ]
+  },
+  {
     "name": "Echoing Assault",
     "layout": "single",
     "cards": [
@@ -119788,6 +119960,18 @@
     ]
   },
   {
+    "name": "Enter the Eternities",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Enter the Eternities",
+        "manaCost": "{G}{U}",
+        "type": "Sorcery",
+        "text": "Exile target creature you control. Draft a [+1] ability, a [−2] ability, and a [−8] ability. Create a legendary planeswalker token with the exiled creature's name and colors and the drafted abilities. Put a number of loyalty counters on it equal to the exiled creature's power."
+      }
+    ]
+  },
+  {
     "name": "Enter the God-Eternals",
     "layout": "single",
     "cards": [
@@ -122220,6 +122404,20 @@
     ]
   },
   {
+    "name": "Etali, Primal Garden",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Etali, Primal Garden",
+        "manaCost": "{6}{G}",
+        "type": "Legendary Creature — Elder Dinosaur",
+        "text": "Actualize — This spell costs {1} less to cast for each spell you've cast this game that wasn't from your starting deck.\nTrample\nWhenever Etali enters or attacks, conjure a random Dinosaur card into exile. You may cast that card this turn without paying its mana cost.",
+        "power": "7",
+        "toughness": "7"
+      }
+    ]
+  },
+  {
     "name": "Etali, Primal Storm",
     "layout": "single",
     "cards": [
@@ -123602,11 +123800,11 @@
     ]
   },
   {
-    "name": "Everyone's an Imposter",
+    "name": "Everyone's an Impostor",
     "layout": "single",
     "cards": [
       {
-        "name": "Everyone's an Imposter",
+        "name": "Everyone's an Impostor",
         "type": "Conspiracy",
         "text": "(Start the game with this Conspiracy face up in the command zone. It doesn't count toward your minimum deck size.)\nAll creatures have changeling. (Yes, we know this doesn't actually work. Okay, Gavin didn't know, but we'll humor him.)"
       }
@@ -139321,6 +139519,18 @@
     ]
   },
   {
+    "name": "Flourishing Forces",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Flourishing Forces",
+        "manaCost": "{G}{W}{W}",
+        "type": "Sorcery",
+        "text": "Create a 2/2 colorless Wizard Soldier creature token named Cadet. For every 3 life you gained this game, create an additional one of those tokens."
+      }
+    ]
+  },
+  {
     "name": "Flourishing Fox",
     "layout": "single",
     "cards": [
@@ -146621,7 +146831,7 @@
         "name": "Futurist Spellthief",
         "manaCost": "{2}{U}",
         "type": "Creature — Moonfolk Wizard",
-        "text": "Flash\nWhen this creature enters, conjure a duplicate of target spell into your hand. That card perpetually gains \"Mana of any type can be spent to cast this spell.\"",
+        "text": "Flash\nWhen this creature enters, conjure a duplicate of target spell into your hand. That card perpetually gains prismatic.",
         "power": "3",
         "toughness": "2"
       }
@@ -148583,6 +148793,20 @@
         "text": "Trample\nSuspend 4—{1}{R} (Rather than cast this card from your hand, you may pay {1}{R} and exile it with four time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost. It has haste.)",
         "power": "7",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Gargantos, the Endbringer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gargantos, the Endbringer",
+        "manaCost": "{2}{B}{G}",
+        "type": "Legendary Creature — Elder God Horror",
+        "text": "Deathtouch\nGargantos enters with three +1/+1 counters on him.\nAt the beginning of your upkeep, double the number of +1/+1 counters on Gargantos.\nWhenever Gargantos deals combat damage to an opponent, he deals that much damage to each other opponent.",
+        "power": "0",
+        "toughness": "0"
       }
     ]
   },
@@ -164645,7 +164869,7 @@
         "name": "Grave Choice",
         "manaCost": "{2}{B}",
         "type": "Instant",
-        "text": "Target opponent sacrifices a nontoken creature of their choice. If that creature had mana value 2 or less, conjure a duplicate of it into your hand. That duplicate perpetually gains \"Mana of any type can be spent to cast this spell.\""
+        "text": "Target opponent sacrifices a nontoken creature of their choice. If that creature had mana value 2 or less, conjure a duplicate of it into your hand. That duplicate perpetually gains prismatic."
       }
     ]
   },
@@ -171035,7 +171259,7 @@
         "name": "Gutmorn, Pactbound Servant",
         "manaCost": "{2}{B}",
         "type": "Legendary Creature — Demon",
-        "text": "Flying, Deathtouch\nWhen Gutmorn enters, each player discards a nonland card.\nWhenever a player discards a card during your turn, they choose another player. That player conjures a duplicate of that card into their hand. It perpetually gains \"Mana of any type can be spent to cast this spell.\"",
+        "text": "Flying, Deathtouch\nWhen Gutmorn enters, each player discards a nonland card.\nWhenever a player discards a card during your turn, they choose another player. That player conjures a duplicate of that card into their hand. It perpetually gains prismatic.",
         "power": "1",
         "toughness": "3"
       }
@@ -178029,6 +178253,38 @@
         "text": "Whenever you cycle or discard a card, this creature gets +1/+1 until end of turn.",
         "power": "2",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Hela's Arcanum",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Hela's Arcanum",
+        "manaCost": "{3}{B}{B}",
+        "type": "Instant — Arcane",
+        "text": "Choose up to five {P} worth of modes. You may choose the same mode more than once.\n{P} — Target creature gets +1/+0 and gains deathtouch until end of turn.\n{P}{P} — Until end of turn, target creature gains \"When this creature dies, return it to the battlefield tapped under its owner's control.\"\n{P}{P}{P} — Destroy each non-Zombie creature with power 3 or less."
+      }
+    ]
+  },
+  {
+    "name": "Hela, Mistress of Darkness // Dark Tutor",
+    "layout": "avenger",
+    "cards": [
+      {
+        "name": "Hela, Mistress of Darkness",
+        "manaCost": "{4}{B}{B}",
+        "type": "Legendary Creature — God Sorcerer Villain",
+        "text": "Whenever a player loses life during your turn, you may create that many tapped 2/2 black Zombie creature tokens. Do this only once each turn.",
+        "power": "6",
+        "toughness": "6"
+      },
+      {
+        "name": "Dark Tutor",
+        "manaCost": "{1}{B}{B}",
+        "type": "Sorcery — Vengeance",
+        "text": "(Cast only from your graveyard. Then exile it.)\nSearch your library for a card, put it into your hand or graveyard, then shuffle. You lose 3 life."
       }
     ]
   },
@@ -201017,6 +201273,17 @@
     ]
   },
   {
+    "name": "Jace's Saga",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Jace's Saga",
+        "type": "Enchantment Land — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\nI — This Saga gains \"{T}: Add {U}.\"\nII — This Saga gains \"{U}, {T}: Conjure a card named Jace's Sentinel onto the battlefield.\"\nIII — Empower Jace 3."
+      }
+    ]
+  },
+  {
     "name": "Jace's Sanctum",
     "layout": "single",
     "cards": [
@@ -205335,7 +205602,7 @@
         "name": "Juggle the Performance",
         "manaCost": "{1}{B}{R}",
         "type": "Sorcery",
-        "text": "Each player discards their hand, then conjures a duplicate of each of seven random cards from the library of the player to their right into their hand. The duplicates perpetually gain \"Mana of any type can be spent to cast this spell.\""
+        "text": "Each player discards their hand, then conjures a duplicate of each of seven random cards from the library of the player to their right into their hand. The duplicates perpetually gain prismatic."
       }
     ]
   },
@@ -212146,6 +212413,20 @@
         "manaCost": "{W}{B}",
         "type": "Legendary Creature — Human Warlock",
         "text": "Lifelink\nMenace (This creature can't be blocked except by two or more creatures.)\nSpells you cast that target a creature cost {2} less to cast.",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Killian, Spotlight Chaser",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Killian, Spotlight Chaser",
+        "manaCost": "{B}{R}",
+        "type": "Legendary Creature — Human Bard",
+        "text": "Whenever a source you control deals noncombat damage to an opponent, seek a card with mana value equal to the damage dealt. Discard that card at the beginning of the next end step.",
         "power": "2",
         "toughness": "2"
       }
@@ -219610,7 +219891,7 @@
         "name": "Lae'zel, Illithid Thrall",
         "manaCost": "{3}{W}{U}",
         "type": "Legendary Creature — Gith Horror Warrior",
-        "text": "Double strike\nWhen this creature enters or specializes, conjure a duplicate of a random creature card from an opponent's library into your hand. It perpetually gains \"Mana of any type can be spent to cast this spell.\"",
+        "text": "Double strike\nWhen this creature enters or specializes, conjure a duplicate of a random creature card from an opponent's library into your hand. It perpetually gains prismatic.",
         "power": "3",
         "toughness": "6"
       }
@@ -234932,6 +235213,28 @@
         "text": "{U}: Change the text of target spell or permanent by replacing all instances of + with -, and vice versa, until end of turn.",
         "power": "1",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Magik, Illyana Rasputin // Darkchild, Demon Uncaged",
+    "layout": "modal_dfc",
+    "cards": [
+      {
+        "name": "Magik, Illyana Rasputin",
+        "manaCost": "{1}{B}{R}",
+        "type": "Legendary Creature — Mutant Sorcerer Hero",
+        "text": "At the beginning of your upkeep, exile the top card of your library. You may play that card this turn.\nAt the beginning of your end step, if you've sacrificed two or more permanents this turn, you may transform Magik.",
+        "power": "3",
+        "toughness": "3"
+      },
+      {
+        "name": "Darkchild, Demon Uncaged",
+        "manaCost": "{3}{B}{R}",
+        "type": "Legendary Creature — Mutant Demon Sorcerer",
+        "text": "At the beginning of your upkeep, exile cards from the top of your library until you exile a nonland card. You may play those cards this turn.\nPay 4 life: Darkchild gains indestructible until end of turn. Tap her.",
+        "power": "4",
+        "toughness": "4"
       }
     ]
   },
@@ -261654,7 +261957,7 @@
         "name": "Nantuko Slicer",
         "manaCost": "{2}{G}{G}",
         "type": "Creature — Insect",
-        "text": "Kicker {B}\nWhen this creature enters, return target card from your graveyard to your hand. If this spell was kicked, conjure a duplicate of target card in an opponent's graveyard into your hand. It perpetually gains \"Mana of any type can be spent to cast this spell.\"",
+        "text": "Kicker {B}\nWhen this creature enters, return target card from your graveyard to your hand. If this spell was kicked, conjure a duplicate of target card in an opponent's graveyard into your hand. It perpetually gains prismatic.",
         "power": "3",
         "toughness": "2"
       }
@@ -262016,7 +262319,7 @@
         "name": "Nashi, Illusion Gadgeteer",
         "manaCost": "{1}{B}{G}{U}",
         "type": "Legendary Creature — Rat Rogue",
-        "text": "Flash\nMenace, Ward {2}\nWhen Nashi enters, secretly choose a card in your graveyard and conjure a duplicate of it into your hand. If the duplicate isn't a land card, it perpetually gains flash.",
+        "text": "Menace, Ward {2}\nWhen Nashi enters, secretly choose a card in your graveyard and conjure a duplicate of it into your hand. If the duplicate isn't a land card, it perpetually gains flash.",
         "power": "4",
         "toughness": "4"
       }
@@ -270813,6 +271116,20 @@
     ]
   },
   {
+    "name": "Nylea's Oracle",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Nylea's Oracle",
+        "manaCost": "{G}{G}",
+        "type": "Creature — Centaur Druid",
+        "text": "When this creature enters, conjure X cards named Nylea's Oracle into your library, where X is your devotion to green, then shuffle. Then if there are more cards in your library than your starting deck, creatures you control get +X/+X and gain haste until end of turn.",
+        "power": "3",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Nylea's Presence",
     "layout": "single",
     "cards": [
@@ -273871,6 +274188,19 @@
     ]
   },
   {
+    "name": "Oko, Lord of the Fae",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Oko, Lord of the Fae",
+        "manaCost": "{1}{W}{W}",
+        "type": "Legendary Planeswalker — Oko",
+        "text": "Creatures can't attack planeswalkers you control unless their controller pays {1} for each of those creatures.\n[+1]: Up to one target artifact or creature loses all abilities until your next turn.\n[−1]: Create a 2/2 white Ox creature token.\n[−7]: You get an emblem with \"At the beginning of your upkeep, conjure a random planeswalker card into exile. You may cast that card this turn without paying its mana cost.\"",
+        "loyalty": "3"
+      }
+    ]
+  },
+  {
     "name": "Oko, Lorwyn Liege // Oko, Shadowmoor Scion",
     "layout": "transform",
     "cards": [
@@ -274822,7 +275152,7 @@
         "name": "Ominous Traveler",
         "manaCost": "{2}",
         "type": "Creature — Human",
-        "text": "When this creature enters, draft a card from Ominous Traveler's spellbook. That card perpetually gains \"Mana of any type can be spent to cast this spell\" and \"When you cast this spell, return a creature named Ominous Traveler you control to its owner's hand.\"",
+        "text": "When this creature enters, draft a card from Ominous Traveler's spellbook. That card perpetually gains prismatic and \"When you cast this spell, return a creature named Ominous Traveler you control to its owner's hand.\"",
         "power": "1",
         "toughness": "1"
       }
@@ -282217,6 +282547,20 @@
     ]
   },
   {
+    "name": "Paradox Kraken",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Paradox Kraken",
+        "manaCost": "{4}{U}{U}",
+        "type": "Creature — Kraken",
+        "text": "When this card is put into your graveyard from anywhere, conjure a card named Kraken Hatchling into your hand.\n{1}{U}: Return this card from your graveyard to the battlefield. Activate only if there are more cards in your graveyard than your library and only as a sorcery.",
+        "power": "7",
+        "toughness": "7"
+      }
+    ]
+  },
+  {
     "name": "Paradox Shaper // Omit Variables",
     "layout": "preparer",
     "cards": [
@@ -284775,6 +285119,18 @@
         "manaCost": "{2}{W}",
         "type": "Enchantment",
         "text": "Put a card from your hand on top of your library: The next time a black or red source of your choice would deal damage this turn, prevent that damage."
+      }
+    ]
+  },
+  {
+    "name": "Penance Stare",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Penance Stare",
+        "manaCost": "{W}",
+        "type": "Instant",
+        "text": "Destroy target attacking creature with mana value 3 or less."
       }
     ]
   },
@@ -293495,6 +293851,17 @@
     ]
   },
   {
+    "name": "Potential Horizon",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Potential Horizon",
+        "type": "Land",
+        "text": "If you were the starting player, this land enters tapped.\n{T}, Sacrifice this land: Search your library for a land card with a basic land type, put it onto the battlefield, then shuffle."
+      }
+    ]
+  },
+  {
     "name": "Pothole Mole",
     "layout": "single",
     "cards": [
@@ -297836,6 +298203,20 @@
         "text": "When this creature enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)",
         "power": "5",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "Prophet of the Planeswalker",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Prophet of the Planeswalker",
+        "manaCost": "{1}{W}",
+        "type": "Creature — Human Cleric",
+        "text": "When this creature enters, you may behold a planeswalker. If you do, it perpetually gains \"Loyalty abilities of this planeswalker cost an additional [+1] to activate.\"",
+        "power": "1",
+        "toughness": "4"
       }
     ]
   },
@@ -303152,6 +303533,19 @@
     ]
   },
   {
+    "name": "Quintorius, Fate Splitter",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Quintorius, Fate Splitter",
+        "manaCost": "{3}{W}{U}",
+        "type": "Legendary Planeswalker — Quintorius",
+        "text": "As long as Quintorius entered this turn, you may activate the loyalty abilities of planeswalkers you control twice this turn rather than only once.\n[0]: Proliferate. You gain 3 life.\n[−1]: Seek a non-Quintorius planeswalker card.\n[−3]: Create a 2/2 colorless Wizard Soldier creature token named Cadet. Then put a +1/+1 counter on each creature you control.",
+        "loyalty": "5"
+      }
+    ]
+  },
+  {
     "name": "Quintorius, Field Historian",
     "layout": "single",
     "cards": [
@@ -307851,7 +308245,7 @@
         "name": "Rasaad, Monk of Selûne",
         "manaCost": "{2}{W}",
         "type": "Legendary Creature — Human Monk",
-        "text": "Specialize {5}\nWhen Rasaad enters, exile target creature an opponent controls until this creature leaves the battlefield.",
+        "text": "Specialize {5}\nWhen Rasaad enters, exile target creature an opponent controls until Rasaad leaves the battlefield.",
         "power": "2",
         "toughness": "2"
       }
@@ -314127,6 +314521,18 @@
         "text": "Reach\nLandfall — Whenever a land you control enters, this creature gets +2/+0 until end of turn.",
         "power": "0",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Remnants of Beleren",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Remnants of Beleren",
+        "manaCost": "{1}{U}",
+        "type": "Artifact",
+        "text": "If you would empower Jace, you may instead put that many loyalty counters on a Jace you control.\n{T}: Empower Jace 1.\n{1}{U}, {T}: Draft a card from the Beleren Spellbook."
       }
     ]
   },
@@ -320435,6 +320841,18 @@
     ]
   },
   {
+    "name": "Rise from the Nether",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Rise from the Nether",
+        "manaCost": "{6}{R}",
+        "type": "Sorcery — Arcane",
+        "text": "Create a 3/1 black Mindless-One creature token for each noncreature, nonland card in your graveyard."
+      }
+    ]
+  },
+  {
     "name": "Rise from the Tides",
     "layout": "single",
     "cards": [
@@ -323998,6 +324416,26 @@
         "manaCost": "{4}{G}",
         "type": "Kindred Instant — Treefolk",
         "text": "Destroy target noncreature permanent. If you control a Treefolk, draw a card."
+      }
+    ]
+  },
+  {
+    "name": "Rootha, Ardent Artisan // Next Iteration",
+    "layout": "preparer",
+    "cards": [
+      {
+        "name": "Rootha, Ardent Artisan",
+        "manaCost": "{R}{G}",
+        "type": "Legendary Creature — Orc Artificer",
+        "text": "Sacrifice an artifact: Rootha becomes prepared. Activate only as a sorcery and only once each turn.",
+        "power": "2",
+        "toughness": "3"
+      },
+      {
+        "name": "Next Iteration",
+        "manaCost": "{X}{R}",
+        "type": "Sorcery",
+        "text": "Conjure a random artifact card with mana value X plus 1 onto the battlefield."
       }
     ]
   },
@@ -330246,6 +330684,18 @@
         "text": "You may sacrifice three artifacts rather than pay this spell's mana cost.\nExile three artifact cards from your graveyard: Return this card from your graveyard to your hand.",
         "power": "6",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Salvaged Imitations",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Salvaged Imitations",
+        "manaCost": "{X}{R}{G}",
+        "type": "Sorcery",
+        "text": "For each number between 1 and X, conjure a random artifact card with that mana value onto the battlefield. X can't be 0."
       }
     ]
   },
@@ -338996,6 +339446,20 @@
     ]
   },
   {
+    "name": "Searing Soloist",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Searing Soloist",
+        "manaCost": "{2}{R}{R}",
+        "type": "Creature — Orc Bard",
+        "text": "When this creature enters, conjure a card named Aria of Flame onto the battlefield.\nIf a red source you control would deal damage to a permanent or player, it deals that much damage plus 1 instead.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Searing Spear",
     "layout": "single",
     "cards": [
@@ -341456,6 +341920,20 @@
         "text": "{T}: Exile target creature card from a graveyard. That card deals damage equal to its power to this creature.",
         "power": "3",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Selfless Germinator",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Selfless Germinator",
+        "manaCost": "{G}",
+        "type": "Creature — Treefolk Druid",
+        "text": "Exhaust — {1}: Conjure a card named Seed of Hope into your hand.",
+        "power": "2",
+        "toughness": "1"
       }
     ]
   },
@@ -361315,7 +361793,7 @@
         "name": "Snowborn Simulacra",
         "manaCost": "{X}{U}{U}",
         "type": "Sorcery",
-        "text": "Conjure a duplicate of each of X target nontoken permanents into your hand. Those cards perpetually gain \"Mana of any type can be spent to cast this spell.\" If X is 5 or more, you may put one of them from your hand onto the battlefield."
+        "text": "Conjure a duplicate of each of X target nontoken permanents into your hand. Those cards perpetually gain prismatic. If X is 5 or more, you may put one of them from your hand onto the battlefield."
       }
     ]
   },
@@ -364343,7 +364821,7 @@
         "name": "Soul Servitude",
         "manaCost": "{2}{B}",
         "type": "Instant",
-        "text": "Target player sacrifices a nontoken creature of their choice. When they do, you may discard a card. If you do, conjure a duplicate of the sacrificed creature into your hand. It perpetually gains \"Mana of any type can be spent to cast this spell.\""
+        "text": "Target player sacrifices a nontoken creature of their choice. When they do, you may discard a card. If you do, conjure a duplicate of the sacrificed creature into your hand. It perpetually gains prismatic."
       }
     ]
   },
@@ -366044,6 +366522,18 @@
         "manaCost": "{1}{R}",
         "type": "Sorcery",
         "text": "Sparkmage's Gambit deals 1 damage to each of up to two target creatures. Those creatures can't block this turn."
+      }
+    ]
+  },
+  {
+    "name": "Sparks Ablaze",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Sparks Ablaze",
+        "manaCost": "{R}",
+        "type": "Instant",
+        "text": "Sparks Ablaze deals 2 damage to target creature or planeswalker. If that creature or planeswalker would die this turn, exile it instead.\nThe next planeswalker spell you cast costs {1} less to cast."
       }
     ]
   },
@@ -394899,6 +395389,17 @@
     ]
   },
   {
+    "name": "Temple of Khonshu",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Temple of Khonshu",
+        "type": "Land",
+        "text": "This land enters tapped unless you control a Dimension.\n{T}: Add {W} or {B}."
+      }
+    ]
+  },
+  {
     "name": "Temple of Malady",
     "layout": "single",
     "cards": [
@@ -398849,6 +399350,20 @@
     ]
   },
   {
+    "name": "The Bloodbile Swarm",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Bloodbile Swarm",
+        "manaCost": "{3}{B}{R}",
+        "type": "Legendary Creature — Elemental Insect",
+        "text": "Ward—Sacrifice a Blood artifact.\nOther creatures are Blood artifacts in addition to their other types and have \"{1}, {T}, Discard a card, Sacrifice this creature: Draw a card.\"\nWhenever a player sacrifices a nontoken creature or discards a creature card, exile it. It perpetually gains prismatic. You may cast it until the end of your next turn.",
+        "power": "6",
+        "toughness": "6"
+      }
+    ]
+  },
+  {
     "name": "The Bloodsky Massacre",
     "layout": "single",
     "cards": [
@@ -399647,6 +400162,18 @@
         "name": "The Dark Barony",
         "type": "Plane — Ulgrotha",
         "text": "Whenever a nonblack card is put into a player's graveyard from anywhere, that player loses 1 life.\nWhenever chaos ensues, each opponent discards a card."
+      }
+    ]
+  },
+  {
+    "name": "The Darkhold",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Darkhold",
+        "manaCost": "{1}{B}{B}",
+        "type": "Legendary Artifact — Book",
+        "text": "{T}: Put a sin counter on The Darkhold. Draw a card for each sin counter on it, then you lose 1 life for each card in your hand.\n{6}{B}{B}, {T}: Each player's life total becomes the lowest life total among all players. Activate only as a sorcery."
       }
     ]
   },
@@ -413774,7 +414301,7 @@
         "name": "Tome of the Infinite",
         "manaCost": "{2}{U}",
         "type": "Legendary Artifact — Book",
-        "text": "{U}, {T}: Conjure a random card from Tome of the Infinite's spellbook into your hand. It perpetually gains \"Mana of any type can be spent to cast this spell.\""
+        "text": "{U}, {T}: Conjure a random card from Tome of the Infinite's spellbook into your hand. It perpetually gains prismatic."
       }
     ]
   },
@@ -425211,7 +425738,7 @@
         "name": "Undercity Plunder",
         "manaCost": "{1}{B}",
         "type": "Sorcery",
-        "text": "Target opponent discards a card. Then they may discard an additional card. If they don't, conjure a duplicate of a random card from their library into your hand. It perpetually gains \"Mana of any type can be spent to cast this spell.\""
+        "text": "Target opponent discards a card. Then they may discard an additional card. If they don't, conjure a duplicate of a random card from their library into your hand. It perpetually gains prismatic."
       }
     ]
   },
@@ -429934,6 +430461,20 @@
     ]
   },
   {
+    "name": "Valgavoth, the Lifeline",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Valgavoth, the Lifeline",
+        "manaCost": "{2}{W}",
+        "type": "Legendary Creature — Insect Angel",
+        "text": "Flying\nWhenever you gain life, creature cards in your hand and graveyard perpetually get +1/+1.\nAs long as you've gained life this turn, you may cast creature spells from your graveyard. If you cast a spell this way, that creature enters with a finality counter on it.",
+        "power": "2",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Valiant Batrider",
     "layout": "single",
     "cards": [
@@ -434418,7 +434959,7 @@
         "name": "Vesuvan Mist",
         "manaCost": "{1}{U}",
         "type": "Instant",
-        "text": "Kicker {1}{B}\nReturn target nontoken, nonland permanent to its owner's hand. If this spell was kicked, conjure a duplicate of that card into your hand. It perpetually gains \"Mana of any type can be spent to cast this spell.\""
+        "text": "Kicker {1}{B}\nReturn target nontoken, nonland permanent to its owner's hand. If this spell was kicked, conjure a duplicate of that card into your hand. It perpetually gains prismatic."
       }
     ]
   },
@@ -435698,7 +436239,7 @@
         "name": "Viconia, Disciple of Arcana",
         "manaCost": "{1}{U}{B}",
         "type": "Legendary Creature — Elf Cleric",
-        "text": "When this creature specializes, choose up to one target creature card and up to one target instant or sorcery card from among cards exiled with this creature. Conjure a duplicate of each of those cards into your hand. The duplicates perpetually gain \"Mana of any type can be spent to cast this spell.\"\n{1}: Exile target card from a graveyard.",
+        "text": "When this creature specializes, choose up to one target creature card and up to one target instant or sorcery card from among cards exiled with this creature. Conjure a duplicate of each of those cards into your hand. The duplicates perpetually gain prismatic.\n{1}: Exile target card from a graveyard.",
         "power": "3",
         "toughness": "4"
       }
@@ -435712,7 +436253,7 @@
         "name": "Viconia, Disciple of Blood",
         "manaCost": "{1}{B}{B}",
         "type": "Legendary Creature — Elf Cleric",
-        "text": "When this creature specializes, conjure a duplicate of target creature card exiled with this creature into your hand. The duplicate perpetually gains \"Mana of any type can be spent to cast this spell.\" and \"When this creature enters, each opponent loses 2 life and you gain 2 life.\"\n{1}: Exile target card from a graveyard.",
+        "text": "When this creature specializes, conjure a duplicate of target creature card exiled with this creature into your hand. The duplicate perpetually gains prismatic and \"When this creature enters, each opponent loses 2 life and you gain 2 life.\"\n{1}: Exile target card from a graveyard.",
         "power": "3",
         "toughness": "4"
       }
@@ -435726,7 +436267,7 @@
         "name": "Viconia, Disciple of Rebirth",
         "manaCost": "{1}{W}{B}",
         "type": "Legendary Creature — Elf Cleric",
-        "text": "When this creature specializes, conjure a duplicate of target creature card exiled with this creature into your hand. The duplicate perpetually gains \"Mana of any type can be spent to cast this spell.\" If it has mana value 3 or less, you may put it onto the battlefield.\n{1}: Exile target card from a graveyard.",
+        "text": "When this creature specializes, conjure a duplicate of target creature card exiled with this creature into your hand. The duplicate perpetually gains prismatic. If it has mana value 3 or less, you may put it onto the battlefield.\n{1}: Exile target card from a graveyard.",
         "power": "3",
         "toughness": "4"
       }
@@ -435740,7 +436281,7 @@
         "name": "Viconia, Disciple of Strength",
         "manaCost": "{1}{B}{G}",
         "type": "Legendary Creature — Elf Cleric",
-        "text": "When this creature specializes, conjure a duplicate of target creature card exiled with this creature into your hand. The duplicate perpetually gets +2/+2 and gains \"Mana of any type can be spent to cast this spell.\"\n{1}: Exile target card from a graveyard.",
+        "text": "When this creature specializes, conjure a duplicate of target creature card exiled with this creature into your hand. The duplicate perpetually gets +2/+2 and gains prismatic.\n{1}: Exile target card from a graveyard.",
         "power": "3",
         "toughness": "4"
       }
@@ -435754,7 +436295,7 @@
         "name": "Viconia, Disciple of Violence",
         "manaCost": "{1}{B}{R}",
         "type": "Legendary Creature — Elf Cleric",
-        "text": "When this creature specializes, conjure a duplicate of target creature card exiled with this creature into your hand. The duplicate perpetually gets +1/+0 and gains haste and \"Mana of any type can be spent to cast this spell.\"\n{1}: Exile target card from a graveyard.",
+        "text": "When this creature specializes, conjure a duplicate of target creature card exiled with this creature into your hand. The duplicate perpetually gets +1/+0 and gains haste and prismatic.\n{1}: Exile target card from a graveyard.",
         "power": "3",
         "toughness": "4"
       }
@@ -440554,7 +441095,7 @@
         "name": "Vona de Iedo, the Antifex",
         "manaCost": "{2}{W}{B}{B}",
         "type": "Legendary Creature — Vampire Cleric Knight",
-        "text": "Menace\nWhen Vona de Iedo enters, destroy target nonland, nontoken permanent an opponent controls. Then you may discard a card. If you do, conjure a duplicate of that permanent into your hand, and the duplicate perpetually gains \"Mana of any type can be spent to cast this spell.\"",
+        "text": "Menace\nWhen Vona de Iedo enters, destroy target nonland, nontoken permanent an opponent controls. Then you may discard a card. If you do, conjure a duplicate of that permanent into your hand, and the duplicate perpetually gains prismatic.",
         "power": "4",
         "toughness": "2"
       }
@@ -445676,7 +446217,7 @@
         "name": "Warzone Duplicator",
         "manaCost": "{6}",
         "type": "Artifact Creature — Construct",
-        "text": "Prototype {3}{U} — 3/3\nWhen this creature enters, return target creature an opponent controls with power less than this creature's power to its owner's hand. If that creature wasn't a token, conjure a duplicate of it into your hand. It perpetually gains \"Mana of any type can be spent to cast this spell.\"",
+        "text": "Prototype {3}{U} — 3/3\nWhen this creature enters, return target creature an opponent controls with power less than this creature's power to its owner's hand. If that creature wasn't a token, conjure a duplicate of it into your hand. It perpetually gains prismatic.",
         "power": "6",
         "toughness": "6"
       }
@@ -451816,6 +452357,18 @@
         "text": "Morph {1}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\nWhen this creature is turned face up, change the target of target spell or ability with a single target.",
         "power": "1",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Willbound Quill",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Willbound Quill",
+        "manaCost": "{4}",
+        "type": "Artifact",
+        "text": "{T}: Add one mana of any color.\nActualize — Whenever you cast a spell that isn't from your starting deck, copy that spell. You may choose new targets for the copy."
       }
     ]
   },
@@ -462194,6 +462747,26 @@
         "text": "Whenever you draw your second card each turn, target opponent loses 2 life and you gain 2 life.\n{T}, Sacrifice another creature: Draw a card. You may put a land card from your hand onto the battlefield tapped. If you control eight or more lands, repeat this process once.",
         "power": "3",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Zimone the Calculating // Simple Subtraction",
+    "layout": "preparer",
+    "cards": [
+      {
+        "name": "Zimone the Calculating",
+        "manaCost": "{U}{B}",
+        "type": "Legendary Creature — Human Warlock",
+        "text": "Zimone assigns combat damage as though her power were positive.\nWhenever one or more cards are put into your graveyard from your library, Zimone becomes prepared.",
+        "power": "-1",
+        "toughness": "4"
+      },
+      {
+        "name": "Simple Subtraction",
+        "manaCost": "{1}{U}",
+        "type": "Instant",
+        "text": "Target creature perpetually gets -3/-0."
       }
     ]
   },

@@ -8739,6 +8739,15 @@ Card(
           UntilEndOfTurn,
         ),
         UntapPermanent(Ref_TargetPermanent),
+        CreatePermanentLayerEffectUntil(
+          Ref_TargetPermanent,
+          [
+            AddAbility([
+              Haste,
+            ]),
+          ],
+          UntilEndOfTurn,
+        ),
       ]),
     )),
   ],
@@ -8875,6 +8884,15 @@ Card(
           UntilEndOfTurn,
         ),
         UntapPermanent(Ref_TargetPermanent),
+        CreatePermanentLayerEffectUntil(
+          Ref_TargetPermanent,
+          [
+            AddAbility([
+              Haste,
+            ]),
+          ],
+          UntilEndOfTurn,
+        ),
       ]),
     )),
   ],
@@ -18653,7 +18671,7 @@ Card(
             TheCardConjuredIntoHandThisWay,
             [
               AddAbility([
-                CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                Prismatic,
               ]),
             ],
           ),
@@ -75983,6 +76001,65 @@ Card(
 )
 ------------------
 Card(
+  Name: "Asymmetry Sage",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Wizard,
+    ],
+  ),
+  ManaCost: [
+    ManaCostU,
+  ],
+  Rules: [
+    Flying,
+    TriggerA(
+      Or([
+        WhenAPlayerCastsASpell(
+          SinglePlayer(You),
+          Or([
+            IsCardtype(Instant),
+            IsCardtype(Sorcery),
+          ]),
+        ),
+        WhenAPlayerCopiesASpell(
+          SinglePlayer(You),
+          Or([
+            IsCardtype(Instant),
+            IsCardtype(Sorcery),
+          ]),
+        ),
+      ]),
+      Targeted(
+        [
+          TargetPermanent(And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ])),
+        ],
+        ActionList([
+          CreatePermanentLayerEffectUntil(
+            Ref_TargetPermanent,
+            [
+              SetPower(Integer(3)),
+            ],
+            UntilEndOfTurn,
+          ),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 0,
+    Toughness: 2,
+  ),
+)
+------------------
+Card(
   Name: "At Knifepoint",
   Typeline: (
     Supertypes: [],
@@ -87168,6 +87245,43 @@ Card(
 )
 ------------------
 Card(
+  Name: "Avoided Stairwurm",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Wurm,
+    ],
+  ),
+  ManaCost: [
+    ManaCostB,
+  ],
+  Rules: [
+    Menace,
+    PermanentLayerEffect(
+      ThisPermanent,
+      [
+        AdjustPTForEach(
+          -1,
+          -1,
+          NumCardsOfTypeInPlayersLibrary(
+            IsCardtype(Creature),
+            You,
+          ),
+        ),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 5,
+    Toughness: 5,
+  ),
+)
+------------------
+Card(
   Name: "Awaken the Ancient",
   Typeline: (
     Supertypes: [],
@@ -97565,6 +97679,40 @@ Card(
   CardPT: (
     Power: 1,
     Toughness: 1,
+  ),
+)
+------------------
+Card(
+  Name: "Banescale Serpent",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Serpent,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostU,
+    ManaCostR,
+  ],
+  Rules: [
+    Vigilance,
+    Haste,
+    Protection(FromTypes(IsCardtype(Instant))),
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        ForEachPlayerRememberMostPrevalentCreatureTypesInTheirLibrary(Opponent),
+      ],
+    ),
+    Protection(FromTypes(IsCreatureTypeVariable(TheRememberedCreatureTypes))),
+  ],
+  CardPT: (
+    Power: 5,
+    Toughness: 5,
   ),
 )
 ------------------
@@ -115679,6 +115827,57 @@ Card(
 )
 ------------------
 Card(
+  Name: "Bend Mortal Limits",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Sorcery,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostB,
+  ],
+  Rules: [
+    SpellActions(Targeted(
+      [
+        TargetPlayer(AnyPlayer),
+      ],
+      ActionList([
+        LookAtCardsOfTypeInPlayersHand(
+          Or([
+            IsCardtype(Creature),
+            IsCardtype(Planeswalker),
+          ]),
+          Ref_TargetPlayer,
+        ),
+        MayCost(Exile(
+          [
+            ACardOfTypeFromPlayersHand(
+              Or([
+                IsCardtype(Creature),
+                IsCardtype(Planeswalker),
+              ]),
+              Ref_TargetPlayer,
+            ),
+          ],
+          [],
+        )),
+        If(
+          CostWasPaid,
+          [
+            ConjureDuplicateOfExiledCardIntoPlayersGraveyard(
+              TheCardExiledThisWay,
+              You,
+            ),
+          ],
+        ),
+      ]),
+    )),
+  ],
+)
+------------------
+Card(
   Name: "Bend or Break",
   Typeline: (
     Supertypes: [],
@@ -118257,6 +118456,65 @@ Card(
       ]),
     )),
   ],
+)
+------------------
+Card(
+  Name: "Beta Ray Bill",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Alien,
+      Warrior,
+      Hero,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostGW,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentBecomesTheTargetOfASpellOrAbilityForTheFirstTimeEachTurn(
+        SinglePermanent(ThisPermanent),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ),
+      Targeted(
+        [
+          UptoOneTargetPermanent(And([
+            IsCreatureType(God),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ])),
+        ],
+        ActionList([
+          PutCounters([
+            ACounterOfTypeOnPermanent(
+              PTCounter(
+                1,
+                1,
+              ),
+              ThisPermanent,
+            ),
+            ACounterOfTypeOnPermanent(
+              PTCounter(
+                1,
+                1,
+              ),
+              Ref_TargetPermanent,
+            ),
+          ]),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 3,
+  ),
 )
 ------------------
 Card(
@@ -121027,7 +121285,7 @@ Card(
             TheCardConjuredIntoHandThisWay,
             [
               AddAbility([
-                CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                Prismatic,
               ]),
             ],
           ),
@@ -146315,6 +146573,65 @@ Card(
       ]),
     )),
   ],
+)
+------------------
+Card(
+  Name: "Boisterous Clique",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Faerie,
+      Warlock,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostB,
+    ManaCostB,
+  ],
+  Rules: [
+    Flash,
+    Flying,
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      Targeted(
+        [
+          TargetPlayer(AnyPlayer),
+        ],
+        ActionList([
+          LookAtCardsOfTypeInPlayersHand(
+            IsNonCardtype(Land),
+            Ref_TargetPlayer,
+          ),
+          MayCost(Exile(
+            [
+              ACardOfTypeFromPlayersHand(
+                IsNonCardtype(Land),
+                Ref_TargetPlayer,
+              ),
+            ],
+            [],
+          )),
+          If(
+            CostWasPaid,
+            [
+              PlayerAction(
+                Ref_TargetPlayer,
+                ConjureCardIntoHand("Mind Stone"),
+              ),
+            ],
+          ),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 1,
+  ),
 )
 ------------------
 Card(
@@ -212536,6 +212853,49 @@ Card(
 )
 ------------------
 Card(
+  Name: "Change the Narrative",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Enchantment,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostW,
+    ManaCostU,
+  ],
+  Rules: [
+    PlayerEffect(
+      You,
+      [
+        DecreaseSpellCost(
+          IsCardtype(Planeswalker),
+          [
+            CostReduceGeneric(1),
+          ],
+        ),
+      ],
+    ),
+    TriggerA(
+      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(You)),
+      ActionList([
+        ConjureDuplicateOfARandomCardOfTypeIntoHand(IsCardtype(Planeswalker)),
+        CreatePerpetualCardInHandEffect(
+          TheCardConjuredIntoHandThisWay,
+          [
+            AddAbility([
+              Prismatic,
+            ]),
+          ],
+        ),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Changeling Berserker",
   Typeline: (
     Supertypes: [],
@@ -228015,6 +228375,15 @@ Card(
           UntilEndOfTurn,
         ),
         UntapPermanent(Ref_TargetPermanent),
+        CreatePermanentLayerEffectUntil(
+          Ref_TargetPermanent,
+          [
+            AddAbility([
+              Haste,
+            ]),
+          ],
+          UntilEndOfTurn,
+        ),
       ]),
     )),
   ],
@@ -233931,7 +234300,7 @@ Card(
           TheCardConjuredIntoHandThisWay,
           [
             AddAbility([
-              CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+              Prismatic,
             ]),
           ],
         ),
@@ -273985,6 +274354,43 @@ Card(
         ])),
       ]),
     ])),
+  ],
+)
+------------------
+Card(
+  Name: "Crux of the Theory",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Enchantment,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostU,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      Targeted(
+        [
+          TargetPlayer(Opponent),
+        ],
+        ActionList([
+          HeistPlayersLibrary(Ref_TargetPlayer),
+        ]),
+      ),
+    ),
+    TriggerA(
+      WhenAPlayerCastsASpell(
+        SinglePlayer(You),
+        NotInAPlayersStartingDeck(SinglePlayer(You)),
+      ),
+      ActionList([
+        EmpowerJace(Integer(2)),
+      ]),
+    ),
   ],
 )
 ------------------
@@ -323631,6 +324037,43 @@ Card(
 )
 ------------------
 Card(
+  Name: "Diabolic Formula",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Enchantment,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostU,
+    ManaCostB,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAnyNumberOfGraveyardCardsLeave(And([
+        Or([
+          IsCardtype(Instant),
+          IsCardtype(Sorcery),
+        ]),
+        InAPlayersGraveyard(SinglePlayer(You)),
+      ])),
+      ActionList([
+        ConjureDuplicateOfARandomCardOfTypeOntoBattlefield(
+          And([
+            IsCardtype(Creature),
+            ManaValueIs(EqualTo(TheGreatestManaValueAmongTheCardsThatLeftTheGraveyardThisWay)),
+          ]),
+          [
+            EntersNormally,
+          ],
+        ),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Diabolic Intent",
   Typeline: (
     Supertypes: [],
@@ -326573,6 +327016,66 @@ Card(
   CardPT: (
     Power: 2,
     Toughness: 3,
+  ),
+)
+------------------
+Card(
+  Name: "Dina, Flesh Sower",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Dryad,
+      Cleric,
+    ],
+  ),
+  ManaCost: [
+    ManaCostG,
+    ManaCostW,
+  ],
+  Rules: [
+    Lifelink,
+    TriggerA(
+      WhenAPlayerGainsLife(SinglePlayer(You)),
+      ActionList([
+        CreatePerpetualPermanentEffect(
+          ThisPermanent,
+          [
+            AdjustPT(
+              1,
+              1,
+            ),
+          ],
+        ),
+      ]),
+    ),
+    TriggerA(
+      WhenAPermanentDies(SinglePermanent(ThisPermanent)),
+      ActionList([
+        ChooseACardInHand(IsCardtype(Creature)),
+        CreatePerpetualCardInHandEffect(
+          TheChosenCardInHand,
+          [
+            AddAbility([
+              Trample,
+            ]),
+            AdjustPTX(
+              PlusX,
+              PlusX,
+              PowerOfPermanent(ThisPermanent),
+            ),
+          ],
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 1,
+    Toughness: 1,
   ),
 )
 ------------------
@@ -337683,6 +338186,47 @@ Card(
   ],
   CardPT: (
     Power: 3,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
+  Name: "Doctor Strange, Master of Magic",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Sorcerer,
+      Hero,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostW,
+    ManaCostU,
+  ],
+  Rules: [
+    Flying,
+    Vigilance,
+    Prowess,
+    ActivatedWithModifiers(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        DrawACard,
+      ]),
+      ActivateOnlyIf(PlayerPassesFilter(
+        You,
+        CastASpellThisTurn(IsNonCardtype(Creature)),
+      )),
+    ),
+  ],
+  CardPT: (
+    Power: 2,
     Toughness: 3,
   ),
 )
@@ -373798,6 +374342,40 @@ Card(
 )
 ------------------
 Card(
+  Name: "Echogoyfs",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Lhurgoyf,
+    ],
+  ),
+  ManaCost: [
+    ManaCostU,
+  ],
+  Rules: [
+    DoubleTeam,
+    CDA_Power(NumSpellsCastByPlayerThisGame(
+      NotInAPlayersStartingDeck(SinglePlayer(You)),
+      You,
+    )),
+    CDA_Toughness(Plus(
+      NumSpellsCastByPlayerThisGame(
+        NotInAPlayersStartingDeck(SinglePlayer(You)),
+        You,
+      ),
+      Integer(1),
+    )),
+  ],
+  CardPT: (
+    Power: 0,
+    Toughness: 1,
+  ),
+)
+------------------
+Card(
   Name: "Echoing Assault",
   Typeline: (
     Supertypes: [],
@@ -401819,6 +402397,74 @@ Card(
 )
 ------------------
 Card(
+  Name: "Enter the Eternities",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Sorcery,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostG,
+    ManaCostU,
+  ],
+  Rules: [
+    SpellActions(Targeted(
+      [
+        TargetPermanent(And([
+          IsCardtype(Creature),
+          ControlledByAPlayer(SinglePlayer(You)),
+        ])),
+      ],
+      ActionList([
+        Exile(
+          [
+            Permanent(Ref_TargetPermanent),
+          ],
+          [],
+        ),
+        DraftAbilitiesFromAbilityBook(
+          [
+            Loyalty(1),
+            Loyalty(-2),
+            Loyalty(-8),
+          ],
+          "Enter the Eternities",
+        ),
+        CreateTokens(
+          [
+            TokenWithCopyEffects(
+              ColorsOfPermanent(Ref_TargetPermanent),
+              [
+                Legendary,
+              ],
+              [
+                Planeswalker,
+              ],
+              SubtypesList([]),
+              [],
+              TokenCopyEffects([
+                SetNameVariable(NameOfPermanent(Ref_TargetPermanent)),
+                AddTheDraftedAbilities,
+              ]),
+            ),
+          ],
+          [],
+        ),
+        PutCounters([
+          NumberCountersOfTypeOnEachPermanent(
+            PowerOfPermanent(Ref_TargetPermanent),
+            LoyaltyCounter,
+            TheTokensCreatedThisWay,
+          ),
+        ]),
+      ]),
+    )),
+  ],
+)
+------------------
+Card(
   Name: "Enter the God-Eternals",
   Typeline: (
     Supertypes: [],
@@ -410250,6 +410896,58 @@ Transforming(
       Power: 11,
       Toughness: 11,
     ),
+  ),
+)
+------------------
+Card(
+  Name: "Etali, Primal Garden",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Elder,
+      Dinosaur,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(6),
+    ManaCostG,
+  ],
+  Rules: [
+    CastEffect(ReduceCastingCostForEach(
+      [
+        CostReduceGeneric(1),
+      ],
+      NumSpellsCastByPlayerThisGame(
+        NotInAPlayersStartingDeck(SinglePlayer(You)),
+        You,
+      ),
+    )),
+    Trample,
+    TriggerA(
+      Or([
+        WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+        WhenACreatureAttacks(SinglePermanent(ThisPermanent)),
+      ]),
+      ActionList([
+        ConjureDuplicateOfARandomCardOfTypeIntoExile(IsCreatureType(Dinosaur)),
+        CreatePlayerEffectUntil(
+          You,
+          [
+            MayCastExiledCardWithoutPaying(TheCardConjuredIntoExileThisWay),
+          ],
+          UntilEndOfTurn,
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 7,
+    Toughness: 7,
   ),
 )
 ------------------
@@ -466637,6 +467335,76 @@ Card(
 )
 ------------------
 Card(
+  Name: "Flourishing Forces",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Sorcery,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostG,
+    ManaCostW,
+    ManaCostW,
+  ],
+  Rules: [
+    SpellActions(ActionList([
+      CreateTokens(
+        [
+          NamedTokenWithPT(
+            "Cadet",
+            PT(
+              2,
+              2,
+            ),
+            Colorless,
+            [],
+            [
+              Creature,
+            ],
+            SubtypesList([
+              Wizard,
+              Soldier,
+            ]),
+            [],
+          ),
+        ],
+        [],
+      ),
+      CreateTokens(
+        [
+          NumberTokens(
+            DivideRoundedDown(
+              LifeGainedByPlayerThisGame(You),
+              Integer(3),
+            ),
+            NamedTokenWithPT(
+              "Cadet",
+              PT(
+                2,
+                2,
+              ),
+              Colorless,
+              [],
+              [
+                Creature,
+              ],
+              SubtypesList([
+                Wizard,
+                Soldier,
+              ]),
+              [],
+            ),
+          ),
+        ],
+        [],
+      ),
+    ])),
+  ],
+)
+------------------
+Card(
   Name: "Flourishing Fox",
   Typeline: (
     Supertypes: [],
@@ -490018,7 +490786,7 @@ Card(
             TheCardConjuredIntoHandThisWay,
             [
               AddAbility([
-                CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                Prismatic,
               ]),
             ],
           ),
@@ -496496,6 +497264,77 @@ Card(
   CardPT: (
     Power: 7,
     Toughness: 5,
+  ),
+)
+------------------
+Card(
+  Name: "Gargantos, the Endbringer",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Elder,
+      God,
+      Horror,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostB,
+    ManaCostG,
+  ],
+  Rules: [
+    Deathtouch,
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        EntersWithNumberCounters(
+          Integer(3),
+          PTCounter(
+            1,
+            1,
+          ),
+        ),
+      ],
+    ),
+    TriggerA(
+      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(You)),
+      ActionList([
+        PutCounters([
+          DoubleCountersOfTypeOnPermanent(
+            PTCounter(
+              1,
+              1,
+            ),
+            ThisPermanent,
+          ),
+        ]),
+      ]),
+    ),
+    TriggerA(
+      WhenACreatureDealsCombatDamageToAPlayer(
+        SinglePermanent(ThisPermanent),
+        Opponent,
+      ),
+      ActionList([
+        PermanentDealsDamage(
+          ThisPermanent,
+          Trigger_ThatMuch,
+          EachPlayer(And([
+            Other(Trigger_ThatPlayer),
+            Opponent,
+          ])),
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 0,
+    Toughness: 0,
   ),
 )
 ------------------
@@ -550881,7 +551720,7 @@ Card(
               TheCardConjuredIntoHandThisWay,
               [
                 AddAbility([
-                  CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                  Prismatic,
                 ]),
               ],
             ),
@@ -571695,7 +572534,7 @@ Card(
           TheCardConjuredIntoHandThisWay,
           [
             AddAbility([
-              CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+              Prismatic,
             ]),
           ],
         ),
@@ -595626,6 +596465,91 @@ Card(
     Power: 2,
     Toughness: 3,
   ),
+)
+------------------
+Card(
+  Name: "Hela\'s Arcanum",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Instant,
+    ],
+    Subtypes: [
+      Arcane,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostB,
+    ManaCostB,
+  ],
+  Rules: [
+    SpellActions(Modal_ChooseUptoNumberPawsMayChooseSameModeMoreThanOnce(
+      Integer(5),
+      [
+        PawMode(
+          1,
+          Targeted(
+            [
+              TargetPermanent(IsCardtype(Creature)),
+            ],
+            ActionList([
+              CreatePermanentLayerEffectUntil(
+                Ref_TargetPermanent,
+                [
+                  AdjustPT(
+                    1,
+                    0,
+                  ),
+                  AddAbility([
+                    Deathtouch,
+                  ]),
+                ],
+                UntilEndOfTurn,
+              ),
+            ]),
+          ),
+        ),
+        PawMode(
+          2,
+          Targeted(
+            [
+              TargetPermanent(IsCardtype(Creature)),
+            ],
+            ActionList([
+              CreatePermanentLayerEffectUntil(
+                Ref_TargetPermanent,
+                [
+                  AddAbility([
+                    TriggerA(
+                      WhenAPermanentDies(SinglePermanent(ThisPermanent)),
+                      ActionList([
+                        ReturnDeadGraveyardCardToBattlefield([
+                          EntersTapped,
+                          EntersUnderOwnersControl,
+                        ]),
+                      ]),
+                    ),
+                  ]),
+                ],
+                UntilEndOfTurn,
+              ),
+            ]),
+          ),
+        ),
+        PawMode(
+          3,
+          ActionList([
+            DestroyEachPermanent(And([
+              IsNonCreatureType(Zombie),
+              IsCardtype(Creature),
+              PowerIs(LessThanOrEqualTo(Integer(3))),
+            ])),
+          ]),
+        ),
+      ],
+    )),
+  ],
 )
 ------------------
 Card(
@@ -673530,6 +674454,82 @@ Card(
 )
 ------------------
 Card(
+  Name: "Jace\'s Saga",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Enchantment,
+      Land,
+    ],
+    Subtypes: [
+      Saga,
+    ],
+  ),
+  Rules: [
+    SagaChapters([
+      SagaChapter(
+        [
+          1,
+        ],
+        ActionList([
+          CreatePermanentLayerEffect(
+            ThisPermanent,
+            [
+              AddAbility([
+                Activated(
+                  TapPermanent(ThisPermanent),
+                  ActionList([
+                    AddMana(ManaProduceU),
+                  ]),
+                ),
+              ]),
+            ],
+          ),
+        ]),
+      ),
+      SagaChapter(
+        [
+          2,
+        ],
+        ActionList([
+          CreatePermanentLayerEffect(
+            ThisPermanent,
+            [
+              AddAbility([
+                Activated(
+                  And([
+                    PayMana([
+                      ManaCostU,
+                    ]),
+                    TapPermanent(ThisPermanent),
+                  ]),
+                  ActionList([
+                    ConjureCardOntoBattlefield(
+                      "Jace\'s Sentinel",
+                      [
+                        EntersNormally,
+                      ],
+                    ),
+                  ]),
+                ),
+              ]),
+            ],
+          ),
+        ]),
+      ),
+      SagaChapter(
+        [
+          3,
+        ],
+        ActionList([
+          EmpowerJace(Integer(3)),
+        ]),
+      ),
+    ]),
+  ],
+)
+------------------
+Card(
   Name: "Jace\'s Sanctum",
   Typeline: (
     Supertypes: [],
@@ -689661,7 +690661,7 @@ Card(
         AnyPlayer,
         [
           AddAbility([
-            CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+            Prismatic,
           ]),
         ],
       ),
@@ -711594,6 +712594,9 @@ Card(
                 Zero,
                 ValueX,
               ),
+              AddAbility([
+                Trample,
+              ]),
             ],
             UntilEndOfTurn,
           ),
@@ -714702,6 +715705,47 @@ Card(
           ],
         ),
       ],
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 2,
+  ),
+)
+------------------
+Card(
+  Name: "Killian, Spotlight Chaser",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Bard,
+    ],
+  ),
+  ManaCost: [
+    ManaCostB,
+    ManaCostR,
+  ],
+  Rules: [
+    TriggerA(
+      WhenASourceDealsNoncombatDamageToAPlayer(
+        ControlledByAPlayer(SinglePlayer(You)),
+        Opponent,
+      ),
+      ActionList([
+        SeekACard(ManaValueIs(EqualTo(Trigger_ThatMuch))),
+        CreateFutureTrigger(
+          AtTheBeginningOfTheNextEndStep,
+          ActionList([
+            DiscardCard(TheCardSeekedThisWay),
+          ]),
+        ),
+      ]),
     ),
   ],
   CardPT: (
@@ -740072,7 +741116,7 @@ Card(
           TheCardConjuredIntoHandThisWay,
           [
             AddAbility([
-              CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+              Prismatic,
             ]),
           ],
         ),
@@ -764803,6 +765847,15 @@ Card(
           UntilEndOfTurn,
         ),
         UntapPermanent(Ref_TargetPermanent),
+        CreatePermanentLayerEffectUntil(
+          Ref_TargetPermanent,
+          [
+            AddAbility([
+              Haste,
+            ]),
+          ],
+          UntilEndOfTurn,
+        ),
       ]),
     )),
     Cycling(PayMana([
@@ -791331,6 +792384,127 @@ Card(
       ),
     ])),
   ],
+)
+------------------
+ModalDFC(
+  FrontFace: (
+    Name: "Magik, Illyana Rasputin",
+    Typeline: (
+      Supertypes: [
+        Legendary,
+      ],
+      Cardtypes: [
+        Creature,
+      ],
+      Subtypes: [
+        Mutant,
+        Sorcerer,
+        Hero,
+      ],
+    ),
+    ManaCost: [
+      ManaCostGeneric(1),
+      ManaCostB,
+      ManaCostR,
+    ],
+    Rules: [
+      TriggerA(
+        AtTheBeginningOfAPlayersUpkeep(SinglePlayer(You)),
+        ActionList([
+          Exile(
+            [
+              TheTopCardOfLibrary,
+            ],
+            [],
+          ),
+          CreatePlayerEffectUntil(
+            You,
+            [
+              MayPlayExiledCard(TheCardExiledThisWay),
+            ],
+            UntilEndOfTurn,
+          ),
+        ]),
+      ),
+      TriggerI(
+        AtTheBeginningOfAPlayersEndStep(SinglePlayer(You)),
+        PlayerPassesFilter(
+          You,
+          SacrificedNumPermanentsThisTurn(
+            GreaterThanOrEqualTo(Integer(2)),
+            IsPermanent,
+          ),
+        ),
+        ActionList([
+          MayAction(TransformPermanent(ThisPermanent)),
+        ]),
+      ),
+    ],
+    CardPT: (
+      Power: 3,
+      Toughness: 3,
+    ),
+  ),
+  BackFace: (
+    Name: "Darkchild, Demon Uncaged",
+    Typeline: (
+      Supertypes: [
+        Legendary,
+      ],
+      Cardtypes: [
+        Creature,
+      ],
+      Subtypes: [
+        Mutant,
+        Demon,
+        Sorcerer,
+      ],
+    ),
+    ManaCost: [
+      ManaCostGeneric(3),
+      ManaCostB,
+      ManaCostR,
+    ],
+    Rules: [
+      TriggerA(
+        AtTheBeginningOfAPlayersUpkeep(SinglePlayer(You)),
+        ActionList([
+          Exile(
+            [
+              CardsFromTheTopOfLibraryUntilACardOfTypeIsExiled(IsNonCardtype(Land)),
+            ],
+            [],
+          ),
+          CreatePlayerEffectUntil(
+            You,
+            [
+              MayPlayExiledCards(TheCardsExiledThisWay),
+            ],
+            UntilEndOfTurn,
+          ),
+        ]),
+      ),
+      Activated(
+        PayLife(Integer(4)),
+        ActionList([
+          CreatePermanentLayerEffectUntil(
+            ThisPermanent,
+            [
+              AddAbility([
+                Indestructible,
+              ]),
+            ],
+            UntilEndOfTurn,
+          ),
+          TapPermanent(ThisPermanent),
+        ]),
+      ),
+    ],
+    CardPT: (
+      Power: 4,
+      Toughness: 4,
+    ),
+  ),
 )
 ------------------
 Card(
@@ -880602,7 +881776,7 @@ Card(
                 TheCardConjuredIntoHandThisWay,
                 [
                   AddAbility([
-                    CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                    Prismatic,
                   ]),
                 ],
               ),
@@ -881845,7 +883019,6 @@ Card(
     ManaCostU,
   ],
   Rules: [
-    Flash,
     Menace,
     Ward(PayMana([
       ManaCostGeneric(2),
@@ -911731,6 +912904,70 @@ Card(
 )
 ------------------
 Card(
+  Name: "Nylea\'s Oracle",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Centaur,
+      Druid,
+    ],
+  ),
+  ManaCost: [
+    ManaCostG,
+    ManaCostG,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        ConjureNumberCardsIntoLibraryAndShuffle(
+          PlayerDevotionTo(
+            You,
+            Green,
+          ),
+          "Nylea\'s Oracle",
+        ),
+        If(
+          PlayerPassesFilter(
+            You,
+            NumCardsInLibraryIs(GreaterThan(TheTotalNumberOfCardsInAmongPlayersStartingDecks(SinglePlayer(You)))),
+          ),
+          [
+            CreateEachPermanentLayerEffectUntil(
+              And([
+                IsCardtype(Creature),
+                ControlledByAPlayer(SinglePlayer(You)),
+              ]),
+              [
+                AdjustPTX(
+                  PlusX,
+                  PlusX,
+                  PlayerDevotionTo(
+                    You,
+                    Green,
+                  ),
+                ),
+                AddAbility([
+                  Haste,
+                ]),
+              ],
+              UntilEndOfTurn,
+            ),
+          ],
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 1,
+  ),
+)
+------------------
+Card(
   Name: "Nylea\'s Presence",
   Typeline: (
     Supertypes: [],
@@ -922518,6 +923755,110 @@ Card(
   ],
 )
 ------------------
+Card(
+  Name: "Oko, Lord of the Fae",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Planeswalker,
+    ],
+    Subtypes: [
+      Oko,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostW,
+    ManaCostW,
+  ],
+  Rules: [
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
+      [
+        CantAttackAPermanentUnlessCost(
+          And([
+            IsCardtype(Planeswalker),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
+          PayMana([
+            ManaCostGeneric(1),
+          ]),
+        ),
+      ],
+    ),
+    Activated(
+      Loyalty(1),
+      Targeted(
+        [
+          UptoOneTargetPermanent(Or([
+            IsCardtype(Artifact),
+            IsCardtype(Creature),
+          ])),
+        ],
+        ActionList([
+          CreatePermanentLayerEffectUntil(
+            Ref_TargetPermanent,
+            [
+              LosesAllAbilities,
+            ],
+            UntilPlayersNextTurn(You),
+          ),
+        ]),
+      ),
+    ),
+    Activated(
+      Loyalty(-1),
+      ActionList([
+        CreateTokens(
+          [
+            TokenWithPT(
+              PT(
+                2,
+                2,
+              ),
+              Colors([
+                White,
+              ]),
+              [],
+              [
+                Creature,
+              ],
+              SubtypesList([
+                Ox,
+              ]),
+              [],
+            ),
+          ],
+          [],
+        ),
+      ]),
+    ),
+    Activated(
+      Loyalty(-7),
+      ActionList([
+        GetAnEmblem([
+          TriggerA(
+            AtTheBeginningOfAPlayersUpkeep(SinglePlayer(You)),
+            ActionList([
+              ConjureARandomCardIntoExile(IsCardtype(Planeswalker)),
+              CreatePlayerEffectUntil(
+                You,
+                [
+                  MayCastExiledCardWithoutPaying(TheCardConjuredIntoExileThisWay),
+                ],
+                UntilEndOfTurn,
+              ),
+            ]),
+          ),
+        ]),
+      ]),
+    ),
+  ],
+  Loyalty: Integer(3),
+)
+------------------
 Transforming(
   FrontFace: (
     Name: "Oko, Lorwyn Liege",
@@ -926338,7 +927679,7 @@ Card(
           TheCardPutInHandThisWay,
           [
             AddAbility([
-              CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+              Prismatic,
             ]),
             AddAbility([
               FromStack(TriggerA(
@@ -951471,6 +952812,60 @@ Card(
   ],
 )
 ------------------
+Card(
+  Name: "Paradox Kraken",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Kraken,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(4),
+    ManaCostU,
+    ManaCostU,
+  ],
+  Rules: [
+    FromGraveyard(TriggerA(
+      WhenACardIsPutIntoAPlayersGraveyardFromAnywhere(
+        SingleCard(ThisCard),
+        SinglePlayer(You),
+      ),
+      ActionList([
+        ConjureCardIntoHand("Kraken Hatchling"),
+      ]),
+    )),
+    FromGraveyard(ActivatedWithModifiers(
+      PayMana([
+        ManaCostGeneric(1),
+        ManaCostU,
+      ]),
+      ActionList([
+        PutGraveyardCardOntoBattlefield(
+          ThisGraveyardCard,
+          [
+            EntersNormally,
+          ],
+        ),
+      ]),
+      And([
+        ActivateOnlyIf(ValueIs(
+          TheNumberOfGraveyardCards(InAPlayersGraveyard(SinglePlayer(You))),
+          GreaterThan(NumCardsInPlayersLibrary(You)),
+        )),
+        ActivateOnlyAsASorcery,
+      ]),
+    )),
+  ],
+  CardPT: (
+    Power: 7,
+    Toughness: 7,
+  ),
+)
+------------------
 Preparer(
   Name: "Paradox Shaper",
   Typeline: (
@@ -960219,6 +961614,34 @@ Card(
         ),
       ]),
     ),
+  ],
+)
+------------------
+Card(
+  Name: "Penance Stare",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Instant,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostW,
+  ],
+  Rules: [
+    SpellActions(Targeted(
+      [
+        TargetPermanent(And([
+          IsAttacking,
+          IsCardtype(Creature),
+          ManaValueIs(LessThanOrEqualTo(Integer(3))),
+        ])),
+      ],
+      ActionList([
+        DestroyPermanent(Ref_TargetPermanent),
+      ]),
+    )),
   ],
 )
 ------------------
@@ -988152,6 +989575,51 @@ Card(
 )
 ------------------
 Card(
+  Name: "Potential Horizon",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        If(
+          PlayerPassesFilter(
+            You,
+            IsTheStartingPlayer,
+          ),
+          [
+            EntersTapped,
+          ],
+        ),
+      ],
+    ),
+    Activated(
+      And([
+        TapPermanent(ThisPermanent),
+        SacrificePermanent(ThisPermanent),
+      ]),
+      ActionList([
+        SearchLibrary([
+          FindACardOfType(And([
+            IsCardtype(Land),
+            HasBasicLandType,
+          ])),
+          PutFoundCardsOntoBattlefield([
+            EntersNormally,
+          ]),
+          Shuffle,
+        ]),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Pothole Mole",
   Typeline: (
     Supertypes: [],
@@ -1002583,6 +1004051,79 @@ Card(
   CardPT: (
     Power: 5,
     Toughness: 5,
+  ),
+)
+------------------
+Card(
+  Name: "Prophet of the Planeswalker",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Cleric,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        MayCost(BeholdA(IsCardtype(Planeswalker))),
+        If(
+          CostWasPaid,
+          [
+            CreatePerpetualPermanentEffect(
+              ThePermanentBeheldThisWay,
+              [
+                AddAbility([
+                  EachPlayerEffect(
+                    AnyPlayer,
+                    [
+                      IncreaseAbilityCost(
+                        And([
+                          LoyaltyAbility,
+                          AbilityOfPermanent(ThisPermanent),
+                        ]),
+                        Loyalty(1),
+                      ),
+                    ],
+                  ),
+                ]),
+              ],
+            ),
+            CreatePerpetualCardInHandEffect(
+              TheCardInHandBeheldThisWay,
+              [
+                AddAbility([
+                  EachPlayerEffect(
+                    AnyPlayer,
+                    [
+                      IncreaseAbilityCost(
+                        And([
+                          LoyaltyAbility,
+                          AbilityOfPermanent(ThisPermanent),
+                        ]),
+                        Loyalty(1),
+                      ),
+                    ],
+                  ),
+                ]),
+              ],
+            ),
+          ],
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 1,
+    Toughness: 4,
   ),
 )
 ------------------
@@ -1020425,6 +1021966,101 @@ Card(
     ),
   ],
   Loyalty: Integer(4),
+)
+------------------
+Card(
+  Name: "Quintorius, Fate Splitter",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Planeswalker,
+    ],
+    Subtypes: [
+      Quintorius,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostW,
+    ManaCostU,
+  ],
+  Rules: [
+    If(
+      PermanentPassesFilter(
+        ThisPermanent,
+        EnteredTheBattlefieldThisTurn,
+      ),
+      [
+        PlayerEffect(
+          You,
+          [
+            MayActivateLoyaltyAbilitiesTwiceEachTurn(And([
+              IsCardtype(Planeswalker),
+              ControlledByAPlayer(SinglePlayer(You)),
+            ])),
+          ],
+        ),
+      ],
+    ),
+    Activated(
+      Loyalty(0),
+      ActionList([
+        Proliferate,
+        GainLife(Integer(3)),
+      ]),
+    ),
+    Activated(
+      Loyalty(-1),
+      ActionList([
+        SeekACard(And([
+          IsNonPlaneswalkerType(Quintorius),
+          IsCardtype(Planeswalker),
+        ])),
+      ]),
+    ),
+    Activated(
+      Loyalty(-3),
+      ActionList([
+        CreateTokens(
+          [
+            NamedTokenWithPT(
+              "Cadet",
+              PT(
+                2,
+                2,
+              ),
+              Colorless,
+              [],
+              [
+                Creature,
+              ],
+              SubtypesList([
+                Wizard,
+                Soldier,
+              ]),
+              [],
+            ),
+          ],
+          [],
+        ),
+        PutCounters([
+          ACounterOfTypeOnEachPermanent(
+            PTCounter(
+              1,
+              1,
+            ),
+            And([
+              IsCardtype(Creature),
+              ControlledByAPlayer(SinglePlayer(You)),
+            ]),
+          ),
+        ]),
+      ]),
+    ),
+  ],
+  Loyalty: Integer(5),
 )
 ------------------
 Card(
@@ -1057077,6 +1058713,63 @@ Card(
 )
 ------------------
 Card(
+  Name: "Remnants of Beleren",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostU,
+  ],
+  Rules: [
+    ReplaceWouldEmpowerJace(
+      APlayerWouldEmpowerJace(SinglePlayer(You)),
+      [
+        ChooseAnAction([
+          [
+            EmpowerJace(WouldEmpowerJace_EmpowerAmount),
+          ],
+          [
+            PutCounters([
+              NumberCountersOfTypeOnAPermanent(
+                WouldEmpowerJace_EmpowerAmount,
+                LoyaltyCounter,
+                And([
+                  IsPlaneswalkerType(Jace),
+                  ControlledByAPlayer(SinglePlayer(You)),
+                ]),
+              ),
+            ]),
+          ],
+        ]),
+      ],
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        EmpowerJace(Integer(1)),
+      ]),
+    ),
+    Activated(
+      And([
+        PayMana([
+          ManaCostGeneric(1),
+          ManaCostU,
+        ]),
+        TapPermanent(ThisPermanent),
+      ]),
+      ActionList([
+        DraftACardFromSpellBook("Beleren"),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Remorseful Cleric",
   Typeline: (
     Supertypes: [],
@@ -1078404,6 +1080097,56 @@ Card(
 )
 ------------------
 Card(
+  Name: "Rise from the Nether",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Sorcery,
+    ],
+    Subtypes: [
+      Arcane,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(6),
+    ManaCostR,
+  ],
+  Rules: [
+    SpellActions(ActionList([
+      CreateTokens(
+        [
+          NumberTokens(
+            TheNumberOfGraveyardCards(And([
+              IsNonCardtype(Creature),
+              IsNonCardtype(Land),
+              InAPlayersGraveyard(SinglePlayer(You)),
+            ])),
+            TokenWithPT(
+              PT(
+                3,
+                1,
+              ),
+              Colors([
+                Black,
+              ]),
+              [],
+              [
+                Creature,
+              ],
+              SubtypesList([
+                MindlessOne,
+              ]),
+              [],
+            ),
+          ),
+        ],
+        [],
+      ),
+    ])),
+  ],
+)
+------------------
+Card(
   Name: "Rise from the Tides",
   Typeline: (
     Supertypes: [],
@@ -1090480,6 +1092223,72 @@ Card(
       ]),
     )),
   ],
+)
+------------------
+Preparer(
+  Name: "Rootha, Ardent Artisan",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Orc,
+      Artificer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostR,
+    ManaCostG,
+  ],
+  Rules: [
+    ActivatedWithModifiers(
+      SacrificeAPermanent(IsCardtype(Artifact)),
+      ActionList([
+        PreparePermanent(ThisPermanent),
+      ]),
+      And([
+        ActivateOnlyAsASorcery,
+        ActivateOnlyOnceEachTurn,
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 3,
+  ),
+  Prepared: (
+    Name: "Next Iteration",
+    Typeline: (
+      Supertypes: [],
+      Cardtypes: [
+        Sorcery,
+      ],
+      Subtypes: [],
+    ),
+    ManaCost: [
+      ManaCostX,
+      ManaCostR,
+    ],
+    Rules: [
+      SpellActions(ActionList([
+        ConjureDuplicateOfARandomCardOfTypeOntoBattlefield(
+          And([
+            IsCardtype(Artifact),
+            ManaValueIs(EqualTo(Plus(
+              ValueX,
+              Integer(1),
+            ))),
+          ]),
+          [
+            EntersNormally,
+          ],
+        ),
+      ])),
+    ],
+  ),
 )
 ------------------
 Card(
@@ -1111362,6 +1113171,38 @@ Card(
     Power: 6,
     Toughness: 4,
   ),
+)
+------------------
+Card(
+  Name: "Salvaged Imitations",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Sorcery,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostX,
+    ManaCostR,
+    ManaCostG,
+  ],
+  Rules: [
+    CastEffect(XCantBeZero),
+    SpellActions(ActionList([
+      ForEachValueInRangeConjureDuplicateOfARandomCardOfTypeOntoBattlefield(
+        Integer(1),
+        ValueX,
+        And([
+          IsCardtype(Artifact),
+          ManaValueIs(EqualTo(EachableNumber)),
+        ]),
+        [
+          EntersNormally,
+        ],
+      ),
+    ])),
+  ],
 )
 ------------------
 Card(
@@ -1141012,6 +1142853,60 @@ Card(
 )
 ------------------
 Card(
+  Name: "Searing Soloist",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Orc,
+      Bard,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostR,
+    ManaCostR,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        ConjureCardOntoBattlefield(
+          "Aria of Flame",
+          [
+            EntersNormally,
+          ],
+        ),
+      ]),
+    ),
+    ReplaceWouldDealDamage(
+      DamageWouldBeDealtByASourceToARecipient(
+        And([
+          IsColor(Red),
+          ControlledByAPlayer(SinglePlayer(You)),
+        ]),
+        APlayerOrAPermanent(
+          AnyPlayer,
+          AnyPermanent,
+        ),
+      ),
+      [
+        DealDamageInstead(Plus(
+          WouldDealDamage_ThatMuchDamage,
+          Integer(1),
+        )),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
   Name: "Searing Spear",
   Typeline: (
     Supertypes: [],
@@ -1149094,6 +1150989,38 @@ Card(
   CardPT: (
     Power: 3,
     Toughness: 4,
+  ),
+)
+------------------
+Card(
+  Name: "Selfless Germinator",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Treefolk,
+      Druid,
+    ],
+  ),
+  ManaCost: [
+    ManaCostG,
+  ],
+  Rules: [
+    ActivatedWithModifiers(
+      PayMana([
+        ManaCostGeneric(1),
+      ]),
+      ActionList([
+        ConjureCardIntoHand("Seed of Hope"),
+      ]),
+      Exhaust,
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 1,
   ),
 )
 ------------------
@@ -1214387,7 +1216314,7 @@ Card(
           TheCardsConjuredIntoHandThisWay,
           [
             AddAbility([
-              CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+              Prismatic,
             ]),
           ],
         ),
@@ -1219926,6 +1221853,15 @@ ModalDFC(
             UntilEndOfTurn,
           ),
           UntapPermanent(Ref_TargetPermanent),
+          CreatePermanentLayerEffectUntil(
+            Ref_TargetPermanent,
+            [
+              AddAbility([
+                Haste,
+              ]),
+            ],
+            UntilEndOfTurn,
+          ),
         ]),
       )),
     ],
@@ -1224656,7 +1226592,7 @@ Card(
                   TheCardConjuredIntoHandThisWay,
                   [
                     AddAbility([
-                      CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                      Prismatic,
                     ]),
                   ],
                 ),
@@ -1230399,6 +1232335,55 @@ Card(
             CantBlock,
           ],
           UntilEndOfTurn,
+        ),
+      ]),
+    )),
+  ],
+)
+------------------
+Card(
+  Name: "Sparks Ablaze",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Instant,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostR,
+  ],
+  Rules: [
+    SpellActions(Targeted(
+      [
+        TargetPermanent(Or([
+          IsCardtype(Creature),
+          IsCardtype(Planeswalker),
+        ])),
+      ],
+      ActionList([
+        SpellDealsDamage(
+          ThisSpell,
+          Integer(2),
+          Permanent(Ref_TargetPermanent),
+        ),
+        CreateReplaceWouldPutIntoGraveyardUntil(
+          APermanentWouldDie(SinglePermanent(Ref_TargetPermanent)),
+          [
+            ExileItInstead,
+          ],
+          UntilEndOfTurn,
+        ),
+        CreateFutureSpellEffect(
+          TheNextSpellPlayerCasts(
+            IsCardtype(Planeswalker),
+            You,
+          ),
+          [
+            DecreaseManaCost([
+              CostReduceGeneric(1),
+            ]),
+          ],
         ),
       ]),
     )),
@@ -1249672,6 +1251657,15 @@ Card(
           UntilEndOfTurn,
         ),
         UntapPermanent(Ref_TargetPermanent),
+        CreatePermanentLayerEffectUntil(
+          Ref_TargetPermanent,
+          [
+            AddAbility([
+              Haste,
+            ]),
+          ],
+          UntilEndOfTurn,
+        ),
       ]),
     )),
     Storm,
@@ -1310631,6 +1312625,15 @@ Card(
           UntilEndOfTurn,
         ),
         UntapPermanent(Ref_TargetPermanent),
+        CreatePermanentLayerEffectUntil(
+          Ref_TargetPermanent,
+          [
+            AddAbility([
+              Haste,
+            ]),
+          ],
+          UntilEndOfTurn,
+        ),
       ]),
     )),
   ],
@@ -1325421,6 +1327424,42 @@ Card(
 )
 ------------------
 Card(
+  Name: "Temple of Khonshu",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        Unless(
+          PlayerPassesFilter(
+            You,
+            ControlsA(IsLandType(Dimension)),
+          ),
+          [
+            EntersTapped,
+          ],
+        ),
+      ],
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(Or([
+          ManaProduceW,
+          ManaProduceB,
+        ])),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Temple of Malady",
   Typeline: (
     Supertypes: [],
@@ -1328690,6 +1330729,15 @@ Card(
           UntilEndOfTurn,
         ),
         UntapPermanent(Ref_TargetPermanent),
+        CreatePermanentLayerEffectUntil(
+          Ref_TargetPermanent,
+          [
+            AddAbility([
+              Haste,
+            ]),
+          ],
+          UntilEndOfTurn,
+        ),
       ]),
     )),
   ],
@@ -1339747,6 +1341795,100 @@ Card(
 )
 ------------------
 Card(
+  Name: "The Bloodbile Swarm",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Elemental,
+      Insect,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostB,
+    ManaCostR,
+  ],
+  Rules: [
+    Ward(SacrificeAPermanent(And([
+      IsArtifactType(Blood),
+      IsCardtype(Artifact),
+    ]))),
+    EachPermanentLayerEffect(
+      And([
+        Other(ThisPermanent),
+        IsCardtype(Creature),
+      ]),
+      [
+        AddArtifactType(Blood),
+        AddCardtype(Artifact),
+        AddAbility([
+          Activated(
+            And([
+              PayMana([
+                ManaCostGeneric(1),
+              ]),
+              TapPermanent(ThisPermanent),
+              DiscardACard,
+              SacrificePermanent(ThisPermanent),
+            ]),
+            ActionList([
+              DrawACard,
+            ]),
+          ),
+        ]),
+      ],
+    ),
+    TriggerA(
+      Or([
+        WhenAPlayerSacrificesAPermanent(
+          AnyPlayer,
+          And([
+            IsNonToken,
+            IsCardtype(Creature),
+          ]),
+        ),
+        WhenAPlayerDiscardsACard(
+          AnyPlayer,
+          IsCardtype(Creature),
+        ),
+      ]),
+      ActionList([
+        Exile(
+          [
+            EachCardInGraveyards(Trigger_ThoseGraveyardCards),
+          ],
+          [],
+        ),
+        CreatePerpetualEachExiledCardEffect(
+          TheCardsExiledThisWay,
+          [
+            AddAbility([
+              Prismatic,
+            ]),
+          ],
+        ),
+        CreatePlayerEffectUntil(
+          You,
+          [
+            MayCastExiledCards(TheCardsExiledThisWay),
+          ],
+          UntilTheEndOfPlayersNextTurn(You),
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 6,
+    Toughness: 6,
+  ),
+)
+------------------
+Card(
   Name: "The Bloodsky Massacre",
   Typeline: (
     Supertypes: [],
@@ -1342139,6 +1344281,61 @@ Planar(
           DiscardACard,
         ),
       ]),
+    ),
+  ],
+)
+------------------
+Card(
+  Name: "The Darkhold",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Book,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostB,
+    ManaCostB,
+  ],
+  Rules: [
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        PutCounters([
+          ACounterOfTypeOnPermanent(
+            SinCounter,
+            ThisPermanent,
+          ),
+        ]),
+        DrawNumberCards(TheTotalNumberOfCountersOfTypeAmongPermanents(
+          SinCounter,
+          SinglePermanent(ThisPermanent),
+        )),
+        LoseLife(TheNumberOfCardsInPlayersHand(You)),
+      ]),
+    ),
+    ActivatedWithModifiers(
+      And([
+        PayMana([
+          ManaCostGeneric(6),
+          ManaCostB,
+          ManaCostB,
+        ]),
+        TapPermanent(ThisPermanent),
+      ]),
+      ActionList([
+        EachPlayerAction(
+          AnyPlayer,
+          SetLifeTotal(LowestLifeTotalAmongPlayers(AnyPlayer)),
+        ),
+      ]),
+      ActivateOnlyAsASorcery,
     ),
   ],
 )
@@ -1390278,7 +1392475,7 @@ Card(
           TheCardConjuredIntoHandThisWay,
           [
             AddAbility([
-              CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+              Prismatic,
             ]),
           ],
         ),
@@ -1395999,6 +1398196,9 @@ Transforming(
                   Zero,
                   ValueX,
                 ),
+                AddAbility([
+                  Trample,
+                ]),
               ],
               UntilEndOfTurn,
             ),
@@ -1414793,6 +1416993,15 @@ Card(
           UntilEndOfTurn,
         ),
         UntapPermanent(Ref_TargetPermanent),
+        CreatePermanentLayerEffectUntil(
+          Ref_TargetPermanent,
+          [
+            AddAbility([
+              Haste,
+            ]),
+          ],
+          UntilEndOfTurn,
+        ),
       ]),
     )),
   ],
@@ -1428450,7 +1430659,7 @@ Card(
               TheCardConjuredIntoHandThisWay,
               [
                 AddAbility([
-                  CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                  Prismatic,
                 ]),
               ],
             ),
@@ -1444429,6 +1446638,78 @@ Card(
 )
 ------------------
 Card(
+  Name: "Valgavoth, the Lifeline",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Insect,
+      Angel,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostW,
+  ],
+  Rules: [
+    Flying,
+    TriggerA(
+      WhenAPlayerGainsLife(SinglePlayer(You)),
+      ActionList([
+        CreatePerpetualCardsInPlayersHandEffect(
+          IsCardtype(Creature),
+          You,
+          [
+            AdjustPT(
+              1,
+              1,
+            ),
+          ],
+        ),
+        CreatePerpetualCardsInPlayersGraveyardEffect(
+          IsCardtype(Creature),
+          You,
+          [
+            AdjustPT(
+              1,
+              1,
+            ),
+          ],
+        ),
+      ]),
+    ),
+    If(
+      PlayerPassesFilter(
+        You,
+        GainedLifeThisTurn,
+      ),
+      [
+        PlayerEffect(
+          You,
+          [
+            MayCastSpellsFromAmongCardsInGraveyardsWithEffect(
+              IsCardtype(Creature),
+              InAPlayersGraveyard(SinglePlayer(You)),
+              [
+                EntersWithACounter(FinalityCounter),
+              ],
+            ),
+          ],
+        ),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 4,
+  ),
+)
+------------------
+Card(
   Name: "Valiant Batrider",
   Typeline: (
     Supertypes: [],
@@ -1459670,7 +1461951,7 @@ Card(
             TheCardConjuredIntoHandThisWay,
             [
               AddAbility([
-                CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                Prismatic,
               ]),
             ],
           ),
@@ -1463822,7 +1466103,7 @@ Card(
             TheCardsConjuredIntoHandThisWay,
             [
               AddAbility([
-                CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                Prismatic,
               ]),
             ],
           ),
@@ -1463889,7 +1466170,7 @@ Card(
             TheCardConjuredIntoHandThisWay,
             [
               AddAbility([
-                CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                Prismatic,
               ]),
               AddAbility([
                 TriggerA(
@@ -1463968,7 +1466249,7 @@ Card(
             TheCardConjuredIntoHandThisWay,
             [
               AddAbility([
-                CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                Prismatic,
               ]),
             ],
           ),
@@ -1464053,7 +1466334,7 @@ Card(
                 2,
               ),
               AddAbility([
-                CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                Prismatic,
               ]),
             ],
           ),
@@ -1464127,7 +1466408,7 @@ Card(
                 Haste,
               ]),
               AddAbility([
-                CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                Prismatic,
               ]),
             ],
           ),
@@ -1480650,7 +1482931,7 @@ Card(
                 TheCardConjuredIntoHandThisWay,
                 [
                   AddAbility([
-                    CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                    Prismatic,
                   ]),
                 ],
               ),
@@ -1497785,7 +1500066,7 @@ Card(
                 TheCardConjuredIntoHandThisWay,
                 [
                   AddAbility([
-                    CastEffect(MaySpendManaAsThoughAnyTypeToCast),
+                    Prismatic,
                   ]),
                 ],
               ),
@@ -1517648,6 +1519929,37 @@ Card(
 )
 ------------------
 Card(
+  Name: "Willbound Quill",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(4),
+  ],
+  Rules: [
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(AnyManaColor),
+      ]),
+    ),
+    TriggerA(
+      WhenAPlayerCastsASpell(
+        SinglePlayer(You),
+        NotInAPlayersStartingDeck(SinglePlayer(You)),
+      ),
+      ActionList([
+        CopySpellAndMayChooseNewTargets(Trigger_ThatSpell),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Willbreaker",
   Typeline: (
     Supertypes: [],
@@ -1533900,6 +1536212,15 @@ Card(
           UntilEndOfTurn,
         ),
         UntapPermanent(Ref_TargetPermanent),
+        CreatePermanentLayerEffectUntil(
+          Ref_TargetPermanent,
+          [
+            AddAbility([
+              Haste,
+            ]),
+          ],
+          UntilEndOfTurn,
+        ),
       ]),
     )),
   ],
@@ -1551027,6 +1553348,79 @@ Card(
   CardPT: (
     Power: 3,
     Toughness: 4,
+  ),
+)
+------------------
+Preparer(
+  Name: "Zimone the Calculating",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Warlock,
+    ],
+  ),
+  ManaCost: [
+    ManaCostU,
+    ManaCostB,
+  ],
+  Rules: [
+    PermanentRuleEffect(
+      ThisPermanent,
+      [
+        AssignsCombatDamageAsThoughPowerWerePositive,
+      ],
+    ),
+    TriggerA(
+      WhenAnyNumberOfCardsArePutIntoAPlayersGraveyardFromTheirLibrary(
+        AnyCard,
+        SinglePlayer(You),
+      ),
+      ActionList([
+        PreparePermanent(ThisPermanent),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: -1,
+    Toughness: 4,
+  ),
+  Prepared: (
+    Name: "Simple Subtraction",
+    Typeline: (
+      Supertypes: [],
+      Cardtypes: [
+        Instant,
+      ],
+      Subtypes: [],
+    ),
+    ManaCost: [
+      ManaCostGeneric(1),
+      ManaCostU,
+    ],
+    Rules: [
+      SpellActions(Targeted(
+        [
+          TargetPermanent(IsCardtype(Creature)),
+        ],
+        ActionList([
+          CreatePerpetualPermanentEffect(
+            Ref_TargetPermanent,
+            [
+              AdjustPT(
+                -3,
+                0,
+              ),
+            ],
+          ),
+        ]),
+      )),
+    ],
   ),
 )
 ------------------

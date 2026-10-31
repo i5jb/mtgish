@@ -2,7 +2,7 @@
 
 import json
 import sys
-import regex
+import re
 
 typedef_filename = "typescript_types/oracle_cards.d.ts"
 json_filename = "data/mtgish.lines.json"
@@ -11,7 +11,7 @@ with open(typedef_filename, "r") as f:
   lines = f.readlines()
 
 types_array = []
-r = regex.compile(r"^\| { \"_(\w*)\": \"(\w*)\".*")
+r = re.compile(r"^\| { \"_(\w*)\": \"(\w*)\".*")
 for line in lines:
   match = r.match(line)
   if (match):

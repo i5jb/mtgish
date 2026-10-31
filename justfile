@@ -4,7 +4,7 @@
   just --list --unsorted
 
 BASE_DIR := justfile_directory()
-TEMP_DIR := "/tmp/mtgish"
+TEMP_DIR := BASE_DIR + "/__build"
 
 [private]
 make_temp:
