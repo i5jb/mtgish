@@ -254,7 +254,6 @@ type Action =
 | { "_Action": "CastCopiedCardForReducedCost", "args": Array<ManaSymbol> }
 | { "_Action": "CastCopiedCardWithoutPaying" }
 | { "_Action": "CastEachCopiedCardWithoutPaying" }
-| { "_Action": "CastExiledCardAndMaySpendManaAsThoughAnyColorToCast", "args": CardInExile }
 | { "_Action": "CastExiledCardForAlternateCost", "args": [CardInExile, Cost] }
 | { "_Action": "CastExiledCardForReducedCost", "args": [CardInExile, Array<CostReductionSymbol>] }
 | { "_Action": "CastExiledCardWithoutPaying", "args": CardInExile }
@@ -712,7 +711,7 @@ type Action =
 | { "_Action": "ForEachPlayerSearchLibrary", "args": [Players, Array<SearchLibraryAction>] }
 | { "_Action": "ForEachValueInRangeConjureDuplicateOfARandomCardOfTypeOntoBattlefield", "args": [GameNumber, GameNumber, Cards, Array<EnterFlag>] }
 | { "_Action": "Forage" }
-| { "_Action": "GainControlOfAPermanentControlledByEachPlayer", "args": [Permanents, Players] }
+| { "_Action": "GainControlOfAPermanentControlledByEachPlayerUntil", "args": [Permanents, Players, Expiration] }
 | { "_Action": "GainControlOfAPermanentUntil", "args": [Permanents, Expiration] }
 | { "_Action": "GainControlOfEachPermanent", "args": Permanents }
 | { "_Action": "GainControlOfEachPermanentUntil", "args": [Permanents, Expiration] }
@@ -819,9 +818,9 @@ type Action =
 | { "_Action": "NumberEachPermanentStartingFromZero", "args": Permanents }
 | { "_Action": "OnlyAllowedAttackersDuringTheAdditionalCombatStepAddedThisWay", "args": Permanents }
 | { "_Action": "OnlyAllowedAttackersUntilEndOfTurn", "args": Permanents }
-| { "_Action": "OnlyAllowedAttackingPlayersUntilEndOfTurn", "args": Players }
+| { "_Action": "OnlyAllowedAttackingPlayersUntil", "args": [Players, Expiration] }
 | { "_Action": "OnlyAllowedBlockersUntilEndOfTurn", "args": Permanents }
-| { "_Action": "OnlyAllowedCastingPlayersUntilEndOfTurn", "args": Players }
+| { "_Action": "OnlyAllowedCastingPlayersUntil", "args": [Players, Expiration] }
 | { "_Action": "OpenAnAttraction" }
 | { "_Action": "OpenNumberAttractions", "args": GameNumber }
 | { "_Action": "Paradigm", "args": Spell }
@@ -2432,6 +2431,7 @@ type Condition =
 | { "_Condition": "ThisCardIsInYourGraveyard" }
 | { "_Condition": "ThisCardIsOnTheBattlefield" }
 | { "_Condition": "TimesThisAbilityHasResolvedThisTurnIs", "args": Comparison }
+| { "_Condition": "TimesThisAbilityHasBeenActivatedThisTurnIs", "args": Comparison }
 | { "_Condition": "TopCardOfPlayersLibraryPassesFilter", "args": [Player, Cards] }
 | { "_Condition": "TopCardOfPlayersLibraryPassesFilter_Digital", "args": [Player, Cards] }
 | { "_Condition": "TotalPowerOfPermanentsIs", "args": [Comparison, Permanents] }
@@ -3773,7 +3773,7 @@ type FutureReplacableEventWouldDealDamage =
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnBySourceToRecipient", "args": [SingleDamageSource, SingleDamageRecipient] }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnToARecipient", "args": DamageRecipientsList }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnToRecipient", "args": SingleDamageRecipient }
-| { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtToRecipient", "args": SingleDamageRecipient };
+| { "_FutureReplacableEventWouldDealDamage": "NextAmountOfDamageThatWouldBeDealtToRecipient", "args": [GameNumber, SingleDamageRecipient] };
 type FutureReplacableEventWouldDestroy =
 | { "_FutureReplacableEventWouldDestroy": "NextTimePermanentWouldBeDestroyedThisTurn", "args": Permanent };
 type FutureReplacableEventWouldDraw =
@@ -4111,7 +4111,7 @@ type GameNumber =
 | { "_GameNumber": "TheNumberOfCardsPutIntoHandThisWay" }
 | { "_GameNumber": "TheNumberOfCardsReturnedToTheBattlefieldThisWay" }
 | { "_GameNumber": "TheNumberOfCardsScryedOnTopOfLibraryThisWay" }
-| { "_GameNumber": "TheNumberOfCardsThatWerePutIntoAPlayersLibraryFromTheirHandOrLibraryThisTurn", "args": Players }
+| { "_GameNumber": "TheNumberOfCardsThatWerePutIntoAPlayersGraveyardFromTheirHandOrLibraryThisTurn", "args": Players }
 | { "_GameNumber": "TheNumberOfCardtypesAmongCardsDiscardedThisWay" }
 | { "_GameNumber": "TheNumberOfCardtypesAmongGraveyardCards", "args": CardsInGraveyards }
 | { "_GameNumber": "TheNumberOfChosenColorsItIs" }
@@ -5845,7 +5845,7 @@ type PlayerEffect =
 | { "_PlayerEffect": "DoesntLoseColoredManaAsStepsAndPhasesEnd", "args": UnspentMana }
 | { "_PlayerEffect": "DoesntLoseManaAsStepsAndPhasesEnd" }
 | { "_PlayerEffect": "DoesntLoseTheGameForHaving0OrLessLife" }
-| { "_PlayerEffect": "DrawsACardDuringEachPlayersUntapStep", "args": Players }
+| { "_PlayerEffect": "DrawsACardDuringEachPlayersDrawStep", "args": Players }
 | { "_PlayerEffect": "GetsAnAdditionalVote" }
 | { "_PlayerEffect": "GetsAnOptionalAdditionalVote" }
 | { "_PlayerEffect": "HasNoMaximumHandSize" }

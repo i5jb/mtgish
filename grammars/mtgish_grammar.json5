@@ -901,7 +901,7 @@
     "ForEachValueInRangeConjureDuplicateOfARandomCardOfTypeOntoBattlefield({{NUMBER}}, {{NUMBER}}, {{CARDS}}, {{ENTER_FLAGS}})": "",
     "Forage": "",
     "Assimilate({{CARD_IN_GRAVEYARDS}})": "",
-    "GainControlOfAPermanentControlledByEachPlayer({{PERMANENTS}}, {{PLAYERS}})": "",
+    "GainControlOfAPermanentControlledByEachPlayerUntil({{PERMANENTS}}, {{PLAYERS}}, {{EXPIRATION}})": "",
     "GainControlOfAPermanentUntil({{PERMANENTS}}, {{EXPIRATION}})": "",
     "GainControlOfEachPermanent({{PERMANENTS}})": "",
     "GainControlOfEachPermanentUntil({{PERMANENTS}}, {{EXPIRATION}})": "",
@@ -989,9 +989,9 @@
     "NoteTypeOfManaSpentToActivateThisAbility": "",
     "OnlyAllowedAttackersDuringTheAdditionalCombatStepAddedThisWay({{PERMANENTS}})": "",
     "OnlyAllowedAttackersUntilEndOfTurn(InThePermanentPileChosenThisWay)": "",
-    "OnlyAllowedAttackingPlayersUntilEndOfTurn({{PLAYERS}})": "",
+    "OnlyAllowedAttackingPlayersUntil({{PLAYERS}}, {{EXPIRATION}})": "",
     "OnlyAllowedBlockersUntilEndOfTurn(InThePermanentPileChosenThisWay)": "",
-    "OnlyAllowedCastingPlayersUntilEndOfTurn({{PLAYERS}})": "",
+    "OnlyAllowedCastingPlayersUntil({{PLAYERS}}, {{EXPIRATION}})": "",
     "Paradigm({{SPELL}})": "",
     "PayAnyAmountOfEnergy": "",
     "PayAnyAmountOfLife": "",
@@ -2232,6 +2232,7 @@
     "ThereAreNumberNamesAmongUnlockedDoorsOfPermanents({{COMPARISON}}, {{PERMANENTS}})": "",
     "ThereAreNumberUnlockedDoorsAmongPermanents({{COMPARISON}}, {{PERMANENTS}})": "",
     "TimesThisAbilityHasResolvedThisTurnIs({{COMPARISON}})": "",
+    "TimesThisAbilityHasBeenActivatedThisTurnIs({{COMPARISON}})": "",
     "TopCardOfPlayersLibraryPassesFilter({{PLAYER}}, {{CARDS}})": "",
     "TopCardOfPlayersLibraryPassesFilter_Digital({{PLAYER}}, {{CARDS}})": "",
     "TotalPowerOfPermanentsIs({{COMPARISON}}, {{PERMANENTS}})": "",
@@ -2912,7 +2913,7 @@
     "NextTimeDamageWouldBeDealtThisTurnBySourceToRecipient({{SINGLE_DAMAGE_SOURCE_FILTER}}, {{SINGLE_DAMAGE_RECIPIENT_FILTER}})": "",
     "NextTimeDamageWouldBeDealtThisTurnToARecipient({{DAMAGE_RECIPIENTS_LIST}})": "",
     "NextTimeDamageWouldBeDealtThisTurnToRecipient({{SINGLE_DAMAGE_RECIPIENT_FILTER}})": "",
-    "NextTimeDamageWouldBeDealtToRecipient({{SINGLE_DAMAGE_RECIPIENT_FILTER}})": ""
+    "NextAmountOfDamageThatWouldBeDealtToRecipient({{NUMBER}}, {{SINGLE_DAMAGE_RECIPIENT_FILTER}})": ""
   },
   "{{FUTURE_REPLACABLE_EVENT[WouldDestroy]}}": {
     "NextTimePermanentWouldBeDestroyedThisTurn({{PERMANENT}})": ""
@@ -3756,7 +3757,7 @@
     "TheNumberOfCardsPutIntoAGraveyardThisWay({{CARDS_IN_GRAVEYARDS}})": "",
     "TheNumberOfCardsPutIntoHandThisWay": "",
     "TheNumberOfCardsReturnedToTheBattlefieldThisWay": "",
-    "TheNumberOfCardsThatWerePutIntoAPlayersLibraryFromTheirHandOrLibraryThisTurn({{PLAYERS}})": "",
+    "TheNumberOfCardsThatWerePutIntoAPlayersGraveyardFromTheirHandOrLibraryThisTurn({{PLAYERS}})": "",
     "TheNumberOfCardtypesAmongCardsDiscardedThisWay": "",
     "TheNumberOfCardtypesAmongGraveyardCards({{CARDS_IN_GRAVEYARDS}})": "",
     "TheNumberOfChosenColorsSpellIs({{SPELL}})": "",
@@ -5880,7 +5881,6 @@
     "CantBeCopied": "",
     "CantBeCountered": "",
     "CantBeCounteredBySpells({{SPELLS}})": "",
-    "Demonstrate": "",
     "Cascade": "",
     "CastWithPerpetualEffect({{PERPETUAL_EFFECT_LIST}})": "",
     "AdjustPT({{PTMod}})": "",
@@ -6429,7 +6429,6 @@
 
     "EachPlayerAction({{PLAYERS}}, PutTopOfLibraryOnBattlefield({{ENTER_FLAGS}}))": "",
 
-    "EachPlayerMayAction({{PLAYERS}}, SacrificeAPermanent({{PERMANENTS}}))": "",
     //"EachPlayerAction({{PLAYERS}}, SacrificePermanent({{PERMANENT}}))": "",
     "EachPlayerAction({{PLAYERS}}, SacrificeAPermanent({{PERMANENTS}}))": "",
     "EachPlayerAction({{PLAYERS}}, SacrificeEachPermanent({{PERMANENTS}}))": "",
@@ -6611,7 +6610,6 @@
     "EachPlayerAction({{PLAYERS}}, UntapEachPermanent({{PERMANENTS}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, AnteTopCardOfLibrary)": "",
-    "EachPlayerAction({{PLAYERS}}, PutTopOfLibraryInHand)": "",
 
     "EachPlayerAction({{PLAYERS}}, FaceAVillianousChoice({{ACTION_LIST_LIST}}))": "",
 
@@ -7420,7 +7418,7 @@
     "SearchHandAndOrLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), ShuffleLibraryIfSearched])": "",
     "SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), CastFoundCardsWithoutPaying, Shuffle])": "",
     "SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), ExileFoundCards, Shuffle])": "",
-    "SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), IfElse(ACardOfTypeWasFoundThisWay({{CARDS_IN_LIBRARY}}), [PutFoundCardsOntoBattlefield({{ENTER_FLAGS}})], [MayCost({{COST}}), IfElse(CostWasPaid, [PutFoundCardsOntoBattlefield({{ENTER_FLAGS}})], [PutFoundCardsIntoHand])]), Shuffle])": "",
+    "SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), IfElse(ACardOfTypeWasFoundThisWay({{CARDS_IN_LIBRARY}}), [PutFoundCardsOntoBattlefield({{ENTER_FLAGS}})], [MayCost({{COST}}), IfElse(CostWasPaid, [PutFoundCardsOntoBattlefield({{ENTER_FLAGS}})], [PutFoundCardsIntoGraveyard])]), Shuffle])": "",
     "SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), PutFoundCardsAndExiledCardsOntoBattlefield({{CARDS_IN_EXILE}}, {{ENTER_FLAGS}}), Shuffle])": "",
     "SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), PutFoundCardsIntoGraveyard, If(ACardWasFoundThisWay, [CreatePermanentLayerEffectUntil({{PERMANENT}}, [IsACopyOfThatCard({{COPY_EFFECT_LIST}})], {{EXPIRATION}})]), Shuffle])": "",
     "SearchLibrary([FindACardOfType({{CARDS_IN_LIBRARY}}), PutFoundCardsIntoGraveyard, Shuffle])": "",
@@ -7466,7 +7464,6 @@
     "SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle])": "",
     "SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), RevealFoundCards, PutAFoundCardOntoBattlefield({{ENTER_FLAGS}}), PutFoundCardsIntoHand, Shuffle])": "",
     "SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), RevealFoundCards, PutAFoundCardIntoHand, PutFoundCardsIntoGraveyard, Shuffle])": "",
-    "SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), RevealFoundCards, PutAFoundCardOntoBattlefield({{ENTER_FLAGS}}), PutFoundCardsIntoHand, Shuffle])": "",
     "SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), RevealFoundCards, PutAFoundCardOntoBattlefield({{ENTER_FLAGS}}), PutNumberFoundCardsOntoBattlefield({{NUMBER}}, {{ENTER_FLAGS}}), PutFoundCardsIntoHand, Shuffle])": "",
     "SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), RevealFoundCards, PutFoundCardsIntoHand, Shuffle])": "",
     "SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), RevealFoundCards, PutNumberFoundCardsOntoBattlefield({{NUMBER}}, {{ENTER_FLAGS}}), PutFoundCardsIntoHand, Shuffle])": "",
@@ -7485,7 +7482,6 @@
     "SearchLibrary([FindNumberGroupCards({{NUMBER}}, {{CARDS_IN_LIBRARY}}, {{GROUP_FILTER}}), RevealFoundCards, APlayerChoosesNumberFoundCards({{PLAYERS}}, {{NUMBER}}), PutChosenFoundCardsIntoGraveyard, PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle])": "",
     "SearchLibrary([FindNumberGroupCards({{NUMBER}}, {{CARDS_IN_LIBRARY}}, {{GROUP_FILTER}}), RevealFoundCards, APlayerChoosesNumberFoundCards({{PLAYERS}}, {{NUMBER}}), SetAsideNonchosenFoundCards, Shuffle, PutSetAsideCardsIntoHand])": "",
     "SearchLibrary([FindNumberGroupCards({{NUMBER}}, {{CARDS_IN_LIBRARY}}, {{GROUP_FILTER}}), RevealFoundCards, ChooseAFoundCardAtRandom, PutChosenFoundCardIntoHand, Shuffle])": "",
-    "SearchLibrary([FindNumberGroupCards({{NUMBER}}, {{CARDS_IN_LIBRARY}}, {{GROUP_FILTER}}), RevealFoundCards, APlayerChoosesNumberFoundCards({{PLAYERS}}, {{NUMBER}}), PutChosenFoundCardsIntoGraveyard, PutFoundCardsIntoHand, Shuffle])": "",
     "SearchLibrary([FindNumberGroupCards({{NUMBER}}, {{CARDS_IN_LIBRARY}}, {{GROUP_FILTER}}), RevealFoundCards, PutFoundCardsIntoHand, Shuffle])": "",
     "SearchLibrary([FindUptoNumberGenericCards({{NUMBER}}), PutFoundCardsIntoHand, Shuffle])": "",
     "SearchLibraryAndGraveyard([FindACardOfType({{CARDS_IN_LIBRARY}}), RevealFoundCards, PutFoundCardsIntoHand, Shuffle])": "",
@@ -7638,7 +7634,7 @@
     "DoesntLoseColoredManaAsStepsAndPhasesEnd({{UNSPENT_MANA}})": "",
     "DoesntLoseManaAsStepsAndPhasesEnd": "",
     "DoesntLoseTheGameForHaving0OrLessLife": "",
-    "DrawsACardDuringEachPlayersUntapStep({{PLAYERS}})": "",
+    "DrawsACardDuringEachPlayersDrawStep({{PLAYERS}})": "",
     "DrawsCardsFromBottomOfTheirLibrary": "",
     "FirstTwoCoinFlipsEachTurnAreHeadsAndYouWin": "",
     "GainsLifeRatherThanLoseLifeFromRadiation": "",

@@ -6531,7 +6531,7 @@ Card(
               Hexproof,
             ]),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -37705,15 +37705,13 @@ Card(
     ManaCostG,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostGeneric(2),
-        ManaCostU,
-      ]),
-      PayMana([
-        ManaCostGeneric(1),
-        ManaCostB,
-      ]),
+    Kicker(PayMana([
+      ManaCostGeneric(2),
+      ManaCostU,
+    ])),
+    Kicker(PayMana([
+      ManaCostGeneric(1),
+      ManaCostB,
     ])),
     TriggerI(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
@@ -38449,14 +38447,12 @@ Card(
     ManaCostG,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostGeneric(1),
-        ManaCostU,
-      ]),
-      PayMana([
-        ManaCostB,
-      ]),
+    Kicker(PayMana([
+      ManaCostGeneric(1),
+      ManaCostU,
+    ])),
+    Kicker(PayMana([
+      ManaCostB,
     ])),
     AsPermanentEnters(
       ThisPermanent,
@@ -51776,7 +51772,7 @@ Card(
               Hexproof,
             ]),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -57380,13 +57376,11 @@ Card(
     ManaCostW,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostB,
-      ]),
-      PayMana([
-        ManaCostR,
-      ]),
+    Kicker(PayMana([
+      ManaCostB,
+    ])),
+    Kicker(PayMana([
+      ManaCostR,
     ])),
     Flying,
     Lifelink,
@@ -73326,7 +73320,7 @@ Card(
               FirstStrike,
             ]),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -138435,13 +138429,14 @@ Card(
                 EntersNormally,
               ],
             ),
-            CreatePermanentLayerEffect(
+            CreatePermanentLayerEffectUntil(
               ThePermanentPutOnTheBattlefieldThisWay,
               [
                 AddAbility([
                   Haste,
                 ]),
               ],
+              UntilEndOfTurn,
             ),
           ],
         ),
@@ -158622,7 +158617,7 @@ Card(
         IsNonCardtype(Creature),
       ),
       ActionList([
-        CreatePerpetualCardsInPlayersGraveyardEffect(
+        CreatePerpetualCardsInPlayersLibraryEffect(
           IsCardtype(Creature),
           You,
           [
@@ -168016,10 +168011,13 @@ Card(
   ],
   Rules: [
     SpellActions(ActionList([
-      GainControlOfEachPermanent(And([
-        IsCardtype(Artifact),
-        ControlledByAPlayer(Opponent),
-      ])),
+      GainControlOfEachPermanentUntil(
+        And([
+          IsCardtype(Artifact),
+          ControlledByAPlayer(Opponent),
+        ]),
+        UntilEndOfTurn,
+      ),
       UntapEachPermanent(ThePermanentsGainedControlOfThisWay),
       CreateEachPermanentLayerEffectUntil(
         ThePermanentsGainedControlOfThisWay,
@@ -190683,7 +190681,7 @@ Card(
               FirstStrike,
             ]),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -197328,7 +197326,7 @@ Card(
         ),
       ),
       EachPlayerAction(
-        Opponent,
+        AnyPlayer,
         SacrificeEachPermanent(ThePermanentsNotChosenThisWay),
       ),
     ])),
@@ -206420,14 +206418,12 @@ Card(
     ManaCostU,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostGeneric(1),
-        ManaCostR,
-      ]),
-      PayMana([
-        ManaCostG,
-      ]),
+    Kicker(PayMana([
+      ManaCostGeneric(1),
+      ManaCostR,
+    ])),
+    Kicker(PayMana([
+      ManaCostG,
     ])),
     AsPermanentEnters(
       ThisPermanent,
@@ -221516,7 +221512,7 @@ Card(
         [
           HasNoMaximumHandSize,
         ],
-        UntilEndOfTurn,
+        UntilEndOfGame,
       ),
     ])),
   ],
@@ -222071,14 +222067,20 @@ Scheme(
             Ref_TargetPlayer,
             ChooseAPlayer(AnyPlayer),
           ),
-          OnlyAllowedAttackingPlayersUntilEndOfTurn(Or([
-            SinglePlayer(You),
-            SinglePlayer(TheChosenPlayer),
-          ])),
-          OnlyAllowedCastingPlayersUntilEndOfTurn(Or([
-            SinglePlayer(You),
-            SinglePlayer(TheChosenPlayer),
-          ])),
+          OnlyAllowedAttackingPlayersUntil(
+            Or([
+              SinglePlayer(You),
+              SinglePlayer(TheChosenPlayer),
+            ]),
+            UntilPlayersNextTurn(You),
+          ),
+          OnlyAllowedCastingPlayersUntil(
+            Or([
+              SinglePlayer(You),
+              SinglePlayer(TheChosenPlayer),
+            ]),
+            UntilPlayersNextTurn(You),
+          ),
         ]),
       ),
     ),
@@ -259375,7 +259377,7 @@ ModalDFC(
                                 ),
                               ),
                             ]),
-                            GainLife(ValueX),
+                            DrawNumberCards(ValueX),
                           ],
                         ),
                       ]),
@@ -264656,7 +264658,7 @@ Card(
               Hexproof,
             ]),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -273446,11 +273448,19 @@ Card(
     SpellActions_Gift(
       PlayerAction(
         TheGiftedPlayer,
-        DrawACard,
+        CreateTokens(
+          [
+            FoodToken,
+          ],
+          [],
+        ),
       ),
       (Targeted(
         [
-          TargetPermanent(IsCardtype(Creature)),
+          TargetPermanent(And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ])),
         ],
         ActionList([
           CreatePermanentLayerEffectUntil(
@@ -273470,7 +273480,10 @@ Card(
       )),
       (Targeted(
         [
-          TargetPermanent(IsCardtype(Creature)),
+          TargetPermanent(And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ])),
         ],
         ActionList([
           CreatePermanentLayerEffectUntil(
@@ -288756,7 +288769,7 @@ Card(
     TriggerA(
       WhenAPermanentDies(SinglePermanent(HostPermanent)),
       ActionList([
-        MayAction(CreatePermanentLayerEffectUntil(
+        MayAction(CreatePermanentLayerEffect(
           ThisPermanent,
           [
             SetPT(PT(
@@ -288776,7 +288789,6 @@ Card(
             ]),
             RemoveArtifactType(Equipment),
           ],
-          UntilEndOfTurn,
         )),
       ]),
     ),
@@ -311953,14 +311965,12 @@ Card(
     ManaCostW,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostGeneric(1),
-        ManaCostB,
-      ]),
-      PayMana([
-        ManaCostR,
-      ]),
+    Kicker(PayMana([
+      ManaCostGeneric(1),
+      ManaCostB,
+    ])),
+    Kicker(PayMana([
+      ManaCostR,
     ])),
     AsPermanentEnters(
       ThisPermanent,
@@ -345456,7 +345466,6 @@ Card(
         CostReduceGeneric(2),
       ],
       NumberOfBasicLandTypesAmongPermanents(And([
-        IsSupertype(Basic),
         IsCardtype(Land),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
@@ -345473,7 +345482,6 @@ Card(
             CostReduceGeneric(2),
           ],
           NumberOfBasicLandTypesAmongPermanents(And([
-            IsSupertype(Basic),
             IsCardtype(Land),
             ControlledByAPlayer(SinglePlayer(You)),
           ])),
@@ -346354,7 +346362,6 @@ Card(
               -1,
               -1,
               NumberOfBasicLandTypesAmongPermanents(And([
-                IsSupertype(Basic),
                 IsCardtype(Land),
                 ControlledByAPlayer(SinglePlayer(You)),
               ])),
@@ -347957,7 +347964,7 @@ Card(
           UntilEndOfTurn,
         ),
         If(
-          TimesThisAbilityHasResolvedThisTurnIs(GreaterThanOrEqualTo(Integer(4))),
+          TimesThisAbilityHasBeenActivatedThisTurnIs(GreaterThanOrEqualTo(Integer(4))),
           [
             CreateFutureTrigger(
               AtTheBeginningOfTheNextEndStep,
@@ -356964,7 +356971,7 @@ Scheme(
               Vigilance,
             ]),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -362782,7 +362789,7 @@ Card(
         ])),
         TargetPermanent(And([
           IsCardtype(Creature),
-          ControlledByAPlayer(Opponent),
+          ControlledByAPlayer(Other(You)),
         ])),
       ],
       ActionList([
@@ -376604,7 +376611,7 @@ Card(
               CantBlock,
               AbilitiesCantBeActivated,
             ],
-            UntilEndOfTurn,
+            UntilPlayersNextTurn(You),
           ),
         ]),
       ),
@@ -379035,7 +379042,10 @@ Vanguard(
         ],
         ActionList([
           CreateFutureReplaceWouldDealDamage(
-            NextTimeDamageWouldBeDealtToRecipient(Permanent(Ref_TargetPermanent)),
+            NextAmountOfDamageThatWouldBeDealtToRecipient(
+              Integer(1),
+              Permanent(Ref_TargetPermanent),
+            ),
             [
               DealToPlayerInstead(You),
             ],
@@ -392170,7 +392180,7 @@ Card(
               ),
             ),
           ],
-          UntilEndOfTheNextTurn,
+          UntilEndOfTurn,
         ),
       ]),
     )),
@@ -414264,7 +414274,6 @@ Card(
               ManaCostGeneric(1),
             ],
             NumberOfBasicLandTypesAmongPermanents(And([
-              IsSupertype(Basic),
               IsCardtype(Land),
               ControlledByAPlayer(SinglePlayer(You)),
             ])),
@@ -419100,7 +419109,6 @@ Card(
           -1,
           -1,
           NumberOfBasicLandTypesAmongPermanents(And([
-            IsSupertype(Basic),
             IsCardtype(Land),
             ControlledByAPlayer(SinglePlayer(You)),
           ])),
@@ -424267,7 +424275,7 @@ Card(
         ]),
       ])),
       ActionList([
-        CreatePermanentLayerEffect(
+        CreatePermanentLayerEffectUntil(
           ThisPermanent,
           [
             SetPT(PT(
@@ -424283,6 +424291,7 @@ Card(
               Creature,
             ]),
           ],
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -427099,7 +427108,7 @@ Card(
               Hexproof,
             ]),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -435429,7 +435438,7 @@ Card(
       ActionList([
         AddMana(ManaProduceW),
         If(
-          TimesThisAbilityHasResolvedThisTurnIs(GreaterThanOrEqualTo(Integer(4))),
+          TimesThisAbilityHasBeenActivatedThisTurnIs(GreaterThanOrEqualTo(Integer(4))),
           [
             CreateFutureTrigger(
               AtTheBeginningOfTheNextEndStep,
@@ -454323,7 +454332,7 @@ Card(
               FirstStrike,
             ]),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -492241,7 +492250,6 @@ Card(
               1,
               1,
               NumberOfBasicLandTypesAmongPermanents(And([
-                IsSupertype(Basic),
                 IsCardtype(Land),
                 ControlledByAPlayer(SinglePlayer(You)),
               ])),
@@ -509319,7 +509327,8 @@ Card(
                 PTX(
                   X,
                   X,
-                  TheNumberOfPermanentsOnTheBattlefield(And([
+                  TheGreatestPowerAmongPermanents(And([
+                    Other(ThisPermanent),
                     IsAttacking,
                     IsCardtype(Creature),
                   ])),
@@ -519642,7 +519651,7 @@ Card(
               Indestructible,
             ]),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -532596,7 +532605,10 @@ Card(
         ],
         ActionList([
           UntapPermanent(Ref_TargetPermanent),
-          GainControlOfPermanent(Ref_TargetPermanent),
+          GainControlOfPermanentUntil(
+            Ref_TargetPermanent,
+            UntilEndOfTurn,
+          ),
           CreatePermanentLayerEffectUntil(
             Ref_TargetPermanent,
             [
@@ -538682,7 +538694,7 @@ Card(
             [
               LosesAbility(Flying),
             ],
-            UntilEndOfCombat,
+            UntilEndOfTurn,
           ),
         ]),
       ),
@@ -545431,7 +545443,7 @@ Card(
               [
                 CantBeBlocked,
               ],
-              UntilEndOfTheNextTurn,
+              UntilEndOfTurn,
             ),
           ],
         ),
@@ -558733,7 +558745,13 @@ Card(
             ],
             [],
           ),
-          MayAction(CastExiledCardAndMaySpendManaAsThoughAnyColorToCast(TheCardExiledThisWay)),
+          CreatePlayerEffectUntil(
+            You,
+            [
+              MayCastExiledCardAndMaySpendManaAsThoughAnyColorToCast(TheCardExiledThisWay),
+            ],
+            UntilEndOfTurn,
+          ),
         ]),
       ]),
     ),
@@ -565218,6 +565236,7 @@ Card(
         IsCardtype(Creature),
         Integer(10),
       ),
+      Shuffle,
       CreatePerpetualCardsInHandEffect(
         IsCardtype(Creature),
         [
@@ -598390,14 +598409,13 @@ Card(
             EntersNormally,
           ],
         ),
-        CreatePermanentLayerEffectUntil(
+        CreatePermanentLayerEffect(
           ThePermanentPutOnTheBattlefieldThisWay,
           [
             AddAbility([
               Haste,
             ]),
           ],
-          UntilEndOfTurn,
         ),
         CreateFutureTrigger(
           AtTheBeginningOfTheNextEndStep,
@@ -601862,7 +601880,6 @@ Card(
         [
           NumberTokens(
             NumberOfBasicLandTypesAmongPermanents(And([
-              IsSupertype(Basic),
               IsCardtype(Land),
               ControlledByAPlayer(SinglePlayer(You)),
             ])),
@@ -637376,15 +637393,13 @@ Card(
     ManaCostR,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostGeneric(2),
-        ManaCostR,
-      ]),
-      PayMana([
-        ManaCostGeneric(3),
-        ManaCostU,
-      ]),
+    Kicker(PayMana([
+      ManaCostGeneric(2),
+      ManaCostR,
+    ])),
+    Kicker(PayMana([
+      ManaCostGeneric(3),
+      ManaCostU,
     ])),
     SpellActions(Targeted(
       [
@@ -645865,7 +645880,7 @@ Card(
               -1,
               -1,
             ),
-            Ref_TargetPermanent2,
+            Ref_TargetPermanent3,
           ),
         ]),
       ]),
@@ -645924,7 +645939,7 @@ Card(
               1,
               1,
             ),
-            Ref_TargetPermanent2,
+            Ref_TargetPermanent3,
           ),
         ]),
       ]),
@@ -651908,7 +651923,7 @@ Card(
       ActionList([
         AddMana(ManaProduceB),
         If(
-          TimesThisAbilityHasResolvedThisTurnIs(GreaterThanOrEqualTo(Integer(4))),
+          TimesThisAbilityHasBeenActivatedThisTurnIs(GreaterThanOrEqualTo(Integer(4))),
           [
             CreateFutureTrigger(
               AtTheBeginningOfTheNextEndStep,
@@ -658954,7 +658969,9 @@ Card(
           [
             FishToken,
           ],
-          [],
+          [
+            EntersTapped,
+          ],
         ),
       ),
       (Targeted(
@@ -675734,7 +675751,7 @@ Card(
                 0,
               ),
             ],
-            UntilEndOfTurn,
+            UntilPlayersNextTurn(You),
           ),
         ]),
       ),
@@ -686354,7 +686371,6 @@ Card(
           CostReduceGeneric(1),
         ],
         NumberOfBasicLandTypesAmongPermanents(And([
-          IsSupertype(Basic),
           IsCardtype(Land),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
@@ -699911,7 +699927,7 @@ Card(
                   Haste,
                 ]),
               ],
-              UntilEndOfTurn,
+              UntilPlayersNextTurn(You),
             ),
           ]),
         ),
@@ -699951,7 +699967,7 @@ Card(
           [
             MustAttackAPlayer(Other(You)),
           ],
-          UntilEndOfTurn,
+          UntilPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -705370,7 +705386,6 @@ Card(
           1,
           0,
           NumberOfBasicLandTypesAmongPermanents(And([
-            IsSupertype(Basic),
             IsCardtype(Land),
             ControlledByAPlayer(SinglePlayer(You)),
           ])),
@@ -706229,7 +706244,7 @@ Card(
         ],
         ActionList([
           MayAction(ChooseAnExiledCard(Trigger_ThoseExiledCards)),
-          CreatePermanentLayerEffect(
+          CreatePermanentLayerEffectUntil(
             Ref_TargetPermanent,
             [
               IsACopyOfExiledCard(
@@ -706241,6 +706256,7 @@ Card(
                 ]),
               ),
             ],
+            UntilEndOfTurn,
           ),
         ]),
       ),
@@ -726400,7 +726416,7 @@ Scheme(
             [
               CantAttackWithCreatures(AnyPermanent),
             ],
-            UntilEndOfTurn,
+            UntilPlayersNextTurn(You),
           ),
           CreatePlayerEffectUntil(
             Ref_TargetPlayer2,
@@ -730655,7 +730671,7 @@ Card(
               SetCreatureType(Elemental),
               AddCardtype(Creature),
             ],
-            UntilPlayersNextTurn(You),
+            UntilEndOfTurn,
           ),
         ]),
       ),
@@ -748578,7 +748594,7 @@ Card(
         If(
           CostWasPaid,
           [
-            CreatePermanentLayerEffect(
+            CreatePermanentLayerEffectUntil(
               ThisPermanent,
               [
                 IsACopyOfExiledCard(
@@ -748586,6 +748602,7 @@ Card(
                   NoCopyEffects,
                 ),
               ],
+              UntilEndOfTurn,
             ),
           ],
         ),
@@ -755932,7 +755949,6 @@ Card(
         CostReduceGeneric(1),
       ],
       NumberOfBasicLandTypesAmongPermanents(And([
-        IsSupertype(Basic),
         IsCardtype(Land),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
@@ -766513,7 +766529,7 @@ Card(
               CantBlock,
               AbilitiesCantBeActivated,
             ],
-            UntilEndOfTurn,
+            UntilPlayersNextTurn(You),
           ),
         ]),
       ),
@@ -770099,7 +770115,6 @@ Card(
           CostReduceGeneric(1),
         ],
         NumberOfBasicLandTypesAmongPermanents(And([
-          IsSupertype(Basic),
           IsCardtype(Land),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
@@ -774720,7 +774735,9 @@ Card(
           [
             FishToken,
           ],
-          [],
+          [
+            EntersTapped,
+          ],
         ),
       ),
       (Targeted(
@@ -796492,7 +796509,7 @@ Card(
         ])),
       ],
       ActionList([
-        CreatePermanentLayerEffect(
+        CreatePermanentLayerEffectUntil(
           Ref_TargetPermanent,
           [
             SetPT(PT(
@@ -796508,6 +796525,7 @@ Card(
               Flying,
             ]),
           ],
+          UntilEndOfTurn,
         ),
         DrawACard,
       ]),
@@ -800985,7 +801003,6 @@ Card(
           1,
           1,
           NumberOfBasicLandTypesAmongPermanents(And([
-            IsSupertype(Basic),
             IsCardtype(Land),
             ControlledByAPlayer(SinglePlayer(You)),
           ])),
@@ -802989,7 +803006,7 @@ Card(
               2,
             ),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -828476,7 +828493,7 @@ Card(
         ])),
       ],
       ActionList([
-        ReturnPermanentToTopOrBottomOfLibrary(Ref_TargetPermanent),
+        PutPermanentOnTopOfOwnersLibrary(Ref_TargetPermanent),
         PlayerMayAction(
           ControllerOfPermanent(Ref_TargetPermanent),
           PutACardFromHandOnBattlefield(
@@ -831692,7 +831709,6 @@ Card(
               1,
               1,
               NumberOfBasicLandTypesAmongPermanents(And([
-                IsSupertype(Basic),
                 IsCardtype(Land),
                 ControlledByAPlayer(SinglePlayer(You)),
               ])),
@@ -833656,7 +833672,7 @@ Card(
               FirstStrike,
             ]),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -835765,7 +835781,9 @@ Card(
           [
             FishToken,
           ],
-          [],
+          [
+            EntersTapped,
+          ],
         ),
       ),
       (Targeted(
@@ -850274,10 +850292,13 @@ Card(
   Rules: [
     SpellActions(Modal_ChooseOne([
       ActionList([
-        GainControlOfEachPermanent(And([
-          IsCardtype(Creature),
-          PowerIs(GreaterThanOrEqualTo(Integer(4))),
-        ])),
+        GainControlOfEachPermanentUntil(
+          And([
+            IsCardtype(Creature),
+            PowerIs(GreaterThanOrEqualTo(Integer(4))),
+          ]),
+          UntilEndOfTurn,
+        ),
         UntapEachPermanent(ThePermanentsGainedControlOfThisWay),
         CreateEachPermanentLayerEffectUntil(
           ThePermanentsGainedControlOfThisWay,
@@ -850290,10 +850311,13 @@ Card(
         ),
       ]),
       ActionList([
-        GainControlOfEachPermanent(And([
-          IsCardtype(Creature),
-          PowerIs(LessThanOrEqualTo(Integer(3))),
-        ])),
+        GainControlOfEachPermanentUntil(
+          And([
+            IsCardtype(Creature),
+            PowerIs(LessThanOrEqualTo(Integer(3))),
+          ]),
+          UntilEndOfTurn,
+        ),
         UntapEachPermanent(ThePermanentsGainedControlOfThisWay),
         CreateEachPermanentLayerEffectUntil(
           ThePermanentsGainedControlOfThisWay,
@@ -860660,6 +860684,7 @@ Card(
   Rules: [
     SpellActions(ActionList([
       ExchangeGraveyardAndLibrary,
+      Shuffle,
     ])),
   ],
 )
@@ -866992,7 +867017,7 @@ Card(
                 0,
               ),
             ],
-            UntilEndOfTurn,
+            UntilPlayersNextTurn(You),
           ),
         ]),
       ),
@@ -880536,7 +880561,7 @@ Card(
           UntilEndOfTurn,
         ),
         If(
-          TimesThisAbilityHasResolvedThisTurnIs(GreaterThanOrEqualTo(Integer(4))),
+          TimesThisAbilityHasBeenActivatedThisTurnIs(GreaterThanOrEqualTo(Integer(4))),
           [
             CreateFutureTrigger(
               AtTheBeginningOfTheNextEndStep,
@@ -886282,14 +886307,12 @@ Card(
     ManaCostB,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostGeneric(1),
-        ManaCostG,
-      ]),
-      PayMana([
-        ManaCostW,
-      ]),
+    Kicker(PayMana([
+      ManaCostGeneric(1),
+      ManaCostG,
+    ])),
+    Kicker(PayMana([
+      ManaCostW,
     ])),
     AsPermanentEnters(
       ThisPermanent,
@@ -899138,15 +899161,13 @@ Card(
     ManaCostB,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostGeneric(2),
-        ManaCostU,
-      ]),
-      PayMana([
-        ManaCostGeneric(2),
-        ManaCostR,
-      ]),
+    Kicker(PayMana([
+      ManaCostGeneric(2),
+      ManaCostU,
+    ])),
+    Kicker(PayMana([
+      ManaCostGeneric(2),
+      ManaCostR,
     ])),
     TriggerI(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
@@ -904225,7 +904246,7 @@ Card(
                 Haste,
               ]),
             ],
-            UntilEndOfTurn,
+            UntilPlayersNextTurn(You),
           ),
         ]),
       ),
@@ -920760,7 +920781,7 @@ Card(
                 Haste,
               ]),
             ],
-            UntilEndOfTurn,
+            UntilPlayersNextTurn(You),
           ),
         ]),
       ),
@@ -936670,7 +936691,6 @@ Card(
         [
           NumberTokens(
             NumberOfBasicLandTypesAmongPermanents(And([
-              IsSupertype(Basic),
               IsCardtype(Land),
               ControlledByAPlayer(SinglePlayer(You)),
             ])),
@@ -955656,7 +955676,9 @@ Card(
           [
             FishToken,
           ],
-          [],
+          [
+            EntersTapped,
+          ],
         ),
       ),
       (Targeted(
@@ -981877,7 +981899,6 @@ Card(
             -1,
             -1,
             NumberOfBasicLandTypesAmongPermanents(And([
-              IsSupertype(Basic),
               IsCardtype(Land),
               ControlledByAPlayer(SinglePlayer(You)),
             ])),
@@ -987571,7 +987592,9 @@ Card(
           [
             FishToken,
           ],
-          [],
+          [
+            EntersTapped,
+          ],
         ),
       ),
       (ActionList([
@@ -990142,7 +990165,6 @@ Card(
                 1,
                 1,
                 NumberOfBasicLandTypesAmongPermanents(And([
-                  IsSupertype(Basic),
                   IsCardtype(Land),
                   ControlledByAPlayer(SinglePlayer(You)),
                 ])),
@@ -1024085,7 +1024107,6 @@ Card(
             CostReduceGeneric(1),
           ],
           NumberOfBasicLandTypesAmongPermanents(And([
-            IsSupertype(Basic),
             IsCardtype(Land),
             ControlledByAPlayer(SinglePlayer(You)),
           ])),
@@ -1029191,14 +1029212,12 @@ Card(
     ManaCostR,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostGeneric(1),
-        ManaCostW,
-      ]),
-      PayMana([
-        ManaCostU,
-      ]),
+    Kicker(PayMana([
+      ManaCostGeneric(1),
+      ManaCostW,
+    ])),
+    Kicker(PayMana([
+      ManaCostU,
     ])),
     AsPermanentEnters(
       ThisPermanent,
@@ -1036418,7 +1036437,7 @@ Card(
     TriggerA(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       ActionList([
-        MayCost(DiscardACardAtRandom),
+        MayCost(DiscardACard),
         If(
           CostWasPaid,
           [
@@ -1096782,7 +1096801,7 @@ ModalDFC(
                   2,
                 )),
               ],
-              UntilEndOfTurn,
+              UntilPlayersNextTurn(You),
             ),
           ]),
         ),
@@ -1127240,7 +1127259,9 @@ Card(
           [
             FishToken,
           ],
-          [],
+          [
+            EntersTapped,
+          ],
         ),
       ),
       (Targeted(
@@ -1132592,7 +1132613,6 @@ Card(
         CostReduceGeneric(2),
       ],
       NumberOfBasicLandTypesAmongPermanents(And([
-        IsSupertype(Basic),
         IsCardtype(Land),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
@@ -1149272,9 +1149292,10 @@ Card(
           "Fortune",
         ]),
       ),
-      GainControlOfAPermanentControlledByEachPlayer(
+      GainControlOfAPermanentControlledByEachPlayerUntil(
         IsCardtype(Creature),
         ChoseWord("Fame"),
+        UntilEndOfTurn,
       ),
       UntapEachPermanent(ThePermanentsGainedControlOfThisWay),
       CreateEachPermanentLayerEffectUntil(
@@ -1153872,7 +1153893,7 @@ Card(
               Lifelink,
             ]),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -1187432,7 +1187453,7 @@ Card(
         ],
         ActionList([
           UntapPermanent(Ref_TargetPermanent),
-          CreatePermanentLayerEffect(
+          CreatePermanentLayerEffectUntil(
             Ref_TargetPermanent,
             [
               SetPT(PT(
@@ -1187448,6 +1187469,7 @@ Card(
                 Haste,
               ]),
             ],
+            UntilEndOfTurn,
           ),
         ]),
       ),
@@ -1211344,7 +1211366,7 @@ Card(
             [
               CantBeBlocked,
             ],
-            UntilEndOfTurn,
+            UntilPlayersNextTurn(You),
           ),
           GoadCreature(Ref_TargetPermanent),
         ]),
@@ -1224693,7 +1224715,7 @@ Card(
               Lifelink,
             ]),
           ],
-          UntilEndOfTurn,
+          UntilPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -1250607,7 +1250629,6 @@ Card(
         [
           NumberTokens(
             NumberOfBasicLandTypesAmongPermanents(And([
-              IsSupertype(Basic),
               IsCardtype(Land),
               ControlledByAPlayer(SinglePlayer(You)),
             ])),
@@ -1259530,7 +1259551,14 @@ Card(
     Permanent_Gift([
       PlayerAction(
         TheGiftedPlayer,
-        DrawACard,
+        CreateTokens(
+          [
+            FishToken,
+          ],
+          [
+            EntersTapped,
+          ],
+        ),
       ),
     ]),
     TriggerI(
@@ -1260043,7 +1260071,7 @@ Card(
               Hexproof,
             ]),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -1275782,14 +1275810,12 @@ Card(
     ManaCostU,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostW,
-      ]),
-      PayMana([
-        ManaCostGeneric(2),
-        ManaCostB,
-      ]),
+    Kicker(PayMana([
+      ManaCostW,
+    ])),
+    Kicker(PayMana([
+      ManaCostGeneric(2),
+      ManaCostB,
     ])),
     TriggerI(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
@@ -1277227,7 +1277253,6 @@ Card(
         CostReduceGeneric(1),
       ],
       NumberOfBasicLandTypesAmongPermanents(And([
-        IsSupertype(Basic),
         IsCardtype(Land),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
@@ -1278789,7 +1278814,6 @@ Card(
           1,
           1,
           NumberOfBasicLandTypesAmongPermanents(And([
-            IsSupertype(Basic),
             IsCardtype(Land),
             ControlledByAPlayer(SinglePlayer(You)),
           ])),
@@ -1280913,13 +1280937,11 @@ Card(
     ManaCostB,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostG,
-      ]),
-      PayMana([
-        ManaCostW,
-      ]),
+    Kicker(PayMana([
+      ManaCostG,
+    ])),
+    Kicker(PayMana([
+      ManaCostW,
     ])),
     TriggerA(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
@@ -1289582,7 +1289604,6 @@ Card(
               1,
               1,
               NumberOfBasicLandTypesAmongPermanents(And([
-                IsSupertype(Basic),
                 IsCardtype(Land),
                 ControlledByAPlayer(SinglePlayer(You)),
               ])),
@@ -1292333,15 +1292354,13 @@ Card(
     ManaCostW,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostGeneric(1),
-        ManaCostG,
-      ]),
-      PayMana([
-        ManaCostGeneric(2),
-        ManaCostU,
-      ]),
+    Kicker(PayMana([
+      ManaCostGeneric(1),
+      ManaCostG,
+    ])),
+    Kicker(PayMana([
+      ManaCostGeneric(2),
+      ManaCostU,
     ])),
     TriggerI(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
@@ -1293884,7 +1293903,7 @@ Card(
               FirstStrike,
             ]),
           ],
-          UntilEndOfCombat,
+          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -1301902,14 +1301921,13 @@ Card(
         If(
           CostWasPaid,
           [
-            CreatePermanentLayerEffectUntil(
+            CreatePermanentLayerEffect(
               ThePermanentPutOnTheBattlefieldThisWay,
               [
                 AddAbility([
                   Haste,
                 ]),
               ],
-              UntilEndOfTurn,
             ),
             CreateFutureTrigger(
               AtTheBeginningOfTheNextEndStep,
@@ -1310553,7 +1310571,7 @@ Card(
           Trigger_ThatPlayer,
           GainControlOfPermanentUntil(
             ThisPermanent,
-            UntilEndOfTurn,
+            UntilEndOfCombat,
           ),
           [
             ChooseAPlayerOrPlaneswalkerCurrentlyAttackedByPlayer(Trigger_ThatPlayer),
@@ -1319264,7 +1319282,7 @@ Card(
                   ]),
                 ),
               ],
-              UntilEndOfTurn,
+              UntilPlayersNextTurn(You),
             ),
           ]),
         ),
@@ -1319294,7 +1319312,7 @@ Card(
                   ]),
                 ),
               ],
-              UntilEndOfTurn,
+              UntilPlayersNextTurn(You),
             ),
           ]),
         ),
@@ -1324643,7 +1324661,7 @@ Card(
           PlayerEffect(
             You,
             [
-              DrawsACardDuringEachPlayersUntapStep(Opponent),
+              DrawsACardDuringEachPlayersDrawStep(Opponent),
             ],
           ),
         ]),
@@ -1328025,15 +1328043,13 @@ Card(
     ManaCostR,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostGeneric(1),
-        ManaCostW,
-      ]),
-      PayMana([
-        ManaCostGeneric(1),
-        ManaCostU,
-      ]),
+    Kicker(PayMana([
+      ManaCostGeneric(1),
+      ManaCostW,
+    ])),
+    Kicker(PayMana([
+      ManaCostGeneric(1),
+      ManaCostU,
     ])),
     SpellActions(Targeted(
       [
@@ -1353847,7 +1353863,7 @@ Card(
           ])),
         ],
         ActionList([
-          CreatePermanentLayerEffect(
+          CreatePermanentLayerEffectUntil(
             Ref_TargetPermanent,
             [
               SetPT(PT(
@@ -1353863,6 +1353879,7 @@ Card(
                 Flying,
               ]),
             ],
+            UntilEndOfTurn,
           ),
         ]),
       ),
@@ -1369348,13 +1369365,11 @@ Card(
     ManaCostG,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostR,
-      ]),
-      PayMana([
-        ManaCostW,
-      ]),
+    Kicker(PayMana([
+      ManaCostR,
+    ])),
+    Kicker(PayMana([
+      ManaCostW,
     ])),
     TriggerI(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
@@ -1379877,14 +1379892,12 @@ Card(
     ManaCostR,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostGeneric(1),
-        ManaCostB,
-      ]),
-      PayMana([
-        ManaCostG,
-      ]),
+    Kicker(PayMana([
+      ManaCostGeneric(1),
+      ManaCostB,
+    ])),
+    Kicker(PayMana([
+      ManaCostG,
     ])),
     TriggerI(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
@@ -1403493,7 +1403506,7 @@ Card(
                     ]),
                   ],
                   [
-                    PutFoundCardsIntoHand,
+                    PutFoundCardsIntoGraveyard,
                   ],
                 ),
               ],
@@ -1412230,7 +1412243,6 @@ Card(
             1,
             1,
             NumberOfBasicLandTypesAmongPermanents(And([
-              IsSupertype(Basic),
               IsCardtype(Land),
               ControlledByAPlayer(SinglePlayer(You)),
             ])),
@@ -1413506,7 +1413518,7 @@ Card(
         ])),
       ],
       ActionList([
-        CreatePermanentLayerEffectUntil(
+        CreatePermanentLayerEffect(
           Ref_TargetPermanent1,
           [
             IsACopyOfPermanent(
@@ -1413514,7 +1413526,6 @@ Card(
               NoCopyEffects,
             ),
           ],
-          UntilEndOfTurn,
         ),
       ]),
     )),
@@ -1415571,9 +1415582,9 @@ Card(
           TargetPermanent(IsCardtype(Artifact)),
         ],
         ActionList([
-          MustCost(DestroyPermanent(Ref_TargetPermanent)),
+          MayAction(DestroyPermanent(Ref_TargetPermanent)),
           If(
-            CostWasPaid,
+            DestroyedPermanentIsPutInAGraveyardThisWay,
             [
               PermanentDealsDamage(
                 ThisPermanent,
@@ -1415601,9 +1415612,9 @@ Card(
           TargetPermanent(IsCardtype(Artifact)),
         ],
         ActionList([
-          MustCost(DestroyPermanent(Ref_TargetPermanent)),
+          MayAction(DestroyPermanent(Ref_TargetPermanent)),
           If(
-            CostWasPaid,
+            DestroyedPermanentIsPutInAGraveyardThisWay,
             [
               PermanentDealsDamage(
                 ThisPermanent,
@@ -1439852,8 +1439863,8 @@ Transforming(
         ]),
         And([
           ActivateOnlyAsASorcery,
-          ActivateOnlyIf(APlayerPassesFilter(
-            Opponent,
+          ActivateOnlyIf(PlayerPassesFilter(
+            You,
             CastNumSpellsThisTurn(
               GreaterThanOrEqualTo(Integer(3)),
               Or([
@@ -1440617,13 +1440628,11 @@ Card(
     ManaCostG,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostU,
-      ]),
-      PayMana([
-        ManaCostB,
-      ]),
+    Kicker(PayMana([
+      ManaCostU,
+    ])),
+    Kicker(PayMana([
+      ManaCostB,
     ])),
     AsPermanentEnters(
       ThisPermanent,
@@ -1452155,7 +1452164,10 @@ Card(
         ],
         ActionList([
           CreateFutureReplaceWouldDealDamage(
-            NextTimeDamageWouldBeDealtThisTurnToRecipient(Permanent(Ref_TargetPermanent)),
+            NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient(
+              Integer(1),
+              Permanent(Ref_TargetPermanent),
+            ),
             [
               DealToPlayerInstead(You),
             ],
@@ -1477688,15 +1477700,13 @@ Card(
     ManaCostU,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostGeneric(1),
-        ManaCostR,
-      ]),
-      PayMana([
-        ManaCostGeneric(1),
-        ManaCostG,
-      ]),
+    Kicker(PayMana([
+      ManaCostGeneric(1),
+      ManaCostR,
+    ])),
+    Kicker(PayMana([
+      ManaCostGeneric(1),
+      ManaCostG,
     ])),
     AsPermanentEnters(
       ThisPermanent,
@@ -1478791,7 +1478801,6 @@ Card(
         PlayerAction(
           Ref_TargetPlayer,
           DiscardNumberCards(NumberOfBasicLandTypesAmongPermanents(And([
-            IsSupertype(Basic),
             IsCardtype(Land),
             ControlledByAPlayer(SinglePlayer(You)),
           ]))),
@@ -1493620,7 +1493629,6 @@ Card(
               1,
               0,
               NumberOfBasicLandTypesAmongPermanents(And([
-                IsSupertype(Basic),
                 IsCardtype(Land),
                 ControlledByAPlayer(SinglePlayer(You)),
               ])),
@@ -1493924,7 +1493932,6 @@ Card(
       GainLifeForEach(
         Integer(2),
         NumberOfBasicLandTypesAmongPermanents(And([
-          IsSupertype(Basic),
           IsCardtype(Land),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
@@ -1493985,7 +1493992,6 @@ Card(
           CostReduceGeneric(1),
         ],
         NumberOfBasicLandTypesAmongPermanents(And([
-          IsSupertype(Basic),
           IsCardtype(Land),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
@@ -1500820,14 +1500826,12 @@ Card(
     ManaCostC,
   ],
   Rules: [
-    Kicker(Or([
-      PayMana([
-        ManaCostG,
-      ]),
-      PayMana([
-        ManaCostGeneric(1),
-        ManaCostU,
-      ]),
+    Kicker(PayMana([
+      ManaCostG,
+    ])),
+    Kicker(PayMana([
+      ManaCostGeneric(1),
+      ManaCostU,
     ])),
     FromStack(TriggerI(
       WhenAPlayerCastsASpell(
@@ -1504234,7 +1504238,6 @@ Card(
           1,
           1,
           NumberOfBasicLandTypesAmongPermanents(And([
-            IsSupertype(Basic),
             IsCardtype(Land),
             ControlledByAPlayer(SinglePlayer(You)),
           ])),
@@ -1508252,7 +1508255,7 @@ Card(
       CreateTokens(
         [
           NumberTokens(
-            TheNumberOfCardsThatWerePutIntoAPlayersLibraryFromTheirHandOrLibraryThisTurn(SinglePlayer(You)),
+            TheNumberOfCardsThatWerePutIntoAPlayersGraveyardFromTheirHandOrLibraryThisTurn(SinglePlayer(You)),
             TokenWithPT(
               PT(
                 2,
@@ -1511068,14 +1511071,13 @@ Card(
               EntersNormally,
             ],
           ),
-          CreatePermanentLayerEffectUntil(
+          CreatePermanentLayerEffect(
             ThePermanentPutOnTheBattlefieldThisWay,
             [
               AddAbility([
                 Haste,
               ]),
             ],
-            UntilEndOfTurn,
           ),
           CreateFutureTrigger(
             AtTheBeginningOfTheNextEndStep,
@@ -1542277,7 +1542279,10 @@ Card(
           If(
             CostWasPaid,
             [
-              GainControlOfPermanent(Ref_TargetPermanent),
+              GainControlOfPermanentUntil(
+                Ref_TargetPermanent,
+                UntilEndOfTurn,
+              ),
               UntapPermanent(Ref_TargetPermanent),
               CreatePermanentLayerEffectUntil(
                 Ref_TargetPermanent,
@@ -1543021,7 +1543026,6 @@ Card(
         CostReduceGeneric(1),
       ],
       NumberOfBasicLandTypesAmongPermanents(And([
-        IsSupertype(Basic),
         IsCardtype(Land),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
@@ -1547073,7 +1547077,7 @@ Scheme(
           [
             HasNoMaximumHandSize,
           ],
-          UntilEndOfTurn,
+          UntilPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -1554518,7 +1554522,7 @@ Card(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       ActionList([
         EachPlayerAction(
-          Opponent,
+          AnyPlayer,
           SacrificeNumberPermanents(
             HalfRoundedDown(TheNumberOfPermanentsOnTheBattlefield(And([
               IsNonCreatureType(God),
