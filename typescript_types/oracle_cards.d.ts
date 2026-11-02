@@ -48,6 +48,7 @@ type AbilityVariable =
 type Action =
 | { "_Action": "Recruit" }
 | { "_Action": "Assimilate", "args": CardInGraveyards }
+| { "_Action": "Conjure", "args": Array<ConjureAction> }
 | { "_Action": "ConjureDuplicateOfARandomCardOfTypeIntoExile", "args": Cards }
 | { "_Action": "DraftAbilitiesFromAbilityBook", "args": [Array<Cost>, string] }
 | { "_Action": "CastAnyNumberOfSpellsFromAmongCopiedCardsWithoutPaying", "args": Spells }
@@ -914,7 +915,7 @@ type Action =
 | { "_Action": "PutAStickerOnACardInPlayersGraveyard", "args": [CardsInGraveyards, Player] }
 | { "_Action": "PutAStickerOnAPermanent", "args": Permanents }
 | { "_Action": "PutAllCardsFromHandOnBottomOfLibraryAnyOrder" }
-| { "_Action": "PutAllCardsFromHandOnTopOfLibraryRandomOrder" }
+| { "_Action": "PutAllCardsFromHandOnTopOfLibraryInAnyOrder" }
 | { "_Action": "PutAnAbilityStickerWithTicketCostOnPermanentWithoutPaying", "args": [Comparison, Permanent] }
 | { "_Action": "PutAnArtStickerOnAPermanent", "args": Permanents }
 | { "_Action": "PutAnExiledCardIntoOwnersGraveyard", "args": CardsInExile }
@@ -2446,6 +2447,11 @@ type Condition =
 | { "_Condition": "WhenAPlayerRollsAnyNumberOfDice_AnyDiceResultIs", "args": Comparison }
 | { "_Condition": "WordWasVotedFor", "args": string }
 | { "_Condition": "YouLostTheCoinFlip" };
+type Conjurable =
+| { "_Conjurable": "NamedCard", "args": string };
+type ConjureAction =
+| { "_ConjureAction": "CardOntoBattlefield", "args": [Conjurable, Array<EnterFlag>] }
+| { "_ConjureAction": "NumberCardsOntoBattlefield", "args": [GameNumber, Conjurable, Array<EnterFlag>] };
 type Conspiracy =
 | { "_OracleCard": "Conspiracy", Name: string, Typeline: OracleTypeline, Rules: Array<Rule>, };
 type ConspiracyDeck =
@@ -3673,6 +3679,7 @@ type Expiration =
 | { "_Expiration": "ForAsLongAsPermanentRemainsFaceDown", "args": Permanent }
 | { "_Expiration": "ForAsLongAsPermanentRemainsTapped", "args": Permanent }
 | { "_Expiration": "ForAsLongAsPermanentRemainsOnTheBattlefield", "args": Permanent }
+| { "_Expiration": "ForAsLongAsPlayerControlsPermanent", "args": [Player, Permanent] }
 | { "_Expiration": "UntilAPlayerBecomesTheMonarch", "args": Players }
 | { "_Expiration": "UntilAPlayerCastsASpell", "args": [Players, Spells] }
 | { "_Expiration": "UntilAPlayerExilesACardWithThisAbility", "args": Players }
@@ -4885,6 +4892,7 @@ type Permanent =
 | { "_Permanent": "ThePermanentPutOnTheBattlefieldThisWay" }
 | { "_Permanent": "ThePermanentReturnedToHandThisWay" }
 | { "_Permanent": "ThePermanentSacrificedThisWay" }
+| { "_Permanent": "ThePermanentSacrificedByPlayerThisWay", "args": Player }
 | { "_Permanent": "ThePermanentTappedThisWay" }
 | { "_Permanent": "ThePermanentThatDiedThisWay" }
 | { "_Permanent": "ThisGuest" }
@@ -7747,7 +7755,6 @@ type Spells =
 | { "_Spells": "SharesANameWithCardInPlayersGraveyard", "args": [Cards, Player] }
 | { "_Spells": "SharesANameWithExiled", "args": CardInExile }
 | { "_Spells": "SharesANameWithPermanent", "args": Permanent }
-| { "_Spells": "SharesANameWithSpell", "args": Spell }
 | { "_Spells": "SharesANameWithTheCardRevealedThisWay" }
 | { "_Spells": "ToughnessIs", "args": Comparison }
 | { "_Spells": "AdditionalCostWasPaid" }

@@ -1598,6 +1598,7 @@ pub enum Expiration {
   ForAsLongAsPermanentRemainsFaceDown(Box<Permanent>),
   ForAsLongAsPermanentRemainsTapped(Box<Permanent>),
   ForAsLongAsPermanentRemainsOnTheBattlefield(Box<Permanent>),
+  ForAsLongAsPlayerControlsPermanent(Box<Player>, Box<Permanent>),
   UntilAPlayerBecomesTheMonarch(Box<Players>),
   UntilAPlayerCastsASpell(Box<Players>, Box<Spells>),
   UntilAPlayerExilesACardWithThisAbility(Box<Players>),
@@ -5578,6 +5579,7 @@ pub enum Permanent {
   ThePermanentPutOnTheBattlefieldThisWay,
   ThePermanentReturnedToHandThisWay,
   ThePermanentSacrificedThisWay,
+  ThePermanentSacrificedByPlayerThisWay(Box<Player>),
   ThePermanentTappedThisWay,
   ThePermanentThatDiedThisWay,
   ThisGuest,
@@ -6751,7 +6753,6 @@ pub enum Spells {
   SharesANameWithCardInPlayersGraveyard(Box<Cards>, Box<Player>),
   SharesANameWithExiled(Box<CardInExile>),
   SharesANameWithPermanent(Box<Permanent>),
-  SharesANameWithSpell(Box<Spell>),
   SharesANameWithTheCardRevealedThisWay,
   ToughnessIs(Box<Comparison>),
   AdditionalCostWasPaid,
@@ -8857,10 +8858,27 @@ pub enum CardsOutsideTheGame {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_Conjurable", content = "args"))]
+pub enum Conjurable {
+  NamedCard(NameString),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_ConjureAction", content = "args"))]
+pub enum ConjureAction {
+  CardOntoBattlefield(Box<Conjurable>, Vec<EnterFlag>),
+  NumberCardsOntoBattlefield(Box<GameNumber>, Box<Conjurable>, Vec<EnterFlag>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Action", content = "args"))]
 pub enum Action {
   Recruit,
   Assimilate(Box<CardInGraveyards>),
+
+  Conjure(Vec<ConjureAction>),
 
   ConjureDuplicateOfARandomCardOfTypeIntoExile(Box<Cards>),
   DraftAbilitiesFromAbilityBook(Vec<Cost>, SpellBookName),
@@ -9740,7 +9758,7 @@ pub enum Action {
   PutAStickerOnACardInPlayersGraveyard(Box<CardsInGraveyards>, Box<Player>),
   PutAStickerOnAPermanent(Box<Permanents>),
   PutAllCardsFromHandOnBottomOfLibraryAnyOrder,
-  PutAllCardsFromHandOnTopOfLibraryRandomOrder,
+  PutAllCardsFromHandOnTopOfLibraryInAnyOrder,
   PutAnAbilityStickerWithTicketCostOnPermanentWithoutPaying(Box<Comparison>, Box<Permanent>),
   PutAnArtStickerOnAPermanent(Box<Permanents>),
   PutAnExiledCardIntoOwnersGraveyard(Box<CardsInExile>),

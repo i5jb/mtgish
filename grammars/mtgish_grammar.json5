@@ -300,6 +300,18 @@
     "IsNonPlaneswalkerType({{LILIANA}})": "",
     "IsPlaneswalkerType({{LILIANA}})": ""
   },
+  "{{CONJURABLE}}": {
+    "NamedCard({{QUOTED_NAMED_CARD}})": "",
+  },
+  "{{CONJURABLE_ACTION}}": {
+    "CardOntoBattlefield({{CONJURABLE}}, {{ENTER_FLAGS}})": "",
+    "NumberCardsOntoBattlefield({{NUMBER}}, {{CONJURABLE}}, {{ENTER_FLAGS}})": "",
+  },
+  "{{CONJURABLE_ACTION_LIST}}": {
+    "[{{CONJURABLE_ACTION}}, {{CONJURABLE_ACTION}}]": "",
+    "[{{CONJURABLE_ACTION}}]": "",
+  },
+
   "{{BASIC_PLAYER_ACTION}}": {
     "{{_PLAYER_ACTION[PutCounters]}}": "",
     "{{_PLAYER_ACTION[PutCounters][Reflexive]}}": "",
@@ -586,6 +598,7 @@
     "CircleNumberColors({{NUMBER}}, AnyColor)": "",
     "Clash({{PLAYERS}}, {{ACTION_LIST}}, {{ACTION_LIST}})": "",
     "CollectEvidence({{NUMBER}})": "",
+    "Conjure({{CONJURABLE_ACTION_LIST}})": "",
     "ConjureACardIntoGraveyard({{QUOTED_NAMED_CARD}})": "",
     "ConjureACardOfChoiceFromSpellBookIntoHand({{SPELLBOOK}})": "",
     "ConjureACardOfChoiceFromSpellBookOntoBattlefield({{SPELLBOOK}}, {{ENTER_FLAGS}})": "",
@@ -1075,7 +1088,7 @@
     "PutAStickerOnACardInPlayersGraveyard({{CARDS_IN_GRAVEYARDS}}, {{PLAYER}})": "",
     "PutAStickerOnAPermanent({{PERMANENTS}})": "",
     "PutAllCardsFromHandOnBottomOfLibraryAnyOrder": "",
-    "PutAllCardsFromHandOnTopOfLibraryRandomOrder": "",
+    "PutAllCardsFromHandOnTopOfLibraryInAnyOrder": "",
     "PutAnAbilityStickerWithTicketCostOnPermanentWithoutPaying({{COMPARISON}}, {{PERMANENT}})": "",
     "PutAnArtStickerOnAPermanent({{PERMANENTS}})": "",
     "PutAnExiledCardIntoOwnersGraveyard({{CARDS_IN_EXILE}})": "",
@@ -2765,6 +2778,7 @@
     "ForAsLongAsPermanentRemainsAttachedToPermanent({{PERMANENT}}, {{PERMANENT}})": "",
     "ForAsLongAsPermanentRemainsFaceDown({{PERMANENT}})": "",
     "ForAsLongAsPermanentRemainsTapped({{PERMANENT}})": "",
+    "ForAsLongAsPlayerControlsPermanent({{PLAYER}}, {{PERMANENT}})": "",
     "Or([{{EXPIRATION}}, {{EXPIRATION}}])": "",
     "UntilAPlayerBecomesTheMonarch({{PLAYERS}})": "",
     "UntilAPlayerCastsASpell({{PLAYERS}}, {{SPELLS}})": "",
@@ -4301,6 +4315,7 @@
     "ThePermanentPutOnTheBattlefieldThisWay": "",
     "ThePermanentReturnedToHandThisWay": "",
     "ThePermanentSacrificedThisWay": "",
+    "ThePermanentSacrificedByPlayerThisWay({{PLAYER}})": "",
     "ThePermanentSpellResolvedThisWay": "",
     "ThePermanentTappedThisWay": "",
     "ThePermanentThatCreatedIt": "",
