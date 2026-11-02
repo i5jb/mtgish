@@ -1919,6 +1919,7 @@
     "(As you cast a spell with assist, you may choose another player. They may pay some or all of the generic mana in the spell's cost.)": "",
   },
   "{{Reminder}}": {
+    "(Cast only from your graveyard. Then exile it.)": "",
     "(It has \"{T}: Add {G}\". It's affected by summoning sickness until your next turn.)": "",
     "(If you draw from an empty library this way, you still win the game.)": "",
     "(Permanent spells cast this way become tokens.)": "",

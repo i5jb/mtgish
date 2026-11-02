@@ -309,7 +309,7 @@
   },
   "{{CONJURABLE_ACTION_LIST}}": {
     "[{{CONJURABLE_ACTION}}, {{CONJURABLE_ACTION}}]": "",
-    "[{{CONJURABLE_ACTION}}]": "",
+    //"[{{CONJURABLE_ACTION}}]": "",
   },
 
   "{{BASIC_PLAYER_ACTION}}": {
@@ -450,7 +450,6 @@
     "CastCopiedCardWithoutPaying": "",
     "MayCastCopiedCardWithoutPaying": "",
     "CastEachCopiedCardWithoutPaying": "",
-    "CastExiledCardAndMaySpendManaAsThoughAnyColorToCast({{CARD_IN_EXILE}})": "",
     "CastExiledCardForAlternateCost({{CARD_IN_EXILE}}, PayLifeEqualToItsManaValue)": "",
     "CastExiledCardForAlternateCost({{CARD_IN_EXILE}}, {{COST}})": "",
     "CastExiledCardForReducedCost({{CARD_IN_EXILE}}, {{COST_REDUCTION}})": "",
@@ -1296,7 +1295,6 @@
     "RegeneratePermanent_WhenItRengeratesThisWay({{PERMANENT}}, {{TOP_LEVEL_ACTIONS}})": "",
     "RememberLifeTotal": "",
     "RememberPlayer({{PLAYER}})": "",
-    "ForEachPlayerRememberMostPrevalentCreatureTypesInTheirLibrary({{PLAYERS}})": "",
 
     "RemoveCreatureFromCombat({{PERMANENT}})": "",
     "RemoveCreatureFromCombatAndUnblockBlockers({{PERMANENT}})": "",
@@ -1851,7 +1849,6 @@
     "SetPT({{PT}}), AddCreatureType({{ZOMBIE}}), AddCardtype(Creature)": ""
   },
   "{{CARD_IN_HAND}}": {
-    "TheCardInHandBeheldThisWay": "",
     "TheCardRevealedThisWay": "",
     "TheCardChosenThisWay": "",
     "TheChosenCardInHand": "",
@@ -1887,7 +1884,7 @@
     "CastEffect(MayCastAsThoughItHadFlashWithSpecialAction({{ACTION_LIST}}))": "",
     "CastEffect(MayCastWithoutPayingIf({{CONDITION}}))": "",
     //"CastEffect(MaySpendManaAsThoughAnyColorToCast)": "",
-    "CastEffect(MaySpendManaAsThoughAnyTypeToCast)": "",
+    //"CastEffect(MaySpendManaAsThoughAnyTypeToCast)": "",
     "CastEffect(OptionalAdditionalCastingCost({{COST}}))": "",
     //"CastEffect(OptionalAdditionalCastingCostForReflexiveTrigger({{COST}}, {{TOP_LEVEL_ACTIONS}}))": "",
     "CastEffect(PayLifeForEachPreviousCastRatherThanManaForEachPreviousCast({{NUMBER}}))": "",
@@ -2820,6 +2817,7 @@
   "{{FULL_CARD}}": {
     "TokenDefinition(Name: {{QUOTED_TOKEN_NAME}}, Token: {{CREATABLE_TOKEN}})": "",
 
+    "Avenger(Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, Rules: {{RULES}}, CardPT: {{CARD_PT}}, Vengeance: (Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, Rules: {{RULES}}))": "",
     "Adventurer(Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, CardPT: {{CARD_PT}}, Adventure: (Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, Rules: {{RULES}}))": "",
     "Adventurer(Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, Rules: {{RULES}}, Adventure: (Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, Rules: {{RULES}}))": "",
     "Adventurer(Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, Rules: {{RULES}}, CardPT: {{CARD_PT}}, Adventure: (Name: {{QUOTED_NAME}}, Typeline: {{TYPE_LINE}}, ManaCost: {{CARD_MANACOST}}, Rules: {{RULES}}))": "",
@@ -5816,7 +5814,7 @@
     "SharesANameWithAGraveyardCard({{CARDS_IN_GRAVEYARDS}})": "",
     "SharesANameWithExiled({{CARD_IN_EXILE}})": "",
     "SharesANameWithPermanent({{PERMANENT}})": "",
-    "SharesANameWithSpell({{SPELL}})": "",
+    //"SharesANameWithSpell({{SPELL}})": "",
     "SharesANameWithTheCardRevealedThisWay": "",
     "SingleSpell({{SPELL}})": "",
     "SneakCostWasPaid": "",
@@ -7455,6 +7453,7 @@
     "SearchLibrary([FindAGenericCard, ExileFoundCards, Shuffle])": "",
     "SearchLibrary([FindAGenericCard, ExileFoundCardsFaceDown, Shuffle])": "",
     "SearchLibrary([FindAGenericCard, If(ACardOfTypeWasFoundThisWay({{CARDS_IN_LIBRARY}}), [MayPutFoundCardsOntoBattlefield({{ENTER_FLAGS}})]), PutFoundCardsIntoHand, Shuffle])": "",
+    "SearchLibrary([FindAGenericCard, ChooseAnAction([PutFoundCardsIntoHand, PutFoundCardsIntoGraveyard]), Shuffle])": "",
     "SearchLibrary([FindAGenericCard, PutFoundCardsIntoGraveyard, Shuffle])": "",
     "SearchLibrary([FindAGenericCard, PutFoundCardsIntoHand, DiscardACardAtRandom, Shuffle])": "",
     "SearchLibrary([FindAGenericCard, PutFoundCardsIntoHand, Shuffle])": "",

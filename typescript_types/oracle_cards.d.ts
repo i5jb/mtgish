@@ -1544,6 +1544,8 @@ type AttackAssignment =
 | { "_AttackAssignment": "Player", "args": Player };
 type AttackingPlayers =
 | { "_AttackingPlayers": "AttackedPlayerOrPlaneswalkerTheyControl", "args": Player };
+type Avenger =
+| { "_OracleCard": "Avenger", Name: string, Typeline: OracleTypeline, ManaCost?: CardManaCost, ColorIndicator?: Array<ColorIndicatorColor>, Rules?: Array<Rule>, CardPT?: CardPT, Vengeance: Card, };
 type BattleType =
 | "Siege";
 type Boon =
@@ -4781,6 +4783,7 @@ type OracleCard =
 | { "_OracleCard": "MeldPiece", Name: string, Typeline: OracleTypeline, ManaCost?: CardManaCost, ColorIndicator?: Array<ColorIndicatorColor>, Rules: Array<Rule>, CardPT?: CardPT, MeldsInto: string, }
 | { "_OracleCard": "Melded", Name: string, Typeline: OracleTypeline, ColorIndicator?: Array<ColorIndicatorColor>, Rules: Array<Rule>, CardPT?: CardPT, Loyalty?: LoyaltyNumber, }
 | { "_OracleCard": "Adventurer", Name: string, Typeline: OracleTypeline, ManaCost?: CardManaCost, ColorIndicator?: Array<ColorIndicatorColor>, Rules?: Array<Rule>, CardPT?: CardPT, Adventure: Card, }
+| { "_OracleCard": "Avenger", Name: string, Typeline: OracleTypeline, ManaCost?: CardManaCost, ColorIndicator?: Array<ColorIndicatorColor>, Rules?: Array<Rule>, CardPT?: CardPT, Vengeance: Card, }
 | { "_OracleCard": "Preparer", Name: string, Typeline: OracleTypeline, ManaCost?: CardManaCost, ColorIndicator?: Array<ColorIndicatorColor>, Rules?: Array<Rule>, CardPT?: CardPT, Prepared: Card, }
 | { "_OracleCard": "Ominous", Name: string, Typeline: OracleTypeline, ManaCost?: CardManaCost, ColorIndicator?: Array<ColorIndicatorColor>, Rules: Array<Rule>, CardPT?: CardPT, Omen: Card, }
 | { "_OracleCard": "ModalDFC", FrontFace: Card, BackFace: Card, }
@@ -6380,6 +6383,7 @@ type RegularCard =
 | { "_OracleCard": "MeldPiece", Name: string, Typeline: OracleTypeline, ManaCost?: CardManaCost, ColorIndicator?: Array<ColorIndicatorColor>, Rules: Array<Rule>, CardPT?: CardPT, MeldsInto: string, }
 | { "_OracleCard": "Melded", Name: string, Typeline: OracleTypeline, ColorIndicator?: Array<ColorIndicatorColor>, Rules: Array<Rule>, CardPT?: CardPT, Loyalty?: LoyaltyNumber, }
 | { "_OracleCard": "Adventurer", Name: string, Typeline: OracleTypeline, ManaCost?: CardManaCost, ColorIndicator?: Array<ColorIndicatorColor>, Rules?: Array<Rule>, CardPT?: CardPT, Adventure: Card, }
+| { "_OracleCard": "Avenger", Name: string, Typeline: OracleTypeline, ManaCost?: CardManaCost, ColorIndicator?: Array<ColorIndicatorColor>, Rules?: Array<Rule>, CardPT?: CardPT, Vengeance: Card, }
 | { "_OracleCard": "Preparer", Name: string, Typeline: OracleTypeline, ManaCost?: CardManaCost, ColorIndicator?: Array<ColorIndicatorColor>, Rules?: Array<Rule>, CardPT?: CardPT, Prepared: Card, }
 | { "_OracleCard": "Ominous", Name: string, Typeline: OracleTypeline, ManaCost?: CardManaCost, ColorIndicator?: Array<ColorIndicatorColor>, Rules: Array<Rule>, CardPT?: CardPT, Omen: Card, }
 | { "_OracleCard": "ModalDFC", FrontFace: Card, BackFace: Card, }
@@ -7678,7 +7682,8 @@ type SpellType =
 | "Lesson"
 | "Chorus"
 | "Trap"
-| "Omen";
+| "Omen"
+| "Vengeance";
 type Spells =
 | { "_Spells": "ExceptFor", "args": Spells }
 | { "_Spells": "And", "args": Array<Spells> }
@@ -8377,6 +8382,7 @@ type SubType =
 | "Chorus"
 | "Trap"
 | "Omen"
+| "Vengeance"
 | "Aura"
 | "Background"
 | "Cartouche"

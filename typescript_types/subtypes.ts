@@ -401,7 +401,8 @@ export const spellTypeList: SpellType[] = [
   "Arcane",
   "Lesson",
   "Chorus",
-  "Trap"
+  "Trap",
+  "Vengeance"
 ]
 export const enchantmentTypeList: EnchantmentType[] = [
   "Aura",
@@ -986,6 +987,7 @@ export const subtype_strings: Map<SubType, string> = new Map([
   ["Lesson", "Lesson"],
   ["Chorus", "Chorus"],
   ["Trap", "Trap"],
+  ["Vengeance", "Vengeance"],
   ["Aura", "Aura"],
   ["Background", "Background"],
   ["Cartouche", "Cartouche"],

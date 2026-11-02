@@ -423,6 +423,7 @@ pub enum SpellType {
   Chorus,
   Trap,
   Omen,
+  Vengeance,
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -1031,6 +1032,7 @@ pub enum SubType {
   Chorus,
   Trap,
   Omen,
+  Vengeance,
 
   // EnchantmentType
   Aura,
@@ -11587,6 +11589,44 @@ pub struct Adventurer {
 #[serde(rename_all="PascalCase")]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
 #[allow(dead_code)]
+pub struct Avenger {
+  name:     NameString,
+
+  typeline: OracleTypeline,
+
+  #[serde(default)]
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[serde(with = "::serde_with::rust::unwrap_or_skip")]
+  #[ts(optional, type="CardManaCost")]
+  mana_cost: Option<CardManaCost>,
+
+  #[serde(default)]
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[serde(with = "::serde_with::rust::unwrap_or_skip")]
+  #[ts(optional, type="Array<ColorIndicatorColor>")]
+  color_indicator: Option<Vec<ColorIndicatorColor>>,
+
+  #[serde(default)]
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[serde(with = "::serde_with::rust::unwrap_or_skip")]
+  #[ts(optional, type="Array<Rule>")]
+  rules:    Option<Vec<Rule>>,
+
+  #[serde(default)]
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[serde(with = "::serde_with::rust::unwrap_or_skip")]
+  #[serde(rename="CardPT")]
+  #[ts(optional, type="CardPT")]
+  card_pt:   Option<CardPT>,
+
+  vengeance: Card,
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[serde(rename_all="PascalCase")]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_OracleCard"))]
+#[allow(dead_code)]
 pub struct Preparer {
   name:     NameString,
 
@@ -11939,6 +11979,40 @@ pub enum OracleCard {
   },
 
   #[serde(rename_all="PascalCase")]
+  Avenger {
+    name:     NameString,
+
+    typeline: OracleTypeline,
+
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(with = "::serde_with::rust::unwrap_or_skip")]
+    #[ts(optional, type="CardManaCost")]
+    mana_cost: Option<CardManaCost>,
+
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(with = "::serde_with::rust::unwrap_or_skip")]
+    #[ts(optional, type="Array<ColorIndicatorColor>")]
+    color_indicator: Option<Vec<ColorIndicatorColor>>,
+
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(with = "::serde_with::rust::unwrap_or_skip")]
+    #[ts(optional, type="Array<Rule>")]
+    rules:    Option<Vec<Rule>>,
+
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(with = "::serde_with::rust::unwrap_or_skip")]
+    #[serde(rename="CardPT")]
+    #[ts(optional, type="CardPT")]
+    card_pt:   Option<CardPT>,
+
+    vengeance: Card,
+  },
+
+  #[serde(rename_all="PascalCase")]
   Preparer {
     name:     NameString,
 
@@ -12221,6 +12295,40 @@ pub enum RegularCard {
     card_pt:   Option<CardPT>,
 
     adventure: Card,
+  },
+
+  #[serde(rename_all="PascalCase")]
+  Avenger {
+    name:     NameString,
+
+    typeline: OracleTypeline,
+
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(with = "::serde_with::rust::unwrap_or_skip")]
+    #[ts(optional, type="CardManaCost")]
+    mana_cost: Option<CardManaCost>,
+
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(with = "::serde_with::rust::unwrap_or_skip")]
+    #[ts(optional, type="Array<ColorIndicatorColor>")]
+    color_indicator: Option<Vec<ColorIndicatorColor>>,
+
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(with = "::serde_with::rust::unwrap_or_skip")]
+    #[ts(optional, type="Array<Rule>")]
+    rules:    Option<Vec<Rule>>,
+
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(with = "::serde_with::rust::unwrap_or_skip")]
+    #[serde(rename="CardPT")]
+    #[ts(optional, type="CardPT")]
+    card_pt:   Option<CardPT>,
+
+    vengeance: Card,
   },
 
   #[serde(rename_all="PascalCase")]

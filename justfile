@@ -55,6 +55,8 @@ plurals_generate:
 parser_compile: make_temp
   #!/usr/bin/env bash
   cd {{BASE_DIR}}/go_mtg_parser/
+    export GOPATH="{{TEMP_DIR}}/.go"
+    export GOCACHE="{{TEMP_DIR}}/.cache/go-build"
     go build -o {{TEMP_DIR}}/go_mtg_parser
   cd {{BASE_DIR}}
 
@@ -172,6 +174,7 @@ parser_generate_mtgish: plurals_generate parser_compile
 rust_build_ronl_to_pretty_ron:
   #!/usr/bin/env bash
   cd {{BASE_DIR}}/rust_syntax/
+    export CARGO_HOME="{{TEMP_DIR}}/.cargo"
     cargo build --target-dir={{TEMP_DIR}} --features "ronl_to_pretty_ron" --bin rust_syntax
     cp {{TEMP_DIR}}/debug/rust_syntax {{TEMP_DIR}}/ronl_to_pretty_ron
   cd {{BASE_DIR}}
@@ -181,6 +184,7 @@ rust_build_ronl_to_pretty_ron:
 rust_build_ronl_to_bincode:
   #!/usr/bin/env bash
   cd {{BASE_DIR}}/rust_syntax/
+    export CARGO_HOME="{{TEMP_DIR}}/.cargo"
     cargo build --target-dir={{TEMP_DIR}} --features "ronl_to_bincode" --bin rust_syntax
     cp {{TEMP_DIR}}/debug/rust_syntax {{TEMP_DIR}}/ronl_to_bincode
   cd {{BASE_DIR}}
@@ -190,6 +194,7 @@ rust_build_ronl_to_bincode:
 rust_build_bincode_to_jsonl:
   #!/usr/bin/env bash
   cd {{BASE_DIR}}/rust_syntax/
+    export CARGO_HOME="{{TEMP_DIR}}/.cargo"
     cargo build --target-dir={{TEMP_DIR}} --features "write_out_json"  --bin rust_syntax
     cp {{TEMP_DIR}}/debug/rust_syntax {{TEMP_DIR}}/bincode_to_jsonl
   cd {{BASE_DIR}}
@@ -199,6 +204,7 @@ rust_build_bincode_to_jsonl:
 rust_build_gen_ts_bindings:
   #!/usr/bin/env bash
   cd {{BASE_DIR}}/rust_syntax/
+    export CARGO_HOME="{{TEMP_DIR}}/.cargo"
     cargo build --target-dir={{TEMP_DIR}} --message-format=json --tests --features "write_out_json" | jq -r 'select(.reason == "compiler-artifact") | select(.target.name == "rust_syntax") | .filenames[0]' > {{TEMP_DIR}}/ts_rs_filename
     cp `cat {{TEMP_DIR}}/ts_rs_filename` {{TEMP_DIR}}/generate_typescript_bindings
   cd {{BASE_DIR}}

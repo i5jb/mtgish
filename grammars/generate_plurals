@@ -435,6 +435,7 @@ flat_spell_types = [
   ("Lesson"   , "Lessons"   , "Lesson"   ),
   ("Chorus"   , "Choruses"  , "Chorus"   ),
   ("Trap"     , "Traps"     , "Trap"     ),
+  ("Vengeance", "Vengeances", "Vengeance"),
 ]
 flat_enchantment_types = [
 # ( Singular   , Plural       , Variable    ),
