@@ -4846,7 +4846,7 @@ Card(
         TheChosenLibraryFilter,
         [
           PutTheCardFoundThisWayIntoHand,
-          PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder,
+          PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder,
         ],
       ),
     ])),
@@ -27477,7 +27477,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -36737,7 +36737,7 @@ Card(
               ],
               UntilPlayersNextTurn(You),
             ),
-            PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder,
+            PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder,
           ],
         ),
       ]),
@@ -77850,7 +77850,7 @@ Card(
             [
               MayPlayExiledCards(TheCardsExiledThisWay),
             ],
-            UntilEndOfTurn,
+            UntilTheEndOfPlayersNextTurn(You),
           ),
         ]),
         ActionList([
@@ -155109,7 +155109,9 @@ Card(
                   TreasureToken,
                 ),
               ],
-              [],
+              [
+                EntersTapped,
+              ],
             ),
           ],
         ),
@@ -163278,7 +163280,7 @@ Card(
             [
               MayPlayExiledCard(TheCardExiledThisWay),
             ],
-            UntilEndOfNextTurn(You),
+            UntilTheEndOfPlayersNextTurn(You),
           ),
         ]),
         Targeted(
@@ -171694,7 +171696,7 @@ Card(
               [
                 MayCastExiledCard(TheCardExiledThisWay),
               ],
-              UntilEndOfNextTurn(You),
+              UntilTheEndOfPlayersNextTurn(You),
             ),
           ],
         ),
@@ -191190,7 +191192,7 @@ Transforming(
             [
               MayPlayExiledCard(TheCardExiledThisWay),
             ],
-            UntilEndOfNextTurn(You),
+            UntilTheEndOfPlayersNextTurn(You),
           ),
         ]),
       ),
@@ -214496,13 +214498,13 @@ Card(
       ActionList([
         SpellDealsDamage(
           ThisSpell,
-          TheNumberOfPermanentsOnTheBattlefield(And([
+          Twice(TheNumberOfPermanentsOnTheBattlefield(And([
             Or([
               IsColor(White),
               IsColor(Blue),
             ]),
             ControlledByAPlayer(SinglePlayer(Ref_TargetPlayer)),
-          ])),
+          ]))),
           Player(Ref_TargetPlayer),
         ),
       ]),
@@ -217151,7 +217153,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -245481,7 +245483,7 @@ Card(
         [
           MayPlayExiledCards(TheCardsExiledThisWay),
         ],
-        UntilEndOfNextTurn(You),
+        UntilTheEndOfPlayersNextTurn(You),
       ),
     ])),
   ],
@@ -256869,7 +256871,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -258208,7 +258210,9 @@ Card(
               [],
             ),
           ],
-          [],
+          [
+            EntersTapped,
+          ],
         ),
       ]),
     ),
@@ -269406,7 +269410,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -275846,7 +275850,7 @@ Card(
               [
                 MayCastExiledCard(TheCardExiledThisWay),
               ],
-              UntilEndOfNextTurn(You),
+              UntilTheEndOfPlayersNextTurn(You),
             ),
           ],
         ),
@@ -323258,7 +323262,7 @@ Card(
           IsCardtype(Planeswalker),
         ])),
         EntersWithNumberCounters(
-          TheNumberOfPermanentsSacrificedThisWay,
+          Twice(TheNumberOfPermanentsSacrificedThisWay),
           PTCounter(
             1,
             1,
@@ -328753,7 +328757,7 @@ Card(
                   ]),
                 ),
                 PutFoundCardsOntoBattlefield([
-                  EntersNormally,
+                  EntersTapped,
                 ]),
                 Shuffle,
               ]),
@@ -382853,7 +382857,7 @@ Card(
               [
                 MayPlayExiledCard(TheCardExiledThisWay),
               ],
-              UntilPlayersNextTurn(You),
+              UntilTheEndOfPlayersNextTurn(You),
             ),
           ],
         ),
@@ -392716,7 +392720,7 @@ Card(
         [
           MayPlayExiledCards(TheCardsExiledThisWay),
         ],
-        UntilPlayersNextTurn(You),
+        UntilTheEndOfPlayersNextTurn(You),
       ),
     ])),
     Retrace,
@@ -404706,7 +404710,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -407967,7 +407971,7 @@ Card(
         [
           MayPlayExiledCards(TheCardsExiledThisWay),
         ],
-        UntilEndOfNextTurn(You),
+        UntilTheEndOfPlayersNextTurn(You),
       ),
       CreatePlayerEffectUntil(
         You,
@@ -411650,14 +411654,14 @@ Card(
           ThisSpell,
           [
             DamageToRecipients(
-              HalfRoundedUp(TheNumberOfPermanentsOnTheBattlefield(And([
+              TheNumberOfPermanentsOnTheBattlefield(And([
                 IsLandType(Mountain),
                 ControlledByAPlayer(SinglePlayer(You)),
-              ]))),
+              ])),
               Ref_TargetPlayerOrPermanent,
             ),
             DamageToRecipients(
-              HalfRoundedDown(TheNumberOfPermanentsOnTheBattlefield(And([
+              HalfRoundedUp(TheNumberOfPermanentsOnTheBattlefield(And([
                 IsLandType(Mountain),
                 ControlledByAPlayer(SinglePlayer(You)),
               ]))),
@@ -416139,7 +416143,7 @@ Card(
           [
             GainControlOfPermanentUntil(
               Ref_TargetPermanent,
-              UntilPlayersNextTurn(You),
+              UntilTheEndOfPlayersNextTurn(You),
             ),
           ],
           [
@@ -441780,7 +441784,7 @@ Card(
           [
             MayPlayExiledCard(TheChosenExiledCard),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -451694,7 +451698,10 @@ Card(
         If(
           SpellXIs(GreaterThanOrEqualTo(Integer(10))),
           [
-            CopyEachSpellAndMayChooseNewTargets(TheSpellsCastThisWay),
+            CopyEachSpellNumberTimesAndMayChooseNewTargets(
+              TheSpellsCastThisWay,
+              Integer(2),
+            ),
           ],
         ),
       ]),
@@ -460776,7 +460783,7 @@ Card(
               [],
             ),
             CreateGroupExileEffect(
-              UntilPlayersNextTurn(You),
+              UntilTheEndOfPlayersNextTurn(You),
               Or([
                 SingleExiledCard(TheExiledDeadPermanent),
                 SingleExiledCard(TheExiledTopOfLibrary),
@@ -510680,7 +510687,7 @@ Card(
               [
                 MayPlayExiledCard(TheCardExiledThisWay),
               ],
-              UntilEndOfNextTurn(You),
+              UntilTheEndOfPlayersNextTurn(You),
             ),
           ],
         ),
@@ -518549,7 +518556,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -521679,7 +521686,7 @@ Card(
             You,
             [
               MayPlayLandsFromAmongExiled(TheCardsExiledThisWay),
-              MayCastSpellsFromAmongExiled(
+              MayCastSpellsFromAmongExiledWithoutPaying(
                 AnySpell,
                 TheCardsExiledThisWay,
               ),
@@ -570984,7 +570991,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -600359,7 +600366,7 @@ Card(
           IsEnchantmentType(Aura),
           TheCardsExiledThisWay,
         )),
-        PutEachExiledCardOnTheBottomOfTheirOwnersLibraryInAnyOrder(TheCardsExiledThisWay),
+        PutEachExiledCardOnTheBottomOfTheirOwnersLibraryInARandomOrder(TheCardsExiledThisWay),
       ]),
     ),
     TriggerA(
@@ -604700,7 +604707,7 @@ Card(
           PutEachCardOfTypeChosenThisWayOntoTheBattlefield(
             IsCardtype(Land),
             [
-              EntersNormally,
+              EntersTapped,
             ],
           ),
           PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder,
@@ -604795,7 +604802,7 @@ Card(
         [
           MayPlayExiledCards(WasExiledThisWay),
         ],
-        UntilPlayersNextTurn(You),
+        UntilTheEndOfPlayersNextTurn(You),
       ),
     ])),
   ],
@@ -636429,7 +636436,7 @@ Card(
         [
           MayPlayExiledCards(TheCardsExiledThisWay),
         ],
-        UntilPlayersNextTurn(You),
+        UntilTheEndOfPlayersNextTurn(You),
       ),
       If(
         CastSpellPassesFilter(WasCastFromAPlayersGraveyard(AnyPlayer)),
@@ -636439,7 +636446,7 @@ Card(
             [
               MayPlayExiledCardsWithoutPaying(TheCardsExiledThisWay),
             ],
-            UntilPlayersNextTurn(You),
+            UntilTheEndOfPlayersNextTurn(You),
           ),
         ],
       ),
@@ -656197,7 +656204,7 @@ Card(
         [
           MayPlayExiledCards(TheCardsExiledThisWay),
         ],
-        UntilPlayersNextTurn(You),
+        UntilTheEndOfPlayersNextTurn(You),
       ),
       CreateTokens(
         [
@@ -658403,7 +658410,7 @@ Planar(
         SinglePhenomenon(ThisPhenomenon),
       ),
       ActionList([
-        RevealCardsFromTheTopOfPlanarDeckUntilRevealNumberPlaneCardsAndPutAPlaneCardFromAmongOnTopAndTheRestOnBottomInAnyOrder(Integer(5)),
+        RevealCardsFromTheTopOfPlanarDeckUntilRevealNumberPlaneCardsAndPutAPlaneCardFromAmongOnTopAndTheRestOnBottomInARandomOrder(Integer(5)),
       ]),
     ),
   ],
@@ -661786,7 +661793,7 @@ Transforming(
             [
               MayPlayExiledCards(WasExiledThisWay),
             ],
-            UntilPlayersNextTurn(You),
+            UntilTheEndOfPlayersNextTurn(You),
           ),
         ]),
       ),
@@ -736975,7 +736982,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -760355,7 +760362,7 @@ Card(
         [
           MayPlayExiledCards(TheCardsExiledThisWay),
         ],
-        UntilPlayersNextTurn(You),
+        UntilTheEndOfPlayersNextTurn(You),
       ),
     ])),
   ],
@@ -771757,7 +771764,7 @@ Card(
           CreatePlayerEffectUntil(
             You,
             [
-              MayPlayOneCardFromAmongExiled(WasExiledWithPermanent(ThisPermanent)),
+              MayPlayOneCardFromAmongExiledWithoutPaying(WasExiledWithPermanent(ThisPermanent)),
             ],
             UntilEndOfTurn,
           ),
@@ -804994,7 +805001,7 @@ Card(
         [
           MayPlayTwoCardsFromAmongExiled(TheCardsExiledThisWay),
         ],
-        UntilEndOfNextTurn(You),
+        UntilTheEndOfPlayersNextTurn(You),
       ),
     ])),
   ],
@@ -818525,7 +818532,7 @@ Card(
           [
             MayCastExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfTurn,
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -845387,7 +845394,7 @@ Card(
           [
             MayPlayExiledCard(TheChosenExiledCard),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -849551,7 +849558,7 @@ Card(
           [
             MayPlayExiledCards(TheCardsExiledThisWay),
           ],
-          UntilPlayersNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     )),
@@ -853517,7 +853524,7 @@ Card(
           [
             MayPlayExiledCards(TheCardsExiledThisWay),
           ],
-          UntilPlayersNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
       PowerUp,
@@ -856309,7 +856316,7 @@ Card(
         [
           MayPlayExiledCards(TheCardsExiledThisWay),
         ],
-        UntilPlayersNextTurn(You),
+        UntilTheEndOfPlayersNextTurn(You),
       ),
     ])),
   ],
@@ -896968,7 +896975,7 @@ Card(
           CreatePlayerEffectUntil(
             You,
             [
-              MayCastExiledCard(TheCardExiledThisWay),
+              MayCastExiledCardWithoutPaying(TheCardExiledThisWay),
             ],
             UntilEndOfTurn,
           ),
@@ -903506,7 +903513,7 @@ Card(
             ),
             RevealFoundCards,
             PutAFoundCardOntoBattlefield([
-              EntersNormally,
+              EntersTapped,
             ]),
             PutFoundCardsIntoHand,
             Shuffle,
@@ -903523,7 +903530,7 @@ Card(
             ),
             RevealFoundCards,
             PutAFoundCardOntoBattlefield([
-              EntersNormally,
+              EntersTapped,
             ]),
             PutFoundCardsIntoHand,
             Shuffle,
@@ -906206,7 +906213,7 @@ Card(
                     PlayerWhoTookActionThisWay,
                   ]))),
                 ],
-                UntilEndOfNextTurn(You),
+                UntilTheEndOfPlayersNextTurn(You),
               ),
             ]),
           ),
@@ -910971,7 +910978,7 @@ Card(
           AdjustPTX(
             MinusX,
             MinusX,
-            ValueX,
+            Twice(ValueX),
           ),
         ],
         UntilEndOfTurn,
@@ -965029,7 +965036,7 @@ Card(
       ActionList([
         PlayerAction(
           OwnerOfDeadPermanent,
-          LoseLife(HalfRoundedDown(LifeTotalOfPlayer(LoseLife_ThatPlayer))),
+          LoseLife(HalfRoundedUp(LifeTotalOfPlayer(LoseLife_ThatPlayer))),
         ),
       ]),
     ),
@@ -978565,7 +978572,7 @@ Card(
         SearchLibrary([
           FindACardOfType(IsCardtype(Land)),
           PutFoundCardsOntoBattlefield([
-            EntersNormally,
+            EntersTapped,
           ]),
           Shuffle,
         ]),
@@ -989474,7 +989481,7 @@ Card(
         ),
         PlayerAction(
           Trigger_ThatPlayer,
-          PutEachExiledCardOnTheBottomOfTheirOwnersLibraryInAnyOrder(TheCardsExiledThisWay),
+          PutEachExiledCardOnTheBottomOfTheirOwnersLibraryInARandomOrder(TheCardsExiledThisWay),
         ),
       ]),
     ),
@@ -991516,7 +991523,7 @@ Card(
             [
               MayCastExiledCard(TheCardExiledThisWay),
             ],
-            UntilPlayersNextTurn(You),
+            UntilTheEndOfPlayersNextTurn(You),
           ),
         ]),
       ),
@@ -1004524,7 +1004531,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -1031723,7 +1031730,7 @@ Card(
                 [
                   MayPlayExiledCards(TheCardsExiledThisWay),
                 ],
-                UntilEndOfTurn,
+                UntilTheEndOfPlayersNextTurn(You),
               ),
             ],
           ),
@@ -1049204,7 +1049211,7 @@ Card(
         [
           MayPlayExiledCards(TheCardsExiledThisWay),
         ],
-        UntilPlayersNextTurn(You),
+        UntilTheEndOfPlayersNextTurn(You),
       ),
     ])),
   ],
@@ -1092596,7 +1092603,7 @@ Card(
             [
               MayPlayExiledCard(TheCardExiledThisWay),
             ],
-            UntilPlayersNextTurn(You),
+            UntilTheEndOfPlayersNextTurn(You),
           ),
         ]),
       ),
@@ -1101177,7 +1101184,7 @@ Card(
               [
                 MayCastExiledCard(TheCardExiledThisWay),
               ],
-              UntilEndOfNextTurn(You),
+              UntilTheEndOfPlayersNextTurn(You),
             ),
           ],
         ),
@@ -1109361,10 +1109368,10 @@ Card(
               SetPT(PTX(
                 X,
                 X,
-                TheNumberOfPermanentsOnTheBattlefield(And([
+                Twice(TheNumberOfPermanentsOnTheBattlefield(And([
                   IsLandType(Gate),
                   ControlledByAPlayer(SinglePlayer(You)),
-                ])),
+                ]))),
               )),
               AddCreatureType(Citizen),
               AddCardtype(Creature),
@@ -1117203,7 +1117210,7 @@ Card(
               SingleGraveyardCard(Ref_TargetGraveyardCard),
             ]),
             [
-              EntersNormally,
+              EntersTapped,
             ],
           ),
         ]),
@@ -1117958,7 +1117965,10 @@ Card(
                   NoTokenCopyEffects,
                 ),
               ],
-              [],
+              [
+                EntersTapped,
+                EntersAttacking,
+              ],
             ),
             CreateFutureTrigger(
               AtTheBeginningOfTheNextEndStep,
@@ -1129760,7 +1129770,7 @@ Card(
             ExileTheRemainingCardsFaceDown,
           ],
         ),
-        MayAction(CastASpellFromExile(
+        MayAction(CastASpellFromExileWithoutPaying(
           Or([
             IsCreatureType(Hero),
             IsNonCardtype(Creature),
@@ -1143710,7 +1143720,7 @@ Card(
               [
                 MayPlayExiledCards(TheCardsExiledThisWay),
               ],
-              UntilPlayersNextTurn(You),
+              UntilTheEndOfPlayersNextTurn(You),
             ),
           ]),
         ),
@@ -1149114,7 +1149124,7 @@ Card(
           [
             MayPlayExiledCards(TheCardsExiledThisWay),
           ],
-          UntilPlayersNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
       Targeted(
@@ -1159544,7 +1159554,7 @@ Card(
               ]),
             ),
             PutFoundCardsOntoBattlefield([
-              EntersNormally,
+              EntersTapped,
             ]),
             Shuffle,
           ]),
@@ -1177337,7 +1177347,7 @@ Card(
             [
               MayPlayExiledCards(TheCardsExiledThisWay),
             ],
-            UntilEndOfNextTurn(You),
+            UntilTheEndOfPlayersNextTurn(You),
           ),
         ]),
       ),
@@ -1186397,7 +1186407,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -1191576,7 +1191586,7 @@ Card(
             IsCardtype(Planeswalker),
           ])),
         ],
-        UntilPlayersNextTurn(You),
+        UntilTheEndOfPlayersNextTurn(You),
       ),
     ])),
   ],
@@ -1194267,7 +1194277,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -1214230,6 +1214240,7 @@ Card(
               IsCardtype(Land),
               [
                 PutTheCardFoundThisWayOntoTheBattlefield([
+                  EntersTapped,
                   EntersUnderPlayersControl(You),
                 ]),
                 PutTheRemainingCardsIntoGraveyard,
@@ -1218219,7 +1218230,7 @@ Card(
                         SinglePlayer(You),
                         SinglePlayer(WouldDealDamage_DamageRecipientPlayer),
                       ]),
-                      DrawNumberCards(TheAmountOfDamagePreventedThisWay),
+                      DrawNumberCards(HalfRoundedDown(TheAmountOfDamagePreventedThisWay)),
                     ),
                   ],
                 ),
@@ -1244887,7 +1244898,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -1249901,7 +1249912,7 @@ Card(
       ],
       ActionList([
         PutNumberPermanentsIntoOwnersHand(
-          HalfRoundedDown(TheNumberOfPermanentsOnTheBattlefield(And([
+          HalfRoundedUp(TheNumberOfPermanentsOnTheBattlefield(And([
             IsCardtype(Creature),
             ControlledByAPlayer(SinglePlayer(Ref_TargetPlayer)),
           ]))),
@@ -1264914,7 +1264925,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -1281005,7 +1281016,7 @@ Card(
           [
             MayPlayExiledCard(TheChosenExiledCard),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -1327014,7 +1327025,7 @@ Card(
         CreatePlayerEffectUntil(
           You,
           [
-            MayPlayExiledCard(TheCardExiledThisWay),
+            MayPlayExiledCardWithoutPaying(TheCardExiledThisWay),
           ],
           UntilEndOfTurn,
         ),
@@ -1337140,15 +1337151,15 @@ Card(
         ActionList([
           PlayerAction(
             Ref_TargetPlayer,
-            LoseLife(TheNumberOfPermanentsOnTheBattlefield(And([
+            LoseLife(Twice(TheNumberOfPermanentsOnTheBattlefield(And([
               IsCardtype(Artifact),
               ControlledByAPlayer(SinglePlayer(You)),
-            ]))),
+            ])))),
           ),
-          GainLife(TheNumberOfPermanentsOnTheBattlefield(And([
+          GainLife(Twice(TheNumberOfPermanentsOnTheBattlefield(And([
             IsCardtype(Artifact),
             ControlledByAPlayer(SinglePlayer(You)),
-          ]))),
+          ])))),
         ]),
       ),
     ),
@@ -1352147,7 +1352158,7 @@ Transforming(
               [
                 MayPlayExiledCards(TheCardsExiledThisWay),
               ],
-              UntilEndOfNextTurn(You),
+              UntilTheEndOfPlayersNextTurn(You),
             ),
           ]),
         ),
@@ -1352971,7 +1352982,7 @@ Card(
           [
             MayPlayExiledCardsAndMaySpendManaAsThoughAnyTypeToCast(Trigger_ThoseExiledCards),
           ],
-          UntilPlayersNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -1363030,7 +1363041,9 @@ Planar(
               TreasureToken,
             ),
           ],
-          [],
+          [
+            EntersTapped,
+          ],
         ),
         EachPermanentDealsDamage(
           TheTokensCreatedThisWay,
@@ -1365725,6 +1365738,7 @@ Card(
             ReturnAnExiledCardToBattlefield(
               WasExiledThisWay,
               [
+                EntersTapped,
                 EntersUnderPlayersControl(ActionPlayer),
               ],
             ),
@@ -1368039,7 +1368053,7 @@ Card(
             [
               MayPlayExiledCard(TheCardExiledThisWay),
             ],
-            UntilPlayersNextTurn(You),
+            UntilTheEndOfPlayersNextTurn(You),
           ),
         ]),
       ),
@@ -1389447,7 +1389461,7 @@ Adventurer(
             [
               MayCastExiledCard(TheCardExiledThisWay),
             ],
-            UntilPlayersNextTurn(You),
+            UntilTheEndOfPlayersNextTurn(You),
           ),
         ]),
       )),
@@ -1396391,7 +1396405,7 @@ ModalDFC(
           ),
           PutCounters([
             NumberCountersOfTypeOnPermanent(
-              HalfRoundedDown(ManaValueOfTheCardExiledThisWay),
+              HalfRoundedUp(ManaValueOfTheCardExiledThisWay),
               PTCounter(
                 1,
                 1,
@@ -1467211,15 +1467225,20 @@ Card(
     SpellActions(ActionList([
       SearchLibrary([
         FindNumberCardsOfType(
-          Integer(2),
+          Integer(3),
           And([
             IsSupertype(Basic),
             IsCardtype(Land),
           ]),
         ),
         RevealFoundCards,
-        PutAFoundCardIntoHand,
-        PutFoundCardsIntoGraveyard,
+        PutNumberFoundCardsOntoBattlefield(
+          Integer(2),
+          [
+            EntersTapped,
+          ],
+        ),
+        PutFoundCardsIntoHand,
         Shuffle,
       ]),
     ])),
@@ -1497284,7 +1497303,7 @@ Card(
           [
             MayPlayExiledCard(TheCardExiledThisWay),
           ],
-          UntilEndOfNextTurn(You),
+          UntilTheEndOfPlayersNextTurn(You),
         ),
       ]),
     ),
@@ -1510539,7 +1510558,7 @@ Card(
                 WasExiledThisWay,
               ])),
             ],
-            UntilPlayersNextTurn(You),
+            UntilTheEndOfPlayersNextTurn(You),
           ),
         ],
       ),
@@ -1537686,7 +1537705,7 @@ Card(
         [
           MayPlayExiledCards(TheCardsExiledThisWay),
         ],
-        UntilPlayersNextTurn(You),
+        UntilTheEndOfPlayersNextTurn(You),
       ),
     ])),
   ],
@@ -1539833,7 +1539852,7 @@ Card(
         ActionList([
           GainControlOfPermanentUntil(
             Ref_TargetPermanent,
-            UntilEndOfNextTurn(You),
+            UntilTheEndOfPlayersNextTurn(You),
           ),
         ]),
       ),
@@ -1545909,7 +1545928,7 @@ Card(
             [
               MayPlayExiledCardAndMaySpendManaAsThoughAnyColorToCast(TheChosenExiledCard),
             ],
-            UntilEndOfNextTurn(You),
+            UntilTheEndOfPlayersNextTurn(You),
           ),
         ]),
       ),

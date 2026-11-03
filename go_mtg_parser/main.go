@@ -566,7 +566,7 @@ func getEnglishText(card MtgJsonEntry) (string, error) {
         case "modal_dfc": header = "Modal DFC\n\n" ;
         case "transform": header = "Transform\n\n" ;
         default:
-          //fmt.Printf("Unknown Card layout: %s\n", card.Layout)
+          fmt.Printf("Unknown Card layout: %s\n", card.Layout)
           return "", fmt.Errorf("Unknown Card layout: %s", card.Layout) }
 
       fullCardLine := header + getLine(card.Cards[0]) + "\n\n" + getLine(card.Cards[1])
@@ -838,7 +838,7 @@ func main() {
     //fmt.Printf("Processing: %s\n", jsonCard.Name);
     cardInfo, err := ParseCard(englishGrammar, englishGrammarTree, mtgishGrammar, mtgishGrammarTree, shortNames, jsonCard)
     if (err != nil) {
-      fmt.Printf("Error: %s ;; %v\n", jsonCard.Name, err);
+      // fmt.Printf("Error: %s ;; %v\n", jsonCard.Name, err);
       if (Config_StopAfterFirstFailure) {
         //fmt.Printf("Stopping after first failure: %s, %#v\n", jsonCard.Name, err);
         return

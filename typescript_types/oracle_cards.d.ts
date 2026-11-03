@@ -480,6 +480,7 @@ type Action =
 | { "_Action": "CopyCardWithTheNotedName" }
 | { "_Action": "CopyEachAbilityAndMayChooseNewTargets", "args": Abilities }
 | { "_Action": "CopyEachSpellAndMayChooseNewTargets", "args": Spells }
+| { "_Action": "CopyEachSpellNumberTimesAndMayChooseNewTargets", "args": [Spells, GameNumber] }
 | { "_Action": "CopyEnchantedGraveyardCard" }
 | { "_Action": "CopyExiledCard", "args": CardInExile }
 | { "_Action": "CopyExiledCardNumberTimes", "args": [CardInExile, GameNumber] }
@@ -1127,7 +1128,7 @@ type Action =
 | { "_Action": "RevealCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreRevealed", "args": [GameNumber, Cards, Array<RevealTheTopNumberCardsOfLibraryAction>] }
 | { "_Action": "RevealCardsFromTheTopOfPlanarDeckUntilRevealAPlaneCardThenChaosEnsuresOnThatPlaneThenPutAllCardsOnBottomInAnyOrder" }
 | { "_Action": "RevealCardsFromTheTopOfPlanarDeckUntilRevealAPlaneCardThenPlaneswalkToItWhileNotPlaneswalkingAwayAndPutTheRestOnBottomInAnyOrder" }
-| { "_Action": "RevealCardsFromTheTopOfPlanarDeckUntilRevealNumberPlaneCardsAndPutAPlaneCardFromAmongOnTopAndTheRestOnBottomInAnyOrder", "args": GameNumber }
+| { "_Action": "RevealCardsFromTheTopOfPlanarDeckUntilRevealNumberPlaneCardsAndPutAPlaneCardFromAmongOnTopAndTheRestOnBottomInARandomOrder", "args": GameNumber }
 | { "_Action": "RevealCardsFromTheTopOfPlanarDeckUntilRevealNumberPlaneCardsSimultaneouslyPlaneswalkToThemThenPutOnBottomInAnyOrder", "args": GameNumber }
 | { "_Action": "RevealFaceDownPermanent", "args": Permanent }
 | { "_Action": "RevealHand" }
@@ -3694,7 +3695,6 @@ type Expiration =
 | { "_Expiration": "UntilCardsAreNoLongerExiled", "args": CardsInExile }
 | { "_Expiration": "UntilEndOfCombat" }
 | { "_Expiration": "UntilEndOfGame" }
-| { "_Expiration": "UntilEndOfNextTurn", "args": Player }
 | { "_Expiration": "UntilEndOfTheNextTurn" }
 | { "_Expiration": "UntilEndOfTurn" }
 | { "_Expiration": "UntilItIsNoLongerEnchanted" }
