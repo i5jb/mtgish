@@ -401,24 +401,61 @@ typescript_check_unused:
 # Tidy up grammars
 # ----------------
 
-##cd ./grammars/
-###Purposely don't tidy certain files:
-### bun json5 english_grammar-INPUT.json5         | LC_ALL=C jq -S . | sponge english_grammar-INPUT.json5
-### bun json5 mtgish_grammar-create_tokens.json5  | LC_ALL=C jq -S . | sponge mtgish_grammar-create_tokens.json5
-### bun json5 mtgish_grammar-vote_option.json5    | LC_ALL=C jq -S . | sponge mtgish_grammar-vote_option.json5
-##
-##  bun json5 english_grammar.json5               | LC_ALL=C jq -S . | sponge english_grammar.json5
-##  bun json5 english_grammar-ability_word.json5  | LC_ALL=C jq -S . | sponge english_grammar-ability_word.json5
-##  bun json5 english_grammar-counters.json5      | LC_ALL=C jq -S . | sponge english_grammar-counters.json5
-##  bun json5 english_grammar-flavor_word.json5   | LC_ALL=C jq -S . | sponge english_grammar-flavor_word.json5
-##  bun json5 english_grammar-named_cards.json5   | LC_ALL=C jq -S . | sponge english_grammar-named_cards.json5
-##  bun json5 english_grammar-null_text.json5     | LC_ALL=C jq -S . | sponge english_grammar-null_text.json5
-##  bun json5 english_grammar-reminder_text.json5 | LC_ALL=C jq -S . | sponge english_grammar-reminder_text.json5
-##  bun json5 english_grammar-type_line.json5     | LC_ALL=C jq -S . | sponge english_grammar-type_line.json5
-##
-##  bun json5 mtgish_grammar.json5                | LC_ALL=C jq -S . | sponge mtgish_grammar.json5
-##  bun json5 mtgish_grammar-mana.json5           | LC_ALL=C jq -S . | sponge mtgish_grammar-mana.json5
-##  bun json5 mtgish_grammar-named_cards.json5    | LC_ALL=C jq -S . | sponge mtgish_grammar-named_cards.json5
-##  bun json5 mtgish_grammar-triggers.json5       | LC_ALL=C jq -S . | sponge mtgish_grammar-triggers.json5
-##  bun json5 mtgish_grammar-type_line.json5      | LC_ALL=C jq -S . | sponge mtgish_grammar-type_line.json5
-##cd {{BASE_DIR}}
+[group('tidy')]
+[doc("Builds the jsoncc tool")]
+tidy_compile: make_temp
+  #!/usr/bin/env bash
+  cd {{BASE_DIR}}/go_jsoncc/
+    export GOPATH="{{TEMP_DIR}}/.go"
+    export GOCACHE="{{TEMP_DIR}}/.cache/go-build"
+    go build -o {{TEMP_DIR}}/go_jsoncc
+  cd {{BASE_DIR}}
+
+[private]
+tidy_full FILENAME:
+  #!/usr/bin/env bash
+  {{TEMP_DIR}}/go_jsoncc {{FILENAME}} | LC_ALL=C jq -S . | sponge {{FILENAME}}
+  vim -S {{BASE_DIR}}/go_jsoncc/split_dict_entries.vim {{FILENAME}}
+
+[private]
+tidy_partial FILENAME:
+  #!/usr/bin/env bash
+  {{TEMP_DIR}}/go_jsoncc {{FILENAME}} | LC_ALL=C jq -S . | sponge {{FILENAME}}
+
+[private]
+tidy_none FILENAME:
+  #!/usr/bin/env bash
+  true
+
+[group('tidy')]
+[doc("Tidy up (some) grammar files for easier diff'ing")]
+tidy_grammar: tidy_compile
+  #!/usr/bin/env bash
+  just tidy_none    {{BASE_DIR}}/grammars/english_grammar-INPUT.json5         # Keep formatting
+  just tidy_partial {{BASE_DIR}}/grammars/english_grammar-ability_word.json5  # Go ahead and sort these
+  just tidy_partial {{BASE_DIR}}/grammars/english_grammar-counters.json5      # Go ahead and sort these
+  just tidy_partial {{BASE_DIR}}/grammars/english_grammar-flavor_word.json5   # Go ahead and sort these
+  just tidy_partial {{BASE_DIR}}/grammars/english_grammar-named_cards.json5   # Go ahead and sort these
+  just tidy_partial {{BASE_DIR}}/grammars/english_grammar-null_text.json5     # Go ahead and sort these
+  just tidy_partial {{BASE_DIR}}/grammars/english_grammar-reminder_text.json5 # Go ahead and sort these
+  just tidy_none    {{BASE_DIR}}/grammars/english_grammar-type_line.json5     # Auto-generated already
+  just tidy_full    {{BASE_DIR}}/grammars/english_grammar.json5               # Full formatting
+
+  just tidy_none    {{BASE_DIR}}/grammars/mtgish_grammar-fight.json5          # Keep comments / formatting
+  just tidy_none    {{BASE_DIR}}/grammars/mtgish_grammar-put_counters.json5   # Keep comments / formatting
+  just tidy_none    {{BASE_DIR}}/grammars/mtgish_grammar-create_tokens.json5  # Keep comments / formatting
+  just tidy_none    {{BASE_DIR}}/grammars/mtgish_grammar-exile.json5          # Keep comments / formatting
+
+  just tidy_none    {{BASE_DIR}}/grammars/mtgish_grammar-type_line.json5      # Auto generated aleady
+  just tidy_none    {{BASE_DIR}}/grammars/mtgish_grammar-counters.json5       # No comments, but keep ordering
+
+  just tidy_partial {{BASE_DIR}}/grammars/mtgish_grammar-mana.json5           # Go ahead and sort these
+  just tidy_partial {{BASE_DIR}}/grammars/mtgish_grammar-named_cards.json5    # Go ahead and sort these
+  just tidy_partial {{BASE_DIR}}/grammars/mtgish_grammar-triggers.json5       # Go ahead and sort these (file will disappear eventually)
+
+  just tidy_none    {{BASE_DIR}}/grammars/mtgish_grammar-vote_option.json5    # Keep formatting (votes are sorted manually)
+  just tidy_none    {{BASE_DIR}}/grammars/mtgish_grammar.json5                # Keep formatting for now (currently using comments for notes)
+
+  just tidy_none    {{BASE_DIR}}/grammars/find_replace.json5                  # Keep formatting - organized by hand
+  just tidy_none    {{BASE_DIR}}/grammars/ignore.json5                        # Keep formatting - organized by hand and comments are useful
+  just tidy_none    {{BASE_DIR}}/grammars/short_names.json5                   # Keep formatting - organized by hand and aligned nicely

@@ -5,28 +5,6 @@
   "{{Reminder[Adventure][FoodToken]}}": {
     "(Then exile this card. You may cast the creature later from exile. A Food token is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life\".)": ""
   },
-  "{{Reminder[HeartwoodToken]}}": {
-    "(It's a red and green artifact with \"{T}: Add {R} or {G}\".)": "",
-    "(They're red and green artifacts with \"{T}: Add {R} or {G}\".)": "",
-  },
-  "{{Reminder[EmpowerJace]}}": {
-    "(Put a loyalty counter on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
-    "(Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
-    "(Put three loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
-    "(Put four loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
-    "(Put five loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
-    "(Put six loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
-    "(Put seven loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
-    "(Put eight loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
-    "(Put that many loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
-  },
-  "{{Reminder[FaceADilemma]}}": {
-    "(You face a dilemma as you choose one or more modes for a spell or ability.)": "",
-  },
-  "{{Reminder[LivingWeapon]}}": {
-    "(When this Equipment enters, create a 0/0 black Phyrexian Germ creature token, then attach this to it.)": "",
-    "(Whenever an Equipment you control enters, create a 0/0 black Phyrexian Germ creature token, then attach that Equipment to it.)": "",
-  },
   "{{Reminder[Adventure]}}": {
     "(Then exile this card. You may cast the artifact later from exile.)": "",
     "(Then exile this card. You may cast the creature later from exile.)": "",
@@ -34,7 +12,6 @@
     "(Then exile this card. You may play the land later from exile.)": ""
   },
   "{{Reminder[AffinityFor]}}": {
-    "(This spell costs {1} less to cast for each Elf you control.)": "",
     "(It costs {1} less to cast for each artifact you control as you cast it.)": "",
     "(It costs {1} less to cast for each artifact you control.)": "",
     "(They cost {1} less to cast for each Aura you control.)": "",
@@ -44,6 +21,7 @@
     "(This spell costs {1} less to cast for each Cat you control.)": "",
     "(This spell costs {1} less to cast for each Citizen you control.)": "",
     "(This spell costs {1} less to cast for each Dalek you control.)": "",
+    "(This spell costs {1} less to cast for each Elf you control.)": "",
     "(This spell costs {1} less to cast for each Equipment you control.)": "",
     "(This spell costs {1} less to cast for each Food you control.)": "",
     "(This spell costs {1} less to cast for each Forest you control.)": "",
@@ -86,31 +64,28 @@
     "(To airbend a creature, exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)": ""
   },
   "{{Reminder[Amass]}}": {
-    "(To amass Goblins X, put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
     "(Put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
-    "(Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
-    "(Put four +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
-    "(Put three +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
-    "(Put two +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
-    "(To amass Goblins 1, put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
-    "(To amass Goblins X, that player puts X +1/+1 counters on an Army they control. It's also a Goblin. If they don't control an Army, they create a 0/0 black Goblin Army creature token first.)": "",
-
+    "(Put X +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
     "(Put X +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
+    "(Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
+    "(Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
     "(Put a +1/+1 counter on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
+    "(Put four +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
+    "(Put four +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
+    "(Put three +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
+    "(Put three +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
     "(Put three +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
+    "(Put two +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
+    "(Put two +1/+1 counters on an Army you control. It's also a Sliver. If you don't control an Army, create a 0/0 black Sliver Army creature token first.)": "",
+    "(Put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
     "(Put two +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
+    "(To amass Goblins 1, put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
+    "(To amass Goblins X, put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)": "",
+    "(To amass Goblins X, that player puts X +1/+1 counters on an Army they control. It's also a Goblin. If they don't control an Army, they create a 0/0 black Goblin Army creature token first.)": "",
     "(To amass Orcs 2, put two +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
     "(To amass Orcs 3, put three +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
     "(To amass Orcs X, put X +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": "",
-
-    "(Put two +1/+1 counters on an Army you control. It's also a Sliver. If you don't control an Army, create a 0/0 black Sliver Army creature token first.)": "",
-
-    "(Put X +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
-    "(Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
-    "(Put four +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
-    "(Put three +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
-    "(Put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
-    "(To amass Zombies 2, put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": "",
+    "(To amass Zombies 2, put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)": ""
   },
   "{{Reminder[Annihilator]}}": {
     "(Whenever a creature with annihilator 1 attacks, defending player sacrifices a permanent of their choice.)": "",
@@ -123,6 +98,12 @@
   },
   "{{Reminder[Ascend]}}": {
     "(If you control ten or more permanents, you get the city's blessing for the rest of the game.)": ""
+  },
+  "{{Reminder[Assimilate]}}": {
+    "(Put it onto the battlefield under your control with a +1/+1 counter. It's a Borg artifact creature and loses all other creature types.)": ""
+  },
+  "{{Reminder[Assist]}}": {
+    "(As you cast a spell with assist, you may choose another player. They may pay some or all of the generic mana in the spell's cost.)": ""
   },
   "{{Reminder[Attach][AmassOrcs]}}": {
     "(Control of the Equipment doesn't change. To amass Orcs X, put X +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)": ""
@@ -156,6 +137,9 @@
   "{{Reminder[BattleCry]}}": {
     "(Whenever this creature attacks, each other attacking creature gets +1/+0 until end of turn. Each instance of battle cry triggers separately.)": ""
   },
+  "{{Reminder[BeamMeUp]}}": {
+    "(You may cast this card from your graveyard for {2}{U} if you also return a creature you control to its owner's hand. Then exile this spell.)": ""
+  },
   "{{Reminder[BecomeALandUntil]}}": {
     "(He's not a creature during that time.)": ""
   },
@@ -167,16 +151,16 @@
     "(Exile an Elf you control or an Elf card from your hand.)": ""
   },
   "{{Reminder[Behold]}}": {
-    "(To behold a Jace, choose a Jace you control or reveal a Jace card from your hand.)": "",
-    "(You may choose a Gamma creature you control or reveal a Gamma creature card from your hand.)": "",
-    "(You may choose a Hero you control or reveal a Hero card from your hand.)": "",
     "(To behold a Dragon, choose a Dragon you control or reveal a Dragon card from your hand.)": "",
     "(To behold a Goblin, choose a Goblin you control or reveal a Goblin card from your hand.)": "",
+    "(To behold a Jace, choose a Jace you control or reveal a Jace card from your hand.)": "",
     "(To behold a Kithkin, choose a Kithkin you control or reveal a Kithkin card from your hand.)": "",
     "(To behold a Merfolk, choose a Merfolk you control or reveal a Merfolk card from your hand.)": "",
     "(To behold an Elemental, choose an Elemental you control or reveal an Elemental card from your hand.)": "",
     "(To behold an Elf, choose an Elf you control or reveal an Elf card from your hand.)": "",
-    "(You may choose a Dragon you control or reveal a Dragon card from your hand.)": ""
+    "(You may choose a Dragon you control or reveal a Dragon card from your hand.)": "",
+    "(You may choose a Gamma creature you control or reveal a Gamma creature card from your hand.)": "",
+    "(You may choose a Hero you control or reveal a Hero card from your hand.)": ""
   },
   "{{Reminder[Bestow]}}": {
     "(If you cast this card for its bestow cost, it's an Aura spell with enchant creature. It becomes a creature again if it's not attached.)": "",
@@ -264,9 +248,9 @@
     "(To cloak a card, put it onto the battlefield face down as a 2/2 creature with ward {2}. Turn it face up any time for its mana cost if it's a creature card.)": ""
   },
   "{{Reminder[ClueToken]}}": {
-    "(They're artifacts with \"{2}, Sacrifice this token: Draw a card\".)": "",
     "(A Clue token is an artifact with \"{2}, Sacrifice this token: Draw a card\".)": "",
-    "(It's an artifact with \"{2}, Sacrifice this token: Draw a card\".)": ""
+    "(It's an artifact with \"{2}, Sacrifice this token: Draw a card\".)": "",
+    "(They're artifacts with \"{2}, Sacrifice this token: Draw a card\".)": ""
   },
   "{{Reminder[CollectEvidence]}}": {
     "(Exile cards with total mana value 4 or greater from your graveyard.)": "",
@@ -453,8 +437,8 @@
     "(Each card you exile from your graveyard while casting those spells pays for {1}.)": ""
   },
   "{{Reminder[Demonstrate]}}": {
-    "(When you cast that spell, you may copy it. If you do, choose an opponent to also copy it. Each copy becomes a token.)": "",
     "(When you cast that spell, you may copy it. If you do, choose an opponent to also copy it. A copy of a permanent spell becomes a token.)": "",
+    "(When you cast that spell, you may copy it. If you do, choose an opponent to also copy it. Each copy becomes a token.)": "",
     "(When you cast this spell, you may copy it. If you do, choose an opponent to also copy it. Players may choose new targets for their copies.)": "",
     "(When you cast this spell, you may copy it. If you do, choose an opponent to also copy it.)": "",
     "(Whenever a player casts an instant or sorcery spell, they may copy it. If they do, they choose an opponent to also copy it. Players may choose new targets for their copies.)": "",
@@ -552,6 +536,17 @@
   },
   "{{Reminder[Emerge]}}": {
     "(You may cast this spell by sacrificing a creature and paying the emerge cost reduced by that creature's mana value.)": ""
+  },
+  "{{Reminder[EmpowerJace]}}": {
+    "(Put a loyalty counter on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put eight loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put five loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put four loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put seven loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put six loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put that many loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put three loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": "",
+    "(Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card\".)": ""
   },
   "{{Reminder[Encore]}}": {
     "(Exile it and pay its encore cost: For each opponent, create a token copy that attacks that opponent this turn if able. They gain haste. Sacrifice them at the beginning of the next end step. Activate only as a sorcery.)": "",
@@ -670,6 +665,9 @@
     "(To have it explore, reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)": "",
     "(To have this creature explore, reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard.)": ""
   },
+  "{{Reminder[FaceADilemma]}}": {
+    "(You face a dilemma as you choose one or more modes for a spell or ability.)": ""
+  },
   "{{Reminder[FaceVillianousChoiceAnAdditionalTime]}}": {
     "(They can make the same or different choices.)": ""
   },
@@ -695,8 +693,8 @@
     "(A Food token is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life\". To earthbend X, target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)": ""
   },
   "{{Reminder[FoodToken][TreasureToken]}}": {
-    "(Food is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life\". Treasure is an artifact with \"{T}, Sacrifice this token: Add one mana of any color\".)": "",
     "(A Food token is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life\". A Treasure token is an artifact with \"{T}, Sacrifice this token: Add one mana of any color\".)": "",
+    "(Food is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life\". Treasure is an artifact with \"{T}, Sacrifice this token: Add one mana of any color\".)": ""
   },
   "{{Reminder[FoodToken]}}": {
     "(A Food token is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life\".)": "",
@@ -776,11 +774,15 @@
     "(This creature can attack and {T} as soon as it comes under your control.)": "",
     "(This creature can attack as soon as it comes under your control.)": ""
   },
+  "{{Reminder[HeartwoodToken]}}": {
+    "(It's a red and green artifact with \"{T}: Add {R} or {G}\".)": "",
+    "(They're red and green artifacts with \"{T}: Add {R} or {G}\".)": ""
+  },
   "{{Reminder[Hexproof]}}": {
-    "(They can't be the target of spells or abilities your opponents control.)": "",
     "(A creature with hexproof can't be the target of spells or abilities your opponents control.)": "",
     "(He can't be the target of spells or abilities your opponents control.)": "",
     "(It can't be the target of spells or abilities your opponents control.)": "",
+    "(They can't be the target of spells or abilities your opponents control.)": "",
     "(This creature can't be the target of spells or abilities your opponents control.)": "",
     "(You can't be the target of spells or abilities your opponents control.)": ""
   },
@@ -799,6 +801,9 @@
   },
   "{{Reminder[Historic][Investigate]}}": {
     "(Artifacts, legendaries, and Sagas are historic. To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this token: Draw a card\".)": ""
+  },
+  "{{Reminder[HoneCounter]}}": {
+    "(Each hone counter on an Equipment grants +1/+0 to equipped creature.)": ""
   },
   "{{Reminder[Impending]}}": {
     "(If you cast this spell for its impending cost, it enters with five time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)": "",
@@ -846,8 +851,8 @@
   "{{Reminder[Investigate]}}": {
     "(Create a Clue token. It's an artifact with \"{2}, Sacrifice this token: Draw a card\".)": "",
     "(Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card\".)": "",
-    "(They create a Clue token.)": "",
     "(They create a Clue token. It's an artifact with \"{2}, Sacrifice this token: Draw a card\".)": "",
+    "(They create a Clue token.)": "",
     "(To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card\".)": "",
     "(To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this token: Draw a card\".)": ""
   },
@@ -863,74 +868,59 @@
     "(They're artifacts with \"{T}, Sacrifice this token: Exile the top card of your library. You may play that card this turn. Activate only as a sorcery\".)": ""
   },
   "{{Reminder[Kicker]}}": {
-    "(You may pay an additional {2} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
-    "(You may pay an additional {2}{B}{B} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
-    "(You may pay an additional {2}{G} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
-    "(You may pay an additional {2}{U} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
-    "(You may pay an additional {2}{W}{W} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
-    "(You may pay an additional {3} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
-    "(You may pay an additional {4} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
-    "(You may pay an additional {5} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
     "(You may discard two cards in addition to any other costs as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
     "(You may pay 3 life and discard a card at random in addition to any other costs as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
     "(You may pay 4 life in addition to any other costs as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
-    "(You may sacrifice a land in addition to any other costs as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
-    "(You may sacrifice three Islands in addition to any other costs as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
-
     "(You may pay an additional {1} any number of times as you cast this spell.)": "",
-    "(You may pay an additional {1}{B} any number of times as you cast this spell.)": "",
-    "(You may pay an additional {1}{G} any number of times as you cast this spell.)": "",
-    "(You may pay an additional {1}{R} any number of times as you cast this spell.)": "",
-    "(You may pay an additional {1}{U} any number of times as you cast this spell.)": "",
-    "(You may pay an additional {1}{W} any number of times as you cast this spell.)": "",
-    "(You may pay an additional {2} any number of times as you cast this spell.)": "",
-    "(You may pay an additional {B} any number of times as you cast this spell.)": "",
-    "(You may pay an additional {G} any number of times as you cast this spell.)": "",
-    "(You may pay an additional {R} any number of times as you cast this spell.)": "",
-    "(You may pay an additional {U} any number of times as you cast this spell.)": "",
-    "(You may pay an additional {W} any number of times as you cast this spell.)": "",
-
+    "(You may pay an additional {1} as you cast this spell.)": "",
     "(You may pay an additional {1}{B} and/or {G} as you cast this spell.)": "",
     "(You may pay an additional {1}{B} and/or {R} as you cast this spell.)": "",
-    "(You may pay an additional {1}{G} and/or {2}{U} as you cast this spell.)": "",
-    "(You may pay an additional {1}{G} and/or {W} as you cast this spell.)": "",
-    "(You may pay an additional {1}{R} and/or {G} as you cast this spell.)": "",
-    "(You may pay an additional {1}{U} and/or {B} as you cast this spell.)": "",
-    "(You may pay an additional {1}{W} and/or {1}{U} as you cast this spell.)": "",
-    "(You may pay an additional {1}{W} and/or {U} as you cast this spell.)": "",
-    "(You may pay an additional {2}{R} and/or {3}{U} as you cast this spell.)": "",
-    "(You may pay an additional {2}{U} and/or {1}{B} as you cast this spell.)": "",
-    "(You may pay an additional {2}{U} and/or {2}{R} as you cast this spell.)": "",
-    "(You may pay an additional {B} and/or {R} as you cast this spell.)": "",
-    "(You may pay an additional {G} and/or {W} as you cast this spell.)": "",
-    "(You may pay an additional {R} and/or {W} as you cast this spell.)": "",
-    "(You may pay an additional {U} and/or {B} as you cast this spell.)": "",
-    "(You may pay an additional {W} and/or {2}{B} as you cast this spell.)": "",
-
-    "(You may pay an additional {1} as you cast this spell.)": "",
+    "(You may pay an additional {1}{B} any number of times as you cast this spell.)": "",
     "(You may pay an additional {1}{B} as you cast this spell.)": "",
     "(You may pay an additional {1}{C} as you cast this spell.)": "",
+    "(You may pay an additional {1}{G} and/or {2}{U} as you cast this spell.)": "",
+    "(You may pay an additional {1}{G} and/or {W} as you cast this spell.)": "",
+    "(You may pay an additional {1}{G} any number of times as you cast this spell.)": "",
     "(You may pay an additional {1}{G} as you cast this spell.)": "",
+    "(You may pay an additional {1}{R} and/or {G} as you cast this spell.)": "",
+    "(You may pay an additional {1}{R} any number of times as you cast this spell.)": "",
     "(You may pay an additional {1}{R} as you cast this spell.)": "",
+    "(You may pay an additional {1}{U} and/or {B} as you cast this spell.)": "",
+    "(You may pay an additional {1}{U} any number of times as you cast this spell.)": "",
     "(You may pay an additional {1}{U} as you cast this spell.)": "",
+    "(You may pay an additional {1}{W} and/or {1}{U} as you cast this spell.)": "",
+    "(You may pay an additional {1}{W} and/or {U} as you cast this spell.)": "",
+    "(You may pay an additional {1}{W} any number of times as you cast this spell.)": "",
     "(You may pay an additional {1}{W} as you cast this spell.)": "",
+    "(You may pay an additional {2} any number of times as you cast this spell.)": "",
+    "(You may pay an additional {2} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
     "(You may pay an additional {2} as you cast this spell.)": "",
     "(You may pay an additional {2}{B} as you cast this spell.)": "",
+    "(You may pay an additional {2}{B}{B} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
     "(You may pay an additional {2}{C} as you cast this spell.)": "",
+    "(You may pay an additional {2}{G} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
     "(You may pay an additional {2}{G} as you cast this spell.)": "",
+    "(You may pay an additional {2}{R} and/or {3}{U} as you cast this spell.)": "",
     "(You may pay an additional {2}{R} as you cast this spell.)": "",
+    "(You may pay an additional {2}{U} and/or {1}{B} as you cast this spell.)": "",
+    "(You may pay an additional {2}{U} and/or {2}{R} as you cast this spell.)": "",
+    "(You may pay an additional {2}{U} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
     "(You may pay an additional {2}{U} as you cast this spell.)": "",
     "(You may pay an additional {2}{W} as you cast this spell.)": "",
+    "(You may pay an additional {2}{W}{W} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
     "(You may pay an additional {2}{W}{W} as you cast this spell.)": "",
+    "(You may pay an additional {3} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
     "(You may pay an additional {3} as you cast this spell.)": "",
     "(You may pay an additional {3}{B} as you cast this spell.)": "",
     "(You may pay an additional {3}{G} as you cast this spell.)": "",
     "(You may pay an additional {3}{R} as you cast this spell.)": "",
     "(You may pay an additional {3}{U} as you cast this spell.)": "",
     "(You may pay an additional {3}{W} as you cast this spell.)": "",
+    "(You may pay an additional {4} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
     "(You may pay an additional {4} as you cast this spell.)": "",
     "(You may pay an additional {4}{G} as you cast this spell.)": "",
     "(You may pay an additional {4}{U} as you cast this spell.)": "",
+    "(You may pay an additional {5} as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
     "(You may pay an additional {5} as you cast this spell.)": "",
     "(You may pay an additional {5}{B} as you cast this spell.)": "",
     "(You may pay an additional {5}{R} as you cast this spell.)": "",
@@ -938,19 +928,30 @@
     "(You may pay an additional {7} as you cast this spell.)": "",
     "(You may pay an additional {8} as you cast this spell.)": "",
     "(You may pay an additional {8}{R} as you cast this spell.)": "",
+    "(You may pay an additional {B} and/or {R} as you cast this spell.)": "",
+    "(You may pay an additional {B} any number of times as you cast this spell.)": "",
     "(You may pay an additional {B} as you cast this spell.)": "",
     "(You may pay an additional {B}{B} as you cast this spell.)": "",
     "(You may pay an additional {C} as you cast this spell.)": "",
+    "(You may pay an additional {G} and/or {W} as you cast this spell.)": "",
+    "(You may pay an additional {G} any number of times as you cast this spell.)": "",
     "(You may pay an additional {G} as you cast this spell.)": "",
+    "(You may pay an additional {R} and/or {W} as you cast this spell.)": "",
+    "(You may pay an additional {R} any number of times as you cast this spell.)": "",
     "(You may pay an additional {R} as you cast this spell.)": "",
+    "(You may pay an additional {U} and/or {B} as you cast this spell.)": "",
+    "(You may pay an additional {U} any number of times as you cast this spell.)": "",
     "(You may pay an additional {U} as you cast this spell.)": "",
+    "(You may pay an additional {W} and/or {2}{B} as you cast this spell.)": "",
+    "(You may pay an additional {W} any number of times as you cast this spell.)": "",
     "(You may pay an additional {W} as you cast this spell.)": "",
     "(You may pay an additional {W}{W} as you cast this spell.)": "",
     "(You may pay an additional {X} as you cast this spell.)": "",
     "(You may pay an additional {X}{2} as you cast this spell.)": "",
-
     "(You may return a land you control to its owner's hand in addition to any other costs as you cast this spell.)": "",
-    "(You may sacrifice an artifact or creature in addition to any other costs as you cast this spell.)": ""
+    "(You may sacrifice a land in addition to any other costs as you cast this spell. If you do, put this card into your hand as it resolves.)": "",
+    "(You may sacrifice an artifact or creature in addition to any other costs as you cast this spell.)": "",
+    "(You may sacrifice three Islands in addition to any other costs as you cast this spell. If you do, put this card into your hand as it resolves.)": ""
   },
   "{{Reminder[LanderToken]}}": {
     "(A Lander token is an artifact with \"{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle\".)": "",
@@ -972,6 +973,10 @@
   "{{Reminder[LivingMetal]}}": {
     "(During your turn, this Vehicle is also a creature.)": ""
   },
+  "{{Reminder[LivingWeapon]}}": {
+    "(When this Equipment enters, create a 0/0 black Phyrexian Germ creature token, then attach this to it.)": "",
+    "(Whenever an Equipment you control enters, create a 0/0 black Phyrexian Germ creature token, then attach that Equipment to it.)": ""
+  },
   "{{Reminder[ManifestDread]}}": {
     "(Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)": "",
     "(That player looks at the top two cards of their library, then puts one onto the battlefield face down as a 2/2 creature and the other into their graveyard. If it's a creature card, it can be turned face up any time for its mana cost.)": "",
@@ -985,9 +990,6 @@
   },
   "{{Reminder[MatoyaArchonElder]}}": {
     "(Draw after you scry or surveil.)": ""
-  },
-  "{{Reminder[BeamMeUp]}}": {
-    "(You may cast this card from your graveyard for {2}{U} if you also return a creature you control to its owner's hand. Then exile this spell.)": "",
   },
   "{{Reminder[Mayhem]}}": {
     "(You may cast a card from your graveyard for its mayhem cost if you discarded it this turn. Timing rules still apply.)": "",
@@ -1160,6 +1162,19 @@
     "(Put the top card of your Attraction deck onto the battlefield.)": "",
     "(Put the top two cards of your Attraction deck onto the battlefield.)": ""
   },
+  "{{Reminder[OracleToken]}}": {
+    "(It's a land with \"{T}: Add {C}\" and \"{1}: This token becomes a 2/2 creature with all creature types until end of turn. It's still a land\".)": "",
+    "(It's a {0} artifact with \"{T}, Sacrifice this token: Add three mana of any one color\".)": "",
+    "(It's a {1} 1/1 Food Golem artifact creature with haste, \"{1}: This token can't be blocked this turn except by creatures with haste\", and \"{2}, {T}, Sacrifice this token: You gain 3 life\".)": "",
+    "(It's a {1}{G} Lhurgoyf creature with \"Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1\".)": "",
+    "(It's a {1}{G}{G} 2/2 Badger creature with \"Whenever this token blocks, it gets +2/+2 until end of turn\".)": "",
+    "(It's a {2}{R} 2/2 Weird creature with \"Whenever you cast a noncreature spell, put a +1/+1 counter on Spellgorger Weird\".)": "",
+    "(It's a {3}{W}{W} 5/5 Angel creature with flying, first strike, lifelink, and protection from Demons and from Dragons.)": "",
+    "(It's a {4}{B}{B}{B} 7/7 Demon creature with flying, trample, and \"At the beginning of your upkeep, sacrifice another creature. If you can't, this token deals 7 damage to you\".)": "",
+    "(It's a {6} artifact with \"Creature spells cost {2} more to cast\".)": "",
+    "(She's a {5}{W}{W}{W} legendary 6/6 Angel creature with flying, first strike, vigilance, trample, haste, and protection from black and from red.)": "",
+    "(They're {G} 1/1 Faerie creatures with flying.)": ""
+  },
   "{{Reminder[Outlaw][CopySpell]}}": {
     "(Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws. Copies of permanent spells become tokens.)": ""
   },
@@ -1272,13 +1287,13 @@
     "(You may pay {4}{U}{U} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)": "",
     "(You may pay {R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)": ""
   },
-  "{{Reminder[PowerUp]}}": {
-    "(Activate each power-up ability only once. Reduce the cost by its mana cost if it entered this turn.)": "",
-    "(Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)": "",
-    "(Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)": ""
-  },
   "{{Reminder[PowerUp][OddOrEven]}}": {
     "(Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn. Zero is even.)": ""
+  },
+  "{{Reminder[PowerUp]}}": {
+    "(Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)": "",
+    "(Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)": "",
+    "(Activate each power-up ability only once. Reduce the cost by its mana cost if it entered this turn.)": ""
   },
   "{{Reminder[Prepare]}}": {
     "(Only creatures with prepare spells can become prepared.)": "",
@@ -1337,6 +1352,9 @@
     "({4}: Attach to target creature you control; or unattach from a creature. Reconfigure only as a sorcery. While attached, this isn't a creature.)": "",
     "({5}: Attach to target creature you control; or unattach from a creature. Reconfigure only as a sorcery. While attached, this isn't a creature.)": "",
     "({R}: Attach to target creature you control; or unattach from a creature. Reconfigure only as a sorcery. While attached, this isn't a creature.)": ""
+  },
+  "{{Reminder[Recruit]}}": {
+    "(Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)": ""
   },
   "{{Reminder[RedistributeLifeTotals]}}": {
     "(Each affected player or team gets one of those life totals back.)": "",
@@ -1409,8 +1427,8 @@
     "(If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has ward {1}.)": ""
   },
   "{{Reminder[Saddle]}}": {
-    "(Tap any number of other creatures you control with total power 2 or more: That Mount becomes saddled until end of turn. Saddle only as a sorcery.)": "",
     "(Tap any number of other creatures you control with total power 1 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)": "",
+    "(Tap any number of other creatures you control with total power 2 or more: That Mount becomes saddled until end of turn. Saddle only as a sorcery.)": "",
     "(Tap any number of other creatures you control with total power 2 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)": "",
     "(Tap any number of other creatures you control with total power 3 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)": "",
     "(Tap any number of other creatures you control with total power 4 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)": "",
@@ -1534,6 +1552,9 @@
   "{{Reminder[StickerKicker]}}": {
     "(You may pay an additional {1} as you cast a creature spell. If you do, you get {TK}, then you may put a sticker on it.)": ""
   },
+  "{{Reminder[Storied]}}": {
+    "(If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)": ""
+  },
   "{{Reminder[Storm]}}": {
     "(When you cast it, copy it for each spell cast before it this turn. You may choose new targets for the copies.)": "",
     "(When you cast that spell, copy it for each spell cast before it this turn. You may choose new targets for the copies.)": "",
@@ -1624,19 +1645,6 @@
     "(Rather than cast this card from your hand, you may pay {X}{B}{B}{B} and exile it with X time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost. It has haste.)": "",
     "(Rather than cast this card from your hand, you may pay {X}{G}{G} and exile it with X time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost. It has haste.)": ""
   },
-  "{{Reminder[OracleToken]}}": {
-    "(It's a land with \"{T}: Add {C}\" and \"{1}: This token becomes a 2/2 creature with all creature types until end of turn. It's still a land\".)": "",
-    "(It's a {0} artifact with \"{T}, Sacrifice this token: Add three mana of any one color\".)": "",
-    "(It's a {1} 1/1 Food Golem artifact creature with haste, \"{1}: This token can't be blocked this turn except by creatures with haste\", and \"{2}, {T}, Sacrifice this token: You gain 3 life\".)": "",
-    "(It's a {1}{G} Lhurgoyf creature with \"Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1\".)": "",
-    "(It's a {1}{G}{G} 2/2 Badger creature with \"Whenever this token blocks, it gets +2/+2 until end of turn\".)": "",
-    "(It's a {2}{R} 2/2 Weird creature with \"Whenever you cast a noncreature spell, put a +1/+1 counter on Spellgorger Weird\".)": "",
-    "(It's a {3}{W}{W} 5/5 Angel creature with flying, first strike, lifelink, and protection from Demons and from Dragons.)": "",
-    "(It's a {4}{B}{B}{B} 7/7 Demon creature with flying, trample, and \"At the beginning of your upkeep, sacrifice another creature. If you can't, this token deals 7 damage to you\".)": "",
-    "(It's a {6} artifact with \"Creature spells cost {2} more to cast\".)": "",
-    "(She's a {5}{W}{W}{W} legendary 6/6 Angel creature with flying, first strike, vigilance, trample, haste, and protection from black and from red.)": "",
-    "(They're {G} 1/1 Faerie creatures with flying.)": "",
-  },
   "{{Reminder[Teamwork]}}": {
     "(As an additional cost to cast this spell, you may tap any number of creatures you control with total power 1 or more.)": "",
     "(As an additional cost to cast this spell, you may tap any number of creatures you control with total power 2 or more.)": "",
@@ -1679,8 +1687,8 @@
   "{{Reminder[Trample]}}": {
     "(A creature with trample can deal excess combat damage to the player or planeswalker it's attacking.)": "",
     "(Each of those creatures can deal excess combat damage to the player or planeswalker it's attacking.)": "",
-    "(It can deal excess combat damage to the player or planeswalker it's attacking.)": "",
     "(It can deal excess combat damage to the player it's attacking.)": "",
+    "(It can deal excess combat damage to the player or planeswalker it's attacking.)": "",
     "(This creature can deal excess combat damage to the controller of the planeswalker it's attacking.)": "",
     "(This creature can deal excess combat damage to the player he's attacking.)": "",
     "(This creature can deal excess combat damage to the player it's attacking.)": "",
@@ -1737,7 +1745,6 @@
     "(They're 2/2 creatures.)": ""
   },
   "{{Reminder[TypeCycling]}}": {
-    "({4}, Discard this card: Search your library for a Halfling card, reveal it, put it into your hand, then shuffle.)": "",
     "({1}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)": "",
     "({1}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)": "",
     "({1}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffle.)": "",
@@ -1763,7 +1770,8 @@
     "({2}, Discard this card: Search your library for an Island or Swamp card, reveal it, put it into your hand, then shuffle.)": "",
     "({2}, Discard this card: Search your library for an artifact land card, reveal it, put it into your hand, then shuffle.)": "",
     "({3}, Discard this card: Search your library for a Sliver card, reveal it, put it into your hand, then shuffle.)": "",
-    "({3}, Discard this card: Search your library for a Wizard card, reveal it, put it into your hand, then shuffle.)": ""
+    "({3}, Discard this card: Search your library for a Wizard card, reveal it, put it into your hand, then shuffle.)": "",
+    "({4}, Discard this card: Search your library for a Halfling card, reveal it, put it into your hand, then shuffle.)": ""
   },
   "{{Reminder[Unearth]}}": {
     "(Pay eight energy counters: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)": "",
@@ -1837,7 +1845,6 @@
     "(They're 2/2 black Zombie creatures.)": ""
   },
   "{{Reminder[Ward]}}": {
-    "(Whenever this artifact becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)": "",
     "(Whenever a Dragon you control becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)": "",
     "(Whenever an artifact you control becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)": "",
     "(Whenever another Merfolk you control becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)": "",
@@ -1848,8 +1855,9 @@
     "(Whenever it becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)": "",
     "(Whenever it becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)": "",
     "(Whenever it becomes the target of a spell or ability an opponent controls, counter it unless that player pays {3}.)": "",
-    "(Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player discards a card.)": "",
+    "(Whenever this artifact becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)": "",
     "(Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player discards a card or pays {2}.)": "",
+    "(Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player discards a card.)": "",
     "(Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player exiles cards with total mana value 4 or greater from their graveyard.)": "",
     "(Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays 2 life.)": "",
     "(Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays 3 life.)": "",
@@ -1903,38 +1911,7 @@
     "(Enchanted creature has \"Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it\". If you put another Role on the creature later, put this one into the graveyard.)": "",
     "(If you control another Role on it, put that one into the graveyard. Enchanted creature has \"Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it\".)": ""
   },
-  "{{Reminder[Storied]}}": {
-    "(If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)": ""
-  },
-  "{{Reminder[Assimilate]}}": {
-    "(Put it onto the battlefield under your control with a +1/+1 counter. It's a Borg artifact creature and loses all other creature types.)": "",
-  },
-  "{{Reminder[Recruit]}}": {
-    "(Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)": "",
-  },
-  "{{Reminder[HoneCounter]}}": {
-    "(Each hone counter on an Equipment grants +1/+0 to equipped creature.)": "",
-  },
-  "{{Reminder[Assist]}}": {
-    "(As you cast a spell with assist, you may choose another player. They may pay some or all of the generic mana in the spell's cost.)": "",
-  },
   "{{Reminder}}": {
-    "(Cast only from your graveyard. Then exile it.)": "",
-    "(It has \"{T}: Add {G}\". It's affected by summoning sickness until your next turn.)": "",
-    "(If you draw from an empty library this way, you still win the game.)": "",
-    "(Permanent spells cast this way become tokens.)": "",
-    "{{Reminder[Assist]}}": "",
-    "(They continue to smell after Olinda has left the battlefield.)": "",
-    "(Activate only as an instant. To mill a card, put the top card of your library into your graveyard.)": "",
-    "(Equipment, Auras you control, and counters are modifications. To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)": "",
-    "(They lose all other types and subtypes.)": "",
-    "(Activate each power-up ability only . . . once? Reduce the cost by his mana cost if he entered this turn.)": "",
-    "(He must survive the damage to get the counters.)": "",
-    "(She can't be blocked except by creatures with flying or reach.)": "",
-    "(It can't be blocked except by creatures with flying or reach. It can attack and {T} as soon as it comes under your control.)": "",
-    "(He loses all other creature types. Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)": "",
-    "(He loses all other creature types.)": "",
-    "(You win even if you have 0 life or didn't draw a card.)": "",
     "(2⁰ = 1, 2¹ = 2, 2² = 4, 2³ = 8, 2⁴ = 16, 2⁵ = 32, and so on.)": "",
     "(A creature with double strike deals both first-strike and regular combat damage.)": "",
     "(A creature with fear can't be blocked except by artifact creatures and/or black creatures.)": "",
@@ -1956,6 +1933,9 @@
     "(A player with ten or more poison counters loses the game.)": "",
     "(A source with wither deals damage to creatures in the form of -1/-1 counters.)": "",
     "(A triggered ability uses the words \"when\", \"whenever\", or \"at\".)": "",
+    "(Activate each power-up ability only . . . once? Reduce the cost by his mana cost if he entered this turn.)": "",
+    "(Activate only as an instant. For example, if the card's mana cost is {3}{U}{U}{B}, you add {U}{U}{B}.)": "",
+    "(Activate only as an instant. To mill a card, put the top card of your library into your graveyard.)": "",
     "(Activate only as an instant.)": "",
     "(Activate only during your upkeep and only once each turn.)": "",
     "(Activate this ability only during your upkeep and only once each turn.)": "",
@@ -2015,6 +1995,7 @@
     "(Aura cards that can't enchant a creature on the battlefield remain in your graveyard.)": "",
     "(Auras with nothing to enchant remain in graveyards.)": "",
     "(Auras with nothing to enchant remain in your graveyard.)": "",
+    "(Cast only from your graveyard. Then exile it.)": "",
     "(Cast this spell only from your graveyard. Then exile it.)": "",
     "(Choose a creature with the least toughness among creatures you control and put X +1/+1 counters on it.)": "",
     "(Choose a creature with the least toughness among creatures you control and put a +1/+1 counter on it.)": "",
@@ -2069,6 +2050,7 @@
     "(Enter the first room or advance to the next room.)": "",
     "(Equipment that's a creature can't equip a creature.)": "",
     "(Equipment, Auras its controller controls, and counters are modifications.)": "",
+    "(Equipment, Auras you control, and counters are modifications. To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)": "",
     "(Equipment, Auras you control, and counters are modifications.)": "",
     "(Exile a creature card from your graveyard and pay its mana cost: Put a number of +1/+1 counters equal to that card's power on target creature. Scavenge only as a sorcery.)": "",
     "(Exile all spells and abilities from the stack, including this card. Discard down to your maximum hand size. Damage wears off, and \"this turn\" and \"until end of turn\" effects end.)": "",
@@ -2094,7 +2076,11 @@
     "(For the rest of the game, you can't cast spells. At the beginning of each of your upkeeps, copy this spell except for its epic ability.)": "",
     "(Gain the next level as a sorcery to add its ability.)": "",
     "(He can't attack if he was cast this turn.)": "",
+    "(He can't be blocked except by two or more creatures.)": "",
     "(He doesn't lose loyalty while he's not a planeswalker.)": "",
+    "(He loses all other creature types. Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)": "",
+    "(He loses all other creature types.)": "",
+    "(He must survive the damage to get the counters.)": "",
     "(If a card has multiple permanent types, choose one as you play it.)": "",
     "(If a creature has multiple instances of exalted, each triggers separately.)": "",
     "(If a creature has multiple instances of extort, each triggers separately.)": "",
@@ -2129,6 +2115,7 @@
     "(If you cast this spell for its mutate cost, put it over or under target non-Human creature you own. They mutate into the creature on top plus all abilities from under it.)": "",
     "(If you discard a card with madness, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)": "",
     "(If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)": "",
+    "(If you draw from an empty library this way, you still win the game.)": "",
     "(It also loses all other creature types.)": "",
     "(It becomes a 2/2 creature.)": "",
     "(It can attack and {T} as soon as it comes under your control.)": "",
@@ -2152,13 +2139,13 @@
     "(It can't be blocked as long as defending player controls an artifact land.)": "",
     "(It can't be blocked except by artifact creatures and/or black creatures.)": "",
     "(It can't be blocked except by artifact creatures and/or creatures that share a color with it.)": "",
+    "(It can't be blocked except by creatures with flying or reach. It can attack and {T} as soon as it comes under your control.)": "",
     "(It can't be blocked except by creatures with flying or reach.)": "",
     "(It can't be blocked except by creatures with horsemanship. This effect lasts indefinitely.)": "",
     "(It can't be blocked except by creatures with horsemanship.)": "",
     "(It can't be blocked except by two or more creatures. {C} represents colorless mana.)": "",
     "(It can't be blocked except by two or more creatures. {S} can be paid with one mana from a snow source.)": "",
     "(It can't be blocked except by two or more creatures.)": "",
-    "(He can't be blocked except by two or more creatures.)": "",
     "(It can't be the target of spells or abilities your opponents control. Damage and effects that say \"destroy\" don't destroy it.)": "",
     "(It can't be the target of spells or abilities your opponents control. It can attack and {T} no matter when it came under your control.)": "",
     "(It can't be the target of spells or abilities.)": "",
@@ -2172,6 +2159,7 @@
     "(It deals damage to creatures in the form of -1/-1 counters.)": "",
     "(It doesn't need to have gone on the adventure first.)": "",
     "(It enters with your choice of a +1/+1 counter or haste.)": "",
+    "(It has \"{T}: Add {G}\". It's affected by summoning sickness until your next turn.)": "",
     "(It has no other types or abilities.)": "",
     "(It isn't in your card pool.)": "",
     "(It keeps all supertypes but loses all other types and creature types.)": "",
@@ -2223,6 +2211,7 @@
     "(Nonexistent mana costs can't be paid.)": "",
     "(Only double-faced cards can be transformed.)": "",
     "(Pay this cost for each mode chosen beyond the first.)": "",
+    "(Permanent spells cast this way become tokens.)": "",
     "(Piles can be empty.)": "",
     "(Players reveal the discarded cards simultaneously.)": "",
     "(Put a +1/+1 counter on each of up to X target creatures.)": "",
@@ -2238,8 +2227,9 @@
     "(Reveal the card as you exile it.)": "",
     "(Sacrificing an artifact for mana to activate an ability doesn't count.)": "",
     "(Select from among all legal targets.)": "",
-    "(She must survive the damage to get the counters.)": "",
+    "(She can't be blocked except by creatures with flying or reach.)": "",
     "(She must survive the damage to get the counter.)": "",
+    "(She must survive the damage to get the counters.)": "",
     "(She's still legendary.)": "",
     "(Start the game with this conspiracy face down in the command zone and secretly choose a card name. You may turn this conspiracy face up any time and reveal that name.)": "",
     "(Start the game with this conspiracy face down in the command zone and secretly choose two different card names. You may turn this conspiracy face up any time and reveal those names.)": "",
@@ -2285,6 +2275,7 @@
     "(They can't be the targets of spells or abilities your opponents control. Damage and effects that say \"destroy\" don't destroy them.)": "",
     "(They can't be the targets of spells or abilities your opponents control.)": "",
     "(They can't be the targets of spells or abilities.)": "",
+    "(They continue to smell after Olinda has left the battlefield.)": "",
     "(They cost {1} less to cast for each artifact you control.)": "",
     "(They deal both first-strike and regular combat damage.)": "",
     "(They deal combat damage before creatures without first strike.)": "",
@@ -2294,6 +2285,7 @@
     "(They enter with an additional +1/+1 counter on them. When they die, you may put their +1/+1 counters on target artifact creature.)": "",
     "(They enter with your choice of a +1/+1 counter or haste.)": "",
     "(They lose all other land types and abilities and have \"{T}: Add {R}\".)": "",
+    "(They lose all other types and subtypes.)": "",
     "(They phase in before you untap during your next untap step.)": "",
     "(They put the top card of their library into their graveyard.)": "",
     "(They put the top three cards of their library into their graveyard.)": "",
@@ -2514,10 +2506,9 @@
     "(You may cast this card converted for {B}{R}.)": "",
     "(You may cast this card converted for {R}{W}.)": "",
     "(You may cast this card converted for {W}{U}.)": "",
+    "(You may cast this card face down as a 2/2 creature for {3}. Turn her face up any time for her morph cost.)": "",
     "(You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its megamorph cost and put a +1/+1 counter on it.)": "",
     "(You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)": "",
-    "(You may cast this card face down as a 2/2 creature for {3}. Turn her face up any time for her morph cost.)": "",
-    "(Activate only as an instant. For example, if the card's mana cost is {3}{U}{U}{B}, you add {U}{U}{B}.)": "",
     "(You may cast this card from your graveyard for its flashback cost and any additional costs. Then exile it.)": "",
     "(You may cast this card from your graveyard for its flashback cost, then exile it. You can't exile Flash of Insight to pay for its own flashback cost.)": "",
     "(You may cast this card from your graveyard for its flashback cost. Then exile it. To behold an Elemental, choose an Elemental you control or reveal an Elemental card from your hand.)": "",
@@ -2554,6 +2545,7 @@
     "(You still pay its costs. You can play a land this way only if you have an available land play remaining.)": "",
     "(You still pay its costs.)": "",
     "(You still pay the spell's costs. Timing rules for the spell still apply.)": "",
+    "(You win even if you have 0 life or didn't draw a card.)": "",
     "(Your next pick is from that booster pack. Pass it to the next player and it's drafted this draft round.)": "",
     "(Your party consists of up to one each of Cleric, Rogue, Warrior, and Wizard.)": "",
     "(Zero is even.)": "",
@@ -2649,13 +2641,9 @@
     "({W/U} can be paid with either {W} or {U}.)": "",
     "({W}, {T}: Put a +1/+1 counter on this creature. Outlast only as a sorcery.)": "",
     "({W}: Put a level counter on this. Level up only as a sorcery.)": "",
-    "{{Reminder[LivingWeapon]}}": "",
     "{{Reminder[AdditionalBeginningPhase]}}": "",
     "{{Reminder[Adventure][FoodToken]}}": "",
     "{{Reminder[Adventure]}}": "",
-    "{{Reminder[HeartwoodToken]}}": "",
-    "{{Reminder[EmpowerJace]}}": "",
-    "{{Reminder[FaceADilemma]}}": "",
     "{{Reminder[AffinityFor]}}": "",
     "{{Reminder[Afflict]}}": "",
     "{{Reminder[Afterlife]}}": "",
@@ -2663,11 +2651,14 @@
     "{{Reminder[Amass]}}": "",
     "{{Reminder[Annihilator]}}": "",
     "{{Reminder[Ascend]}}": "",
+    "{{Reminder[Assimilate]}}": "",
+    "{{Reminder[Assist]}}": "",
     "{{Reminder[Attach][AmassOrcs]}}": "",
     "{{Reminder[Awaken]}}": "",
     "{{Reminder[Backup]}}": "",
     "{{Reminder[Bargain]}}": "",
     "{{Reminder[BattleCry]}}": "",
+    "{{Reminder[BeamMeUp]}}": "",
     "{{Reminder[BecomeALandUntil]}}": "",
     "{{Reminder[BeholdAndExile]}}": "",
     "{{Reminder[Behold]}}": "",
@@ -2723,6 +2714,7 @@
     "{{Reminder[Embalm]}}": "",
     "{{Reminder[EmergeFromArtifact]}}": "",
     "{{Reminder[Emerge]}}": "",
+    "{{Reminder[EmpowerJace]}}": "",
     "{{Reminder[Encore]}}": "",
     "{{Reminder[Endure]}}": "",
     "{{Reminder[EnterAsAZombie]}}": "",
@@ -2739,6 +2731,7 @@
     "{{Reminder[Expend]}}": "",
     "{{Reminder[Exploit]}}": "",
     "{{Reminder[Explore]}}": "",
+    "{{Reminder[FaceADilemma]}}": "",
     "{{Reminder[FaceVillianousChoiceAnAdditionalTime]}}": "",
     "{{Reminder[FinalityCounter]}}": "",
     "{{Reminder[Firebend]}}": "",
@@ -2760,11 +2753,13 @@
     "{{Reminder[Harmonize]}}": "",
     "{{Reminder[Harness]}}": "",
     "{{Reminder[Haste]}}": "",
+    "{{Reminder[HeartwoodToken]}}": "",
     "{{Reminder[Hexproof]}}": "",
     "{{Reminder[HideawayHideaway]}}": "",
     "{{Reminder[Hideaway]}}": "",
     "{{Reminder[Historic][CopySpell]}}": "",
     "{{Reminder[Historic][Investigate]}}": "",
+    "{{Reminder[HoneCounter]}}": "",
     "{{Reminder[Impending]}}": "",
     "{{Reminder[Improvise]}}": "",
     "{{Reminder[Increment]}}": "",
@@ -2779,10 +2774,10 @@
     "{{Reminder[LegendarySpells]}}": "",
     "{{Reminder[Lifelink]}}": "",
     "{{Reminder[LivingMetal]}}": "",
+    "{{Reminder[LivingWeapon]}}": "",
     "{{Reminder[ManifestDread]}}": "",
     "{{Reminder[MapToken]}}": "",
     "{{Reminder[MatoyaArchonElder]}}": "",
-    "{{Reminder[BeamMeUp]}}": "",
     "{{Reminder[Mayhem]}}": "",
     "{{Reminder[Menace][TreasureToken]}}": "",
     "{{Reminder[Mentor]}}": "",
@@ -2810,6 +2805,7 @@
     "{{Reminder[Offspring]}}": "",
     "{{Reminder[OmenShuffleReminder]}}": "",
     "{{Reminder[OpenAnAttraction]}}": "",
+    "{{Reminder[OracleToken]}}": "",
     "{{Reminder[Outlaw][CopySpell]}}": "",
     "{{Reminder[Outlaw][TreasureToken]}}": "",
     "{{Reminder[Outlaw]}}": "",
@@ -2821,8 +2817,8 @@
     "{{Reminder[Phasing]}}": "",
     "{{Reminder[PlaneswalkersBecomeCreatures]}}": "",
     "{{Reminder[Plot]}}": "",
-    "{{Reminder[PowerUp]}}": "",
     "{{Reminder[PowerUp][OddOrEven]}}": "",
+    "{{Reminder[PowerUp]}}": "",
     "{{Reminder[Prepare]}}": "",
     "{{Reminder[PrimeNumbers]}}": "",
     "{{Reminder[Proliferate][PhaseOut]}}": "",
@@ -2834,6 +2830,7 @@
     "{{Reminder[ReadAhead]}}": "",
     "{{Reminder[Rebound]}}": "",
     "{{Reminder[Reconfigure]}}": "",
+    "{{Reminder[Recruit]}}": "",
     "{{Reminder[RedistributeLifeTotals]}}": "",
     "{{Reminder[Regenerate]}}": "",
     "{{Reminder[Reinforce]}}": "",
@@ -2868,13 +2865,13 @@
     "{{Reminder[StartYourEngines]}}": "",
     "{{Reminder[Station]}}": "",
     "{{Reminder[StickerKicker]}}": "",
+    "{{Reminder[Storied]}}": "",
     "{{Reminder[Storm]}}": "",
     "{{Reminder[StunCounter]}}": "",
     "{{Reminder[Sunburst]}}": "",
     "{{Reminder[Surveil]}}": "",
     "{{Reminder[Suspected]}}": "",
     "{{Reminder[Suspend]}}": "",
-    "{{Reminder[OracleToken]}}": "",
     "{{Reminder[Teamwork]}}": "",
     "{{Reminder[TieBreakerClarification]}}": "",
     "{{Reminder[Tiered]}}": "",
@@ -2905,10 +2902,6 @@
     "{{Reminder[Worthy]}}": "",
     "{{Reminder[WouldUntapReplacementEffect]}}": "",
     "{{Reminder[YouMayCastTheCopiedCard]}}": "",
-    "{{Reminder[YoungHeroRoleToken]}}": "",
-    "{{Reminder[Recruit]}}": "",
-    "{{Reminder[HoneCounter]}}": "",
-    "{{Reminder[Storied]}}": "",
-    "{{Reminder[Assimilate]}}": "",
+    "{{Reminder[YoungHeroRoleToken]}}": ""
   }
 }
