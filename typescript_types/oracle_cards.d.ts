@@ -1143,6 +1143,7 @@ type Action =
 | { "_Action": "RevealHandAndPlayerChoosesACardToPutOnBattlefield", "args": [Player, Cards, Array<EnterFlag>] }
 | { "_Action": "RevealHandAndPlayerChoosesMultipleCardsToDiscard", "args": [Player, Array<Cards>] }
 | { "_Action": "RevealHandAndPlayerChoosesNumberCardsToDiscard", "args": [Player, GameNumber] }
+| { "_Action": "RevealHandAndPlayerChoosesNumberCardsOfTypeToDiscard", "args": [Player, CardsInHand, GameNumber] }
 | { "_Action": "RevealHandAndPlayerChoosesNumberCardsToExile", "args": [Player, GameNumber, Cards] }
 | { "_Action": "RevealHandAndPlayerMayCastASpellFromAmongThemWithoutPaying", "args": [Player, Spells] }
 | { "_Action": "RevealHandAndPlayerMayChooseACardToDiscard", "args": [Player, Cards] }
@@ -3620,6 +3621,7 @@ type Exilable =
 | { "_Exilable": "CardsFromTheTopOfLibraryUntilACardOfTypeIsExiled", "args": CardsInLibrary }
 | { "_Exilable": "CardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreExiled", "args": [GameNumber, CardsInLibrary] }
 | { "_Exilable": "CardsFromTheTopOfLibraryUntilGroupCardsAreExiled", "args": GroupFilter }
+| { "_Exilable": "AGenericCardInLibraryLookedAtThisWay" }
 | { "_Exilable": "Permanent", "args": Permanent }
 | { "_Exilable": "EachPermanent", "args": Permanents }
 | { "_Exilable": "APermanent", "args": Permanents }
@@ -4444,6 +4446,8 @@ type LibraryCardEffect =
 | { "_LibraryCardEffect": "AddSupertype", "args": SuperType }
 | { "_LibraryCardEffect": "AddAbility", "args": Array<Rule> };
 type LookAtTopOfLibraryAction =
+| { "_LookAtTopOfLibraryAction": "Exile", "args": [Array<Exilable>, Array<ExileFlag>] }
+| { "_LookAtTopOfLibraryAction": "MayPutAGenericCardOnTopOfLibrary" }
 | { "_LookAtTopOfLibraryAction": "TransformPermanent", "args": Permanent }
 | { "_LookAtTopOfLibraryAction": "PutRemainingSetAsideCardsIntoHand" }
 | { "_LookAtTopOfLibraryAction": "PutSetAsideCardsOfTypeOntoBattlefield", "args": [Cards, Array<EnterFlag>] }
@@ -4470,7 +4474,6 @@ type LookAtTopOfLibraryAction =
 | { "_LookAtTopOfLibraryAction": "PutUptoNumberGenericCardsOnTopOfLibraryInAnyOrder", "args": GameNumber }
 | { "_LookAtTopOfLibraryAction": "MayPutAnyNumberOfGroupCardsOntoTheBattlefield", "args": [Cards, GroupFilter, Array<EnterFlag>] }
 | { "_LookAtTopOfLibraryAction": "APlayerChoosesAPileTopPutIntoHand", "args": Players }
-| { "_LookAtTopOfLibraryAction": "ExileAGenericCardWithACounter", "args": CounterType }
 | { "_LookAtTopOfLibraryAction": "MayExileUptoNumberCardsOfType", "args": [GameNumber, Cards] }
 | { "_LookAtTopOfLibraryAction": "PutAGenericCardAndAllCardsWithTheSameNameIntoHand" }
 | { "_LookAtTopOfLibraryAction": "LoseLifeForEach", "args": [GameNumber, GameNumber] }

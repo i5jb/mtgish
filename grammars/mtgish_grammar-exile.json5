@@ -18,6 +18,7 @@
     "[ExilesIntoFaceDownPile]": "",
     "[ExilesIntoFaceUpPile]": "",
     "[ExilesFaceDown]": "",
+    "[ExilesFaceDown, ExilesWithACounter({{COUNTER_TYPE}})]": "",
     "[ExilesFaceUp]": "",
     "[ExilesWithACounter({{COUNTER_TYPE}})]": "",
     "[ExilesWithNumberCounters({{NUMBER}}, {{COUNTER_TYPE}})]": "",
@@ -115,6 +116,8 @@
     "CardsFromTheTopOfLibraryUntilACardOfTypeIsExiled({{CARDS_IN_LIBRARY}})": "",
     "CardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreExiled({{NUMBER}}, {{CARDS_IN_LIBRARY}})": "",
     "CardsFromTheTopOfLibraryUntilGroupCardsAreExiled({{GROUP_FILTER}})": "",
+
+    // "AGenericCardInLibraryLookedAtThisWay": "",
 
     // ------
     // Spells

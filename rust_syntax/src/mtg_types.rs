@@ -7878,6 +7878,8 @@ pub enum PerpetualEffect {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_LookAtTopOfLibraryAction", content = "args"))]
 pub enum LookAtTopOfLibraryAction {
+  Exile(Vec<Exilable>, Vec<ExileFlag>),
+  MayPutAGenericCardOnTopOfLibrary,
   TransformPermanent(Box<Permanent>),
   PutRemainingSetAsideCardsIntoHand,
   PutSetAsideCardsOfTypeOntoBattlefield(Box<Cards>, Vec<EnterFlag>),
@@ -7904,7 +7906,6 @@ pub enum LookAtTopOfLibraryAction {
   PutUptoNumberGenericCardsOnTopOfLibraryInAnyOrder(Box<GameNumber>),
   MayPutAnyNumberOfGroupCardsOntoTheBattlefield(Box<Cards>, GroupFilter, Vec<EnterFlag>),
   APlayerChoosesAPileTopPutIntoHand(Box<Players>),
-  ExileAGenericCardWithACounter(CounterType),
   MayExileUptoNumberCardsOfType(Box<GameNumber>, Box<Cards>),
   PutAGenericCardAndAllCardsWithTheSameNameIntoHand,
   LoseLifeForEach(Box<GameNumber>, Box<GameNumber>),
@@ -8532,6 +8533,8 @@ pub enum Exilable {
   CardsFromTheTopOfLibraryUntilACardOfTypeIsExiled(Box<CardsInLibrary>),
   CardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreExiled(Box<GameNumber>, Box<CardsInLibrary>),
   CardsFromTheTopOfLibraryUntilGroupCardsAreExiled(Box<GroupFilter>),
+
+  AGenericCardInLibraryLookedAtThisWay,
 
   // Permanents
   Permanent(Box<Permanent>),
@@ -9987,6 +9990,7 @@ pub enum Action {
   RevealHandAndPlayerChoosesACardToPutOnBattlefield(Box<Player>, Box<Cards>, Vec<EnterFlag>),
   RevealHandAndPlayerChoosesMultipleCardsToDiscard(Box<Player>, Vec<Cards>),
   RevealHandAndPlayerChoosesNumberCardsToDiscard(Box<Player>, Box<GameNumber>),
+  RevealHandAndPlayerChoosesNumberCardsOfTypeToDiscard(Box<Player>, Box<CardsInHand>, Box<GameNumber>),
   RevealHandAndPlayerChoosesNumberCardsToExile(Box<Player>, Box<GameNumber>, Box<Cards>),
   RevealHandAndPlayerMayCastASpellFromAmongThemWithoutPaying(Box<Player>, Box<Spells>),
   RevealHandAndPlayerMayChooseACardToDiscard(Box<Player>, Box<Cards>),
