@@ -110,7 +110,7 @@ type Action =
 | { "_Action": "Reflexive_PayManaUptoNumberTimes_WhenYouDo", "args": [Array<ManaSymbol>, GameNumber, Actions] }
 | { "_Action": "Reflexive_PayManaAnyX_WhenYouDo", "args": [Array<ManaSymbolX>, Actions] }
 | { "_Action": "Reflexive_PayMana_WhenYouDo", "args": [Array<ManaSymbol>, Actions] }
-| { "_Action": "Reflexive_PayMana_PayLife_WhenYouDo", "args": [Array<ManaSymbol>, GameNumber, Actions] }
+| { "_Action": "Reflexive_MayPayManaAndLife_WhenYouDo", "args": [Array<ManaSymbol>, GameNumber, Actions] }
 | { "_Action": "Reflexive_PayMana_Sacrifice_WhenYouDo", "args": [Array<ManaSymbol>, Array<Sacrificable>, Actions] }
 | { "_Action": "Reflexive_PutAPermanentInOwnersHand_WhenYouDo", "args": [Permanents, Actions] }
 | { "_Action": "Reflexive_PutCounters_WhenYouDo", "args": [Array<PutCountersAction>, Actions] }
@@ -767,9 +767,10 @@ type Action =
 | { "_Action": "LookAtPlayersHand", "args": Player }
 | { "_Action": "LookAtPlayersHandAndChooseACardForPlayerToPlayControllingThemToDoSo", "args": [Player, Cards] }
 | { "_Action": "LookAtPlayersHandAndChooseACardToDiscard", "args": [Player, Cards] }
-| { "_Action": "LookAtPlayersHandAndChooseACardToPutOnBattlefield", "args": [Player, Cards, Array<EnterFlag>] }
 | { "_Action": "LookAtPlayersHandAndChooseNumCardsToDiscard", "args": [Player, GameNumber, Cards] }
 | { "_Action": "LookAtPlayersHandAndChooseNumberCardsToPutOnTopOfTheirLibraryInAnyOrder", "args": [Player, GameNumber, Cards] }
+| { "_Action": "LookAtPlayersHandAndMayChooseACardToPutOnBattlefield", "args": [Player, Cards, Array<EnterFlag>] }
+| { "_Action": "RevealHandAndPlayerMayChooseACardToPutOnBattlefield", "args": [Player, Cards, Array<EnterFlag>] }
 | { "_Action": "LookAtPlayersHandAndMayChooseACardToCastWithoutPaying", "args": [Player, Cards] }
 | { "_Action": "LookAtTheTopCardOfEachPlayersLibrary", "args": Players }
 | { "_Action": "LookAtTheTopCardOfPlayersLibrary", "args": Player }
@@ -899,6 +900,7 @@ type Action =
 | { "_Action": "PutACardFromPlayersGraveyardOnTopOfLibrary", "args": [Cards, Player] }
 | { "_Action": "PutACardOfTypeAndOrACardOfTypeMilledThisWayOntoTheBattlefield", "args": [Array<Cards>, Array<EnterFlag>] }
 | { "_Action": "PutACardOfTypeMilledThisWayIntoHand", "args": Cards }
+| { "_Action": "PutACardOfTypeAndOrACardOfTypeMilledThisWayIntoHand", "args": [Cards, Cards] }
 | { "_Action": "PutACardOfTypeMilledThisWayOnTopOfLibrary", "args": Cards }
 | { "_Action": "PutACardOfTypeMilledThisWayOntoTheBattlefield", "args": [Cards, Array<EnterFlag>] }
 | { "_Action": "PutACommanderFromCommandZoneIntoHand", "args": Commanders }
@@ -936,7 +938,7 @@ type Action =
 | { "_Action": "PutCardFromHandOnBattlefield", "args": [CardInHand, Array<EnterFlag>] }
 | { "_Action": "PutCardFromHandOnBottomOfLibrary", "args": CardInHand }
 | { "_Action": "PutCardFromHandOnTopOfLibrary", "args": CardInHand }
-| { "_Action": "PutCardInHandIntoLibraryNthFromTop", "args": CardInHand }
+| { "_Action": "PutCardInHandIntoLibraryNthFromTop", "args": [CardInHand, GameNumber] }
 | { "_Action": "PutCardsFromHandOnBattlefield", "args": [CardsInHand, Array<EnterFlag>] }
 | { "_Action": "PutCardsInHandIntoGraveyard", "args": CardsInHand }
 | { "_Action": "PutCommanderFromCommandZoneOntoBattlefield", "args": [Commander, Array<EnterFlag>] }
@@ -1140,7 +1142,6 @@ type Action =
 | { "_Action": "RevealHandAndPlayerChoosesACardToDiscard", "args": [Player, Cards] }
 | { "_Action": "RevealHandAndPlayerChoosesACardToExile", "args": [Player, Cards] }
 | { "_Action": "RevealHandAndPlayerChoosesACardToExileUntil", "args": [Player, Cards, Expiration] }
-| { "_Action": "RevealHandAndPlayerChoosesACardToPutOnBattlefield", "args": [Player, Cards, Array<EnterFlag>] }
 | { "_Action": "RevealHandAndPlayerChoosesMultipleCardsToDiscard", "args": [Player, Array<Cards>] }
 | { "_Action": "RevealHandAndPlayerChoosesNumberCardsToDiscard", "args": [Player, GameNumber] }
 | { "_Action": "RevealHandAndPlayerChoosesNumberCardsOfTypeToDiscard", "args": [Player, CardsInHand, GameNumber] }
@@ -2030,6 +2031,7 @@ type CastEffect =
 | { "_CastEffect": "MayCastAsThoughItHadFlashIfXIs", "args": Comparison }
 | { "_CastEffect": "MayCastAsThoughItHadFlashWithSpecialAction", "args": Array<Action> }
 | { "_CastEffect": "MayCastWithoutPayingIf", "args": Condition }
+| { "_CastEffect": "MayCastWithoutPayingAndAsThoughItHadFlashIf", "args": Condition }
 | { "_CastEffect": "OptionalAdditionalCastingCost", "args": Cost }
 | { "_CastEffect": "PayLifeForEachPreviousCastRatherThanManaForEachPreviousCast", "args": GameNumber }
 | { "_CastEffect": "ReduceCastingCost", "args": Array<CostReductionSymbol> }
@@ -2043,6 +2045,7 @@ type CastEffect =
 | { "_CastEffect": "ReduceCastingCostIfItTargetsASpell", "args": [Array<CostReductionSymbol>, Spells] }
 | { "_CastEffect": "ReduceCastingCostIfItTargetsASpellOrAbility", "args": [Array<CostReductionSymbol>, SpellsAndAbilities] }
 | { "_CastEffect": "ReduceCastingCostIfItsBargained", "args": Array<CostReductionSymbol> }
+| { "_CastEffect": "ReduceCastingCostXIf", "args": [Array<CostReductionSymbolX>, GameNumber, Condition] }
 | { "_CastEffect": "ReduceCastingCostX", "args": [Array<CostReductionSymbolX>, GameNumber] }
 | { "_CastEffect": "SpendOnlyColorManaOnX", "args": Color }
 | { "_CastEffect": "SpendOnlyColorsOfManaOnX", "args": Array<Color> }
@@ -6320,7 +6323,7 @@ type PutCountersAction =
 | { "_PutCountersAction": "ACounterOfTypeOnUptoNumberPermanents", "args": [CounterType, GameNumber, Permanents] }
 | { "_PutCountersAction": "ACounterOfTypeOnVanguard", "args": [CounterType, SingleVanguard] }
 | { "_PutCountersAction": "ADuplicateOfEachKindOfCounterAmongPermanentDistibutedToPermanents", "args": [Permanents, Permanents] }
-| { "_PutCountersAction": "ADuplicateOfEachKindOfCounterAmoungPermanentsOrACounterOfTypeOnPermanent", "args": [Permanents, CounterType, Permanent] }
+| { "_PutCountersAction": "ForEachKindOfCounterAmongPermanentsMayPutADuplicateThatKindOrACounterOfTypeOnPermanent", "args": [Permanents, CounterType, Permanent] }
 | { "_PutCountersAction": "ADuplicateOfEachKindOfCounterOnPermanentOnPermanent", "args": [Permanent, Permanent] }
 | { "_PutCountersAction": "ADuplicateOfEachKindOfCounterOnPlayerOnPlayer", "args": [Player, Player] }
 | { "_PutCountersAction": "AnAbilityCounterOnAPermanentForEachAbilityOnCardsInGraveyards", "args": [Permanents, Array<CheckHasable>, CardsInGraveyards] }
@@ -6900,6 +6903,7 @@ type ReplacementActionWouldPlaneswalkLookAtTheTopNumberCardsOfPlanarDeckAction =
 | { "_ReplacementActionWouldPlaneswalkLookAtTheTopNumberCardsOfPlanarDeckAction": "PutACardOnBottom" }
 | { "_ReplacementActionWouldPlaneswalkLookAtTheTopNumberCardsOfPlanarDeckAction": "PutTheRemainingCardOnTopInAnyOrder" };
 type ReplacementActionWouldProduceMana =
+| { "_ReplacementActionWouldProduceMana": "WouldProduceMana_ReplaceSpecificColorWith", "args": [Color, ManaProduce] }
 | { "_ReplacementActionWouldProduceMana": "WouldProduceMana_AddMana", "args": ManaProduce }
 | { "_ReplacementActionWouldProduceMana": "WouldProduceMana_ProduceMultiple", "args": GameNumber }
 | { "_ReplacementActionWouldProduceMana": "WouldProduceMana_ReplaceColor", "args": Color }

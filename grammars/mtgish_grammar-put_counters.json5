@@ -106,7 +106,7 @@
 
     // Text: "for each kind of counter on {{Permanents}}, you may put your choice of a {{CounterType}} counter or a counter of that kind on {{Permanent}}"
     // Card: [[Bribe Taker]]
-    "ADuplicateOfEachKindOfCounterAmoungPermanentsOrACounterOfTypeOnPermanent({{PERMANENTS}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
+    "ForEachKindOfCounterAmongPermanentsMayPutADuplicateThatKindOrACounterOfTypeOnPermanent({{PERMANENTS}}, {{COUNTER_TYPE}}, {{PERMANENT}})": "",
 
     // Text: "choose a counter on a {{Permanent}}. Put a counter of that kind on {{Permanent}} if it doesn't have a counter of that kind on it"
     // Card: [[Aven Courier]]
@@ -831,15 +831,13 @@
     // Text: "deals combat damage to a player who doesn't have a
     //        contract counter"
     // Card: [[Miss Highwater]]
+    // Text: "they don't have any rad counters"
+    // Card: [[Vexing Radgull]]
     "HasNoCountersOfType({{COUNTER_TYPE}})": "",
 
     // Text: "For each opponent who has three or more poison counters ..."
     // Card: [[Geth's Summons]]
     "HasANumberOfCountersOfType({{COMPARISON}}, {{COUNTER_TYPE}})": "",
-
-    // Text: "they don't have any rad counters"
-    // Card: [[Vexing Radgull]]
-    "HasNoCountersOfType({{COUNTER_TYPE}})": "",
   },
 
   "{{_TRIGGER[PutCounters]}}": {

@@ -2397,6 +2397,7 @@ pub enum CastEffect {
   MayCastAsThoughItHadFlashIfXIs(Box<Comparison>),
   MayCastAsThoughItHadFlashWithSpecialAction(Vec<Action>),
   MayCastWithoutPayingIf(Condition),
+  MayCastWithoutPayingAndAsThoughItHadFlashIf(Condition),
   //MaySpendManaAsThoughAnyTypeToCast,
   OptionalAdditionalCastingCost(Box<Cost>),
   PayLifeForEachPreviousCastRatherThanManaForEachPreviousCast(Box<GameNumber>),
@@ -2411,6 +2412,7 @@ pub enum CastEffect {
   ReduceCastingCostIfItTargetsASpell(CostReduction, Box<Spells>),
   ReduceCastingCostIfItTargetsASpellOrAbility(CostReduction, SpellsAndAbilities),
   ReduceCastingCostIfItsBargained(CostReduction),
+  ReduceCastingCostXIf(CostReductionX, Box<GameNumber>, Box<Condition>),
   ReduceCastingCostX(CostReductionX, Box<GameNumber>),
   SpendOnlyColorManaOnX(Color),
   SpendOnlyColorsOfManaOnX(Vec<Color>),
@@ -3197,6 +3199,7 @@ pub enum ReplacementActionWouldMill {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldProduceMana", content = "args"))]
 pub enum ReplacementActionWouldProduceMana {
+  WouldProduceMana_ReplaceSpecificColorWith(Color, ManaProduce),
   WouldProduceMana_AddMana(ManaProduce),
   WouldProduceMana_ProduceMultiple(Box<GameNumber>),
   WouldProduceMana_ReplaceColor(Color),
@@ -8772,7 +8775,6 @@ pub enum PutRestriction {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_PutCountersAction", content = "args"))]
 pub enum PutCountersAction {
-
   ACounterOfTypeAtRandomThatPermanentDoesHaveOnPermanent(Vec<CounterType>, Box<Permanent>, Box<Permanent>),
   ACounterOfTypeOfMultipleChoiceOnEachPermanent(Vec<CounterType>, Box<Permanents>),
   ACounterOfTypeOnAPermanent(CounterType, Box<Permanents>),
@@ -8788,7 +8790,7 @@ pub enum PutCountersAction {
   ACounterOfTypeOnUptoNumberPermanents(CounterType, Box<GameNumber>, Box<Permanents>),
   ACounterOfTypeOnVanguard(CounterType, Box<SingleVanguard>),
   ADuplicateOfEachKindOfCounterAmongPermanentDistibutedToPermanents(Box<Permanents>, Box<Permanents>),
-  ADuplicateOfEachKindOfCounterAmoungPermanentsOrACounterOfTypeOnPermanent(Box<Permanents>, CounterType, Box<Permanent>),
+  ForEachKindOfCounterAmongPermanentsMayPutADuplicateThatKindOrACounterOfTypeOnPermanent(Box<Permanents>, CounterType, Box<Permanent>),
   ADuplicateOfEachKindOfCounterOnPermanentOnPermanent(Box<Permanent>, Box<Permanent>),
   ADuplicateOfEachKindOfCounterOnPlayerOnPlayer(Box<Player>, Box<Player>),
   AnAbilityCounterOnAPermanentForEachAbilityOnCardsInGraveyards(Box<Permanents>, Vec<CheckHasable>, Box<CardsInGraveyards>),
@@ -8950,7 +8952,7 @@ pub enum Action {
   Reflexive_PayManaUptoNumberTimes_WhenYouDo(ManaCost, Box<GameNumber>, Box<Actions>),
   Reflexive_PayManaAnyX_WhenYouDo(ManaCostX, Box<Actions>),
   Reflexive_PayMana_WhenYouDo(ManaCost, Box<Actions>),
-  Reflexive_PayMana_PayLife_WhenYouDo(ManaCost, Box<GameNumber>, Box<Actions>),
+  Reflexive_MayPayManaAndLife_WhenYouDo(ManaCost, Box<GameNumber>, Box<Actions>),
   Reflexive_PayMana_Sacrifice_WhenYouDo(ManaCost, Vec<Sacrificable>, Box<Actions>),
   Reflexive_PutAPermanentInOwnersHand_WhenYouDo(Box<Permanents>, Box<Actions>),
   Reflexive_PutCounters_WhenYouDo(Vec<PutCountersAction>, Box<Actions>),
@@ -9613,9 +9615,10 @@ pub enum Action {
   LookAtPlayersHand(Box<Player>),
   LookAtPlayersHandAndChooseACardForPlayerToPlayControllingThemToDoSo(Box<Player>, Box<Cards>),
   LookAtPlayersHandAndChooseACardToDiscard(Box<Player>, Box<Cards>),
-  LookAtPlayersHandAndChooseACardToPutOnBattlefield(Box<Player>, Box<Cards>, Vec<EnterFlag>),
   LookAtPlayersHandAndChooseNumCardsToDiscard(Box<Player>, Box<GameNumber>, Box<Cards>),
   LookAtPlayersHandAndChooseNumberCardsToPutOnTopOfTheirLibraryInAnyOrder(Box<Player>, Box<GameNumber>, Box<Cards>),
+  LookAtPlayersHandAndMayChooseACardToPutOnBattlefield(Box<Player>, Box<Cards>, Vec<EnterFlag>),
+  RevealHandAndPlayerMayChooseACardToPutOnBattlefield(Box<Player>, Box<Cards>, Vec<EnterFlag>),
   LookAtPlayersHandAndMayChooseACardToCastWithoutPaying(Box<Player>, Box<Cards>),
   LookAtTheTopCardOfEachPlayersLibrary(Box<Players>),
   LookAtTheTopCardOfPlayersLibrary(Box<Player>),
@@ -9746,6 +9749,7 @@ pub enum Action {
   PutACardFromPlayersGraveyardOnTopOfLibrary(Box<Cards>, Box<Player>),
   PutACardOfTypeAndOrACardOfTypeMilledThisWayOntoTheBattlefield(Vec<Cards>, Vec<EnterFlag>),
   PutACardOfTypeMilledThisWayIntoHand(Box<Cards>),
+  PutACardOfTypeAndOrACardOfTypeMilledThisWayIntoHand(Box<Cards>, Box<Cards>),
   PutACardOfTypeMilledThisWayOnTopOfLibrary(Box<Cards>),
   PutACardOfTypeMilledThisWayOntoTheBattlefield(Box<Cards>, Vec<EnterFlag>),
   PutACommanderFromCommandZoneIntoHand(Commanders),
@@ -9783,7 +9787,7 @@ pub enum Action {
   PutCardFromHandOnBattlefield(CardInHand, Vec<EnterFlag>),
   PutCardFromHandOnBottomOfLibrary(CardInHand),
   PutCardFromHandOnTopOfLibrary(CardInHand),
-  PutCardInHandIntoLibraryNthFromTop(CardInHand),
+  PutCardInHandIntoLibraryNthFromTop(CardInHand, Box<GameNumber>),
   PutCardsFromHandOnBattlefield(Box<CardsInHand>, Vec<EnterFlag>),
   PutCardsInHandIntoGraveyard(Box<CardsInHand>),
   PutCommanderFromCommandZoneOntoBattlefield(Commander, Vec<EnterFlag>),
@@ -9987,7 +9991,6 @@ pub enum Action {
   RevealHandAndPlayerChoosesACardToDiscard(Box<Player>, Box<Cards>),
   RevealHandAndPlayerChoosesACardToExile(Box<Player>, Box<Cards>),
   RevealHandAndPlayerChoosesACardToExileUntil(Box<Player>, Box<Cards>, Expiration),
-  RevealHandAndPlayerChoosesACardToPutOnBattlefield(Box<Player>, Box<Cards>, Vec<EnterFlag>),
   RevealHandAndPlayerChoosesMultipleCardsToDiscard(Box<Player>, Vec<Cards>),
   RevealHandAndPlayerChoosesNumberCardsToDiscard(Box<Player>, Box<GameNumber>),
   RevealHandAndPlayerChoosesNumberCardsOfTypeToDiscard(Box<Player>, Box<CardsInHand>, Box<GameNumber>),
