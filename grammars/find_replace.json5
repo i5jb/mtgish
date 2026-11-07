@@ -589,6 +589,12 @@
 
   // Unsorted fixes
   {
+    "reason":  "'Other' is ambiguious, it's 'other than the token(s) you're making' and thus redundant",
+    "cards":   ["Printlifter Ooze"],
+    "find":    "The token enters with X +1/+1 counters on it, where X is the number of other creatures you control",
+    "replace": "The token enters with X +1/+1 counters on it, where X is the number of creatures you control",
+  },
+  {
     "reason":  "Reversion of entering the battlefield wording",
     "cards":   ["Karn, Argent Defender"],
     "find":    "Artifacts and creatures entering the battlefield don't cause abilities to trigger.",

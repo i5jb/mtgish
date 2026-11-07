@@ -3757,6 +3757,7 @@ type FutureEventPreventDamage =
 | { "_FutureEventPreventDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnToARecipient", "args": [GameNumber, DamageRecipientsList] }
 | { "_FutureEventPreventDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnToEachRecipient", "args": [GameNumber, MultipleDamageRecipients] }
 | { "_FutureEventPreventDamage": "NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient", "args": [GameNumber, SingleDamageRecipient] }
+| { "_FutureEventPreventDamage": "NextAmountOfCombatDamageThatWouldBeDealtThisTurnToRecipient", "args": [GameNumber, SingleDamageRecipient] }
 | { "_FutureEventPreventDamage": "NextTimeCombatDamageWouldBeDealtThisTurnByCreature", "args": Permanent }
 | { "_FutureEventPreventDamage": "NextTimeCombatDamageWouldBeDealtThisTurnByCreatureToAnyNumberOfRecipients", "args": [Permanent, DamageRecipientsList] }
 | { "_FutureEventPreventDamage": "NextTimeCombatDamageWouldBeDealtThisTurnByCreatureToRecipient", "args": [Permanent, SingleDamageRecipient] }
@@ -3782,7 +3783,7 @@ type FutureReplacableEventWouldDealDamage =
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeCombatDamageWouldBeDealtThisTurnByCreature", "args": Permanent }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeCombatDamageWouldBeDealtThisTurnByCreatureToRecipient", "args": [Permanent, SingleDamageRecipient] }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnByASpellToRecipient", "args": [Spells, SingleDamageRecipient] }
-| { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnByPermanentToARecipient", "args": [Permanent, DamageRecipientsList] }
+| { "_FutureReplacableEventWouldDealDamage": "NextTimeCombatDamageWouldBeDealtThisTurnByPermanentToARecipient", "args": [Permanent, DamageRecipientsList] }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnBySource", "args": SingleDamageSource }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnBySourceToRecipient", "args": [SingleDamageSource, SingleDamageRecipient] }
 | { "_FutureReplacableEventWouldDealDamage": "NextTimeDamageWouldBeDealtThisTurnToARecipient", "args": DamageRecipientsList }
@@ -6052,6 +6053,10 @@ type Players =
 | { "_Players": "Or", "args": Array<Players> }
 | { "_Players": "Other", "args": Player }
 | { "_Players": "SinglePlayer", "args": Player }
+| { "_Players": "DidntDiscardACardThisWay" }
+| { "_Players": "DidntDiscardACardOfTypeThisWay", "args": CardsInHand }
+| { "_Players": "DidntDiscardNumberCardsOfTypeThisWay", "args": [Comparison, CardsInHand] }
+| { "_Players": "DrewACardThisWay" }
 | { "_Players": "DidntRevealACardOfTheirChosenName" }
 | { "_Players": "DidntTakeAction" }
 | { "_Players": "HasActivatedAnAbilityThisTurn", "args": ActivatedAbilities }
@@ -6068,7 +6073,6 @@ type Players =
 | { "_Players": "Trigger_ThoseDefendingPlayers" }
 | { "_Players": "RepeatablePlayers" }
 | { "_Players": "ExiledACardWithTheHighestManaValue" }
-| { "_Players": "DidntDiscardedNumberCardsOfTypeThisWay", "args": [Comparison, CardsInHand] }
 | { "_Players": "NumCardsInGraveyardIs", "args": Comparison }
 | { "_Players": "NumCardsOfTypeInGraveyardIs", "args": [Comparison, CardsInGraveyards] }
 | { "_Players": "AControllerOfTheLeastPermanentsAmongPlayers", "args": [Players, Permanents] }
@@ -8838,6 +8842,7 @@ type Trigger =
 | { "_Trigger": "WhenAPlayerIsDealtDamage", "args": Players }
 | { "_Trigger": "WhenAPlayerIsDealtNoncombatDamage", "args": Players }
 | { "_Trigger": "WhenASourceDealsAnAmountOfDamageToAPermanent", "args": [DamageSources, Comparison, Permanents] }
+| { "_Trigger": "WhenASourceDealsAnAmountOfNoncombatDamageToAPermanent", "args": [DamageSources, Comparison, Permanents] }
 | { "_Trigger": "WhenASourceDealsAnAmountOfDamageToAPlayer", "args": [DamageSources, Comparison, Players] }
 | { "_Trigger": "WhenASourceDealsDamage", "args": DamageSources }
 | { "_Trigger": "WhenASourceDealsDamageToAPermanent", "args": [DamageSources, Permanents] }

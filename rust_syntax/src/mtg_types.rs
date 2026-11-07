@@ -4057,6 +4057,7 @@ pub enum FutureEventPreventDamage {
   NextAmountOfDamageThatWouldBeDealtThisTurnToEachRecipient(Box<GameNumber>, Box<MultipleDamageRecipients>),
   NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient(Box<GameNumber>, Box<SingleDamageRecipient>),
 
+  NextAmountOfCombatDamageThatWouldBeDealtThisTurnToRecipient(Box<GameNumber>, Box<SingleDamageRecipient>),
   NextTimeCombatDamageWouldBeDealtThisTurnByCreature(Box<Permanent>),
   NextTimeCombatDamageWouldBeDealtThisTurnByCreatureToAnyNumberOfRecipients(Box<Permanent>, Box<DamageRecipientsList>),
   NextTimeCombatDamageWouldBeDealtThisTurnByCreatureToRecipient(Box<Permanent>, Box<SingleDamageRecipient>),
@@ -4126,7 +4127,7 @@ pub enum FutureReplacableEventWouldDealDamage {
   NextTimeCombatDamageWouldBeDealtThisTurnByCreature(Box<Permanent>),
   NextTimeCombatDamageWouldBeDealtThisTurnByCreatureToRecipient(Box<Permanent>, Box<SingleDamageRecipient>),
   NextTimeDamageWouldBeDealtThisTurnByASpellToRecipient(Box<Spells>, Box<SingleDamageRecipient>),
-  NextTimeDamageWouldBeDealtThisTurnByPermanentToARecipient(Box<Permanent>, Box<DamageRecipientsList>),
+  NextTimeCombatDamageWouldBeDealtThisTurnByPermanentToARecipient(Box<Permanent>, Box<DamageRecipientsList>),
   NextTimeDamageWouldBeDealtThisTurnBySource(Box<SingleDamageSource>),
   NextTimeDamageWouldBeDealtThisTurnBySourceToRecipient(Box<SingleDamageSource>, Box<SingleDamageRecipient>),
   NextTimeDamageWouldBeDealtThisTurnToARecipient(Box<DamageRecipientsList>),
@@ -6425,6 +6426,11 @@ pub enum Players {
   Other(Box<Player>),
   SinglePlayer(Box<Player>),
 
+  DidntDiscardACardThisWay,
+  DidntDiscardACardOfTypeThisWay(Box<CardsInHand>),
+  DidntDiscardNumberCardsOfTypeThisWay(Box<Comparison>, Box<CardsInHand>),
+  DrewACardThisWay,
+
   DidntRevealACardOfTheirChosenName,
   DidntTakeAction,
   HasActivatedAnAbilityThisTurn(Box<ActivatedAbilities>),
@@ -6444,7 +6450,6 @@ pub enum Players {
 
   RepeatablePlayers,
   ExiledACardWithTheHighestManaValue,
-  DidntDiscardedNumberCardsOfTypeThisWay(Box<Comparison>, Box<CardsInHand>),
   NumCardsInGraveyardIs(Box<Comparison>),
   NumCardsOfTypeInGraveyardIs(Box<Comparison>, Box<CardsInGraveyards>),
 
@@ -10933,6 +10938,7 @@ pub enum Trigger {
   WhenAPlayerIsDealtDamage(Box<Players>),
   WhenAPlayerIsDealtNoncombatDamage(Box<Players>),
   WhenASourceDealsAnAmountOfDamageToAPermanent(DamageSources, Box<Comparison>, Box<Permanents>),
+  WhenASourceDealsAnAmountOfNoncombatDamageToAPermanent(DamageSources, Box<Comparison>, Box<Permanents>),
   WhenASourceDealsAnAmountOfDamageToAPlayer(DamageSources, Box<Comparison>, Box<Players>),
   WhenASourceDealsDamage(DamageSources),
   WhenASourceDealsDamageToAPermanent(DamageSources, Box<Permanents>),

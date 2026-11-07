@@ -250,6 +250,7 @@
     "WhenAPlayerIsDealtCombatDamage({{PLAYERS}})": "",
     "WhenAPlayerIsDealtDamage({{PLAYERS}})": "",
     "WhenAPlayerIsDealtNoncombatDamage({{PLAYERS}})": "",
+    "WhenASourceDealsAnAmountOfNoncombatDamageToAPermanent({{DAMAGE_SOURCES}}, {{COMPARISON}}, {{PERMANENTS}})": "",
     "WhenASourceDealsAnAmountOfDamageToAPermanent({{DAMAGE_SOURCES}}, {{COMPARISON}}, {{PERMANENTS}})": "",
     "WhenASourceDealsAnAmountOfDamageToAPlayer({{DAMAGE_SOURCES}}, {{COMPARISON}}, {{PLAYERS}})": "",
     "WhenASourceDealsDamage({{DAMAGE_SOURCES}})": "",
