@@ -2281,6 +2281,7 @@ type Condition =
 | { "_Condition": "APermanentExploredThisTurn", "args": Permanents }
 | { "_Condition": "APermanentLeftTheBattlefieldThisTurn", "args": Permanents }
 | { "_Condition": "APermanentOfTypeWasPutOntoTheBattlefieldThisWay", "args": Permanents }
+| { "_Condition": "APermanentWasPutOntoTheBattlefieldThisWay" }
 | { "_Condition": "APermanentPassesFilter", "args": [Permanents, Permanents] }
 | { "_Condition": "APermanentWasChosenThisWay" }
 | { "_Condition": "APermanentWasCopiedThisWay", "args": Permanents }
@@ -2291,7 +2292,6 @@ type Condition =
 | { "_Condition": "APermanentWasPutIntoHandThisWay", "args": Permanents }
 | { "_Condition": "APermanentWasPutIntoPlayersGraveyardThisTurn", "args": [Permanents, Player] }
 | { "_Condition": "APermanentWasPutOntoTheBattlefieldByPlayerThisWay", "args": [Permanents, Player] }
-| { "_Condition": "APermanentWasPutOntoTheBattlefieldThisWay", "args": Permanents }
 | { "_Condition": "APermanentWasReturnedToPlayersHandThisTurn", "args": [Permanents, Player] }
 | { "_Condition": "APermanentWasSacrificedThisWay", "args": Permanents }
 | { "_Condition": "APermanentWasntSacrificedThisWay", "args": Permanents }
