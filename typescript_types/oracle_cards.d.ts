@@ -2277,6 +2277,7 @@ type Condition =
 | { "_Condition": "ANumberOfTokensWereCreatedThisWay", "args": Comparison }
 | { "_Condition": "APermanentAttackedThisCombat", "args": Permanents }
 | { "_Condition": "APermanentDiesThisWay", "args": Permanents }
+| { "_Condition": "APermanentEnteredTheBattlefieldThisTurn", "args": Permanents }
 | { "_Condition": "APermanentEnteredTheBattlefieldUnderAPlayersControlThisTurn", "args": [Permanents, Players] }
 | { "_Condition": "APermanentEnteredTheBattlefieldUnderPlayersControlThisTurn", "args": [Permanents, Player] }
 | { "_Condition": "APermanentExploredThisTurn", "args": Permanents }

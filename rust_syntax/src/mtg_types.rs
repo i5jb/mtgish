@@ -4475,6 +4475,7 @@ pub enum Condition {
   ANumberOfTokensWereCreatedThisWay(Box<Comparison>),
   APermanentAttackedThisCombat(Box<Permanents>),
   APermanentDiesThisWay(Box<Permanents>),
+  APermanentEnteredTheBattlefieldThisTurn(Box<Permanents>),
   APermanentEnteredTheBattlefieldUnderAPlayersControlThisTurn(Box<Permanents>, Box<Players>),
   APermanentEnteredTheBattlefieldUnderPlayersControlThisTurn(Box<Permanents>, Box<Player>),
   APermanentExploredThisTurn(Box<Permanents>),

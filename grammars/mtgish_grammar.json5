@@ -2121,8 +2121,9 @@
     "ANumberOfSourcesDealtDamageThisTurn({{COMPARISON}}, {{DAMAGE_SOURCES}})": "",
     "APermanentAttackedThisCombat({{PERMANENTS}})": "",
     "APermanentDiesThisWay({{PERMANENTS}})": "",
-    "APermanentEnteredTheBattlefieldUnderAPlayersControlThisTurn({{PERMANENTS}}, {{PLAYERS}})": "",
-    "APermanentEnteredTheBattlefieldUnderPlayersControlThisTurn({{PERMANENTS}}, {{PLAYER}})": "",
+    "APermanentEnteredTheBattlefieldThisTurn({{PERMANENTS}})": "",
+    "APermanentEnteredTheBattlefieldUnderAPlayersControlThisTurn({{PERMANENTS}}, {{PLAYERS}})": "", // Get rid of this in favor of APermanentEnteredTheBattlefieldThisTurn()
+    "APermanentEnteredTheBattlefieldUnderPlayersControlThisTurn({{PERMANENTS}}, {{PLAYER}})": "", // Get rid of this in favor of APermanentEnteredTheBattlefieldThisTurn()
     "APermanentExploredThisTurn({{PERMANENTS}})": "",
     "APermanentLeftTheBattlefieldThisTurn({{PERMANENTS}})": "",
     "APermanentOfTypeWasPutOntoTheBattlefieldThisWay({{PERMANENTS}})": "",
