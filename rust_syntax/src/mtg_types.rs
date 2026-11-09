@@ -2085,7 +2085,7 @@ pub enum PlayerEffect {
   CantBeCausedToExilePermanentsByAbilities(Box<Permanents>, Abilities),
   MayCastASpellFromGraveyardWithEffect(Box<Spells>, Box<Player>, Vec<SpellEffect>),
   SpellsCastFromExileHaveAbility(Box<Spells>, Vec<SpellEffect>),
-  MayCastASpellFromAmongExiledCardsAndMaySpendManaAsThoughAnyColorToCastOnceEachPlayersTurn(Box<Spells>, CardsInExile, Box<Player>),
+  MayCastASpellFromAmongExiledCardsAndMaySpendManaAsThoughAnyTypeToCastOnceEachPlayersTurn(Box<Spells>, CardsInExile, Box<Player>),
   MayCastASpellFromAmongExiledCardsWithEffect(Box<Spells>, CardsInExile, Vec<SpellEffect>),
   DrawsCardsFromBottomOfTheirLibrary,
   MayPlayExiledCardAndMaySpendManaAsThoughAnyTypeToCast(Box<CardInExile>),
@@ -4825,6 +4825,7 @@ pub enum Cost {
   CastGraveyardCardWithoutPaying(Box<CardInGraveyards>),
   CastSpellFromExile(Box<Spells>, CardInExile),
   CastSpellFromExileWithoutPaying(Box<Spells>, CardInExile),
+  CastSpellsFromExileWithoutPaying(Box<Spells>, Box<CardsInExile>),
   CastTopCardOfLibraryWithoutPaying,
   CastTopSpellOfLibraryWithoutPaying(Box<Spells>),
   ChooseACardFromPlayersRevealedHand(Box<CardsInHand>, Box<Player>),
@@ -8079,6 +8080,7 @@ pub enum SpellOrAbility {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_CardsInLibrary", content = "args"))]
 pub enum CardsInLibrary {
   SharesACardtypeWithSpell(Box<Spell>),
+  SharesANameWithGraveyardCard(Box<CardInGraveyards>),
   DoesntShareANameWithSpell(Box<Spell>),
 
   RevealedFromLibraryThisWay,
@@ -9075,7 +9077,7 @@ pub enum Action {
   Bolster(Box<GameNumber>),
   BoonDealsDamage(Boon, Box<GameNumber>, Box<DamageRecipient>),
   CastACopiedCardWithoutPaying,
-  CastASpellAndMaySpendManaAsThoughAnyColorToCast(Box<Spells>),
+  CastASpellAndMaySpendManaAsThoughAnyTypeToCast(Box<Spells>),
   CastASpellDrawnThisWayWithoutPaying,
   CastASpellFromAPlayersGraveyardWithoutPayingIntoExile(Box<Spells>, Box<Players>),
   CastASpellFromExile(Box<Spells>, CardsInExile),

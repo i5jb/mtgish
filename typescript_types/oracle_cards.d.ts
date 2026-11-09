@@ -222,7 +222,7 @@ type Action =
 | { "_Action": "Bolster", "args": GameNumber }
 | { "_Action": "BoonDealsDamage", "args": [Boon, GameNumber, DamageRecipient] }
 | { "_Action": "CastACopiedCardWithoutPaying" }
-| { "_Action": "CastASpellAndMaySpendManaAsThoughAnyColorToCast", "args": Spells }
+| { "_Action": "CastASpellAndMaySpendManaAsThoughAnyTypeToCast", "args": Spells }
 | { "_Action": "CastASpellDrawnThisWayWithoutPaying" }
 | { "_Action": "CastASpellFromAPlayersGraveyardWithoutPayingIntoExile", "args": [Spells, Players] }
 | { "_Action": "CastASpellFromExile", "args": [Spells, CardsInExile] }
@@ -1933,6 +1933,7 @@ type CardsInHand =
 | { "_CardsInHand": "TheChosenCardsInHand" };
 type CardsInLibrary =
 | { "_CardsInLibrary": "SharesACardtypeWithSpell", "args": Spell }
+| { "_CardsInLibrary": "SharesANameWithGraveyardCard", "args": CardInGraveyards }
 | { "_CardsInLibrary": "DoesntShareANameWithSpell", "args": Spell }
 | { "_CardsInLibrary": "RevealedFromLibraryThisWay" }
 | { "_CardsInLibrary": "RevealedFromPlayersLibraryThisWay", "args": Player }
@@ -2516,6 +2517,7 @@ type Cost =
 | { "_Cost": "CastGraveyardCardWithoutPaying", "args": CardInGraveyards }
 | { "_Cost": "CastSpellFromExile", "args": [Spells, CardInExile] }
 | { "_Cost": "CastSpellFromExileWithoutPaying", "args": [Spells, CardInExile] }
+| { "_Cost": "CastSpellsFromExileWithoutPaying", "args": [Spells, CardsInExile] }
 | { "_Cost": "CastTopCardOfLibraryWithoutPaying" }
 | { "_Cost": "CastTopSpellOfLibraryWithoutPaying", "args": Spells }
 | { "_Cost": "ChooseACardFromPlayersRevealedHand", "args": [CardsInHand, Player] }
@@ -5784,7 +5786,7 @@ type PlayerEffect =
 | { "_PlayerEffect": "CantBeCausedToExilePermanentsByAbilities", "args": [Permanents, Abilities] }
 | { "_PlayerEffect": "MayCastASpellFromGraveyardWithEffect", "args": [Spells, Player, Array<SpellEffect>] }
 | { "_PlayerEffect": "SpellsCastFromExileHaveAbility", "args": [Spells, Array<SpellEffect>] }
-| { "_PlayerEffect": "MayCastASpellFromAmongExiledCardsAndMaySpendManaAsThoughAnyColorToCastOnceEachPlayersTurn", "args": [Spells, CardsInExile, Player] }
+| { "_PlayerEffect": "MayCastASpellFromAmongExiledCardsAndMaySpendManaAsThoughAnyTypeToCastOnceEachPlayersTurn", "args": [Spells, CardsInExile, Player] }
 | { "_PlayerEffect": "MayCastASpellFromAmongExiledCardsWithEffect", "args": [Spells, CardsInExile, Array<SpellEffect>] }
 | { "_PlayerEffect": "DrawsCardsFromBottomOfTheirLibrary" }
 | { "_PlayerEffect": "MayPlayExiledCardAndMaySpendManaAsThoughAnyTypeToCast", "args": CardInExile }

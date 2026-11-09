@@ -11797,8 +11797,11 @@ Card(
       IfElse(
         PlayerPassesFilter(
           You,
-          ControlsMorePermanentsThanEachPlayer(
-            AnyPlayer,
+          ControlsNum(
+            GreaterThan(TheGreatestNumberOfPermanentsControlledAmongPlayers(
+              IsCardtype(Creature),
+              Other(You),
+            )),
             IsCardtype(Creature),
           ),
         ),
@@ -106239,7 +106242,7 @@ Card(
         If(
           PlayerPassesFilter(
             Trigger_ThatPlayer,
-            HasHighestNumberOfCardsInHandAmongPlayers(Other(Trigger_ThatPlayer)),
+            NumCardsInHandIs(GreaterThan(TheHighestNumberOfCardsInHandAmongPlayers(Other(Trigger_ThatPlayer)))),
           ),
           [
             DrawACard,
@@ -106248,8 +106251,11 @@ Card(
         If(
           PlayerPassesFilter(
             Trigger_ThatPlayer,
-            ControlsMorePermanentsThanEachPlayer(
-              AnyPlayer,
+            ControlsNum(
+              GreaterThan(TheGreatestNumberOfPermanentsControlledAmongPlayers(
+                IsCardtype(Land),
+                Other(Trigger_ThatPlayer),
+              )),
               IsCardtype(Land),
             ),
           ),
@@ -106263,9 +106269,9 @@ Card(
           ],
         ),
         If(
-          NoPlayersPassFilter(
-            Other(Trigger_ThatPlayer),
-            LifeTotalIs(GreaterThan(LifeTotalOfPlayer(Trigger_ThatPlayer))),
+          PlayerPassesFilter(
+            Trigger_ThatPlayer,
+            LifeTotalIs(GreaterThan(HighestLifeTotalAmongPlayers(Other(Trigger_ThatPlayer)))),
           ),
           [
             GainLife(Integer(3)),
@@ -116533,7 +116539,10 @@ Card(
       ActionList([
         ChooseAPermanentForEachPlayer(
           Opponent,
-          IsCardtype(Creature),
+          And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
         ),
         ChooseAPermanent(TheChosenPermanents),
         CreateTokens(
@@ -116546,10 +116555,10 @@ Card(
                   TotalToughnessOfPermanents(ThePermanentsChosenThisWay),
                 )),
                 SetColor(Colorless),
-                AddCreatureTypes([
-                  Zombie,
+                SetCreatureTypes([
+                  Eldrazi,
                 ]),
-                AddCardtypes([
+                SetCardtypes([
                   Creature,
                 ]),
               ]),
@@ -120608,16 +120617,19 @@ Adventurer(
     Rules: [
       SpellActions(Targeted(
         [
-          TargetPermanent(IsNonCardtype(Land)),
-          TargetPermanent(And([
-            Other(Ref_TargetPermanent1),
-            SharesACardtypeWithPermanent(Ref_TargetPermanent1),
-          ])),
+          NumberTargetGroupPermanents(
+            Integer(2),
+            And([
+              IsNonCardtype(Land),
+              IsPermanent,
+            ]),
+            ShareACardType,
+          ),
         ],
         ActionList([
           ExchangeControl(
-            Ref_TargetPermanent1,
-            Ref_TargetPermanent2,
+            Ref_TargetPermanents_0,
+            Ref_TargetPermanents_1,
           ),
         ]),
       )),
@@ -162999,7 +163011,7 @@ Card(
         Opponent,
       ),
       PlayerPassesFilter(
-        Trigger_ThatPlayer,
+        Trigger_ThatOtherPlayer,
         LifeTotalIs(GreaterThan(LowestLifeTotalAmongPlayers(Opponent))),
       ),
       ActionList([
@@ -175162,7 +175174,7 @@ Card(
           ActionList([
             Exile(
               [
-                EachCardInGraveyards(InAPlayersGraveyard(SinglePlayer(OwnerOfGraveyrdCard(Trigger_ThatGraveyardCard)))),
+                EachCardInGraveyards(InAPlayersGraveyard(SinglePlayer(ControllerOfPermanent(Trigger_ThatPermanent)))),
               ],
               [],
             ),
@@ -190062,7 +190074,7 @@ Card(
             [
               SetArtifactType(Vehicle),
               SetCardtype(Artifact),
-              SetPowerAndToughnessBoth(ManaValueOfPermanent(ThisPermanent)),
+              SetPowerAndToughnessBoth(ManaValueOfPermanent(Ref_TargetPermanent)),
               AddAbility([
                 Crew(2),
               ]),
@@ -224122,7 +224134,7 @@ Card(
         [
           TargetGraveyardCard(And([
             IsCardtype(Creature),
-            ManaValueIs(LessThanOrEqualTo(ValueX)),
+            ManaValueIs(EqualTo(ValueX)),
             InAPlayersGraveyard(SinglePlayer(You)),
           ])),
         ],
@@ -279266,7 +279278,7 @@ Card(
         CreatePlayerEffectUntil(
           You,
           [
-            MayCastExiledCardAndMaySpendManaAsThoughAnyColorToCast(TheCardExiledThisWay),
+            MayPlayExiledCardAndMaySpendManaAsThoughAnyColorToCast(TheCardExiledThisWay),
           ],
           UntilCardIsNoLongerExiled(TheCardExiledThisWay),
         ),
@@ -299564,7 +299576,7 @@ Card(
           [
             TheTopNumberCardsOfPlayersLibrary(
               PowerOfDeadPermanent,
-              ControllerOfDeadPermanent,
+              OwnerOfPermanent(Trigger_ThatPermanent),
             ),
           ],
           [],
@@ -327233,7 +327245,7 @@ Card(
         PermanentDealsDamage(
           ThisPermanent,
           Integer(2),
-          Player(Trigger_ThatPlayer),
+          Player(ControllerOfPermanent(Trigger_ThatPermanent)),
         ),
       ]),
     ),
@@ -327658,7 +327670,7 @@ Card(
         ActionList([
           PutPermanentIntoItsOwnersHand(Ref_TargetPermanent),
           PlayerAction(
-            ControllerOfTargetPermanent,
+            OwnerOfPermanent(Ref_TargetPermanent),
             DiscardACard,
           ),
         ]),
@@ -328298,7 +328310,7 @@ Card(
           CreatePlayerEffectUntil(
             You,
             [
-              MayCastExiledCardAndMaySpendManaAsThoughAnyColorToCast(TheCardExiledThisWay),
+              MayCastExiledCardAndMaySpendManaAsThoughAnyTypeToCastIntoExile(TheCardExiledThisWay),
             ],
             UntilEndOfTurn,
           ),
@@ -364101,7 +364113,7 @@ Card(
   Rules: [
     SpellActions(ActionList([
       ChooseUptoOnePermanent(IsCardtype(Creature)),
-      DestroyEachPermanent(Other(ThePermanentChosenThisWay)),
+      DestroyEachPermanent(ThePermanentsNotChosenThisWay),
     ])),
   ],
 )
@@ -397071,6 +397083,7 @@ Card(
         AttachPermanentToAPermanent(
           Ref_TargetPermanent,
           And([
+            Other(HostPermanentOf(Ref_TargetPermanent)),
             Or([
               IsCardtype(Creature),
               IsCardtype(Land),
@@ -422861,9 +422874,9 @@ Card(
       ],
       ActionList([
         SearchPlayersLibraryAndGraveyardAndHand(
-          OwnerOfExiledCard(TheCardExiledThisWay),
+          OwnerOfGraveyrdCard(Ref_TargetGraveyardCard),
           [
-            FindAllCardsOfType(SharesANameWithExiled(TheCardExiledThisWay)),
+            FindAllCardsOfType(SharesANameWithGraveyardCard(Ref_TargetGraveyardCard)),
             ExileFoundCards,
             Shuffle,
           ],
@@ -452398,6 +452411,7 @@ Card(
           ThisPermanent,
           Integer(1),
           EachPermanent(And([
+            Other(ThisPermanent),
             IsCardtype(Creature),
             DoesntHaveAbility(Flying),
           ])),
@@ -557751,8 +557765,11 @@ Card(
       AtTheBeginningOfAPlayersUpkeep(AnyPlayer),
       PlayerPassesFilter(
         Trigger_ThatPlayer,
-        ControlsMorePermanentsThanEachPlayer(
-          AnyPlayer,
+        ControlsNum(
+          GreaterThan(TheGreatestNumberOfPermanentsControlledAmongPlayers(
+            IsCardtype(Land),
+            Other(Trigger_ThatPlayer),
+          )),
           IsCardtype(Land),
         ),
       ),
@@ -582759,6 +582776,7 @@ Card(
           ThisPermanent,
           Integer(1),
           EachPermanent(And([
+            Other(ThisPermanent),
             IsCardtype(Creature),
             HasAbility(Flying),
           ])),
@@ -620339,7 +620357,7 @@ Card(
           CreatePlayerEffectUntil(
             You,
             [
-              MayCastExiledCardAndMaySpendManaAsThoughAnyColorToCast(TheCardExiledThisWay),
+              MayCastExiledCardAndMaySpendManaAsThoughAnyTypeToCast(TheCardExiledThisWay),
             ],
             UntilCardIsNoLongerExiled(TheCardExiledThisWay),
           ),
@@ -632117,7 +632135,7 @@ Card(
     EachPlayerEffect(
       AnyPlayer,
       [
-        MayCastASpellFromAmongExiledCardsAndMaySpendManaAsThoughAnyColorToCastOnceEachPlayersTurn(
+        MayCastASpellFromAmongExiledCardsAndMaySpendManaAsThoughAnyTypeToCastOnceEachPlayersTurn(
           AnySpell,
           And([
             OwnedByAPlayer(Other(ActionPlayer)),
@@ -745562,7 +745580,7 @@ Card(
   Rules: [
     SpellActions(ActionList([
       ChooseAPermanentAtRandom(IsCardtype(Creature)),
-      DestroyEachPermanent(Other(ThePermanentChosenThisWay)),
+      DestroyEachPermanent(ThePermanentsNotChosenThisWay),
     ])),
   ],
 )
@@ -758473,7 +758491,7 @@ Card(
       CreatePlayerEffectUntil(
         You,
         [
-          MayPlayExiledCardsAndMaySpendManaAsThoughAnyColorToCast(TheCardsExiledThisWay),
+          MayPlayExiledCardsAndMaySpendManaAsThoughAnyTypeToCast(TheCardsExiledThisWay),
         ],
         UntilTheEndOfPlayersNextTurn(You),
       ),
@@ -765023,7 +765041,7 @@ Transforming(
                 IsNonSupertype(Legendary),
                 IsCardtype(Creature),
               ]),
-              ManaValueIs(LessThanOrEqualTo(ValueX)),
+              ManaValueIs(EqualTo(ValueX)),
               InAPlayersGraveyard(SinglePlayer(You)),
             ])),
           ],
@@ -865195,7 +865213,7 @@ Card(
           Integer(2),
           IsCardtype(Creature),
         ),
-        DestroyEachPermanent(ExceptFor(ThePermanentsChosenThisWay)),
+        DestroyEachPermanent(ThePermanentsNotChosenThisWay),
       ]),
       ActivateOnlyAsASorcery,
     ),
@@ -908970,7 +908988,7 @@ Card(
         CreatePlayerEffectUntil(
           You,
           [
-            MayActionOnce(CastASpellAndMaySpendManaAsThoughAnyColorToCast(AnySpell)),
+            MayActionOnce(CastASpellAndMaySpendManaAsThoughAnyTypeToCast(AnySpell)),
           ],
           UntilEndOfTurn,
         ),
@@ -961137,9 +961155,12 @@ Card(
       ActionList([
         PlayerAction(
           Ref_TargetPlayer,
-          DrawNumberCards(HalfRoundedUp(NumCardsInPlayersLibrary(ActionPlayer))),
+          DrawNumberCards(HalfRoundedUp(NumCardsInPlayersLibrary(Ref_TargetPlayer))),
         ),
-        LoseLife(HalfRoundedUp(LifeTotalOfPlayer(ActionPlayer))),
+        PlayerAction(
+          Ref_TargetPlayer,
+          LoseLife(HalfRoundedUp(LifeTotalOfPlayer(Ref_TargetPlayer))),
+        ),
       ]),
     )),
   ],
@@ -993428,7 +993449,7 @@ Card(
                   You,
                   [
                     MayLookAtFaceDownExiledCard(TheCardExiledThisWay),
-                    MayCastExiledCardAndMaySpendManaAsThoughAnyColorToCast(TheCardExiledThisWay),
+                    MayPlayExiledCardAndMaySpendManaAsThoughAnyColorToCast(TheCardExiledThisWay),
                   ],
                   UntilCardIsNoLongerExiled(TheCardExiledThisWay),
                 ),
@@ -1046699,7 +1046720,7 @@ Card(
             Ref_TargetPlayer,
             [
               EntersTapped,
-              EntersUnderOwnersControl,
+              EntersUnderPlayersControl(You),
             ],
           ),
           CreatePermanentLayerEffect(
@@ -1056101,7 +1056122,7 @@ Card(
               IsCardtype(Creature),
               OwnerOfPermanent(Trigger_ThatPermanent),
               [
-                EntersUnderPlayersControl(ControllerOfPermanent(Trigger_ThatPermanent)),
+                EntersUnderPlayersControl(OwnerOfPermanent(Trigger_ThatPermanent)),
               ],
             ),
           ]),
@@ -1083768,8 +1083789,11 @@ Card(
       AtTheBeginningOfAPlayersUpkeep(AnyPlayer),
       PlayerPassesFilter(
         Trigger_ThatPlayer,
-        ControlsMorePermanentsThanEachPlayer(
-          AnyPlayer,
+        ControlsNum(
+          GreaterThan(TheGreatestNumberOfPermanentsControlledAmongPlayers(
+            IsCardtype(Land),
+            Other(Trigger_ThatPlayer),
+          )),
           IsCardtype(Land),
         ),
       ),
@@ -1106221,7 +1106245,7 @@ Card(
         [
           TargetGraveyardCard(And([
             IsEnchantmentType(Saga),
-            ManaValueIs(LessThanOrEqualTo(ValueX)),
+            ManaValueIs(EqualTo(ValueX)),
             InAPlayersGraveyard(SinglePlayer(You)),
           ])),
         ],
@@ -1135267,6 +1135291,7 @@ Card(
           ThisPermanent,
           Integer(6),
           EachPermanent(And([
+            Other(ThisPermanent),
             IsCardtype(Creature),
             HasAbility(Flying),
           ])),
@@ -1172623,16 +1172648,16 @@ Card(
   Rules: [
     SpellActions(Targeted(
       [
-        TargetPermanent(AnyPermanent),
-        TargetPermanent(And([
-          Other(Ref_TargetPermanent1),
-          SharesACardtypeWithPermanent(Ref_TargetPermanent1),
-        ])),
+        NumberTargetGroupPermanents(
+          Integer(2),
+          IsPermanent,
+          ShareACardType,
+        ),
       ],
       ActionList([
         ExchangeControl(
-          Ref_TargetPermanent1,
-          Ref_TargetPermanent2,
+          Ref_TargetPermanents_0,
+          Ref_TargetPermanents_1,
         ),
       ]),
     )),
@@ -1178093,6 +1178118,7 @@ Card(
     EquipWithModifiers(
       IsCardtype(Creature),
       SacrificeAPermanent(And([
+        Other(ThisPermanent),
         IsNonCardtype(Land),
         IsPermanent,
       ])),
@@ -1214311,13 +1214337,13 @@ Card(
     Hideaway(4),
     TriggerA(
       WhenACreatureDealsCombatDamageToAPlayer(
-        SinglePermanent(HostPermanent),
+        SinglePermanent(ThisPermanent),
         AnyPlayer,
       ),
       ActionList([
-        MayCost(CastSpellFromExileWithoutPaying(
+        MayCost(CastSpellsFromExileWithoutPaying(
           AnySpell,
-          TheExiledCard,
+          TheExiledCards,
         )),
         If(
           CostWasPaid,
@@ -1225322,7 +1225348,7 @@ Card(
         [
           TargetGraveyardCard(And([
             IsCardtype(Creature),
-            ManaValueIs(LessThanOrEqualTo(ValueX)),
+            ManaValueIs(EqualTo(ValueX)),
             InAPlayersGraveyard(SinglePlayer(You)),
           ])),
         ],
@@ -1296992,9 +1297018,9 @@ Card(
       ],
       ActionList([
         SearchPlayersLibraryAndGraveyardAndHand(
-          OwnerOfExiledCard(TheCardExiledThisWay),
+          OwnerOfGraveyrdCard(Ref_TargetGraveyardCard),
           [
-            FindAnyNumberOfCardsOfType(SharesANameWithExiled(TheCardExiledThisWay)),
+            FindAnyNumberOfCardsOfType(SharesANameWithGraveyardCard(Ref_TargetGraveyardCard)),
             ExileFoundCards,
             Shuffle,
           ],
@@ -1324381,6 +1324407,7 @@ Card(
             PutExiledCardOntoBattlefield(
               TheCardExiledThisWay,
               [
+                EntersUnderOwnersControl,
                 IfPassesFilter(
                   IsCardtype(Creature),
                   [
@@ -1347166,7 +1347193,10 @@ Card(
       ActionList([
         ChooseAPermanentForEachPlayer(
           AnyPlayer,
-          IsCardtype(Creature),
+          And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(SinglePlayer(EachablePlayer)),
+          ]),
         ),
         EachPlayerAction(
           AnyPlayer,
@@ -1358235,7 +1358265,7 @@ Transforming(
                     IsCardtype(Creature),
                     InAPlayersGraveyard(SinglePlayer(Trigger_ThatPlayer)),
                   ]),
-                  TotalManaValueIs(EqualTo(ValueX)),
+                  TotalManaValueIs(LessThanOrEqualTo(ValueX)),
                 ),
               ],
               ActionList([
@@ -1366007,7 +1366037,7 @@ Card(
         CreatePlayerEffectUntil(
           You,
           [
-            MayCastExiledCardAndMaySpendManaAsThoughAnyColorToCast(TheCardExiledThisWay),
+            MayCastExiledCardAndMaySpendManaAsThoughAnyTypeToCast(TheCardExiledThisWay),
           ],
           UntilCardIsNoLongerExiled(TheCardExiledThisWay),
         ),
@@ -1438421,6 +1438451,7 @@ Transforming(
             And([
               IsCardtype(Creature),
               PowerIs(LessThanOrEqualTo(Integer(2))),
+              ControlledByAPlayer(SinglePlayer(EachablePlayer)),
             ]),
           ),
           DestroyEachPermanent(And([
@@ -1451368,7 +1451399,7 @@ Card(
             PutExiledCardOntoBattlefield(
               TheCardExiledThisWay,
               [
-                EntersNormally,
+                EntersUnderOwnersControl,
               ],
             ),
             If(
@@ -1544165,6 +1544196,7 @@ Card(
         MayAction(PutGraveyardCardOntoBattlefield(
           Trigger_ThatGraveyardCard,
           [
+            EntersUnderOwnersControl,
             EntersAsFaceDownLand(Forest),
           ],
         )),
