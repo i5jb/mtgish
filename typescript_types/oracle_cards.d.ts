@@ -2590,7 +2590,6 @@ type Cost =
 | { "_Cost": "MillACard" }
 | { "_Cost": "MillNumberCards", "args": GameNumber }
 | { "_Cost": "MoveCounters", "args": Array<MoveCountersCost> }
-| { "_Cost": "PayAnyAmountOfEnergy" }
 | { "_Cost": "PayAnyAmountOfLife" }
 | { "_Cost": "PayAnyAmountOfMana" }
 | { "_Cost": "PayEnergy", "args": GameNumber }
@@ -5119,6 +5118,8 @@ type Permanents =
 | { "_Permanents": "DidntExertThisTurn" }
 | { "_Permanents": "DoesntHaveAName" }
 | { "_Permanents": "DoesntHaveAbility", "args": CheckHasable }
+| { "_Permanents": "DoesntShareANameWithAnotherPermanent", "args": Permanents }
+| { "_Permanents": "SharesANameWithAnotherPermanent", "args": Permanents }
 | { "_Permanents": "DoesntShareACreatureTypeWithPermanent", "args": Permanent }
 | { "_Permanents": "DoesntShareANameWithACardInPlayersGraveyard", "args": [Cards, Player] }
 | { "_Permanents": "DoesntShareANameWithAPermanent", "args": Permanents }
@@ -5322,7 +5323,7 @@ type Permanents =
 | { "_Permanents": "SharesANameOriginallyPrintedInHomelands" }
 | { "_Permanents": "SharesANameWithAPermanent", "args": Permanents }
 | { "_Permanents": "SharesANameWithAPermanentThatDealtDamageToPlayerLastTurn", "args": Player }
-| { "_Permanents": "SharesANameWithCardInPlayersGraveyard", "args": [Cards, Player] }
+| { "_Permanents": "SharesANameWithACardInGraveyards", "args": CardsInGraveyards }
 | { "_Permanents": "SharesANameWithExiled", "args": CardInExile }
 | { "_Permanents": "SharesANameWithGraveyardCard", "args": CardInGraveyards }
 | { "_Permanents": "SharesANameWithPermanent", "args": Permanent }

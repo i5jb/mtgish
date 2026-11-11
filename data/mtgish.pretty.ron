@@ -14752,7 +14752,7 @@ Card(
       TapPermanent(ThisPermanent),
       ActionList([
         GetEnergy(Integer(1)),
-        MayCost(PayAnyAmountOfEnergy),
+        MayCost(PayOneOrMoreEnergy),
         If(
           CostWasPaid,
           [
@@ -20834,7 +20834,7 @@ Card(
           ],
           [
             EntersTapped,
-            EntersAttackingPlayer(ActionForEachPlayer_ThatPlayer),
+            EntersAttackingPlayer(EachablePlayer),
           ],
         ),
       ]),
@@ -21781,7 +21781,7 @@ Card(
         CreatePermanentLayerEffect(
           Trigger_ThatOtherCreature,
           [
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
             ])),
           ],
@@ -21797,7 +21797,7 @@ Card(
         CreatePermanentLayerEffect(
           Trigger_TheBlockingCreature,
           [
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
             ])),
           ],
@@ -33461,7 +33461,10 @@ Card(
           TargetPlayer(AnyPlayer),
         ],
         ActionList([
-          MillNumberCards(PowerOfTheSacrificedCreature),
+          PlayerAction(
+            Ref_TargetPlayer,
+            MillNumberCards(PowerOfTheSacrificedCreature),
+          ),
         ]),
       ),
     ),
@@ -35630,7 +35633,7 @@ Card(
           1,
           1,
         )),
-        AddColor(SimpleColorList([
+        SetColor(SimpleColorList([
           Green,
         ])),
         AddCreatureType(Elf),
@@ -42434,7 +42437,7 @@ Card(
               3,
               3,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               White,
             ])),
             AddCreatureType(Angel),
@@ -74507,7 +74510,7 @@ Card(
                             4,
                             4,
                           )),
-                          AddColor(SimpleColorList([
+                          SetColor(SimpleColorList([
                             Black,
                           ])),
                           AddCreatureTypes([
@@ -76387,10 +76390,8 @@ Card(
               4,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Red,
-            ])),
-            AddColor(SimpleColorList([
               Green,
             ])),
             AddCreatureType(Dragon),
@@ -78969,12 +78970,15 @@ Card(
           TargetPlayer(AnyPlayer),
         ],
         ActionList([
-          SearchLibraryAndOrGraveyard([
-            FindACardOfType(IsNamed(NamedCard("Ezio, Blade of Vengeance"))),
-            RevealFoundCards,
-            PutFoundCardsIntoHand,
-            ShuffleLibraryIfSearched,
-          ]),
+          PlayerAction(
+            Ref_TargetPlayer,
+            SearchLibraryAndOrGraveyard([
+              FindACardOfType(IsNamed(NamedCard("Ezio, Blade of Vengeance"))),
+              RevealFoundCards,
+              PutFoundCardsIntoHand,
+              ShuffleLibraryIfSearched,
+            ]),
+          ),
         ]),
       ),
     ])),
@@ -87815,7 +87819,7 @@ Card(
                 4,
                 5,
               )),
-              AddColor(SimpleColorList([
+              SetColor(SimpleColorList([
                 Green,
               ])),
               AddCreatureType(Treefolk),
@@ -90336,10 +90340,8 @@ Card(
               2,
               2,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               White,
-            ])),
-            AddColor(SimpleColorList([
               Blue,
             ])),
             AddCreatureType(Bird),
@@ -94259,7 +94261,7 @@ Card(
                 2,
                 2,
               )),
-              AddColor(SimpleColorList([
+              SetColor(SimpleColorList([
                 Blue,
               ])),
               AddCreatureType(Elemental),
@@ -117371,7 +117373,7 @@ Card(
             AdjustPTX(
               PlusX,
               Zero,
-              PowerOfPermanent(ActionPermanent),
+              PowerOfPermanent(Ref_TargetPermanent),
             ),
           ],
           UntilEndOfTurn,
@@ -153374,10 +153376,8 @@ Card(
               1,
               1,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Red,
-            ])),
-            AddColor(SimpleColorList([
               White,
             ])),
             AddCreatureType(Soldier),
@@ -180712,7 +180712,7 @@ Card(
           ThisPermanent,
           [
             SetPowerAndToughnessBoth(TheGreatestManaValueOfACommanderInTheCommandZoneOrOnTheBattlefield(OwnedByAPlayer(SinglePlayer(You)))),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
             ])),
             AddCreatureType(Plant),
@@ -200771,7 +200771,7 @@ Card(
               3,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               White,
             ])),
             AddCreatureType(Dragon),
@@ -202357,10 +202357,8 @@ Card(
               4,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               White,
-            ])),
-            AddColor(SimpleColorList([
               Blue,
             ])),
             AddCreatureType(Elemental),
@@ -237646,7 +237644,7 @@ Card(
           DrawNumberCards(Integer(2)),
           AwakenPermanent(
             Integer(4),
-            Ref_TargetPermanent2,
+            Ref_TargetPermanent,
           ),
         ]),
       )),
@@ -258900,7 +258898,7 @@ Card(
       ActionList([
         If(
           PlayerPassesFilter(
-            Trigger_ControllerOfThatSpell,
+            ControllerOfSpell(Ref_TargetSpell),
             Poisoned,
           ),
           [
@@ -264103,7 +264101,7 @@ Card(
           Integer(3),
         ),
         Earthbend(
-          Ref_TargetPermanent1,
+          Ref_TargetPermanent2,
           Integer(3),
         ),
         GainLife(Integer(3)),
@@ -267928,10 +267926,8 @@ Card(
               3,
               2,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Blue,
-            ])),
-            AddColor(SimpleColorList([
               Black,
             ])),
             AddCreatureType(Elemental),
@@ -270268,7 +270264,7 @@ Card(
           RepeatableActions([
             FlipACoin_OnWinAndLose(
               [
-                DestroyPermanent(Ref_TargetPermanent2),
+                DestroyPermanent(Ref_TargetPermanent1),
               ],
               [
                 MayCost(PayMana([
@@ -315909,7 +315905,7 @@ Card(
               3,
               2,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Red,
             ])),
             AddCreatureType(Goblin),
@@ -326724,10 +326720,8 @@ Card(
               2,
               2,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Blue,
-            ])),
-            AddColor(SimpleColorList([
               Black,
             ])),
             AddCreatureType(Horror),
@@ -339883,7 +339877,7 @@ Card(
         ]),
         PermanentDealsDamage(
           Ref_TargetPermanent1,
-          PowerOfPermanent(ActionPermanent),
+          PowerOfPermanent(Ref_TargetPermanent1),
           Permanent(Ref_TargetPermanent2),
         ),
       ]),
@@ -358822,10 +358816,8 @@ Card(
               4,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
-            ])),
-            AddColor(SimpleColorList([
               White,
             ])),
             AddCreatureType(Dragon),
@@ -398182,7 +398174,7 @@ Card(
           ],
           [
             EntersTapped,
-            EntersAttackingPlayer(ActionForEachPlayer_ThatPlayer),
+            EntersAttackingPlayer(EachablePlayer),
           ],
         ),
       ]),
@@ -399280,7 +399272,7 @@ Card(
         ReturnDeadGraveyardCardToBattlefield([
           EntersUnderOwnersControl,
           EntersWithLayerEffect([
-            AddCardtype(Enchantment),
+            SetCardtype(Enchantment),
           ]),
         ]),
       ]),
@@ -399331,7 +399323,7 @@ Card(
         ReturnDeadGraveyardCardToBattlefield([
           EntersUnderOwnersControl,
           EntersWithLayerEffect([
-            AddCardtype(Enchantment),
+            SetCardtype(Enchantment),
           ]),
         ]),
       ]),
@@ -399398,7 +399390,7 @@ Card(
         ReturnDeadGraveyardCardToBattlefield([
           EntersUnderOwnersControl,
           EntersWithLayerEffect([
-            AddCardtype(Enchantment),
+            SetCardtype(Enchantment),
           ]),
         ]),
       ]),
@@ -399478,7 +399470,7 @@ Card(
         ReturnDeadGraveyardCardToBattlefield([
           EntersUnderOwnersControl,
           EntersWithLayerEffect([
-            AddCardtype(Enchantment),
+            SetCardtype(Enchantment),
           ]),
         ]),
       ]),
@@ -399672,7 +399664,7 @@ Card(
         ReturnDeadGraveyardCardToBattlefield([
           EntersUnderOwnersControl,
           EntersWithLayerEffect([
-            AddCardtype(Enchantment),
+            SetCardtype(Enchantment),
           ]),
         ]),
       ]),
@@ -399759,7 +399751,7 @@ Card(
         ReturnDeadGraveyardCardToBattlefield([
           EntersUnderOwnersControl,
           EntersWithLayerEffect([
-            AddCardtype(Enchantment),
+            SetCardtype(Enchantment),
           ]),
         ]),
       ]),
@@ -424594,7 +424586,7 @@ Card(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       ActionList([
         DestroyEachPermanentNoRegen(And([
-          SharesANameWithAPermanent(AnyPermanent),
+          SharesANameWithAnotherPermanent(AnyPermanent),
           ExceptFor(And([
             IsSupertype(Basic),
             IsCardtype(Land),
@@ -427574,7 +427566,7 @@ Card(
               2,
               1,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Blue,
             ])),
             AddCreatureType(Faerie),
@@ -472330,12 +472322,13 @@ Scheme(
               [],
             ),
           ],
-          [],
-        ),
-        CreateEachPermanentRuleEffect(
-          TheTokensCreatedThisWay,
           [
-            MustAttackPlayer(EachablePlayer),
+            EntersWithRuleEffectUntil(
+              [
+                MustAttackPlayer(EachablePlayer),
+              ],
+              UntilEndOfGame,
+            ),
           ],
         ),
       ]),
@@ -473039,7 +473032,7 @@ Card(
               1,
               5,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               White,
             ])),
             AddCreatureType(Soldier),
@@ -506781,7 +506774,7 @@ Card(
               4,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
             ])),
             AddCreatureType(Spirit),
@@ -506828,7 +506821,7 @@ Card(
               3,
               2,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Blue,
             ])),
             AddCreatureType(Spirit),
@@ -506878,7 +506871,7 @@ Card(
               2,
               2,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Black,
             ])),
             AddCreatureType(Spirit),
@@ -506944,7 +506937,7 @@ Card(
               2,
               5,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               White,
             ])),
             AddCreatureType(Spirit),
@@ -507056,7 +507049,7 @@ Card(
               6,
               1,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Red,
             ])),
             AddCreatureType(Spirit),
@@ -510882,7 +510875,7 @@ Card(
               2,
               1,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Red,
             ])),
             AddCreatureType(Warrior),
@@ -517433,7 +517426,7 @@ Card(
               5,
               5,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               White,
             ])),
             AddCreatureType(Soldier),
@@ -544648,10 +544641,8 @@ Card(
               2,
               2,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Black,
-            ])),
-            AddColor(SimpleColorList([
               Green,
             ])),
             AddCreatureType(Insect),
@@ -566903,10 +566894,8 @@ Card(
               3,
               2,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Red,
-            ])),
-            AddColor(SimpleColorList([
               Green,
             ])),
             AddCreatureType(Beast),
@@ -568406,7 +568395,7 @@ Card(
       PermanentPassesFilter(
         Trigger_ThatPermanent,
         And([
-          DoesntShareANameWithAPermanent(And([
+          DoesntShareANameWithAnotherPermanent(And([
             IsCardtype(Creature),
             ControlledByAPlayer(SinglePlayer(You)),
           ])),
@@ -575108,7 +575097,7 @@ Vanguard(
         CreateSpellEffect(
           Trigger_ThatSpell,
           [
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Black,
             ])),
             AddCreatureType(Zombie),
@@ -577999,7 +577988,7 @@ Card(
               7,
               7,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Blue,
             ])),
             AddCreatureType(Giant),
@@ -594994,7 +594983,7 @@ Card(
                 5,
                 5,
               )),
-              AddColor(SimpleColorList([
+              SetColor(SimpleColorList([
                 Green,
               ])),
               AddCreatureType(Plant),
@@ -599427,9 +599416,12 @@ Card(
           TargetPlayer(Opponent),
         ],
         ActionList([
-          MillCardsUntilACardOfTypeIsMilledOrUntilNumberCardsHaveBeenPutIntoGraveyardThisWay(
-            IsCardtype(Creature),
-            ValueX,
+          PlayerAction(
+            Ref_TargetPlayer,
+            MillCardsUntilACardOfTypeIsMilledOrUntilNumberCardsHaveBeenPutIntoGraveyardThisWay(
+              IsCardtype(Creature),
+              ValueX,
+            ),
           ),
           If(
             NumCardsHaveBeenMilledIntoGraveyardThisWay(
@@ -611034,10 +611026,8 @@ Card(
               2,
               2,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Black,
-            ])),
-            AddColor(SimpleColorList([
               Green,
             ])),
             AddCreatureType(Elemental),
@@ -611744,7 +611734,7 @@ Card(
               3,
               3,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Black,
             ])),
             AddCreatureType(Beholder),
@@ -622308,7 +622298,7 @@ Card(
         CreateEachPermanentLayerEffectUntil(
           And([
             IsCardtype(Creature),
-            ControlledByAPlayer(SinglePlayer(You)),
+            ControlledByAPlayer(SinglePlayer(Ref_TargetPlayer)),
           ]),
           [
             AdjustPT(
@@ -636699,7 +636689,7 @@ Card(
                 4,
                 4,
               )),
-              AddColor(SimpleColorList([
+              SetColor(SimpleColorList([
                 Red,
               ])),
               AddCreatureType(Elemental),
@@ -645904,10 +645894,16 @@ Card(
         IfElse(
           CastSpellPassesFilter(WasCastFromAPlayersGraveyard(AnyPlayer)),
           [
-            MillNumberCards(Twice(ValueX)),
+            PlayerAction(
+              Ref_TargetPlayer,
+              MillNumberCards(Twice(ValueX)),
+            ),
           ],
           [
-            MillNumberCards(ValueX),
+            PlayerAction(
+              Ref_TargetPlayer,
+              MillNumberCards(ValueX),
+            ),
           ],
         ),
       ]),
@@ -650572,7 +650568,7 @@ Card(
         CreateFutureTrigger(
           AtTheNextEndOfCombat,
           ActionList([
-            MustCost(DestroyPermanent(Trigger_ThatOtherCreature)),
+            MustCost(DestroyPermanent(Trigger_ThatOtherPermanent)),
             If(
               CostWasPaid,
               [
@@ -673867,10 +673863,8 @@ Card(
               2,
               1,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Blue,
-            ])),
-            AddColor(SimpleColorList([
               Red,
             ])),
             AddCreatureType(Elemental),
@@ -728092,10 +728086,8 @@ Card(
               4,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Black,
-            ])),
-            AddColor(SimpleColorList([
               Red,
             ])),
             AddCreatureType(Dragon),
@@ -742178,7 +742170,7 @@ Card(
           ThisPermanent,
           [
             SetPowerAndToughnessBoth(ValueX),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
             ])),
             AddCreatureType(Hydra),
@@ -747778,10 +747770,8 @@ Card(
               2,
               2,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Black,
-            ])),
-            AddColor(SimpleColorList([
               Red,
             ])),
             AddCreatureType(Elemental),
@@ -753204,7 +753194,7 @@ Card(
           PermanentDealsDamage(
             ThisPermanent,
             PowerOfPermanent(ThisPermanent),
-            EachPlayer(AnyPlayer),
+            Permanent(Ref_TargetPermanent),
           ),
         ]),
       ),
@@ -757341,14 +757331,14 @@ Card(
             IsCardtype(Creature),
             ControlledByAPlayer(SinglePlayer(You)),
             Or([
-              SharesANameWithAPermanent(And([
+              SharesANameWithAnotherPermanent(And([
                 IsCardtype(Creature),
                 ControlledByAPlayer(SinglePlayer(You)),
               ])),
-              SharesANameWithCardInPlayersGraveyard(
+              SharesANameWithACardInGraveyards(And([
                 IsCardtype(Creature),
-                You,
-              ),
+                InAPlayersGraveyard(SinglePlayer(You)),
+              ])),
             ]),
           ]),
           [
@@ -784168,10 +784158,8 @@ Card(
               3,
               3,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
-            ])),
-            AddColor(SimpleColorList([
               Blue,
             ])),
             AddCreatureType(Elemental),
@@ -789361,14 +789349,14 @@ Card(
           PermanentPassesFilter(
             Trigger_ThatCreature,
             Or([
-              SharesANameWithAPermanent(And([
+              SharesANameWithAnotherPermanent(And([
                 IsCardtype(Creature),
                 ControlledByAPlayer(SinglePlayer(You)),
               ])),
-              SharesANameWithCardInPlayersGraveyard(
+              SharesANameWithACardInGraveyards(And([
                 IsCardtype(Creature),
-                You,
-              ),
+                InAPlayersGraveyard(SinglePlayer(You)),
+              ])),
             ]),
           ),
           [
@@ -843124,7 +843112,7 @@ Card(
               ),
             ]),
             ActionList([
-              DestroyPermanent(Trigger_ThatCreature),
+              DestroyPermanent(Trigger_ThatPermanent),
             ]),
           ),
         ]),
@@ -878250,8 +878238,8 @@ Card(
               ControlledByAPlayer(SinglePlayer(EachablePlayer)),
             ]),
           ),
-          PlayerAction(
-            EachablePlayer,
+          EachPlayerAction(
+            AnyPlayer,
             SacrificeEachPermanent(And([
               Not(ThePermanentsChosenThisWay),
               IsNonCardtype(Land),
@@ -878260,33 +878248,28 @@ Card(
           ),
         ],
         [
-          ActionForEachPlayer(
+          EachPlayerAction(
             AnyPlayer,
-            [
-              PlayerAction(
-                EachablePlayer,
-                ChooseMultiplePermanentsAmoungPermanents(
-                  [
-                    IsCardtype(Artifact),
-                    IsCardtype(Creature),
-                    IsCardtype(Enchantment),
-                    IsCardtype(Planeswalker),
-                  ],
-                  And([
-                    IsNonCardtype(Land),
-                    ControlledByAPlayer(SinglePlayer(EachablePlayer)),
-                  ]),
-                ),
-              ),
-              PlayerAction(
-                EachablePlayer,
-                SacrificeEachPermanent(And([
-                  Not(ThePermanentsChosenThisWay),
-                  IsNonCardtype(Land),
-                  ControlledByAPlayer(SinglePlayer(EachablePlayer)),
-                ])),
-              ),
-            ],
+            ChooseMultiplePermanentsAmoungPermanents(
+              [
+                IsCardtype(Artifact),
+                IsCardtype(Creature),
+                IsCardtype(Enchantment),
+                IsCardtype(Planeswalker),
+              ],
+              And([
+                IsNonCardtype(Land),
+                ControlledByAPlayer(SinglePlayer(EachablePlayer)),
+              ]),
+            ),
+          ),
+          EachPlayerAction(
+            AnyPlayer,
+            SacrificeEachPermanent(And([
+              Not(ThePermanentsChosenThisWay),
+              IsNonCardtype(Land),
+              ControlledByAPlayer(SinglePlayer(EachablePlayer)),
+            ])),
           ),
         ],
       ),
@@ -881938,10 +881921,8 @@ Card(
               4,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
-            ])),
-            AddColor(SimpleColorList([
               White,
             ])),
             AddCreatureType(Insect),
@@ -889197,10 +889178,8 @@ Card(
               2,
               1,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Red,
-            ])),
-            AddColor(SimpleColorList([
               White,
             ])),
             AddCreatureType(Elemental),
@@ -893902,7 +893881,7 @@ Card(
           CreatePermanentLayerEffectUntil(
             Ref_TargetPermanent,
             [
-              AddColor(SimpleColorList([
+              SetColor(SimpleColorList([
                 Blue,
               ])),
               RemoveCardtype(Artifact),
@@ -923270,10 +923249,8 @@ Card(
               4,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               White,
-            ])),
-            AddColor(SimpleColorList([
               Blue,
             ])),
             AddCreatureType(Dragon),
@@ -940869,10 +940846,8 @@ Card(
               1,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               White,
-            ])),
-            AddColor(SimpleColorList([
               Black,
             ])),
             AddCreatureType(Thrull),
@@ -968321,36 +968296,39 @@ Card(
           TargetPlayer(Opponent),
         ],
         ActionList([
-          CreateTokens(
-            [
-              TokenWithPT(
-                PTX(
-                  X,
-                  X,
-                  TheTotalNumberOfCountersOfTypeAmongPermanents(
-                    PTCounter(
-                      1,
-                      1,
+          PlayerAction(
+            Ref_TargetPlayer,
+            CreateTokens(
+              [
+                TokenWithPT(
+                  PTX(
+                    X,
+                    X,
+                    TheTotalNumberOfCountersOfTypeAmongPermanents(
+                      PTCounter(
+                        1,
+                        1,
+                      ),
+                      SinglePermanent(ThisPermanent),
                     ),
-                    SinglePermanent(ThisPermanent),
                   ),
+                  Colors([
+                    Blue,
+                  ]),
+                  [],
+                  [
+                    Creature,
+                  ],
+                  SubtypesList([
+                    Orb,
+                  ]),
+                  [
+                    Flying,
+                  ],
                 ),
-                Colors([
-                  Blue,
-                ]),
-                [],
-                [
-                  Creature,
-                ],
-                SubtypesList([
-                  Orb,
-                ]),
-                [
-                  Flying,
-                ],
-              ),
-            ],
-            [],
+              ],
+              [],
+            ),
           ),
         ]),
       ),
@@ -974198,7 +974176,7 @@ Card(
               5,
               5,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Black,
             ])),
             AddCreatureType(Phyrexian),
@@ -974953,7 +974931,7 @@ Card(
     TriggerA(
       AtTheBeginningOfAPlayersEndStep(SinglePlayer(You)),
       ActionList([
-        MayCost(PayAnyAmountOfEnergy),
+        MayCost(PayOneOrMoreEnergy),
         If(
           CostWasPaid,
           [
@@ -989487,7 +989465,7 @@ Card(
         CreatePermanentLayerEffect(
           ThisPermanent,
           [
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Black,
             ])),
             AddCreatureType(Demon),
@@ -1027650,10 +1027628,8 @@ Card(
               3,
               3,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Red,
-            ])),
-            AddColor(SimpleColorList([
               Green,
             ])),
             AddCreatureType(Elemental),
@@ -1030219,10 +1030195,8 @@ Card(
               3,
               1,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Black,
-            ])),
-            AddColor(SimpleColorList([
               Red,
             ])),
             AddCreatureType(Devil),
@@ -1030863,7 +1030837,10 @@ Card(
         ActionList([
           Exile(
             [
-              TheTopNumberCardsOfLibrary(ManaValueOfPermanent(Trigger_ThatPermanent)),
+              TheTopNumberCardsOfPlayersLibrary(
+                ManaValueOfPermanent(Trigger_ThatPermanent),
+                Ref_TargetPlayer,
+              ),
             ],
             [],
           ),
@@ -1065766,10 +1065743,8 @@ Card(
               2,
               3,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               White,
-            ])),
-            AddColor(SimpleColorList([
               Blue,
             ])),
             AddCreatureType(Bird),
@@ -1065879,10 +1065854,8 @@ Card(
               2,
               2,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Red,
-            ])),
-            AddColor(SimpleColorList([
               White,
             ])),
             AddCreatureType(Ox),
@@ -1066115,10 +1066088,8 @@ Card(
               4,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Black,
-            ])),
-            AddColor(SimpleColorList([
               Green,
             ])),
             AddCreatureType(Horror),
@@ -1066254,10 +1066225,8 @@ Card(
               1,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               White,
-            ])),
-            AddColor(SimpleColorList([
               Black,
             ])),
             AddCreatureType(Nightmare),
@@ -1066319,10 +1066288,8 @@ Card(
               3,
               3,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
-            ])),
-            AddColor(SimpleColorList([
               White,
             ])),
             AddCreatureType(Llama),
@@ -1066395,10 +1066362,8 @@ Card(
               4,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Blue,
-            ])),
-            AddColor(SimpleColorList([
               Black,
             ])),
             AddCreatureType(Shark),
@@ -1066467,10 +1066432,8 @@ Card(
               3,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Red,
-            ])),
-            AddColor(SimpleColorList([
               Green,
             ])),
             AddCreatureType(Dinosaur),
@@ -1066548,10 +1066511,8 @@ Card(
               2,
               1,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Blue,
-            ])),
-            AddColor(SimpleColorList([
               Red,
             ])),
             AddCreatureType(Elemental),
@@ -1066624,10 +1066585,8 @@ Card(
               2,
               3,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Black,
-            ])),
-            AddColor(SimpleColorList([
               Red,
             ])),
             AddCreatureType(Insect),
@@ -1066694,10 +1066653,8 @@ Card(
               5,
               5,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
-            ])),
-            AddColor(SimpleColorList([
               Blue,
             ])),
             AddCreatureType(Plant),
@@ -1086739,7 +1086696,7 @@ Card(
                 0,
                 0,
               )),
-              AddColor(SimpleColorList([
+              SetColor(SimpleColorList([
                 Green,
               ])),
               AddCreatureType(Spirit),
@@ -1095551,12 +1095508,13 @@ Scheme(
               [],
             ),
           ],
-          [],
-        ),
-        CreateEachPermanentRuleEffect(
-          TheTokensCreatedThisWay,
           [
-            MustAttackPlayer(EachablePlayer),
+            EntersWithRuleEffectUntil(
+              [
+                MustAttackPlayer(EachablePlayer),
+              ],
+              UntilEndOfGame,
+            ),
           ],
         ),
       ]),
@@ -1122782,7 +1122740,7 @@ Card(
               4,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Red,
             ])),
             AddCreatureType(Dragon),
@@ -1150874,10 +1150832,8 @@ Card(
               3,
               3,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
-            ])),
-            AddColor(SimpleColorList([
               White,
             ])),
             AddCreatureType(Wolf),
@@ -1151296,12 +1151252,12 @@ Card(
             ],
             ActionList([
               PutCounters([
-                ACounterOfTypeOnEachPermanent(
+                ACounterOfTypeOnPermanent(
                   PTCounter(
                     1,
                     1,
                   ),
-                  IsCardtype(Creature),
+                  Ref_TargetPermanent,
                 ),
               ]),
               DrawACard,
@@ -1165173,10 +1165129,8 @@ Card(
               2,
               3,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               White,
-            ])),
-            AddColor(SimpleColorList([
               Black,
             ])),
             AddCreatureType(Elemental),
@@ -1172921,7 +1172875,7 @@ Card(
             CreateFutureTrigger(
               AtTheBeginningOfTheNextEndStep,
               ActionList([
-                MustCost(SacrificeEachPermanent(TheTokensCreatedThisWay)),
+                MustCost(SacrificePermanent(ThePermanentPutOnTheBattlefieldThisWay)),
                 If(
                   CostWasPaid,
                   [
@@ -1176532,7 +1176486,7 @@ Card(
       ),
       ActionList([
         PermanentDealsDamage(
-          Trigger_ThatCreature,
+          ThisPermanent,
           Integer(1),
           EachPermanent(And([
             IsCardtype(Creature),
@@ -1182602,12 +1182556,12 @@ Card(
       ),
       ActionList([
         PermanentDealsDamage(
-          Trigger_ThatCreature,
+          ThisPermanent,
           Integer(2),
           EachPermanent(And([
             IsCardtype(Creature),
             DoesntHaveAbility(Flying),
-            ControlledByAPlayer(SinglePlayer(Trigger_ThatPlayer)),
+            ControlledByAPlayer(SinglePlayer(Trigger_DefendingPlayer)),
           ])),
         ),
       ]),
@@ -1187376,10 +1187330,8 @@ Card(
               4,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Blue,
-            ])),
-            AddColor(SimpleColorList([
               Black,
             ])),
             AddCreatureType(Dragon),
@@ -1190826,10 +1190778,8 @@ Card(
               2,
               3,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
-            ])),
-            AddColor(SimpleColorList([
               Blue,
             ])),
             AddCreatureType(Crab),
@@ -1234216,7 +1234166,7 @@ Card(
               1,
               1,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Black,
             ])),
             AddCreatureType(Skeleton),
@@ -1269005,10 +1268955,8 @@ Card(
               3,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
-            ])),
-            AddColor(SimpleColorList([
               White,
             ])),
             AddCreatureType(Elemental),
@@ -1331770,7 +1331718,7 @@ Card(
     ),
     If(
       PermanentPassesFilter(
-        ApplyPermanentEffect_It,
+        HostPermanent,
         IsSupertype(Legendary),
       ),
       [
@@ -1331787,7 +1331735,7 @@ Card(
     ),
     If(
       PermanentPassesFilter(
-        ApplyPermanentEffect_It,
+        HostPermanent,
         IsColor(Red),
       ),
       [
@@ -1407645,7 +1407593,7 @@ Card(
               3,
               3,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Green,
             ])),
             AddCreatureType(Ape),
@@ -1408068,10 +1408016,13 @@ Card(
           TargetPlayer(AnyPlayer),
         ],
         ActionList([
-          MillNumberCards(TheNumberOfPermanentsOnTheBattlefield(And([
-            IsLandType(Locus),
-            ControlledByAPlayer(SinglePlayer(You)),
-          ]))),
+          PlayerAction(
+            Ref_TargetPlayer,
+            MillNumberCards(TheNumberOfPermanentsOnTheBattlefield(And([
+              IsLandType(Locus),
+              ControlledByAPlayer(SinglePlayer(You)),
+            ]))),
+          ),
         ]),
       ),
     ),
@@ -1416800,20 +1416751,23 @@ Card(
       ],
       ActionList([
         ChooseACardName(AnyOracleCard),
-        RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed(
-          IsNamed(TheChosenName),
-          [
-            IfElse(
-              ACardWasFoundThisWay,
-              [
-                PutTheCardFoundThisWayOnTopOfLibrary,
-                PutTheRemainingCardsIntoGraveyard,
-              ],
-              [
-                PutTheRemainingCardsBackIntoLibraryAndShuffle,
-              ],
-            ),
-          ],
+        PlayerAction(
+          Ref_TargetPlayer,
+          RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed(
+            IsNamed(TheChosenName),
+            [
+              IfElse(
+                ACardWasFoundThisWay,
+                [
+                  PutTheCardFoundThisWayOnTopOfLibrary,
+                  PutTheRemainingCardsIntoGraveyard,
+                ],
+                [
+                  PutTheRemainingCardsBackIntoLibraryAndShuffle,
+                ],
+              ),
+            ],
+          ),
         ),
       ]),
     )),
@@ -1430130,7 +1430084,7 @@ Card(
           CreatePermanentLayerEffectUntil(
             Ref_TargetPermanent,
             [
-              AddColor(SimpleColorList([
+              SetColor(SimpleColorList([
                 Blue,
               ])),
               AddCardtype(Artifact),
@@ -1433808,14 +1433762,14 @@ Card(
           PermanentPassesFilter(
             Ref_TargetPermanent,
             Or([
-              SharesANameWithAPermanent(And([
+              SharesANameWithAnotherPermanent(And([
                 IsCardtype(Creature),
                 ControlledByAPlayer(SinglePlayer(You)),
               ])),
-              SharesANameWithCardInPlayersGraveyard(
+              SharesANameWithACardInGraveyards(And([
                 IsCardtype(Creature),
-                You,
-              ),
+                InAPlayersGraveyard(SinglePlayer(You)),
+              ])),
             ]),
           ),
           [
@@ -1448270,7 +1448224,15 @@ Card(
       ),
       ActionList([
         CreateEachPermanentLayerEffectUntil(
-          ThePermanentsList,
+          And([
+            Or([
+              IsCreatureType(Bird),
+              IsCreatureType(Frog),
+              IsCreatureType(Otter),
+              IsCreatureType(Rat),
+            ]),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
           [
             AdjustPT(
               1,
@@ -1463141,7 +1463103,10 @@ Card(
           UptoOneTargetPlayer(AnyPlayer),
         ],
         ActionList([
-          MillNumberCards(PowerOfPermanent(ThisPermanent)),
+          PlayerAction(
+            Ref_TargetPlayer,
+            MillNumberCards(PowerOfPermanent(ThisPermanent)),
+          ),
         ]),
       ),
     ),
@@ -1463259,7 +1463224,7 @@ Card(
                 ],
                 [
                   EntersTapped,
-                  EntersAttackingPlayer(ActionForEachPlayer_ThatPlayer),
+                  EntersAttackingPlayer(EachablePlayer),
                 ],
               ),
             ]),
@@ -1490758,11 +1490723,11 @@ Card(
         NumPermanentsPassFilter(
           GreaterThanOrEqualTo(Integer(1)),
           And([
-            Other(Trigger_ThatCreature),
+            Other(ThisPermanent),
             IsCreatureType(Wall),
             IsCardtype(Creature),
           ]),
-          IsBlockingAttacker(Trigger_ThatOtherCreature),
+          IsBlockingAttacker(Trigger_ThatOtherPermanent),
         ),
         NoPermanentsPassFilter(
           And([
@@ -1494117,10 +1494082,8 @@ Card(
               1,
               4,
             )),
-            AddColor(SimpleColorList([
+            SetColor(SimpleColorList([
               Blue,
-            ])),
-            AddColor(SimpleColorList([
               Red,
             ])),
             AddCreatureType(Elemental),
@@ -1496827,28 +1496790,37 @@ Card(
   ],
   Rules: [
     EachPlayerEffect(
-      ControlsMorePermanentThanPlayer(
-        You,
-        IsCardtype(Creature),
-      ),
+      And([
+        Opponent,
+        ControlsMorePermanentThanPlayer(
+          You,
+          IsCardtype(Creature),
+        ),
+      ]),
       [
         CantCastSpells(IsCardtype(Creature)),
       ],
     ),
     EachPlayerEffect(
-      ControlsMorePermanentThanPlayer(
-        You,
-        IsCardtype(Artifact),
-      ),
+      And([
+        Opponent,
+        ControlsMorePermanentThanPlayer(
+          You,
+          IsCardtype(Artifact),
+        ),
+      ]),
       [
         CantCastSpells(IsCardtype(Artifact)),
       ],
     ),
     EachPlayerEffect(
-      ControlsMorePermanentThanPlayer(
-        You,
-        IsCardtype(Enchantment),
-      ),
+      And([
+        Opponent,
+        ControlsMorePermanentThanPlayer(
+          You,
+          IsCardtype(Enchantment),
+        ),
+      ]),
       [
         CantCastSpells(IsCardtype(Enchantment)),
       ],
@@ -1511096,7 +1511068,7 @@ Card(
       ],
       ActionList([
         CreateEachPermanentLayerEffectUntil(
-          IsCardtype(Creature),
+          Ref_TargetPermanents,
           [
             AdjustPT(
               2,
@@ -1511115,7 +1511087,7 @@ Card(
           ),
           [
             CreateEachPermanentLayerEffectUntil(
-              ThePermanentsAffectedThisWay,
+              Ref_TargetPermanents,
               [
                 AddAbility([
                   Lifelink,
@@ -1533756,10 +1533728,8 @@ Card(
                 4,
                 4,
               )),
-              AddColor(SimpleColorList([
+              SetColor(SimpleColorList([
                 Black,
-              ])),
-              AddColor(SimpleColorList([
                 Green,
               ])),
               AddCreatureType(Elemental),
@@ -1544384,8 +1544354,8 @@ Card(
           TargetPermanent(And([
             IsCardtype(Enchantment),
             ControlledByAPlayer(SinglePlayer(You)),
-            DoesntShareANameWithAPermanent(And([
-              IsToken,
+            DoesntShareANameWithAnotherPermanent(And([
+              IsPermanent,
               ControlledByAPlayer(SinglePlayer(You)),
             ])),
           ])),
