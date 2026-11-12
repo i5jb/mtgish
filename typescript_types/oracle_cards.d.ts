@@ -127,6 +127,7 @@ type Action =
 | { "_Action": "Reflexive_RevealACardOfTypeFromHand_WhenYouDo", "args": [CardsInHand, Actions] }
 | { "_Action": "Reflexive_RollDice_WhenYouDo", "args": [Dice, Actions] }
 | { "_Action": "Reflexive_Tap_WhenYouDo", "args": [Array<Tappable>, Actions] }
+| { "_Action": "Reflexive_ForEachPlayerMayTap_WhenYouDo", "args": [Players, Array<Tappable>, Actions] }
 | { "_Action": "Reflexive_PlayerSacrifices_WhenTheyDo", "args": [Player, Array<Sacrificable>, Actions] }
 | { "_Action": "Reflexive_Sacrifice_WhenYouDo", "args": [Array<Sacrificable>, Actions] }
 | { "_Action": "Reflexive_Sacrifice_WhenAPermanentIsSacrificedThisWay", "args": [Array<Sacrificable>, Permanents, Actions] }
@@ -395,7 +396,6 @@ type Action =
 | { "_Action": "ChooseUptoNumberPermanents", "args": [GameNumber, Permanents] }
 | { "_Action": "ChooseUptoNumberPermanentsForEach", "args": [GameNumber, Permanents, GameNumber] }
 | { "_Action": "ChooseUptoOnePermanent", "args": Permanents }
-| { "_Action": "ChooseUptoOnePermanentForEachPlayer", "args": [Permanents, Players] }
 | { "_Action": "ChooseWord", "args": Array<string> }
 | { "_Action": "Cipher", "args": Spell }
 | { "_Action": "CircleNumberColors", "args": [GameNumber, ChoosableColor] }
@@ -1025,7 +1025,7 @@ type Action =
 | { "_Action": "RegenerateEachPermanent", "args": Permanents }
 | { "_Action": "RegeneratePermanent", "args": Permanent }
 | { "_Action": "RememberLifeTotal" }
-| { "_Action": "RememberPlayer", "args": Player }
+| { "_Action": "AddToRememberedPlayersList", "args": Player }
 | { "_Action": "RemoveCounters", "args": Array<RemoveCountersAction> }
 | { "_Action": "RemoveCreatureFromCombat", "args": Permanent }
 | { "_Action": "RemoveCreatureFromCombatAndUnblockBlockers", "args": Permanent }
@@ -5642,7 +5642,6 @@ type Player =
 | { "_Player": "OwnerOfTheCardReturnedToHandThisWay" }
 | { "_Player": "ActionForEachPlayer_ThatPlayer" }
 | { "_Player": "ActionPlayer" }
-| { "_Player": "AssociatedPlayerForPermanent", "args": Permanent }
 | { "_Player": "AttackingPlayer" }
 | { "_Player": "ClashOpponent" }
 | { "_Player": "Condition_ThatPlayer" }
@@ -5690,7 +5689,6 @@ type Player =
 | { "_Player": "Ref_TargetPlayer3" }
 | { "_Player": "Ref_TargetPlayers_0" }
 | { "_Player": "Ref_TargetPlayers_1" }
-| { "_Player": "RememberedPlayer" }
 | { "_Player": "SingleGraveyardOwner" }
 | { "_Player": "SingleTargetPlayerOfSpell", "args": Spell }
 | { "_Player": "SpellDealsDamage_ThatPlayer" }
@@ -6057,6 +6055,7 @@ type Players =
 | { "_Players": "Or", "args": Array<Players> }
 | { "_Players": "Other", "args": Player }
 | { "_Players": "SinglePlayer", "args": Player }
+| { "_Players": "TheRememberedPlayers" }
 | { "_Players": "DidntDiscardACardThisWay" }
 | { "_Players": "DidntDiscardACardOfTypeThisWay", "args": CardsInHand }
 | { "_Players": "DidntDiscardNumberCardsOfTypeThisWay", "args": [Comparison, CardsInHand] }
@@ -8610,7 +8609,6 @@ type SuperType =
 | "Snow"
 | "World";
 type Tappable =
-| { "_Tappable": "EachPermanent", "args": Permanents }
 | { "_Tappable": "AnyNumberOfPermanents", "args": Permanents }
 | { "_Tappable": "NumberPermanents", "args": [GameNumber, Permanents] }
 | { "_Tappable": "APermanent", "args": Permanents }

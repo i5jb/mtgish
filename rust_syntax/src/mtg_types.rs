@@ -6336,7 +6336,6 @@ pub enum Player {
   OwnerOfTheCardReturnedToHandThisWay,
   ActionForEachPlayer_ThatPlayer,
   ActionPlayer,
-  AssociatedPlayerForPermanent(Box<Permanent>),
   AttackingPlayer,
   ClashOpponent,
   Condition_ThatPlayer,
@@ -6384,7 +6383,6 @@ pub enum Player {
   Ref_TargetPlayer3,
   Ref_TargetPlayers_0,
   Ref_TargetPlayers_1,
-  RememberedPlayer,
   SingleGraveyardOwner,
   SingleTargetPlayerOfSpell(Box<Spell>),
   SpellDealsDamage_ThatPlayer,
@@ -6428,6 +6426,8 @@ pub enum Players {
   Or(Vec<Players>),
   Other(Box<Player>),
   SinglePlayer(Box<Player>),
+
+  TheRememberedPlayers,
 
   DidntDiscardACardThisWay,
   DidntDiscardACardOfTypeThisWay(Box<CardsInHand>),
@@ -8470,7 +8470,6 @@ pub enum Sacrificable {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Tappable", content = "args"))]
 pub enum Tappable {
-  EachPermanent(Box<Permanents>),
   AnyNumberOfPermanents(Box<Permanents>),
   NumberPermanents(Box<GameNumber>, Box<Permanents>),
   APermanent(Box<Permanents>),
@@ -8978,6 +8977,7 @@ pub enum Action {
   Reflexive_RevealACardOfTypeFromHand_WhenYouDo(CardsInHand, Box<Actions>),
   Reflexive_RollDice_WhenYouDo(Box<Dice>, Box<Actions>),
   Reflexive_Tap_WhenYouDo(Vec<Tappable>, Box<Actions>),
+  Reflexive_ForEachPlayerMayTap_WhenYouDo(Box<Players>, Vec<Tappable>, Box<Actions>),
   Reflexive_PlayerSacrifices_WhenTheyDo(Box<Player>, Vec<Sacrificable>, Box<Actions>),
   Reflexive_Sacrifice_WhenYouDo(Vec<Sacrificable>, Box<Actions>),
   Reflexive_Sacrifice_WhenAPermanentIsSacrificedThisWay(Vec<Sacrificable>, Box<Permanents>, Box<Actions>),
@@ -9252,7 +9252,6 @@ pub enum Action {
   ChooseUptoNumberPermanents(Box<GameNumber>, Box<Permanents>),
   ChooseUptoNumberPermanentsForEach(Box<GameNumber>, Box<Permanents>, Box<GameNumber>),
   ChooseUptoOnePermanent(Box<Permanents>),
-  ChooseUptoOnePermanentForEachPlayer(Box<Permanents>, Box<Players>),
   ChooseWord(Vec<VoteOption>),
   Cipher(Box<Spell>),
   CircleNumberColors(Box<GameNumber>, ChoosableColor),
@@ -9883,7 +9882,7 @@ pub enum Action {
   RegenerateEachPermanent(Box<Permanents>),
   RegeneratePermanent(Box<Permanent>),
   RememberLifeTotal,
-  RememberPlayer(Box<Player>),
+  AddToRememberedPlayersList(Box<Player>),
   RemoveCounters(Vec<RemoveCountersAction>),
   RemoveCreatureFromCombat(Box<Permanent>),
   RemoveCreatureFromCombatAndUnblockBlockers(Box<Permanent>),

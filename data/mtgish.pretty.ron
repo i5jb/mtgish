@@ -7426,11 +7426,8 @@ Card(
     ),
     Equip(
       And([
+        IsSupertype(Legendary),
         IsCardtype(Creature),
-        And([
-          IsSupertype(Legendary),
-          IsCardtype(Creature),
-        ]),
       ]),
       PayMana([
         ManaCostGeneric(1),
@@ -48740,7 +48737,10 @@ Card(
         AdjustPTForEach(
           3,
           3,
-          NumPlayers(LifeTotalIs(LessThan(HalfRoundedUp(LifeTotalOfPlayer(NumPlayers_ThatPlayer))))),
+          NumPlayers(And([
+            Opponent,
+            LifeTotalIs(LessThan(HalfRoundedUp(StartingLifeTotalOfPlayer(NumPlayers_ThatPlayer)))),
+          ])),
         ),
       ],
     ),
@@ -91609,7 +91609,10 @@ Card(
   ],
   Rules: [
     ActivatedWithModifiers(
-      ExileACardInGraveyardsAndPayItsManaCost(IsCardtype(Creature)),
+      ExileACardInGraveyardsAndPayItsManaCost(And([
+        IsCardtype(Creature),
+        InAPlayersGraveyard(SinglePlayer(You)),
+      ])),
       ActionList([
         CreateTokens(
           [
@@ -120446,10 +120449,7 @@ Card(
       ]),
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsCreatureType(Halfling),
-      ]),
+      IsCreatureType(Halfling),
       PayMana([
         ManaCostGeneric(1),
       ]),
@@ -126450,11 +126450,8 @@ Card(
     ),
     Equip(
       And([
+        IsSupertype(Legendary),
         IsCardtype(Creature),
-        And([
-          IsSupertype(Legendary),
-          IsCardtype(Creature),
-        ]),
       ]),
       PayMana([
         ManaCostGeneric(3),
@@ -170770,11 +170767,8 @@ Card(
     ),
     Equip(
       And([
+        IsSupertype(Legendary),
         IsCardtype(Creature),
-        And([
-          IsSupertype(Legendary),
-          IsCardtype(Creature),
-        ]),
       ]),
       PayMana([
         ManaCostGeneric(1),
@@ -201292,7 +201286,13 @@ Card(
             CompletedADungeon,
           ),
           [
-            MayAction(PlayExiledCardWithoutPaying(TheCardExiledThisWay)),
+            CreatePlayerEffectUntil(
+              You,
+              [
+                MayPlayExiledCardWithoutPaying(TheCardExiledThisWay),
+              ],
+              UntilEndOfTurn,
+            ),
           ],
           [
             CreatePlayerEffectUntil(
@@ -205941,10 +205941,7 @@ Card(
       ],
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsCreatureType(Citizen),
-      ]),
+      IsCreatureType(Citizen),
       PayMana([
         ManaCostGeneric(1),
       ]),
@@ -234484,7 +234481,7 @@ Card(
           ActionList([
             SpellDealsDamage(
               ThisSpell,
-              PowerOfPermanent(Ref_TargetPermanent),
+              PowerOfPermanent(ThePermanentChosenThisWay),
               Permanent(Ref_TargetPermanent),
             ),
           ]),
@@ -234503,7 +234500,7 @@ Card(
           ActionList([
             SpellDealsDamage(
               ThisSpell,
-              PowerOfExiledCard(Ref_TargetExiledCard),
+              PowerOfExiledCard(TheExiledCardChosenThisWay),
               Permanent(Ref_TargetPermanent),
             ),
           ]),
@@ -239811,14 +239808,14 @@ Card(
           ),
           If(
             PermanentPassesFilter(
-              Ref_TargetPermanent,
+              ThePermanentPutOnTheBattlefieldThisWay,
               IsNonSupertype(Legendary),
             ),
             [
               CreateTokens(
                 [
                   TokenCopyOfPermanent(
-                    Ref_TargetPermanent,
+                    ThePermanentPutOnTheBattlefieldThisWay,
                     TokenCopyEffects([
                       SetPT(PT(
                         1,
@@ -244725,10 +244722,7 @@ Card(
       ],
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsACommander,
-      ]),
+      IsACommander,
       PayMana([
         ManaCostGeneric(3),
       ]),
@@ -300673,7 +300667,7 @@ Card(
               Ref_TargetPermanent,
             ),
           ]),
-          MayAction(UnsuspectPermanent(Trigger_ThatPermanent)),
+          MayAction(UnsuspectPermanent(Ref_TargetPermanent)),
         ]),
       ),
     ])),
@@ -369849,10 +369843,7 @@ Card(
       ],
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsCreatureType(Human),
-      ]),
+      IsCreatureType(Human),
       PayMana([
         ManaCostGeneric(1),
       ]),
@@ -417399,11 +417390,8 @@ Card(
     ),
     Equip(
       And([
+        IsSupertype(Legendary),
         IsCardtype(Creature),
-        And([
-          IsSupertype(Legendary),
-          IsCardtype(Creature),
-        ]),
       ]),
       PayMana([
         ManaCostGeneric(2),
@@ -535552,7 +535540,7 @@ Card(
     SpellActions(ActionList([
       EachPlayerAction(
         AnyPlayer,
-        SecretlyChooseANumberGreaterThanNumber(1),
+        SecretlyChooseANumberGreaterThanNumber(0),
       ),
       RevealSecretlyChosenNumbers,
       EachPlayerAction(
@@ -624517,10 +624505,7 @@ Card(
       ],
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsCreatureType(Hero),
-      ]),
+      IsCreatureType(Hero),
       PayMana([
         ManaCostGeneric(3),
       ]),
@@ -690395,7 +690380,7 @@ Card(
                   ControlledByAPlayer(SinglePlayer(You)),
                 ]),
                 PowerOfPermanent(EachablePermanent),
-                Permanent(WouldDealDamage_DamageRecipientPermanent),
+                Permanent(Trigger_ThatPermanent),
               ),
             ]),
           ),
@@ -706584,7 +706569,10 @@ Card(
       Loyalty(-2),
       Targeted(
         [
-          TargetPermanent(IsCardtype(Creature)),
+          TargetPermanent(And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ])),
           UptoOneTargetPermanentEachPlayerControls(
             IsCardtype(Creature),
             Other(You),
@@ -733881,10 +733869,13 @@ Card(
           ]),
           AnyPlayer,
         ),
-        EachPlayerAction(
+        EachPlayerMayAction(
           ControlledAPermanentDestroyedThisWay,
           SearchLibrary([
-            FindACardOfType(IsCardtype(Land)),
+            FindACardOfType(And([
+              IsSupertype(Basic),
+              IsCardtype(Land),
+            ])),
             PutFoundCardsOntoBattlefield([
               EntersTapped,
             ]),
@@ -744323,7 +744314,7 @@ Card(
           TargetPlayer(AnyPlayer),
         ],
         ActionList([
-          RememberPlayer(Ref_TargetPlayer),
+          AddToRememberedPlayersList(Ref_TargetPlayer),
           PlayerAction(
             Ref_TargetPlayer,
             LoseLife(Integer(6)),
@@ -744334,9 +744325,9 @@ Card(
     TriggerA(
       WhenAPermanentLeavesTheBattlefield(SinglePermanent(ThisPermanent)),
       ActionList([
-        PlayerAction(
-          RememberedPlayer,
-          GainLife(LifeLostThisWay),
+        EachPlayerAction(
+          TheRememberedPlayers,
+          GainLife(Integer(6)),
         ),
       ]),
     ),
@@ -779432,10 +779423,7 @@ Card(
       ),
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsCreatureType(Elf),
-      ]),
+      IsCreatureType(Elf),
       PayMana([
         ManaCostGeneric(2),
       ]),
@@ -787267,10 +787255,7 @@ Card(
       ],
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsCardtype(Planeswalker),
-      ]),
+      IsCardtype(Planeswalker),
       PayMana([
         ManaCostGeneric(1),
       ]),
@@ -849833,10 +849818,7 @@ Card(
       ],
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsWorthy,
-      ]),
+      IsWorthy,
       PayMana([
         ManaCostGeneric(1),
       ]),
@@ -900565,34 +900547,34 @@ Card(
     TriggerA(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       ActionList([
-        ChooseUptoOnePermanentForEachPlayer(
-          And([
-            IsUntapped,
-            IsCardtype(Creature),
-            ControlledByAPlayer(SinglePlayer(You)),
-          ]),
+        Reflexive_ForEachPlayerMayTap_WhenYouDo(
           Opponent,
-        ),
-        MayAction(Reflexive_Tap_WhenYouDo(
           [
-            EachPermanent(TheChosenPermanents),
+            APermanent(And([
+              IsUntapped,
+              IsCardtype(Creature),
+              ControlledByAPlayer(SinglePlayer(You)),
+            ])),
           ],
           Targeted(
             [
               TargetPermanent(And([
                 IsCardtype(Creature),
-                ControlledByPlayer(AssociatedPlayerForPermanent(EachablePermanent)),
-                PowerIs(LessThanOrEqualTo(PowerOfPermanent(EachablePermanent))),
+                ControlledByAPlayer(SinglePlayer(EachablePlayer)),
+                PowerIs(LessThanOrEqualTo(PowerOfPermanent(Trigger_ThatPermanent))),
               ])),
             ],
             ActionList([
               GainControlOfPermanentUntil(
                 Ref_TargetPermanent,
-                UntilPermanentLeavesBattlefield(ThisPermanent),
+                ForAsLongAsPlayerControlsPermanent(
+                  You,
+                  ThisPermanent,
+                ),
               ),
             ]),
           ),
-        )),
+        ),
       ]),
     ),
     TriggerA(
@@ -951337,7 +951319,10 @@ Transforming(
         ThisPermanent,
         IsCardtype(Creature),
         [
-          ChooseAnExiledCardToCopy(UsedToCraftPermanent(ThisPermanent)),
+          ChooseAnExiledCardToCopy(And([
+            IsCardtype(Creature),
+            UsedToCraftPermanent(ThisPermanent),
+          ])),
         ],
       ),
       PermanentLayerEffect(
@@ -979077,10 +979062,7 @@ Card(
       ],
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsCreatureType(Pirate),
-      ]),
+      IsCreatureType(Pirate),
       PayMana([
         ManaCostGeneric(1),
       ]),
@@ -1033076,7 +1033058,7 @@ Card(
           [],
         ),
         If(
-          TheLastCardExiledThisWayWasACard(IsCardtype(Land)),
+          TheLastCardExiledThisWayWasACard(IsNonCardtype(Land)),
           [
             RepeatThisProcess,
           ],
@@ -1087135,13 +1087117,10 @@ Card(
       ]),
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        Or([
-          IsCreatureType(Shaman),
-          IsCreatureType(Warlock),
-          IsCreatureType(Wizard),
-        ]),
+      Or([
+        IsCreatureType(Shaman),
+        IsCreatureType(Shaman),
+        IsCreatureType(Shaman),
       ]),
       PayMana([
         ManaCostGeneric(1),
@@ -1226630,7 +1226609,7 @@ Card(
           TargetPlayer(AnyPlayer),
         ],
         ActionList([
-          RememberPlayer(Ref_TargetPlayer),
+          AddToRememberedPlayersList(Ref_TargetPlayer),
           PlayerAction(
             Ref_TargetPlayer,
             LoseLife(Integer(3)),
@@ -1226641,9 +1226620,9 @@ Card(
     TriggerA(
       WhenAPermanentLeavesTheBattlefield(SinglePermanent(ThisPermanent)),
       ActionList([
-        PlayerAction(
-          RememberedPlayer,
-          GainLife(LifeLostThisWay),
+        EachPlayerAction(
+          TheRememberedPlayers,
+          GainLife(Integer(3)),
         ),
       ]),
     ),
@@ -1243733,12 +1243712,12 @@ Card(
           PutPermanentIntoItsOwnersHand(Ref_TargetPermanent),
           If(
             PlayerPassesFilter(
-              ControllerOfPermanent(Trigger_ThatPermanent),
-              SpeedIs(GreaterThan(TheHighestSpeedAmongPlayers(Other(ControllerOfPermanent(Trigger_ThatPermanent))))),
+              ControllerOfPermanent(Ref_TargetPermanent),
+              SpeedIs(GreaterThan(TheHighestSpeedAmongPlayers(Other(ControllerOfPermanent(Ref_TargetPermanent))))),
             ),
             [
               ReducePlayersSpeed(
-                ControllerOfPermanent(Trigger_ThatPermanent),
+                ControllerOfPermanent(Ref_TargetPermanent),
                 Integer(1),
               ),
             ],
@@ -1252573,7 +1252552,7 @@ Card(
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       ActionList([
-        If(
+        IfElse(
           PermanentPassesFilter(
             ThisPermanent,
             AttachedToAPermanent(And([
@@ -1252586,7 +1252565,7 @@ Card(
               ManaCostGeneric(1),
               ManaCostG,
             ])),
-            If(
+            IfElse(
               CostWasPaid,
               [
                 CreateTokens(
@@ -1252598,10 +1252577,34 @@ Card(
                   ],
                   [],
                 ),
+                Unless(
+                  ATokenWasCreatedThisWay,
+                  [
+                    CreateTokens(
+                      [
+                        TokenWithPT(
+                          PT(
+                            1,
+                            1,
+                          ),
+                          Colors([
+                            Green,
+                          ]),
+                          [],
+                          [
+                            Creature,
+                          ],
+                          SubtypesList([
+                            Insect,
+                          ]),
+                          [],
+                        ),
+                      ],
+                      [],
+                    ),
+                  ],
+                ),
               ],
-            ),
-            Unless(
-              ATokenWasCreatedThisWay,
               [
                 CreateTokens(
                   [
@@ -1252626,6 +1252629,30 @@ Card(
                   [],
                 ),
               ],
+            ),
+          ],
+          [
+            CreateTokens(
+              [
+                TokenWithPT(
+                  PT(
+                    1,
+                    1,
+                  ),
+                  Colors([
+                    Green,
+                  ]),
+                  [],
+                  [
+                    Creature,
+                  ],
+                  SubtypesList([
+                    Insect,
+                  ]),
+                  [],
+                ),
+              ],
+              [],
             ),
           ],
         ),
@@ -1264679,10 +1264706,7 @@ Card(
       ],
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsCreatureType(Knight),
-      ]),
+      IsCreatureType(Knight),
       PayMana([
         ManaCostGeneric(1),
       ]),
@@ -1322635,10 +1322659,7 @@ Card(
     Equip(
       And([
         IsCardtype(Creature),
-        And([
-          IsCardtype(Creature),
-          IsToken,
-        ]),
+        IsToken,
       ]),
       PayMana([
         ManaCostGeneric(1),
@@ -1366837,10 +1366858,7 @@ Card(
       ],
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsCreatureType(Detective),
-      ]),
+      IsCreatureType(Detective),
       PayMana([
         ManaCostGeneric(1),
       ]),
@@ -1438558,10 +1438576,7 @@ Card(
       ],
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsACommander,
-      ]),
+      IsACommander,
       PayMana([
         ManaCostGeneric(2),
       ]),
@@ -1463527,10 +1463542,7 @@ Card(
       ],
     ),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsCreatureType(Soldier),
-      ]),
+      IsCreatureType(Soldier),
       PayMana([
         ManaCostW,
       ]),
@@ -1513136,9 +1513148,9 @@ Card(
                     MayPutFoundCardOntoBattlefield([
                       EntersNormally,
                     ]),
-                    PutFoundCardIntoHand,
                   ],
                 ),
+                PutFoundCardIntoHand,
               ],
             ),
             PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder,
@@ -1529931,10 +1529943,7 @@ Card(
     ),
     AbilitiesTriggerAnAdditionalTime(AbilityOfAPermanent(SinglePermanent(HostPermanent))),
     Equip(
-      And([
-        IsCardtype(Creature),
-        IsCreatureType(Wizard),
-      ]),
+      IsCreatureType(Wizard),
       PayMana([
         ManaCostGeneric(1),
       ]),
@@ -1537395,11 +1537404,8 @@ Card(
     ),
     Equip(
       And([
+        IsSupertype(Legendary),
         IsCardtype(Creature),
-        And([
-          IsSupertype(Legendary),
-          IsCardtype(Creature),
-        ]),
       ]),
       PayMana([
         ManaCostGeneric(3),
