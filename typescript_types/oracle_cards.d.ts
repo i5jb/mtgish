@@ -4406,6 +4406,7 @@ type LayerEffect =
 | { "_LayerEffect": "ReplaceLandTypeVariableWithNewLandTypeVariable", "args": [LandTypeWord, LandTypeWord] }
 | { "_LayerEffect": "ReplaceCreatureTypeVariableWithNewCreatureType", "args": [CreatureTypeVariable, CreatureType] }
 | { "_LayerEffect": "SetName", "args": string }
+| { "_LayerEffect": "AddCardtypes", "args": Array<CardType> }
 | { "_LayerEffect": "AddCardtype", "args": CardType }
 | { "_LayerEffect": "RemoveCardtype", "args": CardType }
 | { "_LayerEffect": "HasAllCreatureTypes" }
@@ -4413,6 +4414,7 @@ type LayerEffect =
 | { "_LayerEffect": "AddLandTypeVariable", "args": LandTypeVariable }
 | { "_LayerEffect": "SetCreatureTypeVariable", "args": CreatureTypeVariable }
 | { "_LayerEffect": "SetLandTypeVariable", "args": LandTypeVariable }
+| { "_LayerEffect": "AddCreatureTypes", "args": Array<CreatureType> }
 | { "_LayerEffect": "AddCreatureType", "args": CreatureType }
 | { "_LayerEffect": "AddArtifactType", "args": ArtifactType }
 | { "_LayerEffect": "AddEnchantmentType", "args": EnchantmentType }
@@ -5436,6 +5438,7 @@ type PerpetualEffect =
 | { "_PerpetualEffect": "AddAbilityVariable", "args": AbilityVariable }
 | { "_PerpetualEffect": "AddAbilityFromCardsHasable", "args": Array<CheckHasable> }
 | { "_PerpetualEffect": "AddArtifactType", "args": ArtifactType }
+| { "_PerpetualEffect": "AddCardtypes", "args": Array<CardType> }
 | { "_PerpetualEffect": "AddCardtype", "args": CardType }
 | { "_PerpetualEffect": "AddCreatureType", "args": CreatureType }
 | { "_PerpetualEffect": "AddLandType", "args": LandType }
@@ -7660,7 +7663,6 @@ type SpellEffect =
 | { "_SpellEffect": "DecreaseManaCostForEach", "args": [Array<CostReductionSymbol>, GameNumber] }
 | { "_SpellEffect": "EntersWithNumberCounters", "args": [GameNumber, CounterType] }
 | { "_SpellEffect": "IncreaseManaCostForEach", "args": [Array<ManaSymbol>, GameNumber] }
-| { "_SpellEffect": "SetCreatureTypeVariable", "args": CreatureTypeVariable }
 | { "_SpellEffect": "EntersWithACounterOfChoice", "args": Array<CounterType> }
 | { "_SpellEffect": "IncreaseManaCost", "args": Array<ManaSymbol> }
 | { "_SpellEffect": "DecreaseManaCost", "args": Array<CostReductionSymbol> }
@@ -7675,6 +7677,8 @@ type SpellEffect =
 | { "_SpellEffect": "Replicate", "args": Cost }
 | { "_SpellEffect": "AddColor", "args": SettableColor }
 | { "_SpellEffect": "SetColor", "args": SettableColor }
+| { "_SpellEffect": "SetCreatureTypes", "args": Array<CreatureType> }
+| { "_SpellEffect": "SetCreatureTypeVariable", "args": CreatureTypeVariable }
 | { "_SpellEffect": "AddCreatureType", "args": CreatureType }
 | { "_SpellEffect": "AddCreatureTypeVariable", "args": CreatureTypeVariable }
 | { "_SpellEffect": "AddAbilityUntil", "args": [Rule, Expiration] }
@@ -7929,9 +7933,11 @@ type StaticLayer3Effect =
 | { "_StaticLayerEffect": "SetNameToTheChosenName" }
 | { "_StaticLayerEffect": "SetName", "args": string };
 type StaticLayer4Effect =
+| { "_StaticLayerEffect": "AddCardtypes", "args": Array<CardType> }
 | { "_StaticLayerEffect": "AddCardtype", "args": CardType }
 | { "_StaticLayerEffect": "RemoveCardtype", "args": CardType }
 | { "_StaticLayerEffect": "HasAllCreatureTypes" }
+| { "_StaticLayerEffect": "AddCreatureTypes", "args": Array<CreatureType> }
 | { "_StaticLayerEffect": "AddCreatureType", "args": CreatureType }
 | { "_StaticLayerEffect": "AddArtifactType", "args": ArtifactType }
 | { "_StaticLayerEffect": "AddCreatureTypeVariable", "args": CreatureTypeVariable }
@@ -7992,9 +7998,11 @@ type StaticLayerEffect =
 | { "_StaticLayerEffect": "HasTextOfGraveyardCardAndTheText", "args": [CardInGraveyards, Array<Rule>] }
 | { "_StaticLayerEffect": "SetNameToTheChosenName" }
 | { "_StaticLayerEffect": "SetName", "args": string }
+| { "_StaticLayerEffect": "AddCardtypes", "args": Array<CardType> }
 | { "_StaticLayerEffect": "AddCardtype", "args": CardType }
 | { "_StaticLayerEffect": "RemoveCardtype", "args": CardType }
 | { "_StaticLayerEffect": "HasAllCreatureTypes" }
+| { "_StaticLayerEffect": "AddCreatureTypes", "args": Array<CreatureType> }
 | { "_StaticLayerEffect": "AddCreatureType", "args": CreatureType }
 | { "_StaticLayerEffect": "AddArtifactType", "args": ArtifactType }
 | { "_StaticLayerEffect": "AddCreatureTypeVariable", "args": CreatureTypeVariable }

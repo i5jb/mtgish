@@ -7458,7 +7458,8 @@ pub enum LayerEffect {
   SetName(NameString),
 
   // Layer 4
-  AddCardtype(CardType),
+  AddCardtypes(Vec<CardType>),
+  AddCardtype(CardType), // FIXME: Get rid of this one
   RemoveCardtype(CardType),
   HasAllCreatureTypes,
 
@@ -7467,7 +7468,8 @@ pub enum LayerEffect {
   SetCreatureTypeVariable(CreatureTypeVariable),
   SetLandTypeVariable(LandTypeVariable),
 
-  AddCreatureType(CreatureType),
+  AddCreatureTypes(Vec<CreatureType>),
+  AddCreatureType(CreatureType), // FIXME: get rid of this one
   AddArtifactType(ArtifactType),
   AddEnchantmentType(EnchantmentType),
   AddLandType(LandType),
@@ -7896,6 +7898,7 @@ pub enum PerpetualEffect {
   AddAbilityFromCardsHasable(Vec<CheckHasable>),
 
   AddArtifactType(ArtifactType),
+  AddCardtypes(Vec<CardType>),
   AddCardtype(CardType),
   AddCreatureType(CreatureType),
   AddLandType(LandType),
@@ -10558,7 +10561,6 @@ pub enum SpellEffect {
   DecreaseManaCostForEach(CostReduction, Box<GameNumber>),
   EntersWithNumberCounters(Box<GameNumber>, CounterType),
   IncreaseManaCostForEach(ManaCost, Box<GameNumber>),
-  SetCreatureTypeVariable(CreatureTypeVariable),
   EntersWithACounterOfChoice(Vec<CounterType>),
   IncreaseManaCost(ManaCost),
   DecreaseManaCost(CostReduction),
@@ -10573,7 +10575,10 @@ pub enum SpellEffect {
   Replicate(Box<Cost>),
   AddColor(SettableColor),
   SetColor(SettableColor),
-  AddCreatureType(CreatureType),
+  SetCreatureTypes(Vec<CreatureType>),
+  SetCreatureTypeVariable(CreatureTypeVariable),
+  //AddCreatureTypes(Vec<CreatureType>),
+  AddCreatureType(CreatureType), // FIXME: Remove this one
   AddCreatureTypeVariable(CreatureTypeVariable),
   AddAbilityUntil(Box<Rule>, Expiration),
   AddAbility(Vec<Rule>),
@@ -10663,10 +10668,12 @@ pub enum StaticLayer3Effect {
 #[allow(dead_code)]
 pub enum StaticLayer4Effect {
   // Layer 4 Effect
-  AddCardtype(CardType),
+  AddCardtypes(Vec<CardType>),
+  AddCardtype(CardType), // FIXME: Remove this one
   RemoveCardtype(CardType),
   HasAllCreatureTypes,
-  AddCreatureType(CreatureType),
+  AddCreatureTypes(Vec<CreatureType>),
+  AddCreatureType(CreatureType), // FIXME: Remove this one
   AddArtifactType(ArtifactType),
   AddCreatureTypeVariable(CreatureTypeVariable),
   SetCreatureTypeVariable(CreatureTypeVariable),
@@ -10765,10 +10772,12 @@ pub enum StaticLayerEffect {
   SetName(NameString),
 
   // Layer 4 Effect
-  AddCardtype(CardType),
+  AddCardtypes(Vec<CardType>),
+  AddCardtype(CardType), // FIXME: Remove this one
   RemoveCardtype(CardType),
   HasAllCreatureTypes,
-  AddCreatureType(CreatureType),
+  AddCreatureTypes(Vec<CreatureType>),
+  AddCreatureType(CreatureType), // FIXME: Remove this one
   AddArtifactType(ArtifactType),
   AddCreatureTypeVariable(CreatureTypeVariable),
   SetCreatureTypeVariable(CreatureTypeVariable),
