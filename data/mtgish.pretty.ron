@@ -10741,7 +10741,7 @@ Card(
   Rules: [
     TriggerI(
       WhenAPlayerCastsASpell(
-        SinglePlayer(You),
+        AnyPlayer,
         AnySpell,
       ),
       PlayerPassesFilter(
@@ -37364,38 +37364,40 @@ Card(
     TriggerMayOnceEachTurn(
       WhenAnyNumberOfGraveyardCardsLeave(InAPlayersGraveyard(SinglePlayer(You))),
       ActionList([
-        CreateTokens(
-          [
-            TokenWithPT(
-              PT(
+        MayActionsOnceEachTurn([
+          CreateTokens(
+            [
+              TokenWithPT(
+                PT(
+                  1,
+                  1,
+                ),
+                Colors([
+                  Black,
+                  Green,
+                ]),
+                [],
+                [
+                  Creature,
+                ],
+                SubtypesList([
+                  Insect,
+                ]),
+                [],
+              ),
+            ],
+            [],
+          ),
+          PutCounters([
+            NumberCountersOfTypeOnEachPermanent(
+              TheGreatestManaValueAmongTheCardsThatLeftTheGraveyardThisWay,
+              PTCounter(
                 1,
                 1,
               ),
-              Colors([
-                Black,
-                Green,
-              ]),
-              [],
-              [
-                Creature,
-              ],
-              SubtypesList([
-                Insect,
-              ]),
-              [],
+              TheTokensCreatedThisWay,
             ),
-          ],
-          [],
-        ),
-        PutCounters([
-          NumberCountersOfTypeOnEachPermanent(
-            TheGreatestManaValueAmongTheCardsThatLeftTheGraveyardThisWay,
-            PTCounter(
-              1,
-              1,
-            ),
-            TheTokensCreatedThisWay,
-          ),
+          ]),
         ]),
       ]),
     ),
@@ -39926,10 +39928,10 @@ Card(
         IsColored,
       ),
       ActionList([
-        GainLifeForEach(
+        MayActionOnceEachTurn(GainLifeForEach(
           Integer(1),
           TheNumberOfColorsSpellIs(Trigger_ThatSpell),
-        ),
+        )),
       ]),
     ),
     Activated(
@@ -45525,7 +45527,7 @@ Card(
           WhenPermanentLeavesTheBattlefield(ThisPermanent),
           ActionList([
             PlayerAction(
-              ControllerOfLeavingPermanent,
+              ControllerOfPermanent(ThePermanentPutOnTheBattlefieldThisWay),
               SacrificePermanent(ThePermanentPutOnTheBattlefieldThisWay),
             ),
           ]),
@@ -68509,9 +68511,9 @@ Card(
           CreateSpellEffect(
             Ref_TargetSpell,
             [
-              ReplaceColorWordVariableWithNewColorWordVariable(
-                TheFirstChosenColorWord,
-                TheSecondChosenColorWord,
+              ReplaceCreatureTypeVariableWithNewCreatureTypeVariable(
+                TheFirstChosenCreatureType,
+                TheSecondChosenCreatureType,
               ),
             ],
           ),
@@ -68526,9 +68528,9 @@ Card(
           CreatePermanentLayerEffect(
             Ref_TargetPermanent,
             [
-              ReplaceColorWordVariableWithNewColorWordVariable(
-                TheFirstChosenColorWord,
-                TheSecondChosenColorWord,
+              ReplaceCreatureTypeVariableWithNewCreatureTypeVariable(
+                TheFirstChosenCreatureType,
+                TheSecondChosenCreatureType,
               ),
             ],
           ),
@@ -101678,7 +101680,7 @@ Card(
         ]),
       ])),
       ActionList([
-        CreatureConnives(Trigger_ThatPermanent),
+        MayActionOnceEachTurn(CreatureConnives(Trigger_ThatPermanent)),
       ]),
     ),
   ],
@@ -119477,7 +119479,7 @@ Card(
   Rules: [
     TriggerA(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
-      Modal_ChooseOne([
+      Modal_ChooseUptoOne([
         Targeted(
           [
             TargetPermanent(IsCardtype(Creature)),
@@ -172662,7 +172664,10 @@ Card(
           IsLandType(Swamp),
         ),
         ActionList([
-          AddMana(ManaProduceB),
+          PlayerAction(
+            Trigger_ThatPlayer,
+            AddMana(ManaProduceB),
+          ),
         ]),
         UntilEndOfTurn,
       ),
@@ -182726,7 +182731,7 @@ Card(
         ),
       ]),
       ActionList([
-        CreateTokens(
+        MayActionOnceEachTurn(CreateTokens(
           [
             TokenCopyOfAPermanent(
               And([
@@ -182738,7 +182743,7 @@ Card(
             ),
           ],
           [],
-        ),
+        )),
       ]),
     ),
   ],
@@ -241190,7 +241195,7 @@ Card(
         AnyPlayer,
         SearchLibrary([
           FindNumberCardsOfType(
-            AmountOfManaPaidThisWay,
+            TheTotalAmountOfManaPaidThisWay,
             And([
               IsSupertype(Basic),
               IsCardtype(Land),
@@ -259131,7 +259136,7 @@ Card(
         WhenAPermanentEntersTheBattlefieldTransformed(ControlledByAPlayer(SinglePlayer(You))),
       ]),
       ActionList([
-        DrawACard,
+        MayActionOnceEachTurn(DrawACard),
       ]),
     ),
   ],
@@ -259533,7 +259538,7 @@ Card(
         IsNonCardtype(Creature),
       ),
       ActionList([
-        CopySpellAndMayChooseNewTargets(Trigger_ThatSpell),
+        MayActionOnceEachTurn(CopySpellAndMayChooseNewTargets(Trigger_ThatSpell)),
       ]),
     ),
   ],
@@ -288356,7 +288361,7 @@ Card(
           WhenPermanentLeavesTheBattlefield(ThisPermanent),
           ActionList([
             PlayerAction(
-              ControllerOfLeavingPermanent,
+              ControllerOfPermanent(ThePermanentPutOnTheBattlefieldThisWay),
               SacrificePermanent(ThePermanentPutOnTheBattlefieldThisWay),
             ),
           ]),
@@ -308004,13 +308009,13 @@ Card(
         Opponent,
       ),
       ActionList([
-        SearchLibrary([
+        MayActionOnceEachTurn(SearchLibrary([
           FindACardOfType(IsLandType(Plains)),
           PutFoundCardsOntoBattlefield([
             EntersTapped,
           ]),
           Shuffle,
-        ]),
+        ])),
       ]),
     ),
   ],
@@ -340458,7 +340463,7 @@ Card(
         ]),
       ),
       ActionList([
-        CopySpellWithModifiers(
+        MayActionOnceEachTurn(CopySpellWithModifiers(
           Trigger_ThatSpell,
           [
             SetPT(PT(
@@ -340467,7 +340472,7 @@ Card(
             )),
             AddCreatureType(Spirit),
           ],
-        ),
+        )),
       ]),
     ),
   ],
@@ -343348,7 +343353,7 @@ Card(
         If(
           PlayerPassesFilter(
             You,
-            IsTheirMainPhase,
+            Not(IsTheirMainPhase),
           ),
           [
             Blight(Integer(2)),
@@ -356225,7 +356230,7 @@ Card(
     Flying,
     TriggerA(
       AtTheBeginningOfCombatDuringAPlayersTurn(SinglePlayer(You)),
-      Modal_ChooseOne([
+      Modal_ChooseUptoOne([
         Targeted(
           [
             TargetPermanent(IsCardtype(Creature)),
@@ -370874,7 +370879,7 @@ Card(
         IsCardtype(Creature),
       ),
       ActionList([
-        GainLife(Trigger_ThatMuch),
+        MayActionOnceEachTurn(GainLife(Trigger_ThatMuch)),
       ]),
     ),
   ],
@@ -394390,7 +394395,7 @@ Card(
           ])),
         ],
         ActionList([
-          CastGraveyardCardIntoExile(Ref_TargetGraveyardCard),
+          MayActionOnceEachTurn(CastGraveyardCardIntoExile(Ref_TargetGraveyardCard)),
         ]),
       ),
     ),
@@ -407210,7 +407215,7 @@ Card(
     Flash,
     TriggerA(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
-      Modal_ChooseOne([
+      Modal_ChooseUptoOne([
         Targeted(
           [
             TargetSpellOrAbility(Or([
@@ -435818,7 +435823,7 @@ Card(
       ),
       PermanentPassesFilter(
         Trigger_ThatLand,
-        IsFirstLandPlayedByPlayerThisTurn,
+        Not(IsFirstLandPlayedByPlayerThisTurn),
       ),
       ActionList([
         PermanentDealsDamage(
@@ -491498,7 +491503,7 @@ Card(
         IsNonCardtype(Creature),
       ),
       ActionList([
-        MustCost(PayLife(ManaValueOfSpell(Trigger_ThatSpell))),
+        MayCostOnceEachTurn(PayLife(ManaValueOfSpell(Trigger_ThatSpell))),
         If(
           CostWasPaid,
           [
@@ -522796,7 +522801,7 @@ Card(
   Rules: [
     TriggerI(
       WhenAPlayerCastsASpell(
-        SinglePlayer(You),
+        AnyPlayer,
         AnySpell,
       ),
       PlayerPassesFilter(
@@ -608523,7 +608528,10 @@ Card(
           IsLandType(Island),
         ),
         ActionList([
-          AddMana(ManaProduceU),
+          PlayerAction(
+            Trigger_ThatPlayer,
+            AddMana(ManaProduceU),
+          ),
         ]),
         UntilEndOfTurn,
       ),
@@ -624958,7 +624966,7 @@ Card(
         SinglePlayer(You),
         AnySpell,
       ),
-      Modal_ChooseOne([
+      Modal_ChooseUptoOne([
         Targeted(
           [
             TargetSpell(ControlledByAPlayer(Other(You))),
@@ -668301,14 +668309,14 @@ Card(
         IsCardtype(Artifact),
       ),
       ActionList([
-        CopySpellWithModifiers(
+        MayActionOnceEachTurn(CopySpellWithModifiers(
           Trigger_ThatSpell,
           [
             RemoveSupertypes([
               Legendary,
             ]),
           ],
-        ),
+        )),
       ]),
     ),
   ],
@@ -670146,7 +670154,7 @@ Card(
         ]),
       ])),
       ActionList([
-        MustCost(DiscardACard),
+        MayCostOnceEachTurn(DiscardACard),
         If(
           CostWasPaid,
           [
@@ -681539,11 +681547,11 @@ ModalDFC(
             AnyTarget,
           ],
           ActionList([
-            PermanentDealsDamage(
+            MayActionOnceEachTurn(HavePermanentDealDamage(
               ThisPermanent,
               Trigger_ThatMuch,
               Ref_AnyTarget,
-            ),
+            )),
           ]),
         ),
       ),
@@ -734291,7 +734299,7 @@ Card(
           ])),
         ],
         ActionList([
-          PutGraveyardCardIntoHand(Ref_TargetGraveyardCard),
+          MayActionOnceEachTurn(PutGraveyardCardIntoHand(Ref_TargetGraveyardCard)),
         ]),
       ),
     ),
@@ -753949,7 +753957,7 @@ Card(
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       ActionList([
-        PutCounters([
+        MayActionOnceEachTurn(PutCounters([
           ACounterOfTypeOnEachPermanent(
             PTCounter(
               1,
@@ -753960,7 +753968,7 @@ Card(
               ControlledByAPlayer(SinglePlayer(You)),
             ]),
           ),
-        ]),
+        ])),
       ]),
     ),
     Activated(
@@ -782493,7 +782501,7 @@ Card(
           TargetPlayer(Other(ControllerOfPermanent(Trigger_ThatPermanent))),
         ],
         ActionList([
-          MayCost(HavePlayerTakeAction(
+          MayCostOnceEachTurn(HavePlayerTakeAction(
             Ref_TargetPlayer,
             CreateTokens(
               [
@@ -801091,7 +801099,7 @@ Card(
             AdjustPTX(
               PlusX,
               Zero,
-              AmountOfManaPaidThisWay,
+              TheTotalAmountOfManaPaidThisWay,
             ),
           ],
           UntilEndOfTurn,
@@ -801114,7 +801122,7 @@ Card(
             AdjustPTX(
               PlusX,
               Zero,
-              AmountOfManaPaidThisWay,
+              TheTotalAmountOfManaPaidThisWay,
             ),
           ],
           UntilEndOfTurn,
@@ -837463,7 +837471,7 @@ Card(
       ),
       EachPlayerAction(
         AnyPlayer,
-        DrawNumberCards(AmountOfManaPaidThisWay),
+        DrawNumberCards(TheTotalAmountOfManaPaidThisWay),
       ),
     ])),
   ],
@@ -855476,7 +855484,7 @@ Card(
     ManaCostB,
   ],
   Rules: [
-    SpellActions(Modal_ChooseNumberMayChooseSameModeMoreThanOnce(
+    SpellActions(Modal_ChooseUptoNumberMayChooseSameModeMoreThanOnce(
       Integer(4),
       [
         Targeted(
@@ -893423,7 +893431,7 @@ Card(
                 IsCardtype(Artifact),
                 IsCardtype(Creature),
               ]),
-              IsArtifactType(Equipment),
+              IsArtifactType(Spacecraft),
             ]),
             OwnedByAPlayer(SinglePlayer(You)),
           ]),
@@ -904701,6 +904709,7 @@ Card(
           UptoOneTargetPermanent(And([
             IsNonCardtype(Creature),
             IsCardtype(Land),
+            ControlledByAPlayer(SinglePlayer(You)),
           ])),
         ],
         ActionList([
@@ -912844,7 +912853,7 @@ Card(
     TriggerMayOnceEachTurn(
       WhenAPlayerGainsLife(SinglePlayer(You)),
       ActionList([
-        PutCounters([
+        MayActionOnceEachTurn(PutCounters([
           NumberCountersOfTypeOnEachPermanent(
             Trigger_AmountOfLifeGained,
             PTCounter(
@@ -912856,7 +912865,7 @@ Card(
               ControlledByAPlayer(SinglePlayer(You)),
             ]),
           ),
-        ]),
+        ])),
       ]),
     ),
   ],
@@ -929690,7 +929699,7 @@ Card(
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       ActionList([
-        CreateTokens(
+        MayActionOnceEachTurn(CreateTokens(
           [
             TokenCopyOfPermanent(
               Trigger_ThatPermanent,
@@ -929698,7 +929707,7 @@ Card(
             ),
           ],
           [],
-        ),
+        )),
       ]),
     ),
   ],
@@ -982944,7 +982953,7 @@ Card(
       ]),
       ActionList([
         LookAtTopOfLibrary,
-        MayAction(CastTopCardOfLibraryWithoutPaying),
+        MayActionOnceEachTurn(CastTopCardOfLibraryWithoutPaying),
       ]),
     ),
   ],
@@ -999462,30 +999471,32 @@ Card(
     TriggerMayOnceEachTurn(
       WhenAPlayerRollsADie(SinglePlayer(You)),
       ActionList([
-        RevealTopCardOfLibrary,
-        If(
-          ACardWasRevealedThisWay(ManaValueIs(LessThan(TriggerTheDiceResult))),
-          [
-            MayCost(Exile(
-              [
-                TheTopCardOfLibrary,
-              ],
-              [],
-            )),
-            If(
-              CostWasPaid,
-              [
-                CreatePlayerEffectUntil(
-                  You,
-                  [
-                    MayPlayExiledCard(TheCardExiledThisWay),
-                  ],
-                  UntilEndOfTurn,
-                ),
-              ],
-            ),
-          ],
-        ),
+        MayActionsOnceEachTurn([
+          RevealTopCardOfLibrary,
+          If(
+            ACardWasRevealedThisWay(ManaValueIs(LessThan(TriggerTheDiceResult))),
+            [
+              MayCost(Exile(
+                [
+                  TheTopCardOfLibrary,
+                ],
+                [],
+              )),
+              If(
+                CostWasPaid,
+                [
+                  CreatePlayerEffectUntil(
+                    You,
+                    [
+                      MayPlayExiledCard(TheCardExiledThisWay),
+                    ],
+                    UntilEndOfTurn,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ]),
       ]),
     ),
   ],
@@ -1040982,7 +1040993,7 @@ Card(
     Riot,
     TriggerA(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
-      Modal_ChooseOne([
+      Modal_ChooseUptoOne([
         Targeted(
           [
             TargetPermanent(And([
@@ -1066079,7 +1066090,7 @@ Card(
       WhenACreatureAttacks(SinglePermanent(ThisPermanent)),
       Targeted(
         [
-          UptoOneTargetGraveyardCard(InAPlayersGraveyard(SinglePlayer(You))),
+          UptoOneTargetGraveyardCard(AnyCardInAnyGraveyard),
         ],
         ActionList([
           CreateTokens(
@@ -1078905,14 +1078916,14 @@ Card(
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       ActionList([
-        PutAGraveyardCardOntoBattlefield(
+        MayActionOnceEachTurn(PutAGraveyardCardOntoBattlefield(
           Trigger_ThoseGraveyardCards,
           [
             EntersTapped,
             EntersUnderOwnersControl,
             EntersWithACounter(FlyingCounter),
           ],
-        ),
+        )),
       ]),
     ),
   ],
@@ -1090172,7 +1090183,7 @@ Card(
     ),
     TriggerI(
       WhenAPlayerCastsASpell(
-        SinglePlayer(You),
+        AnyPlayer,
         AnySpell,
       ),
       SpellPassesFilter(
@@ -1107505,22 +1107516,22 @@ Card(
           ),
           [
             PreventThatDamage,
-            CreateFutureTrigger(
-              AtTheBeginningOfTheNextEndStep,
-              ActionList([
-                PutCounters([
-                  NumberCountersOfTypeOnPermanent(
-                    TheAmountOfDamagePreventedThisWay,
-                    PTCounter(
-                      0,
-                      1,
-                    ),
-                    Ref_TargetPermanent,
-                  ),
-                ]),
-              ]),
-            ),
           ],
+        ),
+        CreateFutureTrigger(
+          AtTheBeginningOfTheNextEndStep,
+          ActionList([
+            PutCounters([
+              NumberCountersOfTypeOnPermanent(
+                TheTotalAmountOfDamagePrevented,
+                PTCounter(
+                  0,
+                  1,
+                ),
+                Ref_TargetPermanent,
+              ),
+            ]),
+          ]),
         ),
       ]),
     )),
@@ -1123757,7 +1123768,7 @@ Card(
     ),
     TriggerA(
       WhenAPermanentDies(SinglePermanent(ThisPermanent)),
-      Modal_ChooseOne([
+      Modal_ChooseUptoOne([
         Targeted(
           [
             TargetPermanent(And([
@@ -1130206,28 +1130217,28 @@ Card(
           ),
           [
             PreventThatDamage,
-            If(
-              PermanentPassesFilter(
-                AnyTargetAsAPermanent,
-                IsCardtype(Creature),
-              ),
-              [
-                CreateFutureTrigger(
-                  AtTheBeginningOfTheNextEndStep,
-                  ActionList([
-                    PutCounters([
-                      NumberCountersOfTypeOnPermanent(
-                        TheAmountOfDamagePreventedThisWay,
-                        PTCounter(
-                          0,
-                          1,
-                        ),
-                        AnyTargetAsAPermanent,
-                      ),
-                    ]),
-                  ]),
-                ),
-              ],
+          ],
+        ),
+        If(
+          PermanentPassesFilter(
+            AnyTargetAsAPermanent,
+            IsCardtype(Creature),
+          ),
+          [
+            CreateFutureTrigger(
+              AtTheBeginningOfTheNextEndStep,
+              ActionList([
+                PutCounters([
+                  NumberCountersOfTypeOnPermanent(
+                    TheTotalAmountOfDamagePrevented,
+                    PTCounter(
+                      0,
+                      1,
+                    ),
+                    AnyTargetAsAPermanent,
+                  ),
+                ]),
+              ]),
             ),
           ],
         ),
@@ -1137963,7 +1137974,7 @@ Card(
     TriggerMayOnceEachTurn(
       WhenAnyNumberOfSpecificCardsAreMilled(IsNonCardtype(Land)),
       ActionList([
-        CreateTokens(
+        MayActionOnceEachTurn(CreateTokens(
           [
             NumberTokens(
               Trigger_ThatMuch,
@@ -1137988,7 +1137999,7 @@ Card(
             ),
           ],
           [],
-        ),
+        )),
       ]),
     ),
   ],
@@ -1140571,7 +1140582,7 @@ Card(
   Rules: [
     TriggerI(
       WhenAPlayerCastsASpell(
-        SinglePlayer(You),
+        AnyPlayer,
         AnySpell,
       ),
       PlayerPassesFilter(
@@ -1166979,7 +1166990,7 @@ Card(
       ),
       EachPlayerAction(
         AnyPlayer,
-        MillNumberCards(AmountOfManaPaidThisWay),
+        MillNumberCards(TheTotalAmountOfManaPaidThisWay),
       ),
     ])),
   ],
@@ -1199581,7 +1199592,7 @@ Card(
           DiscardNumberCards(Integer(2)),
         ),
         If(
-          ANumberOfCardsWereDiscardedThisWay(LessThanOrEqualTo(Integer(2))),
+          ANumberOfCardsWereDiscardedThisWay(LessThan(Integer(2))),
           [
             DrawNumberCards(Minus(
               Integer(2),
@@ -1242086,7 +1242097,7 @@ Card(
         WasntCastFromTheirHand,
       ),
       ActionList([
-        CopySpellAndMayChooseNewTargetsWithEffects(
+        MayActionOnceEachTurn(CopySpellAndMayChooseNewTargetsWithEffects(
           Trigger_ThatSpell,
           [
             IfPermanentSpell([
@@ -1242095,7 +1242106,7 @@ Card(
               ]),
             ]),
           ],
-        ),
+        )),
       ]),
     ),
   ],
@@ -1247043,18 +1247054,15 @@ Card(
           ),
         ]),
         MayActions([
-          ChooseAGraveyardCard(And([
-            Or([
-              IsCardtype(Artifact),
-              IsCardtype(Creature),
-            ]),
-            Trigger_ThoseGraveyardCards,
+          ChooseACardOfTypeFromAmongThoseFormerCardsInGraveyards(Or([
+            IsCardtype(Artifact),
+            IsCardtype(Creature),
           ])),
           CreatePermanentLayerEffectUntil(
             ThisPermanent,
             [
               IsACopyOfGraveyardCard(
-                TheGraveyardCardChosenThisWay,
+                TheFormerGraveyardCardChosenThisWay,
                 NoCopyEffects,
               ),
             ],
@@ -1330942,6 +1330950,7 @@ Card(
           TargetPermanent(And([
             IsNonCardtype(Creature),
             IsCardtype(Land),
+            ControlledByAPlayer(SinglePlayer(You)),
           ])),
         ],
         ActionList([
@@ -1333359,7 +1333368,7 @@ Card(
         ]),
       ),
       ActionList([
-        DrawNumberCards(Trigger_ThatMuch),
+        MayActionOnceEachTurn(DrawNumberCards(Trigger_ThatMuch)),
       ]),
     ),
   ],
@@ -1346089,7 +1346098,7 @@ Card(
       )),
       (Targeted(
         [
-          AnyNumberOfTargetPermanents(And([
+          TargetPermanent(And([
             IsCardtype(Creature),
             OwnedByAPlayer(SinglePlayer(You)),
           ])),
@@ -1354697,9 +1354706,13 @@ Card(
     AsPermanentEnters(
       ThisPermanent,
       [
-        MayCost(ExileTwoCardsFromAmongPlayersGraveyards(
-          IsCardtype(Creature),
-          AnyPlayer,
+        MayCost(Exile(
+          [
+            TwoCardsInGraveyards(IsCardtype(Creature)),
+          ],
+          [
+            ChooseAnOrder,
+          ],
         )),
         If(
           CostWasPaid,
@@ -1357673,12 +1357686,12 @@ Card(
         )),
       ])),
       ActionList([
-        PutGraveyardCardOntoBattlefield(
+        MayActionOnceEachTurn(PutGraveyardCardOntoBattlefield(
           Trigger_ThatGraveyardCard,
           [
             EntersUnderPlayersControl(You),
           ],
-        ),
+        )),
       ]),
     ),
   ],
@@ -1383326,8 +1383339,10 @@ Card(
         AnyPlayer,
       ),
       ActionList([
-        DrawACard,
-        Proliferate,
+        MayActionsOnceEachTurn([
+          DrawACard,
+          Proliferate,
+        ]),
       ]),
     ),
   ],
@@ -1416369,17 +1416384,26 @@ Card(
           TargetPermanent(IsCardtype(Land)),
         ],
         ActionList([
-          ChooseLandType([
-            Plains,
-            Island,
-          ]),
-          CreatePermanentLayerEffectUntil(
-            Ref_TargetPermanent,
+          ChooseAnAction([
             [
-              AddLandTypeVariable(TheChosenLandType),
+              CreatePermanentLayerEffectUntil(
+                Ref_TargetPermanent,
+                [
+                  SetLandType(Plains),
+                ],
+                UntilEndOfTurn,
+              ),
             ],
-            UntilEndOfTurn,
-          ),
+            [
+              CreatePermanentLayerEffectUntil(
+                Ref_TargetPermanent,
+                [
+                  SetLandType(Island),
+                ],
+                UntilEndOfTurn,
+              ),
+            ],
+          ]),
         ]),
       ),
     ),
@@ -1474177,7 +1474201,7 @@ Card(
     Flying,
     TriggerI(
       WhenAPlayerCastsASpell(
-        SinglePlayer(You),
+        AnyPlayer,
         AnySpell,
       ),
       PlayerPassesFilter(

@@ -1274,6 +1274,8 @@ pub enum CreatureTypeVariable {
   TheRememberedCreatureTypes,
   CreatureTypesOfExiled(Box<CardInExile>),
   TheCreatureTypeChosenByPlayerThisWay(Box<Player>),
+  TheFirstChosenCreatureType,
+  TheSecondChosenCreatureType,
   TheChosenCreatureType,
   TheChosenCreatureTypes,
   TheNotedCreatureType,
@@ -3323,7 +3325,6 @@ pub enum ActionPreventDamage {
 
   ChooseAPlayer(Box<Players>),
 
-  CreateFutureTrigger(FutureTrigger, Box<Actions>),
   Reflexive_PreventThatDamage_WhenDamageFromAPermanentSourceIsPreventedThisWay(Box<Permanents>, Box<Actions>),
   Reflexive_PreventThatDamage_WhenDamageIsPreventedThisWay(Box<Actions>),
   Reflexive_PreventThatDamage_WhenDamageFromASourceIsPreventedThisWay(Box<DamageSources>, Box<Actions>),
@@ -3638,7 +3639,6 @@ pub enum ReplacementActionWouldEnterCost {
   BeholdA(Box<CardsInHand>),
   DiscardACardOfType(Box<Cards>),
   EntersTapped,
-  ExileTwoCardsFromAmongPlayersGraveyards(Box<CardsInGraveyards>, Box<Players>),
   PayLife(Box<GameNumber>),
   PutANumberOfExiledCardsIntoOwnersGraveyard(Box<GameNumber>, CardsInExile),
   PutAPermanentIntoItsOwnersHand(Box<Permanents>),
@@ -3704,6 +3704,7 @@ pub enum ReplacementActionWouldEnterRemoveCounters {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ExileFlag", content = "args"))]
 pub enum ExileFlag {
+  ChooseAnOrder,
   ExilesIntoShuffledFaceDownPile,
   ExilesIntoFaceDownPile,
   ExilesIntoFaceUpPile,
@@ -6054,6 +6055,7 @@ pub enum GameNumber {
   TheAmountOfDamageDealtToPermanentThisTurn(Box<Permanent>),
   TheAmountOfDamageDealtToPermanentThisTurnBySources(Box<Permanent>, DamageSources),
   TheAmountOfDamagePreventedThisWay,
+  TheTotalAmountOfDamagePrevented,
   TheAmountOfEnergyPaidOrLostByPlayersThisTurn(Box<Players>),
   TheAmountOfEnergyPaidThisWay,
   TheAmountOfEnergyPlayerHas(Box<Player>),
@@ -6555,6 +6557,7 @@ pub enum Players {
   DrewACardLastTurn,
   EveryCardInTheirCardPoolStartedTheGameInTheirLibraryOrTheCommandZone,
   ExceptFor(Box<Players>),
+  Not(Box<Players>),
   GainedLifeAmountThisTurn(Box<Comparison>),
   GainedLifeThisTurn,
   GuessedCorrectlyForDraftCard(NameString),
@@ -7448,6 +7451,7 @@ pub enum LayerEffect {
   SetController(Box<Player>),
 
   // Layer 3
+  ReplaceCreatureTypeVariableWithNewCreatureTypeVariable(CreatureTypeVariable, CreatureTypeVariable),
   ReplaceColorWordVariableWithNewColorWordVariable(ColorWord, ColorWord),
   ReplaceLandTypeVariableWithNewLandTypeVariable(LandTypeWord, LandTypeWord),
   ReplaceCreatureTypeVariableWithNewCreatureType(CreatureTypeVariable, CreatureTypeWord),
@@ -7576,6 +7580,7 @@ pub enum CardInGraveyards {
   HostGraveyardCard,
   TheBottomCardOfPlayersGraveyard(Box<Player>),
   TheGraveyardCardChosenThisWay,
+  TheFormerGraveyardCardChosenThisWay,
   TheChosenGraveyardCard,
   TheCardMilledThisWay,
   TheSacrificedPermanent,
@@ -8598,6 +8603,7 @@ pub enum ExilableCost {
   EachCardInGraveyards(Box<CardsInGraveyards>),
   NumberCardsInGraveyards(Box<GameNumber>, Box<CardsInGraveyards>),
   NumberOrMoreCardsInGraveyards(Box<GameNumber>, Box<CardsInGraveyards>),
+  TwoCardsInGraveyards(Box<CardsInGraveyards>),
 
   // Cards In Hand
   CardInHand(Box<CardInHand>),
@@ -9251,7 +9257,6 @@ pub enum Action {
   ChooseColors,
   ChooseCopyFromCopies,
   ChooseEvenOrOdd,
-  ChooseLandType(Vec<LandType>),
   ChooseLeftOrRight,
   ChooseLibraryFilter(Vec<Cards>),
   ChooseMultiplePermanentsAmoungPermanents(Vec<Permanents>, Box<Permanents>),
@@ -9675,7 +9680,13 @@ pub enum Action {
   ManifestTheTopCardOfPlayersLibrary(Box<Player>),
   ManifestTheTopNumberCardsOfPlayersLibrary(Box<GameNumber>, Box<Player>),
   MayAction(Box<Action>),
+
   MayActionOnceEachTurn(Box<Action>),
+  MayActionsOnceEachTurn(Vec<Action>),
+  MayCostOnceEachTurn(Box<Cost>),
+
+  ChooseACardOfTypeFromAmongThoseFormerCardsInGraveyards(Box<CardsInGraveyards>),
+
   MayActions(Vec<Action>),
   MayCastASpellFromAmongGraveyardCardsIntoExileOrBattlefield(Box<Spells>, Box<CardsInGraveyards>),
   MayCastASpellFromEachPlayersGraveyardWithoutPayingIntoExile(Box<Spells>, Box<Players>),
@@ -10430,6 +10441,7 @@ pub enum Actions {
   Modal_ChooseOneAtRandom(Vec<Actions>),
   Modal_APlayerChoosesOne(Box<Players>, Vec<Actions>),
   Modal_ChooseAnyNumber(Vec<Actions>),
+  Modal_ChooseUptoNumberMayChooseSameModeMoreThanOnce(Box<GameNumber>, Vec<Actions>),
   Modal_ChooseNumberMayChooseSameModeMoreThanOnce(Box<GameNumber>, Vec<Actions>),
   Modal_ChooseOne(Vec<Actions>),
   Modal_ChooseBoth(Vec<Actions>),
@@ -10518,6 +10530,7 @@ pub enum SpellEffect {
   WebSlinging(Box<Cost>),
   AdjustPT(i32, i32),
 
+  ReplaceCreatureTypeVariableWithNewCreatureTypeVariable(CreatureTypeVariable, CreatureTypeVariable),
   ResolvesIntoExileInsteadOfGraveyardWithACounter(CounterType),
   Wither,
   Evoke(Box<Cost>),

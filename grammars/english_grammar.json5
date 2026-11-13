@@ -6989,7 +6989,7 @@
     "Target {{Land}} becomes {{a}} {{Swamp}}":
       "Targeted([TargetPermanent({{Land[0]}})], ActionList([CreatePermanentLayerEffect(Ref_TargetPermanent, [SetLandType({{Swamp[0]}})])]))",
     "Target {{Land}} becomes {{a}} {{Swamp}} or {{a}} {{Swamp}} until end of turn":
-      "Targeted([TargetPermanent({{Land[0]}})], ActionList([ChooseLandType([{{Swamp[0]}}, {{Swamp[1]}}]), CreatePermanentLayerEffectUntil(Ref_TargetPermanent, [AddLandTypeVariable(TheChosenLandType)], UntilEndOfTurn)]))",
+      "Targeted([TargetPermanent({{Land[0]}})], ActionList([ChooseAnAction([[CreatePermanentLayerEffectUntil(Ref_TargetPermanent, [SetLandType({{Swamp[0]}})], UntilEndOfTurn)], [CreatePermanentLayerEffectUntil(Ref_TargetPermanent, [SetLandType({{Swamp[1]}})], UntilEndOfTurn)]])]))",
     "Target {{Land}} becomes {{a}} {{Swamp}} until end of turn":
       "Targeted([TargetPermanent({{Land[0]}})], ActionList([CreatePermanentLayerEffectUntil(Ref_TargetPermanent, [SetLandType({{Swamp[0]}})], UntilEndOfTurn)]))",
     "Target {{Land}} becomes {{a}} {{Swamp}} until its controller's next untap step":
@@ -10333,7 +10333,7 @@
     "exactly one creature is attacking":
       "NumPermanentsIs(EqualTo(Integer(1)), And([IsCardtype(Creature), IsAttacking]))",
     "it isn't your main phase":
-      "PlayerPassesFilter(You, IsTheirMainPhase)",
+      "PlayerPassesFilter(You, Not(IsTheirMainPhase))",
     "it's an opponent's turn":
       "APlayerPassesFilter(Opponent, IsTheirTurn)",
     "it's night":
@@ -15985,7 +15985,7 @@
     "{{FullName}}\n{{Typeline[Spell]}}\n{{ManaCost}}\nChoose two -\n* {{SpellActions}}. {{Reminder}}\n* {{SpellActions}}.\n* {{SpellActions}}.\n* {{SpellActions}}.":
       "Card(Name: {{FullName[0]}}, Typeline: {{Typeline[Spell][0]}}, ManaCost: {{ManaCost[0]}}, Rules: [SpellActions(Modal_ChooseTwo([{{SpellActions[0]}}, {{SpellActions[1]}}, {{SpellActions[2]}}, {{SpellActions[3]}}]))])",
     "{{FullName}}\n{{Typeline[Spell]}}\n{{ManaCost}}\nChoose up to four. You may choose the same mode more than once.\n* {{SpellActions}}.\n* {{SpellActions}}.":
-      "Card(Name: {{FullName[0]}}, Typeline: {{Typeline[Spell][0]}}, ManaCost: {{ManaCost[0]}}, Rules: [SpellActions(Modal_ChooseNumberMayChooseSameModeMoreThanOnce(Integer(4), [{{SpellActions[0]}}, {{SpellActions[1]}}]))])",
+      "Card(Name: {{FullName[0]}}, Typeline: {{Typeline[Spell][0]}}, ManaCost: {{ManaCost[0]}}, Rules: [SpellActions(Modal_ChooseUptoNumberMayChooseSameModeMoreThanOnce(Integer(4), [{{SpellActions[0]}}, {{SpellActions[1]}}]))])",
     "{{FullName}}\n{{Typeline[Spell]}}\n{{ManaCost}}\nChoose up to {{Number}} {{Paws}} worth of modes. You may choose the same mode more than once.\n{{PawCost}} - {{SpellActions}}.\n{{PawCost}} - {{SpellActions}}.\n{{PawCost}} - {{SpellActions(~Spell)}}.":
       "Card(Name: {{FullName[0]}}, Typeline: {{Typeline[Spell][0]}}, ManaCost: {{ManaCost[0]}}, Rules: [SpellActions(Modal_ChooseUptoNumberPawsMayChooseSameModeMoreThanOnce({{Number[0]}}, [PawMode({{PawCost[0]}}, {{SpellActions[0]}}), PawMode({{PawCost[1]}}, {{SpellActions[1]}}), PawMode({{PawCost[2]}}, {{SpellActions(~Spell=ThisSpell)[0]}})]))])",
     "{{FullName}}\n{{Typeline[Spell]}}\n{{ManaCost}}\nChoose up to {{Number}} {{Paws}} worth of modes. You may choose the same mode more than once.\n{{PawCost}} - {{SpellActions}}.\n{{PawCost}} - {{SpellActions}}.\n{{PawCost}} - {{SpellActions}}.":
@@ -18905,7 +18905,7 @@
     "nonbasic land you don't control":
       "And([IsNonSupertype(Basic), IsCardtype(Land), ControlledByAPlayer(Other(You))])",
     "noncreature land you control":
-      "And([IsNonCardtype(Creature), IsCardtype(Land)])",
+      "And([IsNonCardtype(Creature), IsCardtype(Land), ControlledByAPlayer(SinglePlayer(You))])",
     "nonsnow basic land":
       "And([IsNonSupertype(Snow), IsSupertype(Basic), IsCardtype(Land)])",
     "nonsnow land you control":
@@ -20279,7 +20279,7 @@
     "Permanent cards":
       "IsPermanent",
     "Spacecraft cards":
-      "IsArtifactType(Equipment)",
+      "IsArtifactType(Spacecraft)",
     "artifact and creature cards":
       "Or([IsCardtype(Artifact), IsCardtype(Creature)])",
     "artifact and enchantment cards":
@@ -24149,7 +24149,7 @@
     "As {{~Permanent}} enters, you may exchange his text box and another creature's":
       "AsPermanentEnters(ThisPermanent, [MayActions([ChooseAPermanent(And([Other(ThisPermanent), IsCardtype(Creature)])), ExchangeTextBoxesOfTwoPermanents(ThisPermanent, ThePermanentChosenThisWay)])])",
     "As {{~Permanent}} enters, you may exile two creature cards from graveyards. If you do, it enters as a copy of one of those cards with a number of additional {{CounterType}} counters on it equal to the power of the other card":
-      "AsPermanentEnters(ThisPermanent, [MayCost(ExileTwoCardsFromAmongPlayersGraveyards(IsCardtype(Creature), AnyPlayer)), If(CostWasPaid, [EnterAsCopyOfExiled(TheFirstCardExiledThisWay, NoCopyEffects), EntersWithNumberCounters(PowerOfExiledCard(TheSecondCardExiledThisWay), {{CounterType[0]}})])])",
+      "AsPermanentEnters(ThisPermanent, [MayCost(Exile([TwoCardsInGraveyards(IsCardtype(Creature))], [ChooseAnOrder])), If(CostWasPaid, [EnterAsCopyOfExiled(TheFirstCardExiledThisWay, NoCopyEffects), EntersWithNumberCounters(PowerOfExiledCard(TheSecondCardExiledThisWay), {{CounterType[0]}})])])",
     "As {{~Permanent}} enters, you may pay {{Digits}} life. If you don't, it enters tapped":
       "AsPermanentEnters(ThisPermanent, [MayCost(PayLife({{Digits[0]}})), Unless(CostWasPaid, [EntersTapped])])",
     "During your first {{Number}} turns of the game, this land enters tapped if you were the starting player":
@@ -27187,7 +27187,7 @@
   },
   "{{SpellActions[Kicker]}}": {
     "Choose target creature you own. If this spell was kicked, instead choose any number of target creatures you own. Return each chosen creature to your hand. At the beginning of the next upkeep, create {{a}} {{PT}} {{CreatureToken}} with {{Hasable}} for each creature returned to your hand this way":
-      "WasKicked(Targeted([AnyNumberOfTargetPermanents(And([IsCardtype(Creature), OwnedByAPlayer(SinglePlayer(You))]))], ActionList([PutEachPermanentIntoItsOwnersHand(Ref_TargetPermanents), CreateFutureTrigger(AtTheBeginningOfTheNextUpkeep, ActionList([CreateTokens([NumberTokens(TheNumberOfPermanentsReturnedToHandThisWay, TokenWithPT({{PT[0]}}, {{CreatureToken[0]}}, [{{Hasable[0]}}]))], [])]))]))), WasntKicked(Targeted([AnyNumberOfTargetPermanents(And([IsCardtype(Creature), OwnedByAPlayer(SinglePlayer(You))]))], ActionList([PutPermanentIntoItsOwnersHand(Ref_TargetPermanent), CreateFutureTrigger(AtTheBeginningOfTheNextUpkeep, ActionList([CreateTokens([NumberTokens(TheNumberOfPermanentsReturnedToHandThisWay, TokenWithPT({{PT[0]}}, {{CreatureToken[0]}}, [{{Hasable[0]}}]))], [])]))])))",
+      "WasKicked(Targeted([AnyNumberOfTargetPermanents(And([IsCardtype(Creature), OwnedByAPlayer(SinglePlayer(You))]))], ActionList([PutEachPermanentIntoItsOwnersHand(Ref_TargetPermanents), CreateFutureTrigger(AtTheBeginningOfTheNextUpkeep, ActionList([CreateTokens([NumberTokens(TheNumberOfPermanentsReturnedToHandThisWay, TokenWithPT({{PT[0]}}, {{CreatureToken[0]}}, [{{Hasable[0]}}]))], [])]))]))), WasntKicked(Targeted([TargetPermanent(And([IsCardtype(Creature), OwnedByAPlayer(SinglePlayer(You))]))], ActionList([PutPermanentIntoItsOwnersHand(Ref_TargetPermanent), CreateFutureTrigger(AtTheBeginningOfTheNextUpkeep, ActionList([CreateTokens([NumberTokens(TheNumberOfPermanentsReturnedToHandThisWay, TokenWithPT({{PT[0]}}, {{CreatureToken[0]}}, [{{Hasable[0]}}]))], [])]))])))",
     "Choose target {{Creature}}. If this spell was kicked, instead choose target {{Creature}}. Exile the chosen creature, then its controller gains life equal to its mana value":
       "WasKicked(Targeted([TargetPermanent({{Creature[1]}})], ActionList([Exile([Permanent(Ref_TargetPermanent)], []), PlayerAction(ControllerOfPermanent(Ref_TargetPermanent), GainLife(ManaValueOfPermanent(Ref_TargetPermanent)))]))), WasntKicked(Targeted([TargetPermanent({{Creature[0]}})], ActionList([Exile([Permanent(Ref_TargetPermanent)], []), PlayerAction(ControllerOfPermanent(Ref_TargetPermanent), GainLife(ManaValueOfPermanent(Ref_TargetPermanent)))])))",
     "Counter target {{Spell}} if {{Condition(ThatSpell)}}. If this spell was kicked, counter that spell if {{Condition(ThatSpell)}} instead":
@@ -27737,7 +27737,7 @@
     "Change the text of target spell or permanent by replacing all instances of one color word with another or one basic land type with another until end of turn.\nDraw a card":
       "Targeted_Modal([Targeted([TargetSpell(AnySpell)], ActionList([ChooseAnAction([[ChooseTwoColorWords, CreatePermanentSpellLayerEffect(UntilEndOfTurn, Ref_TargetSpell, [ReplaceColorWordVariableWithNewColorWordVariable(TheFirstChosenColorWord, TheSecondChosenColorWord)]), DrawACard], [ChooseTwoBasicLandTypes, CreateSpellEffect(Ref_TargetSpell, [ReplaceLandTypeVariableWithNewLandTypeVariable(TheFirstChosenLandType, TheSecondChosenLandType)])]])])), Targeted([TargetPermanent(AnyPermanent)], ActionList([ChooseAnAction([[ChooseTwoColorWords, CreatePermanentLayerEffect(Ref_TargetPermanent, [ReplaceColorWordVariableWithNewColorWordVariable(TheFirstChosenColorWord, TheSecondChosenColorWord)])], [ChooseTwoBasicLandTypes, CreatePermanentLayerEffectUntil(Ref_TargetPermanent, [ReplaceLandTypeVariableWithNewLandTypeVariable(TheFirstChosenLandType, TheSecondChosenLandType)], UntilEndOfTurn), DrawACard]])]))])",
     "Change the text of target spell or permanent by replacing all instances of one creature type with another. The new creature type can't be {{Zombie}}":
-      "Targeted_Modal([Targeted([TargetSpell(AnySpell)], ActionList([ChooseACreatureType_And_ChooseACreatureTypeOtherThan({{Zombie[0]}}), CreateSpellEffect(Ref_TargetSpell, [ReplaceColorWordVariableWithNewColorWordVariable(TheFirstChosenColorWord, TheSecondChosenColorWord)])])), Targeted([TargetPermanent(AnyPermanent)], ActionList([ChooseACreatureType_And_ChooseACreatureTypeOtherThan({{Zombie[0]}}), CreatePermanentLayerEffect(Ref_TargetPermanent, [ReplaceColorWordVariableWithNewColorWordVariable(TheFirstChosenColorWord, TheSecondChosenColorWord)])]))])",
+      "Targeted_Modal([Targeted([TargetSpell(AnySpell)], ActionList([ChooseACreatureType_And_ChooseACreatureTypeOtherThan({{Zombie[0]}}), CreateSpellEffect(Ref_TargetSpell, [ReplaceCreatureTypeVariableWithNewCreatureTypeVariable(TheFirstChosenCreatureType, TheSecondChosenCreatureType)])])), Targeted([TargetPermanent(AnyPermanent)], ActionList([ChooseACreatureType_And_ChooseACreatureTypeOtherThan({{Zombie[0]}}), CreatePermanentLayerEffect(Ref_TargetPermanent, [ReplaceCreatureTypeVariableWithNewCreatureTypeVariable(TheFirstChosenCreatureType, TheSecondChosenCreatureType)])]))])",
     "Choose a card name other than a basic land card name. Reveal the top {{Number}} cards of your library and put all of them with that name into your hand. Exile the rest":
       "ActionList([ChooseACardName(Not(And([IsSupertype(Basic), IsCardtype(Land)]))), RevealTheTopNumberCardsOfLibrary({{Number[0]}}, [PutEachCardOfTypeIntoHand(IsNamed(TheChosenName)), ExileTheRemainingCards])])",
     "Choose a card name other than a basic land card name. Search target opponent's graveyard, hand, and library for any number of cards with that name and exile them. That player shuffles, then creates {{a}} {{PT}} {{CreatureToken}} for each card exiled from their hand this way":
@@ -30819,13 +30819,13 @@
     "Prevent the next {{Digits}} damage that would be dealt to any target this turn.\nDraw a card at the beginning of the next turn's upkeep":
       "Targeted([AnyTarget], ActionList([CreateFuturePreventDamage(NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient({{Digits[0]}}, Ref_AnyTarget), [PreventThatDamage]), CreateFutureTrigger(AtTheBeginningOfTheNextTurnsUpkeep, ActionList([DrawACard]))]))",
     "Prevent the next {{Digits}} damage that would be dealt to any target this turn. If it's {{a}} {{Creature}}, put {{a}} {{CounterType}} counter on it for each 1 damage prevented this way at the beginning of the next end step":
-      "Targeted([AnyTarget], ActionList([CreateFuturePreventDamage(NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient({{Digits[0]}}, Ref_AnyTarget), [PreventThatDamage, If(PermanentPassesFilter(AnyTargetAsAPermanent, {{Creature[0]}}), [CreateFutureTrigger(AtTheBeginningOfTheNextEndStep, ActionList([PutCounters([NumberCountersOfTypeOnPermanent(TheAmountOfDamagePreventedThisWay, {{CounterType[0]}}, AnyTargetAsAPermanent)])]))])])]))",
+      "Targeted([AnyTarget], ActionList([CreateFuturePreventDamage(NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient({{Digits[0]}}, Ref_AnyTarget), [PreventThatDamage]), If(PermanentPassesFilter(AnyTargetAsAPermanent, {{Creature[0]}}), [CreateFutureTrigger(AtTheBeginningOfTheNextEndStep, ActionList([PutCounters([NumberCountersOfTypeOnPermanent(TheTotalAmountOfDamagePrevented, {{CounterType[0]}}, AnyTargetAsAPermanent)])]))])]))",
     "Prevent the next {{Digits}} damage that would be dealt to any target this turn. You gain life equal to the damage prevented this way":
       "Targeted([AnyTarget], ActionList([CreateFuturePreventDamage(NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient({{Digits[0]}}, Ref_AnyTarget), [PreventThatDamage, GainLife(TheAmountOfDamagePreventedThisWay)])]))",
     "Prevent the next {{Digits}} damage that would be dealt to target {{Creature}} this turn":
       "Targeted([TargetPermanent({{Creature[0]}})], ActionList([CreateFuturePreventDamage(NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient({{Digits[0]}}, Permanent(Ref_TargetPermanent)), [PreventThatDamage])]))",
     "Prevent the next {{Digits}} damage that would be dealt to target {{Creature}} this turn. At the beginning of the next end step, put {{a}} {{CounterType}} counter on that creature for each 1 damage prevented this way":
-      "Targeted([TargetPermanent({{Creature[0]}})], ActionList([CreateFuturePreventDamage(NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient({{Digits[0]}}, Permanent(Ref_TargetPermanent)), [PreventThatDamage, CreateFutureTrigger(AtTheBeginningOfTheNextEndStep, ActionList([PutCounters([NumberCountersOfTypeOnPermanent(TheAmountOfDamagePreventedThisWay, {{CounterType[0]}}, Ref_TargetPermanent)])]))])]))",
+      "Targeted([TargetPermanent({{Creature[0]}})], ActionList([CreateFuturePreventDamage(NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient({{Digits[0]}}, Permanent(Ref_TargetPermanent)), [PreventThatDamage]), CreateFutureTrigger(AtTheBeginningOfTheNextEndStep, ActionList([PutCounters([NumberCountersOfTypeOnPermanent(TheTotalAmountOfDamagePrevented, {{CounterType[0]}}, Ref_TargetPermanent)])]))]))",
     "Prevent the next {{Digits}} damage that would be dealt to target {{Creature}} this turn. For each 1 damage prevented this way, put {{a}} {{CounterType}} counter on that creature":
       "Targeted([TargetPermanent({{Creature[0]}})], ActionList([CreateFuturePreventDamage(NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient({{Digits[0]}}, Permanent(Ref_TargetPermanent)), [PreventThatDamage, PutCounters([NumberCountersOfTypeOnPermanent(TheAmountOfDamagePreventedThisWay, {{CounterType[0]}}, Ref_TargetPermanent)])])]))",
     "Proliferate":
@@ -32095,11 +32095,11 @@
     "Starting with you, each player may pay any amount of mana. Each player creates X {{PT}} {{CreatureTokens}}, where X is the total amount of mana paid this way":
       "ActionList([EachPlayerStartingWithAction(AnyPlayer, You, [PayAnyAmountOfMana]), EachPlayerCreatesTokens(AnyPlayer, [NumberTokens(TheTotalAmountOfManaPaidThisWay, TokenWithPT({{PT[0]}}, {{CreatureTokens[0]}}, []))], [])])",
     "Starting with you, each player may pay any amount of mana. Each player draws X cards, where X is the total amount of mana paid this way":
-      "ActionList([EachPlayerStartingWithAction(AnyPlayer, You, [PayAnyAmountOfMana]), EachPlayerAction(AnyPlayer, DrawNumberCards(AmountOfManaPaidThisWay))])",
+      "ActionList([EachPlayerStartingWithAction(AnyPlayer, You, [PayAnyAmountOfMana]), EachPlayerAction(AnyPlayer, DrawNumberCards(TheTotalAmountOfManaPaidThisWay))])",
     "Starting with you, each player may pay any amount of mana. Each player mills X cards, where X is the total amount of mana paid this way":
-      "ActionList([EachPlayerStartingWithAction(AnyPlayer, You, [PayAnyAmountOfMana]), EachPlayerAction(AnyPlayer, MillNumberCards(AmountOfManaPaidThisWay))])",
+      "ActionList([EachPlayerStartingWithAction(AnyPlayer, You, [PayAnyAmountOfMana]), EachPlayerAction(AnyPlayer, MillNumberCards(TheTotalAmountOfManaPaidThisWay))])",
     "Starting with you, each player may pay any amount of mana. Each player searches their library for up to X {{SpecificCards}}, where X is the total amount of mana paid this way, puts them onto the battlefield tapped, then shuffles":
-      "ActionList([EachPlayerStartingWithMayAction(AnyPlayer, You, PayAnyAmountOfMana), EachPlayerAction(AnyPlayer, SearchLibrary([FindNumberCardsOfType(AmountOfManaPaidThisWay, {{SpecificCards[0]}}), PutFoundCardsOntoBattlefield([EntersTapped]), Shuffle]))])",
+      "ActionList([EachPlayerStartingWithMayAction(AnyPlayer, You, PayAnyAmountOfMana), EachPlayerAction(AnyPlayer, SearchLibrary([FindNumberCardsOfType(TheTotalAmountOfManaPaidThisWay, {{SpecificCards[0]}}), PutFoundCardsOntoBattlefield([EntersTapped]), Shuffle]))])",
     "Starting with you, each player may put {{a}} {{SpecificCard}} from their hand onto the battlefield. Repeat this process until no one puts a card onto the battlefield":
       "ActionList([RepeatableActions([EachPlayerStartingWithMayAction(AnyPlayer, You, PutACardFromHandOnBattlefield({{SpecificCard[0]}}, [EntersNormally])), Unless(NoOneTookAnActionThisWay, [RepeatThisProcess])])])",
     "Starting with you, each player separates all permanents they control into {{Number}} piles. Then each player chooses one of their piles at random and sacrifices those permanents":
@@ -32361,7 +32361,7 @@
     "Target opponent discards {{Number}} cards. Create a Wicked Role token attached to up to one target {{Permanent}}":
       "Targeted([TargetPlayer(Opponent), UptoOneTargetPermanent({{Permanent[0]}})], ActionList([PlayerAction(Ref_TargetPlayer, DiscardNumberCards({{Number[0]}})), CreateTokens([WickedRoleToken], [EntersAttachedToPermanent(Ref_TargetPermanent)])]))",
     "Target opponent discards {{Number}} cards. If fewer than {{Number}} cards were discarded this way, you draw cards equal to the difference":
-      "Targeted([TargetPlayer(Opponent)], ActionList([PlayerAction(Ref_TargetPlayer, DiscardNumberCards({{Number[0]}})), If(ANumberOfCardsWereDiscardedThisWay(LessThanOrEqualTo({{Number[1]}})), [DrawNumberCards(Minus({{Number[1]}}, NumCardsDiscardedThisWay))])]))",
+      "Targeted([TargetPlayer(Opponent)], ActionList([PlayerAction(Ref_TargetPlayer, DiscardNumberCards({{Number[0]}})), If(ANumberOfCardsWereDiscardedThisWay(LessThan({{Number[1]}})), [DrawNumberCards(Minus({{Number[1]}}, NumCardsDiscardedThisWay))])]))",
     "Target opponent discards {{Number}} cards. Then if {{Condition}}, surveil {{Digits}}":
       "Targeted([TargetPlayer(Opponent)], ActionList([PlayerAction(Ref_TargetPlayer, DiscardNumberCards({{Number[0]}})), If({{Condition[0]}}, [Surveil({{Digits[0]}})])]))",
     "Target opponent discards {{Number}} cards. You create {{a}} {{PT}} {{CreatureToken}} with {{Hasable}}":
@@ -33719,7 +33719,7 @@
     "Until end of turn, whenever a player gains life, that player loses {{Digits}} life for each 1 life they gained":
       "ActionList([CreateTriggerUntil(WhenAPlayerGainsLife(AnyPlayer), ActionList([PlayerAction(Trigger_ThatPlayer, LoseLifeForEach({{Digits[0]}}, Trigger_ThatMuch))]), UntilEndOfTurn)])",
     "Until end of turn, whenever a player taps {{a}} {{Permanent}} for mana, that player adds an additional {{ManaProduceSymbol}}":
-      "ActionList([CreateTriggerUntil(WhenAPlayerTapsAPermanentForMana(AnyPlayer, {{Permanent[0]}}), ActionList([AddMana({{ManaProduceSymbol[0]}})]), UntilEndOfTurn)])",
+      "ActionList([CreateTriggerUntil(WhenAPlayerTapsAPermanentForMana(AnyPlayer, {{Permanent[0]}}), ActionList([PlayerAction(Trigger_ThatPlayer, AddMana({{ManaProduceSymbol[0]}}))]), UntilEndOfTurn)])",
     "Until end of turn, whenever target {{Creature}} deals damage, you gain that much life.\nDraw a card":
       "Targeted([TargetPermanent({{Creature[0]}})], ActionList([CreateTriggerUntil(WhenAPermanentDealsDamage(SinglePermanent(Ref_TargetPermanent)), ActionList([GainLife(Trigger_ThatMuch)]), UntilEndOfTurn), DrawACard]))",
     "Until end of turn, whenever you tap {{a}} {{Swamp}} for mana, add an additional {{ManaProduceSymbol}}":
@@ -40051,7 +40051,7 @@
     "choose one -\n* {{TriggerActions_Modal}}.\n* {{TriggerActions_Modal(ThatPermanent)}}.\n* {{TriggerActions_Modal}}":
       "Modal_ChooseOne([{{TriggerActions_Modal[0]}}, {{TriggerActions_Modal(ThatPermanent=^ThatPermanent)[0]}}, {{TriggerActions_Modal[1]}}])",
     "choose up to one -\n* {{TriggerActions_Modal}}.\n* {{TriggerActions_Modal(ThatPermanent)}}":
-      "Modal_ChooseOne([{{TriggerActions_Modal[0]}}, {{TriggerActions_Modal(ThatPermanent=^ThatPermanent)[0]}}])",
+      "Modal_ChooseUptoOne([{{TriggerActions_Modal[0]}}, {{TriggerActions_Modal(ThatPermanent=^ThatPermanent)[0]}}])",
     "conjure a duplicate of another target {{Permanent}} into your graveyard. The duplicate perpetually gains unearth {{ManaCost}}":
       "Targeted([TargetPermanent(And([Other({{ThatPermanent}}), {{Permanent[0]}}]))], ActionList([ConjureDuplicateOfPermanentIntoPlayersGraveyard(Ref_TargetPermanent, You), CreatePerpetualGraveyardCardEffect(TheCardConjuredIntoGraveyardThisWay, [AddAbility([Unearth(PayMana({{ManaCost[0]}}))])])]))",
     "conjure a duplicate of another target {{Permanent}} into your hand":
@@ -42491,7 +42491,7 @@
     "choose up to X, where X is {{GameNumber}} -\n* {{TriggerActions_Modal[ThisPermanent]}}.\n* {{TriggerActions_Modal}}.\n* {{TriggerActions_Modal}}":
       "Modal_ChooseUptoNumber({{GameNumber[0]}}, [{{TriggerActions_Modal[ThisPermanent][0]}}, {{TriggerActions_Modal[0]}}, {{TriggerActions_Modal[1]}}])",
     "choose up to one -\n* {{TriggerActions_Modal[ThisPermanent]}}.\n* {{TriggerActions_Modal}}":
-      "Modal_ChooseOne([{{TriggerActions_Modal[ThisPermanent][0]}}, {{TriggerActions_Modal[0]}}])",
+      "Modal_ChooseUptoOne([{{TriggerActions_Modal[ThisPermanent][0]}}, {{TriggerActions_Modal[0]}}])",
     "choose up to one -\n* {{TriggerActions_Modal}}.\n* {{TriggerActions_Modal[ThisPermanent]}}":
       "Modal_ChooseUptoOne([{{TriggerActions_Modal[0]}}, {{TriggerActions_Modal[ThisPermanent][0]}}])",
     "choose up to one other target {{Permanent}}. If {{Condition}}, you may create a token that's a copy of it. If {{Condition}}, you may have this enchantment become a copy of it, except it has this ability":
@@ -42765,7 +42765,7 @@
     "each player secretly votes for fellowship or aid, then those votes are revealed. For each fellowship vote, the voter chooses a creature they control. You gain control of each creature chosen this way, and they gain \"{{QuotedAbility}}\". Then for each aid vote, put {{a}} {{CounterType}} counter on each {{Permanent}}":
       "ActionList([EachPlayerAction(AnyPlayer, SecretlyVoteForAWord([\"Fellowship\", \"Aid\"])), RevealVotesForWord, EachPlayerAction(VotedForWord(\"Fellowship\"), ChooseAPermanent(And([IsCardtype(Creature), ControlledByAPlayer(SinglePlayer(ActionPlayer))]))), GainControlOfEachPermanent(ThePermanentsChosenThisWay), CreateEachPermanentLayerEffect(ThePermanentsGainedControlOfThisWay, [AddAbility([{{QuotedAbility[0]}}])]), PutCounters([NumberCountersOfTypeOnEachPermanent(TheNumberOfVotesForWord(\"Aid\"), {{CounterType[0]}}, {{Permanent[0]}})])])",
     "each player starting with you may pay any amount of mana. This creature gets {{PTModX}} until end of turn, where X is the total amount of mana paid this way":
-      "ActionList([EachPlayerStartingWithAction(AnyPlayer, You, [PayAnyAmountOfMana]), CreatePermanentLayerEffectUntil(ThisPermanent, [AdjustPTX({{PTModX[0]}}, AmountOfManaPaidThisWay)], UntilEndOfTurn)])",
+      "ActionList([EachPlayerStartingWithAction(AnyPlayer, You, [PayAnyAmountOfMana]), CreatePermanentLayerEffectUntil(ThisPermanent, [AdjustPTX({{PTModX[0]}}, TheTotalAmountOfManaPaidThisWay)], UntilEndOfTurn)])",
     "each player this creature attacked this turn loses the game":
       "ActionList([EachPlayerAction(AttackedByCreatureThisTurn(ThisPermanent), LoseTheGame)])",
     "each player who tapped a land for mana this turn sacrifices {{a}} {{Permanent}} of their choice. This enchantment deals {{Digits}} damage to each player who sacrificed {{a}} {{Permanent}} this way":
@@ -45277,9 +45277,9 @@
     "it becomes an Aura with \"enchant creature put onto the battlefield with {{~Permanent}}\". Put target {{SpecificCard}} from a graveyard onto the battlefield under your control and attach this enchantment to it. When this enchantment leaves the battlefield, that creature's controller sacrifices it":
       "Targeted([TargetGraveyardCard({{SpecificCard[0]}})], ActionList([CreatePermanentLayerEffect(ThisPermanent, [AddEnchantmentType(Aura), AddAbility([EnchantPermanent(And([IsCardtype(Creature), PutOntoBattlefieldByPermanent(ThisPermanent)]))])]), PutGraveyardCardOntoBattlefield(Ref_TargetGraveyardCard, [EntersUnderPlayersControl(You)]), AttachPermanentToPermanent(ThisPermanent, ThePermanentPutOnTheBattlefieldThisWay), CreateFutureTrigger(WhenPermanentLeavesTheBattlefield(ThisPermanent), ActionList([PlayerAction(ControllerOfPermanent(ThePermanentPutOnTheBattlefieldThisWay), SacrificePermanent(ThePermanentPutOnTheBattlefieldThisWay))]))]))",
     "it loses \"enchant creature card in a graveyard\" and gains \"enchant creature put onto the battlefield with this Aura\". Put enchanted creature card onto the battlefield tapped under your control and attach this Aura to it. When this Aura leaves the battlefield, that creature's controller sacrifices it":
-      "ActionList([CreatePermanentLayerEffect(ThisPermanent, [LosesAbility(Enchant(IsCardtype(Creature))), AddAbility([EnchantPermanent(And([IsCardtype(Creature), PutOntoBattlefieldByPermanent(ThisPermanent)]))])]), PutGraveyardCardOntoBattlefield(EnchantedGraveyardCard, [EntersTapped, EntersUnderPlayersControl(You)]), AttachPermanentToPermanent(ThisPermanent, ThePermanentPutOnTheBattlefieldThisWay), CreateFutureTrigger(WhenPermanentLeavesTheBattlefield(ThisPermanent), ActionList([PlayerAction(ControllerOfLeavingPermanent, SacrificePermanent(ThePermanentPutOnTheBattlefieldThisWay))]))])",
+      "ActionList([CreatePermanentLayerEffect(ThisPermanent, [LosesAbility(Enchant(IsCardtype(Creature))), AddAbility([EnchantPermanent(And([IsCardtype(Creature), PutOntoBattlefieldByPermanent(ThisPermanent)]))])]), PutGraveyardCardOntoBattlefield(EnchantedGraveyardCard, [EntersTapped, EntersUnderPlayersControl(You)]), AttachPermanentToPermanent(ThisPermanent, ThePermanentPutOnTheBattlefieldThisWay), CreateFutureTrigger(WhenPermanentLeavesTheBattlefield(ThisPermanent), ActionList([PlayerAction(ControllerOfPermanent(ThePermanentPutOnTheBattlefieldThisWay), SacrificePermanent(ThePermanentPutOnTheBattlefieldThisWay))]))])",
     "it loses \"enchant creature card in a graveyard\" and gains \"enchant creature put onto the battlefield with this Aura\". Return enchanted creature card to the battlefield under your control and attach this Aura to it. When this Aura leaves the battlefield, that creature's controller sacrifices it":
-      "ActionList([CreatePermanentLayerEffect(ThisPermanent, [LosesAbility(Enchant(IsCardtype(Creature))), AddAbility([EnchantPermanent(And([IsCardtype(Creature), PutOntoBattlefieldByPermanent(ThisPermanent)]))])]), PutGraveyardCardOntoBattlefield(EnchantedGraveyardCard, [EntersUnderPlayersControl(You)]), AttachPermanentToPermanent(ThisPermanent, ThePermanentPutOnTheBattlefieldThisWay), CreateFutureTrigger(WhenPermanentLeavesTheBattlefield(ThisPermanent), ActionList([PlayerAction(ControllerOfLeavingPermanent, SacrificePermanent(ThePermanentPutOnTheBattlefieldThisWay))]))])"
+      "ActionList([CreatePermanentLayerEffect(ThisPermanent, [LosesAbility(Enchant(IsCardtype(Creature))), AddAbility([EnchantPermanent(And([IsCardtype(Creature), PutOntoBattlefieldByPermanent(ThisPermanent)]))])]), PutGraveyardCardOntoBattlefield(EnchantedGraveyardCard, [EntersUnderPlayersControl(You)]), AttachPermanentToPermanent(ThisPermanent, ThePermanentPutOnTheBattlefieldThisWay), CreateFutureTrigger(WhenPermanentLeavesTheBattlefield(ThisPermanent), ActionList([PlayerAction(ControllerOfPermanent(ThePermanentPutOnTheBattlefieldThisWay), SacrificePermanent(ThePermanentPutOnTheBattlefieldThisWay))]))])"
   },
   "{{TriggerActions[EnchantedPermanent](ThatPermanent)}}": {
     "it deals {{Digits}} damage to {{EnchantedCreature}}":
@@ -47335,9 +47335,9 @@
     "choose two -\n* {{TriggerActions_Modal}}.\n* {{TriggerActions_Modal}}.\n* {{TriggerActions_Modal}}.\n* {{TriggerActions_Modal}}":
       "Modal_ChooseTwo([{{TriggerActions_Modal[0]}}, {{TriggerActions_Modal[1]}}, {{TriggerActions_Modal[2]}}, {{TriggerActions_Modal[3]}}])",
     "choose up to one -\n* {{TriggerActions_Modal}}.\n* {{TriggerActions_Modal}}":
-      "Modal_ChooseOne([{{TriggerActions_Modal[0]}}, {{TriggerActions_Modal[1]}}])",
+      "Modal_ChooseUptoOne([{{TriggerActions_Modal[0]}}, {{TriggerActions_Modal[1]}}])",
     "choose up to one -\n* {{TriggerActions_Modal}}. {{Reminder}}\n* {{TriggerActions_Modal}}":
-      "Modal_ChooseOne([{{TriggerActions_Modal[0]}}, {{TriggerActions_Modal[1]}}])",
+      "Modal_ChooseUptoOne([{{TriggerActions_Modal[0]}}, {{TriggerActions_Modal[1]}}])",
     "choose up to one target Mount or Vehicle you control. Until end of turn, that permanent becomes saddled if it's a Mount and becomes an artifact creature if it's a Vehicle":
       "Targeted([UptoOneTargetPermanent(And([Or([IsCreatureType(Mount), IsArtifactType(Vehicle)]), ControlledByAPlayer(SinglePlayer(You))]))], ActionList([If(PermanentPassesFilter(Ref_TargetPermanent, IsCreatureType(Mount)), [SaddlePermanent(Ref_TargetPermanent)]), If(PermanentPassesFilter(Ref_TargetPermanent, IsArtifactType(Vehicle)), [CreatePermanentLayerEffectUntil(Ref_TargetPermanent, [AddCardtype(Artifact), AddCardtype(Creature)], UntilEndOfTurn)])]))",
     "choose up to one target Vehicle you control. Until end of turn, it becomes an artifact creature and gains {{Hasable}}":
@@ -47559,7 +47559,7 @@
     "create a Food token":
       "ActionList([CreateTokens([FoodToken], [])])",
     "create a Food token and exile up to one target card from a graveyard":
-      "Targeted([UptoOneTargetGraveyardCard(InAPlayersGraveyard(SinglePlayer(You)))], ActionList([CreateTokens([FoodToken], []), Exile([CardInGraveyards(Ref_TargetGraveyardCard)], [])]))",
+      "Targeted([UptoOneTargetGraveyardCard(AnyCardInAnyGraveyard)], ActionList([CreateTokens([FoodToken], []), Exile([CardInGraveyards(Ref_TargetGraveyardCard)], [])]))",
     "create a Food token and {{a}} {{PT}} {{CreatureToken}}":
       "ActionList([CreateTokens([FoodToken, TokenWithPT({{PT[0]}}, {{CreatureToken[0]}}, [])], [])])",
     "create a Food token for each {{Eachable}}":
@@ -53475,11 +53475,11 @@
     "Whenever a player casts {{a}} {{Spell}}, if that spell targets only this creature, copy the spell for each other creature that spell could target. Each copy targets a different one of those creatures":
       "TriggerI(WhenAPlayerCastsASpell(AnyPlayer, {{Spell[0]}}), CastSpellPassesFilter(TargetsOnlySinglePermanent(ThisPermanent)), ActionList([CopySpellForEachPermanentAndMustChooseItAsNewTarget(Trigger_ThatSpell, And([Other(SingleTargetPermanentOfSpell(Trigger_ThatSpell)), IsCardtype(Creature)]))]))",
     "Whenever a player casts {{a}} {{Spell}}, if {{Condition(ThatPlayer)}}, {{TriggerActions(~Permanent)}}":
-      "TriggerI(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), {{Condition(ThatPlayer=Trigger_ThatPlayer)[0]}}, {{TriggerActions(~Permanent=^~Permanent)[0]}})",
+      "TriggerI(WhenAPlayerCastsASpell(AnyPlayer, {{Spell[0]}}), {{Condition(ThatPlayer=Trigger_ThatPlayer)[0]}}, {{TriggerActions(~Permanent=^~Permanent)[0]}})",
     "Whenever a player casts {{a}} {{Spell}}, if {{Condition(ThatPlayer)}}, {{TriggerActions(~Permanent,ThatPlayer)}}":
-      "TriggerI(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), {{Condition(ThatPlayer=Trigger_ThatPlayer)[0]}}, {{TriggerActions(~Permanent=^~Permanent,ThatPlayer=Trigger_ThatPlayer)[0]}})",
+      "TriggerI(WhenAPlayerCastsASpell(AnyPlayer, {{Spell[0]}}), {{Condition(ThatPlayer=Trigger_ThatPlayer)[0]}}, {{TriggerActions(~Permanent=^~Permanent,ThatPlayer=Trigger_ThatPlayer)[0]}})",
     "Whenever a player casts {{a}} {{Spell}}, if {{Condition(ThatSpell)}}, {{TriggerActions(~Permanent,ThatPlayer)}}":
-      "TriggerI(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), {{Condition(ThatSpell=Trigger_ThatSpell)[0]}}, {{TriggerActions(~Permanent=^~Permanent,ThatPlayer=Trigger_ThatPlayer)[0]}})",
+      "TriggerI(WhenAPlayerCastsASpell(AnyPlayer, {{Spell[0]}}), {{Condition(ThatSpell=Trigger_ThatSpell)[0]}}, {{TriggerActions(~Permanent=^~Permanent,ThatPlayer=Trigger_ThatPlayer)[0]}})",
     "Whenever a player casts {{a}} {{Spell}}, {{TriggerActions(~Permanent)}}":
       "TriggerA(WhenAPlayerCastsASpell(AnyPlayer, {{Spell[0]}}), {{TriggerActions(~Permanent=^~Permanent)[0]}})",
     "Whenever a player casts {{a}} {{Spell}}, {{TriggerActions(~Permanent,ThatPlayer)}}":
@@ -53759,7 +53759,7 @@
     "Whenever one or more opponents each lose exactly {{Digits}} life, {{TriggerActions(~Permanent)}}":
       "TriggerA(WhenAnyNumberOfPlayersEachLoseAnAmountOfLife(Opponent, EqualTo({{Digits[0]}})), {{TriggerActions(~Permanent=^~Permanent)[0]}})",
     "Whenever one or more opponents lose life, you may cast target instant or sorcery card from your graveyard. If that spell would be put into your graveyard, exile it instead. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAnyNumberOfPlayersLoseLife(Opponent), Targeted([TargetGraveyardCard(And([Or([IsCardtype(Instant), IsCardtype(Sorcery)]), InAPlayersGraveyard(SinglePlayer(You))]))], ActionList([CastGraveyardCardIntoExile(Ref_TargetGraveyardCard)])))",
+      "TriggerMayOnceEachTurn(WhenAnyNumberOfPlayersLoseLife(Opponent), Targeted([TargetGraveyardCard(And([Or([IsCardtype(Instant), IsCardtype(Sorcery)]), InAPlayersGraveyard(SinglePlayer(You))]))], ActionList([MayActionOnceEachTurn(CastGraveyardCardIntoExile(Ref_TargetGraveyardCard))])))",
     "Whenever one or more other creatures die, {{TriggerActions}}":
       "TriggerA(WhenAPermanentDies(And([Other(ThisPermanent), IsCardtype(Creature)])), {{TriggerActions[0]}})",
     "Whenever one or more other creatures you control enter, if they entered or were cast from a graveyard, create a token that's a copy of one of them. This ability triggers only once each turn":
@@ -53851,7 +53851,7 @@
     "Whenever one or more {{Creatures}} deal damage to a player, {{TriggerActions(~Permanent)}}":
       "TriggerA(WhenAnyNumberOfCreaturesDealDamageToAPlayer({{Creatures[0]}}, AnyPlayer), {{TriggerActions(~Permanent=^~Permanent)[0]}})",
     "Whenever one or more {{Creatures}} die, you may return one of them to the battlefield tapped under its owner's control with {{a}} {{CounterType}} counter on it. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAnyNumberOfCreaturesOrPlaneswalkersDie({{Creatures[0]}}), ActionList([PutAGraveyardCardOntoBattlefield(Trigger_ThoseGraveyardCards, [EntersTapped, EntersUnderOwnersControl, EntersWithACounter({{CounterType[0]}})])]))",
+      "TriggerMayOnceEachTurn(WhenAnyNumberOfCreaturesOrPlaneswalkersDie({{Creatures[0]}}), ActionList([MayActionOnceEachTurn(PutAGraveyardCardOntoBattlefield(Trigger_ThoseGraveyardCards, [EntersTapped, EntersUnderOwnersControl, EntersWithACounter({{CounterType[0]}})]))]))",
     "Whenever one or more {{Creatures}} die, {{TriggerActions(~Permanent)}}":
       "TriggerA(WhenAnyNumberOfCreaturesOrPlaneswalkersDie({{Creatures[0]}}), {{TriggerActions(~Permanent=^~Permanent)[0]}})",
     "Whenever one or more {{Permanents}} are put into a graveyard from the battlefield, {{TriggerActions(~Permanent)}}. This ability triggers only once each turn":
@@ -54175,7 +54175,7 @@
     "Whenever you play a land or cast a spell from anywhere other than your hand, {{TriggerActions(~Permanent)}}":
       "TriggerA(Or([WhenAPlayerPlaysALandFromAnywhereOtherThanTheirHand(SinglePlayer(You), IsCardtype(Land)), WhenAPlayerCastsASpellFromAnywhereOtherThanTheirHand(SinglePlayer(You), AnySpell)]), {{TriggerActions(~Permanent=^~Permanent)[0]}})",
     "Whenever you play a land, if it wasn't the first land you played this turn, {{TriggerActions(~Permanent)}}":
-      "TriggerI(WhenAPlayerPlaysALand(SinglePlayer(You), IsCardtype(Land)), PermanentPassesFilter(Trigger_ThatLand, IsFirstLandPlayedByPlayerThisTurn), {{TriggerActions(~Permanent=^~Permanent)[0]}})",
+      "TriggerI(WhenAPlayerPlaysALand(SinglePlayer(You), IsCardtype(Land)), PermanentPassesFilter(Trigger_ThatLand, Not(IsFirstLandPlayedByPlayerThisTurn)), {{TriggerActions(~Permanent=^~Permanent)[0]}})",
     "Whenever you play {{a}} {{Land}}, if this permanent is a creature, it becomes an enchantment":
       "TriggerI(WhenAPlayerPlaysALand(SinglePlayer(You), {{Land[0]}}), PermanentPassesFilter(ThisPermanent, IsCardtype(Creature)), ActionList([CreatePermanentLayerEffect(ThisPermanent, [SetCardtype(Enchantment)])]))",
     "Whenever you play {{a}} {{Swamp}}, {{TriggerActions(~Permanent)}}":
@@ -54201,9 +54201,9 @@
     "Whenever you put one or more {{CounterType}} counters on this creature, {{TriggerActions}}. This ability triggers only once each turn":
       "TriggerOnceEachTurn(WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAPermanent(SinglePlayer(You), {{CounterType[0]}}, SinglePermanent(ThisPermanent)), {{TriggerActions[0]}})",
     "Whenever you put one or more {{CounterType}} counters on {{a}} {{Permanent}}, you may draw that many cards. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAPermanent(SinglePlayer(You), {{CounterType[0]}}, {{Permanent[0]}}), ActionList([DrawNumberCards(Trigger_ThatMuch)]))",
+      "TriggerMayOnceEachTurn(WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAPermanent(SinglePlayer(You), {{CounterType[0]}}, {{Permanent[0]}}), ActionList([MayActionOnceEachTurn(DrawNumberCards(Trigger_ThatMuch))]))",
     "Whenever you put one or more {{CounterType}} counters on {{a}} {{Permanent}}, you may gain that much life. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAPermanent(SinglePlayer(You), {{CounterType[0]}}, {{Permanent[0]}}), ActionList([GainLife(Trigger_ThatMuch)]))",
+      "TriggerMayOnceEachTurn(WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAPermanent(SinglePlayer(You), {{CounterType[0]}}, {{Permanent[0]}}), ActionList([MayActionOnceEachTurn(GainLife(Trigger_ThatMuch))]))",
     "Whenever you put one or more {{CounterType}} counters on {{a}} {{Permanent}}, {{TriggerActions(~Permanent)}}":
       "TriggerA(WhenAPlayerPutsAnyNumberOfCountersOfTypeOnAPermanent(SinglePlayer(You), {{CounterType[0]}}, {{Permanent[0]}}), {{TriggerActions(~Permanent=^~Permanent)[0]}})",
     "Whenever you put one or more {{CounterType}} counters on {{a}} {{Permanent}}, {{~Permanent}} deals that much damage to target opponent":
@@ -54927,7 +54927,7 @@
     "Whenever {{a}} {{Creature}} enters, {{TriggerActions(~Permanent,ThatCreature)}}":
       "TriggerA(WhenAPermanentEntersTheBattlefield({{Creature[0]}}), {{TriggerActions(~Permanent=^~Permanent,ThatCreature=ThatEnteringPermanent)[0]}})",
     "Whenever {{a}} {{Creature}} is dealt damage, you may have {{~Permanent}} deal that much damage to any target. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPermanentIsDealtDamage({{Creature[0]}}), Targeted([AnyTarget], ActionList([PermanentDealsDamage(ThisPermanent, Trigger_ThatMuch, Ref_AnyTarget)])))",
+      "TriggerMayOnceEachTurn(WhenAPermanentIsDealtDamage({{Creature[0]}}), Targeted([AnyTarget], ActionList([MayActionOnceEachTurn(HavePermanentDealDamage(ThisPermanent, Trigger_ThatMuch, Ref_AnyTarget))])))",
     "Whenever {{a}} {{Creature}} is dealt damage, {{TriggerActions(~Permanent)}}":
       "TriggerA(WhenAPermanentIsDealtDamage({{Creature[0]}}), {{TriggerActions(~Permanent=^~Permanent)[0]}})",
     "Whenever {{a}} {{Creature}} is dealt damage, {{TriggerActions(~Permanent,ThatMuch,ThatCreature)}}":
@@ -55407,7 +55407,7 @@
     "Whenever {{~Permanent}} or another {{Zombie}} you control enters, you may discard your hand. Draw X cards, where X is the number of cards discarded this way. If {{Condition}}, {{~Permanent}} deals X damage to each opponent":
       "TriggerA(Or([WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)), WhenAPermanentEntersTheBattlefield(And([Other(ThisPermanent), IsCreatureType({{Zombie[0]}}), ControlledByAPlayer(SinglePlayer(You))]))]), ActionList([MayActions([DiscardHand, DrawNumberCards(NumCardsDiscardedThisWay), If({{Condition[0]}}, [PermanentDealsDamage(ThisPermanent, NumCardsDiscardedThisWay, EachPlayer(Opponent))])])]))",
     "Whenever {{~Permanent}} or {{a}} {{Creature}} deals combat damage to a player, you may create a token that's a copy of {{a}} {{Permanent}}. Do this only once each turn":
-      "TriggerMayOnceEachTurn(Or([WhenACreatureDealsCombatDamageToAPlayer(SinglePermanent(ThisPermanent), AnyPlayer), WhenACreatureDealsCombatDamageToAPlayer({{Creature[0]}}, AnyPlayer)]), ActionList([CreateTokens([TokenCopyOfAPermanent({{Permanent[0]}}, NoTokenCopyEffects)], [])]))",
+      "TriggerMayOnceEachTurn(Or([WhenACreatureDealsCombatDamageToAPlayer(SinglePermanent(ThisPermanent), AnyPlayer), WhenACreatureDealsCombatDamageToAPlayer({{Creature[0]}}, AnyPlayer)]), ActionList([MayActionOnceEachTurn(CreateTokens([TokenCopyOfAPermanent({{Permanent[0]}}, NoTokenCopyEffects)], []))]))",
     "Whenever {{~Permanent}} or {{a}} {{Spell}} deals damage to a player, {{TriggerActions}}":
       "TriggerA(WhenAPermanentDealsDamageToAPlayer(SinglePermanent(ThisPermanent), AnyPlayer), {{TriggerActions[0]}}), TriggerA(WhenASpellDealsDamageToAPlayer({{Spell[0]}}, AnyPlayer), {{TriggerActions[0]}})",
     "∞ - At the beginning of your end step, {{TriggerActions(ThatPermanent)}}":
@@ -56705,7 +56705,7 @@
     "Whenever a player casts {{a}} {{Spell}} from a graveyard, {{TriggerActions}}":
       "TriggerA(WhenAPlayerCastsASpell(AnyPlayer, And([{{Spell[0]}}, WasCastFromAPlayersGraveyard(AnyPlayer)])), {{TriggerActions[0]}})",
     "Whenever a player casts {{a}} {{Spell}}, if {{Condition(ThatPlayer)}}, {{TriggerActions(ThatPlayer)}}":
-      "TriggerI(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), {{Condition(ThatPlayer=Trigger_ThatPlayer)[0]}}, {{TriggerActions(ThatPlayer=Trigger_ThatPlayer)[0]}})",
+      "TriggerI(WhenAPlayerCastsASpell(AnyPlayer, {{Spell[0]}}), {{Condition(ThatPlayer=Trigger_ThatPlayer)[0]}}, {{TriggerActions(ThatPlayer=Trigger_ThatPlayer)[0]}})",
     "Whenever a player casts {{a}} {{Spell}}, if {{Condition(ThatSpell)}}, {{TriggerActions(ThatSpell)}}":
       "TriggerI(WhenAPlayerCastsASpell(AnyPlayer, {{Spell[0]}}), {{Condition(ThatSpell=Trigger_ThatSpell)[0]}}, {{TriggerActions(ThatSpell=Trigger_ThatSpell)[0]}})",
     "Whenever a player casts {{a}} {{Spell}}, {{TriggerActions(ThatPlayer)}}":
@@ -56927,9 +56927,9 @@
     "Whenever another {{Permanent}} dies, {{TriggerActions}}":
       "TriggerA(WhenAPermanentDies(And([Other(ThisPermanent), {{Permanent[0]}}])), {{TriggerActions[0]}})",
     "Whenever another {{Permanent}} enters, you may discard a card. If you do, draw a card. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPermanentEntersTheBattlefield(And([Other(ThisPermanent), {{Permanent[0]}}])), ActionList([MustCost(DiscardACard), If(CostWasPaid, [DrawACard])]))",
+      "TriggerMayOnceEachTurn(WhenAPermanentEntersTheBattlefield(And([Other(ThisPermanent), {{Permanent[0]}}])), ActionList([MayCostOnceEachTurn(DiscardACard), If(CostWasPaid, [DrawACard])]))",
     "Whenever another {{Permanent}} enters, you may have it connive. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPermanentEntersTheBattlefield(And([Other(ThisPermanent), {{Permanent[0]}}])), ActionList([CreatureConnives(Trigger_ThatPermanent)]))",
+      "TriggerMayOnceEachTurn(WhenAPermanentEntersTheBattlefield(And([Other(ThisPermanent), {{Permanent[0]}}])), ActionList([MayActionOnceEachTurn(CreatureConnives(Trigger_ThatPermanent))]))",
     "Whenever another {{Permanent}} enters, {{TriggerActions(ThatPermanent)}}":
       "TriggerA(WhenAPermanentEntersTheBattlefield(And([Other(ThisPermanent), {{Permanent[0]}}])), {{TriggerActions(ThatPermanent=Trigger_ThatPermanent)[0]}})",
     "Whenever another {{Permanent}} enters, {{TriggerActions}}":
@@ -56955,9 +56955,9 @@
     "Whenever one or more cards leave your graveyard during your turn, {{TriggerActions}}":
       "TriggerA(If(IsAPlayersTurn(SinglePlayer(You)), WhenAnyNumberOfGraveyardCardsLeave(InAPlayersGraveyard(SinglePlayer(You)))), {{TriggerActions[0]}})",
     "Whenever one or more cards leave your graveyard, put {{a}} {{CounterType}} counter on {{ThisPermanent}}, then you may have {{ThisPermanent}} become a copy of an artifact or creature card from among those cards until end of turn":
-      "TriggerA(WhenAnyNumberOfGraveyardCardsLeave(InAPlayersGraveyard(SinglePlayer(You))), ActionList([PutCounters([ACounterOfTypeOnPermanent({{CounterType[0]}}, ThisPermanent)]), MayActions([ChooseAGraveyardCard(And([Or([IsCardtype(Artifact), IsCardtype(Creature)]), Trigger_ThoseGraveyardCards])), CreatePermanentLayerEffectUntil(ThisPermanent, [IsACopyOfGraveyardCard(TheGraveyardCardChosenThisWay, NoCopyEffects)], UntilEndOfTurn)])]))",
+      "TriggerA(WhenAnyNumberOfGraveyardCardsLeave(InAPlayersGraveyard(SinglePlayer(You))), ActionList([PutCounters([ACounterOfTypeOnPermanent({{CounterType[0]}}, ThisPermanent)]), MayActions([ChooseACardOfTypeFromAmongThoseFormerCardsInGraveyards(Or([IsCardtype(Artifact), IsCardtype(Creature)])), CreatePermanentLayerEffectUntil(ThisPermanent, [IsACopyOfGraveyardCard(TheFormerGraveyardCardChosenThisWay, NoCopyEffects)], UntilEndOfTurn)])]))",
     "Whenever one or more cards leave your graveyard, you may create {{a}} {{PT}} {{CreatureToken}}, then put a number of {{CounterType}} counters on it equal to the greatest mana value among those cards. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAnyNumberOfGraveyardCardsLeave(InAPlayersGraveyard(SinglePlayer(You))), ActionList([CreateTokens([TokenWithPT({{PT[0]}}, {{CreatureToken[0]}}, [])], []), PutCounters([NumberCountersOfTypeOnEachPermanent(TheGreatestManaValueAmongTheCardsThatLeftTheGraveyardThisWay, {{CounterType[0]}}, TheTokensCreatedThisWay)])]))",
+      "TriggerMayOnceEachTurn(WhenAnyNumberOfGraveyardCardsLeave(InAPlayersGraveyard(SinglePlayer(You))), ActionList([MayActionsOnceEachTurn([CreateTokens([TokenWithPT({{PT[0]}}, {{CreatureToken[0]}}, [])], []), PutCounters([NumberCountersOfTypeOnEachPermanent(TheGreatestManaValueAmongTheCardsThatLeftTheGraveyardThisWay, {{CounterType[0]}}, TheTokensCreatedThisWay)])])]))",
     "Whenever one or more cards leave your graveyard, {{TriggerActions}}":
       "TriggerA(WhenAnyNumberOfGraveyardCardsLeave(InAPlayersGraveyard(SinglePlayer(You))), {{TriggerActions[0]}})",
     "Whenever one or more cards leave your graveyard, {{TriggerActions}}. This ability triggers only once each turn":
@@ -57061,9 +57061,9 @@
     "Whenever one or more {{Permanents}} become the target of an activated ability, {{TriggerActions}}. This ability triggers only once each turn":
       "TriggerOnceEachTurn(WhenAPermanentBecomesTheTargetOfAnAbility({{Permanents[0]}}, ActivatedAbility), {{TriggerActions[0]}})",
     "Whenever one or more {{Permanents}} deal combat damage to a player, you may draw a card and proliferate. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAnyNumberOfCreaturesDealCombatDamageToAPlayer({{Permanents[0]}}, AnyPlayer), ActionList([DrawACard, Proliferate]))",
+      "TriggerMayOnceEachTurn(WhenAnyNumberOfCreaturesDealCombatDamageToAPlayer({{Permanents[0]}}, AnyPlayer), ActionList([MayActionsOnceEachTurn([DrawACard, Proliferate])]))",
     "Whenever one or more {{Permanents}} enter under an opponent's control without being played, you may search your library for {{a}} {{SpecificCard}}, put it onto the battlefield tapped, then shuffle. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPermanentEntersTheBattlefieldUnderAPlayersControlWithoutBeingPlayed({{Permanents[0]}}, Opponent), ActionList([SearchLibrary([FindACardOfType({{SpecificCard[0]}}), PutFoundCardsOntoBattlefield([EntersTapped]), Shuffle])]))",
+      "TriggerMayOnceEachTurn(WhenAPermanentEntersTheBattlefieldUnderAPlayersControlWithoutBeingPlayed({{Permanents[0]}}, Opponent), ActionList([MayActionOnceEachTurn(SearchLibrary([FindACardOfType({{SpecificCard[0]}}), PutFoundCardsOntoBattlefield([EntersTapped]), Shuffle]))]))",
     "Whenever one or more {{Permanents}} enter, if one or more of them entered from exile or was cast from exile, {{TriggerActions}}. This ability triggers only once each turn":
       "TriggerOnceEachTurn(WhenAPermanentEntersTheBattlefieldFromExileOrWasCastFromExile({{Permanents[0]}}), {{TriggerActions[0]}})",
     "Whenever one or more {{Permanents}} enter, {{TriggerActions(ThosePermanents)}}. This ability triggers only once each turn":
@@ -57079,7 +57079,7 @@
     "Whenever one or more {{Permanents}} leave the battlefield, {{TriggerActions}}. This ability triggers only once each turn":
       "TriggerOnceEachTurn(WhenAnyNumberOfPermanentsLeaveTheBattlefield({{Permanents[0]}}), {{TriggerActions[0]}})",
     "Whenever one or more {{SpecificCards}} are milled, you may create that many {{PT}} {{CreatureTokens}}. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAnyNumberOfSpecificCardsAreMilled({{SpecificCards[0]}}), ActionList([CreateTokens([NumberTokens(Trigger_ThatMuch, TokenWithPT({{PT[0]}}, {{CreatureTokens[0]}}, []))], [])]))",
+      "TriggerMayOnceEachTurn(WhenAnyNumberOfSpecificCardsAreMilled({{SpecificCards[0]}}), ActionList([MayActionOnceEachTurn(CreateTokens([NumberTokens(Trigger_ThatMuch, TokenWithPT({{PT[0]}}, {{CreatureTokens[0]}}, []))], []))]))",
     "Whenever one or more {{SpecificCards}} are milled, {{TriggerActions[MilledThisWay]}}":
       "TriggerA(WhenAnyNumberOfSpecificCardsAreMilled({{SpecificCards[0]}}), {{TriggerActions[MilledThisWay][0]}})",
     "Whenever one or more {{SpecificCards}} are put into graveyards from anywhere, {{TriggerActions}}. This ability triggers only once each turn":
@@ -57217,7 +57217,7 @@
     "Whenever you cast a spell from among cards put into your hand this turn, {{TriggerActions}}":
       "TriggerA(WhenAPlayerCastsASpell(SinglePlayer(You), WasCastFromAmongCardsPutIntoTheirHandThisTurn), {{TriggerActions[0]}})",
     "Whenever you cast a spell from anywhere other than your hand, you may copy it. If you do, you may choose new targets for the copy. If the copy is a permanent spell, it gains {{Hasable}}. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), WasntCastFromTheirHand), ActionList([CopySpellAndMayChooseNewTargetsWithEffects(Trigger_ThatSpell, [IfPermanentSpell([AddAbility([{{Hasable[0]}}])])])]))",
+      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), WasntCastFromTheirHand), ActionList([MayActionOnceEachTurn(CopySpellAndMayChooseNewTargetsWithEffects(Trigger_ThatSpell, [IfPermanentSpell([AddAbility([{{Hasable[0]}}])])]))]))",
     "Whenever you cast a spell from exile and whenever {{a}} {{Permanent}} enters from exile, {{TriggerActions}}":
       "TriggerA(Or([WhenAPlayerCastsASpell(SinglePlayer(You), WasCastFromExile), WhenAPermanentEntersTheBattlefieldFromExile({{Permanent[0]}})]), {{TriggerActions[0]}})",
     "Whenever you cast a spell that targets one or more creatures, those creatures gain {{Hasable}} until end of turn":
@@ -57229,7 +57229,7 @@
     "Whenever you cast a spell that targets only a single {{ArtifactOrCreature}}, create a token that's a copy of that artifact or creature, except it's not legendary":
       "TriggerA(WhenAPlayerCastsASpell(SinglePlayer(You), TargetsOnlyASinglePermanent({{ArtifactOrCreature[0]}})), ActionList([CreateTokens([TokenCopyOfPermanent(SingleTargetPermanentOfSpell(Trigger_ThatSpell), TokenCopyEffects([RemoveSupertypes([Legendary])]))], [])]))",
     "Whenever you cast a spell that's one or more colors, you may gain {{Digits}} life for each of that spell's colors. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), IsColored), ActionList([GainLifeForEach({{Digits[0]}}, TheNumberOfColorsSpellIs(Trigger_ThatSpell))]))",
+      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), IsColored), ActionList([MayActionOnceEachTurn(GainLifeForEach({{Digits[0]}}, TheNumberOfColorsSpellIs(Trigger_ThatSpell)))]))",
     "Whenever you cast a spell with one or more targets, draw that many cards":
       "TriggerA(WhenAPlayerCastsASpellWithANumberOfTargets(SinglePlayer(You), AnySpell, GreaterThanOrEqualTo(Integer(1))), ActionList([DrawNumberCards(Trigger_ThatMuch)]))",
     "Whenever you cast a spell with {X} in its mana cost, look at the top X cards of your library. Put one of them into your hand and the rest on the bottom of your library in a random order":
@@ -57329,19 +57329,19 @@
     "Whenever you cast {{a}} {{Spell}}, put X {{CounterType}} counters on target {{Permanent}}, where X is that spell's mana value":
       "TriggerA(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), Targeted([TargetPermanent({{Permanent[0]}})], ActionList([PutCounters([NumberCountersOfTypeOnPermanent(ManaValueOfSpell(Trigger_ThatSpell), {{CounterType[0]}}, Ref_TargetPermanent)])])))",
     "Whenever you cast {{a}} {{Spell}}, you may copy it, except the copy is {{a}} {{PT}} {{Zombie}} in addition to its other types. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), ActionList([CopySpellWithModifiers(Trigger_ThatSpell, [SetPT({{PT[0]}}), AddCreatureType({{Zombie[0]}})])]))",
+      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), ActionList([MayActionOnceEachTurn(CopySpellWithModifiers(Trigger_ThatSpell, [SetPT({{PT[0]}}), AddCreatureType({{Zombie[0]}})]))]))",
     "Whenever you cast {{a}} {{Spell}}, you may copy it, except the copy isn't legendary. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), ActionList([CopySpellWithModifiers(Trigger_ThatSpell, [RemoveSupertypes([Legendary])])]))",
+      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), ActionList([MayActionOnceEachTurn(CopySpellWithModifiers(Trigger_ThatSpell, [RemoveSupertypes([Legendary])]))]))",
     "Whenever you cast {{a}} {{Spell}}, you may copy it. You may choose new targets for the copy. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), ActionList([CopySpellAndMayChooseNewTargets(Trigger_ThatSpell)]))",
+      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), ActionList([MayActionOnceEachTurn(CopySpellAndMayChooseNewTargets(Trigger_ThatSpell))]))",
     "Whenever you cast {{a}} {{Spell}}, you may copy that spell. Do this only once each turn":
       "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), ActionList([MayActionOnceEachTurn(CopySpell(Trigger_ThatSpell))]))",
     "Whenever you cast {{a}} {{Spell}}, you may draw X cards, where X is the amount of mana spent to cast that spell. If you do, discard {{Number}} cards":
       "TriggerA(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), ActionList([MayCost(DrawNumberCards(AmountOfManaSpentToCastSpell(Trigger_ThatSpell))), If(CostWasPaid, [DiscardNumberCards({{Number[0]}})])]))",
     "Whenever you cast {{a}} {{Spell}}, you may pay X life, where X is that spell's mana value. If you do, create {{a}} {{PT}} {{CreatureToken}} and put X {{CounterType}} counters on it. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), ActionList([MustCost(PayLife(ManaValueOfSpell(Trigger_ThatSpell))), If(CostWasPaid, [CreateTokens([TokenWithPT({{PT[0]}}, {{CreatureToken[0]}}, [])], []), PutCounters([NumberCountersOfTypeOnEachPermanent(ManaValueOfSpell(Trigger_ThatSpell), {{CounterType[0]}}, TheTokensCreatedThisWay)])])]))",
+      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), ActionList([MayCostOnceEachTurn(PayLife(ManaValueOfSpell(Trigger_ThatSpell))), If(CostWasPaid, [CreateTokens([TokenWithPT({{PT[0]}}, {{CreatureToken[0]}}, [])], []), PutCounters([NumberCountersOfTypeOnEachPermanent(ManaValueOfSpell(Trigger_ThatSpell), {{CounterType[0]}}, TheTokensCreatedThisWay)])])]))",
     "Whenever you cast {{a}} {{Spell}}, you may return target creature card with mana value equal to that spell's mana value from your graveyard to your hand. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), Targeted([TargetGraveyardCard(And([IsCardtype(Creature), ManaValueIs(EqualTo(ManaValueOfSpell(Trigger_ThatSpell))), InAPlayersGraveyard(SinglePlayer(You))]))], ActionList([PutGraveyardCardIntoHand(Ref_TargetGraveyardCard)])))",
+      "TriggerMayOnceEachTurn(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), Targeted([TargetGraveyardCard(And([IsCardtype(Creature), ManaValueIs(EqualTo(ManaValueOfSpell(Trigger_ThatSpell))), InAPlayersGraveyard(SinglePlayer(You))]))], ActionList([MayActionOnceEachTurn(PutGraveyardCardIntoHand(Ref_TargetGraveyardCard))])))",
     "Whenever you cast {{a}} {{Spell}}, {{TriggerActions(ThatSpell)}}":
       "TriggerA(WhenAPlayerCastsASpell(SinglePlayer(You), {{Spell[0]}}), {{TriggerActions(ThatSpell=Trigger_ThatSpell)[0]}})",
     "Whenever you cast {{a}} {{Spell}}, {{TriggerActions(ThatSpell)}}. This ability triggers only once each turn":
@@ -57441,7 +57441,7 @@
     "Whenever you gain life for the first time each turn, {{TriggerActions}}":
       "TriggerA(WhenAPlayerGainsLifeForTheFirstTimeEachTurn(SinglePlayer(You)), {{TriggerActions[0]}})",
     "Whenever you gain life, you may put that many {{CounterType}} counters on each {{Permanent}}. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPlayerGainsLife(SinglePlayer(You)), ActionList([PutCounters([NumberCountersOfTypeOnEachPermanent(Trigger_AmountOfLifeGained, {{CounterType[0]}}, {{Permanent[0]}})])]))",
+      "TriggerMayOnceEachTurn(WhenAPlayerGainsLife(SinglePlayer(You)), ActionList([MayActionOnceEachTurn(PutCounters([NumberCountersOfTypeOnEachPermanent(Trigger_AmountOfLifeGained, {{CounterType[0]}}, {{Permanent[0]}})]))]))",
     "Whenever you gain life, {{TriggerActions(ThatMuch)}}":
       "TriggerA(WhenAPlayerGainsLife(SinglePlayer(You)), {{TriggerActions(ThatMuch=Trigger_AmountOfLifeGained)[0]}})",
     "Whenever you gain life, {{TriggerActions}}":
@@ -57521,7 +57521,7 @@
     "Whenever you roll a die's highest natural result, {{TriggerActions}}":
       "TriggerA(WhenAPlayerRollsADiesHighestNaturalResult(SinglePlayer(You)), {{TriggerActions[0]}})",
     "Whenever you roll a die, you may reveal the top card of your library. Do this only once each turn. Whenever you reveal a card with mana value less than the result this way, you may exile it. If you do, you may play it this turn":
-      "TriggerMayOnceEachTurn(WhenAPlayerRollsADie(SinglePlayer(You)), ActionList([RevealTopCardOfLibrary, If(ACardWasRevealedThisWay(ManaValueIs(LessThan(TriggerTheDiceResult))), [MayCost(Exile([TheTopCardOfLibrary], [])), If(CostWasPaid, [CreatePlayerEffectUntil(You, [MayPlayExiledCard(TheCardExiledThisWay)], UntilEndOfTurn)])])]))",
+      "TriggerMayOnceEachTurn(WhenAPlayerRollsADie(SinglePlayer(You)), ActionList([MayActionsOnceEachTurn([RevealTopCardOfLibrary, If(ACardWasRevealedThisWay(ManaValueIs(LessThan(TriggerTheDiceResult))), [MayCost(Exile([TheTopCardOfLibrary], [])), If(CostWasPaid, [CreatePlayerEffectUntil(You, [MayPlayExiledCard(TheCardExiledThisWay)], UntilEndOfTurn)])])])]))",
     "Whenever you roll one or more dice, {{TriggerActions}}":
       "TriggerA(WhenAPlayerRollsAnyNumberOfDice(SinglePlayer(You)), {{TriggerActions[0]}})",
     "Whenever you sacrifice another {{Permanent}}, {{TriggerActions}}":
@@ -57541,7 +57541,7 @@
     "Whenever you sacrifice {{a}} {{Permanent}}, {{TriggerActions}}. This ability triggers only once each turn":
       "TriggerOnceEachTurn(WhenAPlayerSacrificesAPermanent(SinglePlayer(You), {{Permanent[0]}}), {{TriggerActions[0]}})",
     "Whenever you scry or surveil, look at the top card of your library. You may cast that card without paying its mana cost. Do this only once each turn":
-      "TriggerMayOnceEachTurn(Or([WhenAPlayerScrys(SinglePlayer(You)), WhenAPlayerSurveils(SinglePlayer(You))]), ActionList([LookAtTopOfLibrary, MayAction(CastTopCardOfLibraryWithoutPaying)]))",
+      "TriggerMayOnceEachTurn(Or([WhenAPlayerScrys(SinglePlayer(You)), WhenAPlayerSurveils(SinglePlayer(You))]), ActionList([LookAtTopOfLibrary, MayActionOnceEachTurn(CastTopCardOfLibraryWithoutPaying)]))",
     "Whenever you scry or surveil, {{TriggerActions}}":
       "TriggerA(Or([WhenAPlayerScrys(SinglePlayer(You)), WhenAPlayerSurveils(SinglePlayer(You))]), {{TriggerActions[0]}})",
     "Whenever you scry or surveil, {{TriggerActions}}. This ability triggers only once each turn":
@@ -57861,7 +57861,7 @@
     "Whenever {{a}} {{Permanent}} dies or is put into the command zone, if it had {{Number}} or more {{CounterType}} counters on it, you may put that many {{CounterType}} counters on target {{Permanent}}":
       "TriggerI(Or([WhenAPermanentDies({{Permanent[0]}}), WhenAPermanentIsPutIntoTheCommandZone({{Permanent[0]}})]), PermanentPassesFilter(Trigger_ThatPermanent, HasACounterOfType({{CounterType[0]}})), Targeted([TargetPermanent({{Permanent[1]}})], ActionList([MayAction(PutCounters([NumberCountersOfTypeOnPermanent(TheTotalNumberOfCountersOfTypeAmongPermanents({{CounterType[0]}}, SinglePermanent(Trigger_ThatPermanent)), {{CounterType[1]}}, Ref_TargetPermanent)]))])))",
     "Whenever {{a}} {{Permanent}} dies, you may put that card onto the battlefield under your control. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPermanentDies({{Permanent[0]}}), ActionList([PutGraveyardCardOntoBattlefield(Trigger_ThatGraveyardCard, [EntersUnderPlayersControl(You)])]))",
+      "TriggerMayOnceEachTurn(WhenAPermanentDies({{Permanent[0]}}), ActionList([MayActionOnceEachTurn(PutGraveyardCardOntoBattlefield(Trigger_ThatGraveyardCard, [EntersUnderPlayersControl(You)]))]))",
     "Whenever {{a}} {{Permanent}} dies, {{TriggerActions}}. This ability triggers only once each turn":
       "TriggerOnceEachTurn(WhenAPermanentDies({{Permanent[0]}}), {{TriggerActions[0]}})",
     "Whenever {{a}} {{Permanent}} entering causes a triggered ability to trigger, {{TriggerActions(ThatTriggeredAbility)}}":
@@ -57889,11 +57889,11 @@
     "Whenever {{a}} {{Permanent}} enters, if {{Condition}}, {{TriggerActions}}":
       "TriggerI(WhenAPermanentEntersTheBattlefield({{Permanent[0]}}), {{Condition[0]}}, {{TriggerActions[0]}})",
     "Whenever {{a}} {{Permanent}} enters, you may create a token that's a copy of it. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPermanentEntersTheBattlefield({{Permanent[0]}}), ActionList([CreateTokens([TokenCopyOfPermanent(Trigger_ThatPermanent, NoTokenCopyEffects)], [])]))",
+      "TriggerMayOnceEachTurn(WhenAPermanentEntersTheBattlefield({{Permanent[0]}}), ActionList([MayActionOnceEachTurn(CreateTokens([TokenCopyOfPermanent(Trigger_ThatPermanent, NoTokenCopyEffects)], []))]))",
     "Whenever {{a}} {{Permanent}} enters, you may have target player other than its controller create a token that's a copy of it, then you draw a card if an opponent created a token this way. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPermanentEntersTheBattlefield({{Permanent[0]}}), Targeted([TargetPlayer(Other(ControllerOfPermanent(Trigger_ThatPermanent)))], ActionList([MayCost(HavePlayerTakeAction(Ref_TargetPlayer, CreateTokens([TokenCopyOfPermanent(Trigger_ThatPermanent, NoTokenCopyEffects)], []))), If(CostWasPaid, [DrawACard])])))",
+      "TriggerMayOnceEachTurn(WhenAPermanentEntersTheBattlefield({{Permanent[0]}}), Targeted([TargetPlayer(Other(ControllerOfPermanent(Trigger_ThatPermanent)))], ActionList([MayCostOnceEachTurn(HavePlayerTakeAction(Ref_TargetPlayer, CreateTokens([TokenCopyOfPermanent(Trigger_ThatPermanent, NoTokenCopyEffects)], []))), If(CostWasPaid, [DrawACard])])))",
     "Whenever {{a}} {{Permanent}} enters, you may put {{a}} {{CounterType}} counter on each {{Permanent}}. Do this only once each turn":
-      "TriggerMayOnceEachTurn(WhenAPermanentEntersTheBattlefield({{Permanent[0]}}), ActionList([PutCounters([ACounterOfTypeOnEachPermanent({{CounterType[0]}}, {{Permanent[1]}})])]))",
+      "TriggerMayOnceEachTurn(WhenAPermanentEntersTheBattlefield({{Permanent[0]}}), ActionList([MayActionOnceEachTurn(PutCounters([ACounterOfTypeOnEachPermanent({{CounterType[0]}}, {{Permanent[1]}})]))]))",
     "Whenever {{a}} {{Permanent}} enters, {{TriggerActions(ThatPermanent)}}":
       "TriggerA(WhenAPermanentEntersTheBattlefield({{Permanent[0]}}), {{TriggerActions(ThatPermanent=Trigger_ThatPermanent)[0]}})",
     "Whenever {{a}} {{Permanent}} enters, {{TriggerActions}}":
@@ -57955,7 +57955,7 @@
     "Whenever {{a}} {{Permanent}} transforms into {{a}} {{Permanent}}, {{TriggerActions}}":
       "TriggerA(WhenAPermanentTransformsFromIntoAPermanent({{Permanent[0]}}, {{Permanent[1]}}), {{TriggerActions[0]}})",
     "Whenever {{a}} {{Permanent}} transforms or {{a}} {{Permanent}} enters transformed, you may draw a card. Do this only once each turn":
-      "TriggerMayOnceEachTurn(Or([WhenAPermanentTransforms({{Permanent[0]}}), WhenAPermanentEntersTheBattlefieldTransformed({{Permanent[1]}})]), ActionList([DrawACard]))",
+      "TriggerMayOnceEachTurn(Or([WhenAPermanentTransforms({{Permanent[0]}}), WhenAPermanentEntersTheBattlefieldTransformed({{Permanent[1]}})]), ActionList([MayActionOnceEachTurn(DrawACard)]))",
     "Whenever {{a}} {{SpecificCard}} is put into a player's graveyard from anywhere, {{TriggerActions(ThatPlayer)}}":
       "TriggerA(WhenACardIsPutIntoAPlayersGraveyardFromAnywhere({{SpecificCard[0]}}, AnyPlayer), {{TriggerActions(ThatPlayer=Trigger_ThatPlayer)[0]}})",
     "Whenever {{a}} {{SpecificCard}} is put into an opponent's graveyard from anywhere, {{TriggerActions[WhenACardIsPutIntoAGraveyardFromAnywhere]}}":

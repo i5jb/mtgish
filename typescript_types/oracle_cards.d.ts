@@ -371,7 +371,6 @@ type Action =
 | { "_Action": "ChooseColors" }
 | { "_Action": "ChooseCopyFromCopies" }
 | { "_Action": "ChooseEvenOrOdd" }
-| { "_Action": "ChooseLandType", "args": Array<LandType> }
 | { "_Action": "ChooseLeftOrRight" }
 | { "_Action": "ChooseLibraryFilter", "args": Array<Cards> }
 | { "_Action": "ChooseMultiplePermanentsAmoungPermanents", "args": [Array<Permanents>, Permanents] }
@@ -796,6 +795,9 @@ type Action =
 | { "_Action": "ManifestTheTopNumberCardsOfPlayersLibrary", "args": [GameNumber, Player] }
 | { "_Action": "MayAction", "args": Action }
 | { "_Action": "MayActionOnceEachTurn", "args": Action }
+| { "_Action": "MayActionsOnceEachTurn", "args": Array<Action> }
+| { "_Action": "MayCostOnceEachTurn", "args": Cost }
+| { "_Action": "ChooseACardOfTypeFromAmongThoseFormerCardsInGraveyards", "args": CardsInGraveyards }
 | { "_Action": "MayActions", "args": Array<Action> }
 | { "_Action": "MayCastASpellFromAmongGraveyardCardsIntoExileOrBattlefield", "args": [Spells, CardsInGraveyards] }
 | { "_Action": "MayCastASpellFromEachPlayersGraveyardWithoutPayingIntoExile", "args": [Spells, Players] }
@@ -1377,7 +1379,6 @@ type ActionPreventDamage =
 | { "_ActionPreventDamage": "MayActions", "args": Array<ActionPreventDamage> }
 | { "_ActionPreventDamage": "PlayerMayCost", "args": [Player, ActionPreventDamageCost] }
 | { "_ActionPreventDamage": "ChooseAPlayer", "args": Players }
-| { "_ActionPreventDamage": "CreateFutureTrigger", "args": [FutureTrigger, Actions] }
 | { "_ActionPreventDamage": "Reflexive_PreventThatDamage_WhenDamageFromAPermanentSourceIsPreventedThisWay", "args": [Permanents, Actions] }
 | { "_ActionPreventDamage": "Reflexive_PreventThatDamage_WhenDamageIsPreventedThisWay", "args": Actions }
 | { "_ActionPreventDamage": "Reflexive_PreventThatDamage_WhenDamageFromASourceIsPreventedThisWay", "args": [DamageSources, Actions] }
@@ -1414,6 +1415,7 @@ type Actions =
 | { "_Actions": "Modal_ChooseOneAtRandom", "args": Array<Actions> }
 | { "_Actions": "Modal_APlayerChoosesOne", "args": [Players, Array<Actions>] }
 | { "_Actions": "Modal_ChooseAnyNumber", "args": Array<Actions> }
+| { "_Actions": "Modal_ChooseUptoNumberMayChooseSameModeMoreThanOnce", "args": [GameNumber, Array<Actions>] }
 | { "_Actions": "Modal_ChooseNumberMayChooseSameModeMoreThanOnce", "args": [GameNumber, Array<Actions>] }
 | { "_Actions": "Modal_ChooseOne", "args": Array<Actions> }
 | { "_Actions": "Modal_ChooseBoth", "args": Array<Actions> }
@@ -1606,6 +1608,7 @@ type CardInGraveyards =
 | { "_CardInGraveyards": "HostGraveyardCard" }
 | { "_CardInGraveyards": "TheBottomCardOfPlayersGraveyard", "args": Player }
 | { "_CardInGraveyards": "TheGraveyardCardChosenThisWay" }
+| { "_CardInGraveyards": "TheFormerGraveyardCardChosenThisWay" }
 | { "_CardInGraveyards": "TheChosenGraveyardCard" }
 | { "_CardInGraveyards": "TheCardMilledThisWay" }
 | { "_CardInGraveyards": "TheSacrificedPermanent" }
@@ -3361,6 +3364,8 @@ type CreatureTypeVariable =
 | { "_CreatureTypeVariable": "TheRememberedCreatureTypes" }
 | { "_CreatureTypeVariable": "CreatureTypesOfExiled", "args": CardInExile }
 | { "_CreatureTypeVariable": "TheCreatureTypeChosenByPlayerThisWay", "args": Player }
+| { "_CreatureTypeVariable": "TheFirstChosenCreatureType" }
+| { "_CreatureTypeVariable": "TheSecondChosenCreatureType" }
 | { "_CreatureTypeVariable": "TheChosenCreatureType" }
 | { "_CreatureTypeVariable": "TheChosenCreatureTypes" }
 | { "_CreatureTypeVariable": "TheNotedCreatureType" };
@@ -3648,6 +3653,7 @@ type ExilableCost =
 | { "_ExilableCost": "EachCardInGraveyards", "args": CardsInGraveyards }
 | { "_ExilableCost": "NumberCardsInGraveyards", "args": [GameNumber, CardsInGraveyards] }
 | { "_ExilableCost": "NumberOrMoreCardsInGraveyards", "args": [GameNumber, CardsInGraveyards] }
+| { "_ExilableCost": "TwoCardsInGraveyards", "args": CardsInGraveyards }
 | { "_ExilableCost": "CardInHand", "args": CardInHand }
 | { "_ExilableCost": "ACardOfTypeFromPlayersHand", "args": [CardsInHand, Player] }
 | { "_ExilableCost": "ACardFromHand" }
@@ -3663,6 +3669,7 @@ type ExilableCost =
 | { "_ExilableCost": "AnyNumberOfPermanents", "args": Permanents }
 | { "_ExilableCost": "NumberOrMoreGroupPermanents", "args": [GameNumber, Permanents, GroupFilter] };
 type ExileFlag =
+| { "_ExileFlag": "ChooseAnOrder" }
 | { "_ExileFlag": "ExilesIntoShuffledFaceDownPile" }
 | { "_ExileFlag": "ExilesIntoFaceDownPile" }
 | { "_ExileFlag": "ExilesIntoFaceUpPile" }
@@ -4055,6 +4062,7 @@ type GameNumber =
 | { "_GameNumber": "TheAmountOfDamageDealtToPermanentThisTurn", "args": Permanent }
 | { "_GameNumber": "TheAmountOfDamageDealtToPermanentThisTurnBySources", "args": [Permanent, DamageSources] }
 | { "_GameNumber": "TheAmountOfDamagePreventedThisWay" }
+| { "_GameNumber": "TheTotalAmountOfDamagePrevented" }
 | { "_GameNumber": "TheAmountOfEnergyPaidOrLostByPlayersThisTurn", "args": Players }
 | { "_GameNumber": "TheAmountOfEnergyPaidThisWay" }
 | { "_GameNumber": "TheAmountOfEnergyPlayerHas", "args": Player }
@@ -4393,6 +4401,7 @@ type LayerEffect =
 | { "_LayerEffect": "IsACopyOfTheRevealedCard", "args": CopyEffects }
 | { "_LayerEffect": "IsACopyOfThatCard", "args": CopyEffects }
 | { "_LayerEffect": "SetController", "args": Player }
+| { "_LayerEffect": "ReplaceCreatureTypeVariableWithNewCreatureTypeVariable", "args": [CreatureTypeVariable, CreatureTypeVariable] }
 | { "_LayerEffect": "ReplaceColorWordVariableWithNewColorWordVariable", "args": [ColorWord, ColorWord] }
 | { "_LayerEffect": "ReplaceLandTypeVariableWithNewLandTypeVariable", "args": [LandTypeWord, LandTypeWord] }
 | { "_LayerEffect": "ReplaceCreatureTypeVariableWithNewCreatureType", "args": [CreatureTypeVariable, CreatureType] }
@@ -6164,6 +6173,7 @@ type Players =
 | { "_Players": "DrewACardLastTurn" }
 | { "_Players": "EveryCardInTheirCardPoolStartedTheGameInTheirLibraryOrTheCommandZone" }
 | { "_Players": "ExceptFor", "args": Players }
+| { "_Players": "Not", "args": Players }
 | { "_Players": "GainedLifeAmountThisTurn", "args": Comparison }
 | { "_Players": "GainedLifeThisTurn" }
 | { "_Players": "GuessedCorrectlyForDraftCard", "args": string }
@@ -6861,7 +6871,6 @@ type ReplacementActionWouldEnterCost =
 | { "_ReplacementActionWouldEnterCost": "BeholdA", "args": CardsInHand }
 | { "_ReplacementActionWouldEnterCost": "DiscardACardOfType", "args": Cards }
 | { "_ReplacementActionWouldEnterCost": "EntersTapped" }
-| { "_ReplacementActionWouldEnterCost": "ExileTwoCardsFromAmongPlayersGraveyards", "args": [CardsInGraveyards, Players] }
 | { "_ReplacementActionWouldEnterCost": "PayLife", "args": GameNumber }
 | { "_ReplacementActionWouldEnterCost": "PutANumberOfExiledCardsIntoOwnersGraveyard", "args": [GameNumber, CardsInExile] }
 | { "_ReplacementActionWouldEnterCost": "PutAPermanentIntoItsOwnersHand", "args": Permanents }
@@ -7623,6 +7632,7 @@ type SpellEffect =
 | { "_SpellEffect": "EntersWithLayerEffectUntil", "args": [Array<LayerEffect>, Expiration] }
 | { "_SpellEffect": "WebSlinging", "args": Cost }
 | { "_SpellEffect": "AdjustPT", "args": [number, number] }
+| { "_SpellEffect": "ReplaceCreatureTypeVariableWithNewCreatureTypeVariable", "args": [CreatureTypeVariable, CreatureTypeVariable] }
 | { "_SpellEffect": "ResolvesIntoExileInsteadOfGraveyardWithACounter", "args": CounterType }
 | { "_SpellEffect": "Wither" }
 | { "_SpellEffect": "Evoke", "args": Cost }
