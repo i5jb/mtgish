@@ -30,6 +30,7 @@
     "And([IsCardtype(Creature), IsCreatureTypeVariable(TheChosenCreatureType)])": "",
     "And([IsNonColor({{COLOR}}), ControlledByAPlayer({{PLAYERS}})])": "",
     "And([IsSupertype(Legendary), IsNotACommander])": "",
+    "IsCreatureTypeVariable(TheChosenCreatureType)": "",
     "IsAnOutlaw": "",
     "IsCardtype({{CARDTYPE}})": "",
     "IsColor({{COLOR}})": "",
@@ -433,7 +434,7 @@
     "CastAnyNumberOfCardsInPlayersGraveyardWithoutPaying({{CARDS}}, {{PLAYER}})": "",
     "CastAnyNumberOfCopiedCards": "",
     "CastAnyNumberOfCopiedCardsWithoutPaying": "",
-    "CastAnyNumberOfSpellsFromAmongCopiedCardsWithoutPaying({{SPELLS}})": "",
+    "CastAnyNumberOfGroupSpellsFromAmongCopiedCardsWithoutPaying({{SPELLS}}, {{GROUP_FILTER}})": "",
     "CastAnyNumberOfExiledCardsWithoutPaying({{CARDS_IN_EXILE}})": "",
     "CastAnyNumberOfGraveyardCardsWithoutPayingIntoExile({{GRAVEYARD_CARDS}})": "",
     "CastAnyNumberOfGroupSpellsFromExileWithoutPaying({{SPELLS}}, {{GROUP_FILTER}}, {{CARDS_IN_EXILE}})": "",
@@ -688,8 +689,7 @@
     "CopySpellForEachAndMayChooseNewTargets({{SPELL}}, {{NUMBER}})": "",
     "CopySpellForEachOtherPermanentOrPlayerAndMustChooseThemAsNewTarget({{SPELL}})": "",
     "CopySpellForEachPermanentAndMustChooseItAsNewTarget({{SPELL}}, {{PERMANENTS}})": "",
-    "CopySpellForEachPlayerAndMustChooseNewTargetPermanentTheyControl({{SPELL}}, {{PLAYERS}})": "",
-    "CopySpellForEachPlayerAndMustChooseThemAsNewTarget({{SPELL}}, {{PLAYERS}})": "",
+    "CopySpellForEachPlayerAndMustChooseThemOrPermanentTheyControlAsNewTarget({{SPELL}}, {{PLAYERS}})": "",
     "CopySpellForEachSpellPermanentCardAndOrPlayerItCouldTarget({{SPELL}})": "",
     "CopySpellNumberTimes({{SPELL}}, {{NUMBER}})": "",
     "CopySpellNumberTimesAndMayChooseNewTargets({{SPELL}}, {{NUMBER}})": "",
@@ -1294,7 +1294,6 @@
     "RegeneratePermanent({{PERMANENT}})": "",
     "RegeneratePermanent_WhenItRengeratesThisWay({{PERMANENT}}, {{TOP_LEVEL_ACTIONS}})": "",
     "RememberLifeTotal": "",
-    "AddToRememberedPlayersList({{PLAYER}})": "",
 
     "RemoveCreatureFromCombat({{PERMANENT}})": "",
     "RemoveCreatureFromCombatAndUnblockBlockers({{PERMANENT}})": "",
@@ -1448,7 +1447,6 @@
     "Scry({{NUMBER}})": "",
     "SecretlyChooseACreatureTypeFromList([{{ZOMBIE}}, {{ZOMBIE}}, {{ZOMBIE}}])": "",
     "SecretlyChooseAGraveyardCard({{CARDS_IN_GRAVEYARDS}})": "",
-    "SecretlyChooseANumberBetweenThatHasntBeenChosen({{DIGITS}}, {{DIGITS}})": "",
     "SecretlyChooseAPlayer({{PLAYERS}})": "",
     "SecretlyChooseLibraryFilter([{{CARDS}}, {{CARDS}}])": "",
     "SeekACard({{CARDS}})": "",
@@ -1694,6 +1692,8 @@
     "SingleCardInHand({{CARD_IN_HAND}})": "",
     "InAPlayersHand({{PLAYERS}})": "",
 
+    "OwnedByAPlayer({{PLAYERS}})": "", // Used when putting a card in hand or in command zone
+
     "TheCardRevealedFromHandThisWay": "",
     "TheCardsSeekedThisWay": "",
     "{{BASIC_CARD}}": ""
@@ -1708,6 +1708,8 @@
     "And({{CARDS_IN_LIBRARY_LIST}})": "",
     "Or({{CARDS_IN_LIBRARY_LIST}})": "",
     "Not({{CARDS_IN_LIBRARY}})": "",
+
+    "OwnedByAPlayer({{PLAYERS}})": "", // Only used when searching library and outside game
 
     "AnyCardInLibrary": "",
 
@@ -2047,7 +2049,7 @@
     "White": ""
   },
   "{{COMMANDER_FILTER}}": {
-    "And([{{BASIC_CARDTYPE_FILTER}}, {{BASIC_MANA_VALUE_FILTER}}])": "",
+    "And([{{BASIC_CARDTYPE_FILTER}}, OwnedByAPlayer({{PLAYERS}}), {{BASIC_MANA_VALUE_FILTER}}])": "",
     "IsACommander": "",
     "IsYourCommander": "",
     "OwnedByAPlayer({{PLAYERS}})": ""
@@ -2343,6 +2345,8 @@
     "{{_COST[CreateTokens]}}": "",
     "{{_COST[PutCounters]}}": "",
     "{{_COST[Exile]}}": "",
+
+    "SecretlyChooseANumberBetweenThatHasntBeenChosen({{DIGITS}}, {{DIGITS}})": "",
 
     "Reflexive_Discard_WhenYouDo(ACard, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_Sacrifice_WhenYouDo([AnyNumberOfPermanents({{PERMANENTS}})], {{TOP_LEVEL_ACTIONS}})": "",
@@ -3753,7 +3757,7 @@
     "TheManaValueMinusTheManaSpentOnSpell({{SPELL}})": "",
     "TheManaValueOfCommander(TheCommanderChosenThisWay)": "",
     "TheNotedNumber": "",
-    "TheNumberChosenThisWay": "",
+    "TheNumberGuessedThisWay": "",
     "TheNumberOfAbilitiesAmongPermanents({{CHECK_HASABLE_LIST}}, {{PERMANENTS}})": "",
     "TheNumberOfCardTypesAmongCardsPutInGraveyardThisWay": "",
     "TheNumberOfCardTypesAmongPermanents({{PERMANENTS}})": "",
@@ -4323,6 +4327,7 @@
     "ThePermanentSacrificedByPlayerThisWay({{PLAYER}})": "",
     "ThePermanentSpellResolvedThisWay": "",
     "ThePermanentTappedThisWay": "",
+    "ThePermanentUntappedThisWay": "",
     "ThePermanentThatCreatedIt": "",
     "ThePermanentThatCreatedThisEmblem": "",
     "ThePermanentThatDiedThisWay": "",
@@ -4766,7 +4771,6 @@
   "{{PROTECTABLE}}": {
     "FromActivatedAndTriggeredAbilities": "",
     "FromColor(AnyColor)": "",
-    "FromColor(Colored)": "",
     "FromColor(Colors([{{COLOR}}, {{COLOR}}]))": "",
     "FromColor(Colors([{{COLOR}}]))": "",
     "FromColor(ColorsOfPermanent({{PERMANENT}}))": "",
@@ -4784,6 +4788,7 @@
     "FromPermanents({{PERMANENTS}})": "",
     "FromPlayers({{PLAYERS}})": "",
     "FromSpells(AnySpell)": "",
+    "FromSpells(IsColored)": "",
     "FromSpells(Or([IsCardtype(Instant), IsCardtype(Sorcery)]))": "",
     "FromTypes({{CARDS}})": ""
   },
@@ -4831,6 +4836,12 @@
   //"{{REFLEXIVE_ACTION}}": {
   //  "{{COST}}": ""
   //},
+  "{{REPLACABLE_EVENT[DamageWouldResultInAllLoyaltyCountersBeingRemoved]}}": {
+    "DamageDealtToPermanentWouldResultInAllLoyaltyCountersBeingRemoved({{PERMANENTS}})": ""
+  },
+  "{{REPLACEMENT_ACTIONS[DamageWouldResultInAllLoyaltyCountersBeingRemoved]}}": {
+    "[LeaveLoyaltyCounters({{NUMBER}})]": ""
+  },
   "{{REPLACABLE_EVENT[WouldBeginATurn]}}": {
     "APlayerWouldBeginAnExtraTurn({{PLAYERS}})": "",
     "PlayerWouldBeginTheirTurn({{PLAYER}})": ""
@@ -4874,7 +4885,6 @@
     "DamageWouldBeDealtToARecipient({{DAMAGE_RECIPIENTS_LIST}})": "",
     "DamageWouldBeDealtToRecipient({{SINGLE_DAMAGE_RECIPIENT_FILTER}})": "",
     "Each1DamagePlayerWouldBeDealt({{PLAYER}})": "",
-    "LethalLoyaltyDamageWouldBeDealtToAPlaneswalker({{PERMANENTS}})": "",
     "NoncombatDamageWouldBeDealtByASourceToARecipient({{DAMAGE_SOURCES}}, {{DAMAGE_RECIPIENTS_LIST}})": "",
     "NoncombatDamageWouldBeDealtBySpellToARecipient({{SPELL}}, {{DAMAGE_RECIPIENTS_LIST}})": "",
     "Or([{{REPLACABLE_EVENT[WouldDealDamage]}}, {{REPLACABLE_EVENT[WouldDealDamage]}}])": ""
@@ -5021,7 +5031,6 @@
     "[CancelThatDamage, PutCounters([NumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})]), PlayerAction({{PLAYER}}, MillNumberCards({{NUMBER}}))]": "",
     "[CancelThatDamage, PutCounters([NumberCountersOfTypeOnPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})])]": "",
     "[CancelThatDamage, RemoveCounters([ACounterOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})])]": "",
-    "[CancelThatDamage, RemoveCounters([NumberCountersOfTypeFromPermanent({{NUMBER}}, {{COUNTER_TYPE}}, {{PERMANENT}})])]": "",
     "[CancelThatDamage, SacrificeNumberPermanents({{NUMBER}}, {{PERMANENTS}})]": "",
     "[CancelThatDamage, MustCost(Exile([NumberCardsInGraveyards({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}})], [])), Unless(CostWasPaid, [LoseTheGame])]": "",
 
@@ -6017,6 +6026,7 @@
     "PermanentRuleEffect({{PERMANENT}}, {{PERMANENT_RULE_LIST}})": "",
     "PlayerEffect({{PLAYER}}, {{PLAYER_EFFECT_LIST}})": "",
     "PreventDamage({{PREVENT_EVENT[WouldDealDamage]}}, {{PREVENT_ACTIONS[WouldDealDamage]}})": "",
+    "ReplaceDamageWouldResultInAllLoyaltyCountersBeingRemoved({{REPLACABLE_EVENT[DamageWouldResultInAllLoyaltyCountersBeingRemoved]}}, {{REPLACEMENT_ACTIONS[DamageWouldResultInAllLoyaltyCountersBeingRemoved]}})": "",
     "ReplaceWouldBeginATurn({{REPLACABLE_EVENT[WouldBeginATurn]}}, {{REPLACEMENT_ACTIONS[WouldBeginATurn]}})": "",
     "ReplaceWouldBeginDrawStep({{REPLACABLE_EVENT[WouldBeginDrawStep]}}, {{REPLACEMENT_ACTIONS[WouldBeginDrawStep]}})": "",
     "ReplaceWouldConnive({{REPLACABLE_EVENT[WouldConnive]}}, {{REPLACEMENT_ACTIONS[WouldConnive]}})": "",
@@ -6233,6 +6243,7 @@
     "TargetPermanentOfAPlayersChoiceTheyControl({{PERMANENTS}}, {{PLAYERS}})": "",
     "TargetPermanentOfPlayersChoice({{PERMANENTS}}, {{PLAYER}})": "",
     "TargetPermanentOrExiledCard({{PERMANENTS}}, {{CARDS_IN_EXILE}})": "",
+    "RememberEachTargetPlayer({{PLAYERS}})": "",
     "TargetPlayer({{PLAYERS}})": "",
     "TargetPlayerAtRandom({{PLAYERS}})": "",
     "TargetPlayerAtTime({{PLAYERS}}, {{PLAYERS}})": "",
@@ -6519,6 +6530,8 @@
     "EachPlayerMayAction({{PLAYERS}}, ShuffleHandAndGraveyardIntoLibrary)": "",
 
     "EachPlayerAction({{PLAYERS}}, ChooseNumberCardsInHand({{NUMBER}}))": "",
+    "EachPlayerChoosesACardInHand({{PLAYERS}})": "",
+    "EachPlayerAction({{PLAYERS}}, RevealCardFromHand({{CARD_IN_HAND}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, DrawACard)": "",
     "EachPlayerAction({{PLAYERS}}, DrawNumberCards({{NUMBER}}))": "",
@@ -6646,7 +6659,6 @@
     "EachPlayerAction({{PLAYERS}}, Shuffle)": "",
 
     "EachPlayerAction({{PLAYERS}}, RevealHand)": "",
-    "EachPlayerAction({{PLAYERS}}, RevealACardFromHand)": "",
     "EachPlayerAction({{PLAYERS}}, ChooseACardInHandOfEachColor)": "",
 
     "EachPlayerAction({{PLAYERS}}, PutEachExiledCardOntoTheBattlefield({{CARDS_IN_EXILE}}, {{ENTER_FLAGS}}))": "",
@@ -7430,6 +7442,7 @@
     "RollAD6": "",
     "RollAD8": "",
     "RollNumberD20AndIgnoreAllButHighest({{NUMBER}})": "",
+    "RollNumberD4({{NUMBER}})": "",
     "RollNumberD6({{NUMBER}})": "",
     "RollNumberD6AndStoreTheResult({{NUMBER}})": "",
     "RollTwoD10AndChooseAnOrder": "",
@@ -7511,7 +7524,7 @@
     "SearchLibrary([FindNumberGroupCards({{NUMBER}}, {{CARDS_IN_LIBRARY}}, {{GROUP_FILTER}}), RevealFoundCards, APlayerChoosesNumberFoundCards({{PLAYERS}}, {{NUMBER}}), PutChosenFoundCardsIntoGraveyard, PutFoundCardsIntoHand, Shuffle])": "",
     "SearchLibrary([FindNumberGroupCards({{NUMBER}}, {{CARDS_IN_LIBRARY}}, {{GROUP_FILTER}}), RevealFoundCards, APlayerChoosesNumberFoundCards({{PLAYERS}}, {{NUMBER}}), PutChosenFoundCardsIntoGraveyard, PutFoundCardsOntoBattlefield({{ENTER_FLAGS}}), Shuffle])": "",
     "SearchLibrary([FindNumberGroupCards({{NUMBER}}, {{CARDS_IN_LIBRARY}}, {{GROUP_FILTER}}), RevealFoundCards, APlayerChoosesNumberFoundCards({{PLAYERS}}, {{NUMBER}}), SetAsideNonchosenFoundCards, Shuffle, PutSetAsideCardsIntoHand])": "",
-    "SearchLibrary([FindNumberGroupCards({{NUMBER}}, {{CARDS_IN_LIBRARY}}, {{GROUP_FILTER}}), RevealFoundCards, ChooseAFoundCardAtRandom, PutChosenFoundCardIntoHand, Shuffle])": "",
+    "SearchLibrary([FindNumberCardsOfType({{NUMBER}}, {{CARDS_IN_LIBRARY}}), RevealFoundCards, If(ANumberOfGroupCardsWereRevealedThisWay({{COMPARISON}}, {{CARDS_IN_LIBRARY}}, {{GROUP_FILTER}}), [ChooseAFoundCardAtRandom, PutChosenFoundCardIntoHand]), Shuffle])": "",
     "SearchLibrary([FindNumberGroupCards({{NUMBER}}, {{CARDS_IN_LIBRARY}}, {{GROUP_FILTER}}), RevealFoundCards, PutFoundCardsIntoHand, Shuffle])": "",
     "SearchLibrary([FindUptoNumberGenericCards({{NUMBER}}), PutFoundCardsIntoHand, Shuffle])": "",
     "SearchLibraryAndGraveyard([FindACardOfType({{CARDS_IN_LIBRARY}}), RevealFoundCards, PutFoundCardsIntoHand, Shuffle])": "",
@@ -7700,6 +7713,7 @@
     "MayAttackOnlyPlayerOrPlaneswalkersControlledBy({{PLAYER}})": "",
     "MayCastASpellForAlternateCostOnceDuringEachPlayersTurn({{SPELLS}}, {{COST}}, {{PLAYERS}})": "",
     "MayCastASpellFromAmongCardsInPlayersGraveyardOnceEachTurn({{SPELLS}}, {{CARDS_IN_GRAVEYARDS}}, {{PLAYER}})": "",
+    "MayCastASpellOfEachPermanentFromAmongCardsInGraveyardsOnceEachTurn({{CARDS_IN_GRAVEYARDS}})": "",
     "MayCastASpellFromAmongCardsMilledThisWay({{SPELLS}})": "",
     "MayCastASpellFromAmongExileWithoutPayingOnceEachTurn({{SPELLS}}, {{CARDS_IN_EXILE}})": "",
     "MayCastASpellFromAmongExiledCardsAndMaySpendManaAsThoughAnyTypeToCastOnceEachPlayersTurn({{SPELLS}}, {{CARDS_IN_EXILE}}, {{PLAYER}})": "",
@@ -7729,7 +7743,7 @@
     "MayCastExiledCardAndMaySpendManaAsThoughAnyTypeToCast({{CARD_IN_EXILE}})": "",
     "MayCastExiledCardAndMaySpendManaAsThoughAnyTypeToCastIntoExile({{CARD_IN_EXILE}})": "",
     "MayCastExiledCardForAdditionalCost({{CARD_IN_EXILE}}, {{COST}})": "",
-    "MayCastExiledCardForAlternateCost({{CARD_IN_EXILE}}, {{COST}})": "",
+    "MayCastExiledCardForAlternateCostIf({{CARD_IN_EXILE}}, {{COST}}, {{CONDITION}})": "",
     "MayCastExiledCardIntoExile({{CARD_IN_EXILE}})": "",
     "MayCastExiledCardWithEffect({{CARD_IN_EXILE}}, {{SPELL_EFFECT_LIST}})": "",
     "MayCastExiledCardWithoutPaying({{CARD_IN_EXILE}})": "",
@@ -7809,10 +7823,10 @@
     "MayPayLifeToProduceManaAsManaAbility({{NUMBER}}, {{MANA_PRODUCE_SYMBOL}})": "",
     "MayPayManaAnyTimeTheyCouldCastAnInstant({{MANACOST}}, {{ACTION_LIST}})": "",
     "MayPayToReduceColoredManaCostOfSpells(PayLife({{NUMBER}}), {{MANACOST}}, {{SPELLS}})": "",
-    "MayPlayALandOrCastASpellFromAmongCardsInGraveyardsOnceEachTurn({{CARDS_IN_GRAVEYARDS}}, {{PLAYERS}})": "",
+    "MayPlayALandFromAmongCardsInGraveyardsOnceEachTurn({{CARDS_IN_GRAVEYARDS}})": "",
+    "MayCastASpellFromAmongCardsInGraveyardsOnceEachTurn({{SPELLS}}, {{CARDS_IN_GRAVEYARDS}})": "",
     "MayPlayALandOrCastASpellFromAmongCardsInTheirGraveyardThatWerePutThereFromTheirLibraryOnceEachPlayers({{PERMANENTS}}, {{SPELLS}}, {{CARDS}}, {{PLAYER}})": "",
     "MayPlayALandOrCastASpellFromAmongExiledCardsAndMaySpendManaAsThoughAnyColorToCastOnceEachPlayersTurnWithTrigger({{PERMANENTS}}, {{SPELLS}}, {{CARDS_IN_EXILE}}, {{PLAYER}}, {{TOP_LEVEL_ACTIONS}})": "",
-    "MayPlayALandOrCastASpellFromTheirGraveyardOfEachPermanentTypeDuringPlayersTurn({{PLAYER}})": "",
     "MayPlayALandOrCastASpellFromTheirGraveyardOnceEachPlayersTurnWithEffect({{PERMANENTS}}, {{SPELLS}}, {{PLAYER}}, {{SPELL_EFFECT_LIST}})": "",
     "MayPlayAdditionalLands({{NUMBER}})": "",
     "MayPlayAnAdditionalLand": "",

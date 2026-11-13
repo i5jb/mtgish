@@ -1972,7 +1972,6 @@ pub enum PermanentRule {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ProtectableColor", content = "args"))]
 pub enum ProtectableColor {
   AnyColor,
-  Colored,
   Colors(Vec<Color>),
   ColorsOfPermanent(Box<Permanent>),
   ColorsOfPermanents(Box<Permanents>),
@@ -2016,6 +2015,11 @@ pub enum PlayerEffect {
   CantGetCounters,
   CantGetCountersOfType(CounterType),
 
+  MayCastExiledCardForAlternateCostIf(Box<CardInExile>, Box<Cost>, Box<Condition>),
+  MayPlayALandFromAmongCardsInGraveyardsOnceEachTurn(Box<CardsInGraveyards>),
+  MayCastASpellFromAmongCardsInGraveyardsOnceEachTurn(Box<Spells>, Box<CardsInGraveyards>),
+  MayCastASpellOfEachPermanentFromAmongCardsInGraveyardsOnceEachTurn(Box<CardsInGraveyards>),
+
   MayCastExiledCardAndMaySpendManaAsThoughAnyTypeToCastIf(Box<CardInExile>, Box<Condition>),
   OnceEachTurnMayCastASpellFromAmongCardsInGraveyardsWithEffect(Box<Spells>, Box<CardsInGraveyards>, Vec<SpellEffect>),
 
@@ -2023,7 +2027,6 @@ pub enum PlayerEffect {
   MayPayAlternateCostForFirstPowerUpCostEachTurn(ManaCost),
 
   MayCastExiledCards(Box<CardsInExile>),
-  MayCastExiledCardForAlternateCost(Box<CardInExile>, Box<Cost>),
   MayCastASpellFromAmongExileWithoutPayingOnceEachTurn(Box<Spells>, Box<CardsInExile>),
   MayCastASpellFromHandWithoutPayingOnceEachPlayersTurn(Box<Spells>),
   MayCastExiledCardAndMaySpendManaAsThoughAnyTypeToCastIntoExile(Box<CardInExile>),
@@ -2067,7 +2070,6 @@ pub enum PlayerEffect {
   MayCastSpellsFromGraveyardForAdditionalCost(Box<Spells>, Box<Player>, Box<Cost>),
   DecreasePlotFromHandCost(CostReduction),
   MayCastGraveyardCardUsingBestowAbility(Box<CardInGraveyards>),
-  MayPlayALandOrCastASpellFromAmongCardsInGraveyardsOnceEachTurn(Box<CardsInGraveyards>, Box<Players>),
   MayPlayExiledCardsAndPayAlternateCostToCast(CardsInExile, Box<Cost>),
   MayPlayExiledCardsAndMaySpendManaAsThoughAnyTypeToCastWithTrigger(CardsInExile, Box<Actions>),
   AsLoseUnspentMana(UnspentMana, Vec<Action>),
@@ -2264,7 +2266,6 @@ pub enum PlayerEffect {
   MayPayToReduceColoredManaCostOfSpells(Box<Cost>, ManaCost, Box<Spells>),
   MayPlayALandOrCastASpellFromAmongCardsInTheirGraveyardThatWerePutThereFromTheirLibraryOnceEachPlayers(Box<Permanents>, Box<Spells>, Box<Cards>, Box<Player>),
   MayPlayALandOrCastASpellFromAmongExiledCardsAndMaySpendManaAsThoughAnyColorToCastOnceEachPlayersTurnWithTrigger(Box<Permanents>, Box<Spells>, CardsInExile, Box<Player>, Box<Actions>),
-  MayPlayALandOrCastASpellFromTheirGraveyardOfEachPermanentTypeDuringPlayersTurn(Box<Player>),
   MayPlayALandOrCastASpellFromTheirGraveyardOnceEachPlayersTurnWithEffect(Box<Permanents>, Box<Spells>, Box<Player>, Vec<SpellEffect>),
   MayPlayAdditionalLands(Box<GameNumber>),
   MayPlayAnAdditionalLand,
@@ -2725,6 +2726,7 @@ pub enum Rule {
 
   WhilePlayersAreSearchingTheirLibraryTheyExileEachCardTheyFindAndPlayerMayPlayThoseCardsWhileTheyRemainExiledAndMaySpendManaAsThoughItWereAnyColor(Box<Players>, Box<Player>),
 
+  ReplaceDamageWouldResultInAllLoyaltyCountersBeingRemoved(ReplacableEventDamageWouldResultInAllLoyaltyCountersBeingRemoved, Vec<ReplacementActionDamageWouldResultInAllLoyaltyCountersBeingRemoved>),
   ReplaceWouldLearn(ReplacableEventWouldLearn, Vec<ReplacementActionWouldLearn>),
   ReplaceWouldConnive(ReplacableEventWouldConnive, Vec<ReplacementActionWouldConnive>),
   ReplaceWouldEmpowerJace(ReplacableEventWouldEmpowerJace, Vec<ReplacementActionWouldEmpowerJace>),
@@ -3357,7 +3359,6 @@ pub enum ReplacementActionWouldDealDamagePutCounters {
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldDealDamageRemoveCounters", content = "args"))]
 pub enum ReplacementActionWouldDealDamageRemoveCounters {
   ACounterOfTypeFromPermanent(CounterType, Box<Permanent>),
-  NumberCountersOfTypeFromPermanent(Box<GameNumber>, CounterType, Box<Permanent>),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -3601,6 +3602,13 @@ pub enum ReplacementActionWouldLearn {
   PutGraveyardCardOntoBattlefield(Box<CardInGraveyards>, Vec<EnterFlag>),
   Learn,
   ChooseAnAction(Vec<Vec<ReplacementActionWouldLearn>>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionDamageWouldResultInAllLoyaltyCountersBeingRemoved", content = "args"))]
+pub enum ReplacementActionDamageWouldResultInAllLoyaltyCountersBeingRemoved {
+  LeaveLoyaltyCounters(Box<GameNumber>),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -4146,7 +4154,6 @@ pub enum ReplacableEventWouldDealDamage {
   // (DamageType)(WouldBeDealt)BySource
   // (DamageType)(WouldBeDealt)BySourceToRecipient
   // (DamageType)(WouldBeDealt)ToRecipient
-  LethalLoyaltyDamageWouldBeDealtToAPlaneswalker(Box<Permanents>),
 
   AnAmountOfNonCombatDamageWouldBeDealtByASourceToARecipient(Box<Comparison>, DamageSources, DamageRecipientsList),
   AnAmountOfDamageWouldBeDealtByASourceToARecipient(Box<Comparison>, DamageSources, DamageRecipientsList),
@@ -4340,6 +4347,13 @@ pub enum ReplacableEventWouldLearn {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacableEventDamageWouldResultInAllLoyaltyCountersBeingRemoved", content = "args"))]
+pub enum ReplacableEventDamageWouldResultInAllLoyaltyCountersBeingRemoved {
+  DamageDealtToPermanentWouldResultInAllLoyaltyCountersBeingRemoved(Box<Permanents>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacableEventWouldConnive", content = "args"))]
 pub enum ReplacableEventWouldConnive {
   APermanentWouldConnive(Box<Permanents>),
@@ -4430,6 +4444,8 @@ pub enum Condition {
   // Operators
   Or(Vec<Condition>),
   And(Vec<Condition>),
+
+  ANumberOfGroupCardsWereRevealedThisWay(Box<Comparison>, Box<CardsInLibrary>, Box<GroupFilter>),
 
   PlayerPaidANumberOfCountersToActivateIt(Box<Player>, Box<Comparison>, Box<CounterType>),
   YouWonTheCoinFlip,
@@ -4803,6 +4819,7 @@ pub enum Cost {
   Reflexive_Discard_WhenYouDo(Box<Discardable>, Box<Actions>),
   Reflexive_Sacrifice_WhenYouDo(Vec<Sacrificable>, Box<Actions>),
 
+  SecretlyChooseANumberBetweenThatHasntBeenChosen(i32, i32),
   PayManaCostOfAPermanent(Box<Permanents>),
   AbandonScheme(SingleScheme),
   AddMana(ManaProduce),
@@ -5589,6 +5606,7 @@ pub enum Permanent {
   ThePermanentSacrificedThisWay,
   ThePermanentSacrificedByPlayerThisWay(Box<Player>),
   ThePermanentTappedThisWay,
+  ThePermanentUntappedThisWay,
   ThePermanentThatDiedThisWay,
   ThisGuest,
   ThisPermanent,
@@ -5852,6 +5870,7 @@ pub enum GameNumber {
   NumSpellsCastByPlayerThisGame(Box<Spells>, Box<Player>),
   TheTotalNumberOfCardsInAmongPlayersStartingDecks(Box<Players>),
 
+  TheNumberGuessedThisWay,
   TheNumberOfCardsPutIntoAPlayersGraveyardFromTheirLibraryThisTurn(Box<Players>),
   TheNumberOfPlaneswalkerTypesAmongPermanents(Box<Permanents>),
   AManaValueOfAnExiledCard(Box<CardsInExile>),
@@ -6087,7 +6106,6 @@ pub enum GameNumber {
   TheManaValueOfTheCardDiscoveredThisWay,
   TheNotedNumber,
   TheNumberChosenForPermanent(Box<Permanent>),
-  TheNumberChosenThisWay,
   TheNumberOfAbilitiesAmongPermanents(Vec<CheckHasable>, Box<Permanents>),
   TheNumberOfAttractionsPlayerHasVisitedThisTurn(Box<Player>),
   TheNumberOfCardTypesAmongCardsPutInGraveyardThisWay,
@@ -6977,6 +6995,8 @@ pub enum CardsInHand {
   AnyCard,
   Other(CardInHand),
   SingleCardInHand(CardInHand),
+
+  OwnedByAPlayer(Box<Players>),
 
   InAPlayersHand(Box<Players>),
   SharesANameWithPermanent(Box<Permanent>),
@@ -8085,6 +8105,8 @@ pub enum CardsInLibrary {
   SharesANameWithGraveyardCard(Box<CardInGraveyards>),
   DoesntShareANameWithSpell(Box<Spell>),
 
+  OwnedByAPlayer(Box<Players>),
+
   RevealedFromLibraryThisWay,
   RevealedFromPlayersLibraryThisWay(Box<Player>),
   TheLibraryCardsFoundThisWay,
@@ -8892,12 +8914,15 @@ pub enum Action {
   Recruit,
   Assimilate(Box<CardInGraveyards>),
 
+  CastAnyNumberOfGroupSpellsFromAmongCopiedCardsWithoutPaying(Box<Spells>, Box<GroupFilter>),
+  CopySpellForEachPlayerAndMustChooseThemOrPermanentTheyControlAsNewTarget(Box<Spell>, Box<Players>),
+  RollNumberD4(Box<GameNumber>),
+
   Conjure(Vec<ConjureAction>),
 
   ConjureDuplicateOfARandomCardOfTypeIntoExile(Box<Cards>),
   DraftAbilitiesFromAbilityBook(Vec<Cost>, SpellBookName),
 
-  CastAnyNumberOfSpellsFromAmongCopiedCardsWithoutPaying(Box<Spells>),
   ChooseACardFromOutsideGame(Box<CardsOutsideTheGame>),
   PrepareEachPermanent(Box<Permanents>),
   EachPlayerMayChooseAnAction(Box<Players>, Vec<Cost>),
@@ -8917,6 +8942,8 @@ pub enum Action {
   CreateTokensForEachPermanent(Box<Permanents>, Vec<CreatableToken>, Vec<TokenFlag>),
   EachPlayerCreatesTokens(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
   EachPlayerCreatesTokensOfTheirChoice(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>, Vec<CreatableToken>, Vec<TokenFlag>),
+
+  EachPlayerChoosesACardInHand(Box<Players>),
 
   EachPlayerMayChooseToDoActions(Box<Players>),
 
@@ -9351,8 +9378,6 @@ pub enum Action {
   CopySpellForEachAndMayChooseNewTargets(Box<Spell>, Box<GameNumber>),
   CopySpellForEachOtherPermanentOrPlayerAndMustChooseThemAsNewTarget(Box<Spell>),
   CopySpellForEachPermanentAndMustChooseItAsNewTarget(Box<Spell>, Box<Permanents>),
-  CopySpellForEachPlayerAndMustChooseNewTargetPermanentTheyControl(Box<Spell>, Box<Players>),
-  CopySpellForEachPlayerAndMustChooseThemAsNewTarget(Box<Spell>, Box<Players>),
   CopySpellForEachSpellPermanentCardAndOrPlayerItCouldTarget(Box<Spell>),
   CopySpellNumberTimes(Box<Spell>, Box<GameNumber>),
   CopySpellNumberTimesAndMayChooseNewTargets(Box<Spell>, Box<GameNumber>),
@@ -9882,7 +9907,6 @@ pub enum Action {
   RegenerateEachPermanent(Box<Permanents>),
   RegeneratePermanent(Box<Permanent>),
   RememberLifeTotal,
-  AddToRememberedPlayersList(Box<Player>),
   RemoveCounters(Vec<RemoveCountersAction>),
   RemoveCreatureFromCombat(Box<Permanent>),
   RemoveCreatureFromCombatAndUnblockBlockers(Box<Permanent>),
@@ -10077,7 +10101,6 @@ pub enum Action {
   SecretlyChooseAGraveyardCard(Box<CardsInGraveyards>),
   SecretlyChooseANumber,
   SecretlyChooseANumberBetween(i32, i32),
-  SecretlyChooseANumberBetweenThatHasntBeenChosen(i32, i32),
   SecretlyChooseANumberGreaterThanNumber(i32),
   SecretlyChooseAPermanent(Box<Permanents>),
   SecretlyChooseAPlayer(Box<Players>),
@@ -10327,6 +10350,7 @@ pub enum Target {
   TargetPermanentOfAPlayersChoiceTheyControl(Box<Permanents>, Box<Players>),
   TargetPermanentOfPlayersChoice(Box<Permanents>, Box<Player>),
   TargetPermanentOrExiledCard(Box<Permanents>, CardsInExile),
+  RememberEachTargetPlayer(Box<Players>),
   TargetPlayer(Box<Players>),
   TargetPlayerAtRandom(Box<Players>),
   TargetPlayerAtTime(Box<Players>, Box<Players>),

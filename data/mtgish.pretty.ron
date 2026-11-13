@@ -27657,7 +27657,7 @@ Card(
                 ActionList([
                   MayAction(CastSpellFromExileWithoutPayingAndFlagSpellsCastWithEffect(
                     AnySpell,
-                    TheExiledCard,
+                    ThisExiledCard,
                     IsCardtype(Creature),
                     [
                       AddAbility([
@@ -108305,7 +108305,7 @@ Card(
       WhenAnAbilityIsActivated(AbilityOfPermanent(HostPermanent)),
       ActivatedAbilityPassesFilter(
         Trigger_ThatActivatedAbility,
-        ManaAbility,
+        NonManaAbility,
       ),
       ActionList([
         MayCost(PayMana([
@@ -116755,7 +116755,7 @@ Card(
         ])),
       ]),
       ActionList([
-        AddMana(AnyManaTypePermanentCouldProduce(ThePermanentTappedThisWay)),
+        AddMana(AnyManaTypePermanentCouldProduce(ThePermanentUntappedThisWay)),
       ]),
     ),
   ],
@@ -256724,9 +256724,10 @@ Card(
         PlayerEffect(
           You,
           [
-            MayPlayALandOrCastASpellFromAmongCardsInGraveyardsOnceEachTurn(
+            MayPlayALandFromAmongCardsInGraveyardsOnceEachTurn(WasPutIntoGraveyardFromLibraryThisTurn),
+            MayCastASpellFromAmongCardsInGraveyardsOnceEachTurn(
+              AnySpell,
               WasPutIntoGraveyardFromLibraryThisTurn,
-              AnyPlayer,
             ),
           ],
         ),
@@ -289017,7 +289018,7 @@ Card(
       You,
       [
         DecreaseSpellCost(
-          And([
+          Or([
             IsEnchantmentType(Aura),
             IsArtifactType(Equipment),
           ]),
@@ -312231,26 +312232,14 @@ Card(
         ControlsA(IsCardtype(Creature)),
       ),
       [
-        ReplaceWouldDealDamage(
-          LethalLoyaltyDamageWouldBeDealtToAPlaneswalker(And([
+        ReplaceDamageWouldResultInAllLoyaltyCountersBeingRemoved(
+          DamageDealtToPermanentWouldResultInAllLoyaltyCountersBeingRemoved(And([
             IsCardtype(Planeswalker),
+            ControlledByAPlayer(SinglePlayer(You)),
             IsPlaneswalkerTypeVariable(TheChosenPlaneswalkerType),
           ])),
           [
-            CancelThatDamage,
-            RemoveCounters([
-              NumberCountersOfTypeFromPermanent(
-                Minus(
-                  TheTotalNumberOfCountersOfTypeAmongPermanents(
-                    LoyaltyCounter,
-                    SinglePermanent(WouldDealDamage_ThatPermanent),
-                  ),
-                  Integer(1),
-                ),
-                LoyaltyCounter,
-                WouldDealDamage_ThatPermanent,
-              ),
-            ]),
+            LeaveLoyaltyCounters(Integer(1)),
           ],
         ),
       ],
@@ -375085,14 +375074,8 @@ Card(
         AddManaWithModifiers(
           AnyManaColor,
           Or([
-            CanOnlySpendOnSpells(And([
-              IsCardtype(Creature),
-              IsCreatureTypeVariable(TheChosenCreatureType),
-            ])),
-            CanOnlySpendToActivateAbilitiesOfSources(And([
-              IsCardtype(Creature),
-              IsCreatureTypeVariable(TheChosenCreatureType),
-            ])),
+            CanOnlySpendOnSpells(IsCreatureTypeVariable(TheChosenCreatureType)),
+            CanOnlySpendToActivateAbilitiesOfSources(IsCreatureTypeVariable(TheChosenCreatureType)),
           ]),
         ),
       ]),
@@ -396469,7 +396452,7 @@ Card(
       ]),
     )),
     Flying,
-    Protection(FromColor(Colored)),
+    Protection(FromSpells(IsColored)),
     Annihilator(6),
     FromGraveyard(TriggerA(
       WhenACardIsPutIntoAPlayersGraveyardFromAnywhere(
@@ -494023,7 +494006,7 @@ Card(
       You,
       [
         MayCastSpellsFromTopOfLibrary_SpellsWithTrigger(
-          And([
+          Or([
             IsEnchantmentType(Aura),
             IsArtifactType(Equipment),
           ]),
@@ -542927,7 +542910,7 @@ Card(
       You,
       [
         DecreaseSpellCostX(
-          And([
+          Or([
             IsEnchantmentType(Aura),
             IsArtifactType(Equipment),
           ]),
@@ -579292,7 +579275,7 @@ Card(
           CreatePlayerEffectUntil(
             You,
             [
-              MayCastExiledCardForAlternateCost(
+              MayCastExiledCardForAlternateCostIf(
                 TheCardExiledThisWay,
                 WaterbendCustomX(
                   [
@@ -579300,6 +579283,7 @@ Card(
                   ],
                   ItsManaValue,
                 ),
+                IsPlayersTurn(You),
               ),
             ],
             UntilPermanentChangesControl(
@@ -585294,7 +585278,7 @@ Card(
       ),
       ActivatedAbilityPassesFilter(
         Trigger_ThatActivatedAbility,
-        ManaAbility,
+        NonManaAbility,
       ),
       ActionList([
         PermanentDealsDamage(
@@ -638478,7 +638462,7 @@ Card(
       WhenAnAbilityIsActivated(AbilityOfPermanent(HostPermanent)),
       ActivatedAbilityPassesFilter(
         Trigger_ThatActivatedAbility,
-        ManaAbility,
+        NonManaAbility,
       ),
       ActionList([
         CopyAbilityAndMayChooseNewTargets(Trigger_ThatActivatedAbility),
@@ -660949,9 +660933,12 @@ Transforming(
         WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
         ActionList([
           SearchLibraryAndOrGraveyardAndOrOutsideTheGame([
-            FindACardOfType(Or([
-              IsCardtype(Instant),
-              IsCardtype(Sorcery),
+            FindACardOfType(And([
+              Or([
+                IsCardtype(Instant),
+                IsCardtype(Sorcery),
+              ]),
+              OwnedByAPlayer(SinglePlayer(You)),
             ])),
             RevealFoundCards,
             PutFoundCardsIntoHand,
@@ -737909,7 +737896,7 @@ Card(
       ),
       ActivatedAbilityPassesFilter(
         Trigger_ThatActivatedAbility,
-        ManaAbility,
+        NonManaAbility,
       ),
       ActionList([
         MayCost(PayMana([
@@ -744311,10 +744298,9 @@ Card(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       Targeted(
         [
-          TargetPlayer(AnyPlayer),
+          RememberEachTargetPlayer(AnyPlayer),
         ],
         ActionList([
-          AddToRememberedPlayersList(Ref_TargetPlayer),
           PlayerAction(
             Ref_TargetPlayer,
             LoseLife(Integer(6)),
@@ -868399,10 +868385,16 @@ Card(
     ManaCostU,
   ],
   Rules: [
-    PlayerEffect(
-      You,
+    If(
+      IsPlayersTurn(You),
       [
-        MayPlayALandOrCastASpellFromTheirGraveyardOfEachPermanentTypeDuringPlayersTurn(You),
+        PlayerEffect(
+          You,
+          [
+            MayPlayALandFromAmongCardsInGraveyardsOnceEachTurn(InAPlayersGraveyard(SinglePlayer(You))),
+            MayCastASpellOfEachPermanentFromAmongCardsInGraveyardsOnceEachTurn(InAPlayersGraveyard(SinglePlayer(You))),
+          ],
+        ),
       ],
     ),
   ],
@@ -895125,6 +895117,7 @@ Card(
             PutACardFromHandOnBattlefield(
               And([
                 IsCardtype(Creature),
+                OwnedByAPlayer(SinglePlayer(You)),
                 ManaValueIs(LessThan(ManaValueOfDeadPermanent)),
               ]),
               [
@@ -895144,6 +895137,7 @@ Card(
             PutACommanderFromCommandZoneOntoBattlefield(
               And([
                 IsCardtype(Creature),
+                OwnedByAPlayer(SinglePlayer(You)),
                 ManaValueIs(LessThan(ManaValueOfDeadPermanent)),
               ]),
               [
@@ -1078594,7 +1078588,7 @@ Card(
       ),
       ActivatedAbilityPassesFilter(
         Trigger_ThatActivatedAbility,
-        ManaAbility,
+        NonManaAbility,
       ),
       ActionList([
         MayCost(PayMana([
@@ -1183630,7 +1183624,7 @@ Card(
     PlayerEffect(
       You,
       [
-        MayCastSpellsAsThoughTheyHadFlash(And([
+        MayCastSpellsAsThoughTheyHadFlash(Or([
           IsEnchantmentType(Aura),
           IsArtifactType(Equipment),
         ])),
@@ -1185337,14 +1185331,22 @@ Card(
   Rules: [
     SpellActions(ActionList([
       SearchLibrary([
-        FindNumberGroupCards(
+        FindNumberCardsOfType(
           Integer(3),
           IsCardtype(Creature),
-          DifferentNames,
         ),
         RevealFoundCards,
-        ChooseAFoundCardAtRandom,
-        PutChosenFoundCardIntoHand,
+        If(
+          ANumberOfGroupCardsWereRevealedThisWay(
+            EqualTo(Integer(3)),
+            IsCardtype(Creature),
+            DifferentNames,
+          ),
+          [
+            ChooseAFoundCardAtRandom,
+            PutChosenFoundCardIntoHand,
+          ],
+        ),
         Shuffle,
       ]),
     ])),
@@ -1226606,10 +1226608,9 @@ Card(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       Targeted(
         [
-          TargetPlayer(AnyPlayer),
+          RememberEachTargetPlayer(AnyPlayer),
         ],
         ActionList([
-          AddToRememberedPlayersList(Ref_TargetPlayer),
           PlayerAction(
             Ref_TargetPlayer,
             LoseLife(Integer(3)),
@@ -1281623,9 +1281624,10 @@ Card(
   ],
   Rules: [
     SpellActions(ActionList([
+      EachPlayerChoosesACardInHand(AnyPlayer),
       EachPlayerAction(
         AnyPlayer,
-        RevealACardFromHand,
+        RevealCardFromHand(TheCardInHandChosenThisWay),
       ),
       EachPlayerAction(
         OwnerOfACardWithTheLowestManaValueRevealedThisWay(IsCardtype(Creature)),
@@ -1353331,7 +1353333,7 @@ Card(
     ),
     TriggerA(
       WhenASpellOrAbilityCausesAnyNumberOfCardToBeExiledFromAPlayersLibrary(
-        AnySpellOrAbility,
+        ControlledByAPlayer(SinglePlayer(You)),
         Opponent,
       ),
       ActionList([
@@ -1361379,26 +1361381,31 @@ Card(
     TriggerA(
       AtTheBeginningOfAPlayersUpkeep(SinglePlayer(You)),
       ActionList([
-        SecretlyChooseANumberBetweenThatHasntBeenChosen(
+        MustCost(SecretlyChooseANumberBetweenThatHasntBeenChosen(
           1,
           5,
-        ),
-        APlayerAction(
-          Opponent,
-          GuessWhichNumberWasSecretlyChosen,
-        ),
-        RevealTheSecretlyChosenNumber,
-        IfElse(
-          PlayerGuessedWrong,
+        )),
+        If(
+          CostWasPaid,
           [
-            PlayerAction(
-              ThePlayerWhoGuessedThisWay,
-              LoseLife(TheNumberChosenThisWay),
+            APlayerAction(
+              Opponent,
+              GuessWhichNumberWasSecretlyChosen,
             ),
-            DrawACard,
-          ],
-          [
-            SacrificePermanent(ThisPermanent),
+            RevealTheSecretlyChosenNumber,
+            IfElse(
+              PlayerGuessedWrong,
+              [
+                PlayerAction(
+                  ThePlayerWhoGuessedThisWay,
+                  LoseLife(TheNumberGuessedThisWay),
+                ),
+                DrawACard,
+              ],
+              [
+                SacrificePermanent(ThisPermanent),
+              ],
+            ),
           ],
         ),
       ]),
@@ -1418766,6 +1418773,7 @@ Card(
           And([
             IsSupertype(Legendary),
             IsCardtype(Creature),
+            OwnedByAPlayer(SinglePlayer(You)),
           ]),
           DifferentNames,
         ),
@@ -1425704,7 +1425712,10 @@ Card(
             [],
           ),
           CopyExiledCards(TheCardsExiledThisWay),
-          MayAction(CastAnyNumberOfSpellsFromAmongCopiedCardsWithoutPaying(ManaValueIs(LessThanOrEqualTo(Integer(6))))),
+          MayAction(CastAnyNumberOfGroupSpellsFromAmongCopiedCardsWithoutPaying(
+            AnySpell,
+            TotalManaValueIs(LessThanOrEqualTo(Integer(6))),
+          )),
         ]),
       ),
     ),
@@ -1524956,7 +1524967,9 @@ Card(
       EachPlayerAction(
         AnyPlayer,
         SacrificeEachPermanent(And([
+          Other(TheChosenPermanentForPlayer(EachablePlayer)),
           IsCardtype(Creature),
+          ControlledByAPlayer(SinglePlayer(EachablePlayer)),
           DoesntShareACreatureTypeWithPermanent(TheChosenPermanentForPlayer(EachablePlayer)),
         ])),
       ),
@@ -1552608,7 +1552621,7 @@ Card(
             If(
               CastSpellPassesFilter(TargetsOnlyASinglePlayer(Opponent)),
               [
-                CopySpellForEachPlayerAndMustChooseThemAsNewTarget(
+                CopySpellForEachPlayerAndMustChooseThemOrPermanentTheyControlAsNewTarget(
                   Trigger_ThatSpell,
                   And([
                     Opponent,
@@ -1552620,7 +1552633,7 @@ Card(
             If(
               CastSpellPassesFilter(TargetsOnlyASinglePermanent(ControlledByAPlayer(Opponent))),
               [
-                CopySpellForEachPlayerAndMustChooseNewTargetPermanentTheyControl(
+                CopySpellForEachPlayerAndMustChooseThemOrPermanentTheyControlAsNewTarget(
                   Trigger_ThatSpell,
                   And([
                     Opponent,
@@ -1558787,11 +1558800,11 @@ Dungeon(
     DungeonLevel(
       "Reithwin Tollhouse",
       ActionList([
-        RollAD4,
+        RollNumberD4(Integer(2)),
         CreateTokens(
           [
             NumberTokens(
-              TheDiceResult,
+              TheTotalOfTheDiceResults,
               TreasureToken,
             ),
           ],
