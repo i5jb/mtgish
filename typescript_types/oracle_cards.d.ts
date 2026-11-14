@@ -52,6 +52,7 @@ type Action =
 | { "_Action": "CopySpellForEachPlayerAndMustChooseThemOrPermanentTheyControlAsNewTarget", "args": [Spell, Players] }
 | { "_Action": "RollNumberD4", "args": GameNumber }
 | { "_Action": "Conjure", "args": Array<ConjureAction> }
+| { "_Action": "PutInHand", "args": Array<PuttableInHand> }
 | { "_Action": "ConjureDuplicateOfARandomCardOfTypeIntoExile", "args": Cards }
 | { "_Action": "DraftAbilitiesFromAbilityBook", "args": [Array<Cost>, string] }
 | { "_Action": "ChooseACardFromOutsideGame", "args": CardsOutsideTheGame }
@@ -834,6 +835,7 @@ type Action =
 | { "_Action": "PayAnyAmountOfLife" }
 | { "_Action": "PayAnyAmountOfMana" }
 | { "_Action": "PermanentDealsDamage", "args": [Permanent, GameNumber, DamageRecipient] }
+| { "_Action": "PermanentDealsDamageCantBePrevented", "args": [Permanent, GameNumber, DamageRecipient] }
 | { "_Action": "PermanentDealsDamageAndPermanentDealsDamage", "args": [Permanent, GameNumber, DamageRecipient, Permanent, GameNumber, DamageRecipient] }
 | { "_Action": "PermanentDealsDamageAndPreventSomeOfIt", "args": [Permanent, GameNumber, DamageRecipient, GameNumber] }
 | { "_Action": "PermanentDealsDamageDividedAsPlayerChooses", "args": [Permanent, GameNumber, DamageRecipient, Player] }
@@ -1622,6 +1624,7 @@ type CardInGraveyards =
 | { "_CardInGraveyards": "ThePermanentSacrificedThisWay" }
 | { "_CardInGraveyards": "Trigger_ThatSacrificedPermanent" }
 | { "_CardInGraveyards": "TopCardOfTypeOfPlayersGraveyard", "args": [Cards, Player] }
+| { "_CardInGraveyards": "Trigger_ThisGraveyardCard" }
 | { "_CardInGraveyards": "Trigger_ThatGraveyardCard" }
 | { "_CardInGraveyards": "TheCardDiscardedThisWay" }
 | { "_CardInGraveyards": "Ref_TargetGraveyardCard" }
@@ -4953,6 +4956,7 @@ type PermanentRule =
 | { "_PermanentRule": "PlaneswalkerCantBeAttacked" }
 | { "_PermanentRule": "SaddlesMountsUsingToughnessRatherThanPower" }
 | { "_PermanentRule": "CantBecomeUntapped" }
+| { "_PermanentRule": "DoesntUntapDuringUntapStep" }
 | { "_PermanentRule": "AbilitiesCantBeActivated" }
 | { "_PermanentRule": "CantGainAbility", "args": CheckHasable }
 | { "_PermanentRule": "AbilitiesOfTypeCantBeActivated", "args": ActivatedAbilities }
@@ -6398,6 +6402,7 @@ type PutOrRemoveCountersAction =
 type PutRestriction =
 | { "_PutRestriction": "CantCauseTheNumberOfCountersOfTypeOnPermanentToBeGreaterThan", "args": [CounterType, Permanent, GameNumber] };
 type PuttableInHand =
+| { "_PuttableInHand": "Trigger_ThatDiscardedCard" }
 | { "_PuttableInHand": "ConjuredDuplicateOfPermanent", "args": Permanent };
 type PuttableOnBattlefield =
 | { "_PuttableOnBattlefield": "AnyNumberOfCardsFromLibrary", "args": CardsInLibrary }
@@ -9157,6 +9162,7 @@ type Trigger =
 | { "_Trigger": "WhenAPlayerExertsACreature", "args": [Players, Permanents] }
 | { "_Trigger": "AtTheBeginningOfAPlayersDrawStep", "args": Players }
 | { "_Trigger": "AtTheBeginningOfAPlayersEndStep", "args": Players }
+| { "_Trigger": "AtTheBeginningOfAPlayersEndStepRememberingPermanent", "args": [Players, Permanent] }
 | { "_Trigger": "AtTheBeginningOfAPlayersMainPhases", "args": Players }
 | { "_Trigger": "AtTheBeginningOfAPlayersFirstMainPhase", "args": Players }
 | { "_Trigger": "AtTheBeginningOfAPlayersSecondMainPhase", "args": Players }
@@ -9165,6 +9171,7 @@ type Trigger =
 | { "_Trigger": "AtTheBeginningOfAPlayersFirstUpkeepOfTheGame", "args": Players }
 | { "_Trigger": "AtTheBeginningOfAPlayersFirstUpkeepEachTurn", "args": Players }
 | { "_Trigger": "AtTheBeginningOfAPlayersUpkeep", "args": Players }
+| { "_Trigger": "AtTheBeginningOfAPlayersUpkeepRememberingPermanent", "args": [Players, Permanent] }
 | { "_Trigger": "WhenAPlayerUntapsAnyNumberOfPermanentDuringTheirUntapStep", "args": [Players, Permanents] }
 | { "_Trigger": "WhenAPermanentBecomesUntapped", "args": Permanents }
 | { "_Trigger": "WhenPlayersFinishVoting" }

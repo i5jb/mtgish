@@ -713,7 +713,8 @@
     "AtTheEndOfTheFirstCombat": ""
   },
   "{{_TRIGGER[Turn-EndStep]}}": {
-    "AtTheBeginningOfAPlayersEndStep({{PLAYERS}})": ""
+    "AtTheBeginningOfAPlayersEndStep({{PLAYERS}})": "",
+    "AtTheBeginningOfAPlayersEndStepRememberingPermanent({{PLAYERS}}, {{PERMANENT}})": ""
   },
   "{{_TRIGGER[Turn-MainPhase]}}": {
     "AtTheBeginningOfAPlayersFirstMainPhase({{PLAYERS}})": "",
@@ -725,6 +726,7 @@
     "AtTheBeginningOfAPlayersFirstUpkeepEachTurn({{PLAYERS}})": "",
     "AtTheBeginningOfAPlayersFirstUpkeepOfTheGame({{PLAYERS}})": "",
     "AtTheBeginningOfAPlayersUpkeep({{PLAYERS}})": "",
+    "AtTheBeginningOfAPlayersUpkeepRememberingPermanent({{PLAYERS}}, {{PERMANENT}})": "",
     "AtTheBeginningOfTheFirstUpkeepOfTheGame": ""
   },
   "{{_TRIGGER[TurnFaceUp]}}": {

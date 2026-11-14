@@ -313,12 +313,22 @@
     //"[{{CONJURABLE_ACTION}}]": "",
   },
 
+  "{{PUTTABLE_IN_HAND}}": {
+    "Trigger_ThatDiscardedCard": ""
+  },
+  "{{PUTTABLE_IN_HAND_LIST}}": {
+    "[{{PUTTABLE_IN_HAND}}]": ""
+  },
+
+
   "{{BASIC_PLAYER_ACTION}}": {
     "{{_PLAYER_ACTION[PutCounters]}}": "",
     "{{_PLAYER_ACTION[PutCounters][Reflexive]}}": "",
     "{{_PLAYER_ACTION[PutCounters][NoteCounters]}}": "",
     "{{_PLAYER_ACTION[PutCounters][WouldPutCounters]}}": "",
     "{{_PLAYER_ACTION[Exile]}}": "",
+
+    "PutInHand({{PUTTABLE_IN_HAND_LIST}})": "",
 
     "SetRepeatablePlayers({{PLAYERS}})": "",
 
@@ -867,7 +877,7 @@
     "EachCreatureConnives({{PERMANENTS}})": "",
     "EachPermanentDealsDamage({{PERMANENTS}}, {{NUMBER}}, {{DAMAGE_RECIPIENT}})": "",
     "ExiledCardDealsDamage({{CARD_IN_EXILE}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "EachPermanentDoesntUntapDuringControllersNextUntap({{PERMANENTS}})": "",
+    "EachPermanentDoesntUntapDuringControllersNextUntap({{PERMANENTS}})": "", // FIXME: Get rid of this, CreatePermRule(..., [DontUntapDuringUntapStep], ...)
     "EachPlayerCantCastSpellsDuringTheirNextTurn({{PLAYERS}}, {{SPELLS}})": "",
     "Earthbend({{PERMANENT}}, {{NUMBER}})": "",
     "EndTheCombatPhase": "",
@@ -3044,6 +3054,7 @@
     "TopCardOfPlayersGraveyard({{PLAYER}})": "",
     "TopCardOfTypeOfPlayersGraveyard({{CARDS}}, {{PLAYER}})": "",
     "TheBottomCardOfPlayersGraveyard({{PLAYER}})": "",
+    "Trigger_ThisGraveyardCard": "",
     "Trigger_ThatGraveyardCard": "",
     "Trigger_ThatSacrificedPermanent": ""
   },
@@ -4248,7 +4259,11 @@
     "DamageDealtToItCantBePreventedOrRedirected": "",
     "DecreaseEquipAbilityCostWhenTargetingAPermanent({{COST_REDUCTION}}, {{PERMANENTS}})": "",
     "DetermineLethalDamageUsingPowerRatherThanToughness": "",
-    "DoesntUntapDuringControllersUntap": "",
+
+    "DoesntUntapDuringControllersUntap": "", // FIXME: Somehow merge with DoesntUntapDuringUntapStep?
+    "DoesntUntapDuringUntapStep": "",
+    "MayChooseNotToUntapDuringUntap": "",
+
     "CantBeBeamedUp": "",
     "IsAColorlessSourceOfDamage": "",
     "IsGoadedByPlayer({{PLAYER}})": "",
@@ -4257,7 +4272,6 @@
     "MayAssignCombatDamageToAPermanent({{PERMANENTS}})": "",
     "MayBeExertedAsItAttacks": "",
     "MayBeExertedAsItAttacksWithTrigger({{TOP_LEVEL_ACTIONS}})": "",
-    "MayChooseNotToUntapDuringUntap": "",
     "MustAttack": "",
     "MustAttackAPlayer({{PLAYERS}})": "",
     "MustAttackIfAnotherCreatureAttacks({{PERMANENTS}})": "",
@@ -6732,10 +6746,6 @@
     "ForEachPermanentAnyPlayerMayCost({{PERMANENTS}}, {{PLAYERS}}, PayLife({{NUMBER}}))": "",
     "ForEachPermanentAnyPlayerMayCost({{PERMANENTS}}, {{PLAYERS}}, PayMana({{MANACOST}}))": "",
 
-    "ActionForEachDistributedAnyTarget([CreateFuturePreventDamage(NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient(DistributedNumber, DistributedAnyTarget), [PreventThatDamage])])": "",
-
-    "ActionForEachPermanent({{PERMANENTS}}, [FlipACoin, If(YouWonTheCoinFlip, [CreatePreventDamageUntil({{PREVENT_EVENT[WouldDealDamage]}}, {{PREVENT_ACTIONS[WouldDealDamage]}}, {{EXPIRATION}})])])": "",
-
     // FIXME: The goal is to get rid of these for more specific / documented verions.
     "ActionForEachPermanent({{PERMANENTS}}, {{ACTION_LIST}})": "",
     "ActionForEachPermanentThatDiedThisWay({{ACTION_LIST}})": "",
@@ -6750,6 +6760,44 @@
     "ActionForEachPermanentExiledThisWay({{ACTION_LIST}})": "",
     // END FIXME
 
+    "ActionForEachDistributedAnyTarget([CreateFuturePreventDamage(NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient(DistributedNumber, DistributedAnyTarget), [PreventThatDamage])])": "",
+    "ActionForEachPermanent({{PERMANENTS}}, [FlipACoin, If(YouWonTheCoinFlip, [CreatePreventDamageUntil({{PREVENT_EVENT[WouldDealDamage]}}, {{PREVENT_ACTIONS[WouldDealDamage]}}, {{EXPIRATION}})])])": "",
+
+    "BoonDealsDamage(ThisBoon, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "DeadGuestPermanentDealsDamage({{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "DeadPermanentDealsDamage({{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "DeadPermanentDealsDistributedDamage": "",
+    "DiscardedCardDealsDamage(ThisCardInHand, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "DiscardedCardDealsDamage(Trigger_ThatCardInHand, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "DealDamage(CommandCard(ThisCommandCard), {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "DealDamage(Permanent({{PERMANENT}}), {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "PermanentDealsDamageCantBePrevented({{PERMANENT}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "PermanentDealsDamage({{PERMANENT}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "PermanentDealsDamageAndPreventSomeOfIt({{PERMANENT}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{NUMBER}})": "",
+    "PermanentDealsDamageDividedAsPlayerChooses({{PERMANENT}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{PLAYER}})": "",
+    "PermanentDealsDamageExcessReplacable({{PERMANENT}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{ACTION_LIST}})": "",
+    "PermanentDealsDamageForEach({{PERMANENT}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{NUMBER}})": "",
+    "PermanentDealsDistributedDamage({{PERMANENT}})": "",
+    "PermanentDealsMultipleDamage({{PERMANENT}}, [DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}}), DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}})])": "",
+    "PermanentOrDeadPermanentDealsDamage({{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "PlaneDealsDamage(ThisPlane, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "EmblemDealsDamage(ThisEmblem, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "GraveyardCardDealsDamage({{CARD_IN_GRAVEYARDS}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "GraveyardCardDealsMultipleDamage({{CARD_IN_GRAVEYARDS}}, [DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}}), DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}})])": "",
+    "SacrificedPermanentDealsDamage({{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "SacrificedPermanentDealsDistributedDamage": "",
+    "SchemeDealsDamage(ThisScheme, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "SpellDealsDamage({{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "SpellDealsDamageCantBePrevented({{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "SpellDealsDamageDividedAmongRecipientsRoundedDown({{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "SpellDealsDamageEachPlayer({{PLAYERS}}, {{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
+    "SpellDealsDamageEachPlayerForEach({{PLAYERS}}, {{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{NUMBER}})": "",
+    "SpellDealsDamageExcessReplacable({{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{ACTION_LIST}})": "",
+    "SpellDealsDamageForEach({{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{NUMBER}})": "",
+    "SpellDealsDistributedDamage({{SPELL}})": "",
+    "SpellDealsMultipleDamage({{SPELL}}, [DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}}), DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}}), DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}})])": "",
+    "SpellDealsMultipleDamage({{SPELL}}, [DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}}), DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}})])": "",
+    "VanguardDealsDamage(ThisVanguard, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
 
     "APlayerAction({{PLAYERS}}, ChooseACardFromOutsideGame(TheCardsFromOutsideGameRevealedThisWay))": "",
 
@@ -6760,20 +6808,12 @@
     "ActionNumberTimes({{NUMBER}}, {{ACTION_LIST}})": "",
     "AnyPlayerMayCost({{PLAYERS}}, {{COST}})": "",
     "AnyPlayerMayPayMana({{PLAYERS}}, {{MANACOST}}, {{ACTION_LIST}}, {{ACTION_LIST}})": "",
-    "BoonDealsDamage(ThisBoon, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
     "ChaosEnsues": "",
     "CreateValueX({{NUMBER}})": "",
-    "DeadGuestPermanentDealsDamage({{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "DeadPermanentDealsDamage({{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "DeadPermanentDealsDistributedDamage": "",
-    "DiscardedCardDealsDamage(ThisCardInHand, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "DiscardedCardDealsDamage(Trigger_ThatCardInHand, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
     "DoNothing": "",
     "DrawTheGame": "",
     "DuringNextUntap({{PLAYER}}, {{ACTION_LIST}})": "",
-    "EmblemDealsDamage(ThisEmblem, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "GraveyardCardDealsDamage({{CARD_IN_GRAVEYARDS}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "GraveyardCardDealsMultipleDamage({{CARD_IN_GRAVEYARDS}}, [DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}}), DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}})])": "",
+
     "If({{CONDITION}}, {{ACTION_LIST}})": "",
     "IfElse({{CONDITION}}, {{ACTION_LIST}}, {{ACTION_LIST}})": "",
     "IfHavePlayerAction({{PLAYER}}, {{BASIC_PLAYER_ACTION}}, {{ACTION_LIST}})": "",
@@ -6785,17 +6825,6 @@
     "MayCost({{COST}})": "",
     "MayHavePlayerAction({{PLAYER}}, {{BASIC_PLAYER_ACTION}})": "",
     "MustCost({{COST}})": "",
-    "DealDamage(CommandCard(ThisCommandCard), {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "DealDamage(Permanent({{PERMANENT}}), {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "PermanentDealsDamage({{PERMANENT}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "PermanentDealsDamageAndPreventSomeOfIt({{PERMANENT}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{NUMBER}})": "",
-    "PermanentDealsDamageDividedAsPlayerChooses({{PERMANENT}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{PLAYER}})": "",
-    "PermanentDealsDamageExcessReplacable({{PERMANENT}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{ACTION_LIST}})": "",
-    "PermanentDealsDamageForEach({{PERMANENT}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{NUMBER}})": "",
-    "PermanentDealsDistributedDamage({{PERMANENT}})": "",
-    "PermanentDealsMultipleDamage({{PERMANENT}}, [DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}}), DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}})])": "",
-    "PermanentOrDeadPermanentDealsDamage({{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "PlaneDealsDamage(ThisPlane, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
     "PlayerAction({{PLAYER}}, {{BASIC_PLAYER_ACTION}})": "",
     "PlayerActions({{PLAYER}}, [{{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}])": "",
     "PlayerActions({{PLAYER}}, [{{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}, {{BASIC_PLAYER_ACTION}}])": "",
@@ -6815,21 +6844,7 @@
     "RepeatableActionsNumTimes({{NUMBER}}, {{ACTION_LIST}})": "",
     "RepeatedMayCost({{NUMBER}}, {{COST}})": "",
     "ReverseTurnOrder": "",
-    "SacrificedPermanentDealsDamage({{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "SacrificedPermanentDealsDistributedDamage": "",
-    "SchemeDealsDamage(ThisScheme, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "SpellDealsDamage({{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "SpellDealsDamageCantBePrevented({{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "SpellDealsDamageDividedAmongRecipientsRoundedDown({{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "SpellDealsDamageEachPlayer({{PLAYERS}}, {{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
-    "SpellDealsDamageEachPlayerForEach({{PLAYERS}}, {{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{NUMBER}})": "",
-    "SpellDealsDamageExcessReplacable({{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{ACTION_LIST}})": "",
-    "SpellDealsDamageForEach({{SPELL}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}}, {{NUMBER}})": "",
-    "SpellDealsDistributedDamage({{SPELL}})": "",
-    "SpellDealsMultipleDamage({{SPELL}}, [DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}}), DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}}), DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}})])": "",
-    "SpellDealsMultipleDamage({{SPELL}}, [DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}}), DamageToRecipients({{NUMBER}}, {{DAMAGE_RECIPIENTS}})])": "",
     "Unless({{CONDITION}}, {{ACTION_LIST}})": "",
-    "VanguardDealsDamage(ThisVanguard, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})": "",
     "{{BASIC_PLAYER_ACTION}}": ""
   },
   "{{_ACTIVATED}}": {
@@ -6974,6 +6989,7 @@
     "SharesACardtypeWithExiledCard({{CARD_IN_EXILE}})": "",
     "SharesACardtypeWithGraveyardCard({{CARD_IN_GRAVEYARDS}})": "",
     "SharesACardtypeWithPermanent({{PERMANENT}})": "",
+    "SharesACardtypeWithPermanentFromAmongCardtypes({{PERMANENT}}, [Creature, Land])": "",
     "SharesACardtypeWithPermanentFromAmongCardtypes({{PERMANENT}}, [Artifact, Creature, Land])": "",
     "SharesACardtypeWithThatDeadPermanent": "",
     "SharesACardtypeWithTheSacrificedPermanent": "",

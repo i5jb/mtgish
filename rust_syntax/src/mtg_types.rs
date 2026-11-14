@@ -1860,6 +1860,8 @@ pub enum PermanentRule {
   SaddlesMountsUsingToughnessRatherThanPower,
 
   CantBecomeUntapped,
+  DoesntUntapDuringUntapStep,
+
   AbilitiesCantBeActivated,
   CantGainAbility(CheckHasable),
   AbilitiesOfTypeCantBeActivated(Box<ActivatedAbilities>),
@@ -7596,6 +7598,7 @@ pub enum CardInGraveyards {
   ThePermanentSacrificedThisWay,
   Trigger_ThatSacrificedPermanent,
   TopCardOfTypeOfPlayersGraveyard(Box<Cards>, Box<Player>),
+  Trigger_ThisGraveyardCard,
   Trigger_ThatGraveyardCard,
   TheCardDiscardedThisWay,
   Ref_TargetGraveyardCard,
@@ -8434,6 +8437,7 @@ pub enum Millable {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_PuttableInHand", content = "args"))]
 pub enum PuttableInHand {
+  Trigger_ThatDiscardedCard,
   ConjuredDuplicateOfPermanent(Box<Permanent>),
 }
 
@@ -8928,6 +8932,7 @@ pub enum Action {
   RollNumberD4(Box<GameNumber>),
 
   Conjure(Vec<ConjureAction>),
+  PutInHand(Vec<PuttableInHand>),
 
   ConjureDuplicateOfARandomCardOfTypeIntoExile(Box<Cards>),
   DraftAbilitiesFromAbilityBook(Vec<Cost>, SpellBookName),
@@ -9727,6 +9732,7 @@ pub enum Action {
   PayAnyAmountOfLife,
   PayAnyAmountOfMana,
   PermanentDealsDamage(Box<Permanent>, Box<GameNumber>, Box<DamageRecipient>),
+  PermanentDealsDamageCantBePrevented(Box<Permanent>, Box<GameNumber>, Box<DamageRecipient>),
   PermanentDealsDamageAndPermanentDealsDamage(Box<Permanent>, Box<GameNumber>, DamageRecipient, Box<Permanent>, Box<GameNumber>, DamageRecipient),
   PermanentDealsDamageAndPreventSomeOfIt(Box<Permanent>, Box<GameNumber>, Box<DamageRecipient>, Box<GameNumber>),
   PermanentDealsDamageDividedAsPlayerChooses(Box<Permanent>, Box<GameNumber>, Box<DamageRecipient>, Box<Player>),
@@ -11452,6 +11458,7 @@ pub enum Trigger {
 
   // turn__end_step
   AtTheBeginningOfAPlayersEndStep(Box<Players>),
+  AtTheBeginningOfAPlayersEndStepRememberingPermanent(Box<Players>, Box<Permanent>),
 
   // turn__main_phase
   AtTheBeginningOfAPlayersMainPhases(Box<Players>),
@@ -11464,6 +11471,7 @@ pub enum Trigger {
   AtTheBeginningOfAPlayersFirstUpkeepOfTheGame(Box<Players>),
   AtTheBeginningOfAPlayersFirstUpkeepEachTurn(Box<Players>),
   AtTheBeginningOfAPlayersUpkeep(Box<Players>),
+  AtTheBeginningOfAPlayersUpkeepRememberingPermanent(Box<Players>, Box<Permanent>),
 
   // untap
   WhenAPlayerUntapsAnyNumberOfPermanentDuringTheirUntapStep(Box<Players>, Box<Permanents>),

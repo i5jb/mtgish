@@ -292,7 +292,6 @@ Card(
             TapAPermanent(And([
               IsUntapped,
               IsCreatureType(Bird),
-              IsCardtype(Creature),
               ControlledByAPlayer(SinglePlayer(You)),
             ])),
             SacrificeAPermanent(IsCardtype(Artifact)),
@@ -3518,7 +3517,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Octopus),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       Targeted(
@@ -19249,15 +19247,18 @@ Card(
       ],
     ),
     TriggerA(
-      AtTheBeginningOfAPlayersEndStep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersEndStepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         If(
           PermanentPassesFilter(
-            HostPermanent,
-            DidntAttackThisTurn,
+            Trigger_ThatPermanent,
+            Not(AttackedThisTurn),
           ),
           [
-            DestroyPermanent(HostPermanent),
+            DestroyPermanent(Trigger_ThatPermanent),
           ],
         ),
       ]),
@@ -25171,7 +25172,6 @@ Card(
         TapAPermanent(And([
           IsUntapped,
           IsCreatureType(Ally),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
       ]),
@@ -48985,16 +48985,19 @@ Card(
       ],
     ),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersEndStepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerMayCost(
-          HostController,
+          Trigger_ThatPlayer,
           DiscardACardAtRandom,
         ),
         If(
           CostWasPaid,
           [
-            UntapPermanent(HostPermanent),
+            UntapPermanent(Trigger_ThatPermanent),
           ],
         ),
       ]),
@@ -52211,7 +52214,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Spider),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       Targeted(
@@ -89479,7 +89481,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Wizard),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       ActionList([
@@ -133397,9 +133398,20 @@ Card(
             TapEachPermanent(Ref_TargetPermanents),
           ]),
         ),
-        ActionList([
-          EachPermanentDoesntUntapDuringControllersNextUntap(IsCardtype(Creature)),
-        ]),
+        Targeted(
+          [
+            TargetPlayer(AnyPlayer),
+          ],
+          ActionList([
+            CreateEachPermanentRuleEffectUntil(
+              IsCardtype(Creature),
+              [
+                DoesntUntapDuringUntapStep,
+              ],
+              DuringPlayersNextUntapStep(Ref_TargetPlayer),
+            ),
+          ]),
+        ),
       ],
     )),
   ],
@@ -137171,7 +137183,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Vampire),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       (Targeted(
@@ -146538,7 +146549,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Ally),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       Targeted(
@@ -150649,7 +150659,7 @@ Card(
       CreateEachPermanentRuleEffectUntil(
         IsCardtype(Creature),
         [
-          DoesntUntapDuringControllersUntap,
+          DoesntUntapDuringUntapStep,
         ],
         DuringPlayersNextUntapStep(You),
       ),
@@ -222609,7 +222619,6 @@ Transforming(
           TapAPermanent(And([
             IsUntapped,
             IsCreatureType(Vampire),
-            IsCardtype(Creature),
             ControlledByAPlayer(SinglePlayer(You)),
           ])),
         ]),
@@ -227997,7 +228006,6 @@ Card(
           And([
             IsUntapped,
             IsCreatureType(Citizen),
-            IsCardtype(Creature),
             ControlledByAPlayer(SinglePlayer(You)),
           ]),
         ]))),
@@ -280586,11 +280594,14 @@ Card(
   Rules: [
     EnchantPermanent(IsCardtype(Artifact)),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerMayCost(
-          HostController,
-          SacrificePermanent(HostPermanent),
+          Trigger_ThatPlayer,
+          SacrificePermanent(Trigger_ThatPermanent),
         ),
         Unless(
           CostWasPaid,
@@ -280598,7 +280609,7 @@ Card(
             PermanentDealsDamage(
               ThisPermanent,
               Integer(2),
-              Player(HostController),
+              Player(Trigger_ThatPlayer),
             ),
           ],
         ),
@@ -288432,10 +288443,13 @@ Card(
       ],
     ),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersEndStepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerMayCost(
-          HostController,
+          Trigger_ThatPlayer,
           PayMana([
             ManaCostGeneric(1),
             ManaCostB,
@@ -288444,7 +288458,7 @@ Card(
         If(
           CostWasPaid,
           [
-            UntapPermanent(HostPermanent),
+            UntapPermanent(Trigger_ThatPermanent),
           ],
         ),
       ]),
@@ -329244,7 +329258,7 @@ Card(
     TriggerA(
       WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       ActionList([
-        MayAction(Reflexive_CreateTokens_WhenYouDo(
+        Reflexive_CreateTokens_WhenYouDo(
           [
             NumberTokens(
               Integer(2),
@@ -329286,7 +329300,7 @@ Card(
               ),
             ]),
           ),
-        )),
+        ),
       ]),
     ),
   ],
@@ -352090,7 +352104,6 @@ Card(
         TapAPermanent(And([
           IsUntapped,
           IsCreatureType(Ally),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
       ]),
@@ -360483,7 +360496,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Merfolk),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       Targeted(
@@ -367354,7 +367366,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Dwarf),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       Targeted(
@@ -391030,7 +391041,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Zombie),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       Targeted(
@@ -397124,11 +397134,13 @@ Card(
           Ref_TargetPermanent,
           And([
             Other(HostPermanentOf(Ref_TargetPermanent)),
-            Or([
-              IsCardtype(Creature),
-              IsCardtype(Land),
-            ]),
-            SharesACardtypeWithPermanent(HostPermanent),
+            SharesACardtypeWithPermanentFromAmongCardtypes(
+              HostPermanent,
+              [
+                Creature,
+                Land,
+              ],
+            ),
           ]),
         ),
       ]),
@@ -406545,10 +406557,13 @@ Card(
   Rules: [
     EnchantPermanent(IsCardtype(Land)),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerMayCost(
-          HostController,
+          Trigger_ThatPlayer,
           Or([
             PayMana([
               ManaCostGeneric(1),
@@ -406559,7 +406574,7 @@ Card(
         Unless(
           CostWasPaid,
           [
-            DestroyPermanent(HostPermanent),
+            DestroyPermanent(Trigger_ThatPermanent),
           ],
         ),
       ]),
@@ -409982,7 +409997,10 @@ Card(
       ],
     ),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PutCounters([
           ACounterOfTypeOnPermanent(
@@ -409990,7 +410008,7 @@ Card(
               0,
               -1,
             ),
-            HostPermanent,
+            Trigger_ThatPermanent,
           ),
         ]),
       ]),
@@ -422583,7 +422601,6 @@ Card(
     Replicate(TapAPermanent(And([
       IsUntapped,
       IsCreatureType(Dalek),
-      IsCardtype(Creature),
       ControlledByAPlayer(SinglePlayer(You)),
     ]))),
     SpellActions(Targeted(
@@ -494164,7 +494181,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Wizard),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       Targeted(
@@ -506855,7 +506871,10 @@ Card(
     TriggerA(
       WhenAPermanentDies(SinglePermanent(HostPermanent)),
       ActionList([
-        MayAction(ReturnEnchantingGraveyardCardToHand),
+        MayAction(PutACardFromGraveyardIntoHand(And([
+          SingleGraveyardCard(Trigger_ThisGraveyardCard),
+          InAPlayersGraveyard(SinglePlayer(You)),
+        ]))),
       ]),
     ),
   ],
@@ -506905,7 +506924,10 @@ Card(
     TriggerA(
       WhenAPermanentDies(SinglePermanent(HostPermanent)),
       ActionList([
-        MayAction(ReturnEnchantingGraveyardCardToHand),
+        MayAction(PutACardFromGraveyardIntoHand(And([
+          SingleGraveyardCard(Trigger_ThisGraveyardCard),
+          InAPlayersGraveyard(SinglePlayer(You)),
+        ]))),
       ]),
     ),
   ],
@@ -506971,7 +506993,10 @@ Card(
     TriggerA(
       WhenAPermanentDies(SinglePermanent(HostPermanent)),
       ActionList([
-        MayAction(ReturnEnchantingGraveyardCardToHand),
+        MayAction(PutACardFromGraveyardIntoHand(And([
+          SingleGraveyardCard(Trigger_ThisGraveyardCard),
+          InAPlayersGraveyard(SinglePlayer(You)),
+        ]))),
       ]),
     ),
   ],
@@ -507029,7 +507054,10 @@ Card(
     TriggerA(
       WhenAPermanentDies(SinglePermanent(HostPermanent)),
       ActionList([
-        MayAction(ReturnEnchantingGraveyardCardToHand),
+        MayAction(PutACardFromGraveyardIntoHand(And([
+          SingleGraveyardCard(Trigger_ThisGraveyardCard),
+          InAPlayersGraveyard(SinglePlayer(You)),
+        ]))),
       ]),
     ),
   ],
@@ -507083,7 +507111,10 @@ Card(
     TriggerA(
       WhenAPermanentDies(SinglePermanent(HostPermanent)),
       ActionList([
-        MayAction(ReturnEnchantingGraveyardCardToHand),
+        MayAction(PutACardFromGraveyardIntoHand(And([
+          SingleGraveyardCard(Trigger_ThisGraveyardCard),
+          InAPlayersGraveyard(SinglePlayer(You)),
+        ]))),
       ]),
     ),
   ],
@@ -507130,7 +507161,10 @@ Card(
     TriggerA(
       WhenAPermanentDies(SinglePermanent(HostPermanent)),
       ActionList([
-        MayAction(ReturnEnchantingGraveyardCardToHand),
+        MayAction(PutACardFromGraveyardIntoHand(And([
+          SingleGraveyardCard(Trigger_ThisGraveyardCard),
+          InAPlayersGraveyard(SinglePlayer(You)),
+        ]))),
       ]),
     ),
   ],
@@ -527227,7 +527261,7 @@ Card(
     TriggerA(
       WhenAPermanentDies(SinglePermanent(ThisPermanent)),
       ActionList([
-        MayAction(Reflexive_Exile_WhenYouDo(
+        Reflexive_Exile_WhenYouDo(
           [
             CardInGraveyards(Trigger_ThatGraveyardCard),
           ],
@@ -527249,7 +527283,7 @@ Card(
               PutEachGraveyardCardIntoHand(Ref_TargetGraveyardCards),
             ]),
           ),
-        )),
+        ),
       ]),
     ),
   ],
@@ -574466,7 +574500,10 @@ Card(
           MillNumberCards(Integer(4)),
         ),
         ReturnACardMilledThisWayToBattlefield(
-          AnyCard,
+          And([
+            IsCardtype(Creature),
+            ManaValueIs(Even),
+          ]),
           [
             EntersUnderPlayersControl(You),
           ],
@@ -579386,7 +579423,7 @@ Card(
           Exile(
             [
               UptoOneCardInGraveyards(And([
-                And([
+                Or([
                   IsNonCardtype(Creature),
                   IsNonCardtype(Land),
                 ]),
@@ -579409,7 +579446,7 @@ Card(
                 IsPlayersTurn(You),
               ),
             ],
-            UntilPermanentChangesControl(
+            ForAsLongAsPlayerControlsPermanent(
               You,
               ThisPermanent,
             ),
@@ -590588,7 +590625,7 @@ Card(
           ControlledByAPlayer(SinglePlayer(You)),
         ]),
         [
-          DoesntUntapDuringControllersUntap,
+          DoesntUntapDuringUntapStep,
         ],
         DuringPlayersNextUntapStep(You),
       ),
@@ -609380,14 +609417,14 @@ Card(
         ]),
       ),
     ),
-    PlayerEffect(
+    MaxSpeed(PlayerEffect(
       You,
       [
         MayPayAlternateCostForFirstUnearthCostEachTurn([
           ManaCostGeneric(0),
         ]),
       ],
-    ),
+    )),
   ],
   CardPT: (
     Power: 4,
@@ -639371,7 +639408,7 @@ Card(
             ControlledByAPlayer(SinglePlayer(Ref_TargetPlayer)),
           ]),
           [
-            DoesntUntapDuringControllersUntap,
+            DoesntUntapDuringUntapStep,
           ],
           DuringPlayersNextUntapStep(Ref_TargetPlayer),
         ),
@@ -657736,18 +657773,21 @@ Card(
   Rules: [
     EnchantPermanent(IsCardtype(Creature)),
     TriggerA(
-      AtTheBeginningOfAPlayersEndStep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersEndStepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         Unless(
           PermanentPassesFilter(
-            HostPermanent,
+            Trigger_ThatPermanent,
             AttackedThisTurn,
           ),
           [
             PermanentDealsDamage(
               ThisPermanent,
               Integer(2),
-              Player(HostController),
+              Player(Trigger_ThatPlayer),
             ),
           ],
         ),
@@ -709527,7 +709567,7 @@ Card(
             ControlledByAPlayer(SinglePlayer(You)),
           ]),
           [
-            DoesntUntapDuringControllersUntap,
+            DoesntUntapDuringUntapStep,
           ],
           DuringPlayersNextUntapStep(You),
         ),
@@ -736647,9 +736687,9 @@ Card(
     TriggerA(
       WhenAPermanentBecomesTapped(SinglePermanent(HostPermanent)),
       ActionList([
-        DestroyPermanent(HostPermanent),
+        DestroyPermanent(Trigger_ThatPermanent),
         PlayerMayAction(
-          ControllerOfPermanent(HostPermanent),
+          ControllerOfPermanent(Trigger_ThatPermanent),
           AttachPermanentToAPermanent(
             ThisPermanent,
             IsCardtype(Land),
@@ -737683,7 +737723,6 @@ Card(
         And([
           IsUntapped,
           IsCreatureType(Merfolk),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ]),
       ])),
@@ -766732,11 +766771,14 @@ Card(
   Rules: [
     EnchantPermanent(IsCardtype(Creature)),
     TriggerA(
-      AtTheBeginningOfAPlayersEndStep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersEndStepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerAction(
-          HostController,
-          SacrificePermanent(HostPermanent),
+          Trigger_ThatPlayer,
+          SacrificePermanent(Trigger_ThatPermanent),
         ),
       ]),
     ),
@@ -798382,7 +798424,6 @@ Card(
         TapAPermanent(And([
           IsUntapped,
           IsCreatureType(Ally),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
       ]),
@@ -813323,7 +813364,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Cleric),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       Targeted(
@@ -836528,23 +836568,26 @@ Card(
   Rules: [
     EnchantPermanent(IsCardtype(Creature)),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerMayCost(
-          HostController,
+          Trigger_ThatPlayer,
           PayMana([
             ManaCostGeneric(3),
           ]),
         ),
-        Unless(
-          CostWasPaid,
+        If(
+          CostWasntPaid,
           [
             PermanentDealsDamage(
               ThisPermanent,
               Integer(2),
-              Player(HostController),
+              Player(Trigger_ThatPlayer),
             ),
-            TapPermanent(HostPermanent),
+            TapPermanent(Trigger_ThatPermanent),
           ],
         ),
       ]),
@@ -869360,7 +869403,6 @@ Card(
         TapAPermanent(And([
           IsUntapped,
           IsCreatureType(Ally),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
       ]),
@@ -894815,7 +894857,6 @@ Card(
     CastEffect(AdditionalCastingCost(TapAPermanent(And([
       IsUntapped,
       IsCreatureType(Vampire),
-      IsCardtype(Creature),
       ControlledByAPlayer(SinglePlayer(You)),
     ])))),
     SpellActions(Targeted(
@@ -923822,7 +923863,7 @@ Card(
           ControlledByAPlayer(SinglePlayer(You)),
         ]),
         [
-          DoesntUntapDuringControllersUntap,
+          DoesntUntapDuringUntapStep,
         ],
         DuringPlayersNextUntapStep(You),
       ),
@@ -929925,7 +929966,6 @@ Card(
         TapAPermanent(And([
           IsUntapped,
           IsCreatureType(Ally),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
       ]),
@@ -930197,7 +930237,10 @@ Card(
       ],
     ),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerAction(
           Trigger_ThatPlayer,
@@ -942389,7 +942432,6 @@ Card(
         TapAPermanent(And([
           IsUntapped,
           IsCreatureType(Rebel),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
       ]),
@@ -954480,10 +954522,13 @@ Card(
       ],
     ),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersEndStepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerMayCost(
-          HostController,
+          Trigger_ThatPlayer,
           PayMana([
             ManaCostGeneric(4),
           ]),
@@ -954491,7 +954536,7 @@ Card(
         If(
           CostWasPaid,
           [
-            UntapPermanent(HostPermanent),
+            UntapPermanent(Trigger_ThatPermanent),
           ],
         ),
       ]),
@@ -955980,20 +956025,23 @@ Card(
   Rules: [
     EnchantPermanent(IsCardtype(Creature)),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersEndStepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerAction(
-          HostController,
+          Trigger_ThatPlayer,
           RevealTopCardOfLibrary,
         ),
         IfElse(
           ACardWasRevealedThisWay(IsCardtype(Land)),
           [
-            DestroyPermanent(HostPermanent),
+            DestroyPermanent(Trigger_ThatPermanent),
           ],
           [
             CreatePermanentLayerEffectUntil(
-              HostPermanent,
+              Trigger_ThatPermanent,
               [
                 AdjustPT(
                   3,
@@ -959234,7 +959282,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Wizard),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       Targeted(
@@ -986518,7 +986565,7 @@ Card(
               ControlledByPlayer(ClashOpponent),
             ]),
             [
-              DoesntUntapDuringControllersUntap,
+              DoesntUntapDuringUntapStep,
             ],
             DuringPlayersNextUntapStep(ClashOpponent),
           ),
@@ -1008090,7 +1008137,6 @@ Card(
     Replicate(TapAPermanent(And([
       IsUntapped,
       IsCreatureType(Horror),
-      IsCardtype(Creature),
       ControlledByAPlayer(SinglePlayer(You)),
     ]))),
     SpellActions(Targeted(
@@ -1017477,7 +1017523,9 @@ Card(
         SingleCardInHand(ThisCardInHand),
       ),
       ActionList([
-        ReturnGraveyardCardToHand(Trigger_ThatGraveyardCard),
+        PutInHand([
+          Trigger_ThatDiscardedCard,
+        ]),
       ]),
     )),
   ],
@@ -1056491,12 +1056539,18 @@ Card(
       WhenAPermanentDies(SinglePermanent(HostPermanent)),
       ActionList([
         MayActions([
-          ReturnEnchantingGraveyardCardToBattlefield([
-            EntersAttachedToAPermanent(And([
-              IsCardtype(Creature),
-              SharesACreatureTypeWithDeadPermanent,
-            ])),
-          ]),
+          PutAGraveyardCardOntoBattlefield(
+            And([
+              SingleGraveyardCard(Trigger_ThisGraveyardCard),
+              InAPlayersGraveyard(SinglePlayer(You)),
+            ]),
+            [
+              EntersAttachedToAPermanent(And([
+                IsCardtype(Creature),
+                SharesACreatureTypeWithPermanent(Trigger_ThatPermanent),
+              ])),
+            ],
+          ),
         ]),
       ]),
     ),
@@ -1072921,7 +1072975,7 @@ Card(
           ControlledByAPlayer(SinglePlayer(You)),
         ]),
         [
-          DoesntUntapDuringControllersUntap,
+          DoesntUntapDuringUntapStep,
         ],
         DuringPlayersNextUntapStep(You),
       ),
@@ -1137842,9 +1137896,15 @@ Card(
     TriggerA(
       WhenAPermanentDies(SinglePermanent(HostPermanent)),
       ActionList([
-        ReturnEnchantingGraveyardCardToBattlefield([
-          EntersNormally,
-        ]),
+        PutAGraveyardCardOntoBattlefield(
+          And([
+            SingleGraveyardCard(Trigger_ThisGraveyardCard),
+            InAPlayersGraveyard(SinglePlayer(You)),
+          ]),
+          [
+            EntersNormally,
+          ],
+        ),
       ]),
     ),
   ],
@@ -1159836,7 +1159896,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Druid),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       ActionList([
@@ -1162011,7 +1162070,6 @@ Card(
         And([
           IsUntapped,
           IsCreatureType(Rogue),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ]),
       ])),
@@ -1211213,10 +1211271,13 @@ Card(
   Rules: [
     EnchantPermanent(IsCardtype(Creature)),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerMayCost(
-          HostController,
+          Trigger_ThatPlayer,
           PayMana([
             ManaCostGeneric(2),
           ]),
@@ -1211225,8 +1211286,8 @@ Card(
           CostWasPaid,
           [
             PlayerAction(
-              HostController,
-              SacrificePermanent(HostPermanent),
+              Trigger_ThatPlayer,
+              SacrificePermanent(Trigger_ThatPermanent),
             ),
           ],
         ),
@@ -1225835,7 +1225896,10 @@ Card(
   Rules: [
     EnchantPermanent(IsCardtype(Creature)),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerAction(
           Trigger_ThatPlayer,
@@ -1227749,23 +1227813,26 @@ Card(
   Rules: [
     EnchantPermanent(IsNonCardtype(Land)),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerMayCost(
-          HostController,
+          Trigger_ThatPlayer,
           PayManaX(
             [
               ManaCostX,
             ],
-            ManaValueOfPermanent(HostPermanent),
+            ManaValueOfPermanent(Trigger_ThatPermanent),
           ),
         ),
         Unless(
           CostWasPaid,
           [
             PlayerAction(
-              HostController,
-              SacrificePermanent(HostPermanent),
+              Trigger_ThatPlayer,
+              SacrificePermanent(Trigger_ThatPermanent),
             ),
           ],
         ),
@@ -1233938,7 +1234005,6 @@ Card(
         TapAPermanent(And([
           IsUntapped,
           IsCreatureType(Ally),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
       ]),
@@ -1256261,7 +1256327,10 @@ Card(
       ],
     ),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerAction(
           Trigger_ThatPlayer,
@@ -1263943,7 +1264012,7 @@ Card(
           Player(ControllerOfPermanent(Trigger_ThatPermanent)),
         ),
         PlayerAction(
-          ControllerOfPermanent(HostPermanent),
+          ControllerOfPermanent(Trigger_ThatPermanent),
           AttachPermanentToAPermanent(
             ThisPermanent,
             IsCardtype(Land),
@@ -1272017,7 +1272086,6 @@ Card(
         TapAPermanent(And([
           IsUntapped,
           IsCreatureType(Ally),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
       ]),
@@ -1294445,7 +1294513,10 @@ Card(
   Rules: [
     EnchantPermanent(IsCardtype(Creature)),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerAction(
           Trigger_ThatPlayer,
@@ -1296419,7 +1296490,6 @@ Card(
         And([
           IsUntapped,
           IsCreatureType(Rogue),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ]),
       ])),
@@ -1313810,7 +1313880,10 @@ Card(
   Rules: [
     EnchantPermanent(IsCardtype(Creature)),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PutCounters([
           ACounterOfTypeOnPermanent(
@@ -1313818,7 +1313891,7 @@ Card(
               0,
               -1,
             ),
-            HostPermanent,
+            Trigger_ThatPermanent,
           ),
         ]),
       ]),
@@ -1437157,12 +1437230,15 @@ Card(
   Rules: [
     EnchantPermanent(IsCardtype(Creature)),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PlayerMayCost(
-          HostController,
+          Trigger_ThatPlayer,
           SacrificeAPermanent(And([
-            Other(HostPermanent),
+            Other(Trigger_ThatPermanent),
             IsCardtype(Creature),
           ])),
         ),
@@ -1437171,8 +1437247,8 @@ Card(
           [
             PermanentDealsDamage(
               ThisPermanent,
-              PowerOfPermanent(HostPermanent),
-              Player(HostController),
+              PowerOfPermanent(Trigger_ThatPermanent),
+              Player(Trigger_ThatPlayer),
             ),
           ],
         ),
@@ -1438923,7 +1438999,10 @@ Card(
       ],
     ),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         PutCounters([
           ACounterOfTypeOnPermanent(
@@ -1438931,7 +1439010,7 @@ Card(
               -1,
               -1,
             ),
-            HostPermanent,
+            Trigger_ThatPermanent,
           ),
         ]),
       ]),
@@ -1457196,12 +1457275,15 @@ Card(
       ],
     ),
     TriggerA(
-      AtTheBeginningOfAPlayersUpkeep(SinglePlayer(HostController)),
+      AtTheBeginningOfAPlayersUpkeepRememberingPermanent(
+        SinglePlayer(ControllerOfPermanent(HostPermanent)),
+        HostPermanent,
+      ),
       ActionList([
         RemoveCounters([
           ACounterOfTypeFromPermanent(
             SleepCounter,
-            HostPermanent,
+            Trigger_ThatPermanent,
           ),
         ]),
       ]),
@@ -1463693,7 +1463775,6 @@ Card(
         And([
           IsUntapped,
           IsCreatureType(Ally),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ]),
       ])),
@@ -1470189,7 +1470270,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Villain),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       ActionList([
@@ -1478767,7 +1478847,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Merfolk),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       ActionList([
@@ -1478784,7 +1478863,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Merfolk),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       ActionList([
@@ -1481953,7 +1482031,7 @@ Card(
         ],
         ActionList([
           ChooseADamageNumber,
-          PermanentDealsDamage(
+          PermanentDealsDamageCantBePrevented(
             ThatEnteringPermanent,
             TheChosenNumber,
             MultipleRecipients([
@@ -1549510,7 +1549588,6 @@ Card(
         TapAPermanent(And([
           IsUntapped,
           IsCreatureType(Ally),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
       ]),
@@ -1556235,7 +1556312,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Zombie),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       Targeted(
@@ -1556257,7 +1556333,6 @@ Card(
       TapAPermanent(And([
         IsUntapped,
         IsCreatureType(Zombie),
-        IsCardtype(Creature),
         ControlledByAPlayer(SinglePlayer(You)),
       ])),
       Targeted(
@@ -1557190,7 +1557265,6 @@ Card(
         TapAPermanent(And([
           IsUntapped,
           IsCreatureType(Ally),
-          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(You)),
         ])),
       ]),
