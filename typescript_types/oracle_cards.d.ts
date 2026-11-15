@@ -53,6 +53,8 @@ type Action =
 | { "_Action": "RollNumberD4", "args": GameNumber }
 | { "_Action": "Conjure", "args": Array<ConjureAction> }
 | { "_Action": "PutInHand", "args": Array<PuttableInHand> }
+| { "_Action": "PutOnBattlefield", "args": [Array<PuttableOnBattlefield>, Array<EnterFlag>] }
+| { "_Action": "PutInGraveyard", "args": Array<PuttableInGraveyard> }
 | { "_Action": "ConjureDuplicateOfARandomCardOfTypeIntoExile", "args": Cards }
 | { "_Action": "DraftAbilitiesFromAbilityBook", "args": [Array<Cost>, string] }
 | { "_Action": "ChooseACardFromOutsideGame", "args": CardsOutsideTheGame }
@@ -1059,7 +1061,6 @@ type Action =
 | { "_Action": "ReturnAnyNumberOfCardsFromGraveyardToBattlefield", "args": [CardsInGraveyards, Player, Array<EnterFlag>] }
 | { "_Action": "ReturnAnyNumberOfGroupCardsFromGraveyardToHand", "args": [Cards, GroupFilter] }
 | { "_Action": "ReturnAnyNumberOfGroupCardsFromPlayersGraveyardToBattlefield", "args": [CardsInGraveyards, GroupFilter, Player, Array<EnterFlag>] }
-| { "_Action": "ReturnAnyNumberOfGroupCardsMilledThisWayToBattlefield", "args": [Cards, GroupFilter, Array<EnterFlag>] }
 | { "_Action": "ReturnAnyNumberOfPermanentsToTheirOwnersHands", "args": Permanents }
 | { "_Action": "ReturnDeadGraveyardCardToBattlefield", "args": Array<EnterFlag> }
 | { "_Action": "ReturnDeadGraveyardCardToBottomOfLibrary" }
@@ -1130,7 +1131,7 @@ type Action =
 | { "_Action": "RevealCardFromOutsideGameAndPutInHand", "args": Cards }
 | { "_Action": "RevealCardFromOutsideGameAndPutInHandOrPutAnExiledCardInOwnersHand", "args": [Cards, CardsInExile] }
 | { "_Action": "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed", "args": [Cards, Array<RevealTheTopNumberCardsOfLibraryAction>] }
-| { "_Action": "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealedOrUntilNumberCardsAreRevealed", "args": [Cards, GameNumber, Array<RevealTheTopNumberCardsOfLibraryAction>] }
+| { "_Action": "RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealedOrUntilNumberCardsAreRevealed", "args": [Cards, GameNumber] }
 | { "_Action": "RevealCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreRevealed", "args": [GameNumber, Cards, Array<RevealTheTopNumberCardsOfLibraryAction>] }
 | { "_Action": "RevealCardsFromTheTopOfPlanarDeckUntilRevealAPlaneCardThenChaosEnsuresOnThatPlaneThenPutAllCardsOnBottomInAnyOrder" }
 | { "_Action": "RevealCardsFromTheTopOfPlanarDeckUntilRevealAPlaneCardThenPlaneswalkToItWhileNotPlaneswalkingAwayAndPutTheRestOnBottomInAnyOrder" }
@@ -1580,7 +1581,7 @@ type CardEffect =
 | { "_CardEffect": "CountersRemainOnCardAsItMovesBetweenZonesExceptforHandAndLibrary" }
 | { "_CardEffect": "CantBePlayed" };
 type CardInExile =
-| { "_CardInExile": "TheLastExiledCard" }
+| { "_CardInExile": "TheLastExiledCardOfType", "args": CardsInExile }
 | { "_CardInExile": "Ref_TargetExiledCard" }
 | { "_CardInExile": "TheCardConjuredIntoExileThisWay" }
 | { "_CardInExile": "Ref_TargetExiledCard1" }
@@ -2568,6 +2569,7 @@ type Cost =
 | { "_Cost": "DiscardNumberCardsOfType", "args": [GameNumber, Cards] }
 | { "_Cost": "DiscardNumberGroupCards", "args": [GameNumber, GroupFilter] }
 | { "_Cost": "DiscardNumberGroupCardsOfType", "args": [GameNumber, Cards, GroupFilter] }
+| { "_Cost": "DiscardUptoNumberCards", "args": GameNumber }
 | { "_Cost": "DrawACard" }
 | { "_Cost": "DrawNumberCards", "args": GameNumber }
 | { "_Cost": "ExchangeControl", "args": [Permanent, Permanent] }
@@ -3881,6 +3883,7 @@ type GameNumber =
 | { "_GameNumber": "LifeGainedByPlayerThisGame", "args": Player }
 | { "_GameNumber": "NumSpellsCastByPlayerThisGame", "args": [Spells, Player] }
 | { "_GameNumber": "TheTotalNumberOfCardsInAmongPlayersStartingDecks", "args": Players }
+| { "_GameNumber": "TheNumberOfCardtypesAmongPermanentsSacrificedByPlayerThisTurn", "args": [Permanents, Player] }
 | { "_GameNumber": "TheNumberGuessedThisWay" }
 | { "_GameNumber": "TheNumberOfCardsPutIntoAPlayersGraveyardFromTheirLibraryThisTurn", "args": Players }
 | { "_GameNumber": "TheNumberOfPlaneswalkerTypesAmongPermanents", "args": Permanents }
@@ -4123,7 +4126,6 @@ type GameNumber =
 | { "_GameNumber": "TheNumberOfCardTypesAmongCardsPutInGraveyardThisWay" }
 | { "_GameNumber": "TheNumberOfCardTypesAmongPermanents", "args": Permanents }
 | { "_GameNumber": "TheNumberOfCardTypesAmongSpellsCastThisTurn", "args": Spells }
-| { "_GameNumber": "TheNumberOfCardTypesAmongThePermanentsSacrificedThisTurn" }
 | { "_GameNumber": "TheNumberOfCardTypesItSharesWithAnyExiledCard", "args": CardsInExile }
 | { "_GameNumber": "TheNumberOfCardTypesPermanentHas", "args": Permanent }
 | { "_GameNumber": "TheNumberOfCardsDiscardedByPlayerThisWay", "args": Player }
@@ -5799,7 +5801,6 @@ type PlayerEffect =
 | { "_PlayerEffect": "MayCastExiledCardAndMaySpendColorlessManaAsThoughAnyColorToCast", "args": CardInExile }
 | { "_PlayerEffect": "MayPlotCardsFromTheTopOfTheirLibrary", "args": CardsInLibrary }
 | { "_PlayerEffect": "MayPlayLandsFromAmongCardsInPlayersGraveyard", "args": [CardsInGraveyards, Player] }
-| { "_PlayerEffect": "MayCastSpellsFromAmongCardsInPlayersGraveyard", "args": [Spells, CardsInGraveyards, Player] }
 | { "_PlayerEffect": "MayCastSpellsFromAmongCardsInPlayersGraveyardForAlternateCost", "args": [Spells, CardsInGraveyards, Player, Cost] }
 | { "_PlayerEffect": "GainsLifeRatherThanLoseLifeFromRadiation" }
 | { "_PlayerEffect": "CantAttackPlayerOrPlaneswalkerControlledBy", "args": Player }
@@ -6056,7 +6057,7 @@ type PlayerEffect =
 | { "_PlayerEffect": "SkipsMainPhase" }
 | { "_PlayerEffect": "SkipsUntapStep" }
 | { "_PlayerEffect": "SkipsUpkeepStep" }
-| { "_PlayerEffect": "SpellsAndAbilitiesTheyCantCantCauseThemToSearchTheirLibrary" }
+| { "_PlayerEffect": "SpellsAndAbilitiesTheyControlCantCauseThemToSearchTheirLibrary" }
 | { "_PlayerEffect": "SpellsCastFromHandHaveAbility", "args": [Spells, Array<SpellEffect>] }
 | { "_PlayerEffect": "SpellsCastHaveAbility", "args": [Spells, Array<SpellEffect>] }
 | { "_PlayerEffect": "SpellsControlledHaveAbility", "args": [Spells, Array<SpellEffect>] }
@@ -6401,11 +6402,15 @@ type PutOrRemoveCountersAction =
 | { "_PutOrRemoveCountersAction": "DuplicateOrRemoveACounterOfEachKindOnPermanent", "args": Permanent };
 type PutRestriction =
 | { "_PutRestriction": "CantCauseTheNumberOfCountersOfTypeOnPermanentToBeGreaterThan", "args": [CounterType, Permanent, GameNumber] };
+type PuttableInGraveyard =
+| { "_PuttableInGraveyard": "TheCardsRevealedFromTheTopOfTheLibraryThisWay" };
 type PuttableInHand =
 | { "_PuttableInHand": "Trigger_ThatDiscardedCard" }
 | { "_PuttableInHand": "ConjuredDuplicateOfPermanent", "args": Permanent };
 type PuttableOnBattlefield =
+| { "_PuttableOnBattlefield": "TheCardsOfTypeRevealedFromTheTopOfTheLibraryThisWay", "args": CardsInLibrary }
 | { "_PuttableOnBattlefield": "AnyNumberOfCardsFromLibrary", "args": CardsInLibrary }
+| { "_PuttableOnBattlefield": "AnyNumberOfGroupCardsInGraveyards", "args": [CardsInGraveyards, GroupFilter] }
 | { "_PuttableOnBattlefield": "ACardOfTypeFromLibrary", "args": CardsInLibrary }
 | { "_PuttableOnBattlefield": "CardInGraveyard", "args": CardInGraveyards }
 | { "_PuttableOnBattlefield": "CardInHand", "args": CardInHand }
@@ -7019,7 +7024,6 @@ type RevealTheTopNumberCardsOfLibraryAction =
 | { "_RevealTheTopNumberCardsOfLibraryAction": "PutEachCardOfTypeIntoGraveyard", "args": Cards }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "CreateExiledCardEffect", "args": [CardInExile, Array<ExiledCardEffect>] }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "ExileTheCardFoundThisWayWithNumberCountersOfType", "args": [GameNumber, CounterType] }
-| { "_RevealTheTopNumberCardsOfLibraryAction": "SacrificePermanent", "args": Permanent }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "SpellDealsDamage", "args": [Spell, GameNumber, DamageRecipient] }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "APlayerChoosesMultipleCardsOfType", "args": [Players, Array<Cards>] }
 | { "_RevealTheTopNumberCardsOfLibraryAction": "PutACardFoundThisWayOntoTheBattlefield", "args": Array<EnterFlag> }
@@ -7099,6 +7103,7 @@ type Rule =
 | { "_Rule": "StationChargedAnimate", "args": [GameRange, Array<Rule>, PT] }
 | { "_Rule": "StationCharged", "args": [GameRange, Array<Rule>] }
 | { "_Rule": "Station" }
+| { "_Rule": "PermanentsEnteringTheBattlefieldDontCauseAbilitiesOfPermanentsToTrigger", "args": [Permanents, Permanents] }
 | { "_Rule": "APlayerGainingLifeCausesAbilitiesToTriggerAnAdditionalTime", "args": [Players, Abilities] }
 | { "_Rule": "Storied" }
 | { "_Rule": "BasicMayhem" }

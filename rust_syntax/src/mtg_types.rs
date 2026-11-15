@@ -2082,7 +2082,6 @@ pub enum PlayerEffect {
   MayCastExiledCardAndMaySpendColorlessManaAsThoughAnyColorToCast(Box<CardInExile>),
   MayPlotCardsFromTheTopOfTheirLibrary(CardsInLibrary),
   MayPlayLandsFromAmongCardsInPlayersGraveyard(Box<CardsInGraveyards>, Box<Player>),
-  MayCastSpellsFromAmongCardsInPlayersGraveyard(Box<Spells>, Box<CardsInGraveyards>, Box<Player>),
   MayCastSpellsFromAmongCardsInPlayersGraveyardForAlternateCost(Box<Spells>, Box<CardsInGraveyards>, Box<Player>, Box<Cost>),
   GainsLifeRatherThanLoseLifeFromRadiation,
   CantAttackPlayerOrPlaneswalkerControlledBy(Box<Player>),
@@ -2339,7 +2338,7 @@ pub enum PlayerEffect {
   SkipsMainPhase,
   SkipsUntapStep,
   SkipsUpkeepStep,
-  SpellsAndAbilitiesTheyCantCantCauseThemToSearchTheirLibrary,
+  SpellsAndAbilitiesTheyControlCantCauseThemToSearchTheirLibrary,
   SpellsCastFromHandHaveAbility(Box<Spells>, Vec<SpellEffect>),
   SpellsCastHaveAbility(Box<Spells>, Vec<SpellEffect>),
   SpellsControlledHaveAbility(Box<Spells>, Vec<SpellEffect>),
@@ -2658,6 +2657,7 @@ pub enum Rule {
   StationCharged(GameRange, Vec<Rule>),
   Station,
 
+  PermanentsEnteringTheBattlefieldDontCauseAbilitiesOfPermanentsToTrigger(Box<Permanents>, Box<Permanents>),
   APlayerGainingLifeCausesAbilitiesToTriggerAnAdditionalTime(Box<Players>, Box<Abilities>),
   Storied,
 
@@ -4887,6 +4887,7 @@ pub enum Cost {
   DiscardNumberCardsOfType(Box<GameNumber>, Box<Cards>),
   DiscardNumberGroupCards(Box<GameNumber>, GroupFilter),
   DiscardNumberGroupCardsOfType(Box<GameNumber>, Box<Cards>, GroupFilter),
+  DiscardUptoNumberCards(Box<GameNumber>),
   DrawACard,
   DrawNumberCards(Box<GameNumber>),
   ExchangeControl(Box<Permanent>, Box<Permanent>),
@@ -5873,6 +5874,7 @@ pub enum GameNumber {
   NumSpellsCastByPlayerThisGame(Box<Spells>, Box<Player>),
   TheTotalNumberOfCardsInAmongPlayersStartingDecks(Box<Players>),
 
+  TheNumberOfCardtypesAmongPermanentsSacrificedByPlayerThisTurn(Box<Permanents>, Box<Player>),
   TheNumberGuessedThisWay,
   TheNumberOfCardsPutIntoAPlayersGraveyardFromTheirLibraryThisTurn(Box<Players>),
   TheNumberOfPlaneswalkerTypesAmongPermanents(Box<Permanents>),
@@ -6115,7 +6117,6 @@ pub enum GameNumber {
   TheNumberOfCardTypesAmongCardsPutInGraveyardThisWay,
   TheNumberOfCardTypesAmongPermanents(Box<Permanents>),
   TheNumberOfCardTypesAmongSpellsCastThisTurn(Box<Spells>),
-  TheNumberOfCardTypesAmongThePermanentsSacrificedThisTurn,
   TheNumberOfCardTypesItSharesWithAnyExiledCard(Box<CardsInExile>),
   TheNumberOfCardTypesPermanentHas(Box<Permanent>),
   TheNumberOfCardsDiscardedByPlayerThisWay(Box<Player>),
@@ -6965,7 +6966,7 @@ pub enum CardsInExile {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_CardInExile", content = "args"))]
 pub enum CardInExile {
-  TheLastExiledCard,
+  TheLastExiledCardOfType(Box<CardsInExile>),
   Ref_TargetExiledCard,
   TheCardConjuredIntoExileThisWay,
   Ref_TargetExiledCard1,
@@ -8278,7 +8279,6 @@ pub enum RevealTheTopNumberCardsOfLibraryAction {
   PutEachCardOfTypeIntoGraveyard(Box<Cards>),
   CreateExiledCardEffect(CardInExile, Vec<ExiledCardEffect>),
   ExileTheCardFoundThisWayWithNumberCountersOfType(Box<GameNumber>, CounterType),
-  SacrificePermanent(Box<Permanent>),
   SpellDealsDamage(Box<Spell>, Box<GameNumber>, Box<DamageRecipient>),
   APlayerChoosesMultipleCardsOfType(Box<Players>, Vec<Cards>),
   PutACardFoundThisWayOntoTheBattlefield(Vec<EnterFlag>),
@@ -8435,6 +8435,13 @@ pub enum Millable {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_PuttableInGraveyard", content = "args"))]
+pub enum PuttableInGraveyard {
+  TheCardsRevealedFromTheTopOfTheLibraryThisWay,
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_PuttableInHand", content = "args"))]
 pub enum PuttableInHand {
   Trigger_ThatDiscardedCard,
@@ -8445,7 +8452,9 @@ pub enum PuttableInHand {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_PuttableOnBattlefield", content = "args"))]
 pub enum PuttableOnBattlefield {
+  TheCardsOfTypeRevealedFromTheTopOfTheLibraryThisWay(Box<CardsInLibrary>),
   AnyNumberOfCardsFromLibrary(Box<CardsInLibrary>),
+  AnyNumberOfGroupCardsInGraveyards(Box<CardsInGraveyards>, Box<GroupFilter>),
   ACardOfTypeFromLibrary(Box<CardsInLibrary>),
   CardInGraveyard(Box<CardInGraveyards>),
   CardInHand(Box<CardInHand>),
@@ -8933,6 +8942,8 @@ pub enum Action {
 
   Conjure(Vec<ConjureAction>),
   PutInHand(Vec<PuttableInHand>),
+  PutOnBattlefield(Vec<PuttableOnBattlefield>, Vec<EnterFlag>),
+  PutInGraveyard(Vec<PuttableInGraveyard>),
 
   ConjureDuplicateOfARandomCardOfTypeIntoExile(Box<Cards>),
   DraftAbilitiesFromAbilityBook(Vec<Cost>, SpellBookName),
@@ -9956,7 +9967,6 @@ pub enum Action {
   ReturnAnyNumberOfCardsFromGraveyardToBattlefield(Box<CardsInGraveyards>, Box<Player>, Vec<EnterFlag>),
   ReturnAnyNumberOfGroupCardsFromGraveyardToHand(Box<Cards>, GroupFilter),
   ReturnAnyNumberOfGroupCardsFromPlayersGraveyardToBattlefield(Box<CardsInGraveyards>, GroupFilter, Box<Player>, Vec<EnterFlag>),
-  ReturnAnyNumberOfGroupCardsMilledThisWayToBattlefield(Box<Cards>, GroupFilter, Vec<EnterFlag>),
   ReturnAnyNumberOfPermanentsToTheirOwnersHands(Box<Permanents>),
   ReturnDeadGraveyardCardToBattlefield(Vec<EnterFlag>),
   ReturnDeadGraveyardCardToBottomOfLibrary,
@@ -10027,7 +10037,7 @@ pub enum Action {
   RevealCardFromOutsideGameAndPutInHand(Box<Cards>),
   RevealCardFromOutsideGameAndPutInHandOrPutAnExiledCardInOwnersHand(Box<Cards>, CardsInExile),
   RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealed(Box<Cards>, Vec<RevealTheTopNumberCardsOfLibraryAction>),
-  RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealedOrUntilNumberCardsAreRevealed(Box<Cards>, Box<GameNumber>, Vec<RevealTheTopNumberCardsOfLibraryAction>),
+  RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealedOrUntilNumberCardsAreRevealed(Box<Cards>, Box<GameNumber>),
   RevealCardsFromTheTopOfLibraryUntilANumberOfCardsOfTypeAreRevealed(Box<GameNumber>, Box<Cards>, Vec<RevealTheTopNumberCardsOfLibraryAction>),
   RevealCardsFromTheTopOfPlanarDeckUntilRevealAPlaneCardThenChaosEnsuresOnThatPlaneThenPutAllCardsOnBottomInAnyOrder,
   RevealCardsFromTheTopOfPlanarDeckUntilRevealAPlaneCardThenPlaneswalkToItWhileNotPlaneswalkingAwayAndPutTheRestOnBottomInAnyOrder,

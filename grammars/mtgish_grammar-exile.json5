@@ -331,7 +331,7 @@
     "TheExiledDeadPermanent": "",
     "TheExiledTopOfLibrary": "",
     "TheFirstCardExiledThisWay": "",
-    "TheLastExiledCard": "",
+    "TheLastExiledCardOfType({{CARDS_IN_EXILE}})": "",
     "TheOtherExiledCard({{CARDS_IN_EXILE}})": "",
     "TheSecondCardExiledThisWay": "",
     "TheSingleCardExiledThisWay": "",
