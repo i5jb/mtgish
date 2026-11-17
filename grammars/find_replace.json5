@@ -601,12 +601,6 @@
     "replace": "Artifacts and creatures entering don't cause abilities to trigger.",
   },
   {
-    "reason":  "Be more consistent with 'this token', even on token copies",
-    "cards":   ["Face Yourself"] ,
-    "find":    "if you don't control a planeswalker, sacrifice this creature",
-    "replace": "if you don't control a planeswalker, sacrifice this token",
-  },
-  {
     "reason":  "Not a fan of Wizard's wording here",
     "cards":   ["Moku, Meandering Drummer"],
     "find":    "Moku gets +2/+1 and creatures you control gain haste until end of turn",

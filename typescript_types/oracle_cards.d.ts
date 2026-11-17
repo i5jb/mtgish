@@ -4431,7 +4431,6 @@ type LayerEffect =
 | { "_LayerEffect": "RemoveArtifactType", "args": ArtifactType }
 | { "_LayerEffect": "RemoveAllCreatureTypes" }
 | { "_LayerEffect": "RemoveAllLandTypes" }
-| { "_LayerEffect": "RemoveCreatureType", "args": CreatureType }
 | { "_LayerEffect": "AddColor", "args": SettableColor }
 | { "_LayerEffect": "SetColor", "args": SettableColor }
 | { "_LayerEffect": "AddAbility", "args": Array<Rule> }

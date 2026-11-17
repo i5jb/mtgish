@@ -2886,8 +2886,8 @@
       "ActionList([CreatePermanentLayerEffectUntil(ThisPermanent, [AdjustPT({{PTMod[0]}}), AddAbility([{{Hasable[0]}}])], UntilEndOfTurn)])",
     "Until end of turn, this creature gets {{PTMod}} for each {{Eachable}}":
       "ActionList([CreatePermanentLayerEffectUntil(ThisPermanent, [AdjustPTForEach({{PTMod[0]}}, {{Eachable[0]}})], UntilEndOfTurn)])",
-    "Until end of turn, this creature has base power and toughness {{PT}}, gains {{Hasable}}, and isn't {{a}} {{Zombie}}":
-      "ActionList([CreatePermanentLayerEffectUntil(ThisPermanent, [SetPT({{PT[0]}}), AddAbility([{{Hasable[0]}}]), RemoveCreatureType({{Zombie[0]}})], UntilEndOfTurn)])",
+    "Until end of turn, this creature has base power and toughness {{PT}}, gains {{Hasable}}, and is {{a}} {{Zombie}}":
+      "ActionList([CreatePermanentLayerEffectUntil(ThisPermanent, [SetPT({{PT[0]}}), AddAbility([{{Hasable[0]}}]), SetCreatureTypes([{{Zombie[0]}}])], UntilEndOfTurn)])",
     "Until end of turn, this creature has base power {{Digits}} and gains {{Hasable}}":
       "ActionList([CreatePermanentLayerEffectUntil(ThisPermanent, [SetPower({{Digits[0]}}), AddAbility([{{Hasable[0]}}])], UntilEndOfTurn)])",
     "Until end of turn, this creature loses \"{{QuotedCheckHasable(~Permanent)}}\"":

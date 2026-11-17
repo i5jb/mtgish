@@ -5122,6 +5122,52 @@ Card(
 )
 ------------------
 Card(
+  Name: "Abyssal Lotus",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(0),
+  ],
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        EntersTapped,
+      ],
+    ),
+    ActivatedWithModifiers(
+      And([
+        TapPermanent(ThisPermanent),
+        Exile(
+          [
+            Permanent(ThisPermanent),
+          ],
+          [],
+        ),
+      ]),
+      ActionList([
+        AddManaRepeated(
+          AnyManaColor,
+          Integer(3),
+        ),
+      ]),
+      ActivateOnlyIf(PlayerPassesFilter(
+        You,
+        NumCardsOfTypeInGraveyardIs(
+          GreaterThanOrEqualTo(Integer(8)),
+          IsPermanent,
+        ),
+      )),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Abyssal Nightstalker",
   Typeline: (
     Supertypes: [],
@@ -35471,6 +35517,53 @@ Card(
 )
 ------------------
 Card(
+  Name: "Ambulatory Reactor",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostU,
+  ],
+  Rules: [
+    EachPermanentLayerEffect(
+      And([
+        IsCardtype(Artifact),
+        IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      [
+        AddAbility([
+          Activated(
+            TapPermanent(ThisPermanent),
+            ActionList([
+              AddManaWithModifiers(
+                ManaProduceC,
+                Or([
+                  CanOnlySpendOnSpells(IsCardtype(Artifact)),
+                  CanOnlySpendToActivateAbilitiesOfSources(IsCardtype(Artifact)),
+                ]),
+              ),
+            ]),
+          ),
+        ]),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 5,
+  ),
+)
+------------------
+Card(
   Name: "Ambuscade",
   Typeline: (
     Supertypes: [],
@@ -40795,6 +40888,42 @@ Card(
         UntilEndOfTurn,
       ),
     ])),
+  ],
+)
+------------------
+Card(
+  Name: "Andoria",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [
+      Planet,
+    ],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        EntersTapped,
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        GainLife(Integer(1)),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(Or([
+          ManaProduceU,
+          ManaProduceR,
+        ])),
+      ]),
+    ),
   ],
 )
 ------------------
@@ -47706,6 +47835,78 @@ Card(
       ]),
     ),
   ],
+)
+------------------
+Card(
+  Name: "Antagonist Incorporator",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostW,
+  ],
+  Rules: [
+    EachPermanentLayerEffect(
+      And([
+        IsCardtype(Artifact),
+        IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      [
+        AddAbility([
+          TriggerA(
+            WhenACreatureDealsCombatDamageToAPlayer(
+              SinglePermanent(ThisPermanent),
+              AnyPlayer,
+            ),
+            ActionList([
+              MayCost(PayMana([
+                ManaCostGeneric(1),
+              ])),
+              If(
+                CostWasPaid,
+                [
+                  CreateTokens(
+                    [
+                      TokenWithPT(
+                        PT(
+                          1,
+                          1,
+                        ),
+                        Colorless,
+                        [],
+                        [
+                          Artifact,
+                          Creature,
+                        ],
+                        SubtypesList([
+                          Borg,
+                        ]),
+                        [],
+                      ),
+                    ],
+                    [],
+                  ),
+                ],
+              ),
+            ]),
+          ),
+        ]),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 3,
+  ),
 )
 ------------------
 Card(
@@ -66619,6 +66820,74 @@ Card(
 )
 ------------------
 Card(
+  Name: "Armus, Skin of Evil",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Ooze,
+      Horror,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(5),
+    ManaCostB,
+    ManaCostB,
+  ],
+  Rules: [
+    Menace,
+    TriggerA(
+      AtTheBeginningOfAPlayersEndStep(SinglePlayer(You)),
+      Targeted(
+        [
+          TargetPlayer(Opponent),
+        ],
+        ActionList([
+          PlayerAction(
+            Ref_TargetPlayer,
+            DiscardNumberCards(Integer(2)),
+          ),
+        ]),
+      ),
+    ),
+    FromHand(Activated(
+      And([
+        PayMana([
+          ManaCostGeneric(2),
+          ManaCostB,
+        ]),
+        DiscardCard(ThisCardInHand),
+      ]),
+      Targeted(
+        [
+          TargetPermanent(IsCardtype(Creature)),
+        ],
+        ActionList([
+          CreatePermanentLayerEffectUntil(
+            Ref_TargetPermanent,
+            [
+              AdjustPT(
+                -4,
+                -4,
+              ),
+            ],
+            UntilEndOfTurn,
+          ),
+        ]),
+      ),
+    )),
+  ],
+  CardPT: (
+    Power: 6,
+    Toughness: 6,
+  ),
+)
+------------------
+Card(
   Name: "Army Ants",
   Typeline: (
     Supertypes: [],
@@ -74896,6 +75165,56 @@ Card(
 )
 ------------------
 Card(
+  Name: "Assembly Specialist",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        CreateTokens(
+          [
+            TokenWithPT(
+              PT(
+                1,
+                1,
+              ),
+              Colorless,
+              [],
+              [
+                Artifact,
+                Creature,
+              ],
+              SubtypesList([
+                Borg,
+              ]),
+              [],
+            ),
+          ],
+          [],
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 1,
+    Toughness: 1,
+  ),
+)
+------------------
+Card(
   Name: "Assembly-Worker",
   Typeline: (
     Supertypes: [],
@@ -76001,6 +76320,62 @@ Card(
       ]),
     ),
   ],
+)
+------------------
+Card(
+  Name: "Astute Terraformer",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Vulcan,
+      Scientist,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostG,
+  ],
+  Rules: [
+    ActivatedWithModifiers(
+      PayMana([
+        ManaCostGeneric(6),
+      ]),
+      ActionList([
+        CreatePermanentLayerEffectUntil(
+          ThisPermanent,
+          [
+            AdjustPT(
+              2,
+              2,
+            ),
+          ],
+          UntilEndOfTurn,
+        ),
+      ]),
+      And([
+        ReduceCostX(
+          [
+            CostReduceX,
+          ],
+          NumGroupPermanents(
+            And([
+              IsCardtype(Land),
+              ControlledByAPlayer(SinglePlayer(You)),
+            ]),
+            DifferentNames,
+          ),
+        ),
+        ActivateOnlyOnceEachTurn,
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 2,
+  ),
 )
 ------------------
 Card(
@@ -93225,6 +93600,42 @@ Transforming(
 )
 ------------------
 Card(
+  Name: "Bajor",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [
+      Planet,
+    ],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        EntersTapped,
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        GainLife(Integer(1)),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(Or([
+          ManaProduceR,
+          ManaProduceW,
+        ])),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Bake into a Pie",
   Typeline: (
     Supertypes: [],
@@ -107386,6 +107797,44 @@ Card(
         WinTheGame,
       ]),
     ),
+  ],
+)
+------------------
+Card(
+  Name: "Battle of Wolf 359",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Sorcery,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostB,
+    ManaCostB,
+  ],
+  Rules: [
+    SpellActions(ActionList([
+      CreateEachPermanentLayerEffectUntil(
+        And([
+          IsNonCardtype(Artifact),
+          IsCardtype(Creature),
+        ]),
+        [
+          AdjustPTX(
+            MinusX,
+            MinusX,
+            TheNumberOfPermanentsOnTheBattlefield(And([
+              IsCardtype(Artifact),
+              IsCardtype(Creature),
+              ControlledByAPlayer(SinglePlayer(You)),
+            ])),
+          ),
+        ],
+        UntilEndOfTurn,
+      ),
+    ])),
   ],
 )
 ------------------
@@ -137599,6 +138048,55 @@ Card(
 )
 ------------------
 Card(
+  Name: "Blood-Sport Champion",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Klingon,
+      Warrior,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostB,
+  ],
+  Rules: [
+    Kicker(PayMana([
+      ManaCostGeneric(2),
+    ])),
+    Deathtouch,
+    TriggerI(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      EnteringPermanentPassesFilter(WasKicked),
+      ActionList([
+        CreateEachPermanentLayerEffectUntil(
+          And([
+            Other(ThatEnteringPermanent),
+            And([
+              IsCardtype(Creature),
+              ControlledByAPlayer(SinglePlayer(You)),
+            ]),
+          ]),
+          [
+            AddAbility([
+              Deathtouch,
+            ]),
+          ],
+          UntilEndOfTurn,
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 2,
+  ),
+)
+------------------
+Card(
   Name: "Blood-Toll Harpy",
   Typeline: (
     Supertypes: [],
@@ -152685,6 +153183,53 @@ Card(
     Power: 1,
     Toughness: 4,
   ),
+)
+------------------
+Card(
+  Name: "Borg Scout Sphere",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostU,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        DrawACard,
+      ]),
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(6),
+      [
+        EachPermanentLayerEffect(
+          And([
+            IsCardtype(Artifact),
+            IsCardtype(Creature),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
+          [
+            AddAbility([
+              Flying,
+            ]),
+          ],
+        ),
+      ],
+      PT(
+        5,
+        5,
+      ),
+    ),
+  ],
 )
 ------------------
 Card(
@@ -185148,6 +185693,48 @@ Card(
 )
 ------------------
 Card(
+  Name: "Calmwater Mentor",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Seal,
+      Monk,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostW,
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        MayAction(SearchLibrary([
+          FindNumberCardsOfType(
+            Integer(2),
+            And([
+              IsCardtype(Creature),
+              PowerIs(LessThanOrEqualTo(Integer(2))),
+            ]),
+          ),
+          RevealFoundCards,
+          PutFoundCardsIntoHand,
+          Shuffle,
+        ])),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 2,
+  ),
+)
+------------------
+Card(
   Name: "Caltrops",
   Typeline: (
     Supertypes: [],
@@ -190097,6 +190684,60 @@ Card(
 )
 ------------------
 Card(
+  Name: "Captain Pike, Fullness of Time",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Officer,
+      Scout,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostG,
+    ManaCostG,
+  ],
+  Rules: [
+    CDA_Power(NumGroupPermanents(
+      And([
+        IsCardtype(Land),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      DifferentNames,
+    )),
+    CDA_Toughness(NumGroupPermanents(
+      And([
+        IsCardtype(Land),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      DifferentNames,
+    )),
+    PlayerEffect(
+      You,
+      [
+        MayLookAtTopCardOfLibraryAnyTime,
+      ],
+    ),
+    PlayerEffect(
+      You,
+      [
+        MayPlayLandsFromTopOfLibrary(AnyCard),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 0,
+    Toughness: 0,
+  ),
+)
+------------------
+Card(
   Name: "Captain Rex Nebula",
   Typeline: (
     Supertypes: [
@@ -191758,6 +192399,42 @@ Card(
         ),
       ]),
     )),
+  ],
+)
+------------------
+Card(
+  Name: "Cardassia Prime",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [
+      Planet,
+    ],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        EntersTapped,
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        GainLife(Integer(1)),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(Or([
+          ManaProduceW,
+          ManaProduceB,
+        ])),
+      ]),
+    ),
   ],
 )
 ------------------
@@ -206504,6 +207181,50 @@ Card(
 )
 ------------------
 Card(
+  Name: "Cetacean Ops",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Whale,
+      Officer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostU,
+  ],
+  Rules: [
+    Ward(PayMana([
+      ManaCostGeneric(1),
+    ])),
+    TriggerA(
+      WhenAPlayerCastsASpell(
+        SinglePlayer(You),
+        IsNonCardtype(Creature),
+      ),
+      ActionList([
+        PutCounters([
+          ACounterOfTypeOnPermanent(
+            PTCounter(
+              1,
+              1,
+            ),
+            ThisPermanent,
+          ),
+        ]),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
   Name: "Cetavolver",
   Typeline: (
     Supertypes: [],
@@ -209707,6 +210428,53 @@ Card(
   CardPT: (
     Power: 3,
     Toughness: 2,
+  ),
+)
+------------------
+Card(
+  Name: "Chancellor Gorkon",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Klingon,
+      Noble,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostW,
+    ManaCostB,
+  ],
+  Rules: [
+    Vigilance,
+    TriggerA(
+      WhenAPermanentDies(SinglePermanent(ThisPermanent)),
+      Targeted(
+        [
+          UptoNumberTargetPermanents(
+            Integer(2),
+            IsCardtype(Creature),
+          ),
+        ],
+        ActionList([
+          Exile(
+            [
+              EachPermanent(Ref_TargetPermanents),
+            ],
+            [],
+          ),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 5,
+    Toughness: 3,
   ),
 )
 ------------------
@@ -218325,6 +219093,69 @@ Card(
   CardPT: (
     Power: 1,
     Toughness: 3,
+  ),
+)
+------------------
+Card(
+  Name: "Chief Kyle, Transporter Tech",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Artificer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostW,
+    ManaCostU,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(And([
+        IsCardtype(Land),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ])),
+      Targeted(
+        [
+          UptoOneTargetPermanent(And([
+            Other(Trigger_ThatPermanent),
+            And([
+              IsCardtype(Creature),
+              ControlledByAPlayer(SinglePlayer(You)),
+            ]),
+          ])),
+        ],
+        ActionList([
+          Exile(
+            [
+              Permanent(Ref_TargetPermanent),
+            ],
+            [],
+          ),
+          CreateFutureTrigger(
+            AtTheBeginningOfTheNextEndStep,
+            ActionList([
+              PutExiledCardOntoBattlefield(
+                TheCardExiledThisWay,
+                [
+                  EntersUnderOwnersControl,
+                ],
+              ),
+            ]),
+          ),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 2,
   ),
 )
 ------------------
@@ -229581,6 +230412,113 @@ Card(
 )
 ------------------
 Card(
+  Name: "Class-4 Tactical Cube",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(4),
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        CreateTokens(
+          [
+            NumberTokens(
+              Integer(2),
+              TokenWithPT(
+                PT(
+                  1,
+                  1,
+                ),
+                Colorless,
+                [],
+                [
+                  Artifact,
+                  Creature,
+                ],
+                SubtypesList([
+                  Borg,
+                ]),
+                [],
+              ),
+            ),
+          ],
+          [],
+        ),
+      ]),
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(7),
+      [
+        Flying,
+        EachPermanentLayerEffect(
+          And([
+            IsCardtype(Artifact),
+            IsCardtype(Creature),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
+          [
+            AdjustPT(
+              1,
+              1,
+            ),
+          ],
+        ),
+      ],
+      PT(
+        4,
+        4,
+      ),
+    ),
+  ],
+)
+------------------
+Card(
+  Name: "Class-F Shuttlecraft",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+  ],
+  Rules: [
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(AnyManaColor),
+      ]),
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(6),
+      [
+        Flying,
+        Vigilance,
+      ],
+      PT(
+        2,
+        4,
+      ),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Clattering Augur",
   Typeline: (
     Supertypes: [],
@@ -237056,6 +237994,50 @@ Card(
 )
 ------------------
 Card(
+  Name: "Co-Option Adjutant",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostU,
+  ],
+  Rules: [
+    EachPermanentLayerEffect(
+      And([
+        IsCardtype(Artifact),
+        IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      [
+        AddAbility([
+          TriggerA(
+            WhenACreatureDealsCombatDamageToAPlayer(
+              SinglePermanent(ThisPermanent),
+              AnyPlayer,
+            ),
+            ActionList([
+              DrawACard,
+            ]),
+          ),
+        ]),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
   Name: "Coal Golem",
   Typeline: (
     Supertypes: [],
@@ -241131,6 +242113,67 @@ Card(
 )
 ------------------
 Card(
+  Name: "Collective Override",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Instant,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostW,
+    ManaCostU,
+  ],
+  Rules: [
+    SpellActions(Modal_ChooseOneOrBothIf(
+      PlayerPassesFilter(
+        You,
+        ControlsA(IsACommander),
+      ),
+      [
+        ActionList([
+          CreateTokens(
+            [
+              NumberTokens(
+                TheNumberOfPermanentsOnTheBattlefield(And([
+                  IsAttacking,
+                  IsCardtype(Creature),
+                ])),
+                TokenWithPT(
+                  PT(
+                    1,
+                    1,
+                  ),
+                  Colorless,
+                  [],
+                  [
+                    Artifact,
+                    Creature,
+                  ],
+                  SubtypesList([
+                    Borg,
+                  ]),
+                  [],
+                ),
+              ),
+            ],
+            [],
+          ),
+        ]),
+        ActionList([
+          DrawNumberCards(TheNumberOfPermanentsOnTheBattlefield(And([
+            IsAttacking,
+            IsCardtype(Creature),
+          ]))),
+        ]),
+      ],
+    )),
+  ],
+)
+------------------
+Card(
   Name: "Collective Resistance",
   Typeline: (
     Supertypes: [],
@@ -244178,6 +245221,41 @@ Card(
       ]),
     ])),
   ],
+)
+------------------
+Card(
+  Name: "Command Subadjunct",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+    ],
+  ),
+  ManaCost: [
+    ManaCostW,
+  ],
+  Rules: [
+    EachPermanentLayerEffect(
+      And([
+        IsCardtype(Artifact),
+        IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      [
+        AddAbility([
+          Vigilance,
+        ]),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 1,
+  ),
 )
 ------------------
 Card(
@@ -286025,6 +287103,55 @@ Card(
 )
 ------------------
 Card(
+  Name: "D\'Vana Tendi, Optimistic Ensign",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Orion,
+      Scientist,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostGU,
+    ManaCostGU,
+  ],
+  Rules: [
+    Activated(
+      TapPermanent(ThisPermanent),
+      Targeted(
+        [
+          TargetPermanent(And([
+            Other(ThisPermanent),
+            AnyPermanent,
+          ])),
+        ],
+        ActionList([
+          UntapPermanent(Ref_TargetPermanent),
+        ]),
+      ),
+    ),
+    Activated(
+      PayMana([
+        ManaCostGeneric(3),
+      ]),
+      ActionList([
+        Surveil(Integer(1)),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 4,
+  ),
+)
+------------------
+Card(
   Name: "DOT-7 Repair Squad",
   Typeline: (
     Supertypes: [],
@@ -286636,6 +287763,55 @@ Card(
   CardPT: (
     Power: 0,
     Toughness: 0,
+  ),
+)
+------------------
+Card(
+  Name: "Dahar Master",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Klingon,
+      Warrior,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostR,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        MayAction(Reflexive_Sacrifice_WhenYouDo(
+          [
+            APermanent(And([
+              Other(ThisPermanent),
+              IsNonCardtype(Land),
+            ])),
+          ],
+          Targeted(
+            [
+              AnyTarget,
+            ],
+            ActionList([
+              PermanentDealsDamage(
+                ThisPermanent,
+                Integer(2),
+                Ref_AnyTarget,
+              ),
+            ]),
+          ),
+        )),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 4,
+    Toughness: 3,
   ),
 )
 ------------------
@@ -371472,6 +372648,42 @@ Card(
 )
 ------------------
 Card(
+  Name: "Earth, Sector 001",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [
+      Planet,
+    ],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        EntersTapped,
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        GainLife(Integer(1)),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(Or([
+          ManaProduceG,
+          ManaProduceU,
+        ])),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Earth-Cult Elemental",
   Typeline: (
     Supertypes: [],
@@ -393318,6 +394530,50 @@ Card(
 )
 ------------------
 Card(
+  Name: "Emergency Holographic Crew",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Illusion,
+      Officer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostU,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      Modal_ChooseOne([
+        Targeted(
+          [
+            TargetGraveyardCard(And([
+              IsArtifactType(Spacecraft),
+              InAPlayersGraveyard(SinglePlayer(You)),
+            ])),
+          ],
+          ActionList([
+            PutGraveyardCardIntoHand(Ref_TargetGraveyardCard),
+          ]),
+        ),
+        ActionList([
+          Surveil(Integer(2)),
+        ]),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 4,
+  ),
+)
+------------------
+Card(
   Name: "Emergency Medical Hologram",
   Typeline: (
     Supertypes: [],
@@ -393465,6 +394721,40 @@ Card(
             ],
           )),
         ],
+      ),
+    ])),
+  ],
+)
+------------------
+Card(
+  Name: "Emergency Regeneration",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Instant,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostW,
+  ],
+  Rules: [
+    SpellActions(ActionList([
+      CreateEachPermanentLayerEffectUntil(
+        And([
+          IsCardtype(Artifact),
+          ControlledByAPlayer(SinglePlayer(You)),
+        ]),
+        [
+          AddAbility([
+            Hexproof,
+          ]),
+          AddAbility([
+            Indestructible,
+          ]),
+        ],
+        UntilEndOfTurn,
       ),
     ])),
   ],
@@ -402757,6 +404047,59 @@ Card(
         ),
       ]),
     )),
+  ],
+)
+------------------
+Card(
+  Name: "Enterprise NX-01",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostU,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      Targeted(
+        [
+          TargetPermanent(And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(Opponent),
+          ])),
+        ],
+        ActionList([
+          TapPermanent(Ref_TargetPermanent),
+          PutCounters([
+            ACounterOfTypeOnPermanent(
+              StunCounter,
+              Ref_TargetPermanent,
+            ),
+          ]),
+        ]),
+      ),
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(6),
+      [
+        Flying,
+        Vigilance,
+      ],
+      PT(
+        4,
+        3,
+      ),
+    ),
   ],
 )
 ------------------
@@ -423278,6 +424621,62 @@ Card(
 )
 ------------------
 Card(
+  Name: "Extraction Integrant",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostB,
+  ],
+  Rules: [
+    EachPermanentLayerEffect(
+      And([
+        IsCardtype(Artifact),
+        IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      [
+        AddAbility([
+          Menace,
+        ]),
+        AddAbility([
+          TriggerA(
+            WhenACreatureBlocksACreature(
+              IsCardtype(Creature),
+              SinglePermanent(ThisPermanent),
+            ),
+            ActionList([
+              CreatePermanentLayerEffectUntil(
+                Trigger_ThatCreature,
+                [
+                  AdjustPT(
+                    -1,
+                    -1,
+                  ),
+                ],
+                UntilEndOfTurn,
+              ),
+            ]),
+          ),
+        ]),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 1,
+    Toughness: 1,
+  ),
+)
+------------------
+Card(
   Name: "Extraction Specialist",
   Typeline: (
     Supertypes: [],
@@ -441027,6 +442426,56 @@ Card(
 )
 ------------------
 Card(
+  Name: "Federation Outpost",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        Unless(
+          PlayerPassesFilter(
+            You,
+            ControlsNum(
+              GreaterThanOrEqualTo(Integer(2)),
+              And([
+                Other(ThisPermanent),
+                IsCardtype(Land),
+              ]),
+            ),
+          ),
+          [
+            EntersTapped,
+          ],
+        ),
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefieldUntapped(SinglePermanent(ThisPermanent)),
+      Modal_ChooseOne([
+        ActionList([
+          GainLife(Integer(2)),
+        ]),
+        ActionList([
+          Surveil(Integer(1)),
+        ]),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(ManaProduceW),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Federation Probe",
   Typeline: (
     Supertypes: [],
@@ -444853,6 +446302,42 @@ Card(
 )
 ------------------
 Card(
+  Name: "Ferenginar",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [
+      Planet,
+    ],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        EntersTapped,
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        GainLife(Integer(1)),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(Or([
+          ManaProduceB,
+          ManaProduceG,
+        ])),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Ferocification",
   Typeline: (
     Supertypes: [],
@@ -444949,6 +446434,32 @@ Card(
       ]),
     )),
   ],
+)
+------------------
+Card(
+  Name: "Ferocious Colonist",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Klingon,
+      Citizen,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostR,
+  ],
+  Rules: [
+    DoubleStrike,
+    Melee,
+  ],
+  CardPT: (
+    Power: 0,
+    Toughness: 1,
+  ),
 )
 ------------------
 Card(
@@ -492739,6 +494250,63 @@ Card(
 )
 ------------------
 Card(
+  Name: "Gagh Slinger",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Klingon,
+      Warrior,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostR,
+  ],
+  Rules: [
+    PlayerEffect(
+      You,
+      [
+        DecreaseSpellCost(
+          Or([
+            IsCreatureType(Klingon),
+            IsCreatureType(Klingon),
+          ]),
+          [
+            CostReduceGeneric(1),
+          ],
+        ),
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(And([
+        Other(ThisPermanent),
+        And([
+          Or([
+            IsCreatureType(Klingon),
+            IsCreatureType(Warrior),
+          ]),
+          ControlledByAPlayer(SinglePlayer(You)),
+        ]),
+      ])),
+      ActionList([
+        PermanentDealsDamage(
+          ThisPermanent,
+          Integer(1),
+          EachPlayer(Opponent),
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 2,
+  ),
+)
+------------------
+Card(
   Name: "Gahiji, Honored One",
   Typeline: (
     Supertypes: [
@@ -511984,6 +513552,64 @@ Card(
 )
 ------------------
 Card(
+  Name: "Ghost of Illyria",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Elemental,
+      Spirit,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostW,
+  ],
+  Rules: [
+    Flying,
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      Targeted(
+        [
+          UptoOneTargetPermanent(And([
+            Other(ThatEnteringPermanent),
+            And([
+              IsNonCardtype(Land),
+              ControlledByAPlayer(SinglePlayer(You)),
+            ]),
+          ])),
+        ],
+        ActionList([
+          Exile(
+            [
+              Permanent(Ref_TargetPermanent),
+            ],
+            [],
+          ),
+          CreateFutureTrigger(
+            AtTheBeginningOfTheNextEndStep,
+            ActionList([
+              PutExiledCardOntoBattlefield(
+                TheCardExiledThisWay,
+                [
+                  EntersUnderOwnersControl,
+                ],
+              ),
+            ]),
+          ),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
   Name: "Ghost of Ramirez DePietro",
   Typeline: (
     Supertypes: [
@@ -529647,6 +531273,67 @@ Card(
 )
 ------------------
 Card(
+  Name: "Glory to the Empire!",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Enchantment,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(5),
+    ManaCostR,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        CreateTokens(
+          [
+            NumberTokens(
+              NumPlayers(Opponent),
+              TokenWithPT(
+                PT(
+                  2,
+                  1,
+                ),
+                Colors([
+                  Red,
+                ]),
+                [],
+                [
+                  Creature,
+                ],
+                SubtypesList([
+                  Klingon,
+                  Warrior,
+                ]),
+                [
+                  Haste,
+                ],
+              ),
+            ),
+          ],
+          [],
+        ),
+      ]),
+    ),
+    EachPermanentLayerEffect(
+      And([
+        IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      [
+        AddAbility([
+          Melee,
+        ]),
+      ],
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Glory-Bound Initiate",
   Typeline: (
     Supertypes: [],
@@ -531275,6 +532962,54 @@ Card(
   CardPT: (
     Power: 2,
     Toughness: 2,
+  ),
+)
+------------------
+Card(
+  Name: "Gnarling Targ",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Boar,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(4),
+    ManaCostR,
+  ],
+  Rules: [
+    Trample,
+    TriggerA(
+      WhenAPlayerAttacks(SinglePlayer(You)),
+      ActionList([
+        CreateEachPermanentLayerEffectUntil(
+          And([
+            Or([
+              IsCreatureType(Klingon),
+              IsCreatureType(Warrior),
+            ]),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
+          [
+            AdjustPT(
+              2,
+              0,
+            ),
+            AddAbility([
+              Trample,
+            ]),
+          ],
+          UntilEndOfTurn,
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 4,
+    Toughness: 5,
   ),
 )
 ------------------
@@ -614474,6 +616209,61 @@ Card(
 )
 ------------------
 Card(
+  Name: "Hologram Janeway",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Illusion,
+      Officer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      If(
+        TotalPowerOfPermanentsIs(
+          GreaterThanOrEqualTo(Integer(8)),
+          And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
+        ),
+        WhenAPlayerAttacks(SinglePlayer(You)),
+      ),
+      Targeted(
+        [
+          TargetPermanent(IsCardtype(Creature)),
+        ],
+        ActionList([
+          PutCounters([
+            ACounterOfTypeOnPermanent(
+              PTCounter(
+                1,
+                1,
+              ),
+              Ref_TargetPermanent,
+            ),
+          ]),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
   Name: "Holographic Double",
   Typeline: (
     Supertypes: [],
@@ -632241,6 +634031,52 @@ Card(
 )
 ------------------
 Card(
+  Name: "I.K.S. Negh\'Var, Imperial Flagship",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+  ],
+  Rules: [
+    EachPermanentLayerEffect(
+      And([
+        Or([
+          IsCreatureType(Klingon),
+          IsCreatureType(Warrior),
+        ]),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      [
+        AddAbility([
+          Vigilance,
+        ]),
+      ],
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(10),
+      [
+        Flying,
+        Vigilance,
+      ],
+      PT(
+        6,
+        6,
+      ),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Ian Chesterton",
   Typeline: (
     Supertypes: [
@@ -642056,6 +643892,35 @@ Card(
 )
 ------------------
 Card(
+  Name: "Imperial Hullbreachers",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Klingon,
+      Warrior,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostW,
+  ],
+  Rules: [
+    Squad(PayMana([
+      ManaCostGeneric(2),
+    ])),
+    Flying,
+    BattleCry,
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 2,
+  ),
+)
+------------------
+Card(
   Name: "Imperial Lancer",
   Typeline: (
     Supertypes: [],
@@ -646958,6 +648823,60 @@ Card(
   CardPT: (
     Power: 1,
     Toughness: 1,
+  ),
+)
+------------------
+Card(
+  Name: "Indelicate Healer",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Klingon,
+      Warrior,
+      Doctor,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      Or([
+        WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+        WhenAPermanentEntersTheBattlefield(And([
+          Other(ThisPermanent),
+          And([
+            Or([
+              IsCreatureType(Klingon),
+              IsCreatureType(Warrior),
+            ]),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
+        ])),
+      ]),
+      ActionList([
+        CreateEachPermanentLayerEffectUntil(
+          And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
+          [
+            AddAbility([
+              Lifelink,
+            ]),
+          ],
+          UntilEndOfTurn,
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 3,
   ),
 )
 ------------------
@@ -658810,6 +660729,44 @@ Card(
       DrawNumberCards(ManaValueOfTheCardRevealedThisWay),
     ])),
   ],
+)
+------------------
+Card(
+  Name: "Interstellar Effigy",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Construct,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(4),
+    ManaCostU,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      Targeted(
+        [
+          TargetPermanent(And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(Opponent),
+          ])),
+        ],
+        ActionList([
+          PutPermanentIntoItsOwnersHand(Ref_TargetPermanent),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 4,
+    Toughness: 3,
+  ),
 )
 ------------------
 Card(
@@ -671557,6 +673514,46 @@ Card(
         ),
       ]),
     )),
+  ],
+)
+------------------
+Card(
+  Name: "Isolinear Processor",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+  ],
+  Rules: [
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddManaWithModifiers(
+          ManaProduceC,
+          Or([
+            CanOnlySpendOnSpells(IsCardtype(Artifact)),
+            CanOnlySpendToActivateAbilitiesOfSources(IsCardtype(Artifact)),
+          ]),
+        ),
+      ]),
+    ),
+    Activated(
+      And([
+        PayMana([
+          ManaCostGeneric(2),
+        ]),
+        TapPermanent(ThisPermanent),
+      ]),
+      ActionList([
+        DrawACard,
+        DiscardACard,
+      ]),
+    ),
   ],
 )
 ------------------
@@ -693311,6 +695308,64 @@ Card(
 )
 ------------------
 Card(
+  Name: "Jurati, Cordial Queen",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+      Scientist,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostW,
+    ManaCostU,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAnyNumberOfCreaturesDealCombatDamageToAPlayer(
+        And([
+          IsCardtype(Artifact),
+          IsCardtype(Creature),
+          ControlledByAPlayer(SinglePlayer(You)),
+        ]),
+        AnyPlayer,
+      ),
+      Targeted(
+        [
+          TargetPermanent(And([
+            IsCardtype(Artifact),
+            IsToken,
+            ControlledByAPlayer(SinglePlayer(You)),
+          ])),
+        ],
+        ActionList([
+          CreateTokens(
+            [
+              TokenCopyOfPermanent(
+                Ref_TargetPermanent,
+                NoTokenCopyEffects,
+              ),
+            ],
+            [],
+          ),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
   Name: "Juri, Master of the Revue",
   Typeline: (
     Supertypes: [
@@ -714173,6 +716228,57 @@ Card(
   ),
 )
 ------------------
+Card(
+  Name: "Khan, Vengeful Heart",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Warrior,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostB,
+    ManaCostB,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        MayCost(SacrificeAPermanent(And([
+          Other(ThatEnteringPermanent),
+          Or([
+            IsCardtype(Creature),
+            IsCardtype(Artifact),
+          ]),
+        ]))),
+        If(
+          CostWasPaid,
+          [
+            DrawNumberCards(Integer(2)),
+          ],
+        ),
+      ]),
+    ),
+    FromExile(PlayerEffect(
+      You,
+      [
+        MayCastExiledCard(ThisExiledCard),
+      ],
+    )),
+  ],
+  CardPT: (
+    Power: 5,
+    Toughness: 3,
+  ),
+)
+------------------
 Planar(
   Name: "Kharasha Foothills",
   Typeline: (
@@ -720307,6 +722413,79 @@ Card(
   CardPT: (
     Power: 2,
     Toughness: 2,
+  ),
+)
+------------------
+Card(
+  Name: "Kirk, Commanding Officer",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Officer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostR,
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      If(
+        TotalPowerOfPermanentsIs(
+          GreaterThanOrEqualTo(Integer(8)),
+          And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
+        ),
+        WhenAPlayerAttacks(SinglePlayer(You)),
+      ),
+      ActionList([
+        Exile(
+          [
+            TheTopCardOfLibrary,
+          ],
+          [],
+        ),
+        CreatePlayerEffectUntil(
+          You,
+          [
+            MayPlayExiledCard(TheCardExiledThisWay),
+          ],
+          UntilEndOfTurn,
+        ),
+      ]),
+    ),
+    Activated(
+      And([
+        PayMana([
+          ManaCostGeneric(2),
+        ]),
+        SacrificePermanent(ThisPermanent),
+      ]),
+      Targeted(
+        [
+          TargetPermanent(Or([
+            IsCardtype(Artifact),
+            IsCardtype(Enchantment),
+          ])),
+        ],
+        ActionList([
+          DestroyPermanent(Ref_TargetPermanent),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 3,
   ),
 )
 ------------------
@@ -773181,6 +775360,75 @@ Card(
 )
 ------------------
 Card(
+  Name: "Locutus of Borg",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostW,
+    ManaCostU,
+    ManaCostB,
+  ],
+  Rules: [
+    Lifelink,
+    EachPermanentLayerEffect(
+      And([
+        IsCardtype(Artifact),
+        IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      [
+        AddAbility([
+          TriggerA(
+            WhenACreatureDealsCombatDamageToAPlayer(
+              SinglePermanent(ThisPermanent),
+              AnyPlayer,
+            ),
+            ActionList([
+              CreateTokens(
+                [
+                  TokenWithPT(
+                    PT(
+                      1,
+                      1,
+                    ),
+                    Colorless,
+                    [],
+                    [
+                      Artifact,
+                      Creature,
+                    ],
+                    SubtypesList([
+                      Borg,
+                    ]),
+                    [],
+                  ),
+                ],
+                [],
+              ),
+            ]),
+          ),
+        ]),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
   Name: "Lodestone Bauble",
   Typeline: (
     Supertypes: [],
@@ -788780,6 +791028,65 @@ Card(
 )
 ------------------
 Card(
+  Name: "M\'Ress, Crew Coordinator",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Caitian,
+      Officer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(4),
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(And([
+        IsCardtype(Land),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ])),
+      ActionList([
+        CreateTokens(
+          [
+            NumberTokens(
+              Integer(2),
+              TokenWithPT(
+                PT(
+                  1,
+                  1,
+                ),
+                Colors([
+                  Red,
+                ]),
+                [],
+                [
+                  Creature,
+                ],
+                SubtypesList([
+                  Officer,
+                ]),
+                [],
+              ),
+            ),
+          ],
+          [],
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 4,
+    Toughness: 4,
+  ),
+)
+------------------
+Card(
   Name: "M.O.D.O.K.",
   Typeline: (
     Supertypes: [
@@ -788912,6 +791219,64 @@ Card(
   CardPT: (
     Power: 1,
     Toughness: 3,
+  ),
+)
+------------------
+Card(
+  Name: "MACO Strike Team",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Soldier,
+    ],
+  ),
+  ManaCost: [
+    ManaCostG,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentBecomesTheTargetOfASpellOrAbility(
+        And([
+          IsCardtype(Creature),
+          ControlledByAPlayer(SinglePlayer(You)),
+        ]),
+        ControlledByAPlayer(Opponent),
+      ),
+      ActionList([
+        CreateTokens(
+          [
+            TokenWithPT(
+              PT(
+                1,
+                1,
+              ),
+              Colors([
+                Red,
+              ]),
+              [],
+              [
+                Creature,
+              ],
+              SubtypesList([
+                Officer,
+              ]),
+              [],
+            ),
+          ],
+          [
+            EntersTapped,
+          ],
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 1,
   ),
 )
 ------------------
@@ -816627,6 +818992,75 @@ Card(
   ),
 )
 ------------------
+Card(
+  Name: "Maturation Chamber",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPlayerCastsASpell(
+        SinglePlayer(You),
+        IsCardtype(Artifact),
+      ),
+      ActionList([
+        PutCounters([
+          ACounterOfTypeOnPermanent(
+            ChargeCounter,
+            ThisPermanent,
+          ),
+        ]),
+      ]),
+    ),
+    ActivatedWithModifiers(
+      And([
+        PayMana([
+          ManaCostGeneric(4),
+        ]),
+        TapPermanent(ThisPermanent),
+      ]),
+      ActionList([
+        CreateTokens(
+          [
+            NumberTokens(
+              TheTotalNumberOfCountersOfTypeAmongPermanents(
+                ChargeCounter,
+                SinglePermanent(ThisPermanent),
+              ),
+              TokenWithPT(
+                PT(
+                  1,
+                  1,
+                ),
+                Colorless,
+                [],
+                [
+                  Artifact,
+                  Creature,
+                ],
+                SubtypesList([
+                  Borg,
+                ]),
+                [],
+              ),
+            ),
+          ],
+          [],
+        ),
+      ]),
+      ActivateOnlyAsASorcery,
+    ),
+  ],
+)
+------------------
 Transforming(
   FrontFace: (
     Name: "Matzalantli, the Great Door",
@@ -818998,6 +821432,71 @@ Card(
   ],
   CardPT: (
     Power: 3,
+    Toughness: 4,
+  ),
+)
+------------------
+Card(
+  Name: "McCoy, Not a Bricklayer",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Doctor,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostG,
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      Or([
+        WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+        WhenAPermanentEntersTheBattlefield(And([
+          Other(ThisPermanent),
+          And([
+            IsCreatureType(Doctor),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
+        ])),
+      ]),
+      ActionList([
+        PutCounters([
+          ACounterOfTypeOnEachPermanent(
+            PTCounter(
+              1,
+              1,
+            ),
+            And([
+              IsCardtype(Creature),
+              ControlledByAPlayer(SinglePlayer(You)),
+            ]),
+          ),
+        ]),
+      ]),
+    ),
+    EachPermanentLayerEffect(
+      And([
+        IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
+        HasACounter,
+      ]),
+      [
+        AddAbility([
+          Lifelink,
+        ]),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 0,
     Toughness: 4,
   ),
 )
@@ -867198,6 +869697,40 @@ Card(
 )
 ------------------
 Card(
+  Name: "Mr. Spock, Science Officer",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Vulcan,
+      Human,
+      Scientist,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostU,
+    ManaCostU,
+  ],
+  Rules: [
+    ReplaceWouldDraw(
+      APlayerWouldDrawACard(SinglePlayer(You)),
+      [
+        DrawNumberCards(Integer(2)),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 4,
+  ),
+)
+------------------
+Card(
   Name: "Ms. Bumbleflower",
   Typeline: (
     Supertypes: [
@@ -896536,6 +899069,69 @@ Flip(
 )
 ------------------
 Card(
+  Name: "Ni\'Var Science Academy",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        Unless(
+          PlayerPassesFilter(
+            You,
+            ControlsNum(
+              GreaterThanOrEqualTo(Integer(2)),
+              And([
+                Other(ThisPermanent),
+                IsCardtype(Land),
+              ]),
+            ),
+          ),
+          [
+            EntersTapped,
+          ],
+        ),
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefieldUntapped(SinglePermanent(ThisPermanent)),
+      Modal_ChooseOne([
+        Targeted(
+          [
+            TargetPermanent(IsCardtype(Creature)),
+          ],
+          ActionList([
+            CreatePermanentLayerEffectUntil(
+              Ref_TargetPermanent,
+              [
+                AddAbility([
+                  Flying,
+                ]),
+              ],
+              UntilEndOfTurn,
+            ),
+          ]),
+        ),
+        ActionList([
+          Surveil(Integer(1)),
+        ]),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(ManaProduceU),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Niall Silvain",
   Typeline: (
     Supertypes: [],
@@ -917695,6 +920291,50 @@ Card(
 )
 ------------------
 Card(
+  Name: "Oberth-Class Starship",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        SearchLibrary([
+          FindACardOfType(And([
+            IsSupertype(Basic),
+            IsLandType(Plains),
+          ])),
+          RevealFoundCards,
+          PutFoundCardsIntoHand,
+          Shuffle,
+        ]),
+      ]),
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(6),
+      [
+        Flying,
+      ],
+      PT(
+        2,
+        2,
+      ),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Oblation",
   Typeline: (
     Supertypes: [],
@@ -930553,6 +933193,64 @@ Card(
 )
 ------------------
 Card(
+  Name: "One, Borg Evolved",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+      Artificer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(4),
+    ManaCostW,
+    ManaCostU,
+    ManaCostB,
+  ],
+  Rules: [
+    EachPermanentLayerEffect(
+      And([
+        IsCardtype(Artifact),
+        IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      [
+        AddAbility([
+          Flying,
+        ]),
+        AddAbility([
+          DoubleStrike,
+        ]),
+        AddAbility([
+          Vigilance,
+        ]),
+        AddAbility([
+          Menace,
+        ]),
+        AddAbility([
+          Lifelink,
+        ]),
+        AddAbility([
+          Ward(PayMana([
+            ManaCostGeneric(2),
+          ])),
+        ]),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
   Name: "One-Clown Band",
   Typeline: (
     Supertypes: [],
@@ -939282,6 +941980,42 @@ Card(
     Power: 1,
     Toughness: 3,
   ),
+)
+------------------
+Card(
+  Name: "Orion",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [
+      Planet,
+    ],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        EntersTapped,
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        GainLife(Integer(1)),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(Or([
+          ManaProduceR,
+          ManaProduceG,
+        ])),
+      ]),
+    ),
+  ],
 )
 ------------------
 Card(
@@ -966791,6 +969525,35 @@ Card(
 )
 ------------------
 Card(
+  Name: "Pet Sehlat",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Bear,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostW,
+  ],
+  Rules: [
+    PermanentRuleEffect(
+      ThisPermanent,
+      [
+        CantAttackAlone,
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 4,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
   Name: "Petalmane Baku",
   Typeline: (
     Supertypes: [],
@@ -971376,6 +974139,69 @@ Card(
   CardPT: (
     Power: 2,
     Toughness: 4,
+  ),
+)
+------------------
+Card(
+  Name: "Photosynthetic Physician",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Plant,
+      Doctor,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(4),
+    ManaCostG,
+  ],
+  Rules: [
+    Reach,
+    FromGraveyard(ActivatedWithModifiers(
+      And([
+        PayMana([
+          ManaCostG,
+        ]),
+        Exile(
+          [
+            CardInGraveyards(ThisGraveyardCard),
+          ],
+          [],
+        ),
+      ]),
+      ActionList([
+        CreateTokens(
+          [
+            TokenWithPT(
+              PT(
+                1,
+                1,
+              ),
+              Colors([
+                Red,
+              ]),
+              [],
+              [
+                Creature,
+              ],
+              SubtypesList([
+                Officer,
+              ]),
+              [],
+            ),
+          ],
+          [],
+        ),
+      ]),
+      ActivateOnlyAsASorcery,
+    )),
+  ],
+  CardPT: (
+    Power: 5,
+    Toughness: 5,
   ),
 )
 ------------------
@@ -998396,6 +1001222,42 @@ Card(
   ],
 )
 ------------------
+Card(
+  Name: "Primary Unimatrix Adjunct",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostW,
+  ],
+  Rules: [
+    EachPermanentLayerEffect(
+      And([
+        IsCardtype(Artifact),
+        IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      [
+        AddAbility([
+          DoubleStrike,
+        ]),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 3,
+  ),
+)
+------------------
 Planar(
   Name: "Prime Minister\'s Cabinet Room",
   Typeline: (
@@ -1016831,6 +1019693,120 @@ Card(
 )
 ------------------
 Card(
+  Name: "Q Continuum",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        Unless(
+          PlayerPassesFilter(
+            You,
+            ControlsNum(
+              GreaterThanOrEqualTo(Integer(2)),
+              And([
+                Other(ThisPermanent),
+                IsCardtype(Land),
+              ]),
+            ),
+          ),
+          [
+            EntersTapped,
+          ],
+        ),
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefieldUntapped(SinglePermanent(ThisPermanent)),
+      Modal_ChooseOne([
+        Targeted(
+          [
+            TargetPermanent(IsCardtype(Creature)),
+          ],
+          ActionList([
+            CreatePermanentLayerEffectUntil(
+              Ref_TargetPermanent,
+              [
+                AdjustPT(
+                  1,
+                  1,
+                ),
+                AddAbility([
+                  Vigilance,
+                ]),
+              ],
+              UntilEndOfTurn,
+            ),
+          ]),
+        ),
+        ActionList([
+          Surveil(Integer(1)),
+        ]),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(ManaProduceG),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
+  Name: "Q, Your Illustrious Host",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Q,
+    ],
+  ),
+  ManaCost: [
+    ManaCostW,
+    ManaCostU,
+    ManaCostB,
+    ManaCostR,
+    ManaCostG,
+  ],
+  Rules: [
+    Activated(
+      TapNumberPermanents(
+        Integer(3),
+        And([
+          IsUntapped,
+          IsCreatureType(Faerie),
+          ControlledByAPlayer(SinglePlayer(You)),
+        ]),
+      ),
+      ActionList([
+        Exile(
+          [
+            CardsFromTheTopOfLibraryUntilACardOfTypeIsExiled(IsNonCardtype(Land)),
+          ],
+          [],
+        ),
+        MayAction(CastExiledCardWithoutPaying(TheSpecificCardExiledThisWay)),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 5,
+    Toughness: 5,
+  ),
+)
+------------------
+Card(
   Name: "Qal Sisma Behemoth",
   Typeline: (
     Supertypes: [],
@@ -1017341,6 +1020317,42 @@ Card(
     Power: 1,
     Toughness: 4,
   ),
+)
+------------------
+Card(
+  Name: "Qo\'noS",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [
+      Planet,
+    ],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        EntersTapped,
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        GainLife(Integer(1)),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(Or([
+          ManaProduceB,
+          ManaProduceR,
+        ])),
+      ]),
+    ),
+  ],
 )
 ------------------
 Card(
@@ -1042432,6 +1045444,41 @@ Card(
 )
 ------------------
 Card(
+  Name: "Ravenous Cosmozoan",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Fish,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(5),
+    ManaCostR,
+  ],
+  Rules: [
+    CastEffect(ReduceCastingCostForEach(
+      [
+        CostReduceGeneric(1),
+      ],
+      TheNumberOfGraveyardCards(And([
+        IsNonCardtype(Creature),
+        IsNonCardtype(Land),
+        InAPlayersGraveyard(SinglePlayer(You)),
+      ])),
+    )),
+    Flying,
+    Haste,
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
   Name: "Ravenous Daggertooth",
   Typeline: (
     Supertypes: [],
@@ -1050822,6 +1053869,44 @@ Card(
 )
 ------------------
 Card(
+  Name: "Reclamation Specialist",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostB,
+  ],
+  Rules: [
+    Activated(
+      And([
+        PayMana([
+          ManaCostGeneric(1),
+        ]),
+        SacrificeAPermanent(And([
+          IsCardtype(Artifact),
+          IsCardtype(Creature),
+        ])),
+      ]),
+      ActionList([
+        DrawACard,
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 2,
+  ),
+)
+------------------
+Card(
   Name: "Reclusive Artificer",
   Typeline: (
     Supertypes: [],
@@ -1051952,6 +1055037,47 @@ Card(
         SetMaximumHandSize(Integer(2)),
       ],
     ),
+  ],
+)
+------------------
+Card(
+  Name: "Red Alert!",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Instant,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostR,
+  ],
+  Rules: [
+    CastEffect(ReduceCastingCostIf(
+      [
+        CostReduceGeneric(2),
+      ],
+      APermanentPassesFilter(
+        IsCardtype(Creature),
+        IsAttackingPlayer(You),
+      ),
+    )),
+    SpellActions(ActionList([
+      CreateEachPermanentLayerEffectUntil(
+        And([
+          IsCardtype(Creature),
+          ControlledByAPlayer(SinglePlayer(You)),
+        ]),
+        [
+          AdjustPT(
+            2,
+            0,
+          ),
+        ],
+        UntilEndOfTurn,
+      ),
+    ])),
   ],
 )
 ------------------
@@ -1062190,6 +1065316,62 @@ Card(
         ),
       ]),
     )),
+  ],
+)
+------------------
+Card(
+  Name: "Replicator",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        CreateTokens(
+          [
+            FoodToken,
+          ],
+          [],
+        ),
+      ]),
+    ),
+    Activated(
+      And([
+        PayMana([
+          ManaCostGeneric(2),
+        ]),
+        TapPermanent(ThisPermanent),
+      ]),
+      Targeted(
+        [
+          TargetPermanent(And([
+            IsToken,
+            ControlledByAPlayer(SinglePlayer(You)),
+          ])),
+        ],
+        ActionList([
+          CreateTokens(
+            [
+              TokenCopyOfPermanent(
+                Ref_TargetPermanent,
+                NoTokenCopyEffects,
+              ),
+            ],
+            [
+              EntersTapped,
+            ],
+          ),
+        ]),
+      ),
+    ),
   ],
 )
 ------------------
@@ -1078711,6 +1081893,41 @@ Card(
 )
 ------------------
 Card(
+  Name: "Ring of Unity",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(7),
+  ],
+  Rules: [
+    EachPermanentLayerEffect(
+      And([
+        IsCardtype(Artifact),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      [
+        AddAbility([
+          Activated(
+            TapPermanent(ThisPermanent),
+            ActionList([
+              AddMana(And([
+                ManaProduceC,
+                ManaProduceC,
+              ])),
+            ]),
+          ),
+        ]),
+      ],
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Ring of Valkas",
   Typeline: (
     Supertypes: [],
@@ -1080557,6 +1083774,42 @@ Card(
     Power: 0,
     Toughness: 5,
   ),
+)
+------------------
+Card(
+  Name: "Risa",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [
+      Planet,
+    ],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        EntersTapped,
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        GainLife(Integer(1)),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(Or([
+          ManaProduceG,
+          ManaProduceW,
+        ])),
+      ]),
+    ),
+  ],
 )
 ------------------
 Split(
@@ -1091126,6 +1094379,42 @@ Card(
       DiscardACard,
       DrawNumberCards(Integer(2)),
     ])),
+  ],
+)
+------------------
+Card(
+  Name: "Romulus",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [
+      Planet,
+    ],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        EntersTapped,
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        GainLife(Integer(1)),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(Or([
+          ManaProduceU,
+          ManaProduceB,
+        ])),
+      ]),
+    ),
   ],
 )
 ------------------
@@ -1114231,6 +1117520,41 @@ Card(
 )
 ------------------
 Card(
+  Name: "Sam Kirk, Xenoanthropologist",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Scientist,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostU,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPlayerCastsASpell(
+        Opponent,
+        IsCardtype(Creature),
+      ),
+      ActionList([
+        Investigate,
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
   Name: "Sam\'s Desperate Rescue",
   Typeline: (
     Supertypes: [],
@@ -1123243,6 +1126567,58 @@ Card(
   CardPT: (
     Power: 1,
     Toughness: 1,
+  ),
+)
+------------------
+Card(
+  Name: "Saru, Unthreatened",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Kelpien,
+      Officer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostG,
+  ],
+  Rules: [
+    Flash,
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      Targeted(
+        [
+          TargetPermanent(And([
+            Other(ThatEnteringPermanent),
+            And([
+              IsCardtype(Creature),
+              ControlledByAPlayer(SinglePlayer(You)),
+            ]),
+          ])),
+        ],
+        ActionList([
+          CreatePermanentLayerEffectUntil(
+            Ref_TargetPermanent,
+            [
+              AddAbility([
+                Hexproof,
+              ]),
+            ],
+            UntilEndOfTurn,
+          ),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 2,
   ),
 )
 ------------------
@@ -1134993,6 +1138369,53 @@ Card(
   CardPT: (
     Power: 3,
     Toughness: 3,
+  ),
+)
+------------------
+Card(
+  Name: "Scotty, Chief Engineer",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Artificer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostU,
+  ],
+  Rules: [
+    Activated(
+      TapAPermanent(And([
+        IsUntapped,
+        IsCardtype(Artifact),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ])),
+      Targeted(
+        [
+          TargetPermanent(IsCardtype(Creature)),
+        ],
+        ActionList([
+          CreatePermanentRuleEffectUntil(
+            Ref_TargetPermanent,
+            [
+              CantBeBlocked,
+            ],
+            UntilEndOfTurn,
+          ),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 4,
   ),
 )
 ------------------
@@ -1150493,6 +1153916,78 @@ Card(
   CardPT: (
     Power: 0,
     Toughness: 0,
+  ),
+)
+------------------
+Card(
+  Name: "Sela, Tal Shiar Paradox",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Romulan,
+      Human,
+      Rogue,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostB,
+  ],
+  Rules: [
+    TriggerA(
+      WhenACreatureAttacks(SinglePermanent(ThisPermanent)),
+      Targeted(
+        [
+          UptoOneTargetGraveyardCard(AnyCardInAnyGraveyard),
+        ],
+        ActionList([
+          Exile(
+            [
+              CardInGraveyards(Ref_TargetGraveyardCard),
+            ],
+            [],
+          ),
+        ]),
+      ),
+    ),
+    TriggerA(
+      WhenAnyNumberOfGraveyardCardsLeave(InAPlayersGraveyard(SinglePlayer(You))),
+      ActionList([
+        CreateTokens(
+          [
+            TokenWithPT(
+              PT(
+                2,
+                2,
+              ),
+              Colors([
+                Black,
+              ]),
+              [],
+              [
+                Creature,
+              ],
+              SubtypesList([
+                Romulan,
+              ]),
+              [],
+            ),
+          ],
+          [
+            EntersTapped,
+          ],
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 3,
   ),
 )
 ------------------
@@ -1250841,6 +1254336,48 @@ Card(
 )
 ------------------
 Card(
+  Name: "Spock, Always Your Friend",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Vulcan,
+      Human,
+      Scientist,
+    ],
+  ),
+  ManaCost: [
+    ManaCostU,
+    ManaCostR,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        LookAtTheTopNumberCardsOfLibrary(
+          Integer(4),
+          [
+            MayRevealACardOfTypeAndPutIntoHand(And([
+              IsNonCardtype(Creature),
+              IsNonCardtype(Land),
+            ])),
+            PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder,
+          ],
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 2,
+  ),
+)
+------------------
+Card(
   Name: "Spock, Logical Choice",
   Typeline: (
     Supertypes: [
@@ -1252191,6 +1255728,69 @@ Card(
   CardPT: (
     Power: 4,
     Toughness: 4,
+  ),
+)
+------------------
+Card(
+  Name: "Spot, Felis catus",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Cat,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      Or([
+        WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+        WhenAPermanentEntersTheBattlefield(And([
+          Other(ThisPermanent),
+          And([
+            IsNonToken,
+            IsSupertype(Legendary),
+            IsPermanent,
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
+        ])),
+      ]),
+      ActionList([
+        CreateTokens(
+          [
+            FoodToken,
+          ],
+          [],
+        ),
+      ]),
+    ),
+    Activated(
+      And([
+        PayMana([
+          ManaCostGeneric(4),
+        ]),
+        SacrificeAPermanent(IsArtifactType(Food)),
+      ]),
+      Targeted(
+        [
+          TargetPermanent(IsCardtype(Artifact)),
+        ],
+        ActionList([
+          DestroyPermanent(Ref_TargetPermanent),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 1,
+    Toughness: 1,
   ),
 )
 ------------------
@@ -1260345,6 +1263945,45 @@ Card(
   ],
   CardPT: (
     Power: 2,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
+  Name: "Starfleet Spanner Jockey",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Artificer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostU,
+  ],
+  Rules: [
+    Defender,
+    If(
+      PlayerPassesFilter(
+        You,
+        CastASpellThisTurn(IsNonCardtype(Creature)),
+      ),
+      [
+        PermanentRuleEffect(
+          ThisPermanent,
+          [
+            CanAttackAsThoughItDidntHaveDefender,
+          ],
+        ),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 3,
     Toughness: 3,
   ),
 )
@@ -1273445,6 +1277084,46 @@ Card(
 )
 ------------------
 Card(
+  Name: "Storied Veteran",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Klingon,
+      Advisor,
+    ],
+  ),
+  ManaCost: [
+    ManaCostB,
+  ],
+  Rules: [
+    PermanentRuleEffect(
+      ThisPermanent,
+      [
+        CantBlock,
+      ],
+    ),
+    FromGraveyard(PlayerEffect(
+      You,
+      [
+        MayCastGraveyardCardWithEnterActions(
+          ThisGraveyardCard,
+          [
+            EntersWithACounter(FinalityCounter),
+          ],
+        ),
+      ],
+    )),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 1,
+  ),
+)
+------------------
+Card(
   Name: "Storm Caller",
   Typeline: (
     Supertypes: [],
@@ -1278072,6 +1281751,59 @@ Card(
   CardPT: (
     Power: 5,
     Toughness: 5,
+  ),
+)
+------------------
+Card(
+  Name: "Stratagem Emulator",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentDies(SinglePermanent(ThisPermanent)),
+      ActionList([
+        CreateTokens(
+          [
+            NumberTokens(
+              PowerOfDeadPermanent,
+              TokenWithPT(
+                PT(
+                  1,
+                  1,
+                ),
+                Colorless,
+                [],
+                [
+                  Artifact,
+                  Creature,
+                ],
+                SubtypesList([
+                  Borg,
+                ]),
+                [],
+              ),
+            ),
+          ],
+          [],
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 1,
   ),
 )
 ------------------
@@ -1295543,6 +1299275,58 @@ Card(
   ],
 )
 ------------------
+Card(
+  Name: "Supplementation Node",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostW,
+  ],
+  Rules: [
+    EachPermanentLayerEffect(
+      And([
+        IsCardtype(Artifact),
+        IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      [
+        AddAbility([
+          TriggerA(
+            WhenACreatureDealsCombatDamageToAPlayer(
+              SinglePermanent(ThisPermanent),
+              AnyPlayer,
+            ),
+            ActionList([
+              PutCounters([
+                ACounterOfTypeOnPermanent(
+                  PTCounter(
+                    1,
+                    1,
+                  ),
+                  Trigger_ThatCreature,
+                ),
+              ]),
+            ]),
+          ),
+        ]),
+      ],
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 2,
+  ),
+)
+------------------
 Split(
   Cards: [
     (
@@ -1300132,6 +1303916,95 @@ Card(
   CardPT: (
     Power: 0,
     Toughness: 0,
+  ),
+)
+------------------
+Card(
+  Name: "Suurok-Class Science Vessel",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostU,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        DrawACard,
+      ]),
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(5),
+      [
+        Flying,
+      ],
+      PT(
+        3,
+        2,
+      ),
+    ),
+  ],
+)
+------------------
+Card(
+  Name: "Suus Mahna Practitioner",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Vulcan,
+      Officer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostU,
+  ],
+  Rules: [
+    ActivatedWithModifiers(
+      And([
+        PayMana([
+          ManaCostGeneric(4),
+          ManaCostU,
+        ]),
+        TapPermanent(ThisPermanent),
+      ]),
+      Targeted(
+        [
+          TargetPermanent(IsCardtype(Creature)),
+        ],
+        ActionList([
+          TapPermanent(Ref_TargetPermanent),
+        ]),
+      ),
+      ReduceCostX(
+        [
+          CostReduceX,
+        ],
+        NumGroupPermanents(
+          And([
+            IsCardtype(Land),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
+          DifferentNames,
+        ),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 2,
   ),
 )
 ------------------
@@ -1314009,6 +1317882,101 @@ Card(
 )
 ------------------
 Card(
+  Name: "Tal Shiar Analyst",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Romulan,
+      Scientist,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostR,
+  ],
+  Rules: [
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        PermanentDealsDamage(
+          ThisPermanent,
+          Integer(1),
+          EachPlayer(Opponent),
+        ),
+      ]),
+    ),
+    TriggerA(
+      WhenAPlayerCastsASpell(
+        SinglePlayer(You),
+        IsNonCardtype(Creature),
+      ),
+      ActionList([
+        UntapPermanent(ThisPermanent),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 2,
+  ),
+)
+------------------
+Card(
+  Name: "Tal Shiar Operative",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Romulan,
+      Officer,
+      Spy,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostB,
+  ],
+  Rules: [
+    TriggerA(
+      WhenACreatureAttacks(SinglePermanent(ThisPermanent)),
+      Modal_ChooseOne([
+        Targeted(
+          [
+            TargetPermanent(And([
+              IsCardtype(Creature),
+              ControlledByAPlayer(SinglePlayer(You)),
+            ])),
+          ],
+          ActionList([
+            CreatePermanentLayerEffectUntil(
+              Ref_TargetPermanent,
+              [
+                AddAbility([
+                  Deathtouch,
+                ]),
+              ],
+              UntilEndOfTurn,
+            ),
+          ]),
+        ),
+        ActionList([
+          Surveil(Integer(1)),
+        ]),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 2,
+  ),
+)
+------------------
+Card(
   Name: "Talara\'s Bane",
   Typeline: (
     Supertypes: [],
@@ -1319175,6 +1323143,41 @@ Card(
 )
 ------------------
 Card(
+  Name: "Targ Wrangler",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Klingon,
+      Warrior,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostR,
+  ],
+  Rules: [
+    Menace,
+    TriggerI(
+      AtTheBeginningOfAPlayersEndStep(SinglePlayer(You)),
+      PermanentPassesFilter(
+        ThisPermanent,
+        AttackedThisTurn,
+      ),
+      ActionList([
+        SacrificeAPermanent(IsNonCardtype(Land)),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 5,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
   Name: "Tariel, Reckoner of Souls",
   Typeline: (
     Supertypes: [
@@ -1323467,6 +1327470,56 @@ Card(
   CardPT: (
     Power: 5,
     Toughness: 1,
+  ),
+)
+------------------
+Card(
+  Name: "Tecton, Malignant Ruin",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Elemental,
+      Kraken,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(6),
+    ManaCostB,
+    ManaCostB,
+  ],
+  Rules: [
+    CastEffect(ReduceCastingCostForEach(
+      [
+        CostReduceGeneric(1),
+      ],
+      TheNumberOfGraveyardCards(And([
+        IsPermanent,
+        InAPlayersGraveyard(SinglePlayer(You)),
+      ])),
+    )),
+    Menace,
+    Deathtouch,
+    TriggerA(
+      WhenAPlayerSacrificesAPermanent(
+        SinglePlayer(You),
+        And([
+          Other(ThisPermanent),
+          AnyPermanent,
+        ]),
+      ),
+      ActionList([
+        DrawACard,
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 5,
+    Toughness: 5,
   ),
 )
 ------------------
@@ -1330642,6 +1334695,56 @@ Card(
   ],
   CardPT: (
     Power: 1,
+    Toughness: 1,
+  ),
+)
+------------------
+Card(
+  Name: "Tenacious Drone",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostB,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentDies(SinglePermanent(ThisPermanent)),
+      ActionList([
+        CreateTokens(
+          [
+            TokenWithPT(
+              PT(
+                1,
+                1,
+              ),
+              Colorless,
+              [],
+              [
+                Artifact,
+                Creature,
+              ],
+              SubtypesList([
+                Borg,
+              ]),
+              [],
+            ),
+          ],
+          [],
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 2,
     Toughness: 1,
   ),
 )
@@ -1360927,6 +1365030,66 @@ Card(
 )
 ------------------
 Card(
+  Name: "The Sword of Kahless",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Equipment,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(4),
+  ],
+  Rules: [
+    PermanentLayerEffect(
+      HostPermanent,
+      [
+        AdjustPT(
+          2,
+          2,
+        ),
+        AddAbility([
+          TriggerA(
+            WhenACreatureAttacks(SinglePermanent(ThisPermanent)),
+            ActionList([
+              LookAtTheTopNumberCardsOfLibrary(
+                Integer(5),
+                [
+                  MayPutACardOfTypeOntoTheBattlefield(
+                    And([
+                      Or([
+                        IsCreatureType(Klingon),
+                        IsCreatureType(Warrior),
+                      ]),
+                      IsCardtype(Creature),
+                    ]),
+                    [
+                      EntersNormally,
+                    ],
+                  ),
+                  PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder,
+                ],
+              ),
+            ]),
+          ),
+        ]),
+      ],
+    ),
+    Equip(
+      IsCardtype(Creature),
+      PayMana([
+        ManaCostGeneric(2),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "The Tabernacle at Pendrell Vale",
   Typeline: (
     Supertypes: [
@@ -1361827,6 +1365990,40 @@ Card(
 )
 ------------------
 Card(
+  Name: "The Traveler",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Scout,
+    ],
+  ),
+  ManaCost: [
+    ManaCostG,
+    ManaCostU,
+  ],
+  Rules: [
+    Reach,
+    Vigilance,
+    CDA_Power(NumGroupPermanents(
+      And([
+        IsCardtype(Land),
+        ControlledByAPlayer(SinglePlayer(You)),
+      ]),
+      DifferentNames,
+    )),
+  ],
+  CardPT: (
+    Power: 0,
+    Toughness: 3,
+  ),
+)
+------------------
+Card(
   Name: "The Trickster-God\'s Heist",
   Typeline: (
     Supertypes: [],
@@ -1362223,6 +1366420,64 @@ Card(
           PutGraveyardCardIntoHand(Ref_TargetGraveyardCard),
         ]),
       ),
+    ),
+  ],
+)
+------------------
+Card(
+  Name: "The Unicomplex",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        Unless(
+          PlayerPassesFilter(
+            You,
+            ControlsNum(
+              GreaterThanOrEqualTo(Integer(2)),
+              And([
+                Other(ThisPermanent),
+                IsCardtype(Land),
+              ]),
+            ),
+          ),
+          [
+            EntersTapped,
+          ],
+        ),
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefieldUntapped(SinglePermanent(ThisPermanent)),
+      Modal_ChooseOne([
+        Targeted(
+          [
+            TargetGraveyardCard(And([
+              IsCardtype(Creature),
+              InAPlayersGraveyard(SinglePlayer(You)),
+            ])),
+          ],
+          ActionList([
+            PutGraveyardCardOnTopOfLibrary(Ref_TargetGraveyardCard),
+          ]),
+        ),
+        ActionList([
+          Surveil(Integer(1)),
+        ]),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(ManaProduceB),
+      ]),
     ),
   ],
 )
@@ -1411088,6 +1415343,45 @@ Card(
 )
 ------------------
 Card(
+  Name: "Tricorder",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Equipment,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+  ],
+  Rules: [
+    PermanentLayerEffect(
+      HostPermanent,
+      [
+        AdjustPT(
+          1,
+          1,
+        ),
+      ],
+    ),
+    TriggerA(
+      WhenACreatureAttacks(SinglePermanent(HostPermanent)),
+      ActionList([
+        Surveil(Integer(1)),
+      ]),
+    ),
+    Equip(
+      IsCardtype(Creature),
+      PayMana([
+        ManaCostGeneric(1),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Trigon of Corruption",
   Typeline: (
     Supertypes: [],
@@ -1422854,6 +1427148,129 @@ Card(
 )
 ------------------
 Card(
+  Name: "Type-03 Borg Vessel",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostW,
+  ],
+  Rules: [
+    PlayerEffect(
+      You,
+      [
+        DecreaseSpellCost(
+          IsCardtype(Artifact),
+          [
+            CostReduceGeneric(1),
+          ],
+        ),
+      ],
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(7),
+      [
+        Flying,
+        TriggerA(
+          WhenAPlayerCastsASpell(
+            SinglePlayer(You),
+            AnySpell,
+          ),
+          ActionList([
+            CreateTokens(
+              [
+                TokenWithPT(
+                  PT(
+                    1,
+                    1,
+                  ),
+                  Colorless,
+                  [],
+                  [
+                    Artifact,
+                    Creature,
+                  ],
+                  SubtypesList([
+                    Borg,
+                  ]),
+                  [],
+                ),
+              ],
+              [],
+            ),
+          ]),
+        ),
+      ],
+      PT(
+        5,
+        5,
+      ),
+    ),
+  ],
+)
+------------------
+Card(
+  Name: "Type-2 Phaser",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Equipment,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      Targeted(
+        [
+          TargetPermanent(And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(Opponent),
+          ])),
+        ],
+        ActionList([
+          TapPermanent(Ref_TargetPermanent),
+          PutCounters([
+            ACounterOfTypeOnPermanent(
+              StunCounter,
+              Ref_TargetPermanent,
+            ),
+          ]),
+        ]),
+      ),
+    ),
+    PermanentLayerEffect(
+      HostPermanent,
+      [
+        AdjustPT(
+          3,
+          0,
+        ),
+      ],
+    ),
+    Equip(
+      IsCardtype(Creature),
+      PayMana([
+        ManaCostGeneric(3),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Typhoid Mary, Fractured",
   Typeline: (
     Supertypes: [
@@ -1424301,6 +1428718,155 @@ Card(
 )
 ------------------
 Card(
+  Name: "U.S.S. Cerritos, Following Up",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(5),
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        CreateTokens(
+          [
+            NumberTokens(
+              Integer(2),
+              TokenWithPT(
+                PT(
+                  1,
+                  1,
+                ),
+                Colors([
+                  Red,
+                ]),
+                [],
+                [
+                  Creature,
+                ],
+                SubtypesList([
+                  Officer,
+                ]),
+                [],
+              ),
+            ),
+          ],
+          [],
+        ),
+      ]),
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(6),
+      [
+        Flying,
+      ],
+      PT(
+        4,
+        4,
+      ),
+    ),
+  ],
+)
+------------------
+Card(
+  Name: "U.S.S. Defiant, Tough Little Ship",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(6),
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      Targeted(
+        [
+          UptoOneTargetPermanent(Or([
+            IsCardtype(Artifact),
+            IsCardtype(Enchantment),
+          ])),
+        ],
+        ActionList([
+          DestroyPermanent(Ref_TargetPermanent),
+        ]),
+      ),
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(5),
+      [
+        Flying,
+        Hexproof,
+      ],
+      PT(
+        7,
+        4,
+      ),
+    ),
+  ],
+)
+------------------
+Card(
+  Name: "U.S.S. Discovery, at Black Alert",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostG,
+    ManaCostG,
+  ],
+  Rules: [
+    TriggerA(
+      Or([
+        WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+        WhenACreatureAttacks(SinglePermanent(ThisPermanent)),
+      ]),
+      ActionList([
+        Discover(Integer(5)),
+      ]),
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(6),
+      [
+        Flying,
+      ],
+      PT(
+        5,
+        5,
+      ),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "U.S.S. Enterprise-D, Galaxy-Class",
   Typeline: (
     Supertypes: [
@@ -1424348,6 +1428914,157 @@ Card(
       PT(
         4,
         5,
+      ),
+    ),
+  ],
+)
+------------------
+Card(
+  Name: "U.S.S. Enterprise-E, Sovereign",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostW,
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        DestroyEachPermanent(And([
+          IsTapped,
+          IsCardtype(Creature),
+        ])),
+      ]),
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(8),
+      [
+        Flying,
+        Vigilance,
+      ],
+      PT(
+        7,
+        7,
+      ),
+    ),
+  ],
+)
+------------------
+Card(
+  Name: "U.S.S. Excelsior, Cutting Edge",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(3),
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      Targeted(
+        [
+          TargetPermanent(And([
+            IsTapped,
+            IsCardtype(Creature),
+            ControlledByAPlayer(Opponent),
+          ])),
+        ],
+        ActionList([
+          DestroyPermanent(Ref_TargetPermanent),
+        ]),
+      ),
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(8),
+      [
+        Flying,
+      ],
+      PT(
+        4,
+        4,
+      ),
+    ),
+  ],
+)
+------------------
+Card(
+  Name: "U.S.S. Reliant, From Hell\'s Heart",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [
+      Spacecraft,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+    ManaCostB,
+    ManaCostB,
+  ],
+  Rules: [
+    TriggerA(
+      Or([
+        WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+        WhenACreatureDealsCombatDamageToAPlayer(
+          SinglePermanent(ThisPermanent),
+          AnyPlayer,
+        ),
+      ]),
+      Targeted(
+        [
+          TargetGraveyardCard(And([
+            And([
+              IsCardtype(Creature),
+              ManaValueIs(LessThanOrEqualTo(Integer(4))),
+            ]),
+            InAPlayersGraveyard(SinglePlayer(You)),
+          ])),
+        ],
+        ActionList([
+          PutGraveyardCardOntoBattlefield(
+            Ref_TargetGraveyardCard,
+            [
+              EntersWithACounter(FinalityCounter),
+            ],
+          ),
+        ]),
+      ),
+    ),
+    Station,
+    StationChargedAnimate(
+      ValueOrBigger(10),
+      [
+        Flying,
+      ],
+      PT(
+        4,
+        3,
       ),
     ),
   ],
@@ -1425247,6 +1429964,49 @@ Card(
   CardPT: (
     Power: 3,
     Toughness: 3,
+  ),
+)
+------------------
+Card(
+  Name: "Uhura, Xenolinguist",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Human,
+      Officer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(4),
+    ManaCostU,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(And([
+        IsNonCreatureType(Human),
+        IsCardtype(Creature),
+      ])),
+      ActionList([
+        MayCost(PayMana([
+          ManaCostGeneric(1),
+        ])),
+        If(
+          CostWasPaid,
+          [
+            DrawACard,
+          ],
+        ),
+      ]),
+    ),
+  ],
+  CardPT: (
+    Power: 3,
+    Toughness: 4,
   ),
 )
 ------------------
@@ -1434621,6 +1439381,46 @@ Card(
         ],
       ),
     ])),
+  ],
+)
+------------------
+Card(
+  Name: "Unexplored Territory",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [],
+  ),
+  Rules: [
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(ManaProduceC),
+      ]),
+    ),
+    Activated(
+      And([
+        PayMana([
+          ManaCostGeneric(1),
+        ]),
+        TapPermanent(ThisPermanent),
+        SacrificePermanent(ThisPermanent),
+      ]),
+      ActionList([
+        SearchLibrary([
+          FindACardOfType(And([
+            IsSupertype(Basic),
+            IsCardtype(Land),
+          ])),
+          PutFoundCardsOntoBattlefield([
+            EntersTapped,
+          ]),
+          Shuffle,
+        ]),
+      ]),
+    ),
   ],
 )
 ------------------
@@ -1464383,6 +1469183,44 @@ Card(
 )
 ------------------
 Card(
+  Name: "Vexing Drone",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+      Creature,
+    ],
+    Subtypes: [
+      Borg,
+    ],
+  ),
+  ManaCost: [
+    ManaCostGeneric(1),
+    ManaCostW,
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      Targeted(
+        [
+          TargetPermanent(And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(Opponent),
+          ])),
+        ],
+        ActionList([
+          TapPermanent(Ref_TargetPermanent),
+        ]),
+      ),
+    ),
+  ],
+  CardPT: (
+    Power: 2,
+    Toughness: 2,
+  ),
+)
+------------------
+Card(
   Name: "Vexing Gull",
   Typeline: (
     Supertypes: [],
@@ -1487755,6 +1492593,42 @@ Card(
 )
 ------------------
 Card(
+  Name: "Vulcan",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Land,
+    ],
+    Subtypes: [
+      Planet,
+    ],
+  ),
+  Rules: [
+    AsPermanentEnters(
+      ThisPermanent,
+      [
+        EntersTapped,
+      ],
+    ),
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        GainLife(Integer(1)),
+      ]),
+    ),
+    Activated(
+      TapPermanent(ThisPermanent),
+      ActionList([
+        AddMana(Or([
+          ManaProduceW,
+          ManaProduceU,
+        ])),
+      ]),
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Vulpikeet",
   Typeline: (
     Supertypes: [],
@@ -1499201,6 +1504075,59 @@ Card(
 )
 ------------------
 Card(
+  Name: "Warp Core",
+  Typeline: (
+    Supertypes: [],
+    Cardtypes: [
+      Artifact,
+    ],
+    Subtypes: [],
+  ),
+  ManaCost: [
+    ManaCostGeneric(2),
+  ],
+  Rules: [
+    TriggerA(
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
+      ActionList([
+        MayAction(SearchLibrary([
+          FindACardOfType(And([
+            IsSupertype(Basic),
+            IsCardtype(Land),
+          ])),
+          RevealFoundCards,
+          PutFoundCardsIntoHand,
+          Shuffle,
+        ])),
+      ]),
+    ),
+    ActivatedWithModifiers(
+      And([
+        PayMana([
+          ManaCostGeneric(1),
+        ]),
+        TapPermanent(ThisPermanent),
+      ]),
+      Targeted(
+        [
+          TargetPermanent(IsArtifactType(Spacecraft)),
+        ],
+        ActionList([
+          PutCounters([
+            NumberCountersOfTypeOnPermanent(
+              Integer(2),
+              ChargeCounter,
+              Ref_TargetPermanent,
+            ),
+          ]),
+        ]),
+      ),
+      ActivateOnlyAsASorcery,
+    ),
+  ],
+)
+------------------
+Card(
   Name: "Warp World",
   Typeline: (
     Supertypes: [],
@@ -1510615,7 +1515542,9 @@ Card(
             AddAbility([
               Trample,
             ]),
-            RemoveCreatureType(Human),
+            SetCreatureTypes([
+              Werewolf,
+            ]),
           ],
           UntilEndOfTurn,
         ),
@@ -1534880,6 +1539809,73 @@ Card(
   CardPT: (
     Power: 2,
     Toughness: 3,
+  ),
+)
+------------------
+Card(
+  Name: "Worf, Honor-Bound Warrior",
+  Typeline: (
+    Supertypes: [
+      Legendary,
+    ],
+    Cardtypes: [
+      Creature,
+    ],
+    Subtypes: [
+      Klingon,
+      Warrior,
+      Officer,
+    ],
+  ),
+  ManaCost: [
+    ManaCostRW,
+    ManaCostRW,
+  ],
+  Rules: [
+    TriggerA(
+      If(
+        TotalPowerOfPermanentsIs(
+          GreaterThanOrEqualTo(Integer(8)),
+          And([
+            IsCardtype(Creature),
+            ControlledByAPlayer(SinglePlayer(You)),
+          ]),
+        ),
+        WhenAPlayerAttacks(SinglePlayer(You)),
+      ),
+      ActionList([
+        DoubleCreaturesPowerUntilEndOfTurn(ThisPermanent),
+      ]),
+    ),
+    ActivatedWithModifiers(
+      TapNumberPermanents(
+        Integer(2),
+        And([
+          IsUntapped,
+          Or([
+            IsCardtype(Artifact),
+            IsCardtype(Creature),
+          ]),
+          ControlledByAPlayer(SinglePlayer(You)),
+        ]),
+      ),
+      ActionList([
+        PutCounters([
+          ACounterOfTypeOnPermanent(
+            PTCounter(
+              1,
+              1,
+            ),
+            ThisPermanent,
+          ),
+        ]),
+      ]),
+      ActivateOnlyAsASorcery,
+    ),
+  ],
+  CardPT: (
+    Power: 1,
+    Toughness: 1,
   ),
 )
 ------------------

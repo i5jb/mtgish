@@ -3402,7 +3402,6 @@
     "RemoveAllLandTypes": "",
     "RemoveArtifactType({{CLUE}})": "",
     "RemoveCardtype({{CARDTYPE}})": "",
-    "RemoveCreatureType({{ZOMBIE}})": "",
     "RemoveSupertype({{SUPERTYPE}})": "",
     "SetArtifactType({{CLUE}})": "",
     "SetCardtype({{CARDTYPE}})": "",
@@ -3412,6 +3411,7 @@
     "SetCreatureTypes([{{ZOMBIE}}, {{ZOMBIE}}, {{ZOMBIE}}, {{ZOMBIE}}])": "",
     "SetCreatureTypes([{{ZOMBIE}}, {{ZOMBIE}}, {{ZOMBIE}}])": "",
     "SetCreatureTypes([{{ZOMBIE}}, {{ZOMBIE}}])": "",
+    "SetCreatureTypes([{{ZOMBIE}}])": "",
     "SetLandType({{SWAMP}})": "",
     "SetLandTypeVariable(TheChosenLandType)": "",
     "SetLandTypeVariable(TheSecondChosenLandType)": ""

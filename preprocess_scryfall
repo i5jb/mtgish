@@ -75,6 +75,7 @@ normal_layouts = {
 }
 
 cards = []
+bad_layouts = False
 for scryfall_card in scryfall_cards:
   layout = scryfall_card["layout"]
 
@@ -146,7 +147,8 @@ for scryfall_card in scryfall_cards:
     continue
 
   if layout in {"art_series", "emblem", "token", "double_faced_token", "flip_token", "front_card"}: continue
-  print(layout, scryfall_card["name"])
+  print(f"Unknown layout '{layout}' on card '{scryfall_card["name"]}'", file=sys.stderr)
+  bad_layouts = True
 
 cards_by_name = {}
 for card in cards:
@@ -166,3 +168,4 @@ for card_name, cards in cards_by_name.items():
 
 cards_array = sorted(cards_array, key=lambda card: card["name"])
 json.dump(cards_array, sys.stdout, indent=2, ensure_ascii=False)
+if bad_layouts: sys.exit(1)

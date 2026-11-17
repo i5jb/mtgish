@@ -7484,7 +7484,6 @@ pub enum LayerEffect {
   RemoveArtifactType(ArtifactType),
   RemoveAllCreatureTypes,
   RemoveAllLandTypes,
-  RemoveCreatureType(CreatureType),
 
   // Layer 5
   AddColor(SettableColor),
