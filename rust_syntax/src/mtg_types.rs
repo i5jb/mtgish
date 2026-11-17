@@ -3203,6 +3203,13 @@ pub enum ReplacementActionWouldMill {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_TypeChoice", content = "args"))]
+pub enum TypeChoice {
+  TypeChoice(Box<Permanents>, Box<ManaProduce>),
+}
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ReplacementActionWouldProduceMana", content = "args"))]
 pub enum ReplacementActionWouldProduceMana {
   WouldProduceMana_ReplaceSpecificColorWith(Color, ManaProduce),
@@ -3210,8 +3217,8 @@ pub enum ReplacementActionWouldProduceMana {
   WouldProduceMana_ProduceMultiple(Box<GameNumber>),
   WouldProduceMana_ReplaceColor(Color),
   WouldProduceMana_ReplaceType(ManaProduce),
+  WouldProduceMana_ReplaceTypeChoice(Vec<TypeChoice>),
 }
-
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
@@ -3295,21 +3302,12 @@ pub enum ActionPreventDamageRemoveCounters {
   NumberCountersOfTypeFromPermanent(Box<GameNumber>, CounterType, Box<Permanent>),
 }
 
-
-#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
-#[ts(export)]
-#[cfg_attr(feature = "write_out_json", serde(tag = "_ActionPreventDamageCost", content = "args"))]
-pub enum ActionPreventDamageCost {
-  PayMana(ManaCost),
-}
-
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_ActionPreventDamage", content = "args"))]
 pub enum ActionPreventDamage {
   If(Condition, Vec<ActionPreventDamage>),
   IfElse(Condition, Vec<ActionPreventDamage>, Vec<ActionPreventDamage>),
-  Unless(Condition, Vec<ActionPreventDamage>),
 
   PreventAllButSomeOfThatDamage(Box<GameNumber>),
   PreventSomeOfThatDamage(Box<GameNumber>),
@@ -3323,7 +3321,6 @@ pub enum ActionPreventDamage {
   EachPlayerAction(Box<Players>, Box<ActionPreventDamage>),
   MayAction(Box<ActionPreventDamage>),
   MayActions(Vec<ActionPreventDamage>),
-  PlayerMayCost(Box<Player>, ActionPreventDamageCost),
 
   ChooseAPlayer(Box<Players>),
 
@@ -10731,6 +10728,7 @@ pub enum StaticLayer6Effect {
   AddAbilityFromAnExiledHasable_MayOnlyActivateOnecEachTurn(CardsInExile, Vec<CheckHasable>),
   AddAbilityFromAnExiledHasable(CardsInExile, Vec<CheckHasable>),
   AddAbilityFromExiledHasable(CardInExile, Vec<CheckHasable>),
+  AddAbilityFromEachExiledHasable(CardsInExile, Vec<CheckHasable>),
   AddActivatedAbilitiesAndMaySpendManaAsThoughItWasAnyColorToActivate(Box<ActivatedAbilities>),
   AddAbilityFromTopOfLibraryHasable(Vec<CheckHasable>),
   AddAbilityAndLoseAllOtherAbilities(Vec<Rule>),
@@ -10823,6 +10821,7 @@ pub enum StaticLayerEffect {
   AddAbilityFromAnExiledHasable_MayOnlyActivateOnecEachTurn(CardsInExile, Vec<CheckHasable>),
   AddAbilityFromAnExiledHasable(CardsInExile, Vec<CheckHasable>),
   AddAbilityFromExiledHasable(CardInExile, Vec<CheckHasable>),
+  AddAbilityFromEachExiledHasable(CardsInExile, Vec<CheckHasable>),
   AddActivatedAbilitiesAndMaySpendManaAsThoughItWasAnyColorToActivate(Box<ActivatedAbilities>),
   AddAbilityFromTopOfLibraryHasable(Vec<CheckHasable>),
   AddAbilityAndLoseAllOtherAbilities(Vec<Rule>),

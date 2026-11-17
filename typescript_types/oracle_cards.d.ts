@@ -1369,7 +1369,6 @@ type ActionOption =
 type ActionPreventDamage =
 | { "_ActionPreventDamage": "If", "args": [Condition, Array<ActionPreventDamage>] }
 | { "_ActionPreventDamage": "IfElse", "args": [Condition, Array<ActionPreventDamage>, Array<ActionPreventDamage>] }
-| { "_ActionPreventDamage": "Unless", "args": [Condition, Array<ActionPreventDamage>] }
 | { "_ActionPreventDamage": "PreventAllButSomeOfThatDamage", "args": GameNumber }
 | { "_ActionPreventDamage": "PreventSomeOfThatDamage", "args": GameNumber }
 | { "_ActionPreventDamage": "PreventThatDamage" }
@@ -1380,7 +1379,6 @@ type ActionPreventDamage =
 | { "_ActionPreventDamage": "EachPlayerAction", "args": [Players, ActionPreventDamage] }
 | { "_ActionPreventDamage": "MayAction", "args": ActionPreventDamage }
 | { "_ActionPreventDamage": "MayActions", "args": Array<ActionPreventDamage> }
-| { "_ActionPreventDamage": "PlayerMayCost", "args": [Player, ActionPreventDamageCost] }
 | { "_ActionPreventDamage": "ChooseAPlayer", "args": Players }
 | { "_ActionPreventDamage": "Reflexive_PreventThatDamage_WhenDamageFromAPermanentSourceIsPreventedThisWay", "args": [Permanents, Actions] }
 | { "_ActionPreventDamage": "Reflexive_PreventThatDamage_WhenDamageIsPreventedThisWay", "args": Actions }
@@ -1395,8 +1393,6 @@ type ActionPreventDamage =
 | { "_ActionPreventDamage": "PutCounters", "args": Array<ActionPreventDamagePutCounters> }
 | { "_ActionPreventDamage": "RemoveCounters", "args": Array<ActionPreventDamageRemoveCounters> }
 | { "_ActionPreventDamage": "ShufflePermanentIntoLibrary", "args": Permanent };
-type ActionPreventDamageCost =
-| { "_ActionPreventDamageCost": "PayMana", "args": Array<ManaSymbol> };
 type ActionPreventDamagePutCounters =
 | { "_ActionPreventDamagePutCounters": "ACounterOfTypeOnPermanent", "args": [CounterType, Permanent] }
 | { "_ActionPreventDamagePutCounters": "NumberCountersOfTypeOnPermanent", "args": [GameNumber, CounterType, Permanent] }
@@ -6942,7 +6938,8 @@ type ReplacementActionWouldProduceMana =
 | { "_ReplacementActionWouldProduceMana": "WouldProduceMana_AddMana", "args": ManaProduce }
 | { "_ReplacementActionWouldProduceMana": "WouldProduceMana_ProduceMultiple", "args": GameNumber }
 | { "_ReplacementActionWouldProduceMana": "WouldProduceMana_ReplaceColor", "args": Color }
-| { "_ReplacementActionWouldProduceMana": "WouldProduceMana_ReplaceType", "args": ManaProduce };
+| { "_ReplacementActionWouldProduceMana": "WouldProduceMana_ReplaceType", "args": ManaProduce }
+| { "_ReplacementActionWouldProduceMana": "WouldProduceMana_ReplaceTypeChoice", "args": Array<TypeChoice> };
 type ReplacementActionWouldProliferate =
 | { "_ReplacementActionWouldProliferate": "ProliferateNumberTimes", "args": GameNumber };
 type ReplacementActionWouldPutAPermanentOnTheBattlefield =
@@ -7976,6 +7973,7 @@ type StaticLayer6Effect =
 | { "_StaticLayerEffect": "AddAbilityFromAnExiledHasable_MayOnlyActivateOnecEachTurn", "args": [CardsInExile, Array<CheckHasable>] }
 | { "_StaticLayerEffect": "AddAbilityFromAnExiledHasable", "args": [CardsInExile, Array<CheckHasable>] }
 | { "_StaticLayerEffect": "AddAbilityFromExiledHasable", "args": [CardInExile, Array<CheckHasable>] }
+| { "_StaticLayerEffect": "AddAbilityFromEachExiledHasable", "args": [CardsInExile, Array<CheckHasable>] }
 | { "_StaticLayerEffect": "AddActivatedAbilitiesAndMaySpendManaAsThoughItWasAnyColorToActivate", "args": ActivatedAbilities }
 | { "_StaticLayerEffect": "AddAbilityFromTopOfLibraryHasable", "args": Array<CheckHasable> }
 | { "_StaticLayerEffect": "AddAbilityAndLoseAllOtherAbilities", "args": Array<Rule> }
@@ -8039,6 +8037,7 @@ type StaticLayerEffect =
 | { "_StaticLayerEffect": "AddAbilityFromAnExiledHasable_MayOnlyActivateOnecEachTurn", "args": [CardsInExile, Array<CheckHasable>] }
 | { "_StaticLayerEffect": "AddAbilityFromAnExiledHasable", "args": [CardsInExile, Array<CheckHasable>] }
 | { "_StaticLayerEffect": "AddAbilityFromExiledHasable", "args": [CardInExile, Array<CheckHasable>] }
+| { "_StaticLayerEffect": "AddAbilityFromEachExiledHasable", "args": [CardsInExile, Array<CheckHasable>] }
 | { "_StaticLayerEffect": "AddActivatedAbilitiesAndMaySpendManaAsThoughItWasAnyColorToActivate", "args": ActivatedAbilities }
 | { "_StaticLayerEffect": "AddAbilityFromTopOfLibraryHasable", "args": Array<CheckHasable> }
 | { "_StaticLayerEffect": "AddAbilityAndLoseAllOtherAbilities", "args": Array<Rule> }
@@ -9186,6 +9185,8 @@ type Trigger =
 | { "_Trigger": "If", "args": [Condition, Trigger] };
 type TriggerAndActions =
 | [Trigger, Actions];
+type TypeChoice =
+| { "_TypeChoice": "TypeChoice", "args": [Permanents, ManaProduce] };
 type UnspentMana =
 | { "_UnspentMana": "AnyUnspentMana" }
 | { "_UnspentMana": "UnspentGreenMana" }

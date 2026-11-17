@@ -40372,6 +40372,7 @@ Card(
     EachPermanentRuleEffect(
       And([
         IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
         ToughnessIs(GreaterThan(PowerOfPermanent(Self_It))),
       ]),
       [
@@ -112224,6 +112225,7 @@ Card(
     EachPermanentRuleEffect(
       And([
         IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
         ToughnessIs(GreaterThan(PowerOfPermanent(Self_It))),
       ]),
       [
@@ -152603,8 +152605,14 @@ Card(
         SearchLibrary([
           FindNumberCardsOfType(
             Minus(
-              TheNumberOfCardsInPlayersHand(TheChosenPlayer),
-              TheNumberOfCardsInPlayersHand(You),
+              TheNumberOfPermanentsOnTheBattlefield(And([
+                IsCardtype(Land),
+                ControlledByAPlayer(SinglePlayer(TheChosenPlayer)),
+              ])),
+              TheNumberOfPermanentsOnTheBattlefield(And([
+                IsCardtype(Land),
+                ControlledByAPlayer(SinglePlayer(You)),
+              ])),
             ),
             IsLandType(Plains),
           ),
@@ -218384,6 +218392,7 @@ Card(
                 TokenCopyOfEachPermanent(
                   And([
                     IsCardtype(Creature),
+                    IsToken,
                     ControlledByAPlayer(SinglePlayer(You)),
                   ]),
                   NoTokenCopyEffects,
@@ -301802,7 +301811,7 @@ Card(
       ),
       ActionList([
         PlayerMayCost(
-          ControllerOfPermanent(Trigger_ThatPermanent),
+          ControllerOfPermanent(Trigger_ThatOtherPermanent),
           PayMana([
             ManaCostGeneric(2),
           ]),
@@ -301810,7 +301819,10 @@ Card(
         Unless(
           CostWasPaid,
           [
-            LoseLife(Integer(2)),
+            PlayerAction(
+              ControllerOfPermanent(Trigger_ThatOtherPermanent),
+              LoseLife(Integer(2)),
+            ),
           ],
         ),
       ]),
@@ -308226,7 +308238,13 @@ Card(
           ],
           UntilEndOfTurn,
         ),
-        PermanentDoesntUntapDuringControllersNextUntap(ThisPermanent),
+        CreatePermanentRuleEffectUntil(
+          ThisPermanent,
+          [
+            DoesntUntapDuringUntapStep,
+          ],
+          DuringPlayersNextUntapStep(You),
+        ),
         TapPermanent(ThisPermanent),
       ]),
     ),
@@ -345579,7 +345597,7 @@ Card(
         AdjustPTX(
           PlusX,
           Zero,
-          PowerOfTheExiledCreature,
+          TotalPowerOfExiledCards(TheExiledCards),
         ),
       ],
     ),
@@ -422871,7 +422889,7 @@ Card(
         DestroyPermanent(Ref_TargetPermanent),
         If(
           PermanentPassesFilter(
-            ThePermanentDestroyedThisWay,
+            Ref_TargetPermanent,
             ManaValueIs(LessThanOrEqualTo(Integer(3))),
           ),
           [
@@ -440885,6 +440903,7 @@ Card(
           Other(ThisPermanent),
           And([
             IsCardtype(Creature),
+            ControlledByAPlayer(SinglePlayer(You)),
             ToughnessIs(GreaterThan(PowerOfPermanent(Self_It))),
           ]),
         ])),
@@ -502065,6 +502084,7 @@ Card(
             ControlledByAPlayer(SinglePlayer(You)),
           ])),
           TargetPermanent(And([
+            IsPermanent,
             ControlledByAPlayer(Opponent),
             SharesACardtypeWithPermanentFromAmongCardtypes(
               Ref_TargetPermanent1,
@@ -502084,9 +502104,12 @@ Card(
           If(
             PermanentsChangedControlThisWay,
             [
-              DestroyEachPermanent(Or([
-                AttachedToPermanent(Ref_TargetPermanent1),
-                AttachedToPermanent(Ref_TargetPermanent2),
+              DestroyEachPermanent(And([
+                IsEnchantmentType(Aura),
+                Or([
+                  AttachedToPermanent(Ref_TargetPermanent1),
+                  AttachedToPermanent(Ref_TargetPermanent2),
+                ]),
               ])),
             ],
           ),
@@ -509695,6 +509718,7 @@ Card(
     EachPermanentRuleEffect(
       And([
         IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
         ToughnessIs(GreaterThan(PowerOfPermanent(Self_It))),
       ]),
       [
@@ -604708,15 +604732,15 @@ Card(
         IsCardtype(Creature),
       ])),
       ActionList([
-        CreatePreventDamageUntil(
-          CombatDamageWouldBeDealtByACreature(And([
+        ActionForEachPermanent(
+          And([
             IsAttacking,
             IsColor(Red),
             IsCardtype(Creature),
-          ])),
+          ]),
           [
             PlayerMayCost(
-              WouldDealDamage_ControllerOfDamageSource,
+              ControllerOfPermanent(EachablePermanent),
               PayMana([
                 ManaCostGeneric(2),
                 ManaCostR,
@@ -604725,11 +604749,16 @@ Card(
             Unless(
               CostWasPaid,
               [
-                PreventThatDamage,
+                CreatePreventDamageUntil(
+                  CombatDamageWouldBeDealtByCreature(EachablePermanent),
+                  [
+                    PreventThatDamage,
+                  ],
+                  UntilEndOfTurn,
+                ),
               ],
             ),
           ],
-          UntilEndOfTurn,
         ),
       ]),
     ),
@@ -604981,7 +605010,7 @@ Card(
   Rules: [
     TriggerA(
       WhenAPlayerCastsASpell(
-        SinglePlayer(You),
+        AnyPlayer,
         AnySpell,
       ),
       ActionList([
@@ -615041,7 +615070,13 @@ Card(
           ],
           UntilEndOfTurn,
         ),
-        PermanentDoesntUntapDuringControllersNextUntap(ThisPermanent),
+        CreatePermanentRuleEffectUntil(
+          ThisPermanent,
+          [
+            DoesntUntapDuringUntapStep,
+          ],
+          DuringPlayersNextUntapStep(You),
+        ),
         TapPermanent(ThisPermanent),
       ]),
     ),
@@ -620654,7 +620689,10 @@ Transforming(
           If(
             CostWasPaid,
             [
-              CreateValueX(NumCardsInExile(WasExiledWithPermanent(ThisPermanent))),
+              CreateValueX(NumCardsInExile(And([
+                IsCardtype(Creature),
+                TheExiledCards,
+              ]))),
               EachPlayerAction(
                 Opponent,
                 LoseLife(ValueX),
@@ -636090,8 +636128,8 @@ Card(
     PermanentLayerEffect(
       ThisPermanent,
       [
-        AddAbilityFromExiledHasable(
-          TheExiledCard,
+        AddAbilityFromEachExiledHasable(
+          TheExiledCards,
           [
             ActivatedAbility,
             TriggeredAbility,
@@ -636100,7 +636138,7 @@ Card(
         AdjustPTX(
           PlusX,
           PlusX,
-          ManaValueOfExiled(TheExiledCard),
+          TotalManaValueOfExiledCards(TheExiledCards),
         ),
       ],
     ),
@@ -711867,7 +711905,7 @@ Card(
         Unless(
           CostWasPaid,
           [
-            PutTopOfLibraryOnBottomOfLibrary,
+            MayAction(PutTopOfLibraryOnBottomOfLibrary),
           ],
         ),
       ]),
@@ -716702,7 +716740,7 @@ Card(
           ]),
           TapPermanent(Ref_TargetPermanent),
           MayAction(CreatePermanentLayerEffect(
-            Ref_TargetPermanent,
+            ThisPermanent,
             [
               IsACopyOfPermanent(
                 Ref_TargetPermanent,
@@ -717515,6 +717553,7 @@ Card(
           TokenCopyOfEachPermanent(
             And([
               IsCardtype(Creature),
+              ControlledByAPlayer(SinglePlayer(You)),
               IsCreatureTypeVariable(TheChosenCreatureType),
             ]),
             NoTokenCopyEffects,
@@ -744305,7 +744344,7 @@ Card(
         Unless(
           CostWasPaid,
           [
-            PutTopOfLibraryOnBottomOfLibrary,
+            MayAction(PutTopOfLibraryOnBottomOfLibrary),
           ],
         ),
       ]),
@@ -766269,7 +766308,10 @@ Card(
             ]),
           ),
         ),
-        SacrificeEachPermanent(TheUnchosenPermanents),
+        EachPlayerAction(
+          AnyPlayer,
+          SacrificeEachPermanent(TheUnchosenPermanents),
+        ),
       ]),
     ),
     If(
@@ -769575,7 +769617,7 @@ Card(
     PermanentLayerEffect(
       ThisPermanent,
       [
-        SetPowerAndToughnessBoth(ManaValueOfExiled(TheExiledCard)),
+        SetPowerAndToughnessBoth(TotalManaValueOfExiledCards(TheExiledCards)),
       ],
     ),
     TriggerA(
@@ -880799,33 +880841,36 @@ Card(
       ManaCostGeneric(3),
     ])),
     ReplaceWouldProduceMana(
-      TappingAPermanentWouldProduceMana(IsLandType(Plains)),
+      TappingAPermanentWouldProduceMana(Or([
+        IsLandType(Plains),
+        IsLandType(Island),
+        IsLandType(Swamp),
+        IsLandType(Mountain),
+        IsLandType(Forest),
+      ])),
       [
-        WouldProduceMana_ReplaceType(ManaProduceR),
-      ],
-    ),
-    ReplaceWouldProduceMana(
-      TappingAPermanentWouldProduceMana(IsLandType(Island)),
-      [
-        WouldProduceMana_ReplaceType(ManaProduceG),
-      ],
-    ),
-    ReplaceWouldProduceMana(
-      TappingAPermanentWouldProduceMana(IsLandType(Swamp)),
-      [
-        WouldProduceMana_ReplaceType(ManaProduceW),
-      ],
-    ),
-    ReplaceWouldProduceMana(
-      TappingAPermanentWouldProduceMana(IsLandType(Mountain)),
-      [
-        WouldProduceMana_ReplaceType(ManaProduceU),
-      ],
-    ),
-    ReplaceWouldProduceMana(
-      TappingAPermanentWouldProduceMana(IsLandType(Forest)),
-      [
-        WouldProduceMana_ReplaceType(ManaProduceB),
+        WouldProduceMana_ReplaceTypeChoice([
+          TypeChoice(
+            IsLandType(Plains),
+            ManaProduceR,
+          ),
+          TypeChoice(
+            IsLandType(Island),
+            ManaProduceG,
+          ),
+          TypeChoice(
+            IsLandType(Swamp),
+            ManaProduceW,
+          ),
+          TypeChoice(
+            IsLandType(Mountain),
+            ManaProduceU,
+          ),
+          TypeChoice(
+            IsLandType(Forest),
+            ManaProduceB,
+          ),
+        ]),
       ],
     ),
   ],
@@ -973058,8 +973103,8 @@ Card(
         AdjustPTXY(
           PlusX,
           PlusY,
-          PowerOfTheExiledCreature,
-          ToughnessOfTheExiledCreature,
+          TotalPowerOfExiledCards(TheExiledCards),
+          TotalToughnessOfExiledCards(TheExiledCards),
         ),
       ],
     ),
@@ -1046565,27 +1046610,31 @@ Card(
       ManaCostU,
     ])),
     ReplaceWouldProduceMana(
-      TappingAPermanentWouldProduceMana(IsLandType(Plains)),
+      TappingAPermanentWouldProduceMana(Or([
+        IsLandType(Plains),
+        IsLandType(Swamp),
+        IsLandType(Mountain),
+        IsLandType(Forest),
+      ])),
       [
-        WouldProduceMana_ReplaceType(ManaProduceR),
-      ],
-    ),
-    ReplaceWouldProduceMana(
-      TappingAPermanentWouldProduceMana(IsLandType(Swamp)),
-      [
-        WouldProduceMana_ReplaceType(ManaProduceG),
-      ],
-    ),
-    ReplaceWouldProduceMana(
-      TappingAPermanentWouldProduceMana(IsLandType(Mountain)),
-      [
-        WouldProduceMana_ReplaceType(ManaProduceW),
-      ],
-    ),
-    ReplaceWouldProduceMana(
-      TappingAPermanentWouldProduceMana(IsLandType(Forest)),
-      [
-        WouldProduceMana_ReplaceType(ManaProduceB),
+        WouldProduceMana_ReplaceTypeChoice([
+          TypeChoice(
+            IsLandType(Plains),
+            ManaProduceR,
+          ),
+          TypeChoice(
+            IsLandType(Swamp),
+            ManaProduceG,
+          ),
+          TypeChoice(
+            IsLandType(Mountain),
+            ManaProduceW,
+          ),
+          TypeChoice(
+            IsLandType(Forest),
+            ManaProduceB,
+          ),
+        ]),
       ],
     ),
   ],
@@ -1060271,9 +1060320,7 @@ Card(
           [
             IsACopyOfPermanent(
               ThatEnteringPermanent,
-              CopyEffects([
-                AddAbilityVariable(ThisAbility),
-              ]),
+              NoCopyEffects,
             ),
           ],
           UntilEndOfTurn,
@@ -1166487,16 +1166534,11 @@ Card(
         )),
       ]),
     ),
-    PermanentLayerEffect(
-      ThisPermanent,
-      [
-        SetPower(TheChosenNumber),
-        SetToughness(Minus(
-          Integer(7),
-          TheChosenNumber,
-        )),
-      ],
-    ),
+    CDA_Power(TheChosenNumber),
+    CDA_Toughness(Minus(
+      Integer(7),
+      TheChosenNumber,
+    )),
   ],
   CardPT: (
     Power: 0,
@@ -1217061,9 +1217103,12 @@ Card(
           [
             MayActions([
               AddManaWithModifiers(
-                And([
+                Or([
                   ManaProduceU,
-                  ManaProduceU,
+                  And([
+                    ManaProduceU,
+                    ManaProduceU,
+                  ]),
                 ]),
                 CanOnlySpendOnCumulativeUpkeepCosts,
               ),
@@ -1318750,6 +1318795,7 @@ Card(
     EachPermanentRuleEffect(
       And([
         IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
         ToughnessIs(GreaterThan(PowerOfPermanent(Self_It))),
       ]),
       [
@@ -1318759,6 +1318805,7 @@ Card(
     EachPermanentRuleEffect(
       And([
         IsCardtype(Creature),
+        ControlledByAPlayer(SinglePlayer(You)),
         ToughnessIs(GreaterThan(PowerOfPermanent(Self_It))),
       ]),
       [
@@ -1334587,8 +1334634,8 @@ Card(
     PermanentLayerEffect(
       ThisPermanent,
       [
-        AddAbilityFromExiledHasable(
-          TheExiledCard,
+        AddAbilityFromEachExiledHasable(
+          TheExiledCards,
           [
             ActivatedAbility,
           ],
@@ -1365764,7 +1365811,7 @@ Card(
         DestroyPermanent(Ref_TargetPermanent),
         If(
           PermanentPassesFilter(
-            ThePermanentDestroyedThisWay,
+            Ref_TargetPermanent,
             And([
               IsSupertype(Snow),
               IsCardtype(Land),
@@ -1397800,13 +1397847,11 @@ Card(
       ),
       ActionList([
         DestroyEachPermanent(And([
-          And([
-            IsUntapped,
-            IsNonCreatureType(Wall),
-            IsCardtype(Creature),
-          ]),
+          IsUntapped,
+          IsNonCreatureType(Wall),
+          IsCardtype(Creature),
           ControlledByAPlayer(SinglePlayer(Trigger_ThatPlayer)),
-          DidntAttackThisTurn,
+          Not(Trigger_ThosePermanents),
           Not(And([
             IsCardtype(Creature),
             NotControlledSinceBeginningOfTurn,
@@ -1464183,7 +1464228,7 @@ Card(
               RevealTopCardOfLibrary,
             ],
           ),
-          IfElse(
+          If(
             ACardWasRevealedThisWay(IsNamed(TheChosenName)),
             [
               PlayerAction(
@@ -1464191,6 +1464236,9 @@ Card(
                 PutTopOfLibraryInHand,
               ),
             ],
+          ),
+          If(
+            ACardWasRevealedThisWay(Not(IsNamed(TheChosenName))),
             [
               PlayerAction(
                 Ref_TargetPlayer,
@@ -1493603,7 +1493651,7 @@ Card(
             ],
           ),
           If(
-            ACardWasRevealedThisWay(IsCardtype(Land)),
+            ACardWasRevealedThisWay(Not(IsCardtype(Land))),
             [
               PlayerMayCost(
                 Ref_TargetPlayer,
@@ -1560705,8 +1560753,8 @@ TokenDefinition(
   Name: "Octopus Token",
   Token: TokenWithPT(
     PT(
-      1,
-      1,
+      8,
+      8,
     ),
     Colors([
       Blue,

@@ -497,6 +497,7 @@
     "AddManaWithModifiers(AnyManaColorOfPermanent({{PERMANENT}}), {{MANA_USE_MODIFIERS}})": "",
     "AddManaWithModifiers(AnyTwoDifferentManaColors, {{MANA_USE_MODIFIERS}})": "",
     "AddManaWithModifiers(LastNotedManaTypeAndAmount, {{MANA_USE_MODIFIERS}})": "",
+    "AddManaWithModifiers(Or([{{MANA_PRODUCE_SYMBOL}}, And({{MANA_PRODUCE_SYMBOL_LIST}})]), {{MANA_USE_MODIFIERS}})": "",
     "AddManaWithModifiers(Or({{MANA_PRODUCE_SYMBOL_LIST}}), {{MANA_USE_MODIFIERS}})": "",
     "AddManaWithModifiers({{MANA_PRODUCE_SYMBOL}}, {{MANA_USE_MODIFIERS}})": "",
     "AfterTheSecondMainPhaseThisTurnThereIsAnAdditionalCombatPhaseAndAnAdditionalMainPhaseWithAtTheBeginningOfCombatTrigger({{TOP_LEVEL_ACTIONS}})": "",
@@ -5132,7 +5133,6 @@
 
     "[MayActions([PreventSomeOfThatDamage({{NUMBER}})])]": "",
     "[If({{CONDITION}}, [RemoveCounters([ACounterOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})]), PreventThatDamage])]": "",
-    "[PlayerMayCost({{PLAYER}}, PayMana({{MANACOST}})), Unless(CostWasPaid, [PreventThatDamage])]": "",
     "[PreventAllButSomeOfThatDamage({{NUMBER}})]": "",
     "[PreventSomeOfThatDamage({{NUMBER}})]": "",
     "[PreventThatDamage, ChooseAPlayer({{PLAYERS}}), PlayerAction({{PLAYER}}, GainControlOfPermanent({{PERMANENT}}))]": "",
@@ -5506,6 +5506,8 @@
     "[WouldProduceMana_ReplaceColor({{COLOR}})]": "",
     "[WouldProduceMana_ReplaceColor(TheChosenColor)]": "",
     "[WouldProduceMana_ReplaceSpecificColorWith({{COLOR}}, {{MANA_PRODUCE_SYMBOL}})]": "",
+    "[WouldProduceMana_ReplaceTypeChoice([TypeChoice({{PERMANENTS}}, {{MANA_PRODUCE_SYMBOL}}), TypeChoice({{PERMANENTS}}, {{MANA_PRODUCE_SYMBOL}}), TypeChoice({{PERMANENTS}}, {{MANA_PRODUCE_SYMBOL}}), TypeChoice({{PERMANENTS}}, {{MANA_PRODUCE_SYMBOL}}), TypeChoice({{PERMANENTS}}, {{MANA_PRODUCE_SYMBOL}})])]": "",
+    "[WouldProduceMana_ReplaceTypeChoice([TypeChoice({{PERMANENTS}}, {{MANA_PRODUCE_SYMBOL}}), TypeChoice({{PERMANENTS}}, {{MANA_PRODUCE_SYMBOL}}), TypeChoice({{PERMANENTS}}, {{MANA_PRODUCE_SYMBOL}}), TypeChoice({{PERMANENTS}}, {{MANA_PRODUCE_SYMBOL}})])]": "",
     "[WouldProduceMana_ReplaceType(AnyManaColor)]": "",
     "[WouldProduceMana_ReplaceType({{MANA_PRODUCE_SYMBOL}})]": ""
   },
@@ -6162,6 +6164,7 @@
     "AddAbilityFromCardsInGraveyardsHasable({{CARDS_IN_GRAVEYARDS}}, {{CHECK_HASABLE_LIST}})": "",
     "AddAbilityFromCardsRemovedFromDraftWithCardsNamedHasable({{CARDS}}, {{QUOTED_NAMED_CARD}}, {{CHECK_HASABLE_LIST}})": "",
     "AddAbilityFromEachPermanentHasable({{PERMANENTS}}, {{CHECK_HASABLE_LIST}})": "",
+    "AddAbilityFromEachExiledHasable({{CARDS_IN_EXILE}}, {{CHECK_HASABLE_LIST}})": "",
     "AddAbilityFromExiledHasable({{CARD_IN_EXILE}}, {{CHECK_HASABLE_LIST}})": "",
     "AddAbilityFromPermanentHasable({{PERMANENT}}, {{CHECK_HASABLE_LIST}})": "",
     "AddAbilityFromTopOfLibraryHasable({{CHECK_HASABLE_LIST}})": "",
