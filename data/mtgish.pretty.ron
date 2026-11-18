@@ -3803,7 +3803,7 @@ Card(
   Rules: [
     Haunt,
     TriggerA(
-      WhenAPermanentEntersTheBattlefieldOrTheCreatureItHauntsDies(SinglePermanent(ThisPermanent)),
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       Targeted(
         [
           TargetPermanent(IsCardtype(Enchantment)),
@@ -3813,6 +3813,17 @@ Card(
         ]),
       ),
     ),
+    FromExile(TriggerA(
+      WhenAPermanentDies(SinglePermanent(TheCreatureHauntedByExiledCard(ThisExiledCard))),
+      Targeted(
+        [
+          TargetPermanent(IsCardtype(Enchantment)),
+        ],
+        ActionList([
+          DestroyPermanent(Ref_TargetPermanent),
+        ]),
+      ),
+    )),
   ],
   CardPT: (
     Power: 2,
@@ -82727,7 +82738,7 @@ Card(
       WhenACreatureAttacks(SinglePermanent(ThisPermanent)),
       ActionList([
         MayCost(SacrificeAPermanent(And([
-          Other(Trigger_ThatCreature),
+          Other(ThisPermanent),
           Or([
             IsCardtype(Creature),
             IsCardtype(Artifact),
@@ -94807,9 +94818,9 @@ Card(
       ]),
       ActionList([
         CreateFuturePreventDamage(
-          NextAmountOfDamageThatWouldBeDealtThisTurnByPermanent(
+          NextAmountOfDamageThatWouldBeDealtThisTurnToRecipient(
             Integer(1),
-            ThisPermanent,
+            Permanent(ThisPermanent),
           ),
           [
             PreventThatDamage,
@@ -114106,7 +114117,7 @@ Card(
     Flying,
     Haunt,
     TriggerA(
-      WhenAPermanentEntersTheBattlefieldOrTheCreatureItHauntsDies(SinglePermanent(ThisPermanent)),
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       ActionList([
         CreateTokens(
           [
@@ -114137,6 +114148,38 @@ Card(
         ),
       ]),
     ),
+    FromExile(TriggerA(
+      WhenAPermanentDies(SinglePermanent(TheCreatureHauntedByExiledCard(ThisExiledCard))),
+      ActionList([
+        CreateTokens(
+          [
+            NumberTokens(
+              Integer(2),
+              TokenWithPT(
+                PT(
+                  1,
+                  1,
+                ),
+                Colors([
+                  Black,
+                ]),
+                [],
+                [
+                  Creature,
+                ],
+                SubtypesList([
+                  Bat,
+                ]),
+                [
+                  Flying,
+                ],
+              ),
+            ),
+          ],
+          [],
+        ),
+      ]),
+    )),
   ],
   CardPT: (
     Power: 1,
@@ -133498,7 +133541,7 @@ Card(
     Flying,
     Haunt,
     TriggerA(
-      WhenAPermanentEntersTheBattlefieldOrTheCreatureItHauntsDies(SinglePermanent(ThisPermanent)),
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       Targeted(
         [
           TargetPlayer(AnyPlayer),
@@ -133512,6 +133555,21 @@ Card(
         ]),
       ),
     ),
+    FromExile(TriggerA(
+      WhenAPermanentDies(SinglePermanent(TheCreatureHauntedByExiledCard(ThisExiledCard))),
+      Targeted(
+        [
+          TargetPlayer(AnyPlayer),
+        ],
+        ActionList([
+          PlayerAction(
+            Ref_TargetPlayer,
+            LoseLife(Integer(2)),
+          ),
+          GainLife(Integer(2)),
+        ]),
+      ),
+    )),
   ],
   CardPT: (
     Power: 2,
@@ -140898,11 +140956,8 @@ Card(
       WhenAPlayerSacrificesAPermanent(
         Opponent,
         And([
-          Other(ThisPermanent),
-          And([
-            IsNonCardtype(Creature),
-            IsToken,
-          ]),
+          IsNonCardtype(Creature),
+          IsToken,
         ]),
       ),
       ActionList([
@@ -162413,10 +162468,10 @@ Card(
     ManaCostGeneric(8),
   ],
   Rules: [
-    PermanentRuleEffect(
-      ThisPermanent,
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(ThisPermanent),
       ],
     ),
   ],
@@ -239840,7 +239895,7 @@ Card(
             ManaProduceW,
             ManaProduceW,
           ]),
-          CanOnlySpendOnSpells(And([
+          CanOnlySpendOnSpells(Or([
             IsEnchantmentType(Aura),
             IsArtifactType(Equipment),
           ])),
@@ -307872,10 +307927,10 @@ Card(
           ],
           UntilEndOfTurn,
         ),
-        CreatePermanentRuleEffectUntil(
-          Ref_TargetPermanent,
+        CreateEachPermanentRuleEffectUntil(
+          IsCardtype(Creature),
           [
-            AllCreaturesMustBlockIt(IsCardtype(Creature)),
+            MustBlockAttacker(Ref_TargetPermanent),
           ],
           UntilEndOfTurn,
         ),
@@ -352391,7 +352446,7 @@ Card(
           CounterSpell(Ref_TargetSpell),
           PutCounters([
             NumberCountersOfTypeOnPermanent(
-              CounterSpell_ManaValueOfCounteredSpell,
+              ManaValueOfSpell(Ref_TargetSpell),
               PTCounter(
                 1,
                 1,
@@ -377046,7 +377101,7 @@ Card(
           Targeted(
             [
               TargetGraveyardCard(And([
-                Other(ThisSacrificedPermanent),
+                Other(ThisGraveyardCard),
                 IsPermanent,
                 InAPlayersGraveyard(SinglePlayer(You)),
               ])),
@@ -387577,7 +387632,7 @@ Card(
         ),
         GainControlOfEachPermanent(ThePermanentsChosenThisWay),
         CreateEachPermanentLayerEffect(
-          ThePermanentsGainedControlOfThisWay,
+          ThePermanentsChosenThisWay,
           [
             AddAbility([
               PermanentRuleEffect(
@@ -390272,10 +390327,10 @@ Card(
     ManaCostG,
   ],
   Rules: [
-    PermanentRuleEffect(
-      ThisPermanent,
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(ThisPermanent),
       ],
     ),
   ],
@@ -420208,7 +420263,7 @@ Card(
   Rules: [
     Haunt,
     TriggerA(
-      WhenAPermanentEntersTheBattlefieldOrTheCreatureItHauntsDies(SinglePermanent(ThisPermanent)),
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       Targeted(
         [
           TargetGraveyardCard(And([
@@ -420221,6 +420276,20 @@ Card(
         ]),
       ),
     ),
+    FromExile(TriggerA(
+      WhenAPermanentDies(SinglePermanent(TheCreatureHauntedByExiledCard(ThisExiledCard))),
+      Targeted(
+        [
+          TargetGraveyardCard(And([
+            IsCardtype(Creature),
+            InAPlayersGraveyard(SinglePlayer(You)),
+          ])),
+        ],
+        ActionList([
+          PutGraveyardCardIntoHand(Ref_TargetGraveyardCard),
+        ]),
+      ),
+    )),
   ],
   CardPT: (
     Power: 3,
@@ -519834,10 +519903,10 @@ Card(
             ),
           ],
         ),
-        PermanentRuleEffect(
-          HostPermanent,
+        EachPermanentRuleEffect(
+          IsCardtype(Creature),
           [
-            AllCreaturesMustBlockIt(IsCardtype(Creature)),
+            MustBlockAttacker(HostPermanent),
           ],
         ),
       ],
@@ -546229,10 +546298,10 @@ Card(
     ManaCostG,
   ],
   Rules: [
-    PermanentRuleEffect(
-      ThisPermanent,
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(ThisPermanent),
       ],
     ),
     Scavenge(PayMana([
@@ -555333,7 +555402,7 @@ Card(
     Flying,
     Haunt,
     TriggerA(
-      WhenAPermanentEntersTheBattlefieldOrTheCreatureItHauntsDies(SinglePermanent(ThisPermanent)),
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       ActionList([
         CreateEachPermanentLayerEffectUntil(
           And([
@@ -555350,6 +555419,24 @@ Card(
         ),
       ]),
     ),
+    FromExile(TriggerA(
+      WhenAPermanentDies(SinglePermanent(TheCreatureHauntedByExiledCard(ThisExiledCard))),
+      ActionList([
+        CreateEachPermanentLayerEffectUntil(
+          And([
+            Other(Trigger_ThatPermanent),
+            IsCardtype(Creature),
+          ]),
+          [
+            SetPT(PT(
+              1,
+              1,
+            )),
+          ],
+          UntilEndOfTurn,
+        ),
+      ]),
+    )),
   ],
   CardPT: (
     Power: 4,
@@ -604838,29 +604925,17 @@ Card(
   ],
   Rules: [
     TriggerA(
-      WhenAnyNumberOfGenericCardsArePutIntoExileFromAPlayersHand(SinglePlayer(You)),
-      ActionList([
-        PutCounters([
-          NumberCountersOfTypeOnPermanent(
-            Trigger_AmountOfCards,
-            PTCounter(
-              1,
-              1,
-            ),
-            ThisPermanent,
-          ),
-        ]),
+      Or([
+        WhenAnyNumberOfGenericCardsArePutIntoExileFromAPlayersHand(SinglePlayer(You)),
+        WhenASpellOrAbilityExilesAnyNumberOfPermanents(
+          ControlledByAPlayer(SinglePlayer(You)),
+          AnyPermanent,
+        ),
       ]),
-    ),
-    TriggerA(
-      WhenASpellOrAbilityExilesAnyNumberOfPermanents(
-        ControlledByAPlayer(SinglePlayer(You)),
-        AnyPermanent,
-      ),
       ActionList([
         PutCounters([
           NumberCountersOfTypeOnPermanent(
-            WhenASpellOrAbilityExilesAnyNumberOfPermanents_AmountOfPermanents,
+            Trigger_ThatMuch,
             PTCounter(
               1,
               1,
@@ -646282,9 +646357,9 @@ Card(
             Ref_TargetPermanent,
             UntilEndOfTurn,
           ),
-          UntapPermanent(ThePermanentGainedControlOfThisWay),
+          UntapPermanent(Trigger_ThatPermanent),
           CreatePermanentLayerEffectUntil(
-            ThePermanentGainedControlOfThisWay,
+            Trigger_ThatPermanent,
             [
               AddAbility([
                 Haste,
@@ -646295,7 +646370,7 @@ Card(
           CreateFutureTrigger(
             AtTheBeginningOfTheNextEndStep,
             ActionList([
-              SacrificePermanent(ThePermanentGainedControlOfThisWay),
+              SacrificePermanent(Ref_TargetPermanent),
             ]),
           ),
         ]),
@@ -646309,9 +646384,9 @@ Card(
             Ref_TargetPermanent,
             UntilEndOfTurn,
           ),
-          UntapPermanent(ThePermanentGainedControlOfThisWay),
+          UntapPermanent(Ref_TargetPermanent),
           CreatePermanentLayerEffectUntil(
-            ThePermanentGainedControlOfThisWay,
+            Ref_TargetPermanent,
             [
               AddAbility([
                 Haste,
@@ -649540,10 +649615,10 @@ Card(
         ]),
       ],
     ),
-    PermanentRuleEffect(
-      HostPermanent,
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(HostPermanent),
       ],
     ),
     UmbraArmor,
@@ -695926,6 +696001,21 @@ Card(
           ThePermanentChosenByPlayerThisWay(You),
           ThePermanentChosenByPlayerThisWay(Ref_TargetPlayer),
         ),
+        ChooseAPermanent(APermanentWithTheHighestManaValue(And([
+          IsCardtype(Artifact),
+          ControlledByAPlayer(SinglePlayer(You)),
+        ]))),
+        PlayerAction(
+          Ref_TargetPlayer,
+          ChooseAPermanent(APermanentWithTheHighestManaValue(And([
+            IsCardtype(Artifact),
+            ControlledByAPlayer(SinglePlayer(Ref_TargetPlayer)),
+          ]))),
+        ),
+        ExchangeControl(
+          ThePermanentChosenByPlayerThisWay(You),
+          ThePermanentChosenByPlayerThisWay(Ref_TargetPlayer),
+        ),
       ]),
     )),
   ],
@@ -704006,7 +704096,7 @@ Card(
               Artifact,
               Creature,
             ]),
-            SetPowerAndToughnessBoth(ManaValueOfPermanent(EachablePermanent)),
+            SetPowerAndToughnessBoth(ManaValueOfPermanent(Ref_TargetPermanent)),
           ],
           UntilEndOfTurn,
         ),
@@ -733073,7 +733163,7 @@ Card(
       ]),
       ActionList([
         SacrificeAPermanent(And([
-          Other(Trigger_ThatPermanent),
+          Other(ThisPermanent),
           AnyPermanent,
         ])),
       ]),
@@ -788533,10 +788623,10 @@ Card(
   ],
   Rules: [
     EnchantPermanent(IsCardtype(Creature)),
-    PermanentRuleEffect(
-      HostPermanent,
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(HostPermanent),
       ],
     ),
   ],
@@ -793235,7 +793325,7 @@ Vanguard(
           CostWasPaid,
           [
             ChooseCopyFromCopies,
-            IfElse(
+            If(
               CopiedCardPassesFilter(IsPermanent),
               [
                 MayAction(CreateTokens(
@@ -793245,6 +793335,12 @@ Vanguard(
                   [],
                 )),
               ],
+            ),
+            If(
+              CopiedCardPassesFilter(Or([
+                IsCardtype(Instant),
+                IsCardtype(Sorcery),
+              ])),
               [
                 MayAction(CastCopiedCardWithoutPaying),
               ],
@@ -807407,10 +807503,10 @@ Card(
     ManaCostGeneric(5),
   ],
   Rules: [
-    PermanentRuleEffect(
-      ThisPermanent,
+    EachPermanentRuleEffect(
+      IsCreatureType(Wall),
       [
-        AllCreaturesMustBlockIt(IsCreatureType(Wall)),
+        MustBlockAttacker(ThisPermanent),
       ],
     ),
     PreventDamage(
@@ -827066,7 +827162,10 @@ Card(
       ]),
       ActionList([
         CreateFuturePreventDamage(
-          NextTimeDamageWouldBeDealtThisTurnToRecipient(Player(You)),
+          NextTimeDamageWouldBeDealtThisTurnByPermanentToRecipient(
+            ThisPermanent,
+            Player(You),
+          ),
           [
             PreventThatDamage,
           ],
@@ -833804,9 +833903,9 @@ Card(
                 ]),
                 UntilEndOfTurn,
               ),
-              TapPermanent(ThePermanentGainedControlOfThisWay),
+              TapPermanent(Ref_TargetPermanent),
               SetAttackAssignmentOfCreature(
-                ThePermanentGainedControlOfThisWay,
+                Ref_TargetPermanent,
                 Player(Trigger_DefendingPlayer),
               ),
             ],
@@ -865201,22 +865300,13 @@ Card(
   Rules: [
     Menace,
     TriggerA(
-      WhenACreatureAttacks(SinglePermanent(ThisPermanent)),
-      ActionList([
-        SacrificeAPermanent(And([
-          Other(Trigger_ThatCreature),
-          Or([
-            IsCardtype(Creature),
-            IsCardtype(Land),
-          ]),
-        ])),
+      Or([
+        WhenACreatureAttacks(SinglePermanent(ThisPermanent)),
+        WhenACreatureBlocks(SinglePermanent(ThisPermanent)),
       ]),
-    ),
-    TriggerA(
-      WhenACreatureBlocks(SinglePermanent(ThisPermanent)),
       ActionList([
         SacrificeAPermanent(And([
-          Other(Trigger_ThatCreature),
+          Other(ThisPermanent),
           Or([
             IsCardtype(Creature),
             IsCardtype(Land),
@@ -886551,10 +886641,10 @@ Card(
     ManaCostG,
   ],
   Rules: [
-    PermanentRuleEffect(
-      ThisPermanent,
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(ThisPermanent),
       ],
     ),
     TriggerA(
@@ -894376,10 +894466,10 @@ Card(
     ManaCostG,
   ],
   Rules: [
-    PermanentRuleEffect(
-      ThisPermanent,
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(ThisPermanent),
       ],
     ),
     TriggerA(
@@ -909448,12 +909538,15 @@ Card(
       ManaCostG,
     ])),
     EachPermanentRuleEffect(
-      Or([
-        SinglePermanent(ThisPermanent),
-        SinglePermanent(HostPermanent),
-      ]),
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(ThisPermanent),
+      ],
+    ),
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
+      [
+        MustBlockAttacker(HostPermanent),
       ],
     ),
     PermanentLayerEffect(
@@ -922681,10 +922774,10 @@ Card(
   ],
   Rules: [
     Deathtouch,
-    PermanentRuleEffect(
-      ThisPermanent,
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(ThisPermanent),
       ],
     ),
   ],
@@ -943718,7 +943811,7 @@ Card(
   Rules: [
     Haunt,
     TriggerA(
-      WhenAPermanentEntersTheBattlefieldOrTheCreatureItHauntsDies(SinglePermanent(ThisPermanent)),
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       Targeted(
         [
           TargetPermanent(And([
@@ -943731,6 +943824,20 @@ Card(
         ]),
       ),
     ),
+    FromExile(TriggerA(
+      WhenAPermanentDies(SinglePermanent(TheCreatureHauntedByExiledCard(ThisExiledCard))),
+      Targeted(
+        [
+          TargetPermanent(And([
+            IsCardtype(Creature),
+            WasDealtDamageThisTurn,
+          ])),
+        ],
+        ActionList([
+          DestroyPermanent(Ref_TargetPermanent),
+        ]),
+      ),
+    )),
   ],
   CardPT: (
     Power: 2,
@@ -943936,7 +944043,7 @@ Card(
   Rules: [
     Haunt,
     TriggerA(
-      WhenAPermanentEntersTheBattlefieldOrTheCreatureItHauntsDies(SinglePermanent(ThisPermanent)),
+      WhenAPermanentEntersTheBattlefield(SinglePermanent(ThisPermanent)),
       Modal_ChooseOne([
         ActionList([
           CreateEachPermanentLayerEffectUntil(
@@ -943970,6 +944077,41 @@ Card(
         ]),
       ]),
     ),
+    FromExile(TriggerA(
+      WhenAPermanentDies(SinglePermanent(TheCreatureHauntedByExiledCard(ThisExiledCard))),
+      Modal_ChooseOne([
+        ActionList([
+          CreateEachPermanentLayerEffectUntil(
+            And([
+              IsCardtype(Creature),
+              ControlledByAPlayer(SinglePlayer(You)),
+            ]),
+            [
+              AdjustPT(
+                1,
+                1,
+              ),
+            ],
+            UntilEndOfTurn,
+          ),
+        ]),
+        ActionList([
+          CreateEachPermanentLayerEffectUntil(
+            And([
+              IsCardtype(Creature),
+              ControlledByAPlayer(Other(You)),
+            ]),
+            [
+              AdjustPT(
+                -1,
+                -1,
+              ),
+            ],
+            UntilEndOfTurn,
+          ),
+        ]),
+      ]),
+    )),
   ],
   CardPT: (
     Power: 1,
@@ -984475,7 +984617,7 @@ Card(
             AtTheBeginningOfPlayersNextUpkeep(Ref_TargetPlayer),
             ActionList([
               PutGraveyardCardOntoBattlefield(
-                ThisSacrificedPermanent,
+                ThisGraveyardCard,
                 [
                   EntersUnderPlayersControl(Ref_TargetPlayer),
                 ],
@@ -1004551,10 +1004693,10 @@ Card(
     ManaCostG,
   ],
   Rules: [
-    PermanentRuleEffect(
-      ThisPermanent,
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(ThisPermanent),
       ],
     ),
   ],
@@ -1039188,39 +1039330,13 @@ Card(
       ],
     ),
     TriggerA(
-      WhenAnyNumberOfGenericCardsArePutIntoExileFromAPlayersHand(SinglePlayer(You)),
-      ActionList([
-        CreateTokens(
-          [
-            TokenWithPT(
-              PT(
-                1,
-                1,
-              ),
-              Colors([
-                White,
-              ]),
-              [],
-              [
-                Creature,
-              ],
-              SubtypesList([
-                Spirit,
-              ]),
-              [
-                Flying,
-              ],
-            ),
-          ],
-          [],
+      Or([
+        WhenAnyNumberOfGenericCardsArePutIntoExileFromAPlayersHand(SinglePlayer(You)),
+        WhenASpellOrAbilityExilesAnyNumberOfPermanents(
+          ControlledByAPlayer(SinglePlayer(You)),
+          AnyPermanent,
         ),
       ]),
-    ),
-    TriggerA(
-      WhenASpellOrAbilityExilesAnyNumberOfPermanents(
-        ControlledByAPlayer(SinglePlayer(You)),
-        AnyPermanent,
-      ),
       ActionList([
         CreateTokens(
           [
@@ -1073833,10 +1073949,10 @@ Card(
           ],
           UntilEndOfTurn,
         ),
-        CreatePermanentRuleEffectUntil(
-          Ref_TargetPermanent,
+        CreateEachPermanentRuleEffectUntil(
+          IsCardtype(Creature),
           [
-            AllCreaturesMustBlockIt(IsCardtype(Creature)),
+            MustBlockAttacker(Ref_TargetPermanent),
           ],
           UntilEndOfTurn,
         ),
@@ -1158465,7 +1158581,7 @@ Transforming(
         ]),
         ActionList([
           MayCost(SacrificeAPermanent(And([
-            Other(Trigger_ThatPermanent),
+            Other(ThisPermanent),
             IsCardtype(Creature),
           ]))),
           If(
@@ -1163377,10 +1163493,10 @@ Card(
         NumCardsInGraveyardIs(GreaterThanOrEqualTo(Integer(7))),
       ),
       [
-        PermanentRuleEffect(
-          HostPermanent,
+        EachPermanentRuleEffect(
+          IsCardtype(Creature),
           [
-            AllCreaturesMustBlockIt(IsCardtype(Creature)),
+            MustBlockAttacker(HostPermanent),
           ],
         ),
       ],
@@ -1177881,10 +1177997,10 @@ Card(
     ManaCostG,
   ],
   Rules: [
-    PermanentRuleEffect(
-      ThisPermanent,
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(ThisPermanent),
       ],
     ),
     FromHand(Activated(
@@ -1275505,10 +1275621,10 @@ Card(
         NumCardsInGraveyardIs(GreaterThanOrEqualTo(Integer(7))),
       ),
       [
-        PermanentRuleEffect(
-          ThisPermanent,
+        EachPermanentRuleEffect(
+          IsCardtype(Creature),
           [
-            AllCreaturesMustBlockIt(IsCardtype(Creature)),
+            MustBlockAttacker(ThisPermanent),
           ],
         ),
       ],
@@ -1304731,7 +1304847,7 @@ Card(
       WhenAPermanentBecomesTapped(SinglePermanent(ThisPermanent)),
       ActionList([
         MayCost(SacrificeAPermanent(And([
-          Other(Trigger_ThatPermanent),
+          Other(ThisPermanent),
           Or([
             IsCardtype(Creature),
             IsCardtype(Artifact),
@@ -1319937,13 +1320053,13 @@ Card(
     ManaCostR,
   ],
   Rules: [
-    PermanentRuleEffect(
-      ThisPermanent,
+    EachPermanentRuleEffect(
+      And([
+        IsCardtype(Creature),
+        HasAbility(Flying),
+      ]),
       [
-        AllCreaturesMustBlockIt(And([
-          IsCardtype(Creature),
-          HasAbility(Flying),
-        ])),
+        MustBlockAttacker(ThisPermanent),
       ],
     ),
   ],
@@ -1325336,10 +1325452,10 @@ Card(
           TargetPermanent(IsCardtype(Creature)),
         ],
         ActionList([
-          CreatePermanentRuleEffectUntil(
-            Ref_TargetPermanent,
+          CreateEachPermanentRuleEffectUntil(
+            IsCardtype(Creature),
             [
-              AllCreaturesMustBlockIt(IsCardtype(Creature)),
+              MustBlockAttacker(Ref_TargetPermanent),
             ],
             UntilEndOfTurn,
           ),
@@ -1325400,10 +1325516,10 @@ Card(
     ManaCostG,
   ],
   Rules: [
-    PermanentRuleEffect(
-      ThisPermanent,
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(ThisPermanent),
       ],
     ),
   ],
@@ -1333901,10 +1334017,10 @@ Card(
         ]),
       ),
     ),
-    PermanentRuleEffect(
-      HostPermanent,
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(HostPermanent),
       ],
     ),
   ],
@@ -1411848,10 +1411964,10 @@ Card(
     ManaCostG,
   ],
   Rules: [
-    PermanentRuleEffect(
-      ThisPermanent,
+    EachPermanentRuleEffect(
+      IsCardtype(Creature),
       [
-        AllCreaturesMustBlockIt(IsCardtype(Creature)),
+        MustBlockAttacker(ThisPermanent),
       ],
     ),
     TriggerA(
@@ -1414631,7 +1414747,7 @@ Transforming(
         WhenACreatureAttacks(SinglePermanent(ThisPermanent)),
         ActionList([
           MayCost(SacrificeAPermanent(And([
-            Other(Trigger_ThatCreature),
+            Other(ThisPermanent),
             IsCardtype(Creature),
           ]))),
           If(
@@ -1492886,7 +1493002,7 @@ Card(
                 X,
                 TheTotalNumberOfCountersOfTypeAmongPermanents(
                   ChargeCounter,
-                  SinglePermanent(ThisSacrificedPermanent),
+                  SinglePermanent(ThisPermanent),
                 ),
               ),
               Colorless,

@@ -1615,7 +1615,6 @@ type CardInGraveyards =
 | { "_CardInGraveyards": "TheCardConjuredIntoGraveyardThisWay" }
 | { "_CardInGraveyards": "TopCardOfPlayersGraveyard", "args": Player }
 | { "_CardInGraveyards": "Ref_TargetGraveyardCardInPlayersGraveyard", "args": Player }
-| { "_CardInGraveyards": "ThisSacrificedPermanent" }
 | { "_CardInGraveyards": "TheCardPutIntoGraveyardThisWay" }
 | { "_CardInGraveyards": "TheLastGraveyardCardChosenThisWay" }
 | { "_CardInGraveyards": "ThePermanentSacrificedThisWay" }
@@ -3779,8 +3778,7 @@ type FutureEventPreventDamage =
 | { "_FutureEventPreventDamage": "NextTimeDamageWouldBeDealtThisTurnByPermanentToRecipient", "args": [Permanent, SingleDamageRecipient] }
 | { "_FutureEventPreventDamage": "NextTimeDamageWouldBeDealtThisTurnBySource", "args": SingleDamageSource }
 | { "_FutureEventPreventDamage": "NextTimeDamageWouldBeDealtThisTurnBySourceToARecipient", "args": [SingleDamageSource, DamageRecipientsList] }
-| { "_FutureEventPreventDamage": "NextTimeDamageWouldBeDealtThisTurnBySourceToRecipient", "args": [SingleDamageSource, SingleDamageRecipient] }
-| { "_FutureEventPreventDamage": "NextTimeDamageWouldBeDealtThisTurnToRecipient", "args": SingleDamageRecipient };
+| { "_FutureEventPreventDamage": "NextTimeDamageWouldBeDealtThisTurnBySourceToRecipient", "args": [SingleDamageSource, SingleDamageRecipient] };
 type FuturePlayerEffect =
 | { "_FuturePlayerEffect": "CanCastOnlyOneMoreSpellThisTurn" }
 | { "_FuturePlayerEffect": "MayCastTheirNextSpellThisTurnWithoutPaying", "args": Spells }
@@ -3898,7 +3896,6 @@ type GameNumber =
 | { "_GameNumber": "AmountOfUnspentManaPlayerHas", "args": Player }
 | { "_GameNumber": "AsLoseUnspentMana_AmountOfUnspentMana" }
 | { "_GameNumber": "BasePowerOfPermanent", "args": Permanent }
-| { "_GameNumber": "CounterSpell_ManaValueOfCounteredSpell" }
 | { "_GameNumber": "CurrentStake" }
 | { "_GameNumber": "DamageDealtByResolvedSpell", "args": Spell }
 | { "_GameNumber": "DamageDealtToAnyPlayerThisTurn", "args": Players }
@@ -4304,7 +4301,6 @@ type GameNumber =
 | { "_GameNumber": "WhenAPlayerCastsASpell_ThatSpellX" }
 | { "_GameNumber": "WhenAPlayerDiscardsCardsForTheFirstTimeEachTurn_AmountOfCardsDiscarded" }
 | { "_GameNumber": "WhenAPlayerPaysLife_AmountOfLifePaid" }
-| { "_GameNumber": "WhenASpellOrAbilityExilesAnyNumberOfPermanents_AmountOfPermanents" }
 | { "_GameNumber": "WhenAnyNumberOfCreaturesDealCombatDamageToAnyNumberOfPlayers_AmountOfOpponentsDealtDamage" }
 | { "_GameNumber": "WhenAnyNumberOfPermanentEnterTheBattlefieldUnderControl_AmountOfPermanents" }
 | { "_GameNumber": "WhenPermanentsDealDamageToPlayers_NumPlayersDealtDamage" }
@@ -4864,7 +4860,6 @@ type Permanent =
 | { "_Permanent": "WouldDealDamage_DamageRecipientPermanent" }
 | { "_Permanent": "ThePermanentAttachedToThisWay" }
 | { "_Permanent": "ThisPermanentOrThisCommandCard" }
-| { "_Permanent": "ThePermanentGainedControlOfThisWay" }
 | { "_Permanent": "ThePermanentThisSpellBecame" }
 | { "_Permanent": "Ref_TargetPermanent5" }
 | { "_Permanent": "ThePermanentPutOnTheBattlefieldByPlayerThisWay", "args": Player }
@@ -4887,7 +4882,6 @@ type Permanent =
 | { "_Permanent": "ThePermanentExiledThisWay" }
 | { "_Permanent": "Ref_TargetPermanentOfPlayersChoice" }
 | { "_Permanent": "TheCreatureBolsteredThisWay" }
-| { "_Permanent": "ThisSacrificedPermanent" }
 | { "_Permanent": "ThePermanentThatCreatedIt" }
 | { "_Permanent": "TheSecondChosenPermanent" }
 | { "_Permanent": "TheCreaturePairedWithPermanent", "args": Permanent }
@@ -4957,7 +4951,6 @@ type PermanentRule =
 | { "_PermanentRule": "AbilitiesCantBeActivated" }
 | { "_PermanentRule": "CantGainAbility", "args": CheckHasable }
 | { "_PermanentRule": "AbilitiesOfTypeCantBeActivated", "args": ActivatedAbilities }
-| { "_PermanentRule": "AllCreaturesMustBlockIt", "args": Permanents }
 | { "_PermanentRule": "AssignsCombatDamageAsThoughNotBlocked" }
 | { "_PermanentRule": "AssignsNoCombatDamage" }
 | { "_PermanentRule": "AssignsToughnessCombatDamage" }
@@ -9004,7 +8997,6 @@ type Trigger =
 | { "_Trigger": "WhenAnyNumberOfCreaturesBlock", "args": Permanents }
 | { "_Trigger": "AtTheEndOfCombat" }
 | { "_Trigger": "AtTheEndOfTheFirstCombat" }
-| { "_Trigger": "WhenAPermanentEntersTheBattlefieldOrTheCreatureItHauntsDies", "args": Permanents }
 | { "_Trigger": "WhenAnyNumberOfPermanentsEnterTheBattlefieldUnderAPlayersControl", "args": [Permanents, Players] }
 | { "_Trigger": "WhenAnyNumberOfPermanentsEnterTheBattlefield", "args": Permanents }
 | { "_Trigger": "WhenAPermanentEntersTheBattlefield", "args": Permanents }

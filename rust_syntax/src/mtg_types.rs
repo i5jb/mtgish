@@ -1865,7 +1865,6 @@ pub enum PermanentRule {
   AbilitiesCantBeActivated,
   CantGainAbility(CheckHasable),
   AbilitiesOfTypeCantBeActivated(Box<ActivatedAbilities>),
-  AllCreaturesMustBlockIt(Box<Permanents>),
   AssignsCombatDamageAsThoughNotBlocked,
   AssignsNoCombatDamage,
   AssignsToughnessCombatDamage,
@@ -4075,7 +4074,6 @@ pub enum FutureEventPreventDamage {
   NextTimeDamageWouldBeDealtThisTurnBySource(Box<SingleDamageSource>),
   NextTimeDamageWouldBeDealtThisTurnBySourceToARecipient(Box<SingleDamageSource>, Box<DamageRecipientsList>),
   NextTimeDamageWouldBeDealtThisTurnBySourceToRecipient(Box<SingleDamageSource>, Box<SingleDamageRecipient>),
-  NextTimeDamageWouldBeDealtThisTurnToRecipient(Box<SingleDamageRecipient>),
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -5551,7 +5549,6 @@ pub enum Permanent {
   WouldDealDamage_DamageRecipientPermanent,
   ThePermanentAttachedToThisWay,
   ThisPermanentOrThisCommandCard,
-  ThePermanentGainedControlOfThisWay,
   ThePermanentThisSpellBecame,
   Ref_TargetPermanent5,
   ThePermanentPutOnTheBattlefieldByPlayerThisWay(Box<Player>),
@@ -5574,7 +5571,6 @@ pub enum Permanent {
   ThePermanentExiledThisWay,
   Ref_TargetPermanentOfPlayersChoice,
   TheCreatureBolsteredThisWay,
-  ThisSacrificedPermanent,
   ThePermanentThatCreatedIt,
   TheSecondChosenPermanent,
   TheCreaturePairedWithPermanent(Box<Permanent>),
@@ -5890,7 +5886,6 @@ pub enum GameNumber {
   AmountOfUnspentManaPlayerHas(Box<Player>),
   AsLoseUnspentMana_AmountOfUnspentMana,
   BasePowerOfPermanent(Box<Permanent>),
-  CounterSpell_ManaValueOfCounteredSpell,
   CurrentStake,
   DamageDealtByResolvedSpell(Box<Spell>),
   DamageDealtToAnyPlayerThisTurn(Box<Players>),
@@ -6296,7 +6291,6 @@ pub enum GameNumber {
   WhenAPlayerCastsASpell_ThatSpellX,
   WhenAPlayerDiscardsCardsForTheFirstTimeEachTurn_AmountOfCardsDiscarded,
   WhenAPlayerPaysLife_AmountOfLifePaid,
-  WhenASpellOrAbilityExilesAnyNumberOfPermanents_AmountOfPermanents,
   WhenAnyNumberOfCreaturesDealCombatDamageToAnyNumberOfPlayers_AmountOfOpponentsDealtDamage,
   WhenAnyNumberOfPermanentEnterTheBattlefieldUnderControl_AmountOfPermanents,
   WhenPermanentsDealDamageToPlayers_NumPlayersDealtDamage,
@@ -7589,7 +7583,6 @@ pub enum CardInGraveyards {
   TheCardConjuredIntoGraveyardThisWay,
   TopCardOfPlayersGraveyard(Box<Player>),
   Ref_TargetGraveyardCardInPlayersGraveyard(Box<Player>),
-  ThisSacrificedPermanent,
   TheCardPutIntoGraveyardThisWay,
   TheLastGraveyardCardChosenThisWay,
   ThePermanentSacrificedThisWay,
@@ -11185,7 +11178,6 @@ pub enum Trigger {
   AtTheEndOfTheFirstCombat,
 
   // enter_battlefield
-  WhenAPermanentEntersTheBattlefieldOrTheCreatureItHauntsDies(Box<Permanents>),
   WhenAnyNumberOfPermanentsEnterTheBattlefieldUnderAPlayersControl(Box<Permanents>, Box<Players>),
   WhenAnyNumberOfPermanentsEnterTheBattlefield(Box<Permanents>),
   WhenAPermanentEntersTheBattlefield(Box<Permanents>),

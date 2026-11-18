@@ -2948,8 +2948,7 @@
     "NextTimeDamageWouldBeDealtThisTurnByPermanentToRecipient({{PERMANENT}}, {{SINGLE_DAMAGE_RECIPIENT_FILTER}})": "",
     "NextTimeDamageWouldBeDealtThisTurnBySource({{SINGLE_DAMAGE_SOURCE_FILTER}})": "",
     "NextTimeDamageWouldBeDealtThisTurnBySourceToARecipient({{SINGLE_DAMAGE_SOURCE_FILTER}}, {{DAMAGE_RECIPIENTS_LIST}})": "",
-    "NextTimeDamageWouldBeDealtThisTurnBySourceToRecipient({{SINGLE_DAMAGE_SOURCE_FILTER}}, {{SINGLE_DAMAGE_RECIPIENT_FILTER}})": "",
-    "NextTimeDamageWouldBeDealtThisTurnToRecipient({{SINGLE_DAMAGE_RECIPIENT_FILTER}})": "",
+    "NextTimeDamageWouldBeDealtThisTurnBySourceToRecipient({{SINGLE_DAMAGE_SOURCE_FILTER}}, {{SINGLE_DAMAGE_RECIPIENT_FILTER}})": ""
   },
   "{{FUTURE_REPLACABLE_EVENT[WouldDealDamage]}}": {
     "NextAmountOfDamageThatWouldBeDealtThisTurnBySourceToARecipient({{NUMBER}}, {{SINGLE_DAMAGE_SOURCE_FILTER}}, {{DAMAGE_RECIPIENTS_LIST}})": "",
@@ -3068,7 +3067,6 @@
     "ThePermanentSacrificedThisWay": "",
     "TheSacrificedPermanent": "",
     "ThisGraveyardCard": "",
-    "ThisSacrificedPermanent": "",
     "TopCardOfPlayersGraveyard({{PLAYER}})": "",
     "TopCardOfTypeOfPlayersGraveyard({{CARDS}}, {{PLAYER}})": "",
     "TheBottomCardOfPlayersGraveyard({{PLAYER}})": "",
@@ -3581,7 +3579,6 @@
 
     "TheTotalNumberOfCardsInAmongPlayersStartingDecks({{PLAYERS}})": "",
     "ItsManaValue": "",
-    "CounterSpell_ManaValueOfCounteredSpell": "",
     "TheNumberOfSpellsAndAbilitiesCounteredThisWay": "",
     "TheNumberOfSpellsCounteredThisWay": "",
 
@@ -3929,7 +3926,6 @@
     "WhenAPlayerCastsASpell_ThatSpellX": "",
     "WhenAPlayerDiscardsCardsForTheFirstTimeEachTurn_AmountOfCardsDiscarded": "",
     "WhenAPlayerPaysLife_AmountOfLifePaid": "",
-    "WhenASpellOrAbilityExilesAnyNumberOfPermanents_AmountOfPermanents": "",
     "WhenAnyNumberOfCreaturesDealCombatDamageToAnyNumberOfPlayers_AmountOfOpponentsDealtDamage": "",
     "WhenAnyNumberOfPermanentEnterTheBattlefieldUnderControl_AmountOfPermanents": "",
     "WhenPermanentsDealDamageToPlayers_NumPlayersDealtDamage": "",
@@ -4192,7 +4188,6 @@
 
     "AbilitiesCantBeActivated": "",
     "AbilitiesOfTypeCantBeActivated({{ACTIVATED_ABILITIES}})": "",
-    "AllCreaturesMustBlockIt({{PERMANENTS}})": "",
     "AssignsCombatDamageAsThoughPowerWerePositive": "",
     "AssignsCombatDamageAsThoughNotBlocked": "",
     "AssignsNoCombatDamage": "",
@@ -4354,7 +4349,6 @@
     "ThePermanentChosenThisWay": "",
     "ThePermanentCloakedThisWay": "",
     "ThePermanentDestroyedThisWay": "",
-    "ThePermanentGainedControlOfThisWay": "",
     "ThePermanentPhasedOutThisWay": "",
     "ThePermanentPutOnTheBattlefieldByPlayerThisWay({{PLAYER}})": "",
     "ThePermanentPutOnTheBattlefieldThisWay": "",
@@ -4376,7 +4370,6 @@
     "ThisGuest": "",
     "ThisPermanent": "",
     "ThisPermanentOrThisCommandCard": "",
-    "ThisSacrificedPermanent": "",
     "Trigger_ThatArtifact": "",
     "Trigger_ThatCreature": "",
     "Trigger_ThatCreatureOrPlaneswalker": "",

@@ -317,7 +317,6 @@
     "WhenAPermanentEntersTheBattlefieldFromAnywhereOtherThanTheirHand({{PERMANENTS}})": "",
     "WhenAPermanentEntersTheBattlefieldFromExile({{PERMANENTS}})": "",
     "WhenAPermanentEntersTheBattlefieldFromExileOrWasCastFromExile({{PERMANENTS}})": "",
-    "WhenAPermanentEntersTheBattlefieldOrTheCreatureItHauntsDies({{PERMANENTS}})": "",
     "WhenAPermanentEntersTheBattlefieldTapped({{PERMANENTS}})": "",
     "WhenAPermanentEntersTheBattlefieldTransformed({{PERMANENTS}})": "",
     "WhenAPermanentEntersTheBattlefieldUnderAPlayersControl({{PERMANENTS}}, {{PLAYERS}})": "",
