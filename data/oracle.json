@@ -8448,6 +8448,20 @@
     ]
   },
   {
+    "name": "Alena, Frontline Rush",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Alena, Frontline Rush",
+        "manaCost": "{1}{R}",
+        "type": "Legendary Creature — Human Scout",
+        "text": "Partner with Halana, Covering Fire\nFirst strike\nAt the beginning of combat on your turn, another target creature you control gets +1/+0 and gains haste until end of turn.",
+        "power": "1",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Alena, Kessig Trapper",
     "layout": "single",
     "cards": [
@@ -8526,6 +8540,20 @@
         "text": "First strike\nWhenever Alesha attacks, put a +1/+1 counter on it.\nRaid — At the beginning of your end step, if you attacked this turn, return target creature card with mana value less than or equal to Alesha's power from your graveyard to the battlefield.",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Alesha, Who Makes History",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Alesha, Who Makes History",
+        "manaCost": "{2}{R}{W}{B}",
+        "type": "Legendary Creature — Human Warrior",
+        "text": "Rulebreaker — A deck with Alesha as commander can have trans characters of any color identity and any basic land cards.\nFirst strike\nWhenever Alesha enters or attacks, return target creature card with power 2 or less from your graveyard to the battlefield. If she is attacking, you may have that creature enter tapped and attacking.",
+        "power": "4",
+        "toughness": "3"
       }
     ]
   },
@@ -21285,6 +21313,19 @@
     ]
   },
   {
+    "name": "Ashiok, Genderfear",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ashiok, Genderfear",
+        "manaCost": "{2}{U}{B}",
+        "type": "Legendary Planeswalker — Ashiok",
+        "text": "During your turn, you may cast cards your opponents own in exile with deceit counters on them by spending loyalty from planeswalkers you control as though it were mana of any color.\n[+1]: Exile the top two cards of each opponents' library. Put a deceit counter on each card exiled this way.\n[−3]: Exile target creature and put a deceit counter on it. Ashiok can be your commander.",
+        "loyalty": "4"
+      }
+    ]
+  },
+  {
     "name": "Ashiok, Nightmare Muse",
     "layout": "single",
     "cards": [
@@ -30337,6 +30378,20 @@
         "text": "Villain spells you cast cost {1} less to cast.\nWhenever another Villain you control enters, you may have it connive. Do this only once each turn. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",
         "power": "2",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Baron Vladimir Harkonnen",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Baron Vladimir Harkonnen",
+        "manaCost": "{3}{U}{B}{R}",
+        "type": "Legendary Creature — Human Noble",
+        "text": "Whenever an opponent sacrifices a nontoken creature, you draw a card.\n{T}, Sacrifice another legendary creature: Target opponent sacrifices a nontoken creature of their choice and loses 3 life.",
+        "power": "3",
+        "toughness": "5"
       }
     ]
   },
@@ -53700,7 +53755,8 @@
         "name": "Byode, Inverse Sun",
         "manaCost": "{2}{U}{B}",
         "type": "Legendary Universewalker — Byode",
-        "text": "[+2]: Mill three cards, then return any number of cards from different Universes milled this way from your graveyard to your hand.\n[-X]: Choose a Universe you haven't chosen this way this game. You may cast a spell from that Universe with mana value X or less from your hand without paying its mana cost.\nByode, Inverse Sun can be your commander.\nYour deck can include Universes Beyond cards of any color identity."
+        "text": "[+2]: Mill three cards, then return any number of cards from different Universes milled this way from your graveyard to your hand.\n[-X]: Choose a Universe you haven't chosen this way this game. You may cast a spell from that Universe with mana value X or less from your hand without paying its mana cost.\nByode, Inverse Sun can be your commander.\nYour deck can include Universes Beyond cards of any color identity.",
+        "loyalty": "4"
       }
     ]
   },
@@ -63392,6 +63448,19 @@
     ]
   },
   {
+    "name": "Chandra, Pride of Avishkar",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Chandra, Pride of Avishkar",
+        "manaCost": "{3}{R}{R}",
+        "type": "Legendary Planeswalker — Chandra",
+        "text": "Gruulfriends — Chandra, Pride of Avishkar can be your commander. If she is, a Nissa card can also be your commander.\n[+1]: Create a 3/1 red Elemental creature token, then Elementals you control gain haste until end of turn.\n[−2]: Chandra deals 3 damage to target creature or planeswalker.\n[−7]: You get an emblem with \"Once during each of your turns, you may cast a spell without paying its mana cost.\"",
+        "loyalty": "4"
+      }
+    ]
+  },
+  {
     "name": "Chandra, Pyrogenius",
     "layout": "single",
     "cards": [
@@ -63609,6 +63678,20 @@
         "manaCost": "{1}{B}",
         "type": "Enchantment — Aura",
         "text": "Flash\nReplicate {2} (When you cast this spell, copy it for each time you paid its replicate cost. You may choose new targets for the copies. Copies become tokens.)\nEnchant creature\nWhen enchanted creature dies, return it to the battlefield under your control."
+      }
+    ]
+  },
+  {
+    "name": "Chani, Blade of Sietch Tabr",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Chani, Blade of Sietch Tabr",
+        "manaCost": "{3}{R}{G}",
+        "type": "Legendary Creature — Human Warrior",
+        "text": "Double strike\nYou may play an additional land on each of your turns.\nLandfall — Whenever a land you control enters, put a +1/+1 counter on target creature. If that land is a Desert, that creature gains vigilance, hexproof, and haste until end of turn.",
+        "power": "3",
+        "toughness": "3"
       }
     ]
   },
@@ -81072,6 +81155,20 @@
         "manaCost": "{1}{R}",
         "type": "Instant",
         "text": "Target creature gains double strike until end of turn.\nWhen you roll a natural 20, return this card from your graveyard to your hand. (A natural 20 is a roll that displays 20 on the die.)"
+      }
+    ]
+  },
+  {
+    "name": "Critter, Behind the Camera",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Critter, Behind the Camera",
+        "manaCost": "{G}{U}{R}",
+        "type": "Legendary Creature — Critter",
+        "text": "When Critter enters, ereate an Equipment token named Camera with \"Whenever equipped creature attacks, surveil 1\" and equip {1}. Attach it to Critter.\nWhenever an equipped creature you control deals combat damage to a player, exile target card from that player's graveyard with a recording counter on it.\n{T}, Sacrifice an Equipment: You may cast a card from exile with a recording counter on it without paying its mana cost.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -133711,6 +133808,20 @@
     ]
   },
   {
+    "name": "Felothar, Rights and Wrongs",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Felothar, Rights and Wrongs",
+        "manaCost": "{3}{W}{B}{G}",
+        "type": "Legendary Creature — Human Warrior",
+        "text": "Menace, trample, lifelink\nWill of the council — At the beginning of combat on your turn, starting with you, each player votes for war or peace. For each war vote, put a +1/+1 counter on Felothar. For each peace vote, you draw a card and lose 1 life. Felothar attacks a player who voted for war this turn each combat if able.",
+        "power": "5",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "Femeref Archers",
     "layout": "single",
     "cards": [
@@ -156352,6 +156463,20 @@
     ]
   },
   {
+    "name": "Gigi Wellplayed",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Gigi Wellplayed",
+        "manaCost": "{4}{Z}",
+        "type": "Legendary Creature — Human Performer",
+        "text": "({Z} is rainbow mana, one mana from any source that could add two or more colors of mana. This card is all colors.)\nAt the beginning of combat on your tumn, flip a coin until you lose a flip.\nWhenever a player wins a coin flip, create a Treasure token.",
+        "power": "3",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Gila Courser",
     "layout": "single",
     "cards": [
@@ -174155,6 +174280,20 @@
     ]
   },
   {
+    "name": "Halana, Covering Fire",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Halana, Covering Fire",
+        "manaCost": "{2}{G}",
+        "type": "Legendary Creature — Human Archer",
+        "text": "Partner with Alena, Frontline Rush\nReach\nAt the beginning of combat on your turn, put X +1/+1 counters on another target creature you control, where X is Halana's power.",
+        "power": "1",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Halana, Kessig Ranger",
     "layout": "single",
     "cards": [
@@ -174820,6 +174959,18 @@
         "manaCost": "{4}{B}",
         "type": "Enchantment",
         "text": "If an opponent would create one or more tokens, they create half that many of each of those kinds of tokens instead, rounded down.\nIf an opponent would put one or more counters on a permanent or player, they put half that many of each of those kinds of counters on that permanent or player instead, rounded down."
+      }
+    ]
+  },
+  {
+    "name": "Ham Sandwich",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ham Sandwich",
+        "manaCost": "{5}",
+        "type": "Artifact — Food",
+        "text": "{T}: Add one mana of any color. This artifact deals 1 damage to each opponent. You may remove a counter from a permanent you control.\nWhenever you untap another non-Food permanent outside of your untap step, mill one or more cards, or one or more creatures you control enter, untap this artifact.\n{2}{T}, Sacrifice this artifact: You gain 3 life."
       }
     ]
   },
@@ -187958,6 +188109,19 @@
         "type": "Legendary Planeswalker — Huatli",
         "text": "[+2]: Put two +1/+1 counters on up to one target Dinosaur you control.\n[−3]: Target Dinosaur you control deals damage equal to its power to target creature you don't control.\n[−7]: Dinosaurs you control get +4/+4 until end of turn.",
         "loyalty": "4"
+      }
+    ]
+  },
+  {
+    "name": "Huatli, Inventor's Inspiration",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Huatli, Inventor's Inspiration",
+        "manaCost": "{2}{R}{G}",
+        "type": "Legendary Planeswalker — Huatli",
+        "text": "Dinobots — Huatli, Inventor's Inspiration can be your commander. If she is, a Saheeli card can also be your commander.\n[+1]: Create a green Note artifact token with \"When this token leaves the battlefield, put two loyalty counters on a Saheeli planeswalker you control.\"\n[−1]: Sacrifice a Note. If you do, search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\n[−7]: For each token you control, create a token that's a copy of that permanent.",
+        "loyalty": "3"
       }
     ]
   },
@@ -215145,6 +215309,20 @@
     ]
   },
   {
+    "name": "King Kynaios of Meletis",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "King Kynaios of Meletis",
+        "manaCost": "{2}{R}{W}",
+        "type": "Legendary Creature — Human Soldier",
+        "text": "Slayers of Agnomakhos — You may have Kynaios as your commander alongside Tiro.\nFirst strike\nAt the beginning of your end step, you and target opponent each draw a card.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "King Macar, the Gold-Cursed",
     "layout": "single",
     "cards": [
@@ -215214,6 +215392,20 @@
         "type": "Legendary Creature — Human Warrior Hero",
         "text": "Flash\nDouble strike\nPrevent all damage that would be dealt to Black Panther.\nWhenever Black Panther deals combat damage to a player, draw a card.",
         "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "King Tiro of Meletis",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "King Tiro of Meletis",
+        "manaCost": "{G}{U}",
+        "type": "Legendary Creature — Human Soldier",
+        "text": "Slayers of Agnomakhos — You may have Tiro as your commander alongside Kynaios.\nVigilance\nAt the beginning of your end step, you and target opponent each search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
+        "power": "1",
         "toughness": "3"
       }
     ]
@@ -255727,6 +255919,20 @@
     ]
   },
   {
+    "name": "Mohiam, Imperial Truthsayer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Mohiam, Imperial Truthsayer",
+        "manaCost": "{1}{U}{B}",
+        "type": "Legendary Creature — Human Advisor",
+        "text": "{T}: Look at the top card of target player's library. You may put it into their graveyard.\nAt the beginning of your end step, you may pay {2}. When you do, exile the top card of two target players' libraries. For each nonland card exiled this way, its owner loses life equal to its mana value and it becomes plotted. (Its owner may cast it as a sorcery on a later turn without paying its mana cost.)",
+        "power": "1",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Moira Brown, Guide Author",
     "layout": "single",
     "cards": [
@@ -260257,6 +260463,20 @@
     ]
   },
   {
+    "name": "Ms. Bumbleflower, No Longer Kind",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ms. Bumbleflower, No Longer Kind",
+        "manaCost": "{2}{B}{R}",
+        "type": "Legendary Creature — Rabbit Horror",
+        "text": "Menace\nWhen Ms. Bumbleflower enters, you become the head chef. (It's like the monarch but you create a Food token rather than draw a card.)\nWhenever you cast a spell, each opponent blights 1. The blighted creature loses flying until end of turn. If this is the second spell you've cast this turn and you're the head chef, each opponent gets a poison counter.",
+        "power": "5",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "Ms. Marvel, Elastic Ally",
     "layout": "single",
     "cards": [
@@ -260376,6 +260596,20 @@
         "text": "When Mu Yanling enters, create a 3/2 colorless Vehicle artifact token with crew 1.\nVehicles you control have flying.\nWhenever one or more creatures you control with flying deal combat damage to a player, draw a card.",
         "power": "2",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Muad'Dib, Prophet Foretold",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Muad'Dib, Prophet Foretold",
+        "manaCost": "{G}{U}{R}",
+        "type": "Legendary Creature — Human Noble Warrior",
+        "text": "You may look at the top card of your library any time.\nLandfall — Whenever a land you control enters, you may mill a card.\nDelirium — As long as there are four or more card types among cards in your graveyard, you may play the top card of your library.",
+        "power": "3",
+        "toughness": "3"
       }
     ]
   },
@@ -270038,6 +270272,20 @@
     ]
   },
   {
+    "name": "Niko, Spark of Victory",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Niko, Spark of Victory",
+        "manaCost": "{1}{W}{U}",
+        "type": "Legendary Creature — Human Wizard",
+        "text": "When Niko enters, create X Shard tokens, where X is the number of other creatures you control. (They're enchantments with \"{2}, Sacrifice this token: Scry 1, then draw a card\")\n{4}, {T}: Exile another target creature until target Shard leaves the battlefield. This ability costs 3 less to activate if it targets a creature you control.",
+        "power": "2",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Nikya of the Old Ways",
     "layout": "single",
     "cards": [
@@ -271002,6 +271250,19 @@
     ]
   },
   {
+    "name": "Nissa, Pride of Zendikar",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Nissa, Pride of Zendikar",
+        "manaCost": "{1}{G}{G}",
+        "type": "Legendary Planeswalker — Nissa",
+        "text": "Gruulfriends — Nissa, Pride of Zendikar can be your commander. If she is, a Chandra card can also be your commander.\n[+1]: Add one mana of any color.\n[−1]: Create a 2/2 green Elemental creature token.\n[−X]: Put X +1/+1 counters on each Elemental you control and X loyalty counters on each Chandra planeswalker you control.",
+        "loyalty": "3"
+      }
+    ]
+  },
+  {
     "name": "Nissa, Resurgent Animist",
     "layout": "single",
     "cards": [
@@ -271151,7 +271412,7 @@
         "name": "Niv-Mizzet's Diary",
         "manaCost": "{3}{U}{R}",
         "type": "Artifact — Book",
-        "text": "Imprint - Whenever a player cards an instant or sorcery spell, exile it as it resolves.\nAt the beginning of your upkeep, you may copy an imprinted card and cast the copy without paying its mana cost. It can't cause you to take extra turns. Then, if there are three or more cards imprinted on this artifact, sacrifice it and create a token that's a copy of Niv-Mizzet, Firemind."
+        "text": "Imprint - Whenever a player casts an instant or sorcery spell, exile it as it resolves.\nAt the beginning of your upkeep, you may copy an imprinted card and cast the copy without paying its mana cost. It can't cause you to take extra turns. Then, if there are three or more cards imprinted on this artifact, sacrifice it and create a token that's a copy of Niv-Mizzet, Firemind."
       }
     ]
   },
@@ -284043,6 +284304,20 @@
     ]
   },
   {
+    "name": "Padishah Emperor Shaddam IV",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Padishah Emperor Shaddam IV",
+        "manaCost": "{5}{B}{B}",
+        "type": "Legendary Creature — Human Noble",
+        "text": "When Padishah Emperor Shaddam IV enters, you become the monarch.\nWhenever another nontoken creature dies while you're the monarch, you may pay 1 life. If you do, create a Treasure token.\nAt the beginning of your end step, destroy target creature with the greatest power among creatures your opponents control.",
+        "power": "2",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Page, Loose Leaf",
     "layout": "single",
     "cards": [
@@ -287143,6 +287418,20 @@
         "manaCost": "{3}{G}",
         "type": "Enchantment — Aura",
         "text": "Enchant creature\nWhen enchanted creature dies, that creature's controller may search their library for a creature card, put that card onto the battlefield, then shuffle."
+      }
+    ]
+  },
+  {
+    "name": "Paul Atreides, Ducal Heir",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Paul Atreides, Ducal Heir",
+        "manaCost": "{1}{W}",
+        "type": "Legendary Creature Human Noble",
+        "text": "Vigilance\nTraining (Whenever this creature attacks with another creature with greater power, put a +1/+1 counter on this creature.)\n{T}: Put a +1/+1 counter on each other creature you control. Activate only if Paul Atreides's power is 4 or greater.",
+        "power": "1",
+        "toughness": "2"
       }
     ]
   },
@@ -299525,6 +299814,20 @@
     ]
   },
   {
+    "name": "Princess Irulan Corrino",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Princess Irulan Corrino",
+        "manaCost": "{1}{W}{U}{B}",
+        "type": "Legendary Creature — Human Noble Advisor",
+        "text": "Whenever you draw your second card each turn, you gain 2 life.\nWhenever an opponent draws their second card each turn, they lose 2 life.\n{T}: You and target opponent each draw two cards.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Princess Lucrezia",
     "layout": "single",
     "cards": [
@@ -301669,6 +301972,18 @@
         "text": "When this creature enters, choose one —\n• Put a shield counter on target permanent. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\n• Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",
         "power": "3",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Proud Parent",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Proud Parent",
+        "manaCost": "{1}{W}",
+        "type": "Legendary Enchantment — Background",
+        "text": "Commander creature spells you cast gain offspring 2 as you cast them. Tokens created this way aren't legendary. (You may pay an additional 2 generic mana as you cast a commander creature spell. If you do, when that creature enters, create a 1/1 token copy of it.)"
       }
     ]
   },
@@ -306946,6 +307261,20 @@
     ]
   },
   {
+    "name": "Raccoon",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Raccoon",
+        "manaCost": "{G}",
+        "type": "Creature — Raccoon",
+        "text": "You may forage during your turn. (To forage, exile three cards from your graveyard or sacrifice a Food. You can do this as many times as you want. There's no benefit, really, but this l'il guy sure appreciates it. He'd probably like it if you drew him, too.)",
+        "power": "1",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Raccoon Rallier",
     "layout": "single",
     "cards": [
@@ -309527,6 +309856,19 @@
         "text": "Ral enters with an additional loyalty counter on him for each instant and sorcery spell you've cast this turn.\n[+1]: Until your next turn, instant and sorcery spells you cast cost {1} less to cast.\n[−2]: Ral deals 2 damage divided as you choose among one or two targets. Draw a card if you control a blue permanent other than Ral.\n[−8]: Exile the top eight cards of your library. You may cast instant and sorcery spells from among them this turn without paying their mana costs.",
         "loyalty": "2",
         "colorIndicator": "UR"
+      }
+    ]
+  },
+  {
+    "name": "Ral, Smitten with Order",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Ral, Smitten with Order",
+        "manaCost": "{2}{U}{R}",
+        "type": "Legendary Planeswalker — Ral",
+        "text": "Law and Ardor — Ral, Smitten with Order can be your commander. If he is, a Tomik card can also be your commander.\n[+1]: Target creature you control gets +1/+1 until end of turn. If that creature is Tomik, he gains double strike until end of turn.\n[−1]: Ral deals 2 damage to any target\n[−8]: Until end of turn, instant and sorcery cards in your graveyard gain flashback 1 and storm.",
+        "loyalty": "4"
       }
     ]
   },
@@ -315464,6 +315806,18 @@
     ]
   },
   {
+    "name": "Red Smothering Tithe",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Red Smothering Tithe",
+        "manaCost": "{3}{R}",
+        "type": "Enchantment",
+        "text": "Whenever an opponent draws a card, that player may have this enchantment deal 2 damage to them. If the player doesn't, you create a Treasure token."
+      }
+    ]
+  },
+  {
     "name": "Red Sun's Twilight",
     "layout": "single",
     "cards": [
@@ -320910,6 +321264,20 @@
     ]
   },
   {
+    "name": "Reverend Mother Jessica",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Reverend Mother Jessica",
+        "manaCost": "{2}{U}",
+        "type": "Legendary Creature — Human Noble Advisor",
+        "text": "Prowess, prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn twice.)\nWhenever Reverend Mother Jessica attacks, for each opponent, tap up to one target creature that player controls with lesser power and goad it. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)",
+        "power": "2",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "Reverent Hoplite",
     "layout": "single",
     "cards": [
@@ -326085,6 +326453,20 @@
         "text": "When Rocco enters, if you cast it, you may search your library for a creature card with mana value X or less, put it onto the battlefield, then shuffle.",
         "power": "3",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Rocco, Snack Supplier",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Rocco, Snack Supplier",
+        "manaCost": "{3}{R}{G}{W}",
+        "type": "Legendary Creature — Elf Druid",
+        "text": "When Rocco enters, create two Food tokens. (They're artifacts with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nWhenever you sacrifice a Food, each opponent gains 3 life.\n{4}, {T}: Search your library for a creature card with mana value less than or equal to the number of times players have gained life this turn, put it onto the battlefield, then shuffle. Activate only as a sorcery.",
+        "power": "5",
+        "toughness": "5"
       }
     ]
   },
@@ -333209,6 +333591,19 @@
         "text": "Thopters you control have haste.\nWhenever you cast a noncreature spell, create a 1/1 colorless Thopter artifact creature token with flying.",
         "power": "2",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Saheeli, Poet's Muse",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Saheeli, Poet's Muse",
+        "manaCost": "{1}{U}{R}",
+        "type": "Legendary Planeswalker — Saheeli",
+        "text": "Dinobots — Saheeli, Poet's Muse can be your commander. If she is, a Huatli card can also be your commander.\n[+1]: Create a blue Note artifact token with \"When this token leaves the battlefield, put two loyalty counters on a Huatli planeswalker you control.\"\n[−1]: Sacrifice a Note. If you do, draw two cards.\n[−8]: Create five 3/3 Dinosaur artifact creature tokens.",
+        "loyalty": "3"
       }
     ]
   },
@@ -344412,6 +344807,20 @@
     ]
   },
   {
+    "name": "Segante, Doing Crimes",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Segante, Doing Crimes",
+        "manaCost": "{2}{B}{G}",
+        "type": "Legendary Creature — Human Wizard",
+        "text": "{X}{B}{G}: Target creature an opponent controls gets -X/-X until end of turn. Another target creature you control gets +X/+X until end of turn. Activate only as a sorcery.\nAt the beginning of your end step, target player gains life equal to the total amount of life lost by your opponents this turn. If a player other than you gains life this way, draw a card.",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "Segmented Krotiq",
     "layout": "single",
     "cards": [
@@ -348946,6 +349355,20 @@
         "text": "Whenever Shahrazad and Sindbad deals combat damage to an opponent, if there haven't been any subgames this match, players play a Magic subgame using their libraries as their decks. Each player who doesn't win the subgame loses half their life, rounded up.\n{T}: Draw a card and reveal it. If it isn't a land card, discard it.",
         "power": "3",
         "toughness": "4"
+      }
+    ]
+  },
+  {
+    "name": "Shai-Hulud",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Shai-Hulud",
+        "manaCost": "{6}{G}{G}{G}",
+        "type": "Creature — Wurm",
+        "text": "Trample, indestructible\nWhen this creature enters, destroy all artifacts and enchantments. For each player who controlled a permanent destroyed this way, search your library for a basic land card or a Desert card. Put those cards onto the battlefield tapped, then shuffle.",
+        "power": "12",
+        "toughness": "12"
       }
     ]
   },
@@ -353719,6 +354142,20 @@
         "text": "Trample\nWhenever a Saproling you control deals combat damage to a player, create that many 1/1 green Saproling creature tokens.",
         "power": "1",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "Shroomsday, Feast Spoiler",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Shroomsday, Feast Spoiler",
+        "manaCost": "{3}{B}{G}",
+        "type": "Legendary Creature — Plant",
+        "text": "Shroomsday gets +X/+X, where X is the number of poison counters among players.\nAt the beginning of each player's upkeep, they create a Food token with vanishing 2 and \"When the last time counter is removed from this Food, you lose 3 life and get two poison counters.\" (They can still eat it before it goes bad.)",
+        "power": "4",
+        "toughness": "5"
       }
     ]
   },
@@ -384846,6 +385283,26 @@
     ]
   },
   {
+    "name": "Strixhaven Film Student // Cut",
+    "layout": "preparer",
+    "cards": [
+      {
+        "name": "Strixhaven Film Student",
+        "manaCost": "{4}{R}",
+        "type": "Creature — Human Advisor",
+        "text": "Whenever a legendary creature you control deals combat damage to a player, Strixhaven Film Student becomes prepared.",
+        "power": "4",
+        "toughness": "3"
+      },
+      {
+        "name": "Cut",
+        "manaCost": "{1}{R}",
+        "type": "Sorcery",
+        "text": "Cut deals 4 damage to target creature."
+      }
+    ]
+  },
+  {
     "name": "Strixhaven Skycoach",
     "layout": "single",
     "cards": [
@@ -402772,6 +403229,20 @@
     ]
   },
   {
+    "name": "The Alien Spellslayer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Alien Spellslayer",
+        "manaCost": "{3}{Z}",
+        "type": "Legendary Creature — Alien Perfomer",
+        "text": "({Z} is rainbow mana, one mana from any source that could add two or more colors of mana. This card is all colors.)\nWhenever The Alien Spellslayer enters or attacks, put a transformation counter on up to one target non-Alien creature. It becomes an Alien that's all colors.\nWhenever an Alien you control attacks, it can't be blocked this combat.",
+        "power": "1",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "The Alright Henge",
     "layout": "single",
     "cards": [
@@ -403272,6 +403743,20 @@
     ]
   },
   {
+    "name": "The Bird Pool",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Bird Pool",
+        "manaCost": "{1}{U}",
+        "type": "Legendary Land Creature — Island Bird",
+        "text": "(This land isn't a spell, but still costs {1}{U} to play. It has summoning sickness and has \"{T}: Add {U}.\")\nFlying\nWhenever you tap The Bird Pool for mana, if you have seven or more cards in hand, draw a card.\n{U}{U}{U}, {T}: Counter target spell. Its controller draws three cards.",
+        "power": "0",
+        "toughness": "1"
+      }
+    ]
+  },
+  {
     "name": "The Birth of Meletis",
     "layout": "single",
     "cards": [
@@ -403680,6 +404165,20 @@
     ]
   },
   {
+    "name": "The Charitable Kids",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Charitable Kids",
+        "manaCost": "{1}{W}",
+        "type": "Legendary Creature — Human Advisor",
+        "text": "At the beginning of your precombat main phase, you may gift a nonland card you own from outside the game to an opponent. If you do, they may cast it without paying its mana cost. (The gift's recipiant owns that card. For real. Forever. Unless they regift it, I guess.)\nWhenever you give a gift, you draw a card, gain 2 life, and put two +1/+1 counters on The Charitable Kids.",
+        "power": "2",
+        "toughness": "6"
+      }
+    ]
+  },
+  {
     "name": "The Chase Is On",
     "layout": "single",
     "cards": [
@@ -404002,6 +404501,20 @@
         "text": "Spells you cast that would counter a spell cost {U}{U} less to cast.\nWhenever a spell an opponent controls is countered by a spell or ability you control, draw a card. The Countering Runner deals 2 psychic damage to that player. (Psychic damage doesn't cause loss of life, but a player who's been dealt 20 psychic damage loses the game.)\nReady to run (You can have two commanders if both have ready to run.)",
         "power": "3",
         "toughness": "7"
+      }
+    ]
+  },
+  {
+    "name": "The Countess of Counterspells",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Countess of Counterspells",
+        "manaCost": "{1}{U}",
+        "type": "Legendary Creature — Faerie Artist",
+        "text": "Flying\nWhenever you cast a permanent spell, you may counter it. If you do, create a token that's a copy of it, except the token is a Nail artifact. (The token isn't any of the spell's other types.)\n{U}{U}: Counter target spell. Activate this ability only if you control ten or more Nails.",
+        "power": "1",
+        "toughness": "3"
       }
     ]
   },
@@ -405441,6 +405954,19 @@
     ]
   },
   {
+    "name": "The Gaming Explainer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Gaming Explainer",
+        "manaCost": "{3}{U}{R}",
+        "type": "Legendary Planeswalker — Explainer",
+        "text": "[+1]: Draw a card. Add two mana of any one color. Spend this mana only to cast spells or activate abilities that have reminder text. (This is reminder text.)\n[−3]: For each player, return up to one target nonland permanent that player controls without reminder text to its owners hand.\n[−7]: Exile the top seven cards of your library. Cast any number of spells from among them with reminder text without paying their mana costs.\nThe Gaming Explainer can be your commander.",
+        "loyalty": "5"
+      }
+    ]
+  },
+  {
     "name": "The General",
     "layout": "single",
     "cards": [
@@ -406336,6 +406862,20 @@
     ]
   },
   {
+    "name": "The King of Grixis",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The King of Grixis",
+        "manaCost": "{3}{U}{B}{R}",
+        "type": "Legendary Creature — Human Noble",
+        "text": "Attacking creatures you control have deathtouch.\nWhenever one or more other creatures you control deal combat damage to a player, sacrifice one of them. You may cast a Grixis spell from your hand without paying its mana cost. If you don't, choose a random Grixis card and create a copy of it. You may cast the copy without paying its mana cost. (A Grixis spell is exactly blue, black, and red.)\nPartner—King and Queen (You can have two commanders if they both have this ability)",
+        "power": "7",
+        "toughness": "7"
+      }
+    ]
+  },
+  {
     "name": "The Kingpin of Crime",
     "layout": "single",
     "cards": [
@@ -406346,6 +406886,20 @@
         "text": "Extort (Whenever you cast a spell, you may pay {W/B}. If you do, each opponent loses 1 life and you gain that much life.)\nWhenever you attack, you may pay 2 life. If you do, until end of turn, creatures you control with toughness greater than their power assign combat damage equal to their toughness rather than their power.",
         "power": "1",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "The Kinnan Hirer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Kinnan Hirer",
+        "manaCost": "{3}{G}{U}",
+        "type": "Legendary Creature — Bird Druid",
+        "text": "Flying, vigilance\nWhenever The Kinnan Hirer enters or deals combat damage to a player, create a Kinnan, Bonder Prodigy token, except it's not legendary.\n{T}: Add one mana of any color.\n{5}{G}{U}: Activate the 5GU ability of each creature named Kinnan, Bonder Prodigy you control.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -406654,6 +407208,20 @@
         "text": "Flash\nThis spell costs {X} less to cast, where X is the total power of creatures you control with flying.\nFlying",
         "power": "8",
         "toughness": "8"
+      }
+    ]
+  },
+  {
+    "name": "The Lorwyn Lizard",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Lorwyn Lizard",
+        "manaCost": "{2}{G}",
+        "type": "Legendary Creature — Kithkin Lizard Druid",
+        "text": "Whenever you cast a creature spell with a Lorwyn creature type you don't already control, draw a card. (The Lorwyn creature types are Elemental, Elf, Faerie, Giant, Goblin, Kithkin, Merfolk, and Treefolk.)\n{T}: Add X mana of any one color, where X is the number of different Lorwyn creature types among creatures you control without changeling. If you control all eight, add an additional {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -407421,6 +407989,20 @@
     ]
   },
   {
+    "name": "The Mystery Booster",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Mystery Booster",
+        "manaCost": "{4}",
+        "type": "Legendary Artifact Creature — Booster",
+        "text": "Rulebreaker companion — A deck with this commander or companion can have ONLY cards from any Mystery Booster set and playtest cards of any color identity, as well as any basic land cards.\nWhenever The Mystery Booster attacks, look at the top fifteen cards of your library. You may cast a Mystery Booster or playtest spell from among them without paying its mana cost. Put the rest on the bottom in a random order.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "The Mystery Raceway",
     "layout": "single",
     "cards": [
@@ -407529,6 +408111,20 @@
         "manaCost": "{2}{B}{R}",
         "type": "Sorcery",
         "text": "Choose a creature at random. You gain control of that creature until end of turn. Untap it. It gains haste until end of turn. Then destroy all other creatures."
+      }
+    ]
+  },
+  {
+    "name": "The No Mana Bard",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The No Mana Bard",
+        "manaCost": "{B}{B}",
+        "type": "Legendary Creature — Human Bard",
+        "text": "If a player would create a Treasure token, instead an opponent of your choice loses 2 life.\nWhenever The No Mana Bard attacks, you may pay {5}{R}{G}. If you do, you may put a creature card from your hand onto the battlefield tapped and attacking.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -407902,6 +408498,20 @@
     ]
   },
   {
+    "name": "The Queen of Wolves",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Queen of Wolves",
+        "manaCost": "{3}{R}{G}",
+        "type": "Legendary Creature — Wolf Noble",
+        "text": "Other Wolves and Werewolves you control get +1/+1.\nWhenever The Queen of Wolves attacks, create a tapped and attacking token that's a copy of a random Wolf creature card (Many Magic search engines have random card features. Some even have \"random card from search\" buttons.)\nPartner—King and Queen (You can have two commanders if they both have this ability.)",
+        "power": "5",
+        "toughness": "5"
+      }
+    ]
+  },
+  {
     "name": "The Rack",
     "layout": "single",
     "cards": [
@@ -407910,6 +408520,20 @@
         "manaCost": "{1}",
         "type": "Artifact",
         "text": "As this artifact enters, choose an opponent.\nAt the beginning of the chosen player's upkeep, this artifact deals X damage to that player, where X is 3 minus the number of cards in their hand."
+      }
+    ]
+  },
+  {
+    "name": "The Radioactive Gravymaker",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Radioactive Gravymaker",
+        "manaCost": "{2}{B}{G}",
+        "type": "Legendary Creature — Human Bard",
+        "text": "Whenever The Radioactive Gravymaker enters or attacks, for each player, put a gravy counter on up to one target nonland permanent that player controls. Then proliferate.\nWhenever a permanent with a gravy counter on it dies, its controller gets a rad counter for each gravy counter it had on it. (Yeah, we have to double check how rad works too.)",
+        "power": "3",
+        "toughness": "2"
       }
     ]
   },
@@ -408068,6 +408692,20 @@
     ]
   },
   {
+    "name": "The Rhystic Friends",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Rhystic Friends",
+        "manaCost": "{2}{U}",
+        "type": "Legendary Creature — Human Wizard",
+        "text": "When The Rhystic Friends enter, each player creates a Rhystic Study token. (C'mon, you know what it does.)\nWhenever a player doesn't pay the 1, put a +1/+1 counter on The Rhystic Friends (This will trigger for any optional cost of {1}, not only Rhystic Study.)",
+        "power": "3",
+        "toughness": "3"
+      }
+    ]
+  },
+  {
     "name": "The Rhystic Storyteller",
     "layout": "single",
     "cards": [
@@ -408124,6 +408762,20 @@
         "text": "During your turn, The River Warlock has flying, lifelink, and indestructible.\nWhenever The River Warlock attacks, you and defending player each draw a card, then discard a card. If you discarded a card with equal or greater mana value than the card that player discarded, look at their hand. Exile a nonland card from it until The River Warlock leaves the battlefield.",
         "power": "1",
         "toughness": "1"
+      }
+    ]
+  },
+  {
+    "name": "The Roaming Guild Pack",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Roaming Guild Pack",
+        "manaCost": "{2}",
+        "type": "Legendary Creature — Human",
+        "text": "The Roaming Guild Pack is all colors.\nWhenever you cast a spell that's exactly two colors, you may join that Ravnican guild. If you leave another guild this way, put two +1/+1 counters on The Roaming Guild Pack.\nAt the beginning of your upkeep you gain 2 life if you're in a white guild. Draw a card if you're in a blue guild. Each opponent loses 2 life if you're in a black guild. Create a 1/1 red Goblin creature token if you're in a red guild. You may play an additional land this turn if you're in a green guild.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -408193,6 +408845,20 @@
     ]
   },
   {
+    "name": "The Sabertooth Wizard",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Sabertooth Wizard",
+        "manaCost": "{2}{B}{G}",
+        "type": "Legendary Creature — Squirrel Wizard",
+        "text": "Each legendary creature you control gets +1/+1 for each legendary creature you control whose name begins with \"The.\"\nWhenever The Sabertooth Wizard attacks, mill cards equal to its power. Then choose a creature or planeswalker card in your graveyard whose name begins with \"The.\" You may pay {W}{U}{B}{R}{G}. If you do, return it to the battlefield. If you don't, return it to your hand. If you can't choose a creature card this way, create a Treasure token.",
+        "power": "3",
+        "toughness": "2"
+      }
+    ]
+  },
+  {
     "name": "The Sackville-Bagginses",
     "layout": "single",
     "cards": [
@@ -408242,6 +408908,20 @@
         "name": "The Savant",
         "type": "Hero",
         "text": "Exile The Savant: Tap all creatures your opponents control. Those creatures don't untap during their controllers' next untap steps."
+      }
+    ]
+  },
+  {
+    "name": "The Sayer of Don't",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Sayer of Don't",
+        "manaCost": "{5}{Z}",
+        "type": "Legendary Creature — Human Performer",
+        "text": "({Z} is rainbow mana, one mana from any source that could add two or more colors of mana. This card is all colors.)\nWhenever you cast a spell, if rainbow mana was spent to cast it, put a don't counter on The Sayer of Don't.\nRemove two counters from The Sayer of Don't: Counter target spell.",
+        "power": "3",
+        "toughness": "3"
       }
     ]
   },
@@ -408719,6 +409399,20 @@
     ]
   },
   {
+    "name": "The Stylish Spellslayer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Stylish Spellslayer",
+        "manaCost": "{4}{Z}",
+        "type": "Legendary Creature — Demon Assassin Performer",
+        "text": "({Z} is rainbow mana, one mana from any source that could add two or more colors of mana. This card is all colors.)\nEach other creature you control gets +1/+1 for each differently named counter on it plus another +1/+1 for each color it is.\n{1}{Z}: Put a style counter on target creature.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "The Super Hero Civil War",
     "layout": "single",
     "cards": [
@@ -408839,6 +409533,18 @@
         "name": "The Tabernacle at Pendrell Vale",
         "type": "Legendary Land",
         "text": "All creatures have \"At the beginning of your upkeep, destroy this creature unless you pay {1}.\""
+      }
+    ]
+  },
+  {
+    "name": "The Tale of Jimothy",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Tale of Jimothy",
+        "manaCost": "{B}{G}",
+        "type": "Enchantment — Saga",
+        "text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\nThe Tale of Jimothy can be your commander. If it is, Jimothy is also your commander.\nI — Create Jimothy, a legendary 2/1 green Raccoon with \"Whenever a card is put into your graveyard from your library, put a +1/+1 counter on Jimothy.\"\nII, III — Surveil 1."
       }
     ]
   },
@@ -409287,6 +409993,20 @@
         "text": "Eminence — As long as The Ur-Sphinx is in the command zone or on the battlefield, other Sphinx spells you cast cost {1} less to cast.\nFlying\nWhenever one or more Sphinxes you control attack, each player mills that many cards. For each player, you may cast a card that player milled this way without paying its mana cost.",
         "power": "10",
         "toughness": "10"
+      }
+    ]
+  },
+  {
+    "name": "The Urza Finder",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Urza Finder",
+        "manaCost": "{2}{W}{U}",
+        "type": "Legendary Creature — Human Scotsman Artificer",
+        "text": "Whenever The Urza Finder enters or attacks, choose a random Eternal-legal nonland card with the word \"Urza\" in its name. You may cast a copy of it without paying its mana cost. (Many Magic search engines have random card features. Some even have \"random card from search\" buttons.)\nThe Urza Finder gets +1/+1 for each different card name with \"Urza\" in it from among permanents you control. (\"Urza's\" counts.)",
+        "power": "0",
+        "toughness": "0"
       }
     ]
   },
@@ -409821,6 +410541,20 @@
         "text": "Other Wizards you control get +1/+1.\nWhenever the Wizardly Barge attacks, create a token that's a copy of a random tournament-legal Wizard creature. (I'd suggest looking them all up online and choosing one at random.)\nCrew 1",
         "power": "3",
         "toughness": "5"
+      }
+    ]
+  },
+  {
+    "name": "The Wondrous Architect",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "The Wondrous Architect",
+        "manaCost": "{7}",
+        "type": "Legendary Artifact Creature — Construct",
+        "text": "If The Wondrous Architect is your commander, your deck may have any number of cards named Urza's Mine, Urza's Power Plant, and Urza's Tower. For each one that isn't in your deck, you may choose a basic land card to become that card before the game begins. (For example, each Mountain in your deck is an Urza's Mine and each Forest is an Urza's Tower.)\nWhenever The Wonderous Architect enters or attacks, create a token that's a copy of one of the following, chosen at random: Dark Sphere, Aladdin's Lamp, Jayemdae Tome, Chaos Orb, Time Vault, or Sol Ring.",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -413837,6 +414571,18 @@
         "manaCost": "{6}{G}{G}",
         "type": "Sorcery",
         "text": "Look at the top twenty cards of your library, put any number of land cards from among them onto the battlefield tapped, then shuffle. You gain 8 life."
+      }
+    ]
+  },
+  {
+    "name": "Throw Shade",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Throw Shade",
+        "manaCost": "{1}{B}",
+        "type": "Sorcery",
+        "text": "Create a 1/1 black and red Shade creature token with haste and \"{B}: This token gets +1/+1 until end of turn.\" At the beginning of your next end step, scrifice that token. When you do, it deals damage equal to its power to target creature an opponent controls."
       }
     ]
   },
@@ -418538,6 +419284,20 @@
         "text": "Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\nLifelink (Damage dealt by this creature also causes you to gain that much life.)\nWhenever this creature enters or deals combat damage to a player, draw a card, then discard a card.",
         "power": "1",
         "toughness": "3"
+      }
+    ]
+  },
+  {
+    "name": "Tomik, Devoted to Chaos",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Tomik, Devoted to Chaos",
+        "manaCost": "{2}{W}",
+        "type": "Legendary Creature Human Advisor",
+        "text": "Law and Ardor — If Tomik, Devoted to Chaos is your commander, a Ral card can also be your commander.\nFlying, lifelink\nRal planeswalkers' loyalty abilities you activate cost an additional +1 to activate.",
+        "power": "3",
+        "toughness": "1"
       }
     ]
   },
@@ -463515,6 +464275,20 @@
     ]
   },
   {
+    "name": "Xantcha, Contains Multitudes",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Xantcha, Contains Multitudes",
+        "manaCost": "{2}{B}{R}",
+        "type": "Legendary Creature — Phyrexian",
+        "text": "As Xantcha enters, choose a creature type and a name. She is the chosen type and has the chosen name.\n{B/R}{B/R}: Choose a name. Creatures you control with the chosen name get +1/+1 and gain your choice of deathtouch, menace, or haste until end of turn.",
+        "power": "4",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Xantcha, Sleeper Agent",
     "layout": "single",
     "cards": [
@@ -463946,6 +464720,20 @@
         "manaCost": "{2}{B}{B}",
         "type": "Sorcery",
         "text": "All creatures get -3/-3 until end of turn.\nYou may cast a spell with mana value 3 or less from your hand without paying its mana cost."
+      }
+    ]
+  },
+  {
+    "name": "Yahenni, Slayer",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Yahenni, Slayer",
+        "manaCost": "{2}{B}",
+        "type": "Legendary Creature -- Aetherborn Vampire",
+        "text": "Vanishing 4 (Yahenni creature enters with four time counters on them. At the beginning of your upkeep, remove a time counter from them. When the last is removed, sacrifice them.)\nWhenever an opponent attacks a player with a lower life total than them, the attacking player loses 3 life and you proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",
+        "power": "2",
+        "toughness": "2"
       }
     ]
   },
@@ -465978,6 +466766,20 @@
     ]
   },
   {
+    "name": "Yuma, Plant Parent",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Yuma, Plant Parent",
+        "manaCost": "{3}{G}{G}",
+        "type": "Legendary Creature — Human Ranger",
+        "text": "When Yuma enters, create Kirri, a legendary 4/2 green Plant Warrior creature token.\nWhenever one or more counters are put on Yuma, put that many of those counters on Kirri.\nLandfall — Whenever a land you control enters, put a +1/+1 counter on target creature.",
+        "power": "3",
+        "toughness": "4"
+      }
+    ]
+  },
+  {
     "name": "Yuma, Proud Protector",
     "layout": "single",
     "cards": [
@@ -467713,6 +468515,20 @@
         "text": "{1}, {T}: You may put a land card from your hand onto the battlefield tapped.\n{4}, {T}: Draw a card. If you control eight or more lands, draw two cards instead.",
         "power": "1",
         "toughness": "2"
+      }
+    ]
+  },
+  {
+    "name": "Zinnia, Born for the Stage",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Zinnia, Born for the Stage",
+        "manaCost": "{2}{U}{W}{R}",
+        "type": "Legendary Creature — Bird Bard",
+        "text": "Flying, haste\nWhenever Zinnia attacks, exile up to one other target creature, then return it to the battlefield under its owner's control.\nAt the beginning of each opponent's combat, you may have them gain control of Zinnia until end of turn. If you do, untap Zinnia and goad them.",
+        "power": "2",
+        "toughness": "4"
       }
     ]
   },
