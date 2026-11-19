@@ -4939,7 +4939,6 @@ pub enum Cost {
   PutACardFromHandOnBattlefield(Box<Cards>, Vec<EnterFlag>),
   PutACardFromHandOnBottomOfLibrary,
   PutACardFromHandOnTopOfLibrary,
-  PutACardFromHandOrGraveyardOnBattlefield(Box<Cards>, Box<Player>, Vec<EnterFlag>),
   PutACardFromPlayersGraveyardOnBattlefield(Box<CardsInGraveyards>, Box<Player>, Vec<EnterFlag>),
   PutACardOfTypeMilledThisWayIntoHand(Box<Cards>),
   PutAGraveyardCardOnTheBottomOfItsOwnersLibrary(Box<CardsInGraveyards>),
@@ -4965,7 +4964,6 @@ pub enum Cost {
   PutTopCardOfLibraryOfTypeOnBattlefield(Box<Cards>, Vec<EnterFlag>),
   RegeneratePermanent(Box<Permanent>),
   RemoveCounters(Vec<RemoveCountersCost>),
-  RevealACardFromHandAtRandom,
   RevealACardOfTypeFromHand(Box<Cards>),
   RevealAnyNumberOfCardsOfTypeFromHand(Box<Cards>),
   RevealCardFromHand(CardInHand),
@@ -6692,6 +6690,7 @@ pub enum Spell {
   DecreaseSpellCost_ThatSpell,
   ThatEnteringPermanent,
   TheCopiedSpell,
+  ThisPermanentSpell,
   ThisSpell,
 }
 

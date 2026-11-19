@@ -2621,7 +2621,6 @@ type Cost =
 | { "_Cost": "PutACardFromHandOnBattlefield", "args": [Cards, Array<EnterFlag>] }
 | { "_Cost": "PutACardFromHandOnBottomOfLibrary" }
 | { "_Cost": "PutACardFromHandOnTopOfLibrary" }
-| { "_Cost": "PutACardFromHandOrGraveyardOnBattlefield", "args": [Cards, Player, Array<EnterFlag>] }
 | { "_Cost": "PutACardFromPlayersGraveyardOnBattlefield", "args": [CardsInGraveyards, Player, Array<EnterFlag>] }
 | { "_Cost": "PutACardOfTypeMilledThisWayIntoHand", "args": Cards }
 | { "_Cost": "PutAGraveyardCardOnTheBottomOfItsOwnersLibrary", "args": CardsInGraveyards }
@@ -2647,7 +2646,6 @@ type Cost =
 | { "_Cost": "PutTopCardOfLibraryOfTypeOnBattlefield", "args": [Cards, Array<EnterFlag>] }
 | { "_Cost": "RegeneratePermanent", "args": Permanent }
 | { "_Cost": "RemoveCounters", "args": Array<RemoveCountersCost> }
-| { "_Cost": "RevealACardFromHandAtRandom" }
 | { "_Cost": "RevealACardOfTypeFromHand", "args": Cards }
 | { "_Cost": "RevealAnyNumberOfCardsOfTypeFromHand", "args": Cards }
 | { "_Cost": "RevealCardFromHand", "args": CardInHand }
@@ -7627,6 +7625,7 @@ type Spell =
 | { "_Spell": "DecreaseSpellCost_ThatSpell" }
 | { "_Spell": "ThatEnteringPermanent" }
 | { "_Spell": "TheCopiedSpell" }
+| { "_Spell": "ThisPermanentSpell" }
 | { "_Spell": "ThisSpell" };
 type SpellCopyEffects =
 | { "_SpellCopyEffects": "NoSpellCopyEffects" };

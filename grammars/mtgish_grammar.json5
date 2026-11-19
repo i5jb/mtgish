@@ -1586,9 +1586,6 @@
     "ValueActions({{NUMBER}}, [{{VALUE_ACTION}}, {{VALUE_ACTION}}, {{VALUE_ACTION}}])": "",
     "ValueActions({{NUMBER}}, [{{VALUE_ACTION}}, {{VALUE_ACTION}}])": "",
     "VentureIntoTheDungeon": "",
-    //"VoteForACardInGraveyard({{CARDS_IN_GRAVEYARDS}})": "",
-    //"VoteForAPermanent({{PERMANENTS}})": "",
-    "VoteForColor([{{COLOR}}, {{COLOR}}, {{COLOR}}, {{COLOR}}])": "",
     "WinTheGame": "",
     "WouldDealExcessDamage_DealExcessToPlayerInstead({{PLAYER}})": "",
 
@@ -2505,7 +2502,6 @@
     "PutACardFromHandOnBattlefield({{CARDS}}, {{ENTER_FLAGS}})": "",
     "PutACardFromHandOnBottomOfLibrary": "",
     "PutACardFromHandOnTopOfLibrary": "",
-    "PutACardFromHandOrGraveyardOnBattlefield({{CARDS}}, {{PLAYER}}, {{ENTER_FLAGS}})": "",
     "PutACardFromPlayersGraveyardOnBattlefield({{CARDS_IN_GRAVEYARDS}}, {{PLAYER}}, {{ENTER_FLAGS}})": "",
     "PutACardOfTypeMilledThisWayIntoHand({{CARDS}})": "",
     "PutAGraveyardCardOnTheBottomOfItsOwnersLibrary({{CARDS_IN_GRAVEYARDS}})": "",
@@ -2529,7 +2525,6 @@
     "PutTopCardOfEachPlayersLibraryInGraveyard({{PLAYERS}})": "",
     "PutTopCardOfLibraryOfTypeOnBattlefield({{CARDS}}, {{ENTER_FLAGS}})": "",
     "RegeneratePermanent({{PERMANENT}})": "",
-    "RevealACardFromHandAtRandom": "",
     "RevealACardOfTypeFromHand({{CARDS}})": "",
     "RevealAnyNumberOfCardsOfTypeFromHand({{CARDS}})": "",
     "RevealCardFromHand({{CARD_IN_HAND}})": "",
@@ -6027,6 +6022,7 @@
     "TheSpellExiledThisWay": "",
     "TheSpellMostRecentlyCastThisTurn": "",
     "TheSpellThatGrantedThisAbility": "",
+    "ThisPermanentSpell": "",
     "ThisSpell": "",
     "Trigger_ThatSpell": ""
   },
@@ -6667,6 +6663,7 @@
     "EachPlayerAction({{PLAYERS}}, ChooseAColor(AnyColor))": "",
     "EachPlayerAction({{PLAYERS}}, SwapWordChoice({{VOTE_OPTION}}, {{VOTE_OPTION}}))": "",
 
+    "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [VoteForColor([{{COLOR}}, {{COLOR}}, {{COLOR}}, {{COLOR}}])])": "",
     "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [VoteForAWord([{{VOTE_OPTION}}, {{VOTE_OPTION}}])])": "",
     "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [VoteForAPermanent({{PERMANENTS}})])": "",
     "EachPlayerStartingWithAction({{PLAYERS}}, {{PLAYER}}, [VoteForACardInGraveyard({{CARDS_IN_GRAVEYARDS}})])": "",
@@ -7622,7 +7619,7 @@
   "{{_PLAYER_ACTION[VoteForAWord]}}": {
     "RevealVotesForWord": "",
     //"SecretlyVoteForAWord([{{VOTE_OPTION}}, {{VOTE_OPTION}}])": "",
-    "VoteForAWord([{{VOTE_OPTION}}, {{VOTE_OPTION}}])": ""
+    //"VoteForAWord([{{VOTE_OPTION}}, {{VOTE_OPTION}}])": ""
   },
   "{{_PLAYER_EFFECT[RollDice]}}": {
     "MayPayToIncrementOrDecrementADiceRoll({{COST}})": "",
