@@ -70,6 +70,7 @@ type Action =
 | { "_Action": "MultiDraw", "args": Array<MultiDrawable> }
 | { "_Action": "MultiCreateTokens", "args": Array<MultiCreateToken> }
 | { "_Action": "CreateTokens", "args": [Array<CreatableToken>, Array<TokenFlag>] }
+| { "_Action": "MayCreateTokensForEachPlayer", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "CreateTokensForEachPlayer", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "CreateTokensForEachPermanent", "args": [Permanents, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "EachPlayerCreatesTokens", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
@@ -1419,7 +1420,8 @@ type Actions =
 | { "_Actions": "Modal_ChooseOne", "args": Array<Actions> }
 | { "_Actions": "Modal_ChooseBoth", "args": Array<Actions> }
 | { "_Actions": "Modal_ChooseOneOrBoth", "args": Array<Actions> }
-| { "_Actions": "Modal_ChooseOneOrBothIf", "args": [Condition, Array<Actions>] }
+| { "_Actions": "Modal_ChooseOneOrMayChooseBothIf", "args": [Condition, Array<Actions>] }
+| { "_Actions": "Modal_ChooseOneOrChooseBothIf", "args": [Condition, Array<Actions>] }
 | { "_Actions": "Modal_ChooseOneOrMayChooseTwoIf", "args": [Condition, Array<Actions>] }
 | { "_Actions": "Modal_ChooseOneOrMore", "args": Array<Actions> }
 | { "_Actions": "Modal_ChooseOneOrMore_DifferentTargets", "args": Array<Actions> }
@@ -5218,7 +5220,6 @@ type Permanents =
 | { "_Permanents": "IsFaceDown" }
 | { "_Permanents": "IsFaceUp" }
 | { "_Permanents": "IsFirstLandPlayedByPlayerThisTurn" }
-| { "_Permanents": "IsHarnessed" }
 | { "_Permanents": "IsHistoric" }
 | { "_Permanents": "IsLandType", "args": LandType }
 | { "_Permanents": "IsLandTypeVariable", "args": LandTypeVariable }
@@ -6674,7 +6675,6 @@ type ReplacementActionWouldDealDamage =
 | { "_ReplacementActionWouldDealDamage": "DealDamageAsThoughItHadInfect" }
 | { "_ReplacementActionWouldDealDamage": "DealDamageButHealPreviousDamage" }
 | { "_ReplacementActionWouldDealDamage": "DealDamageInstead", "args": GameNumber }
-| { "_ReplacementActionWouldDealDamage": "DealSomeDamageToRecipientInstead", "args": [GameNumber, DamageRecipients] }
 | { "_ReplacementActionWouldDealDamage": "DealToAnyTargetInstead", "args": SingleDamageRecipient }
 | { "_ReplacementActionWouldDealDamage": "DealToCreatureOrPlaneswalkerInstead", "args": Permanent }
 | { "_ReplacementActionWouldDealDamage": "DealToPlayerInstead", "args": Player }
@@ -7441,6 +7441,7 @@ type Rule =
 | { "_Rule": "IfElse", "args": [Condition, Array<Rule>, Array<Rule>] }
 | { "_Rule": "IfCardIsInOpeningHand", "args": Array<Action> }
 | { "_Rule": "MaxSpeed", "args": Rule }
+| { "_Rule": "Infinity", "args": Rule }
 | { "_Rule": "AsGameBegins", "args": Array<Action> }
 | { "_Rule": "BeforeDrawingOpeningHand", "args": Array<Action> }
 | { "_Rule": "DrawAnAdditionalHandBeforeMulligans" }
@@ -8909,6 +8910,7 @@ type Trigger =
 | { "_Trigger": "WhenAnyNumberOfCardsArePutIntoAPlayersGraveyardFromAnywhere", "args": [Cards, Players] }
 | { "_Trigger": "WhenAnyNumberOfCardsArePutIntoAPlayersGraveyardFromAnywhereForTheFirstTimeEachTurn", "args": [Cards, Players] }
 | { "_Trigger": "WhenASpellOrAbilityCausesAPermanentToBePutIntoAPlayersGraveyard", "args": [SpellsAndAbilities, Permanents, Players] }
+| { "_Trigger": "WhenAPermanentDiesRememberingPermanent", "args": [Permanents, Permanent] }
 | { "_Trigger": "WhenAPermanentDies", "args": Permanents }
 | { "_Trigger": "WhenAnyNumberOfCreaturesOrPlaneswalkersDie", "args": Permanents }
 | { "_Trigger": "WhenAPermanentIsPutIntoAPlayersGraveyard", "args": [Permanents, Players] }

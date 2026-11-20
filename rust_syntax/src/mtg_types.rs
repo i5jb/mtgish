@@ -3046,6 +3046,7 @@ pub enum Rule {
   IfElse(Condition, Vec<Rule>, Vec<Rule>),
   IfCardIsInOpeningHand(Vec<Action>),
   MaxSpeed(Box<Rule>),
+  Infinity(Box<Rule>),
 
   AsGameBegins(Vec<Action>),
   BeforeDrawingOpeningHand(Vec<Action>),
@@ -3377,7 +3378,6 @@ pub enum ReplacementActionWouldDealDamage {
   DealDamageButHealPreviousDamage,
 
   DealDamageInstead(Box<GameNumber>),
-  DealSomeDamageToRecipientInstead(Box<GameNumber>, Box<DamageRecipients>),
   DealToAnyTargetInstead(Box<SingleDamageRecipient>),
   DealToCreatureOrPlaneswalkerInstead(Box<Permanent>),
   DealToPlayerInstead(Box<Player>),
@@ -5323,7 +5323,6 @@ pub enum Permanents {
   IsFaceDown,
   IsFaceUp,
   IsFirstLandPlayedByPlayerThisTurn,
-  IsHarnessed,
   IsHistoric,
   IsLandType(LandType),
   IsLandTypeVariable(LandTypeVariable),
@@ -8951,6 +8950,7 @@ pub enum Action {
 
   MultiCreateTokens(Vec<MultiCreateToken>),
   CreateTokens(Vec<CreatableToken>, Vec<TokenFlag>),
+  MayCreateTokensForEachPlayer(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
   CreateTokensForEachPlayer(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
   CreateTokensForEachPermanent(Box<Permanents>, Vec<CreatableToken>, Vec<TokenFlag>),
   EachPlayerCreatesTokens(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
@@ -10453,7 +10453,8 @@ pub enum Actions {
   Modal_ChooseOne(Vec<Actions>),
   Modal_ChooseBoth(Vec<Actions>),
   Modal_ChooseOneOrBoth(Vec<Actions>),
-  Modal_ChooseOneOrBothIf(Condition, Vec<Actions>),
+  Modal_ChooseOneOrMayChooseBothIf(Condition, Vec<Actions>),
+  Modal_ChooseOneOrChooseBothIf(Condition, Vec<Actions>),
   Modal_ChooseOneOrMayChooseTwoIf(Condition, Vec<Actions>),
   Modal_ChooseOneOrMore(Vec<Actions>),
   Modal_ChooseOneOrMore_DifferentTargets(Vec<Actions>),
@@ -11056,6 +11057,7 @@ pub enum Trigger {
   WhenASpellOrAbilityCausesAPermanentToBePutIntoAPlayersGraveyard(SpellsAndAbilities, Box<Permanents>, Box<Players>),
 
   // enter_graveyard__from_battlefield
+  WhenAPermanentDiesRememberingPermanent(Box<Permanents>, Box<Permanent>),
   WhenAPermanentDies(Box<Permanents>),
   WhenAnyNumberOfCreaturesOrPlaneswalkersDie(Box<Permanents>),
   WhenAPermanentIsPutIntoAPlayersGraveyard(Box<Permanents>, Box<Players>),

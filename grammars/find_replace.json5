@@ -368,6 +368,12 @@
   },
   {
     "reason":  "CARD_NAME fix was too aggressive, CDA wording",
+    "cards":   ["Alloy Golem"],
+    "find":    "This creature is the chosen color",
+    "replace": "Alloy Golem is the chosen color",
+  },
+  {
+    "reason":  "CARD_NAME fix was too aggressive, CDA wording",
     "cards":   ["Planar Nexus"],
     "find":    "This land is every nonbasic land type",
     "replace": "Planar Nexus is every nonbasic land type",

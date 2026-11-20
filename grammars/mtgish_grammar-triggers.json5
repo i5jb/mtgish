@@ -343,6 +343,7 @@
   },
   "{{_TRIGGER[EnterGraveyard-FromBattlefield]}}": {
     "WhenAPermanentDies({{PERMANENTS}})": "",
+    "WhenAPermanentDiesRememberingPermanent({{PERMANENTS}}, {{PERMANENT}})": "",
     "WhenAPermanentIsPutIntoAPlayersGraveyard({{PERMANENTS}}, {{PLAYERS}})": "",
     "WhenAnyNumberOfCreaturesOrPlaneswalkersDie({{PERMANENTS}})": "",
     "WhenAnyNumberOfPermanentsArePutIntoAPlayersGraveyards({{PERMANENTS}}, {{PLAYERS}})": ""

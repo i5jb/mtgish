@@ -3380,6 +3380,7 @@
   "{{LAYER_4_PERMANENT_EFFECT}}": {
     "AddArtifactType({{CLUE}})": "",
     "AddCardtypes([{{CARDTYPE}}, {{CARDTYPE}}])": "",
+    "AddCreatureTypes([{{ZOMBIE}}])": "",
     "AddCreatureTypes([{{ZOMBIE}}, {{ZOMBIE}}])": "",
     "AddCreatureTypes([{{ZOMBIE}}, {{ZOMBIE}}, {{ZOMBIE}}])": "",
     "AddCardtype({{CARDTYPE}})": "",
@@ -3421,6 +3422,7 @@
     "SetColor(TheManaColorChosenThisWay)": ""
   },
   "{{LAYER_6_PERMANENT_EFFECT}}": {
+    "AddAbility([{{RULE}}, {{RULE}}, {{RULE}}])": "",
     "AddAbility([{{RULE}}, {{RULE}}])": "",
     "AddAbility([{{RULE}}])": "",
     "AddAbilityAndLoseAllOtherAbilities({{RULES}})": "",
@@ -3452,7 +3454,6 @@
     "SwitchPT": ""
   },
   "{{LAYER_EFFECT_LIST}}": {
-    "[{{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}]": "",
     "[{{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}]": "",
     "[{{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}]": "",
     "[{{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}, {{LAYER_EFFECT}}]": "",
@@ -4037,7 +4038,6 @@
     "IsDamaged": "",
     "IsDoubleFaced": "",
     "IsFirstLandPlayedByPlayerThisTurn": "",
-    "IsHarnessed": "",
     "IsNotACommander": "",
     "IsPaired": "",
     "IsPairedWithA({{PERMANENTS}})": "",
@@ -5064,7 +5064,6 @@
     "[DealDamageButHealPreviousDamage]": "",
     "[DealDamageAsThoughItHadInfect]": "",
     "[DealDamageInstead({{NUMBER}})]": "",
-    "[DealSomeDamageToRecipientInstead({{NUMBER}}, {{DAMAGE_RECIPIENTS}})]": "",
     "[DealToAnyTargetInstead(Ref_AnyTarget)]": "",
     "[DealToAnyTargetInstead(Ref_AnyTargets_2)]": "",
     "[DealToCreatureOrPlaneswalkerInstead({{PERMANENT}})]": "",
@@ -5239,7 +5238,6 @@
     "[EntersTapped, EntersUnderPlayersControl({{PLAYER}}), EntersWithNumberCounters({{NUMBER}}, {{COUNTER_TYPE}})]": "",
     "[EntersTapped, EntersUnderPlayersControl({{PLAYER}})]": "",
     "[EntersTapped, EntersWithACounter({{COUNTER_TYPE}})]": "",
-    "[EntersTapped, EntersWithLayerEffect({{LAYER_EFFECT_LIST}})]": "",
     "[EntersTapped, EntersWithNumberCounters({{NUMBER}}, {{COUNTER_TYPE}})]": "",
     "[EntersTapped]": "",
     "[EntersTransformed, EntersUnderOwnersControl, EntersWithACounter({{COUNTER_TYPE}})]": "",
@@ -5576,6 +5574,7 @@
     "AsPermanentTransforms({{PERMANENT}}, {{TRANSFORM_ACTIONS}})": "",
     "AsPutIntoAGraveyardFromAnywhere(ThisCard, {{PUT_IN_GRAVEYARD_ACTIONS}})": "",
     "AsSchemeIsSetInMotion(ThisScheme, {{SET_IN_MOTION_ACTIONS}})": "",
+    "CDA_Color(TheChosenColor)": "",
     "CDA_Color(AllColors)": "",
     "CDA_Color(Colorless)": "",
     "CDA_Color(Devoid)": "",
@@ -5628,6 +5627,7 @@
     "LevelUp({{COST}}, [Level(BetweenValues({{DIGITS}}, {{DIGITS}}), {{PT}}, {{RULES}}), Level(ValueOrBigger({{DIGITS}}), {{PT}}, {{RULES}})])": "",
     "LevelUp({{COST}}, [LevelNoRules(BetweenValues({{DIGITS}}, {{DIGITS}}), {{PT}}), Level(ValueOrBigger({{DIGITS}}), {{PT}}, {{RULES}})])": "",
     "MaxSpeed({{RULE}})": "",
+    "Infinity({{RULE}})": "",
     "Mystery({{CONDITION}}, {{RULES}})": "",
     "PermanentRuleEffect_PlayerMayPayToIgnoreEffectUntil({{PERMANENT}}, {{PERMANENT_RULE_LIST}}, {{PLAYER}}, {{COST}}, {{EXPIRATION}})": "",
     "PlayerEffect_PlayerMayPayToIgnoreEffectUntil({{PLAYERS}}, {{PLAYER_EFFECT_LIST}}, {{COST}}, {{EXPIRATION}})": "",
@@ -6336,7 +6336,8 @@
     "Modal_ChooseOne({{TOP_LEVEL_ACTIONS_LIST}})": "",
     "Modal_ChooseOneAtRandom({{TOP_LEVEL_ACTIONS_LIST}})": "",
     "Modal_ChooseOneOrBoth({{TOP_LEVEL_ACTIONS_LIST}})": "",
-    "Modal_ChooseOneOrBothIf({{CONDITION}}, {{TOP_LEVEL_ACTIONS_LIST}})": "",
+    "Modal_ChooseOneOrMayChooseBothIf({{CONDITION}}, {{TOP_LEVEL_ACTIONS_LIST}})": "",
+    "Modal_ChooseOneOrChooseBothIf({{CONDITION}}, {{TOP_LEVEL_ACTIONS_LIST}})": "",
     "Modal_ChooseOneOrChooseOneOrMoreIf({{CONDITION}}, {{TOP_LEVEL_ACTIONS_LIST}})": "",
     "Modal_ChooseOneOrMayChooseTwoIf({{CONDITION}}, {{TOP_LEVEL_ACTIONS_LIST}})": "",
     "Modal_ChooseOneOrMore({{TOP_LEVEL_ACTIONS_LIST}})": "",

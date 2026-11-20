@@ -598,6 +598,11 @@
     // Card: [[Wish Good Luck]]
     "CreateTokens({{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
 
+    // Text: "for each other opponent, you may create a token that’s a copy
+    //        of that creature, tapped and attacking that opponent"
+    // Card: [[Kharasha Foothills]]
+    "MayCreateTokensForEachPlayer({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+
     // Text: "for each opponent, create a 1/1 white Human creature token
     //        that’s tapped and attacking that player or a planeswalker they
     //        control"
