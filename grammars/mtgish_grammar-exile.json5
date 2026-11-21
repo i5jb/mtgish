@@ -125,6 +125,11 @@
 
     "Spell({{SPELL}})": "",
     "EachSpell({{SPELLS}})": "",
+
+    // ---------------------
+    // Cards in Public Zones
+    // ---------------------
+    "Trigger_ThatSacrificedCard": ""
   },
 
   "{{EXILABLE_COST}}": {

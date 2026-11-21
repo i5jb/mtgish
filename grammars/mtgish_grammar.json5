@@ -322,6 +322,7 @@
   },
 
   "{{PUTTABLE_ON_BATTLEFIELD}}": {
+    "Trigger_ThatSacrificedCard": "",
     "AnyNumberOfGroupCardsInGraveyards({{CARDS_IN_GRAVEYARDS}}, {{GROUP_FILTER}})": ""
   },
   "{{PUTTABLE_ON_BATTLEFIELD_LIST}}": {
@@ -884,6 +885,7 @@
     "CreatePerpetualEachPermanentEffect({{PERMANENTS}}, {{PERPETUAL_EFFECT_LIST}})": "",
     "CreatePerpetualExiledCardEffect({{CARD_IN_EXILE}}, {{PERPETUAL_EFFECT_LIST}})": "",
     "CreatePerpetualGraveyardCardEffect({{CARD_IN_GRAVEYARDS}}, {{PERPETUAL_EFFECT_LIST}})": "",
+    "CreatePerpetualEffect(Trigger_ThatSacrificedCard, {{PERPETUAL_EFFECT_LIST}})": "",
     "CreatePerpetualPermanentEffect({{PERMANENT}}, {{PERPETUAL_EFFECT_LIST}})": "",
     "CreatePerpetualPermanentOrGraveyardCardEffect({{PERMANENT}}, {{CARD_IN_GRAVEYARDS}}, {{PERPETUAL_EFFECT_LIST}})": "",
     "CreatePerpetualSpellEffect({{SPELL}}, {{PERPETUAL_EFFECT_LIST}})": "",
@@ -3067,7 +3069,6 @@
     "TheBottomCardOfPlayersGraveyard({{PLAYER}})": "",
     "Trigger_ThisGraveyardCard": "",
     "Trigger_ThatGraveyardCard": "",
-    "Trigger_ThatSacrificedPermanent": ""
   },
   "{{GROUP_EXILED_EFFECTS}}": {
     "{{GROUP_EXILED_EFFECT}}": ""
@@ -4373,7 +4374,6 @@
     "Trigger_ThatOtherCreature": "",
     "Trigger_ThatOtherPermanent": "",
     "Trigger_ThatPermanent": "",
-    "Trigger_ThatSacrificedPermanent": "",
     "Trigger_ThatVehicle": "",
     "Trigger_TheAttackingCreature": "",
     "Trigger_TheBlockingCreature": "",

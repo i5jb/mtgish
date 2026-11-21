@@ -5611,7 +5611,6 @@ pub enum Permanent {
   Trigger_ThatOtherCreature,
   Trigger_ThatOtherPermanent,
   Trigger_ThatPermanent,
-  Trigger_ThatSacrificedPermanent,
   Trigger_ThatVehicle,
   Trigger_TheAttackingCreature,
   Trigger_TheBlockingCreature,
@@ -7584,7 +7583,6 @@ pub enum CardInGraveyards {
   TheCardPutIntoGraveyardThisWay,
   TheLastGraveyardCardChosenThisWay,
   ThePermanentSacrificedThisWay,
-  Trigger_ThatSacrificedPermanent,
   TopCardOfTypeOfPlayersGraveyard(Box<Cards>, Box<Player>),
   Trigger_ThisGraveyardCard,
   Trigger_ThatGraveyardCard,
@@ -8446,6 +8444,7 @@ pub enum PuttableOnBattlefield {
   CardInGraveyard(Box<CardInGraveyards>),
   CardInHand(Box<CardInHand>),
   TheTopCardOfLibrary,
+  Trigger_ThatSacrificedCard,
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -8585,6 +8584,9 @@ pub enum Exilable {
   NumberPermanents(Box<GameNumber>, Box<Permanents>),
   UptoOnePermanent(Box<Permanents>),
   AnyNumberOfPermanents(Box<Permanents>),
+
+  // Cards in public zones
+  Trigger_ThatSacrificedCard,
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -8918,6 +8920,14 @@ pub enum ConjureAction {
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
 #[ts(export)]
+#[cfg_attr(feature = "write_out_json", serde(tag = "_PerpetualEffected", content = "args"))]
+pub enum PerpetualEffected {
+  Trigger_ThatSacrificedCard,
+}
+
+
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
+#[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_Action", content = "args"))]
 pub enum Action {
   Recruit,
@@ -8950,8 +8960,8 @@ pub enum Action {
 
   MultiCreateTokens(Vec<MultiCreateToken>),
   CreateTokens(Vec<CreatableToken>, Vec<TokenFlag>),
-  MayCreateTokensForEachPlayer(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
-  CreateTokensForEachPlayer(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
+  ForEachPlayerMayCreateTokens(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
+  ForEachPlayerCreateTokens(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
   CreateTokensForEachPermanent(Box<Permanents>, Vec<CreatableToken>, Vec<TokenFlag>),
   EachPlayerCreatesTokens(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>),
   EachPlayerCreatesTokensOfTheirChoice(Box<Players>, Vec<CreatableToken>, Vec<TokenFlag>, Vec<CreatableToken>, Vec<TokenFlag>),
@@ -9446,6 +9456,7 @@ pub enum Action {
   CreatePermanentRuleEffectUntil(Box<Permanent>, Vec<PermanentRule>, Expiration),
   CreatePermanentSpellLayerEffect(Expiration, Box<Spell>, Vec<LayerEffect>),
   CreatePermanentsList(Box<Permanents>),
+  CreatePerpetualEffect(Box<PerpetualEffected>, Vec<PerpetualEffect>),
   CreatePerpetualAllCardsEffect(Box<Cards>, Vec<PerpetualEffect>),
   CreatePerpetualCardInHandEffect(CardInHand, Vec<PerpetualEffect>),
   CreatePerpetualCardInLibraryEffect(CardInLibrary, Vec<PerpetualEffect>),

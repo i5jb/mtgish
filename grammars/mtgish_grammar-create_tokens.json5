@@ -601,13 +601,13 @@
     // Text: "for each other opponent, you may create a token that’s a copy
     //        of that creature, tapped and attacking that opponent"
     // Card: [[Kharasha Foothills]]
-    "MayCreateTokensForEachPlayer({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+    "ForEachPlayerMayCreateTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
 
     // Text: "for each opponent, create a 1/1 white Human creature token
     //        that’s tapped and attacking that player or a planeswalker they
     //        control"
     // Card: [[Adeline, Resplendent Cathar]]
-    "CreateTokensForEachPlayer({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
+    "ForEachPlayerCreateTokens({{PLAYERS}}, {{CREATABLE_TOKEN_LIST}}, {{TOKEN_FLAGS}})": "",
 
     // Text: "For each of X target permanents, create X tokens that are copies
     //        of that permanent"

@@ -287428,7 +287428,7 @@
       {
         "name": "Paul Atreides, Ducal Heir",
         "manaCost": "{1}{W}",
-        "type": "Legendary Creature Human Noble",
+        "type": "Legendary Creature — Human Noble",
         "text": "Vigilance\nTraining (Whenever this creature attacks with another creature with greater power, put a +1/+1 counter on this creature.)\n{T}: Put a +1/+1 counter on each other creature you control. Activate only if Paul Atreides's power is 4 or greater.",
         "power": "1",
         "toughness": "2"
@@ -419294,7 +419294,7 @@
       {
         "name": "Tomik, Devoted to Chaos",
         "manaCost": "{2}{W}",
-        "type": "Legendary Creature Human Advisor",
+        "type": "Legendary Creature — Human Advisor",
         "text": "Law and Ardor — If Tomik, Devoted to Chaos is your commander, a Ral card can also be your commander.\nFlying, lifelink\nRal planeswalkers' loyalty abilities you activate cost an additional +1 to activate.",
         "power": "3",
         "toughness": "1"
@@ -464730,7 +464730,7 @@
       {
         "name": "Yahenni, Slayer",
         "manaCost": "{2}{B}",
-        "type": "Legendary Creature -- Aetherborn Vampire",
+        "type": "Legendary Creature — Aetherborn Vampire",
         "text": "Vanishing 4 (Yahenni creature enters with four time counters on them. At the beginning of your upkeep, remove a time counter from them. When the last is removed, sacrifice them.)\nWhenever an opponent attacks a player with a lower life total than them, the attacking player loses 3 life and you proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",
         "power": "2",
         "toughness": "2"

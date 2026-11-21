@@ -70,8 +70,8 @@ type Action =
 | { "_Action": "MultiDraw", "args": Array<MultiDrawable> }
 | { "_Action": "MultiCreateTokens", "args": Array<MultiCreateToken> }
 | { "_Action": "CreateTokens", "args": [Array<CreatableToken>, Array<TokenFlag>] }
-| { "_Action": "MayCreateTokensForEachPlayer", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
-| { "_Action": "CreateTokensForEachPlayer", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
+| { "_Action": "ForEachPlayerMayCreateTokens", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
+| { "_Action": "ForEachPlayerCreateTokens", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "CreateTokensForEachPermanent", "args": [Permanents, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "EachPlayerCreatesTokens", "args": [Players, Array<CreatableToken>, Array<TokenFlag>] }
 | { "_Action": "EachPlayerCreatesTokensOfTheirChoice", "args": [Players, Array<CreatableToken>, Array<TokenFlag>, Array<CreatableToken>, Array<TokenFlag>] }
@@ -557,6 +557,7 @@ type Action =
 | { "_Action": "CreatePermanentRuleEffectUntil", "args": [Permanent, Array<PermanentRule>, Expiration] }
 | { "_Action": "CreatePermanentSpellLayerEffect", "args": [Expiration, Spell, Array<LayerEffect>] }
 | { "_Action": "CreatePermanentsList", "args": Permanents }
+| { "_Action": "CreatePerpetualEffect", "args": [PerpetualEffected, Array<PerpetualEffect>] }
 | { "_Action": "CreatePerpetualAllCardsEffect", "args": [Cards, Array<PerpetualEffect>] }
 | { "_Action": "CreatePerpetualCardInHandEffect", "args": [CardInHand, Array<PerpetualEffect>] }
 | { "_Action": "CreatePerpetualCardInLibraryEffect", "args": [CardInLibrary, Array<PerpetualEffect>] }
@@ -1620,7 +1621,6 @@ type CardInGraveyards =
 | { "_CardInGraveyards": "TheCardPutIntoGraveyardThisWay" }
 | { "_CardInGraveyards": "TheLastGraveyardCardChosenThisWay" }
 | { "_CardInGraveyards": "ThePermanentSacrificedThisWay" }
-| { "_CardInGraveyards": "Trigger_ThatSacrificedPermanent" }
 | { "_CardInGraveyards": "TopCardOfTypeOfPlayersGraveyard", "args": [Cards, Player] }
 | { "_CardInGraveyards": "Trigger_ThisGraveyardCard" }
 | { "_CardInGraveyards": "Trigger_ThatGraveyardCard" }
@@ -3640,7 +3640,8 @@ type Exilable =
 | { "_Exilable": "APermanent", "args": Permanents }
 | { "_Exilable": "NumberPermanents", "args": [GameNumber, Permanents] }
 | { "_Exilable": "UptoOnePermanent", "args": Permanents }
-| { "_Exilable": "AnyNumberOfPermanents", "args": Permanents };
+| { "_Exilable": "AnyNumberOfPermanents", "args": Permanents }
+| { "_Exilable": "Trigger_ThatSacrificedCard" };
 type ExilableCost =
 | { "_ExilableCost": "ACardOfTypeMilledThisWay", "args": CardsInLibrary }
 | { "_ExilableCost": "Spell", "args": Spell }
@@ -4925,7 +4926,6 @@ type Permanent =
 | { "_Permanent": "Trigger_ThatOtherCreature" }
 | { "_Permanent": "Trigger_ThatOtherPermanent" }
 | { "_Permanent": "Trigger_ThatPermanent" }
-| { "_Permanent": "Trigger_ThatSacrificedPermanent" }
 | { "_Permanent": "Trigger_ThatVehicle" }
 | { "_Permanent": "Trigger_TheAttackingCreature" }
 | { "_Permanent": "Trigger_TheBlockingCreature" };
@@ -5444,6 +5444,8 @@ type PerpetualEffect =
 | { "_PerpetualEffect": "SetCreatureType", "args": CreatureType }
 | { "_PerpetualEffect": "SetPT", "args": PT }
 | { "_PerpetualEffect": "SetPower", "args": GameNumber };
+type PerpetualEffected =
+| { "_PerpetualEffected": "Trigger_ThatSacrificedCard" };
 type PhasedOutEffect =
 | { "_PhasedOutEffect": "TapAsPhasesIn" };
 type Phenomena =
@@ -6401,7 +6403,8 @@ type PuttableOnBattlefield =
 | { "_PuttableOnBattlefield": "ACardOfTypeFromLibrary", "args": CardsInLibrary }
 | { "_PuttableOnBattlefield": "CardInGraveyard", "args": CardInGraveyards }
 | { "_PuttableOnBattlefield": "CardInHand", "args": CardInHand }
-| { "_PuttableOnBattlefield": "TheTopCardOfLibrary" };
+| { "_PuttableOnBattlefield": "TheTopCardOfLibrary" }
+| { "_PuttableOnBattlefield": "Trigger_ThatSacrificedCard" };
 type RegularBattlefieldObject =
 | NormalObject
 | TransformingObject;
