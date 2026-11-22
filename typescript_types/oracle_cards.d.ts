@@ -3733,6 +3733,7 @@ type Expiration =
 | { "_Expiration": "UntilTheBeginningOfPlayersNextUpkeep", "args": Player }
 | { "_Expiration": "UntilTheBeginningOfTheNextEndStep" }
 | { "_Expiration": "UntilTheEndOfCombatOnPlayersNextTurn", "args": Player }
+| { "_Expiration": "UntilTheEndOfPlayersNextUpkeep", "args": Player }
 | { "_Expiration": "UntilTheEndOfPlayersNextTurn", "args": Player }
 | { "_Expiration": "UntilTopCardOfPlayersLibraryChanges", "args": Player };
 type FaceUpAction =
@@ -4144,6 +4145,7 @@ type GameNumber =
 | { "_GameNumber": "TheNumberOfChosenColorsItIs" }
 | { "_GameNumber": "TheNumberOfChosenColorsSpellIs", "args": Spell }
 | { "_GameNumber": "TheNumberOfCoinsThatCameUpHeads" }
+| { "_GameNumber": "TheNumberOfCoinsThatCameUpTails" }
 | { "_GameNumber": "TheNumberOfColorsAmongPermanentsAndSpellsCastThisTurn", "args": [Permanents, Spells] }
 | { "_GameNumber": "TheNumberOfColorsAmongTheCardsUsedToCraftPermanent", "args": Permanent }
 | { "_GameNumber": "TheNumberOfColorsOfManaSpentToCastSpell", "args": Spell }

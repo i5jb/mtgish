@@ -1635,6 +1635,7 @@ pub enum Expiration {
   UntilTheBeginningOfPlayersNextUpkeep(Box<Player>),
   UntilTheBeginningOfTheNextEndStep,
   UntilTheEndOfCombatOnPlayersNextTurn(Box<Player>),
+  UntilTheEndOfPlayersNextUpkeep(Box<Player>),
   UntilTheEndOfPlayersNextTurn(Box<Player>),
   UntilTopCardOfPlayersLibraryChanges(Box<Player>)
 }
@@ -6129,6 +6130,7 @@ pub enum GameNumber {
   TheNumberOfChosenColorsItIs,
   TheNumberOfChosenColorsSpellIs(Box<Spell>),
   TheNumberOfCoinsThatCameUpHeads,
+  TheNumberOfCoinsThatCameUpTails,
   TheNumberOfColorsAmongPermanentsAndSpellsCastThisTurn(Box<Permanents>, Box<Spells>),
   TheNumberOfColorsAmongTheCardsUsedToCraftPermanent(Box<Permanent>),
   TheNumberOfColorsOfManaSpentToCastSpell(Box<Spell>),
