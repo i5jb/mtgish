@@ -309,7 +309,6 @@
     "WasExiledByPlayer({{PLAYER}})": "",
     "WasExiledByPlayerForDraftCard({{PLAYER}}, {{QUOTED_NAMED_CARD}})": "",
     "WasExiledByPlayerThisWay({{PLAYER}})": "",
-    "WasExiledByPlayerWithPermanent({{PLAYER}}, {{PERMANENT}})": "",
     "WasExiledByPlayerWithPermanentThisTurn({{PLAYER}}, {{PERMANENT}})": "",
     "WasExiledThisTurn": "",
     "WasExiledThisWay": "",

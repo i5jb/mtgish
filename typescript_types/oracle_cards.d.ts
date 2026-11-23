@@ -1803,7 +1803,6 @@ type CardsInExile =
 | { "_CardsInExile": "WasExiledByPlayer", "args": Player }
 | { "_CardsInExile": "WasExiledByPlayerForDraftCard", "args": [Player, string] }
 | { "_CardsInExile": "WasExiledByPlayerThisWay", "args": Player }
-| { "_CardsInExile": "WasExiledByPlayerWithPermanent", "args": [Player, Permanent] }
 | { "_CardsInExile": "WasExiledByPlayerWithPermanentThisTurn", "args": [Player, Permanent] }
 | { "_CardsInExile": "WasExiledThisTurn" }
 | { "_CardsInExile": "WasExiledThisWay" }
@@ -1942,7 +1941,6 @@ type CardsInLibrary =
 | { "_CardsInLibrary": "OwnedByAPlayer", "args": Players }
 | { "_CardsInLibrary": "RevealedFromLibraryThisWay" }
 | { "_CardsInLibrary": "RevealedFromPlayersLibraryThisWay", "args": Player }
-| { "_CardsInLibrary": "TheLibraryCardsFoundThisWay" }
 | { "_CardsInLibrary": "CanEnchantPermanent", "args": Permanent }
 | { "_CardsInLibrary": "CanEnchantThatEnteringPermanent" }
 | { "_CardsInLibrary": "DoesntShareALandTypeWithAPermanent", "args": Permanents }
@@ -3879,6 +3877,7 @@ type GameNumber =
 | { "_GameNumber": "LifeGainedByPlayerThisGame", "args": Player }
 | { "_GameNumber": "NumSpellsCastByPlayerThisGame", "args": [Spells, Player] }
 | { "_GameNumber": "TheTotalNumberOfCardsInAmongPlayersStartingDecks", "args": Players }
+| { "_GameNumber": "TheNumberOfPermanentsThatCrewedPermanentThisTurn", "args": [Permanents, Permanent] }
 | { "_GameNumber": "TheNumberOfCardtypesAmongPermanentsSacrificedByPlayerThisTurn", "args": [Permanents, Player] }
 | { "_GameNumber": "TheNumberGuessedThisWay" }
 | { "_GameNumber": "TheNumberOfCardsPutIntoAPlayersGraveyardFromTheirLibraryThisTurn", "args": Players }
@@ -4426,6 +4425,7 @@ type LayerEffect =
 | { "_LayerEffect": "SetCardtypes", "args": Array<CardType> }
 | { "_LayerEffect": "SetCreatureType", "args": CreatureType }
 | { "_LayerEffect": "SetCreatureTypes", "args": Array<CreatureType> }
+| { "_LayerEffect": "SetEnchantmentTypes", "args": Array<EnchantmentType> }
 | { "_LayerEffect": "SetLandType", "args": LandType }
 | { "_LayerEffect": "RemoveArtifactType", "args": ArtifactType }
 | { "_LayerEffect": "RemoveAllCreatureTypes" }
@@ -4532,7 +4532,6 @@ type LookAtTopOfLibraryAction =
 | { "_LookAtTopOfLibraryAction": "PlayerExilesAPile", "args": Player }
 | { "_LookAtTopOfLibraryAction": "PlayerLooksAtRemainingCardsAndPutsAGenericCardIntoHand", "args": Player }
 | { "_LookAtTopOfLibraryAction": "MayRevealMultipleCardsOfTypeAndPutIntoHand", "args": Array<CardsInLibrary> }
-| { "_LookAtTopOfLibraryAction": "MayRevealMultipleCardsOfType", "args": Array<CardsInLibrary> }
 | { "_LookAtTopOfLibraryAction": "CreatePermanentLayerEffectUntil", "args": [Permanent, Array<LayerEffect>, Expiration] }
 | { "_LookAtTopOfLibraryAction": "If", "args": [Condition, Array<LookAtTopOfLibraryAction>] }
 | { "_LookAtTopOfLibraryAction": "Unless", "args": [Condition, Array<LookAtTopOfLibraryAction>] }
@@ -5108,7 +5107,6 @@ type Permanents =
 | { "_Permanents": "ConvokedPermanent", "args": Permanent }
 | { "_Permanents": "ConvokedSpell", "args": Spell }
 | { "_Permanents": "CouldBeTargetedBySpell", "args": Spell }
-| { "_Permanents": "CouldBeTargetedBySpell_ThoseTargets" }
 | { "_Permanents": "CouldProduce", "args": ManaProduceSymbol }
 | { "_Permanents": "CouldProduceAnyManaColorPermanentCouldProduce", "args": Permanent }
 | { "_Permanents": "CouldntAttackThisTurn" }
@@ -5379,7 +5377,6 @@ type Permanents =
 | { "_Permanents": "WasBlockedSincePlayersLastUpkeep", "args": Player }
 | { "_Permanents": "WasBlockedThisTurn" }
 | { "_Permanents": "WasBlockingDeadDefender" }
-| { "_Permanents": "WasCast" }
 | { "_Permanents": "WasCastByAPlayer", "args": Players }
 | { "_Permanents": "WasCastForItsWarpCost" }
 | { "_Permanents": "WasCastFromAPlayersGraveyard", "args": Players }
@@ -6403,6 +6400,7 @@ type PuttableOnBattlefield =
 | { "_PuttableOnBattlefield": "AnyNumberOfCardsFromLibrary", "args": CardsInLibrary }
 | { "_PuttableOnBattlefield": "AnyNumberOfGroupCardsInGraveyards", "args": [CardsInGraveyards, GroupFilter] }
 | { "_PuttableOnBattlefield": "ACardOfTypeFromLibrary", "args": CardsInLibrary }
+| { "_PuttableOnBattlefield": "EachCardInGraveyards", "args": CardsInGraveyards }
 | { "_PuttableOnBattlefield": "CardInGraveyard", "args": CardInGraveyards }
 | { "_PuttableOnBattlefield": "CardInHand", "args": CardInHand }
 | { "_PuttableOnBattlefield": "TheTopCardOfLibrary" }

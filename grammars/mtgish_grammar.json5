@@ -322,6 +322,7 @@
   },
 
   "{{PUTTABLE_ON_BATTLEFIELD}}": {
+    "EachCardInGraveyards({{CARDS_IN_GRAVEYARDS}})": "",
     "Trigger_ThatSacrificedCard": "",
     "AnyNumberOfGroupCardsInGraveyards({{CARDS_IN_GRAVEYARDS}}, {{GROUP_FILTER}})": ""
   },
@@ -1741,7 +1742,6 @@
 
     "RevealedFromLibraryThisWay": "",
     "RevealedFromPlayersLibraryThisWay({{PLAYER}})": "",
-    "TheLibraryCardsFoundThisWay": "",
     "TheCardsConjuredInLibraryThisWay": "",
 
     "CanEnchantThatEnteringPermanent": "",
@@ -3401,6 +3401,7 @@
     "RemoveSupertype({{SUPERTYPE}})": "",
     "SetArtifactType({{CLUE}})": "",
     "SetCardtype({{CARDTYPE}})": "",
+    "SetCardtypes([{{CARDTYPE}}])": "",
     "SetCardtypes([{{CARDTYPE}}, {{CARDTYPE}}])": "",
     "SetCreatureType({{ZOMBIE}})": "",
     "SetCreatureTypeVariable(TheChosenCreatureType)": "",
@@ -3408,6 +3409,7 @@
     "SetCreatureTypes([{{ZOMBIE}}, {{ZOMBIE}}, {{ZOMBIE}}])": "",
     "SetCreatureTypes([{{ZOMBIE}}, {{ZOMBIE}}])": "",
     "SetCreatureTypes([{{ZOMBIE}}])": "",
+    "SetEnchantmentTypes([{{CURSE}}])": "",
     "SetLandType({{SWAMP}})": "",
     "SetLandTypeVariable(TheChosenLandType)": "",
     "SetLandTypeVariable(TheSecondChosenLandType)": ""
@@ -3572,6 +3574,8 @@
   "{{NUMBER}}": {
     "{{_NUMBER[PutCounters]}}": "",
     "{{_NUMBER[PutCounters][WouldPutCounters]}}": "",
+
+    "TheNumberOfPermanentsThatCrewedPermanentThisTurn({{PERMANENTS}}, {{PERMANENT}})": "",
 
     "WouldEmpowerJace_EmpowerAmount": "",
 
@@ -3997,7 +4001,6 @@
     "ConvokedPermanent({{PERMANENT}})": "",
     "ConvokedSpell(ThisSpell)": "",
     "CouldBeTargetedBySpell({{SPELL}})": "",
-    "CouldBeTargetedBySpell_ThoseTargets": "",
     "CouldProduce(ManaProduceC)": "",
     "CouldProduceAnyManaColorPermanentCouldProduce({{PERMANENT}})": "",
     "CouldntAttackThisTurn": "",
@@ -4097,7 +4100,6 @@
     "WasBlockedSincePlayersLastUpkeep({{PLAYER}})": "",
     "WasBlockedThisTurn": "",
     "WasBlockingDeadDefender": "",
-    "WasCast": "",
     "WasCastByAPlayer({{PLAYERS}})": "",
     "WasCastForItsWarpCost": "",
     "WasCastFromAPlayersGraveyard({{PLAYERS}})": "",
@@ -5184,7 +5186,7 @@
     "[MustCost(PutAGraveyardCardOntoBattlefield({{CARDS_IN_GRAVEYARDS}}, {{ENTER_FLAGS}})), Unless(CostWasPaid, [LoseTheGame])]": "",
     "[PermanentDealsDamage({{PERMANENT}}, {{NUMBER}}, {{DAMAGE_RECIPIENTS}})]": "",
 
-    "[PlayerAction({{PLAYER}}, ChooseAPlayer({{PLAYERS}})), PlayerAction({{PLAYER}}, Exile([TheTopCardOfPlayersLibrary({{PLAYER}})], []))]": "",
+    "[PlayerAction({{PLAYER}}, ChooseAPlayer({{PLAYERS}})), PlayerAction({{PLAYER}}, Exile([TheTopCardOfPlayersLibrary({{PLAYER}})], [ExilesFaceDown]))]": "",
     "[PlayerAction({{PLAYER}}, Exile([TheTopCardOfLibrary], [])), CreatePlayerEffectUntil({{PLAYER}}, {{PLAYER_EFFECT_LIST}}, {{EXPIRATION}})]": "",
     "[PlayerAction({{PLAYER}}, Exile([TheTopCardOfLibrary], []))]": "",
 
@@ -6496,8 +6498,7 @@
     "EachPlayerAction({{PLAYERS}}, PutTopOfLibraryInHand)": "",
     "EachPlayerAction({{PLAYERS}}, PutTopOfLibraryOnBottomOfLibrary)": "",
 
-    "EachPlayerAction({{PLAYERS}}, LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealMultipleCardsOfType([{{CARDS_IN_LIBRARY}}, {{CARDS_IN_LIBRARY}}])]))": "",
-    "EachPlayerAction({{PLAYERS}}, PutLibraryCardsIntoHand({{CARDS_IN_LIBRARY}}))": "",
+    "EachPlayerAction({{PLAYERS}}, LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealMultipleCardsOfTypeAndPutIntoHand([{{CARDS_IN_LIBRARY}}, {{CARDS_IN_LIBRARY}}]), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder]))": "",
 
     "EachPlayerAction({{PLAYERS}}, PutTopOfLibraryOnBattlefield({{ENTER_FLAGS}}))": "",
 
