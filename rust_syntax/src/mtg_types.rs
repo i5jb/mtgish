@@ -2719,7 +2719,7 @@ pub enum Rule {
   DamageIsntRemovedFromCreatureDuringCleanup(Box<Permanent>),
   DamageIsntRemovedFromCreaturesDuringCleanup(Box<Permanents>),
 
-  IncreaseBuybackCosts(ManaCost),
+  DecreaseBuybackCosts(Box<CostReduction>),
   IncreaseMorphCosts(ManaCost),
 
   ItCantBecomeNight,
@@ -5862,6 +5862,7 @@ pub enum GameNumber {
   NumSpellsCastByPlayerThisGame(Box<Spells>, Box<Player>),
   TheTotalNumberOfCardsInAmongPlayersStartingDecks(Box<Players>),
 
+  TheNumberOfCardsInHandChosenThisWay,
   TheNumberOfPermanentsThatCrewedPermanentThisTurn(Box<Permanents>, Box<Permanent>),
   TheNumberOfCardtypesAmongPermanentsSacrificedByPlayerThisTurn(Box<Permanents>, Box<Player>),
   TheNumberGuessedThisWay,
@@ -6992,6 +6993,8 @@ pub enum CardsInHand {
 
   OwnedByAPlayer(Box<Players>),
 
+  DrawnThisTurn,
+
   InAPlayersHand(Box<Players>),
   SharesANameWithPermanent(Box<Permanent>),
 
@@ -7950,7 +7953,6 @@ pub enum LookAtTopOfLibraryAction {
   MayPutAnyNumberOfCardsOntoTheBattlefield(Box<Cards>, Vec<EnterFlag>),
   MayRevealACardOfTypeAndPutIntoHand(Box<Cards>),
   MayRevealACardOfTypeAndPutOnTopOfLibrary(Box<Cards>),
-  MayRevealAnyNumberOfCardOfTypeAndPutOnTopOfLibrary(Box<Cards>),
   MayRevealAnyNumberOfCardsOfTypeAndPutOnTopOfLibraryInAnyOrder(Box<Cards>),
   MayRevealAnyNumberOfCardsOfTypeAndPutThemIntoHand(Box<Cards>),
   PutAGenericCardIntoGraveyard,
@@ -8428,6 +8430,8 @@ pub enum PuttableInGraveyard {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_PuttableInHand", content = "args"))]
 pub enum PuttableInHand {
+  Permanent(Box<Permanent>),
+  CardsInExile(Box<CardsInExile>),
   Trigger_ThatDiscardedCard,
   ConjuredDuplicateOfPermanent(Box<Permanent>),
 }
@@ -8441,7 +8445,7 @@ pub enum PuttableOnBattlefield {
   AnyNumberOfGroupCardsInGraveyards(Box<CardsInGraveyards>, Box<GroupFilter>),
   ACardOfTypeFromLibrary(Box<CardsInLibrary>),
   EachCardInGraveyards(Box<CardsInGraveyards>),
-  CardInGraveyard(Box<CardInGraveyards>),
+  CardInGraveyards(Box<CardInGraveyards>),
   CardInHand(Box<CardInHand>),
   TheTopCardOfLibrary,
   Trigger_ThatSacrificedCard,
@@ -8939,6 +8943,7 @@ pub enum Action {
 
   Conjure(Vec<ConjureAction>),
   PutInHand(Vec<PuttableInHand>),
+  PutInOwnersHand(Vec<PuttableInHand>),
   PutOnBattlefield(Vec<PuttableOnBattlefield>, Vec<EnterFlag>),
   PutInGraveyard(Vec<PuttableInGraveyard>),
 
@@ -9286,6 +9291,7 @@ pub enum Action {
   ChooseNumberCardsFromAmongCardsInHandRevealedThisWay(Box<GameNumber>, Box<Cards>),
   ChooseNumberCardsInEachPlayersGraveyard(Box<GameNumber>, Box<Cards>, Box<Players>),
   ChooseNumberCardsInHand(Box<GameNumber>),
+  ChooseNumberCardsOfTypeInHand(Box<GameNumber>, Box<CardsInHand>),
   ChooseNumberGraveyardCards(Box<GameNumber>, Box<CardsInGraveyards>),
   ChooseNumberPermanents(Box<GameNumber>, Box<Permanents>),
   ChooseOneOrTwoPermanents(Box<Permanents>),
@@ -9529,7 +9535,6 @@ pub enum Action {
   DiscardHand,
   DiscardNumberCards(Box<GameNumber>),
   DiscardNumberCardsAtRandom(Box<GameNumber>),
-  DiscardNumberCardsDrawnThisTurn(Box<GameNumber>),
   DiscardNumberCardsOfType(Box<GameNumber>, Box<Cards>),
   DiscardTheCardDrawnThisWay,
   DiscardTheCardRevealedThisWay,
@@ -9899,6 +9904,7 @@ pub enum Action {
   PutGraveyardCardOntoBattlefield(Box<CardInGraveyards>, Vec<EnterFlag>),
   PutNumCardsFromHandOnBottomOfLibraryAnyOrder(Box<GameNumber>),
   PutNumCardsFromHandOnTopOfLibraryAnyOrder(Box<GameNumber>),
+  PutNumberSpecificCardsFromHandOnTopOfLibraryAnyOrder(Box<GameNumber>, Box<CardsInHand>),
   PutNumberCardsFromAmongPlayersGraveyardsOntoTheBattlefield(Box<GameNumber>, Box<CardsInGraveyards>, Box<Players>, Vec<EnterFlag>),
   PutNumberCardsFromExileOntoBattlefield(Box<GameNumber>, CardsInExile, Vec<EnterFlag>),
   PutNumberGraveyardCardsOnTopOfLibraryInAnyOrder(Box<GameNumber>, Box<CardsInGraveyards>),
@@ -10549,6 +10555,7 @@ pub enum SpellEffect {
   WebSlinging(Box<Cost>),
   AdjustPT(i32, i32),
 
+  Assist,
   ReplaceCreatureTypeVariableWithNewCreatureTypeVariable(CreatureTypeVariable, CreatureTypeVariable),
   ResolvesIntoExileInsteadOfGraveyardWithACounter(CounterType),
   Wither,

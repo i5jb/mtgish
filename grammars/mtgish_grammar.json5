@@ -246,7 +246,7 @@
     "DamageIsntRemovedFromCreatureDuringCleanup({{PERMANENT}})": "",
     "DamageIsntRemovedFromCreaturesDuringCleanup({{PERMANENTS}})": "",
     "DefendingPlayersChooseCreaturesToDefendAttackersAtRandom": "",
-    "IncreaseBuybackCosts({{MANACOST}})": "",
+    "DecreaseBuybackCosts({{COST_REDUCTION}})": "",
     "IncreaseMorphCosts({{MANACOST}})": "",
     "ItCantBecomeNight": "",
     "NoMoreThanNumberCreaturesCanAttack({{NUMBER}})": "",
@@ -315,13 +315,17 @@
   },
 
   "{{PUTTABLE_IN_HAND}}": {
-    "Trigger_ThatDiscardedCard": ""
+    "Trigger_ThatDiscardedCard": "",
+    "Permanent({{PERMANENT}})": "",
+    "CardsInExile({{CARDS_IN_EXILE}})": "",
   },
   "{{PUTTABLE_IN_HAND_LIST}}": {
+    "[{{PUTTABLE_IN_HAND}}, {{PUTTABLE_IN_HAND}}]": "",
     "[{{PUTTABLE_IN_HAND}}]": ""
   },
 
   "{{PUTTABLE_ON_BATTLEFIELD}}": {
+    "CardInGraveyards({{CARD_IN_GRAVEYARDS}})": "",
     "EachCardInGraveyards({{CARDS_IN_GRAVEYARDS}})": "",
     "Trigger_ThatSacrificedCard": "",
     "AnyNumberOfGroupCardsInGraveyards({{CARDS_IN_GRAVEYARDS}}, {{GROUP_FILTER}})": ""
@@ -340,6 +344,7 @@
     "PlayerAction({{PLAYER}}, RevealCardsFromTheTopOfLibraryUntilACardOfTypeIsRevealedOrUntilNumberCardsAreRevealed({{CARDS}}, {{NUMBER}})), PutOnBattlefield([TheCardsOfTypeRevealedFromTheTopOfTheLibraryThisWay({{CARDS_IN_LIBRARY}})], {{ENTER_FLAGS}}), SacrificePermanent({{PERMANENT}}), PutInGraveyard([TheCardsRevealedFromTheTopOfTheLibraryThisWay])": "",
 
     "PutInHand({{PUTTABLE_IN_HAND_LIST}})": "",
+    "PutInOwnersHand({{PUTTABLE_IN_HAND_LIST}})": "",
 
     "PutOnBattlefield({{PUTTABLE_ON_BATTLEFIELD_LIST}}, {{ENTER_FLAGS}})": "",
     "MeldExiledIntoNewPermanent({{CARDS_IN_EXILE}}, {{QUOTED_NAMED_CARD}}, {{ENTER_FLAGS}})": "",
@@ -613,6 +618,7 @@
     "ChooseACardFromAmongTheTopNumberCardsInPlayersGraveyard({{CARDS}}, {{NUMBER}}, {{PLAYER}})": "",
     "ChooseACardFromPlayersRevealedHand({{CARDS}}, {{PLAYER}})": "",
     "ChooseACardInEachPlayersGraveyard({{CARDS}}, {{PLAYERS}})": "",
+    "ChooseNumberCardsOfTypeInHand({{NUMBER}}, {{CARDS_IN_HAND}})": "",
     "ChooseACardInHand(TheCardsSeekedThisWay)": "",
     "ChooseACardInHand({{CARDS}})": "",
     "ChooseACardInHandAtRandom({{CARDS}})": "",
@@ -948,7 +954,6 @@
     "DiscardHand": "",
     "DiscardNumberCards({{NUMBER}})": "",
     "DiscardNumberCardsAtRandom({{NUMBER}})": "",
-    "DiscardNumberCardsDrawnThisTurn({{NUMBER}})": "",
     "DiscardNumberCardsOfType({{NUMBER}}, {{CARDS}})": "",
     "DiscardTheCardDrawnThisWay": "",
     "DiscardTheCardRevealedThisWay": "",
@@ -1223,6 +1228,7 @@
     "PutGraveyardCardOnTopOfLibrary({{CARD_IN_GRAVEYARDS}})": "",
     "PutNumCardsFromHandOnBottomOfLibraryAnyOrder({{NUMBER}})": "",
     "PutNumCardsFromHandOnTopOfLibraryAnyOrder({{NUMBER}})": "",
+    "PutNumberSpecificCardsFromHandOnTopOfLibraryAnyOrder({{NUMBER}}, {{CARDS_IN_HAND}})": "",
     "PutNumberGraveyardCardsOnTopOfLibraryInAnyOrder({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}})": "",
     "PutNumberPermanentsIntoOwnersHand({{NUMBER}}, {{PERMANENTS}})": "",
     "PutPermanentInOwnersLibraryBeneathNumberCards({{PERMANENT}}, {{NUMBER}})": "",
@@ -1306,9 +1312,9 @@
     "Reflexive_PutCardInHand_WhenYouDo([ConjuredDuplicateOfPermanent({{PERMANENT}})], {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_PutAPermanentInOwnersHand_WhenYouDo({{PERMANENTS}}, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_PutOnBattlefield_WhenAPermanentEntersThisWay([CardInHand(TheCardDraftedThisWay)], {{ENTER_FLAGS}}, {{PERMANENTS}}, {{TOP_LEVEL_ACTIONS}})": "",
-    "Reflexive_PutOnBattlefield_WhenYouDo([CardInGraveyard({{CARD_IN_GRAVEYARDS}})], {{ENTER_FLAGS}}, {{TOP_LEVEL_ACTIONS}})": "",
+    "Reflexive_PutOnBattlefield_WhenYouDo([CardInGraveyards({{CARD_IN_GRAVEYARDS}})], {{ENTER_FLAGS}}, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_PutOnBattlefield_WhenYouDo([TheTopCardOfLibrary], {{ENTER_FLAGS}}, {{TOP_LEVEL_ACTIONS}})": "",
-    "Reflexive_PutOnBattlefield_WhenThatPermanentEnters([CardInGraveyard({{CARD_IN_GRAVEYARDS}})], {{ENTER_FLAGS}}, {{TOP_LEVEL_ACTIONS}})": "",
+    "Reflexive_PutOnBattlefield_WhenThatPermanentEnters([CardInGraveyards({{CARD_IN_GRAVEYARDS}})], {{ENTER_FLAGS}}, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_PutANameStickerOnPermanent_WhenYouDo({{PERMANENT}}, {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_RemoveCounters_WhenYouDo([ACounterFromPermanent({{PERMANENT}})], {{TOP_LEVEL_ACTIONS}})": "",
     "Reflexive_RemoveCounters_WhenYouDo([ACounterOfTypeFromPermanent({{COUNTER_TYPE}}, {{PERMANENT}})], {{TOP_LEVEL_ACTIONS}})": "",
@@ -1721,6 +1727,8 @@
 
     "OwnedByAPlayer({{PLAYERS}})": "", // Used when putting a card in hand or in command zone
 
+    "DrawnThisTurn": "",
+    "TheCardsInHandChosenThisWay": "",
     "TheCardRevealedFromHandThisWay": "",
     "TheCardsSeekedThisWay": "",
     "{{BASIC_CARD}}": ""
@@ -3575,6 +3583,7 @@
     "{{_NUMBER[PutCounters]}}": "",
     "{{_NUMBER[PutCounters][WouldPutCounters]}}": "",
 
+    "TheNumberOfCardsInHandChosenThisWay": "",
     "TheNumberOfPermanentsThatCrewedPermanentThisTurn({{PERMANENTS}}, {{PERMANENT}})": "",
 
     "WouldEmpowerJace_EmpowerAmount": "",
@@ -5939,6 +5948,7 @@
     "AsResolves([ExileResolvingSpellAndPlotIt])": "",
     "AsResolves([ExileResolvingSpellWithNumberCountersOfTypeAndEffects({{NUMBER}}, {{COUNTER_TYPE}}, {{EXILE_EFFECT_LIST}})])": "",
     "AsResolves([ExileResolvingSpell])": "",
+    "Assist": "",
     "Blitz(ItsManaCost)": "",
     "Blitz({{COST}})": "",
     "Bloodthirst({{NUMBER}})": "",
@@ -7284,7 +7294,6 @@
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayPutACardOfTypeOntoTheBattlefield({{CARDS}}, {{ENTER_FLAGS}}), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayPutACardOfTypeOntoTheBattlefield({{CARDS}}, {{ENTER_FLAGS}}), PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayPutAGenericCardIntoHand, PutAnyNumberOfCardsOntoTheBattlefield({{CARDS}}, {{ENTER_FLAGS}}), PutTheRemainingCardsIntoGraveyard])": "",
-    "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayPutAGenericCardIntoHand, PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayPutAnyNumberOfCardsOntoTheBattlefield({{CARDS}}, {{ENTER_FLAGS}}), PutTheRemainingCardsBackIntoLibraryAndShuffle])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayPutAnyNumberOfCardsOntoTheBattlefield({{CARDS}}, {{ENTER_FLAGS}}), PutTheRemainingCardsIntoGraveyard])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayPutAnyNumberOfCardsOntoTheBattlefield({{CARDS}}, {{ENTER_FLAGS}}), PutTheRemainingCardsIntoHand])": "",
@@ -7305,10 +7314,9 @@
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealACardOfTypeAndPutOnTopOfLibrary({{CARDS}}), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealACardOfTypeAndPutOnTopOfLibrary({{CARDS}}), PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealAndPutACardOfTypeOntoTheBattlefield({{CARDS}}, {{ENTER_FLAGS}}), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
-    "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealAnyNumberOfCardOfTypeAndPutOnTopOfLibrary({{CARDS}}), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
-    "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealAnyNumberOfCardOfTypeAndPutOnTopOfLibrary({{CARDS}}), PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealAnyNumberOfCardsOfTypeAndPutOnTopOfLibraryInAnyOrder({{CARDS}}), PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealAnyNumberOfCardsOfTypeAndPutThemIntoHand({{CARDS}}), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
+    "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealAnyNumberOfCardsOfTypeAndPutThemIntoHand({{CARDS}}), PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealMultipleCardsOfTypeAndPutIntoHand([{{CARDS}}, {{CARDS}}, {{CARDS}}, {{CARDS}}]), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealMultipleCardsOfTypeAndPutIntoHand([{{CARDS}}, {{CARDS}}, {{CARDS}}]), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     //"LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayRevealMultipleCardsOfTypeAndPutIntoHand([{{CARDS}}, {{CARDS}}]), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
@@ -7327,12 +7335,12 @@
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [PutAGenericCardIntoHand, PutTheRemainingCardsIntoGraveyard])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [PutAGenericCardIntoHand, PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [PutAGenericCardIntoHand, PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder])": "",
+    "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [PutAGenericCardIntoHand, PutTheRemainingCardsOnTopOfLibraryInAnyOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayPutAGenericCardOnTopOfLibrary, ExileTheRemainingCards])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayPutAGenericCardOnTopOfLibrary, PutTheRemainingCardsIntoGraveyard])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [MayPutAGenericCardOnTopOfLibrary, PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [PutAGenericCardOnTopOfLibrary, ExileTheRemainingCards])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [PutAGenericCardOnTopOfLibrary, PutTheRemainingCardsOnTheBottomOfLibraryInAnyOrder])": "",
-    "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [PutAGenericCardOnTopOfLibrary, PutTheRemainingCardsOnTopOfLibraryInAnyOrder])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [PutAnyNumberOfGenericCardsIntoHand, PutTheRemainingCardsIntoGraveyard])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [PutNumberGenericCardsIntoHand({{NUMBER}}), PutTheRemainingCardsIntoGraveyard])": "",
     "LookAtTheTopNumberCardsOfLibrary({{NUMBER}}, [PutNumberGenericCardsIntoHand({{NUMBER}}), PutTheRemainingCardsOnTheBottomOfLibraryInARandomOrder])": "",

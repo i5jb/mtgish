@@ -53,6 +53,7 @@ type Action =
 | { "_Action": "RollNumberD4", "args": GameNumber }
 | { "_Action": "Conjure", "args": Array<ConjureAction> }
 | { "_Action": "PutInHand", "args": Array<PuttableInHand> }
+| { "_Action": "PutInOwnersHand", "args": Array<PuttableInHand> }
 | { "_Action": "PutOnBattlefield", "args": [Array<PuttableOnBattlefield>, Array<EnterFlag>] }
 | { "_Action": "PutInGraveyard", "args": Array<PuttableInGraveyard> }
 | { "_Action": "ConjureDuplicateOfARandomCardOfTypeIntoExile", "args": Cards }
@@ -387,6 +388,7 @@ type Action =
 | { "_Action": "ChooseNumberCardsFromAmongCardsInHandRevealedThisWay", "args": [GameNumber, Cards] }
 | { "_Action": "ChooseNumberCardsInEachPlayersGraveyard", "args": [GameNumber, Cards, Players] }
 | { "_Action": "ChooseNumberCardsInHand", "args": GameNumber }
+| { "_Action": "ChooseNumberCardsOfTypeInHand", "args": [GameNumber, CardsInHand] }
 | { "_Action": "ChooseNumberGraveyardCards", "args": [GameNumber, CardsInGraveyards] }
 | { "_Action": "ChooseNumberPermanents", "args": [GameNumber, Permanents] }
 | { "_Action": "ChooseOneOrTwoPermanents", "args": Permanents }
@@ -630,7 +632,6 @@ type Action =
 | { "_Action": "DiscardHand" }
 | { "_Action": "DiscardNumberCards", "args": GameNumber }
 | { "_Action": "DiscardNumberCardsAtRandom", "args": GameNumber }
-| { "_Action": "DiscardNumberCardsDrawnThisTurn", "args": GameNumber }
 | { "_Action": "DiscardNumberCardsOfType", "args": [GameNumber, Cards] }
 | { "_Action": "DiscardTheCardDrawnThisWay" }
 | { "_Action": "DiscardTheCardRevealedThisWay" }
@@ -996,6 +997,7 @@ type Action =
 | { "_Action": "PutGraveyardCardOntoBattlefield", "args": [CardInGraveyards, Array<EnterFlag>] }
 | { "_Action": "PutNumCardsFromHandOnBottomOfLibraryAnyOrder", "args": GameNumber }
 | { "_Action": "PutNumCardsFromHandOnTopOfLibraryAnyOrder", "args": GameNumber }
+| { "_Action": "PutNumberSpecificCardsFromHandOnTopOfLibraryAnyOrder", "args": [GameNumber, CardsInHand] }
 | { "_Action": "PutNumberCardsFromAmongPlayersGraveyardsOntoTheBattlefield", "args": [GameNumber, CardsInGraveyards, Players, Array<EnterFlag>] }
 | { "_Action": "PutNumberCardsFromExileOntoBattlefield", "args": [GameNumber, CardsInExile, Array<EnterFlag>] }
 | { "_Action": "PutNumberGraveyardCardsOnTopOfLibraryInAnyOrder", "args": [GameNumber, CardsInGraveyards] }
@@ -1894,6 +1896,7 @@ type CardsInHand =
 | { "_CardsInHand": "Other", "args": CardInHand }
 | { "_CardsInHand": "SingleCardInHand", "args": CardInHand }
 | { "_CardsInHand": "OwnedByAPlayer", "args": Players }
+| { "_CardsInHand": "DrawnThisTurn" }
 | { "_CardsInHand": "InAPlayersHand", "args": Players }
 | { "_CardsInHand": "SharesANameWithPermanent", "args": Permanent }
 | { "_CardsInHand": "IsPlaneswalkerType", "args": PlaneswalkerType }
@@ -3877,6 +3880,7 @@ type GameNumber =
 | { "_GameNumber": "LifeGainedByPlayerThisGame", "args": Player }
 | { "_GameNumber": "NumSpellsCastByPlayerThisGame", "args": [Spells, Player] }
 | { "_GameNumber": "TheTotalNumberOfCardsInAmongPlayersStartingDecks", "args": Players }
+| { "_GameNumber": "TheNumberOfCardsInHandChosenThisWay" }
 | { "_GameNumber": "TheNumberOfPermanentsThatCrewedPermanentThisTurn", "args": [Permanents, Permanent] }
 | { "_GameNumber": "TheNumberOfCardtypesAmongPermanentsSacrificedByPlayerThisTurn", "args": [Permanents, Player] }
 | { "_GameNumber": "TheNumberGuessedThisWay" }
@@ -4508,7 +4512,6 @@ type LookAtTopOfLibraryAction =
 | { "_LookAtTopOfLibraryAction": "MayPutAnyNumberOfCardsOntoTheBattlefield", "args": [Cards, Array<EnterFlag>] }
 | { "_LookAtTopOfLibraryAction": "MayRevealACardOfTypeAndPutIntoHand", "args": Cards }
 | { "_LookAtTopOfLibraryAction": "MayRevealACardOfTypeAndPutOnTopOfLibrary", "args": Cards }
-| { "_LookAtTopOfLibraryAction": "MayRevealAnyNumberOfCardOfTypeAndPutOnTopOfLibrary", "args": Cards }
 | { "_LookAtTopOfLibraryAction": "MayRevealAnyNumberOfCardsOfTypeAndPutOnTopOfLibraryInAnyOrder", "args": Cards }
 | { "_LookAtTopOfLibraryAction": "MayRevealAnyNumberOfCardsOfTypeAndPutThemIntoHand", "args": Cards }
 | { "_LookAtTopOfLibraryAction": "PutAGenericCardIntoGraveyard" }
@@ -6393,6 +6396,8 @@ type PutRestriction =
 type PuttableInGraveyard =
 | { "_PuttableInGraveyard": "TheCardsRevealedFromTheTopOfTheLibraryThisWay" };
 type PuttableInHand =
+| { "_PuttableInHand": "Permanent", "args": Permanent }
+| { "_PuttableInHand": "CardsInExile", "args": CardsInExile }
 | { "_PuttableInHand": "Trigger_ThatDiscardedCard" }
 | { "_PuttableInHand": "ConjuredDuplicateOfPermanent", "args": Permanent };
 type PuttableOnBattlefield =
@@ -6401,7 +6406,7 @@ type PuttableOnBattlefield =
 | { "_PuttableOnBattlefield": "AnyNumberOfGroupCardsInGraveyards", "args": [CardsInGraveyards, GroupFilter] }
 | { "_PuttableOnBattlefield": "ACardOfTypeFromLibrary", "args": CardsInLibrary }
 | { "_PuttableOnBattlefield": "EachCardInGraveyards", "args": CardsInGraveyards }
-| { "_PuttableOnBattlefield": "CardInGraveyard", "args": CardInGraveyards }
+| { "_PuttableOnBattlefield": "CardInGraveyards", "args": CardInGraveyards }
 | { "_PuttableOnBattlefield": "CardInHand", "args": CardInHand }
 | { "_PuttableOnBattlefield": "TheTopCardOfLibrary" }
 | { "_PuttableOnBattlefield": "Trigger_ThatSacrificedCard" };
@@ -7138,7 +7143,7 @@ type Rule =
 | { "_Rule": "DamageFromPermanentCantBePrevented", "args": Permanent }
 | { "_Rule": "DamageIsntRemovedFromCreatureDuringCleanup", "args": Permanent }
 | { "_Rule": "DamageIsntRemovedFromCreaturesDuringCleanup", "args": Permanents }
-| { "_Rule": "IncreaseBuybackCosts", "args": Array<ManaSymbol> }
+| { "_Rule": "DecreaseBuybackCosts", "args": Array<CostReductionSymbol> }
 | { "_Rule": "IncreaseMorphCosts", "args": Array<ManaSymbol> }
 | { "_Rule": "ItCantBecomeNight" }
 | { "_Rule": "NoMoreThanNumberCreaturesCanAttack", "args": GameNumber }
@@ -7637,6 +7642,7 @@ type SpellEffect =
 | { "_SpellEffect": "EntersWithLayerEffectUntil", "args": [Array<LayerEffect>, Expiration] }
 | { "_SpellEffect": "WebSlinging", "args": Cost }
 | { "_SpellEffect": "AdjustPT", "args": [number, number] }
+| { "_SpellEffect": "Assist" }
 | { "_SpellEffect": "ReplaceCreatureTypeVariableWithNewCreatureTypeVariable", "args": [CreatureTypeVariable, CreatureTypeVariable] }
 | { "_SpellEffect": "ResolvesIntoExileInsteadOfGraveyardWithACounter", "args": CounterType }
 | { "_SpellEffect": "Wither" }
