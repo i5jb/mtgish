@@ -318,6 +318,7 @@
     "Trigger_ThatDiscardedCard": "",
     "Permanent({{PERMANENT}})": "",
     "CardsInExile({{CARDS_IN_EXILE}})": "",
+    "UptoNumberCardsInGraveyards({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}})": "",
   },
   "{{PUTTABLE_IN_HAND_LIST}}": {
     "[{{PUTTABLE_IN_HAND}}, {{PUTTABLE_IN_HAND}}]": "",
@@ -327,8 +328,10 @@
   "{{PUTTABLE_ON_BATTLEFIELD}}": {
     "CardInGraveyards({{CARD_IN_GRAVEYARDS}})": "",
     "EachCardInGraveyards({{CARDS_IN_GRAVEYARDS}})": "",
-    "Trigger_ThatSacrificedCard": "",
-    "AnyNumberOfGroupCardsInGraveyards({{CARDS_IN_GRAVEYARDS}}, {{GROUP_FILTER}})": ""
+    "UptoNumberGroupCardsInGraveyards({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}}, {{GROUP_FILTER}})": "",
+    "AnyNumberOfGroupCardsInGraveyards({{CARDS_IN_GRAVEYARDS}}, {{GROUP_FILTER}})": "",
+
+    "Trigger_ThatSacrificedCard": ""
   },
   "{{PUTTABLE_ON_BATTLEFIELD_LIST}}": {
     "[{{PUTTABLE_ON_BATTLEFIELD}}]": ""
@@ -5078,7 +5081,7 @@
     "[DealDamageAsThoughItHadInfect]": "",
     "[DealDamageInstead({{NUMBER}})]": "",
     "[DealToAnyTargetInstead(Ref_AnyTarget)]": "",
-    "[DealToAnyTargetInstead(Ref_AnyTargets_2)]": "",
+    "[DealToPlayerOrPermanentInstead(Ref_TargetPlayerOrPermanent2)]": "",
     "[DealToCreatureOrPlaneswalkerInstead({{PERMANENT}})]": "",
     "[DealToPlayerInstead({{PLAYER}})]": "",
     "[MayActions([DealToPlayerInstead({{PLAYER}})])]": "",
@@ -5714,8 +5717,8 @@
     "Permanent({{PERMANENT}})": "",
     "Player({{PLAYER}})": "",
     "Ref_AnyTarget": "",
-    "Ref_AnyTargets_1": "",
-    "Ref_TargetPlayerOrPermanent": ""
+    "Ref_TargetPlayerOrPermanent": "",
+    "Ref_TargetPlayerOrPermanent1": ""
   },
   "{{SINGLE_DAMAGE_SOURCE_FILTER}}": {
     "TheChosenDamageSource": ""
@@ -6296,6 +6299,7 @@
     "TargetPlayerAtTime({{PLAYERS}}, {{PLAYERS}})": "",
     "TargetPlayerOfPlayersChoice({{PLAYERS}}, {{PLAYER}})": "",
     "TargetPlayerOrPermanent({{PLAYERS}}, {{PERMANENTS}})": "",
+    "AnotherTargetPlayerOrPermanent(Ref_TargetPlayerOrPermanent1, {{PLAYERS}}, {{PERMANENTS}})": "",
     "TargetSpell({{SPELLS}})": "",
     "TargetSpellOrAbility({{SPELLS_OR_ABILITIES}})": "",
     "TargetSpellOrPermanent({{SPELL_OR_PERMANENT_FILTER}})": "",

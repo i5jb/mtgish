@@ -6061,7 +6061,8 @@ type PlayerId =
 | number;
 type PlayerOrPermanent =
 | { "_PlayerOrPermanent": "Ref_AnyTarget" }
-| { "_PlayerOrPermanent": "Ref_TargetPlayerOrPermanent" };
+| { "_PlayerOrPermanent": "Ref_TargetPlayerOrPermanent" }
+| { "_PlayerOrPermanent": "Ref_TargetPlayerOrPermanent1" };
 type Players =
 | { "_Players": "AnyPlayer" }
 | { "_Players": "And", "args": Array<Players> }
@@ -6398,9 +6399,11 @@ type PuttableInGraveyard =
 type PuttableInHand =
 | { "_PuttableInHand": "Permanent", "args": Permanent }
 | { "_PuttableInHand": "CardsInExile", "args": CardsInExile }
+| { "_PuttableInHand": "UptoNumberCardsInGraveyards", "args": [GameNumber, CardsInGraveyards] }
 | { "_PuttableInHand": "Trigger_ThatDiscardedCard" }
 | { "_PuttableInHand": "ConjuredDuplicateOfPermanent", "args": Permanent };
 type PuttableOnBattlefield =
+| { "_PuttableOnBattlefield": "UptoNumberGroupCardsInGraveyards", "args": [GameNumber, CardsInGraveyards, GroupFilter] }
 | { "_PuttableOnBattlefield": "TheCardsOfTypeRevealedFromTheTopOfTheLibraryThisWay", "args": CardsInLibrary }
 | { "_PuttableOnBattlefield": "AnyNumberOfCardsFromLibrary", "args": CardsInLibrary }
 | { "_PuttableOnBattlefield": "AnyNumberOfGroupCardsInGraveyards", "args": [CardsInGraveyards, GroupFilter] }
@@ -6684,6 +6687,7 @@ type ReplacementActionWouldDealDamage =
 | { "_ReplacementActionWouldDealDamage": "DealDamageButHealPreviousDamage" }
 | { "_ReplacementActionWouldDealDamage": "DealDamageInstead", "args": GameNumber }
 | { "_ReplacementActionWouldDealDamage": "DealToAnyTargetInstead", "args": SingleDamageRecipient }
+| { "_ReplacementActionWouldDealDamage": "DealToPlayerOrPermanentInstead", "args": SingleDamageRecipient }
 | { "_ReplacementActionWouldDealDamage": "DealToCreatureOrPlaneswalkerInstead", "args": Permanent }
 | { "_ReplacementActionWouldDealDamage": "DealToPlayerInstead", "args": Player }
 | { "_ReplacementActionWouldDealDamage": "SpellDealsDamage", "args": [Spell, GameNumber, DamageRecipient] }
@@ -7605,10 +7609,10 @@ type SingleCard =
 type SingleDamageRecipient =
 | { "_SingleDamageRecipient": "Player", "args": Player }
 | { "_SingleDamageRecipient": "DistributedAnyTarget" }
-| { "_SingleDamageRecipient": "Ref_AnyTargets_1" }
-| { "_SingleDamageRecipient": "Ref_AnyTargets_2" }
 | { "_SingleDamageRecipient": "Ref_AnyTarget" }
 | { "_SingleDamageRecipient": "Ref_TargetPlayerOrPermanent" }
+| { "_SingleDamageRecipient": "Ref_TargetPlayerOrPermanent1" }
+| { "_SingleDamageRecipient": "Ref_TargetPlayerOrPermanent2" }
 | { "_SingleDamageRecipient": "Permanent", "args": Permanent };
 type SingleDamageSource =
 | { "_SingleDamageSource": "TheChosenDamageSource" };
@@ -8705,6 +8709,7 @@ type Target =
 | { "_Target": "TargetPlayerAtTime", "args": [Players, Players] }
 | { "_Target": "TargetPlayerOfPlayersChoice", "args": [Players, Player] }
 | { "_Target": "TargetPlayerOrPermanent", "args": [Players, Permanents] }
+| { "_Target": "AnotherTargetPlayerOrPermanent", "args": [PlayerOrPermanent, Players, Permanents] }
 | { "_Target": "TargetSpell", "args": Spells }
 | { "_Target": "TargetSpellOrAbility", "args": SpellsAndAbilities }
 | { "_Target": "TargetSpellOrPermanent", "args": SpellsAndPermanents }

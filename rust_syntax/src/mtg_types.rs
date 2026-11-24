@@ -3380,6 +3380,7 @@ pub enum ReplacementActionWouldDealDamage {
 
   DealDamageInstead(Box<GameNumber>),
   DealToAnyTargetInstead(Box<SingleDamageRecipient>),
+  DealToPlayerOrPermanentInstead(Box<SingleDamageRecipient>),
   DealToCreatureOrPlaneswalkerInstead(Box<Permanent>),
   DealToPlayerInstead(Box<Player>),
 
@@ -6323,6 +6324,7 @@ pub enum ColorAndCreatureType {
 pub enum PlayerOrPermanent {
   Ref_AnyTarget,
   Ref_TargetPlayerOrPermanent,
+  Ref_TargetPlayerOrPermanent1,
 }
 
 #[derive(Clone, Debug, serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, ts_rs::TS)]
@@ -7844,10 +7846,10 @@ pub enum DamageRecipientsList {
 pub enum SingleDamageRecipient {
   Player(Box<Player>),
   DistributedAnyTarget,
-  Ref_AnyTargets_1,
-  Ref_AnyTargets_2,
   Ref_AnyTarget,
   Ref_TargetPlayerOrPermanent,
+  Ref_TargetPlayerOrPermanent1,
+  Ref_TargetPlayerOrPermanent2,
   Permanent(Box<Permanent>),
 }
 
@@ -8432,6 +8434,7 @@ pub enum PuttableInGraveyard {
 pub enum PuttableInHand {
   Permanent(Box<Permanent>),
   CardsInExile(Box<CardsInExile>),
+  UptoNumberCardsInGraveyards(Box<GameNumber>, Box<CardsInGraveyards>),
   Trigger_ThatDiscardedCard,
   ConjuredDuplicateOfPermanent(Box<Permanent>),
 }
@@ -8440,6 +8443,7 @@ pub enum PuttableInHand {
 #[ts(export)]
 #[cfg_attr(feature = "write_out_json", serde(tag = "_PuttableOnBattlefield", content = "args"))]
 pub enum PuttableOnBattlefield {
+  UptoNumberGroupCardsInGraveyards(Box<GameNumber>, Box<CardsInGraveyards>, Box<GroupFilter>),
   TheCardsOfTypeRevealedFromTheTopOfTheLibraryThisWay(Box<CardsInLibrary>),
   AnyNumberOfCardsFromLibrary(Box<CardsInLibrary>),
   AnyNumberOfGroupCardsInGraveyards(Box<CardsInGraveyards>, Box<GroupFilter>),
@@ -10391,6 +10395,7 @@ pub enum Target {
   TargetPlayerAtTime(Box<Players>, Box<Players>),
   TargetPlayerOfPlayersChoice(Box<Players>, Box<Player>),
   TargetPlayerOrPermanent(Box<Players>, Box<Permanents>),
+  AnotherTargetPlayerOrPermanent(Box<PlayerOrPermanent>, Box<Players>, Box<Permanents>),
   TargetSpell(Box<Spells>),
   TargetSpellOrAbility(SpellsAndAbilities),
   TargetSpellOrPermanent(SpellsAndPermanents),
