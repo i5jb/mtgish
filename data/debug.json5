@@ -1,4 +1,286 @@
 [
+  "Adarkar Unicorn",                     // NEW - Missing manacost
+  "Cauldron Dance",                      // NEW - Remove check of APermWasPutOnBattlefield
+  "Contractual Safeguard",               // NEW - Improve choose a perm / put a counter
+  "Discover the Formula",                // NEW - Perpetual effect fix
+  "Emeria Shepherd",                     // NEW - Slight target rewording
+  "Gagh Slinger",                        // NEW - Double {{Zombie[0]}} issue
+  "Healing Grace",                       // NEW - Gain 3 life outside of prevent effect
+  "Infernal Offering",                   // NEW - More specific about sacrifice this way
+  "Robe of the Archmagi",                // NEW - Triple {{Zombie[0]}} issue
+  "Sakashima of a Thousand Faces",       // NEW - Combine AddAbility-s
+  "Storm the Seedcore",                  // NEW - Combine AddAbility-s
+
+  "Augmenter Pugilist // Echoing Equation",              // ModalDFC     - NEW
+
+  "Advanced Floral Invocations",         // UPDATED
+  "Advanced Reconstruction",             // UPDATED
+  "Agent's Toolkit",                     // UPDATED
+  "Ajani's Influence",                   // UPDATED
+  "Alchemist's Talent",                  // UPDATED
+  "Apex of Power",                       // UPDATED
+  "Armed and Armored",                   // UPDATED
+  "Artificer Class",                     // UPDATED
+  "Artist's Talent",                     // UPDATED
+  "Ashcoat of the Shadow Swarm",         // UPDATED
+  "Badlands Revival",                    // UPDATED
+  "Ballyrush Banneret",                  // UPDATED
+  "Bandit's Talent",                     // UPDATED
+  "Baral and Kari Zev",                  // UPDATED
+  "Barbarian Class",                     // UPDATED
+  "Bard Class",                          // UPDATED
+  "Battle of Hoover Dam",                // UPDATED
+  "Black Cat, Cunning Thief",            // UPDATED
+  "Blacksmith's Talent",                 // UPDATED
+  "Blessed Defiance",                    // UPDATED
+  "Blight Herder",                       // UPDATED
+  "Blood Price",                         // UPDATED
+  "Bloodrage Alpha",                     // UPDATED
+  "Blue Dragon",                         // UPDATED
+  "Boiling Earth",                       // UPDATED
+  "Bold Defense",                        // UPDATED
+  "Bontu's Last Reckoning",              // UPDATED
+  "Bosk Banneret",                       // UPDATED
+  "Brainstorm",                          // UPDATED
+  "Brainsurge",                          // UPDATED
+  "Break Ties",                          // UPDATED
+  "Brighthearth Banneret",               // UPDATED
+  "Broodwarden",                         // UPDATED
+  "Brudiclad, Telchor Engineer",         // UPDATED
+  "Builder's Talent",                    // UPDATED
+  "Caretaker's Talent",                  // UPDATED
+  "Cauldron's Gift",                     // UPDATED
+  "Chandra, Pyromaster",                 // UPDATED
+  "Chaos Moon",                          // UPDATED
+  "Cho-Arrim Legate",                    // UPDATED
+  "Cleric Class",                        // UPDATED
+  "Collected Conjuring",                 // UPDATED
+  "Corrupted Shapeshifter",              // UPDATED
+  "Creative Outburst",                   // UPDATED
+  "Dawnsire, Sunstar Dreadnought",       // UPDATED
+  "Deadly Riposte",                      // UPDATED
+  "Deepwood Legate",                     // UPDATED
+  "Demonlord Belzenlok",                 // UPDATED
+  "Desertion",                           // UPDATED
+  "Destiny Spinner",                     // UPDATED
+  "Diminishing Returns",                 // UPDATED
+  "Does Machines",                       // UPDATED
+  "Done for the Day",                    // UPDATED
+  "Dreamdew Entrancer",                  // UPDATED
+  "Druid Class",                         // UPDATED
+  "Dusk's Landing",                      // UPDATED
+  "Earth Rumble",                        // UPDATED
+  "Eclipsed Boggart",                    // UPDATED
+  "Eclipsed Elf",                        // UPDATED
+  "Eclipsed Flamekin",                   // UPDATED
+  "Eclipsed Kithkin",                    // UPDATED
+  "Eclipsed Merrow",                     // UPDATED
+  "Ecstatic Beauty",                     // UPDATED
+  "Emperor of Bones",                    // UPDATED
+  "Entropic Battlecruiser",              // UPDATED
+  "Essence Leak",                        // UPDATED
+  "Euru, Acorn Scrounger",               // UPDATED
+  "Exploration Broodship",               // UPDATED
+  "Eye of Jace",                         // UPDATED
+  "Fated Conflagration",                 // UPDATED
+  "Fiendslayer Paladin",                 // UPDATED
+  "Fighter Class",                       // UPDATED
+  "Final Showdown",                      // UPDATED
+  "Fisher's Talent",                     // UPDATED
+  "Flow State",                          // UPDATED
+  "Follow the Lumarets",                 // UPDATED
+  "Fortune Teller's Talent",             // UPDATED
+  "Foul-Tongue Invocation",              // UPDATED
+  "Fractalize",                          // UPDATED
+  "Frogtosser Banneret",                 // UPDATED
+  "Gideon Blackblade",                   // UPDATED
+  "Gideon's Phalanx",                    // UPDATED
+  "Gloom Ripper",                        // UPDATED
+  "Glyph of Life",                       // UPDATED
+  "Gossip's Talent",                     // UPDATED
+  "Gourmand's Talent",                   // UPDATED
+  "Great Train Heist",                   // UPDATED
+  "Hand of Emrakul",                     // UPDATED
+  "Harmonious Emergence",                // UPDATED
+  "Hearthhull, the Worldseed",           // UPDATED
+  "Hollowhenge Overlord",                // UPDATED
+  "Hunter's Mark",                       // UPDATED
+  "Hunter's Talent",                     // UPDATED
+  "Illuminate",                          // UPDATED
+  "Ingenious Mastery",                   // UPDATED
+  "Innkeeper's Talent",                  // UPDATED
+  "Inspiring Refrain",                   // UPDATED
+  "Inspirit, Flagship Vessel",           // UPDATED
+  "Intermediate Chirography",            // UPDATED
+  "Invert the Skies",                    // UPDATED
+  "Invoke the Ancients",                 // UPDATED
+  "Joust Through",                       // UPDATED
+  "Kairi, the Swirling Sky",             // UPDATED
+  "Karplusan Strider",                   // UPDATED
+  "Knockout Blow",                       // UPDATED
+  "Kyren Legate",                        // UPDATED
+  "Last Night Together",                 // UPDATED
+  "Leader's Talent",                     // UPDATED
+  "Legion's Chant",                      // UPDATED
+  "Lightfoot Rogue",                     // UPDATED
+  "Loki, the Deceiver",                  // UPDATED
+  "Lord of the Nazgûl",                  // UPDATED
+  "Lumen-Class Frigate",                 // UPDATED
+  "Majestic Myriarch",                   // UPDATED
+  "Massacre",                            // UPDATED
+  "Master Skald",                        // UPDATED
+  "Mechtitan Core",                      // UPDATED
+  "Memory Theft",                        // UPDATED
+  "Mogg Salvage",                        // UPDATED
+  "Monk Class",                          // UPDATED
+  "Monument to Perfection",              // UPDATED
+  "Moogles' Valor",                      // UPDATED
+  "Natural Balance",                     // UPDATED
+  "Nick Fury, Agent of S.H.I.E.L.D.",    // UPDATED
+  "Nightscape Familiar",                 // UPDATED
+  "Ninja Teen",                          // UPDATED
+  "No Admittance",                       // UPDATED
+  "Old-Growth Troll",                    // UPDATED
+  "Osseous Exhale",                      // UPDATED
+  "Paladin Class",                       // UPDATED
+  "Party Dude",                          // UPDATED
+  "Phabine, Boss's Confidant",           // UPDATED
+  "Phalanx Tactics",                     // UPDATED
+  "Pollen Remedy",                       // UPDATED
+  "Pore Over the Pages",                 // UPDATED
+  "Primal Clay",                         // UPDATED
+  "Primal Plasma",                       // UPDATED
+  "Primitive Justice",                   // UPDATED
+  "Prophetic Bolt",                      // UPDATED
+  "Rage into the Valley",                // UPDATED
+  "Rally for the Throne",                // UPDATED
+  "Ranger Class",                        // UPDATED
+  "Refreshing Rain",                     // UPDATED
+  "Riptide Survivor",                    // UPDATED
+  "Ritual of Hope",                      // UPDATED
+  "Rogue Class",                         // UPDATED
+  "Rowdy Crew",                          // UPDATED
+  "Rupture",                             // UPDATED
+  "Rushwood Legate",                     // UPDATED
+  "Saprazzan Legate",                    // UPDATED
+  "Scalpelexis",                         // UPDATED
+  "Scavenger's Talent",                  // UPDATED
+  "Searing Blood",                       // UPDATED
+  "Sephiroth, Fallen Hero",              // UPDATED
+  "Settle the Score",                    // UPDATED
+  "Shadrix Silverquill",                 // UPDATED
+  "Silence the Believers",               // UPDATED
+  "Silkguard",                           // UPDATED
+  "Sivvi's Ruse",                        // UPDATED
+  "Skullcage",                           // UPDATED
+  "Skyclave Relic",                      // UPDATED
+  "Smashing Success",                    // UPDATED
+  "Smelting Vat",                        // UPDATED
+  "Smuggler's Surprise",                 // UPDATED
+  "Somberwald Beastmaster",              // UPDATED
+  "Sonar Strike",                        // UPDATED
+  "Sorcerer Class",                      // UPDATED
+  "Sorceress's Schemes",                 // UPDATED
+  "Spark Double",                        // UPDATED
+  "Spectacular Skywhale",                // UPDATED
+  "Spell Stutter",                       // UPDATED
+  "Starving Revenant",                   // UPDATED
+  "Stillness in Motion",                 // UPDATED
+  "Stitcher Geralf",                     // UPDATED
+  "Stonybrook Banneret",                 // UPDATED
+  "Stormchaser's Talent",                // UPDATED
+  "Stormscape Familiar",                 // UPDATED
+  "Storyweave",                          // UPDATED
+  "Submerge",                            // UPDATED
+  "Sunscape Familiar",                   // UPDATED
+  "Sunset Revelry",                      // UPDATED
+  "Suspicious Detonation",               // UPDATED
+  "Synthesizer Labship",                 // UPDATED
+  "Tackle Artist",                       // UPDATED
+  "Tannuk, Steadfast Second",            // UPDATED
+  "The Jolly Balloon Man",               // UPDATED
+  "Thornscape Familiar",                 // UPDATED
+  "Thought Rattle",                      // UPDATED
+  "Thoughtweft Gambit",                  // UPDATED
+  "Three Steps Ahead",                   // UPDATED
+  "Thunderous Orator",                   // UPDATED
+  "Thunderscape Familiar",               // UPDATED
+  "Time Spiral",                         // UPDATED
+  "Tower Above",                         // UPDATED
+  "Triassic Egg",                        // UPDATED
+  "Two-Headed Giant",                    // UPDATED
+  "Tyrant of Discord",                   // UPDATED
+  "Unseal the Necropolis",               // UPDATED
+  "Uthros Research Craft",               // UPDATED
+  "Valiant Changeling",                  // UPDATED
+  "Valkyrie's Sword",                    // UPDATED
+  "Vanish into Memory",                  // UPDATED
+  "Vedalken Plotter",                    // UPDATED
+  "War Report",                          // UPDATED
+  "Warlock Class",                       // UPDATED
+  "Wilson, Majestic Bear",               // UPDATED
+  "Wizard Class",                        // UPDATED
+  "Wort, the Raidmother",                // UPDATED
+  "Zaffai, Thunder Conductor",           // UPDATED
+
+  "Thranduil, Sindarin Liege // Silvan Rally",           // Adventurer   - UPDATED
+  "Cosima, God of the Voyage // The Omenkeel",           // ModalDFC     - UPDATED
+  "Emeria's Call // Emeria, Shattered Skyclave",         // ModalDFC     - UPDATED
+  "Esika, God of the Tree // The Prismatic Bridge",      // ModalDFC     - UPDATED
+  "Extus, Oriq Overlord // Awaken the Blood Avatar",     // ModalDFC     - UPDATED
+  "Flamescroll Celebrant // Revel in Silence",           // ModalDFC     - UPDATED
+  "Jadzi, Oracle of Arcavios // Journey to the Oracle",  // ModalDFC     - UPDATED
+  "Kolvori, God of Kinship // The Ringhart Crest",       // ModalDFC     - UPDATED
+  "Mila, Crafty Companion // Lukka, Wayward Bonder",     // ModalDFC     - UPDATED
+  "Pestilent Cauldron // Restorative Burst",             // ModalDFC     - UPDATED
+  "Torrent Sculptor // Flamethrower Sonata",             // ModalDFC     - UPDATED
+  "Turntimber Symbiosis // Turntimber, Serpentine Wood", // ModalDFC     - UPDATED
+  "Valki, God of Lies // Tibalt, Cosmic Impostor",       // ModalDFC     - UPDATED
+  "City of the Daleks",                                  // Planar       - UPDATED
+  "The Great Aerie",                                     // Planar       - UPDATED
+  "Harmonized Trio // Brainstorm",                       // Preparer     - UPDATED
+  "Into the Earthen Maw",                                // Scheme       - UPDATED
+  "Surrender Your Thoughts",                             // Scheme       - UPDATED
+  "Appeal // Authority",                                 // Split        - UPDATED
+  "Catch // Release",                                    // Split        - UPDATED
+  "Heaven // Earth",                                     // Split        - UPDATED
+  "Enduring Angel // Angelic Enforcer",                  // Transforming - UPDATED
+
+  "Acid-Spewer Dragon",          // OLD - Morph
+  "Aven Liberator",              // OLD - Morph
+  "Belltoll Dragon",             // OLD - Morph
+  "Den Protector",               // OLD - Morph
+  "Dermoplasm",                  // OLD - Morph
+  "Herdchaser Dragon",           // OLD - Morph
+  "Hidden Dragonslayer",         // OLD - Morph
+  "Icefeather Aven",             // OLD - Morph
+  "Imperial Hellkite",           // OLD - Morph
+  "Ire Shaman",                  // OLD - Morph
+  "Kolaghan Stormsinger",        // OLD - Morph
+  "Liege of the Axe",            // OLD - Morph
+  "Maelstrom Djinn",             // OLD - Morph
+  "Mischievous Quanar",          // OLD - Morph
+  "Mistfire Weaver",             // OLD - Morph
+  "Rattleclaw Mystic",           // OLD - Morph
+  "Shieldhide Dragon",           // OLD - Morph
+  "Silumgar Assassin",           // OLD - Morph
+  "Stormwing Dragon",            // OLD - Morph
+  "Stratus Dancer",              // OLD - Morph
+  "Thelonite Hermit",            // OLD - Morph
+  "Thousand Winds",              // OLD - Morph
+  "Wingbeat Warrior",            // OLD - Morph
+
+  "Blinding Fog",                // OLD - duplicate {{Permanent[0]}}
+  "Cacophony Unleashed",         // OLD - duplicate {{Zombie[0]}}
+  "Energy Vortex",               // OLD - duplicate {{Line[Enchantment][0]}}
+  "Esper",                       // OLD - duplicate {{Black[0]}}
+  "Filigree Vector",             // OLD - duplicate {{Permanent[0]}}
+  "Grist, the Hunger Tide",      // OLD - duplicate {{Permanent[0]}}
+  "Kiora, Master of the Depths", // OLD - duplicate {{Permanent[0]]}}
+  "Magma Opus",                  // OLD - duplicate {{Black[0]}}
+  "Mapping the Maze",            // OLD - duplicate {{SpecificCard[0]}} / missing phrase
+  "Marath, Will of the Wild",    // OLD - duplicate {{ActivatedActions(X=ValueX)[0]}}
+  "Winter Blast",                // OLD - duplicate {{Creatures[0]}}
 /*
   // Multi-player actions for cleanup
   "Acererak the Archlich",

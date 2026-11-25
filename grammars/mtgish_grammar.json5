@@ -420,7 +420,7 @@
     "PutUptoOneCardOfEachCardtypeAmongPermanentsFromHandOnTheBattlefield({{PERMANENTS}}, {{ENTER_FLAGS}})": "",
     "RestartTheGameLeavingEachExiledCardInExileThenPutThoseCardsOntoTheBattlefield({{CARDS_IN_EXILE}}, {{ENTER_FLAGS}})": "",
     "ReturnACardFromAnyPlayersGraveyardToBattlefield({{CARDS_IN_GRAVEYARDS}}, {{PLAYERS}}, {{ENTER_FLAGS}})": "",
-    "ReturnACardFromGraveyardToBattlefield({{CARDS}}, {{ENTER_FLAGS}})": "",
+    "ReturnACardFromGraveyardToBattlefield({{CARDS_IN_GRAVEYARDS}}, {{ENTER_FLAGS}})": "",
     "ReturnACardFromGraveyardToBattlefieldAtRandom({{CARDS}}, {{ENTER_FLAGS}})": "",
     "ReturnACardFromPlayersGraveyardToBattlefield({{CARDS}}, {{PLAYER}}, {{ENTER_FLAGS}})": "",
     "ReturnACardMilledThisWayToBattlefield({{CARDS}}, {{ENTER_FLAGS}})": "",
@@ -2165,7 +2165,6 @@
     "APermanentExploredThisTurn({{PERMANENTS}})": "",
     "APermanentLeftTheBattlefieldThisTurn({{PERMANENTS}})": "",
     "APermanentOfTypeWasPutOntoTheBattlefieldThisWay({{PERMANENTS}})": "",
-    "APermanentWasPutOntoTheBattlefieldThisWay": "",
     "APermanentPassesFilter({{PERMANENTS}}, {{PERMANENTS}})": "",
     "APermanentWasChosenThisWay": "",
     "APermanentWasDestroyedByASpellOrAbilityThisTurn({{PERMANENTS}}, {{SPELLS_OR_ABILITIES}})": "",
@@ -2305,6 +2304,7 @@
     "{{_CONDITION[VoteForAWord]}}": ""
   },
   "{{COPY_EFFECT_LIST}}": {
+    "CopyEffects([AddAbility([{{RULE}}, {{RULE}}])])": "",
     "CopyEffects([AddAbility([{{RULE}}]), AddAbility([{{RULE}}])])": "",
     "CopyEffects([AddAbility([{{RULE}}]), AddAbilityVariable(ThisAbility)])": "",
     "CopyEffects([AddAbility([{{RULE}}])])": "",
@@ -2362,6 +2362,7 @@
     "CostReduceGeneric(2)": "",
     "CostReduceGeneric(3)": "",
     "CostReduceGeneric(4)": "",
+    "CostReduceGeneric(5)": "",
     "CostReduceGeneric(6)": "",
     "CostReduceGeneric(7)": "",
     "CostReduceGeneric(8)": "",
@@ -4404,13 +4405,13 @@
   },
   "{{PERPETUAL_EFFECT_LIST}}": {
     "[{{PERPETUAL_EFFECT}}, {{PERPETUAL_EFFECT}}, {{PERPETUAL_EFFECT}}, {{PERPETUAL_EFFECT}}, {{PERPETUAL_EFFECT}}]": "",
-    "[{{PERPETUAL_EFFECT}}, {{PERPETUAL_EFFECT}}, {{PERPETUAL_EFFECT}}, {{PERPETUAL_EFFECT}}]": "",
     "[{{PERPETUAL_EFFECT}}, {{PERPETUAL_EFFECT}}, {{PERPETUAL_EFFECT}}]": "",
     "[{{PERPETUAL_EFFECT}}, {{PERPETUAL_EFFECT}}]": "",
     "[{{PERPETUAL_EFFECT}}]": ""
   },
   "{{PERPETUAL_EFFECT}}": {
     "AddAbility([{{RULE}}])": "",
+    "AddAbility([{{RULE}}, {{RULE}}, {{RULE}}])": "",
     "AddAbilityFromPermanentHasable({{PERMANENT}}, {{CHECK_HASABLE_LIST}})": "",
     "AddAbilityVariable(TheChosenAbility)": "",
     "AddAbilityVariable(ThisAbility)": "",
@@ -5352,7 +5353,7 @@
     "[EntersUnderAPlayersControl({{PLAYERS}})]": "",
     "[EntersUnderPlayersControl({{PLAYER}})]": "",
     "[EntersUntapped]": "",
-    "[EntersWithACounter({{COUNTER_TYPE}}), EntersWithACounter({{COUNTER_TYPE}}), EntersWithACounter({{COUNTER_TYPE}})]": "",
+    "[EntersWithACounter({{COUNTER_TYPE}}), EntersWithACounter({{COUNTER_TYPE}}), EntersWithACounter({{COUNTER_TYPE}}), EntersWithACounter({{COUNTER_TYPE}})]": "",
     "[EntersWithACounter({{COUNTER_TYPE}})]": "",
     "[EntersWithACounterOfChoice([{{COUNTER_TYPE}}, {{COUNTER_TYPE}}, {{COUNTER_TYPE}}])]": "",
     "[EntersWithACounterOfChoice([{{COUNTER_TYPE}}, {{COUNTER_TYPE}}])]": "",
@@ -6619,12 +6620,12 @@
 
     "EachPlayerAction({{PLAYERS}}, PutEachGraveyardCardOntoBattlefield({{CARDS_IN_GRAVEYARDS}}, {{ENTER_FLAGS}}))": "",
     "EachPlayerAction({{PLAYERS}}, ReturnEachCardFromPlayersGraveyardToBattlefield({{CARDS_IN_GRAVEYARDS}}, {{PLAYER}}, {{ENTER_FLAGS}}))": "",
-    "EachPlayerAction({{PLAYERS}}, ReturnACardFromGraveyardToBattlefield({{CARDS}}, {{ENTER_FLAGS}}))": "",
+    "EachPlayerAction({{PLAYERS}}, ReturnACardFromGraveyardToBattlefield({{CARDS_IN_GRAVEYARDS}}, {{ENTER_FLAGS}}))": "",
     "EachPlayerAction({{PLAYERS}}, ReturnEachCardFromGraveyardToHand({{CARDS}}))": "",
     "EachPlayerAction({{PLAYERS}}, PutACardFromPlayersGraveyardOnBattlefield({{CARDS_IN_GRAVEYARDS}}, {{PLAYER}}, {{ENTER_FLAGS}}))": "",
     "EachPlayerAction({{PLAYERS}}, ReturnNumberCardsFromGraveyardToBattlefield({{NUMBER}}, {{CARDS}}, {{ENTER_FLAGS}}))": "",
     "EachPlayerAction({{PLAYERS}}, ReturnEachCardFromPlayersGraveyardToBattlefieldThatWasPutThereFromBattlefieldThisTurn({{CARDS}}, {{PLAYER}}, {{ENTER_FLAGS}}))": "",
-    "EachPlayerMayAction({{PLAYERS}}, ReturnACardFromGraveyardToBattlefield({{CARDS}}, {{ENTER_FLAGS}}))": "",
+    "EachPlayerMayAction({{PLAYERS}}, ReturnACardFromGraveyardToBattlefield({{CARDS_IN_GRAVEYARDS}}, {{ENTER_FLAGS}}))": "",
 
     "EachPlayerAction({{PLAYERS}}, PutAllCardsFromGraveyardIntoHand({{CARDS_IN_GRAVEYARDS}}))": "",
     "EachPlayerAction({{PLAYERS}}, PutACardFromGraveyardIntoHand({{CARDS_IN_GRAVEYARDS}}))": "",

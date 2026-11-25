@@ -1051,8 +1051,8 @@ type Action =
 | { "_Action": "ReselectWhichPlayerOrPermanentCreatureIsAttacking", "args": Permanent }
 | { "_Action": "RestartTheGameLeavingEachExiledCardInExileThenPutThoseCardsOntoTheBattlefield", "args": [CardsInExile, Array<EnterFlag>] }
 | { "_Action": "ReturnACardFromAnyPlayersGraveyardToBattlefield", "args": [CardsInGraveyards, Players, Array<EnterFlag>] }
-| { "_Action": "ReturnACardFromGraveyardToBattlefield", "args": [Cards, Array<EnterFlag>] }
-| { "_Action": "ReturnACardFromGraveyardToBattlefieldAtRandom", "args": [Cards, Array<EnterFlag>] }
+| { "_Action": "ReturnACardFromGraveyardToBattlefield", "args": [CardsInGraveyards, Array<EnterFlag>] }
+| { "_Action": "ReturnACardFromGraveyardToBattlefieldAtRandom", "args": [CardsInGraveyards, Array<EnterFlag>] }
 | { "_Action": "ReturnACardFromGraveyardToHandAtRandom", "args": Cards }
 | { "_Action": "ReturnACardFromGraveyardToTopOfLibrary", "args": Cards }
 | { "_Action": "ReturnACardFromPlayersGraveyardToBattlefield", "args": [Cards, Player, Array<EnterFlag>] }
@@ -2290,7 +2290,6 @@ type Condition =
 | { "_Condition": "APermanentExploredThisTurn", "args": Permanents }
 | { "_Condition": "APermanentLeftTheBattlefieldThisTurn", "args": Permanents }
 | { "_Condition": "APermanentOfTypeWasPutOntoTheBattlefieldThisWay", "args": Permanents }
-| { "_Condition": "APermanentWasPutOntoTheBattlefieldThisWay" }
 | { "_Condition": "APermanentPassesFilter", "args": [Permanents, Permanents] }
 | { "_Condition": "APermanentWasChosenThisWay" }
 | { "_Condition": "APermanentWasCopiedThisWay", "args": Permanents }
