@@ -422,8 +422,7 @@ type Action =
 | { "_Action": "ConjureADuplicateOfEachPermanentOntoTheBattlefield", "args": [Permanents, Array<EnterFlag>] }
 | { "_Action": "ConjureADuplicateOfPermanentOntoTheBattlefield", "args": [Permanent, Array<EnterFlag>] }
 | { "_Action": "ConjureADuplicateOfSpellCardOntoTheBattlefield", "args": [Spell, Array<EnterFlag>] }
-| { "_Action": "ConjureARandomCardFromSpellBookIntoExile", "args": string }
-| { "_Action": "ConjureARandomCardFromSpellBookIntoExileFaceDown", "args": string }
+| { "_Action": "ConjureARandomCardFromSpellBookIntoExile", "args": [string, Array<ExileFlag>] }
 | { "_Action": "ConjureARandomCardFromSpellBookIntoHand", "args": string }
 | { "_Action": "ConjureARandomCardFromSpellBookOntoBattlefield", "args": [string, Array<EnterFlag>] }
 | { "_Action": "ConjureARandomCardFromSpellbookIntoTheTopNumberCardsOfLibrary", "args": [string, GameNumber] }
@@ -5769,7 +5768,6 @@ type PlayerEffect =
 | { "_PlayerEffect": "MayCastASpellFromGraveyardWithAdditionalCostOnceEachPlayersTurn", "args": [Spells, Cost, Player] }
 | { "_PlayerEffect": "MayPayAlternateCostForFirstUnearthCostEachTurn", "args": Array<ManaSymbol> }
 | { "_PlayerEffect": "MayActivateExhaustAbilitiesAsThoughTheyHaventBeenActivated" }
-| { "_PlayerEffect": "MayCastSpellsFromTopOfLibraryWithEffect", "args": [Spells, Array<SpellEffect>] }
 | { "_PlayerEffect": "MayPlayGraveyardCards", "args": CardsInGraveyards }
 | { "_PlayerEffect": "MayCastGraveyardCardAsAnAdventure", "args": CardInGraveyards }
 | { "_PlayerEffect": "DecreaseCostToTurnPermanentsFaceUp", "args": [Permanents, Array<CostReductionSymbol>] }
@@ -6407,6 +6405,7 @@ type PuttableOnBattlefield =
 | { "_PuttableOnBattlefield": "AnyNumberOfCardsFromLibrary", "args": CardsInLibrary }
 | { "_PuttableOnBattlefield": "AnyNumberOfGroupCardsInGraveyards", "args": [CardsInGraveyards, GroupFilter] }
 | { "_PuttableOnBattlefield": "ACardOfTypeFromLibrary", "args": CardsInLibrary }
+| { "_PuttableOnBattlefield": "ACardInGraveyards", "args": CardsInGraveyards }
 | { "_PuttableOnBattlefield": "EachCardInGraveyards", "args": CardsInGraveyards }
 | { "_PuttableOnBattlefield": "CardInGraveyards", "args": CardInGraveyards }
 | { "_PuttableOnBattlefield": "CardInHand", "args": CardInHand }
@@ -6739,6 +6738,7 @@ type ReplacementActionWouldDraw =
 | { "_ReplacementActionWouldDraw": "MayAction", "args": ReplacementActionWouldDraw }
 | { "_ReplacementActionWouldDraw": "MillACard" }
 | { "_ReplacementActionWouldDraw": "MustCost", "args": ReplacementActionWouldDrawCost }
+| { "_ReplacementActionWouldDraw": "MayCost", "args": ReplacementActionWouldDrawCost }
 | { "_ReplacementActionWouldDraw": "PermanentDealsDamage", "args": [Permanent, GameNumber, DamageRecipients] }
 | { "_ReplacementActionWouldDraw": "PlayerAction", "args": [Player, ReplacementActionWouldDraw] }
 | { "_ReplacementActionWouldDraw": "PlayerActions", "args": [Player, Array<ReplacementActionWouldDraw>] }

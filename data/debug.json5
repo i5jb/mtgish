@@ -1,286 +1,84 @@
 [
-  "Adarkar Unicorn",                     // NEW - Missing manacost
-  "Cauldron Dance",                      // NEW - Remove check of APermWasPutOnBattlefield
-  "Contractual Safeguard",               // NEW - Improve choose a perm / put a counter
-  "Discover the Formula",                // NEW - Perpetual effect fix
-  "Emeria Shepherd",                     // NEW - Slight target rewording
-  "Gagh Slinger",                        // NEW - Double {{Zombie[0]}} issue
-  "Healing Grace",                       // NEW - Gain 3 life outside of prevent effect
-  "Infernal Offering",                   // NEW - More specific about sacrifice this way
-  "Robe of the Archmagi",                // NEW - Triple {{Zombie[0]}} issue
-  "Sakashima of a Thousand Faces",       // NEW - Combine AddAbility-s
-  "Storm the Seedcore",                  // NEW - Combine AddAbility-s
+  // 73ae654b6f181e2a110a664a83bac517b1a5e84e
+  "Act of Aggression",                    // Fixed previously, missing haste
+  "Act of Treason",                       // Fixed previously, missing haste
+  "Claim the Firstborn",                  // Fixed previously, missing haste
+  "Limits of Solidarity",                 // Fixed previously, missing haste
+  "Spreading Insurrection",               // Fixed previously, missing haste
+  "Song-Mad Treachery // Song-Mad Ruins", // Fixed previously, missing haste
+  "Take for a Ride",                      // Fixed previously, missing haste
+  "Tentative Connection",                 // Fixed previously, missing haste
+  "Turn Against",                         // Fixed previously, missing haste
+  "Wrangle",                              // Fixed previously, missing haste
+  "Kessig Wolf Run",                      // Fixed previously, missing trample
+  "Tovolar, Dire Overlord // Tovolar, the Midnight Scourge", // Fixed previously, missing trample
+  // 24fd2b8f6990ae3a8691e8b417a1fa927577770e
+  "Brilliance Unleashed",                 // Fixed previously, mssing flying
+  "Favored Enemy",                        // Fixed previously, missing middle trigger effect
+  "Idris, Soul of the TARDIS",            // Fixed previously, missing Vanishing
+  "Infernal Offering",                    // Fixed previously, missing draw *two* cards
+  "Ogre Chitterlord",                     // Fixed previously, missing "if ..., each"
+  // 1553384c9a970a02514b337db9c86697313530e8
+  "Dralnu's Crusade",                     // Fixed previously, missing Black, missing Zombie
+  // 4f6512cfb08500617b6304ae1b5baf131f158a12
+  "Healing Grace",                        // Fixed previously, move gain life outside prevent
 
-  "Augmenter Pugilist // Echoing Equation",              // ModalDFC     - NEW
+  "Agatha's Soul Cauldron",               // Fixed, was applied to ThisPermanent rather than {{Creatures}}
+  "Al-abara's Carpet",                    // Fixed, missing damage source
+  "Scarecrow",                            // Fixed, missing damage source
+  "Allies at Last",                       // Fixed, had {{Creatures[0]}} duplicated rather than {{Creature[0]}}
+  "Avenge",                               // Fixed, missing life amount for each (NEW)
+  "Fracturing Gust",                      // Fixed, missing life amount for each
+  "Fumigate",                             // Fixed, missing life amount for each (NEW)
+  "Multani's Decree",                     // Fixed, missing life amount for each
+  "Paraselene",                           // Fixed, missing life amount for each (NEW)
+  "Righteous Fury",                       // Fixed, missing life amount for each
+  "Back for Seconds",                     // Fixed, missing "with mana value {{Digits}} or less"
+  "Baki's Curse",                         // Fixed, missing damage amount for each
+  "Beorn the Fierce",                     // Fixed, had DrawACard rather than DrawNumberCards
+  "Blex, Vexing Pest // Search for Blex", // Fixed, missing life amount for each
+  "Breathstealer's Crypt",                // Fixed, missing "unless they pay 3 life"
+  "Burn at the Stake",                    // Fixed, missing "three times"
+  "Caught Red-Handed",                    // Fixed, missing haste
+  "Chandra, Pyromaster",                  // Fixed, missing "instant or sorcery"
+  "Clear the Stage",                      // Fixed, missing If(Condition, ...)
+  "Darigaaz, Shivan Champion",            // Fixed, missing "with three egg counters on it"
+  "Dark Deal",                            // Fixed, missing "minus one"
+  "Desert Warfare",                       // Fixed, missing haste
+  "Disa the Restless",                    // Fixed, missing "a Lhurgoyf permanent card"
+  "Dragonhawk, Fate's Tempest",           // Fixed, missing damage amount for each
+  "Felonious Rage",                       // Fixed, missing haste
+  "Fortune Teller's Talent",              // Fixed, missing "as long as ..."
+  "Furgul, Quag Nurturer",                // Fixed, messed up "you control no <creatures>"
+  "Mark of the Oni",                      // Fixed, messed up "you control no <creatures>"
+  "Ophiomancer",                          // Fixed, messed up "you control no <creatures>"
+  "Sarkhan's Rage",                       // Fixed, messed up "you control no <creatures>"
+  "Stenchskipper",                        // Fixed, messed up "you control no <creatures>"
+  "Hazel's Brewmaster",                   // Fixed, was applied to ThisPermanent rather than {{Permanents}}
+  "Kor Blademaster",                      // Fixed, missing Warriors
+  "Lazav, Dimir Mastermind",              // Fixed, missing "has hexproof"
+  "Liliana the Faultless",                // Fixed, missing "discard a card"
+  "Lukka, Coppercoat Outcast",            // Fixed, missing "creature cards"
+  "Menacing Ogre",                        // Fixed, messed up "put two +1/+1 counters"
+  "Nim Deathmantle",                      // Fixed, missing "pay {4}"
+  "Pack's Betrayal",                      // Fixed, missing haste
+  "Phyrexian Portal",                     // Fixed, missing "If <Condition>, ..."
+  "Portent of Betrayal",                  // Fixed, missing haste
+  "Press into Service",                   // Fixed, missing haste
+  "Puppeteer Clique",                     // Fixed, missing haste
+  "Quicksilver Dragon",                   // Fixed, missing "creature"
+  "Rabble-Rouser",                        // Fixed, had ThisPermanent instead of Attacking creatures
+  "Revival Experiment",                   // Fixed, missing life amount for each
+  "Riding the Dilu Horse",                // Fixed, missing horsemanship, incorrec regenrate
+  "Robber of the Rich",                   // Fixed, missing "with a Rogue"
+  "Steward of the Harvest",               // Fixed, was applied to ThisPermanent rather than {{Permanents}}
+  "Summoner's Sending",                   // Fixed, missing flying
+  "Thought Hemorrhage",                   // Fixed, missing damage amount for each
+  "Thundermane Dragon",                   // Fixed, missing "with power 4 or greater"
+  "Touch of Moonglove",                   // Fixed, missing deathtouch
+  "Unexpected Request",                   // Fixed, missing haste
+  "Worzel, the Protector",                // Fixed, missing Plains
 
-  "Advanced Floral Invocations",         // UPDATED
-  "Advanced Reconstruction",             // UPDATED
-  "Agent's Toolkit",                     // UPDATED
-  "Ajani's Influence",                   // UPDATED
-  "Alchemist's Talent",                  // UPDATED
-  "Apex of Power",                       // UPDATED
-  "Armed and Armored",                   // UPDATED
-  "Artificer Class",                     // UPDATED
-  "Artist's Talent",                     // UPDATED
-  "Ashcoat of the Shadow Swarm",         // UPDATED
-  "Badlands Revival",                    // UPDATED
-  "Ballyrush Banneret",                  // UPDATED
-  "Bandit's Talent",                     // UPDATED
-  "Baral and Kari Zev",                  // UPDATED
-  "Barbarian Class",                     // UPDATED
-  "Bard Class",                          // UPDATED
-  "Battle of Hoover Dam",                // UPDATED
-  "Black Cat, Cunning Thief",            // UPDATED
-  "Blacksmith's Talent",                 // UPDATED
-  "Blessed Defiance",                    // UPDATED
-  "Blight Herder",                       // UPDATED
-  "Blood Price",                         // UPDATED
-  "Bloodrage Alpha",                     // UPDATED
-  "Blue Dragon",                         // UPDATED
-  "Boiling Earth",                       // UPDATED
-  "Bold Defense",                        // UPDATED
-  "Bontu's Last Reckoning",              // UPDATED
-  "Bosk Banneret",                       // UPDATED
-  "Brainstorm",                          // UPDATED
-  "Brainsurge",                          // UPDATED
-  "Break Ties",                          // UPDATED
-  "Brighthearth Banneret",               // UPDATED
-  "Broodwarden",                         // UPDATED
-  "Brudiclad, Telchor Engineer",         // UPDATED
-  "Builder's Talent",                    // UPDATED
-  "Caretaker's Talent",                  // UPDATED
-  "Cauldron's Gift",                     // UPDATED
-  "Chandra, Pyromaster",                 // UPDATED
-  "Chaos Moon",                          // UPDATED
-  "Cho-Arrim Legate",                    // UPDATED
-  "Cleric Class",                        // UPDATED
-  "Collected Conjuring",                 // UPDATED
-  "Corrupted Shapeshifter",              // UPDATED
-  "Creative Outburst",                   // UPDATED
-  "Dawnsire, Sunstar Dreadnought",       // UPDATED
-  "Deadly Riposte",                      // UPDATED
-  "Deepwood Legate",                     // UPDATED
-  "Demonlord Belzenlok",                 // UPDATED
-  "Desertion",                           // UPDATED
-  "Destiny Spinner",                     // UPDATED
-  "Diminishing Returns",                 // UPDATED
-  "Does Machines",                       // UPDATED
-  "Done for the Day",                    // UPDATED
-  "Dreamdew Entrancer",                  // UPDATED
-  "Druid Class",                         // UPDATED
-  "Dusk's Landing",                      // UPDATED
-  "Earth Rumble",                        // UPDATED
-  "Eclipsed Boggart",                    // UPDATED
-  "Eclipsed Elf",                        // UPDATED
-  "Eclipsed Flamekin",                   // UPDATED
-  "Eclipsed Kithkin",                    // UPDATED
-  "Eclipsed Merrow",                     // UPDATED
-  "Ecstatic Beauty",                     // UPDATED
-  "Emperor of Bones",                    // UPDATED
-  "Entropic Battlecruiser",              // UPDATED
-  "Essence Leak",                        // UPDATED
-  "Euru, Acorn Scrounger",               // UPDATED
-  "Exploration Broodship",               // UPDATED
-  "Eye of Jace",                         // UPDATED
-  "Fated Conflagration",                 // UPDATED
-  "Fiendslayer Paladin",                 // UPDATED
-  "Fighter Class",                       // UPDATED
-  "Final Showdown",                      // UPDATED
-  "Fisher's Talent",                     // UPDATED
-  "Flow State",                          // UPDATED
-  "Follow the Lumarets",                 // UPDATED
-  "Fortune Teller's Talent",             // UPDATED
-  "Foul-Tongue Invocation",              // UPDATED
-  "Fractalize",                          // UPDATED
-  "Frogtosser Banneret",                 // UPDATED
-  "Gideon Blackblade",                   // UPDATED
-  "Gideon's Phalanx",                    // UPDATED
-  "Gloom Ripper",                        // UPDATED
-  "Glyph of Life",                       // UPDATED
-  "Gossip's Talent",                     // UPDATED
-  "Gourmand's Talent",                   // UPDATED
-  "Great Train Heist",                   // UPDATED
-  "Hand of Emrakul",                     // UPDATED
-  "Harmonious Emergence",                // UPDATED
-  "Hearthhull, the Worldseed",           // UPDATED
-  "Hollowhenge Overlord",                // UPDATED
-  "Hunter's Mark",                       // UPDATED
-  "Hunter's Talent",                     // UPDATED
-  "Illuminate",                          // UPDATED
-  "Ingenious Mastery",                   // UPDATED
-  "Innkeeper's Talent",                  // UPDATED
-  "Inspiring Refrain",                   // UPDATED
-  "Inspirit, Flagship Vessel",           // UPDATED
-  "Intermediate Chirography",            // UPDATED
-  "Invert the Skies",                    // UPDATED
-  "Invoke the Ancients",                 // UPDATED
-  "Joust Through",                       // UPDATED
-  "Kairi, the Swirling Sky",             // UPDATED
-  "Karplusan Strider",                   // UPDATED
-  "Knockout Blow",                       // UPDATED
-  "Kyren Legate",                        // UPDATED
-  "Last Night Together",                 // UPDATED
-  "Leader's Talent",                     // UPDATED
-  "Legion's Chant",                      // UPDATED
-  "Lightfoot Rogue",                     // UPDATED
-  "Loki, the Deceiver",                  // UPDATED
-  "Lord of the Nazgûl",                  // UPDATED
-  "Lumen-Class Frigate",                 // UPDATED
-  "Majestic Myriarch",                   // UPDATED
-  "Massacre",                            // UPDATED
-  "Master Skald",                        // UPDATED
-  "Mechtitan Core",                      // UPDATED
-  "Memory Theft",                        // UPDATED
-  "Mogg Salvage",                        // UPDATED
-  "Monk Class",                          // UPDATED
-  "Monument to Perfection",              // UPDATED
-  "Moogles' Valor",                      // UPDATED
-  "Natural Balance",                     // UPDATED
-  "Nick Fury, Agent of S.H.I.E.L.D.",    // UPDATED
-  "Nightscape Familiar",                 // UPDATED
-  "Ninja Teen",                          // UPDATED
-  "No Admittance",                       // UPDATED
-  "Old-Growth Troll",                    // UPDATED
-  "Osseous Exhale",                      // UPDATED
-  "Paladin Class",                       // UPDATED
-  "Party Dude",                          // UPDATED
-  "Phabine, Boss's Confidant",           // UPDATED
-  "Phalanx Tactics",                     // UPDATED
-  "Pollen Remedy",                       // UPDATED
-  "Pore Over the Pages",                 // UPDATED
-  "Primal Clay",                         // UPDATED
-  "Primal Plasma",                       // UPDATED
-  "Primitive Justice",                   // UPDATED
-  "Prophetic Bolt",                      // UPDATED
-  "Rage into the Valley",                // UPDATED
-  "Rally for the Throne",                // UPDATED
-  "Ranger Class",                        // UPDATED
-  "Refreshing Rain",                     // UPDATED
-  "Riptide Survivor",                    // UPDATED
-  "Ritual of Hope",                      // UPDATED
-  "Rogue Class",                         // UPDATED
-  "Rowdy Crew",                          // UPDATED
-  "Rupture",                             // UPDATED
-  "Rushwood Legate",                     // UPDATED
-  "Saprazzan Legate",                    // UPDATED
-  "Scalpelexis",                         // UPDATED
-  "Scavenger's Talent",                  // UPDATED
-  "Searing Blood",                       // UPDATED
-  "Sephiroth, Fallen Hero",              // UPDATED
-  "Settle the Score",                    // UPDATED
-  "Shadrix Silverquill",                 // UPDATED
-  "Silence the Believers",               // UPDATED
-  "Silkguard",                           // UPDATED
-  "Sivvi's Ruse",                        // UPDATED
-  "Skullcage",                           // UPDATED
-  "Skyclave Relic",                      // UPDATED
-  "Smashing Success",                    // UPDATED
-  "Smelting Vat",                        // UPDATED
-  "Smuggler's Surprise",                 // UPDATED
-  "Somberwald Beastmaster",              // UPDATED
-  "Sonar Strike",                        // UPDATED
-  "Sorcerer Class",                      // UPDATED
-  "Sorceress's Schemes",                 // UPDATED
-  "Spark Double",                        // UPDATED
-  "Spectacular Skywhale",                // UPDATED
-  "Spell Stutter",                       // UPDATED
-  "Starving Revenant",                   // UPDATED
-  "Stillness in Motion",                 // UPDATED
-  "Stitcher Geralf",                     // UPDATED
-  "Stonybrook Banneret",                 // UPDATED
-  "Stormchaser's Talent",                // UPDATED
-  "Stormscape Familiar",                 // UPDATED
-  "Storyweave",                          // UPDATED
-  "Submerge",                            // UPDATED
-  "Sunscape Familiar",                   // UPDATED
-  "Sunset Revelry",                      // UPDATED
-  "Suspicious Detonation",               // UPDATED
-  "Synthesizer Labship",                 // UPDATED
-  "Tackle Artist",                       // UPDATED
-  "Tannuk, Steadfast Second",            // UPDATED
-  "The Jolly Balloon Man",               // UPDATED
-  "Thornscape Familiar",                 // UPDATED
-  "Thought Rattle",                      // UPDATED
-  "Thoughtweft Gambit",                  // UPDATED
-  "Three Steps Ahead",                   // UPDATED
-  "Thunderous Orator",                   // UPDATED
-  "Thunderscape Familiar",               // UPDATED
-  "Time Spiral",                         // UPDATED
-  "Tower Above",                         // UPDATED
-  "Triassic Egg",                        // UPDATED
-  "Two-Headed Giant",                    // UPDATED
-  "Tyrant of Discord",                   // UPDATED
-  "Unseal the Necropolis",               // UPDATED
-  "Uthros Research Craft",               // UPDATED
-  "Valiant Changeling",                  // UPDATED
-  "Valkyrie's Sword",                    // UPDATED
-  "Vanish into Memory",                  // UPDATED
-  "Vedalken Plotter",                    // UPDATED
-  "War Report",                          // UPDATED
-  "Warlock Class",                       // UPDATED
-  "Wilson, Majestic Bear",               // UPDATED
-  "Wizard Class",                        // UPDATED
-  "Wort, the Raidmother",                // UPDATED
-  "Zaffai, Thunder Conductor",           // UPDATED
-
-  "Thranduil, Sindarin Liege // Silvan Rally",           // Adventurer   - UPDATED
-  "Cosima, God of the Voyage // The Omenkeel",           // ModalDFC     - UPDATED
-  "Emeria's Call // Emeria, Shattered Skyclave",         // ModalDFC     - UPDATED
-  "Esika, God of the Tree // The Prismatic Bridge",      // ModalDFC     - UPDATED
-  "Extus, Oriq Overlord // Awaken the Blood Avatar",     // ModalDFC     - UPDATED
-  "Flamescroll Celebrant // Revel in Silence",           // ModalDFC     - UPDATED
-  "Jadzi, Oracle of Arcavios // Journey to the Oracle",  // ModalDFC     - UPDATED
-  "Kolvori, God of Kinship // The Ringhart Crest",       // ModalDFC     - UPDATED
-  "Mila, Crafty Companion // Lukka, Wayward Bonder",     // ModalDFC     - UPDATED
-  "Pestilent Cauldron // Restorative Burst",             // ModalDFC     - UPDATED
-  "Torrent Sculptor // Flamethrower Sonata",             // ModalDFC     - UPDATED
-  "Turntimber Symbiosis // Turntimber, Serpentine Wood", // ModalDFC     - UPDATED
-  "Valki, God of Lies // Tibalt, Cosmic Impostor",       // ModalDFC     - UPDATED
-  "City of the Daleks",                                  // Planar       - UPDATED
-  "The Great Aerie",                                     // Planar       - UPDATED
-  "Harmonized Trio // Brainstorm",                       // Preparer     - UPDATED
-  "Into the Earthen Maw",                                // Scheme       - UPDATED
-  "Surrender Your Thoughts",                             // Scheme       - UPDATED
-  "Appeal // Authority",                                 // Split        - UPDATED
-  "Catch // Release",                                    // Split        - UPDATED
-  "Heaven // Earth",                                     // Split        - UPDATED
-  "Enduring Angel // Angelic Enforcer",                  // Transforming - UPDATED
-
-  "Acid-Spewer Dragon",          // OLD - Morph
-  "Aven Liberator",              // OLD - Morph
-  "Belltoll Dragon",             // OLD - Morph
-  "Den Protector",               // OLD - Morph
-  "Dermoplasm",                  // OLD - Morph
-  "Herdchaser Dragon",           // OLD - Morph
-  "Hidden Dragonslayer",         // OLD - Morph
-  "Icefeather Aven",             // OLD - Morph
-  "Imperial Hellkite",           // OLD - Morph
-  "Ire Shaman",                  // OLD - Morph
-  "Kolaghan Stormsinger",        // OLD - Morph
-  "Liege of the Axe",            // OLD - Morph
-  "Maelstrom Djinn",             // OLD - Morph
-  "Mischievous Quanar",          // OLD - Morph
-  "Mistfire Weaver",             // OLD - Morph
-  "Rattleclaw Mystic",           // OLD - Morph
-  "Shieldhide Dragon",           // OLD - Morph
-  "Silumgar Assassin",           // OLD - Morph
-  "Stormwing Dragon",            // OLD - Morph
-  "Stratus Dancer",              // OLD - Morph
-  "Thelonite Hermit",            // OLD - Morph
-  "Thousand Winds",              // OLD - Morph
-  "Wingbeat Warrior",            // OLD - Morph
-
-  "Blinding Fog",                // OLD - duplicate {{Permanent[0]}}
-  "Cacophony Unleashed",         // OLD - duplicate {{Zombie[0]}}
-  "Energy Vortex",               // OLD - duplicate {{Line[Enchantment][0]}}
-  "Esper",                       // OLD - duplicate {{Black[0]}}
-  "Filigree Vector",             // OLD - duplicate {{Permanent[0]}}
-  "Grist, the Hunger Tide",      // OLD - duplicate {{Permanent[0]}}
-  "Kiora, Master of the Depths", // OLD - duplicate {{Permanent[0]]}}
-  "Magma Opus",                  // OLD - duplicate {{Black[0]}}
-  "Mapping the Maze",            // OLD - duplicate {{SpecificCard[0]}} / missing phrase
-  "Marath, Will of the Wild",    // OLD - duplicate {{ActivatedActions(X=ValueX)[0]}}
-  "Winter Blast",                // OLD - duplicate {{Creatures[0]}}
 /*
   // Multi-player actions for cleanup
   "Acererak the Archlich",

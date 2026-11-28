@@ -328,6 +328,7 @@
   "{{PUTTABLE_ON_BATTLEFIELD}}": {
     "CardInGraveyards({{CARD_IN_GRAVEYARDS}})": "",
     "EachCardInGraveyards({{CARDS_IN_GRAVEYARDS}})": "",
+    "ACardInGraveyards({{CARDS_IN_GRAVEYARDS}})": "",
     "UptoNumberGroupCardsInGraveyards({{NUMBER}}, {{CARDS_IN_GRAVEYARDS}}, {{GROUP_FILTER}})": "",
     "AnyNumberOfGroupCardsInGraveyards({{CARDS_IN_GRAVEYARDS}}, {{GROUP_FILTER}})": "",
 
@@ -729,8 +730,8 @@
     "ConjureACardIntoGraveyard({{QUOTED_NAMED_CARD}})": "",
     "ConjureACardOfChoiceFromSpellBookIntoHand({{SPELLBOOK}})": "",
     "ConjureADuplicateOfEachPermanentIntoGraveyard({{PERMANENTS}})": "",
-    "ConjureARandomCardFromSpellBookIntoExile({{SPELLBOOK}})": "",
-    "ConjureARandomCardFromSpellBookIntoExileFaceDown({{SPELLBOOK}})": "",
+    "ConjureARandomCardFromSpellBookIntoExile({{SPELLBOOK}}, {{EXILE_FLAGS}})": "",
+    //"ConjureARandomCardFromSpellBookIntoExileFaceDown({{SPELLBOOK}})": "",
     "ConjureARandomCardFromSpellBookIntoHand({{SPELLBOOK}})": "",
     "ConjureARandomCardFromSpellbookIntoTheTopNumberCardsOfLibrary({{SPELLBOOK}}, {{NUMBER}})": "",
 
@@ -2336,6 +2337,7 @@
     "CopyEffects([SetName({{QUOTED_NAMED_CARD}}), AddSupertypes([{{SUPERTYPE}}]), SetCreatureTypes([{{ZOMBIE}}, {{ZOMBIE}}, {{ZOMBIE}}]), SetCardtypes([Creature])])": "",
     "CopyEffects([SetName({{QUOTED_NAMED_CARD}}), AddSupertypes([{{SUPERTYPE}}]), SetPT({{PT}}), AddCreatureTypes([{{ZOMBIE}}, {{ZOMBIE}}]), AddCardtypes([Creature]), AddAbility([{{RULE}}])])": "",
     "CopyEffects([SetName({{QUOTED_NAMED_CARD}}), AddSupertypes([{{SUPERTYPE}}]), AddAbility([{{RULE}}])])": "",
+    "CopyEffects([SetName({{QUOTED_NAMED_CARD}}), AddSupertypes([{{SUPERTYPE}}]), AddAbility([{{RULE}}]), AddAbilityVariable(ThisAbility)])": "",
     "CopyEffects([SetName({{QUOTED_NAMED_CARD}}), AddSupertypes([{{SUPERTYPE}}]), AddAbilityVariable(ThisAbility)])": "",
     "CopyEffects([SetName({{QUOTED_NAMED_CARD}}), AddSupertypes([{{SUPERTYPE}}])])": "",
     "CopyEffects([SetName({{QUOTED_NAMED_CARD}}), SetPT({{PT}}), AddAbility([{{RULE}}]), AddAbilityVariable(ThisAbility)])": "",
@@ -5204,7 +5206,7 @@
     "[PlayerAction({{PLAYER}}, Exile([TheTopCardOfLibrary], []))]": "",
 
     "[PlayerAction({{PLAYER}}, RevealTopCardOfLibrary), AnyPlayerMayCost(Other({{PLAYER}}), PayLife({{NUMBER}})), IfElse(CostWasPaid, [PlayerAction({{PLAYER}}, PutTopOfLibraryInGraveyard)], [PlayerAction({{PLAYER}}, DrawACard)])]": "",
-    "[PlayerActions({{PLAYER}}, [DrawACard, RevealTheCardDrawnThisWay, If(ACardWasRevealedThisWay({{CARDS_IN_HAND}}), [DiscardTheCardDrawnThisWay])])]": "",
+    "[PlayerActions({{PLAYER}}, [DrawACard, RevealTheCardDrawnThisWay, If(ACardWasRevealedThisWay({{CARDS_IN_HAND}}), [MayCost(PayLife({{NUMBER}})), If(CostWasPaid, [DiscardTheCardDrawnThisWay])])])]": "",
     "[PlayerMustCost({{PLAYER}}, DiscardACard), IfElse(CostWasPaid, [PlayerAction({{PLAYER}}, DrawACard)], [PlayerAction({{PLAYER}}, MillACard)])]": "",
     "[PutACardFromOutsideGameInHand({{CARDS}})]": "",
     "[PutCounters([ACounterOfTypeOnPermanent({{COUNTER_TYPE}}, {{PERMANENT}})])]": "",
@@ -7848,7 +7850,6 @@
     "MayCastSpellsFromTopOfLibraryAsThoughTheyHadFlash({{SPELLS}})": "",
     "MayCastSpellsFromTopOfLibraryForAlternateCost({{SPELLS}}, PayLifeEqualToItsManaValue)": "",
     "MayCastSpellsFromTopOfLibraryWithAdditionalCost({{SPELLS}}, {{COST}})": "",
-    "MayCastSpellsFromTopOfLibraryWithEffect({{SPELLS}}, {{SPELL_EFFECT_LIST}})": "",
     "MayCastSpellsFromTopOfLibrary_SpellsWithTrigger({{SPELLS}}, {{SPELLS}}, {{TOP_LEVEL_ACTIONS}})": "",
     "MayCastSpellsFromTopOfPlayersLibrary({{SPELLS}}, {{PLAYERS}})": "",
     "MayCastSpellsWithoutPaying({{SPELLS}})": "",
